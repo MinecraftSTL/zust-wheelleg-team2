@@ -54,8 +54,8 @@ void core2_main(void)
     {
         // 此处编写需要循环执行的代码
         MotorPit();
-        if(zero){
-            zero = 0;
+        if(Motor_zero){
+            Motor_zero = 0;
             small_driver_set_zero();
         }
         // 此处编写需要循环执行的代码

@@ -6,7 +6,7 @@ uint8 Motor_dirL = 1, Motor_dirR = 0;
 
 int16 motorPwmLeft = 0, motorPwmRight = 0;
 
-uint8 zero = 0;
+uint8 Motor_zero = 0;
 
 /***********************************************
 * @brief : PWMÊä³ö
@@ -35,7 +35,7 @@ void MotorSetPWM(int16 pwm_left,int16 pwm_right)
 }
 
 void MotorZero(){
-    zero = 1;
+    Motor_zero = 1;
 }
 
 void MotorPit(){

@@ -64,6 +64,9 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         beepMid();
         ips200_init_spi();
     }
+    if(my_key_get_state(KEY_2) == KEY_SHORT_PRESS){
+        ++pressed[HOME_KEY];
+    }
     if(my_key_get_state(KEY_3) == KEY_SHORT_PRESS){
         CarStatus_add();
     }else if(my_key_get_state(KEY_3) == KEY_LONG_PRESS){
@@ -120,6 +123,10 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             beepLong();
             fsEn = 0;
         }
+        if(kill){
+            beepLong();
+            kill = 0;
+        }
     }
 
     float tg_pitchV = 0, tg_yawV = 0, legX = targetLegX+xZero, legZ = targetLegZ;
@@ -136,13 +143,25 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             targetV += control[0];
         }
         float tg_pitchX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
-        legX += tg_pitchX;
+        if(kill){
+            if(Encoder_speed < -bridgeV1){
+                kill = 0;
+                CarStatus_stop();
+            }else{
+                CameraStatus_clear();
+                legZ = Leg_angle0Z;
+                legX = -LEG_MAX_X;
+            }
+        }else{
+            legX += tg_pitchX;
+        }
         tg_pitchV += pid(&PID_WxAy, kZero-kPitchX*tg_pitchX, pitch);
         if(carStatus >= CAR_RUN){
             tg_yawV = pid(&PID_vAz, 0, cameraErr);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
+        kill = 0;
         PID_clear(&PID_vVx);
         PID_clear(&PID_WxAy);
         PID_clear(&PID_vAz);

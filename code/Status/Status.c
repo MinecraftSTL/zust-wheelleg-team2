@@ -12,6 +12,12 @@ CarStatus carStatus = CAR_STOP;
 
 uint8 angleProtect = 1;
 uint8 fpsProtect = 1;
+uint8 timeProtect = 0;
+
+uint64 timeProtectT = 0;
+uint8 kill = 0;
+
+uint64 timeProtectNowT = 0;
 
 void CarStatus_set(CarStatus this)
 {
@@ -28,6 +34,10 @@ void CarStatus_update(){
     CameraStatus_clear();
     carRunMs = 0;
     wheelClear = 0;
+
+    timeProtectNowT = 0;
+    kill = 0;
+
     showPInC1 = carStatus != CAR_RUN;
     if(carStatus == CAR_RUN){
         binEn = 1;
@@ -51,4 +61,24 @@ void CarStatus_stop(){
 }
 void CarStatus_pit(uint32 period){
     allRunMs += period;
+    if(timeProtect && !kill && carStatus >= CAR_RUN && timeProtectNowT != 0){
+        uint64 t = allRunMs - timeProtectNowT;
+        if(timeProtectT != 0 && t >= timeProtectT){
+            kill = 1;
+        }
+    }
+}
+
+void CarStatus_CameraStatus_zebra(){
+    if(carStatus < CAR_RUN){
+        return;
+    }
+    if(timeProtectNowT){
+        uint64 t = allRunMs - timeProtectNowT;
+        if(timeProtectT == 0 || t < timeProtectT){
+            timeProtectT = t;
+        }
+    }else{
+        timeProtectNowT = allRunMs;
+    }
 }

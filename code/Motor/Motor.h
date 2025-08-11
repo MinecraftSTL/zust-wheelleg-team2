@@ -16,7 +16,7 @@
 
 extern float targetV;
 
-extern uint8 zero;
+extern uint8 Motor_zero;
 
 extern uint8 Motor_dirL, Motor_dirR;
 

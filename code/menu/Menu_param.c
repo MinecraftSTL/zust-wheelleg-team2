@@ -31,6 +31,11 @@ Page menu_main_config_leg_lb;
 Page menu_main_config_protect;
 Page menu_main_config_protect_angle;
 Page menu_main_config_protect_fps;
+Page menu_main_config_protect_time;
+Page menu_main_config_protect_time_en;
+Page menu_main_config_protect_time_t;
+Page menu_main_config_protect_time_kill;
+Page menu_main_config_protect_time_nowT;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_zero;
@@ -44,7 +49,8 @@ Page menu_main_arg_k_v_circle;
 Page menu_main_arg_k_v_rampD;
 Page menu_main_arg_k_v_barrier0;
 Page menu_main_arg_k_v_barrier1;
-Page menu_main_arg_k_v_bridge;
+Page menu_main_arg_k_v_bridge0;
+Page menu_main_arg_k_v_bridge1;
 Page menu_main_arg_k_errY;
 Page menu_main_arg_k_errY_straight;
 Page menu_main_arg_k_errY_bend;
@@ -67,6 +73,7 @@ Page menu_main_arg_k_camera_trapezoid_k;
 Page menu_main_arg_k_camera_trapezoid_y;
 Page menu_main_arg_k_camera_start;
 Page menu_main_arg_k_camera_start_maxYAdd;
+Page menu_main_arg_k_camera_start_reBlyY;
 Page menu_main_arg_k_camera_eigenvalue;
 Page menu_main_arg_k_camera_eigenvalue_inf;
 Page menu_main_arg_k_camera_eigenvalue_inf_bly2RDL;
@@ -97,7 +104,8 @@ Page menu_main_arg_k_camera_e_cross_x;
 Page menu_main_arg_k_camera_e_block;
 Page menu_main_arg_k_camera_e_block_lEn;
 Page menu_main_arg_k_camera_e_block_rEn;
-Page menu_main_arg_k_camera_e_block_y;
+Page menu_main_arg_k_camera_e_block_y0;
+Page menu_main_arg_k_camera_e_block_y1;
 Page menu_main_arg_k_camera_e_circle;
 Page menu_main_arg_k_camera_e_circle_lEn;
 Page menu_main_arg_k_camera_e_circle_rEn;
@@ -213,7 +221,7 @@ Page menu_main_debug_jump;
 Page menu_main_about;
 
 void Menu_param_init(){
-    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.dat", "main.debug", "main.arg.k.camera.show", ""});
+    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.dat", "main.debug", "main.arg.k.camera.show", "main.config.protect.time", ""});
     Page_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", (Page*[]){
         &menu_main_carStatus,
@@ -279,10 +287,22 @@ void Menu_param_init(){
     ListPage_init(&menu_main_config_protect, "protect", (Page*[]){
         &menu_main_config_protect_angle,
         &menu_main_config_protect_fps,
+        &menu_main_config_protect_time,
         NULL
     });
     BoolPage_init(&menu_main_config_protect_angle, "angle", &angleProtect, 0x03);
     BoolPage_init(&menu_main_config_protect_fps, "fps", &fpsProtect, 0x03);
+    ListPage_init(&menu_main_config_protect_time, "time", (Page*[]){
+        &menu_main_config_protect_time_en,
+        &menu_main_config_protect_time_t,
+        &menu_main_config_protect_time_kill,
+        &menu_main_config_protect_time_nowT,
+        NULL
+    });
+    BoolPage_init(&menu_main_config_protect_time_en, "en", &timeProtect, 0x03);
+    IntPage_init(&menu_main_config_protect_time_t, "t", &timeProtectT, -2147483648, 2147483647);
+    BoolPage_init(&menu_main_config_protect_time_kill, "kill", &kill, 0x03);
+    IntPage_init(&menu_main_config_protect_time_nowT, "nowT", &timeProtectNowT, -2147483648, 2147483647);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
@@ -314,7 +334,8 @@ void Menu_param_init(){
         &menu_main_arg_k_v_rampD,
         &menu_main_arg_k_v_barrier0,
         &menu_main_arg_k_v_barrier1,
-        &menu_main_arg_k_v_bridge,
+        &menu_main_arg_k_v_bridge0,
+        &menu_main_arg_k_v_bridge1,
         NULL
     });
     FloatPage_init(&menu_main_arg_k_v_straight, "straight", &targetV, -10000, 10000);
@@ -323,10 +344,11 @@ void Menu_param_init(){
     FloatPage_init(&menu_main_arg_k_v_rampD, "rampD", &rampDV, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_barrier0, "barrier0", &barrierV0, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_barrier1, "barrier1", &barrierV1, -10000, 10000);
-    FloatPage_init(&menu_main_arg_k_v_bridge, "bridge", &bridgeV, -10000, 10000);
+    FloatPage_init(&menu_main_arg_k_v_bridge0, "bridge0", &bridgeV0, -10000, 10000);
+    FloatPage_init(&menu_main_arg_k_v_bridge1, "bridge1", &bridgeV1, -10000, 10000);
     menu_main_arg_k_v_straight.extends.floatValue.dot = menu_main_arg_k_v_bend.extends.floatValue.dot = menu_main_arg_k_v_circle.extends.floatValue.dot =
             menu_main_arg_k_v_rampD.extends.floatValue.dot = menu_main_arg_k_v_barrier0.extends.floatValue.dot = menu_main_arg_k_v_barrier1.extends.floatValue.dot =
-                    menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
+                    menu_main_arg_k_v_bridge0.extends.floatValue.dot = menu_main_arg_k_v_bridge1.extends.floatValue.dot = 5;
     ListPage_init(&menu_main_arg_k_errY, "errY", (Page*[]){
         &menu_main_arg_k_errY_straight,
         &menu_main_arg_k_errY_bend,
@@ -383,9 +405,11 @@ void Menu_param_init(){
     IntPage_init(&menu_main_arg_k_camera_trapezoid_y, "y", &trapezoidY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_start, "start", (Page*[]){
         &menu_main_arg_k_camera_start_maxYAdd,
+        &menu_main_arg_k_camera_start_reBlyY,
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_start_maxYAdd, "maxYAdd", &startMaxYAdd, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_start_reBlyY, "reBlyY", &reBlyY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_eigenvalue, "eigenvalue", (Page*[]){
         &menu_main_arg_k_camera_eigenvalue_inf,
         &menu_main_arg_k_camera_eigenvalue_facingErr,
@@ -471,12 +495,14 @@ void Menu_param_init(){
     ListPage_init(&menu_main_arg_k_camera_e_block, "block", (Page*[]){
         &menu_main_arg_k_camera_e_block_lEn,
         &menu_main_arg_k_camera_e_block_rEn,
-        &menu_main_arg_k_camera_e_block_y,
+        &menu_main_arg_k_camera_e_block_y0,
+        &menu_main_arg_k_camera_e_block_y1,
         NULL
     });
     BoolPage_init(&menu_main_arg_k_camera_e_block_lEn, "lEn", &lBlockEn, 0x03);
     BoolPage_init(&menu_main_arg_k_camera_e_block_rEn, "rEn", &rBlockEn, 0x03);
-    IntPage_init(&menu_main_arg_k_camera_e_block_y, "y", &blockY, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_block_y0, "y0", &blockY0, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_block_y1, "y1", &blockY1, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_e_circle, "circle", (Page*[]){
         &menu_main_arg_k_camera_e_circle_lEn,
         &menu_main_arg_k_camera_e_circle_rEn,

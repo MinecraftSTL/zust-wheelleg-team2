@@ -8,13 +8,15 @@
 
 const uint32 freq = 300;
 
+const float Leg_angle0Z = -45;
+
 const float defaultLegX = 0, defaultLegZ = -30;
 float targetLegX, targetLegZ;
 
 uint8 rollBalance = 0;
 float rollBalanceK = 1;
 
-float LegDRb = 0.65, LegDRf = -0.775, LegDLf = 0.55, LegDLb = -0.575;
+float LegDRb = 0.65, LegDRf = -0.675, LegDLf = 0.65, LegDLb = -0.575;
 
 void Leg_init(){
     pwm_init(servo_rb, freq, PWM_DUTY_MAX/2);
@@ -89,8 +91,8 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 
 const int jumpStep[] = {
     0,//Ô¤ÊÕÍÈ
-    125,//ÉìÍÈ
-    200,//ÊÕÍÈ
+    150,//ÉìÍÈ
+    300,//ÊÕÍÈ
     -1,
 };
 float jumpLegZMin = -30, jumpLegZMax = -147;
@@ -108,6 +110,9 @@ void jumpPit(uint32 period, float *legX, float *legZ){
             break;
         case 2:
             *legZ = jumpLegZMin;
+            if(*legX > 0){
+                *legX = 0;
+            }
             break;
         default:
             return;
