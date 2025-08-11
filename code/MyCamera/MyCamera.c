@@ -945,7 +945,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case O_LCIRCLE:
-            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4) || lStraight==1 && rStraight==1){
+            if(lInfN <= 0 || fabsf(Angle_normalize(PI/2 - lInfRad[0])) > facingErr + PI/4 || lStraight){
                 CameraStatus_addScore(NONE);
             }
             if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4){
@@ -1052,7 +1052,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case O_RCIRCLE:
-            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4) || lStraight==1 && rStraight==1){
+            if(rInfN <= 0 || fabsf(Angle_normalize(PI/2 - rInfRad[0])) > facingErr + PI/4 || rStraight){
                 CameraStatus_addScore(NONE);
             }
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
@@ -1520,10 +1520,10 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
 void Image_other(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case NONE:
-            if(rStraight==1 && lStraight!=1 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > 2*bly2RDL){
+            if(rStraight==1 && lStraight!=1 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > elementYMin){
                 CameraStatus_addScore(OR_CROSS_LCIRCLE);
             }
-            if(lStraight==1 && rStraight!=1 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > 2*bly2RDL){
+            if(lStraight==1 && rStraight!=1 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > elementYMin){
                 CameraStatus_addScore(OR_CROSS_RCIRCLE);
             }
             if(lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 &&
