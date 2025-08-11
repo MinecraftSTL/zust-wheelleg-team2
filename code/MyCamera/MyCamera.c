@@ -31,7 +31,7 @@ int crossY = 20;
 int circleX = 7;
 int rampS = 750000;
 int rampY = 40;
-int rampZ = -60;
+int rampZ = -45;
 float rampK = 0.1;
 int barrierY0 = 20;
 int barrierY1 = 50;
@@ -311,7 +311,7 @@ void Image_binaryzation(Image *this, int16 deltaT){
     }
 }
 
-void Image_compensateBinaryzation(Image *this, float shadowK, float vignettingK, int16 deltaT){
+void Image_compensate(Image *this, float shadowK, float vignettingK){
     for(uint16 i = 0; i < this->h; ++i){
         uint8 delta = (uint16)(shadowK*i);
         for(uint16 j = 0; j < this->w; ++j){
@@ -324,14 +324,9 @@ void Image_compensateBinaryzation(Image *this, float shadowK, float vignettingK,
             Image_set(this,j,i,value);
         }
     }
-    int16 threshold = Fast_OTSU(this);
-    threshold += deltaT;
-    for(uint16 i = 0; i < this->h*this->w; ++i){
-        this->image[i]=this->image[i]>threshold?0xFF:0;
-    }
 }
 
-uint16 Image_getTrapezoidX(Image *this, uint16 y){
+uint16 inline Image_getTrapezoidX(Image *this, uint16 y){
     if(trapezoidStatus && this->h > 1+trapezoidY+y){
         return (this->h-1-trapezoidY-y)*trapezoidK;
     }else{
@@ -803,23 +798,8 @@ void Image_cross(Image *this, float *cameraV, uint16 *errY){
                     abs(lLine[lInfLine[0]][1]-rLine[rInfLine[0]][1]) < crossY &&
                     Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX, 0)==1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX-1, 0)==1 &&
                     Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX, 1)==1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX-1, 1)==1
-                    )
-            {
+                    ){
                 CameraStatus_addScore(I_CROSS);
-            }
-            if((lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 &&
-                    Image_borderIsLose(this, rBorder, lLine[lInfLine[0]][1], 1) == 1 && Image_borderIsLose(this, rBorder, lLine[lInfLine[0]][1]-1, 1) == 1 &&
-                    (Inflection_getFacing(lInfRad[1]) == 2 &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[1]][1]+crossX, 0) == 1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[1]][1]+crossX+1, 0) == 1 ||
-                    lInfN > 2 && Inflection_getFacing(lInfRad[lInfN-1]) == 2 &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[lInfN-1]][1]+crossX, 0) == 1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[lInfN-1]][1]+crossX+1, 0) == 1)) ||
-                    (rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 &&
-                    Image_borderIsLose(this, lBorder, rLine[rInfLine[0]][1], 0) == 1 && Image_borderIsLose(this, lBorder, rLine[rInfLine[0]][1]-1, 0) == 1 &&
-                    (Inflection_getFacing(rInfRad[1]) == 1 &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[1]][1]+crossX, 1) == 1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[1]][1]+crossX+1, 1) == 1 ||
-                    rInfN > 2 && Inflection_getFacing(rInfRad[rInfN-1]) == 1 &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[rInfN-1]][1]+crossX, 1) == 1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[rInfN-1]][1]+crossX+1, 1) == 1))){
-                CameraStatus_addScore(R_CROSS);
             }
             break;
         case I_CROSS:
@@ -1662,14 +1642,12 @@ void Image_processCamera(){
                 while(camera_process_cnt);
             }
         }
-        SysTimer_Start();
+
+//        SysTimer_Start();
+        Image_compensate(&image, shadowK, vignetteK);
         if(binStatus){
-            Image_compensateBinaryzation(&image, shadowK, vignetteK, binDeltaT);
-        }else{
-            Image_shadow(&image, shadowK);
-            Image_vignetting(&image, vignetteK);
+            Image_binaryzation(&image, binDeltaT);
         }
-        SysTimer_Stop();
 
         switch(cameraStatus){
             case I_CROSS:
@@ -1718,8 +1696,9 @@ void Image_processCamera(){
 
         Image_borderToMiddle(&image, lBorder, rBorder, lrMeet, mLine);
         cameraErr = Image_middleToErr(&image, mLine, tempErrY, errDeltaY);
+//        SysTimer_Stop();
 //        printf("%d\r\n",cameraStatus);
-        printf("%d\r\n",GetPastTime());
+//        printf("%d\r\n",GetPastTime());
         if(showPInC1){
             if(showWait){
                 while(camera_process_cnt);
