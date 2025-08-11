@@ -26,19 +26,27 @@ typedef struct{
     uint16 image[MT9V03X_IMAGE_SIZE];
     uint16 h, w;
 }Rgb565Image;
+typedef struct{
+    uint16 y;
+    float x;
+}Inverse;
 extern int camera_err;
 
 extern Rgb565Image showImage;
 
 extern int binDeltaT;
-extern int bly2RDR;
-extern float RD2IE;
-extern float IGFE;
+extern int inverseY;
+extern float inverseX;
+extern int bly2RDL;
+extern float RD2IErr;
+extern float facingErr;
 extern int invY;
 extern float invK;
 extern int setLineY;
+extern int StraightYMin;
 extern int StraightStep;
 extern float StraightErr;
+extern int zebraY;
 extern int crossY;
 extern int crossX;
 extern int circleY;

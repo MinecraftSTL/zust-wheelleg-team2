@@ -68,6 +68,8 @@
 
 #include "zf_common_typedef.h"
 
+#include "zf_common_font.h"
+
 //==================================================定义 IPS200 基本配置================================================
 #define IPS200_USE_SOFT_SPI             (0 )                                    // 默认使用硬件 SPI 方式驱动 建议使用硬件 SPI 方式驱动
 #if IPS200_USE_SOFT_SPI                                                         // 这两段 颜色正常的才是正确的 颜色灰的就是没有用的
@@ -187,13 +189,6 @@ void    ips200_show_wave                (uint16 x, uint16 y, const uint16 *wave,
 void    ips200_show_chinese             (uint16 x, uint16 y, uint8 size, const uint8 *chinese_buffer, uint8 number, const uint16 color);                                 // IPS200 汉字显示
 
 void    ips200_init                     (ips200_type_enum type_select);                                                         // 2寸 IPS液晶初始化
-
-void    ips200_draw_square              (uint16 x, uint16 y, uint16 r, uint16 color);
-void    ips200_show_char_color          (uint16 x, uint16 y, const char dat,const uint16 color);
-void    ips200_show_string_color        (uint16 x, uint16 y, const char dat[],const uint16 color);
-void    ips200_show_int_color           (uint16 x, uint16 y, const int32 dat, uint8 num,const uint16 color);
-void    ips200_show_uint_color          (uint16 x, uint16 y, const uint32 dat, uint8 num,const uint16 color);
-void    ips200_show_float_color         (uint16 x, uint16 y, const float dat, uint8 num, uint8 pointnum,const uint16 color);
 //==================================================声明 IPS200 基础函数================================================
 
 

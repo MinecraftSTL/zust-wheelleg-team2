@@ -26,6 +26,8 @@ void FuncPage_press(Page *this, uint8 pressed[]);
 
 void ips200_reset_color();
 void ips200_set_pencolor(const uint16 color);
+void ips200_show_char_color(uint16 x, uint16 y, const char dat, const uint16 color);
+void ips200_show_string_color(uint16 x, uint16 y, const char dat[], const uint16 color);
 int Int_pow(int this, int pow);
 void Int_toString(int this, char *str, uint8 num);
 void Double_toString(float this, char *str, uint8 num, uint8 point);
@@ -183,7 +185,7 @@ void ListPage_print(Page *this, uint8 row){
             PageKey_print(this->extends.listValue.value[this->select], row);
             return;
         }
-        for(int i=0; i<this->extends.listValue.size; ++i){
+        for(int8 i=0; i<this->extends.listValue.size; ++i){
             ips200_show_string_color(0, (i+1)*16, this->extends.listValue.value[i]->name, this->select==i ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
             PageKey_print(this->extends.listValue.value[i], i+1);
         }
@@ -506,7 +508,19 @@ void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]){
     if(this->extends.enumValue.size == 0){
         this->select = -1;
     }
-    memcpy(this->extends.enumValue.names, names, sizeof(char*)*this->extends.enumValue.size);
+    for(int i=0; i<this->extends.enumValue.size; ++i){
+        int8 j=0;
+        for(; j<PAGE_VALUE_MAX; ++j){
+            if(names[i][j] == '\0'){
+                break;
+            }
+            this->extends.enumValue.names[i][j] = names[i][j];
+        }
+        for(; j<PAGE_VALUE_MAX; ++j){
+            this->extends.enumValue.names[i][j] = ' ';
+        }
+        this->extends.enumValue.names[i][PAGE_VALUE_MAX] = '\0';
+    }
 }
 void EnumPage_print(Page *this, uint8 row){
     if(!row){
@@ -571,6 +585,16 @@ void ips200_reset_color(){
 
 void ips200_set_pencolor(const uint16 color){
     ips200_set_color(color, IPS200_DEFAULT_BGCOLOR);
+}
+void ips200_show_char_color(uint16 x, uint16 y, const char dat, const uint16 color){
+    ips200_set_pencolor(color);
+    ips200_show_char(x,y,dat);
+    ips200_reset_color();
+}
+void ips200_show_string_color(uint16 x, uint16 y, const char dat[], const uint16 color){
+    ips200_set_pencolor(color);
+    ips200_show_string(x,y,dat);
+    ips200_reset_color();
 }
 
 int Int_pow(int this, int pow){

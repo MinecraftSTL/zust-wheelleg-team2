@@ -4,16 +4,20 @@
 
 Image image;
 Image image1;
+Image inverseImage;
 Rgb565Image showImage;
 
 int binDeltaT = 0;
-int bly2RDR = 3;
-float RD2IE = 0.7854;
-float IGFE = 0.349;
+int inverseY = 50;
+float inverseX = 0.004;
+int bly2RDL = 3;
+float RD2IErr = 0.7854;
 float facingErr = 0.5236;
 int setLineY = 15;
+int StraightYMin = 40;
 int StraightStep = 15;
 float StraightErr = 0.349;
+int zebraY = 70;
 int crossY = 20;
 int crossX = 15;
 int circleY = 5;
@@ -22,6 +26,8 @@ int errY = 60;
 int errDeltaY = 30;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
+
+Inverse inverse;
 
 uint16 lStartPoint[2];
 uint16 rStartPoint[2];
@@ -168,6 +174,40 @@ void Rgb565Image_mark(Rgb565Image *this, uint16 y, uint16 x, uint16 color, uint1
         Rgb565Image_set(this, y+i, x-i, color);
     }
 }
+
+void Inverse_init(Inverse *this, uint16 y ,float x){
+    this->y = y;
+    this->x = x;
+}
+void Inverse_imagePosToPos(Inverse *this, Image *image, int16 y0, int16 x0, int16 *y1, int16 *x1){
+    *y1 = y0;
+    *x1 = (x0-image->w/2)*(1-this->x*(y0-this->y))+image->w/2;
+}
+void Inverse_imagePosFromPos(Inverse *this, Image *image, int16 y0, int16 x0, int16 *y1, int16 *x1){
+    *y1 = y0;
+    *x1 = (x0-image->w/2)/(1-this->x*(y0-this->y))+image->w/2;
+}
+void Inverse_image(Inverse *this, Image *image, Image *target){
+    zf_assert(this && target);
+    target->h = image->h;
+    target->w = image->w;
+    for(uint16 i=0; i<image->h; ++i){
+        for(uint16 j=0; j<image->w; ++j){
+            int16 y,x;
+            Inverse_imagePosFromPos(this, image, i, j, &y, &x);
+            Image_set(target, i, j, Image_get(image, y, x));
+        }
+    }
+}
+void Inverse_bly(Inverse *this, Image *image, int16 bly[MT9V03X_W*3][2], uint16 blyL){
+    for(uint16 i=0; i<blyL; ++i){
+        int16 y,x;
+        Inverse_imagePosToPos(this, image, bly[i][0], bly[i][1], &y, &x);
+        bly[i][0] = y;
+        bly[i][1] = x;
+    }
+}
+
 uint8 Fast_OTSU(Image *this)
 {
     static int16 isFirstBinary = 1;                       // 首次二值化标志位
@@ -177,7 +217,7 @@ uint8 Fast_OTSU(Image *this)
 
     // 以下变量要注意数据溢出，根据实际的分辨率修改数据类型。
     uint32 grayHist[256] = {0};    // 灰度直方图（这里至少要用int16，否则一种灰度出现的次数太多就会溢出）
-    const int32 sumOfPixel     = this->h * this->w;                 // 像素总数
+    int32       sumOfPixel     = this->h * this->w;                 // 像素总数
     int32       sumOfGrayValue = 0;                         // 整幅图像的总灰度值
     int32       sumOfBackPixel = 0, sumOfForcePixel = 0;    // 前后像素总数
     int32       sumOfBackGray = 0, sumOfForceGray = 0;      // 前后总灰度值
@@ -435,7 +475,7 @@ uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint8 dir){
         return 0;
     }
     float all = atan2f(border[this->h-2]-border[1],this->h-3);
-    for(uint16 i=1; i+StraightStep<this->h-1; i+=StraightStep){
+    for(uint16 i=StraightYMin; i+StraightStep<this->h-1; i+=StraightStep){
         if(fabsf(all-atan2f(border[i+StraightStep]-border[i],StraightStep)) > StraightErr){
             return 0;
         }
@@ -623,7 +663,8 @@ int Image_middleToErr(Image *this, int16 middle[MT9V03X_W], uint16 y, uint16 del
 }
 
 void Image_processForShow(){
-    Image_toRgb565Image(&image, &showImage);
+    Inverse_image(&inverse, &image, &inverseImage);
+    Image_toRgb565Image(&inverseImage, &showImage);
     for(uint16 i=0; i<lLineL; ++i){
         Rgb565Image_set(&showImage, lLine[i][0], lLine[i][1], RGB565_YELLOW);
     }
@@ -667,31 +708,34 @@ void Image_processCamera(){
     if(mt9v03x_finish_flag)              //判断一幅图像是否接收完成
     {
 //        SysTimer_Start();
-        Image_fromCamera(&image1, mt9v03x_image);
+        Image_fromCamera(&image, mt9v03x_image);
         mt9v03x_finish_flag = 0;
         if(!showPInC1){
             if(showWait){
                 while(camera_process_cnt);
             }
         }
-        Image_cut(&image1, &image, 0, 1, image1.h, image1.w-1);
+        Image_cut(&image, &image1, 0, 1, image.h, image.w-1);
 //        Image_cut(&image1, &image, 10, 30, image1.h-20, image1.w-30);
         Image_binaryzation(&image, binDeltaT);
         Image_getStartPoint(&image, lStartPoint, rStartPoint);
         Image_drawRectan(&image);
+        Inverse_init(&inverse, inverseY, inverseX);
         Image_bly(&image, image.h*3, lLine, rLine, lLineDir, rLineDir,
                 &lLineL, &rLineL, &lrMeet, lStartPoint, rStartPoint);
+        Inverse_bly(&inverse, &image, lLine, lLineL);
+        Inverse_bly(&inverse, &image, rLine, rLineL);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);
         Image_blyToBorder(&image, 1, rLine, rLineL, rBorder);
-        lStraight = Image_borderIsStraight(&image, lBorder, 0);
-        rStraight = Image_borderIsStraight(&image, rBorder, 1);
         Image_blyCutByBorder(&image, lBorder, 0, lLine, &lLineL);
         Image_blyCutByBorder(&image, rBorder, 1, rLine, &rLineL);
-        Image_zebraCrossing(&image, lBorder, rBorder, 70);
-        Image_blyToRadDir(&image, lLine, lLineL, bly2RDR, lRadDir, lRadDirPos, &lRadDirN);
-        Image_blyToRadDir(&image, rLine, rLineL, bly2RDR, rRadDir, rRadDirPos, &rRadDirN);
-        RadDir_toInflection(lRadDir, lRadDirPos, lRadDirN, RD2IE, lInflection, lInflectionDir, &lInflectionN);
-        RadDir_toInflection(rRadDir, rRadDirPos, rRadDirN, RD2IE, rInflection, rInflectionDir, &rInflectionN);
+        Image_blyToRadDir(&image, lLine, lLineL, bly2RDL, lRadDir, lRadDirPos, &lRadDirN);
+        Image_blyToRadDir(&image, rLine, rLineL, bly2RDL, rRadDir, rRadDirPos, &rRadDirN);
+        RadDir_toInflection(lRadDir, lRadDirPos, lRadDirN, RD2IErr, lInflection, lInflectionDir, &lInflectionN);
+        RadDir_toInflection(rRadDir, rRadDirPos, rRadDirN, RD2IErr, rInflection, rInflectionDir, &rInflectionN);
+        lStraight = Image_borderIsStraight(&image, lBorder, 0);
+        rStraight = Image_borderIsStraight(&image, rBorder, 1);
+        Image_zebraCrossing(&image, lBorder, rBorder, zebraY);
         Image_cross(&image, lInflection, lInflectionDir, lInflectionN, rInflection, rInflectionDir, rInflectionN, lBorder, rBorder);
 //        SysTimer_Stop();
 //        printf("%d\r\n",GetPastTime());

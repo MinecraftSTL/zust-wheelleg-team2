@@ -13,6 +13,8 @@
 #define IPS200_DEFAULT_OPENCOLOR           (0x001F  )
 
 #define PAGE_ELEMENT_MAX 14
+#define PAGE_NAME_MAX 20
+#define PAGE_VALUE_MAX 10
 
 enum KeyType{
     NULL_KEY,
@@ -37,7 +39,7 @@ enum PageExtendsType{
     FUNC_TYPE,
 };
 typedef struct Page{
-    char name[16];
+    char name[PAGE_NAME_MAX+1];
     struct Page *parent;
     int8 select;
     enum PageExtendsType type;
@@ -74,7 +76,7 @@ typedef struct Page{
         struct {
             uint32 *value;
             int8 size;
-            char *names[PAGE_ELEMENT_MAX];
+            char names[PAGE_ELEMENT_MAX][PAGE_VALUE_MAX+1];
         } enumValue;
         struct {
             void (*value)();
