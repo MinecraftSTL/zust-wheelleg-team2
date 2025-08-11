@@ -27,9 +27,9 @@ int circleX = 7;
 int circleY = 80;
 float circleLine = 0.4;
 int rampX = 200000;
-int barrierY0 = 15;
-int barrierY1 = 15;
-int barrierT = 400;
+int barrierY0 = 5;
+int barrierY1 = 10;
+int barrierT = 600;
 int bridgeY = 5;
 int bridgeTI = 1000;
 int bridgeTO = 2000;
@@ -42,7 +42,7 @@ uint8 showPInC1 = 1;
 uint8 showWait = 0;
 
 float bendV = 500;
-float circleV = 400;
+float circleV = 500;
 float rampV = 0;
 float bridgeV = 100;
 
@@ -928,8 +928,6 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
                     x=lLine[lInfLine[0]][0];
                     y=lLine[lInfLine[0]][1];
                 }
-            }else{
-                printf("%d,%d,%f,%d\r\n",rInfN,Inflection_getFacing(rInfRad[0]),rInfRad[1],Inflection_getFacing(rInfRad[0]));
             }
             for(; y>=0; --y){
                 lBorder[y] = x;
@@ -1051,7 +1049,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             Filter_xAx.alpha = defaultRollAlpha;
             break;
         case I_BRIDGE:
-            if(statusKeepMs >= bridgeTI || PID_vVx.Ek_ > 0){
+            if(statusKeepMs >= bridgeTI || PID_vVx.Ek_ >= 0){
                 if(lInfN > 1 && rInfN > 1){
                     if(lInfN > 3 && Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1 &&
                             lLine[lInfLine[2]][1] > rLine[rInfLine[1]][1]){
@@ -1216,7 +1214,7 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
                 Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
             }
-            if((rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[0]) == 1 ||
+            if((rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 ||
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1) && lStraight){
                 CameraStatus_addScore(PTI_RCIRCLE);
             }
