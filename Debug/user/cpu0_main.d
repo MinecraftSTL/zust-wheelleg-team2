@@ -458,6 +458,8 @@ cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensou
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\myCamera\MYCAMERA.h" :
 cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_camera.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_camera.h" :
+cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Zym.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Zym.h" :
 cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Stl.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Stl.h" :
 cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\PidPage.h"

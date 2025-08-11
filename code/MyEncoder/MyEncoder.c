@@ -1,7 +1,7 @@
 #include "MyEncoder.h"
 
-int16 Encoder_speed_l = 0;
-int16 Encoder_speed_r = 0;
+int Encoder_speed_l = 0;
+int Encoder_speed_r = 0;
 
 int switch_encoder_num = 0;
 int switch_encoder_change_num = 0;

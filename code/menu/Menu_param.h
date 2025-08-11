@@ -12,6 +12,7 @@
 #include "Menu.h"
 #include "WifiImage.h"
 #include "Pid_param.h"
+#include "Zym.h"
 
 extern Page menu_main;
 

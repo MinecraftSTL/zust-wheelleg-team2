@@ -20,10 +20,10 @@ int setLineY = 15;
 int straightYMin = 40;
 int straightStep = 10;
 float straightErr = 0.087266;
-float statusJump = 3;
+float statusJump = 2.5;
 float statusK = 0.9;
 int elementYMin = 20;
-int elementY = 20;
+int elementX = 20;
 int zebraY = 100;
 int zebraT = 10000;
 int zebraS = 100000;
@@ -55,7 +55,11 @@ float rampDV = 200;
 float barrierV = 700;
 float bridgeV = 250;
 
+int bendErrY = 88;
+int circleErrY = 79;
+
 float cameraV = 0;
+uint16 cameraY = 0;
 
 uint8 trapezoidStatus;
 int16 lStart[2];
@@ -518,6 +522,7 @@ void Image_borderToMiddle(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder
     }
 }
 int Image_middleToErr(Image *this, int16 middle[MT9V03X_H], uint16 y, uint16 deltaY){
+    zf_assert(y+deltaY <= this->h);
     int32 sum = 0;
     for(uint16 i=y; i<y+deltaY; ++i){
         sum += middle[i]-this->w/2;
@@ -735,7 +740,7 @@ void Camera_pit(uint32 period, int16 speed){
     carRunMs += period;
 }
 
-void Image_zebra(Image *this, float *cameraV, uint16 *errY){
+void Image_zebra(Image *this, float *cameraV, uint16 *cameraY){
     uint8 zebra = 0;
     {
         int l = 0, r = 0;
@@ -774,22 +779,19 @@ void Image_zebra(Image *this, float *cameraV, uint16 *errY){
             break;
         default:
             if(zebra && carRunMs > zebraT){
-                if(cameraStatus != NONE){
-                    CameraStatus_set(NONE);
-                }
                 CameraStatus_set(I_ZEBRA);
             }
             break;
     }
 }
-void Image_cross(Image *this, float *cameraV, uint16 *errY){
+void Image_cross(Image *this, float *cameraV, uint16 *cameraY){
     switch(cameraStatus){
         case NONE:
         case OR_CROSS_LCIRCLE:
         case OR_CROSS_RCIRCLE:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 &&
                     lLine[lInfLine[0]][1] > crossX+1 && rLine[rInfLine[0]][1] > crossX+1 &&
-                    abs(lLine[lInfLine[0]][1]-rLine[rInfLine[0]][1]) < elementY &&
+                    abs(lLine[lInfLine[0]][1]-rLine[rInfLine[0]][1]) < elementX &&
                     Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX, 0)==1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX-1, 0)==1 &&
                     Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX, 1)==1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX-1, 1)==1
                     ){
@@ -799,7 +801,7 @@ void Image_cross(Image *this, float *cameraV, uint16 *errY){
         case I_CROSS:
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
-                    lLine[lInfLine[1]][1]+crossX+1 < this->h && rLine[rInfLine[1]][1]+crossX+1 < this->h){
+                    lLine[lInfLine[1]][1] >= crossX && rLine[rInfLine[1]][1] >= crossX){
                 CameraStatus_addScore(R_CROSS);
             }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2 ||
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
@@ -834,7 +836,9 @@ void Image_cross(Image *this, float *cameraV, uint16 *errY){
             break;
         case O_CROSS:
             if(!(lInfN > 0 && (Inflection_getFacing(lInfRad[0]) == 2 || Inflection_getFacing(lInfRad[0]) == 3) ||
-                    rInfN > 0 && (Inflection_getFacing(rInfRad[0]) == 1 || Inflection_getFacing(rInfRad[0]) == 4))){
+                    rInfN > 0 && (Inflection_getFacing(rInfRad[0]) == 1 || Inflection_getFacing(rInfRad[0]) == 4)) ||
+                    lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && rStraight == 1 ||
+                    rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && lStraight == 1){
                 CameraStatus_addScore(NONE);
             }
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2){
@@ -854,17 +858,17 @@ void Image_cross(Image *this, float *cameraV, uint16 *errY){
             break;
     }
 }
-void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
+void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
     switch(cameraStatus){
         case OR_CROSS_LCIRCLE:
             if(lInfN > 0 && (lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
-                    abs(lLine[lInfLine[1]][1] - lLine[lInfLine[0]][1]) >= elementY ||Inflection_getFacing(lInfRad[0]) == 2) &&
+                    lLine[lInfLine[0]][1] - lLine[lInfLine[1]][1] >= elementX || Inflection_getFacing(lInfRad[0]) == 2) &&
                     rStraight==1 && lLine[lInfLine[0]][1] > straightYMin + circleX){
                 CameraStatus_addScore(I_LCIRCLE);
             }
             break;
         case I_LCIRCLE:
-            if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/2) &&
+            if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - lInfRad[1])) > PI/2) &&
                     Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]+2*bly2RDL, 0)==1){
                 CameraStatus_addScore(TI_LCIRCLE);
             }
@@ -904,6 +908,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
                 CameraStatus_addScore(TO_LCIRCLE);
             }
             *cameraV = circleV;
+            *cameraY = circleErrY;
             break;
         case TO_LCIRCLE:
             if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 && rStraight){
@@ -953,17 +958,17 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
             break;
     }
 }
-void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
+void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
     switch(cameraStatus){
         case OR_CROSS_RCIRCLE:
             if(rInfN > 0 && (rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
-                    abs(rLine[rInfLine[1]][1] - rLine[rInfLine[0]][1]) >= elementY || Inflection_getFacing(rInfRad[0]) == 1) &&
+                    rLine[rInfLine[0]][1] - rLine[rInfLine[1]][1] >= elementX || Inflection_getFacing(rInfRad[0]) == 1) &&
                     lStraight==1 && rLine[rInfLine[0]][1] > straightYMin + circleX){
                 CameraStatus_addScore(I_RCIRCLE);
             }
             break;
         case I_RCIRCLE:
-            if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/2) &&
+            if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - rInfRad[1])) > PI/2) &&
                     Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]+2*bly2RDL, 1)==1){
                 CameraStatus_addScore(TI_RCIRCLE);
             }
@@ -1003,6 +1008,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
                 CameraStatus_addScore(TO_RCIRCLE);
             }
             *cameraV = circleV;
+            *cameraY = circleErrY;
             break;
         case TO_RCIRCLE:
             if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 && lStraight){
@@ -1052,7 +1058,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
             break;
     }
 }
-void Image_ramp(Image *this, float *cameraV, uint16 *errY){
+void Image_ramp(Image *this, float *cameraV, uint16 *cameraY){
     switch(cameraStatus){
         case NONE:
             {
@@ -1130,7 +1136,7 @@ void Image_ramp(Image *this, float *cameraV, uint16 *errY){
             break;
     }
 }
-void Image_barrier(Image *this, float *cameraV, uint16 *errY){
+void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
     switch(cameraStatus){
         case NONE:
         case OR_RAMP_BARRIER:
@@ -1178,7 +1184,7 @@ void Image_barrier(Image *this, float *cameraV, uint16 *errY){
             break;
     }
 }
-void Image_bridge(Image *this, float *cameraV, uint16 *errY){
+void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
     if(I_BRIDGE < cameraStatus && cameraStatus <= O_BRIDGE){
         rollBalance = 1;
         targetLegZ = bridgeZ;
@@ -1513,7 +1519,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             break;
     }
 }
-void Image_other(Image *this, float *cameraV, uint16 *errY){
+void Image_other(Image *this, float *cameraV, uint16 *cameraY){
     switch(cameraStatus){
         case NONE:
             if(rStraight==1 && lStraight!=1 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > elementYMin){
@@ -1535,9 +1541,12 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
                     break;
                 }
             }
+            int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
+            *cameraY = (uint16)((errY-bendErrY)*func_limit_ab((Encoder_speed-bendV)/(targetV-bendV), 0, 1)+bendErrY);
             break;
         case OR_CROSS_LCIRCLE:
-            if(!(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3) && !(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4) &&
+            if(!(rStraight==1 && lStraight!=1 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > elementYMin) &&
+                    !(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4) &&
                     !(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 ||
                             lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2)){
                 CameraStatus_addScore(NONE);
@@ -1548,7 +1557,8 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case OR_CROSS_RCIRCLE:
-            if(!(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4) && !(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3) &&
+            if(!(lStraight==1 && rStraight!=1 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > elementYMin) &&
+                    !(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3) &&
                     !(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 ||
                             rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1)){
                 CameraStatus_addScore(NONE);
@@ -1559,8 +1569,9 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case OR_RAMP_BARRIER:
-            if(!(lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 &&
-                    rInfN == 1 && Inflection_getFacing(rInfRad[0]) == 3)){
+            if(!(lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 && lLine[lInfLine[0]][1] > barrierY0 &&
+                    rInfN == 1 && Inflection_getFacing(rInfRad[0]) == 3 && rLine[rInfLine[0]][1] > barrierY0 &&
+                    lrMeet > barrierY0)){
                 CameraStatus_addScore(NONE);
             }
             break;
@@ -1588,7 +1599,7 @@ void Image_processForShow(){
         Rgb565Image_set(&showImage, rBorder[i], i, RGB565_GREEN);
     }
     for(uint16 i=0; i<showImage.h; ++i){
-        Rgb565Image_set(&showImage, mLine[i], i, i >= errY && i < errY+errDeltaY ? RGB565_RED : RGB565_BLUE);
+        Rgb565Image_set(&showImage, mLine[i], i, i >= cameraY && i < cameraY+errDeltaY ? RGB565_RED : RGB565_BLUE);
     }
     Rgb565Image_set(&showImage, lStart[0], lStart[1], RGB565_RED);
     Rgb565Image_set(&showImage, rStart[0], rStart[1], RGB565_RED);
@@ -1674,9 +1685,10 @@ void Image_processCamera(){
         Image_bridge(&image, &tempCameraV, &tempErrY);
         Image_other(&image, &tempCameraV, &tempErrY);
         cameraV = tempCameraV;
+        cameraY = tempErrY;
 
         Image_borderToMiddle(&image, lBorder, rBorder, lrMeet, mLine);
-        cameraErr = Image_middleToErr(&image, mLine, tempErrY, errDeltaY);
+        cameraErr = Image_middleToErr(&image, mLine, cameraY, errDeltaY);
 //        SysTimer_Stop();
 //        printf("%d\r\n",cameraStatus);
 //        printf("%d\r\n",GetPastTime());

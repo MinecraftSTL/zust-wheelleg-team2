@@ -827,19 +827,26 @@ void FuncPage_press(Page *this, uint8 pressed[]){
         }
     }
 }
-Page *AboutPage_init(Page *this, const uint8 *chinese_buffer, uint8 number){
+Page *AboutPage_init(Page *this, const uint8 *software_buffer, uint8 software_number, const uint8 *hardware_buffer, uint8 hardware_number){
     Page_init(this, "about", ABOUT_TYPE);
-    this->extends.aboutValue.chinese_buffer = chinese_buffer;
-    this->extends.aboutValue.number = number;
+    this->extends.aboutValue.software_buffer = software_buffer;
+    this->extends.aboutValue.software_number = software_number;
+    this->extends.aboutValue.hardware_buffer = hardware_buffer;
+    this->extends.aboutValue.hardware_number = hardware_number;
     return this;
 }
 void AboutPage_print(Page *this, uint8 row){
     if(!row){
         uint16 y = 16;
-        ips200_show_string_color(0, y, "Program by", IPS200_DEFAULT_PENCOLOR);
+        ips200_show_string_color(0, y, "Software by", IPS200_DEFAULT_PENCOLOR);
         y += 16;
-        ips200_show_chinese(ips200_width_max-this->extends.aboutValue.number*16, y,
-                16, this->extends.aboutValue.chinese_buffer, this->extends.aboutValue.number, IPS200_DEFAULT_PENCOLOR);
+        ips200_show_chinese(ips200_width_max-this->extends.aboutValue.software_number*16, y,
+                16, this->extends.aboutValue.software_buffer, this->extends.aboutValue.software_number, IPS200_DEFAULT_PENCOLOR);
+        y += 16;
+        ips200_show_string_color(0, y, "Hardware by", IPS200_DEFAULT_PENCOLOR);
+        y += 16;
+        ips200_show_chinese(ips200_width_max-this->extends.aboutValue.hardware_number*16, y,
+                16, this->extends.aboutValue.hardware_buffer, this->extends.aboutValue.hardware_number, IPS200_DEFAULT_PENCOLOR);
         y += 16;
         ips200_show_string_color(0, y, "Menu by", IPS200_DEFAULT_PENCOLOR);
         y += 16;

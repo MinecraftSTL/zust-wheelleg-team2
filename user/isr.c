@@ -61,7 +61,7 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     }else if(my_key_get_state(KEY_1) == KEY_LONG_PRESS){
         ++pressed[BACK_KEY];
     }else if(my_key_get_state(KEY_1) == KEY_LONGLONG_PRESS){
-        beepLong();
+        beepMid();
         ips200_init_spi();
     }
     Get_Switch_Num();
@@ -90,7 +90,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU61_CH0);
 
-    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
+    int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     Update_GyroData();
     float new_gyro_x = my_gyro_x-zero_my_gyro_x;
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;

@@ -468,3 +468,5 @@ Menu_param.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Openso
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_camera.h" :
 Menu_param.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pid\Pid_param.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pid\Pid_param.h" :
+Menu_param.o :	..\code\menu\Zym.h
+..\code\menu\Zym.h :

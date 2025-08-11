@@ -15,7 +15,7 @@ uint8 legXReset = 0;
 uint8 rollBalance = 0;
 float rollBalanceK = 1;
 
-float LegDRb = 0.7, LegDRf = 0.6, LegDLf = 0.7, LegDLb = 0.8;
+float LegDRb = 0.6, LegDRf = 0.6, LegDLf = 0.7, LegDLb = 0.8;
 
 void Leg_init(){
     pwm_init(servo_rb, freq, PWM_DUTY_MAX/2);

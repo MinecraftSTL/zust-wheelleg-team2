@@ -87,8 +87,10 @@ typedef struct Page{
             void (*value)();
         } funcValue;
         struct {
-            const uint8 *chinese_buffer;
-            uint8 number;
+            const uint8 *software_buffer;
+            uint8 software_number;
+            const uint8 *hardware_buffer;
+            uint8 hardware_number;
         } aboutValue;
     } extends;
     void (*update)(struct Page*);
@@ -114,7 +116,7 @@ Page *DoublePage_init(Page *this, char name[], double *value, double max, double
 Page *BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir);
 Page *EnumPage_init(Page *this, char name[], uint8 *value, char *names[]);
 Page *FuncPage_init(Page *this, char name[], void (*value)());
-Page *AboutPage_init(Page *this, const uint8 *chinese_buffer, uint8 number);
+Page *AboutPage_init(Page *this, const uint8 *software_buffer, uint8 software_number, const uint8 *hardware_buffer, uint8 hardware_number);
 void Page_send(Page *page);
 void IntPage_readFlash(Page *this, flash_data_union value);
 flash_data_union IntPage_writeFlash(Page *this);

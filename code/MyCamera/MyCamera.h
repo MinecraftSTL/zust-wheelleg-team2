@@ -69,7 +69,7 @@ extern float straightErr;
 extern float statusJump;
 extern float statusK;
 extern int elementYMin;
-extern int elementY;
+extern int elementX;
 extern int zebraY;
 extern int zebraT;
 extern int zebraS;
@@ -99,7 +99,11 @@ extern float rampDV;
 extern float barrierV;
 extern float bridgeV;
 
+extern int bendErrY;
+extern int circleErrY;
+
 extern float cameraV;
+extern uint16 cameraY;
 
 extern CameraStatus cameraStatus;
 extern uint64 carRunMs;
