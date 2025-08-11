@@ -107,7 +107,8 @@ Page menu_main_arg_k_camera_e_circle_y;
 Page menu_main_arg_k_camera_e_circle_line;
 Page menu_main_arg_k_camera_e_ramp;
 Page menu_main_arg_k_camera_e_ramp_s;
-Page menu_main_arg_k_camera_e_ramp_z;
+Page menu_main_arg_k_camera_e_ramp_y;
+Page menu_main_arg_k_camera_e_ramp_k;
 Page menu_main_arg_k_camera_e_barrier;
 Page menu_main_arg_k_camera_e_barrier_y0;
 Page menu_main_arg_k_camera_e_barrier_y1;
@@ -147,6 +148,7 @@ Page menu_main_debug_wheelClear;
 Page menu_main_debug_flash;
 Page menu_main_debug_flash_write;
 Page menu_main_debug_flash_read;
+Page menu_main_debug_flash_clear;
 Page menu_main_debug_vofa;
 Page menu_main_debug_vofa_send;
 Page menu_main_debug_vofa_receive;
@@ -183,11 +185,10 @@ void core0_main(void)
         flashStatus = 0;
     }
     Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status", "main.debug", "main.arg.k.camera.show"});
-    Flash_Init();
-    gyro_init();
+    Flash_init();
+    Gyro_init();
     MyCamera_Init();
     Fps_init(PIT00ms);
-//    Wifi_Image_Init();
     small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
@@ -224,7 +225,7 @@ void core0_main(void)
         &menu_main_config_mod_flash,
         NULL
     });
-    FuncPage_init(&menu_main_config_mod_gyro, "gyro", gyro_set);
+    FuncPage_init(&menu_main_config_mod_gyro, "gyro", Gyro_set);
     FuncPage_init(&menu_main_config_mod_foc, "foc", MotorZero);
     FuncPage_init(&menu_main_config_mod_flash, "flash", Flash_clear);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
@@ -380,6 +381,7 @@ void core0_main(void)
         &menu_main_arg_k_camera_e_zebra,
         &menu_main_arg_k_camera_e_cross,
         &menu_main_arg_k_camera_e_circle,
+        &menu_main_arg_k_camera_e_ramp,
         &menu_main_arg_k_camera_e_barrier,
         &menu_main_arg_k_camera_e_bridge,
         NULL
@@ -412,11 +414,13 @@ void core0_main(void)
     menu_main_arg_k_camera_e_circle_line.extends.floatValue.dot = 0;
     ListPage_init(&menu_main_arg_k_camera_e_ramp, "ramp", (Page*[]){
         &menu_main_arg_k_camera_e_ramp_s,
-        &menu_main_arg_k_camera_e_ramp_z,
+        &menu_main_arg_k_camera_e_ramp_y,
+        &menu_main_arg_k_camera_e_ramp_k,
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_e_ramp_s, "s", &rampS, 0, 10000000);
-    FloatPage_init(&menu_main_arg_k_camera_e_ramp_z, "z", &rampZ, -LEG_MAX_Z, -LEG_MIN_Z);
+    IntPage_init(&menu_main_arg_k_camera_e_ramp_y, "y", &rampY, 0, MT9V03X_H);
+    FloatPage_init(&menu_main_arg_k_camera_e_ramp_k, "k", &rampK, 0, 1);
     ListPage_init(&menu_main_arg_k_camera_e_barrier, "barrier", (Page*[]){
         &menu_main_arg_k_camera_e_barrier_y0,
         &menu_main_arg_k_camera_e_barrier_y1,
@@ -506,10 +510,12 @@ void core0_main(void)
     ListPage_init(&menu_main_debug_flash, "flash", (Page*[]){
         &menu_main_debug_flash_write,
         &menu_main_debug_flash_read,
+        &menu_main_debug_flash_clear,
         NULL
     });
     FuncPage_init(&menu_main_debug_flash_write, "write", Flash_pageAllWrite);
     FuncPage_init(&menu_main_debug_flash_read, "read", Flash_pageAllRead);
+    FuncPage_init(&menu_main_debug_flash_clear, "clear", Flash_menuClear);
     ListPage_init(&menu_main_debug_vofa, "vofa", (Page*[]){
         &menu_main_debug_vofa_send,
         &menu_main_debug_vofa_receive,

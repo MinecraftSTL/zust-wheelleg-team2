@@ -28,7 +28,7 @@
 #ifndef CODE_FPS_FPS_H_
 #define CODE_FPS_FPS_H_
 
-#include <Sys.h>
+#include "Sys.h"
 
 extern uint32 fps;
 

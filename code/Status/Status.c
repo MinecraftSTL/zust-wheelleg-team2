@@ -8,13 +8,6 @@
 
 CarStatus carStatus = CAR_STOP;
 
-/***********************************************
-* @brief : Í£³µ
-* @param : void
-* @return: void
-* @date  : 2024_10
-* @author: SJX
-************************************************/
 void CarStatus_set(CarStatus this)
 {
     carStatus = this;

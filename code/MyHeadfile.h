@@ -7,11 +7,13 @@
 
 #include "cpu0_main.h"
 #include "cpu1_main.h"
+#include "cpu2_main.h"
 #include "isr.h"
 
 #include "Sys.h"
 #include "DebugArg.h"
 #include "Flash.h"
+#include "Status.h"
 #include "Pit.h"
 #include "Motor.h"
 #include "Leg.h"
@@ -22,7 +24,6 @@
 #include "VOFA.h"
 #include "SYSTIMER.h"
 #include "UART.h"
-#include "Status.h"
 #include "MyCamera.h"
 #include "MyEncoder.h"
 #include "Pid.h"

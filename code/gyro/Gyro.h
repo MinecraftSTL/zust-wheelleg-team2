@@ -8,7 +8,7 @@
 #ifndef CODE_GYRO_GYRO_H_
 #define CODE_GYRO_GYRO_H_
 
-#include <Gyro_Process.h>
+#include "Gyro_Process.h"
 #include "Pit.h"
 #include "icm42688.h"
 
@@ -28,8 +28,8 @@
 #define Gravity_G 9.80665f
 
 
-void gyro_init();
-void gyro_set();
+void Gyro_init();
+void Gyro_set();
 void get_gyro();
 void get_gyorscope_data(void);
 void Update_GyroData(void);

@@ -19,6 +19,7 @@ float Q_rsqrt(float number);
 //uint16 Bits_reverse(uint16 value, int bits);
 float Angle_normalize(float theta);
 float NormalizeAngle_toPi2(float theta);
+uint8 String_startWith(const char this[], const char start[]);
 uint32 String_hash(const char *str, uint32 mod);
 
 #endif /* CODE_SYS_SYS_H_ */

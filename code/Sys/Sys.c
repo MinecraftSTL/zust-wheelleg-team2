@@ -4,7 +4,7 @@
  *  Created on: 2024年10月27日
  *      Author: sun
  */
-#include <Sys.h>
+#include "Sys.h"
 
 // 曲率计算函数
 /***********************************************
@@ -121,7 +121,7 @@ float NormalizeAngle_toPi2(float theta) {
     return (PI - fabsf(2 * theta - PI)) / 2.f;
 }
 
-uint8 String_startWith(const char *this, const char *start){
+uint8 String_startWith(const char this[], const char start[]){
     for(uint32 i=0; start[i]; ++i){
         if(this[i] != start[i]){
             return 0;

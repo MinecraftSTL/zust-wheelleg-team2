@@ -8,7 +8,7 @@
 #ifndef CODE_DEBUGARG_DEBUGARG_H_
 #define CODE_DEBUGARG_DEBUGARG_H_
 
-#include <Sys.h>
+#include "Sys.h"
 
 extern uint8 fsEn;
 extern int32 fsSpeed;

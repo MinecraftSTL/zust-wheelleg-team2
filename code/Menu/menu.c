@@ -38,13 +38,13 @@ void Int_toString(int this, char *str, uint8 num);
 void Double_toString(float this, char *str, uint8 num, uint8 point);
 
 void Menu_init(char *exclude[]){
-    for(Menu_excludeLen=0; Menu_excludeLen<PAGE_ELEMENT_MAX; ++Menu_excludeLen){
+    for(Menu_excludeLen=0; Menu_excludeLen<256; ++Menu_excludeLen){
         if(exclude[Menu_excludeLen][0] == '\0'){
             break;
         }
     }
     for(int i=0; i<Menu_excludeLen; ++i){
-        strncpy(Menu_exclude[i], exclude[i], PAGE_VALUE_MAX);
+        strncpy(Menu_exclude[i], exclude[i], PAGE_PATH_MAX);
     }
 }
 
@@ -134,7 +134,7 @@ uint8 Page_readFlash(Page *this){
     Page_getPath(this, path);
     for(uint8 i=0; i<Menu_excludeLen; ++i){
         if(String_startWith(path, Menu_exclude[i])){
-            return 3;
+            return 1;
         }
     }
     uint32 hash = String_hash(path, PAGE_FLASH_MOD);
@@ -175,13 +175,19 @@ uint8 Page_writeFlash(Page *this, uint8 check){
     uint16 page_index = hash%FLASH_PAGE_USE;
     flash_data_union flash_union_buffer[EEPROM_PAGE_LENGTH];
     flash_read_page(0, page_num, flash_union_buffer, EEPROM_PAGE_LENGTH);
-    if(check && (pageFlashCheck[hash/sizeof(uint8)])&(0x01<<hash%sizeof(uint8))){
-        switch(this->type){
-            case INT_TYPE:
-            case FLOAT_TYPE:
-            case BOOL_TYPE:
-            case ENUM_TYPE:
-                return 2;
+    if(check){
+        if((pageFlashCheck[hash/sizeof(uint8)])&(0x01<<hash%sizeof(uint8))){
+            switch(this->type){
+                case INT_TYPE:
+                case FLOAT_TYPE:
+                case BOOL_TYPE:
+                case ENUM_TYPE:
+                    return 2;
+            }
+        }
+    }else{
+        if(flash_union_buffer[EEPROM_PAGE_LENGTH-1].uint32_type != (FLASH_KEY^page_num)){
+            return 2;
         }
     }
     flash_data_union flash_union;

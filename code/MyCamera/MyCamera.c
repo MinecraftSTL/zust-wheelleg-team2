@@ -29,10 +29,9 @@ int zebraS = 100000;
 int circleX = 7;
 int circleY = 80;
 float circleLine = 0.4;
-int rampS = 100000;
-int rampY0 = 10;
-int rampY1 = 5;
-float rampZ = -45;
+int rampS = 800000;
+int rampY = 40;
+float rampK = 0.04;
 int barrierY0 = 20;
 int barrierY1 = 36;
 int barrierT = 200;
@@ -300,20 +299,6 @@ void Image_binaryzation(Image *this, int16 deltaT){
         this->image[i]=this->image[i]>threshold?0xFF:0;
     }
 }
-void Image_drawBlackFrame(Image *this)
-{
-    for (uint16 i = 0; i < this->h; i++)
-    {
-        Image_set(this,0,i,0);
-        Image_set(this,this->w - 1,i,0);
-
-    }
-    for (uint16 i = 0; i < this->w; i++)
-    {
-        Image_set(this,i,0,0);
-        Image_set(this,i,this->h - 1,0);
-    }
-}
 uint16 Image_getTrapezoidX(Image *this, uint16 y){
     if(trapezoidStatus && this->h > 1+trapezoidY+y){
         return (this->h-1-trapezoidY-y)*trapezoidK;
@@ -340,22 +325,22 @@ void Image_getStartPoint(Image *this, uint16 maxYAdd, int16 lStart[2], int16 rSt
 
     while(maxYAdd--){
         uint8 inWhite = 0;
-        int16 whiteBorder[MT9V03X_W][3];
+        int16 whiteBorder[MT9V03X_W][2];
+        uint16 whiteWidth[MT9V03X_W];
         uint16 whiteBorderLen = 0, maxWhiteWidth = 0;
         for(int16 i=0; i<this->w; ++i){
             if(!Image_get(this, i, y)){
-                if(Image_get(this, i+1, y) &&!Image_get(this, i-1, y) && Image_get(this, i+2, y)){
-                    if(!inWhite){
-                        inWhite = 1;
-                    }
+                if(Image_get(this, i+1, y) && (!Image_get(this, i-1, y) || Image_get(this, i+2, y))){
+                    inWhite = 1;
                     whiteBorder[whiteBorderLen][0] = i;
-                }else if(Image_get(this, i-1, y) && !Image_get(this, i+1, y) && Image_get(this, i-2, y)){
+                }
+                if(Image_get(this, i-1, y) && (!Image_get(this, i+1, y) || Image_get(this, i-2, y))){
                     if(inWhite){
                         inWhite = 0;
                         whiteBorder[whiteBorderLen][1] = i;
-                        whiteBorder[whiteBorderLen][2] = i - whiteBorder[whiteBorderLen][0];
-                        if(whiteBorder[whiteBorderLen][2] > maxWhiteWidth){
-                            maxWhiteWidth = whiteBorder[whiteBorderLen][2];
+                        whiteWidth[whiteBorderLen] = i - whiteBorder[whiteBorderLen][0];
+                        if(whiteWidth[whiteBorderLen] > maxWhiteWidth){
+                            maxWhiteWidth = whiteWidth[whiteBorderLen];
                         }
                         ++whiteBorderLen;
                     }
@@ -364,7 +349,7 @@ void Image_getStartPoint(Image *this, uint16 maxYAdd, int16 lStart[2], int16 rSt
         }
         if(maxWhiteWidth > 0){
             for(int16 i=0; i<whiteBorderLen; ++i){
-                if(whiteBorder[i][2] == maxWhiteWidth){
+                if(whiteWidth[i] >= maxWhiteWidth){
                     lStart[0]=whiteBorder[i][0];
                     rStart[0]=whiteBorder[i][1];
                     lStart[1]=rStart[1]=y;
@@ -456,9 +441,6 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
     }
 }
 void Image_blyToBorder(Image *this, uint8 dir, int16 line[MAX_BLY][2], uint16 lineL, uint16 ret[MT9V03X_H]){
-//    for(uint16 i=0; i<this->h; ++i){
-//        ret[i] = dir ? this->w-1 : 0;
-//    }
     for(uint16 i=0; i<this->h; ++i){
         ret[i] = dir ? this->w-1-Image_getTrapezoidX(this, i) : Image_getTrapezoidX(this, i);
     }
@@ -472,7 +454,6 @@ void Image_blyToBorder(Image *this, uint8 dir, int16 line[MAX_BLY][2], uint16 li
 }
 
 uint8 inline Image_borderXIsLose(Image *this, uint16 x, uint16 y, uint8 dir){
-//    return dir?x >= this->w-1:x < 1;
     uint16 loseX = Image_getTrapezoidX(this, y);
     return dir ? x >= this->w-1-loseX: x<=loseX;
 }
@@ -575,14 +556,15 @@ void leastSquares(const uint16 pos[MAX_BLY][2], const uint16 n, float *slope, fl
 void Image_borderSetSLine(Image *this, uint16 border[MT9V03X_H], uint16 pos[MT9V03X_H][2], uint16 n, uint16 y0, uint16 y1){
     float slope, intercept;
     leastSquares(pos, n, &slope, &intercept);
-    if(!isnan(slope) && !isnan(intercept)){
-        for(uint16 i = y0; i <= y1; ++i){
-            float x = slope*i+intercept;
-            if(x >= this->w || i >= this->h){
-                continue;
-            }
-            border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
+    if(isnan(slope) || isnan(intercept)){
+        return;
+    }
+    for(uint16 i = y0; i <= y1; ++i){
+        float x = slope*i+intercept;
+        if(x >= this->w || i >= this->h){
+            continue;
         }
+        border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
     }
 }
 void Image_borderSetULine(Image *this, uint16 border[MT9V03X_H], uint16 y){
@@ -888,7 +870,9 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
                     Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]+circleX, 0)==1){
                 CameraStatus_addScore(TI_LCIRCLE);
             }
-            if(lInfN > 0){
+            if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3){
+                Image_borderSetCLine(this, lBorder, lLine[lInfLine[1]][0], lLine[lInfLine[1]][1], lLine[lInfLine[0]][0], lLine[lInfLine[0]][1]);
+            }else if(lInfN > 0){
                 Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lStart[0], lStart[1]);
             }
             *cameraV = circleV;
@@ -984,7 +968,9 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
                     Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]+circleX, 1)==1){
                 CameraStatus_addScore(TI_RCIRCLE);
             }
-            if(rInfN > 0){
+            if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4){
+                Image_borderSetCLine(this, rBorder, rLine[rInfLine[1]][0], rLine[rInfLine[1]][1], rLine[rInfLine[0]][0], rLine[rInfLine[0]][1]);
+            }else if(rInfN > 0){
                 Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rStart[0], rStart[1]);
             }
             *cameraV = circleV;
@@ -1060,31 +1046,43 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
 }
 void Image_ramp(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
-//        case NONE:{
-//            uint16 lInf, rInf;
-//            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
-//                lInf = 0;
-//            }else if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
-//                lInf = 1;
-//            }else{
-//                break;
-//            }
-//            if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
-//                rInf = 0;
-//            }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
-//                rInf = 1;
-//            }else{
-//                break;
-//            }
-//            if(!lInf && !rInf){
-//                break;
-//            }
-//            if(lLine[lInf][1] >= rampY0 && rLine[rInf][1] >= rampY0 && abs(lLine[lInf][1] - rLine[rInf][1]) < rampY1){
-//                CameraStatus_addScore(RAMP);
-//            }
-//        }break;
+        case NONE:
+            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 4 &&
+                    rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 3){
+                if(this->h - lLine[lInfLine[0]][1] <= 1.25*rampY || this->h - rLine[rInfLine[0]][1] <= 1.25*rampY){
+                    break;
+                }
+                float lSlope, rSlope, uSlope, dSlope, tIntercept;
+                uint16 pos[MT9V03X_H][2];
+                for(uint16 i = 0; i < rampY; ++i){
+                    pos[i][0] = lLine[lInfLine[0]][1]+i;
+                    pos[i][1] = lBorder[lLine[lInfLine[0]][1]+i];
+                }
+                leastSquares(pos, rampY, &uSlope, &tIntercept);
+                for(uint16 i = 0; i < this->h-lLine[lInfLine[0]][1]-rampY; ++i){
+                    pos[i][0] = lLine[lInfLine[0]][1]+i;
+                    pos[i][1] = lBorder[lLine[lInfLine[0]][1]+i];
+                }
+                leastSquares(pos, this->h-lLine[lInfLine[0]][1]-rampY, &dSlope, &tIntercept);
+                lSlope = uSlope-dSlope;
+                for(uint16 i = 0; i < rampY; ++i){
+                    pos[i][0] = rLine[rInfLine[0]][1]+i;
+                    pos[i][1] = rBorder[rLine[rInfLine[0]][1]+i];
+                }
+                leastSquares(pos, rampY, &uSlope, &tIntercept);
+                for(uint16 i = 0; i < this->h-rLine[rInfLine[0]][1]-rampY; ++i){
+                    pos[i][0] = rLine[rInfLine[0]][1]+i;
+                    pos[i][1] = rBorder[rLine[rInfLine[0]][1]+i];
+                }
+                leastSquares(pos, this->h-rLine[rInfLine[0]][1]-rampY, &dSlope, &tIntercept);
+                rSlope = uSlope-dSlope;
+                if(!isnan(lSlope) && lSlope < rampK || !isnan(rSlope) && -rSlope < rampK){
+                    break;
+                }
+                CameraStatus_addScore(RAMP);
+            }
+            break;
         case RAMP:
-            targetLegZ = rampZ;
             if(statusRunS >= rampS){
                 CameraStatus_set(NONE);
             }
@@ -1105,6 +1103,10 @@ void Image_barrier(Image *this, float *cameraV, uint16 *errY){
         case I_BARRIER:
             if(lrMeet > barrierY1 || lrMeet < 0){
                 CameraStatus_addScore(R_BARRIER);
+            }
+            if(!(lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 && lLine[lInfLine[0]][1] > barrierY0 &&
+                    rInfN == 1 && Inflection_getFacing(rInfRad[0]) == 3 && rLine[rInfLine[0]][1] > barrierY0)){
+                CameraStatus_addScore(NONE);
             }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 4){
                 Image_borderSetULine(this, lBorder, lLine[lInfLine[0]][1]);

@@ -11,25 +11,27 @@
  * 转向环PID参数分配空间0:48-63
  * 基准速度参数分配空间0:64-71
  */
-#include <Flash.h>
+#include "Flash.h"
 
 uint8 flashStatus = 1;                         //flash启用标志位，为1代表启用，为0默认启用,extern全局变量
 
-void Flash_Init(void)
+void Flash_init(void)
 {
     if(!flashStatus)
     {
         return;
     }
 
-    if(!flash_check(0,0))
+    if(!flash_check(0,EEPROM_PAGE_NUM-1))
     {
+        zf_log(0, "!flash_check(0,EEPROM_PAGE_NUM-1)");
         return;
     }
     flash_buffer_clear();
     flash_read_page_to_buffer(0,EEPROM_PAGE_NUM-1);
     if(flash_union_buffer[EEPROM_PAGE_LENGTH-1].uint32_type != FLASH_KEY)                //曾写入状态符与密钥吻合，将flash数据读出
     {
+        zf_log(0, "!=FLASH_KEY");
         return;
     }
     //陀螺仪
@@ -54,6 +56,11 @@ void Flash_WriteAllVal(void)
 
 void Flash_clear(){
     for(uint32 i=0; i<EEPROM_PAGE_NUM; ++i){
+        flash_erase_page(0,i);
+    }
+}
+void Flash_menuClear(){
+    for(uint32 i=0; i<EEPROM_PAGE_NUM-1; ++i){
         flash_erase_page(0,i);
     }
 }

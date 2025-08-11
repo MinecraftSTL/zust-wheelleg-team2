@@ -8,7 +8,7 @@
 #ifndef CODE_LEG_LEG_H_
 #define CODE_LEG_LEG_H_
 
-#include <Sys.h>
+#include "Sys.h"
 
 #define servo_rb ATOM2_CH3_P11_6
 #define servo_rf ATOM2_CH4_P11_9

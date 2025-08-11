@@ -8,7 +8,7 @@
 #ifndef CODE_PROCESS_PROCESS_H_
 #define CODE_PROCESS_PROCESS_H_
 
-#include <Sys.h>
+#include "Sys.h"
 
 typedef struct{
     uint8 step;

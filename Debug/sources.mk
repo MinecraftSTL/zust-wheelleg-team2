@@ -24,7 +24,6 @@ SECONDARY_SIZE :=
 
 # 此处必须描述包含源文件的每个子目录
 SUBDIRS := \
-code/Status \
 code/SysTimer \
 code/UART \
 code/VOFA \
@@ -45,6 +44,7 @@ code/myKey \
 code/pid \
 code/pit \
 code/process \
+code/status \
 code/sys \
 code/wifiImage \
 libraries/infineon_libraries/Configurations \

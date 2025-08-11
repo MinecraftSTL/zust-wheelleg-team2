@@ -4,7 +4,7 @@
  *  Created on: 2024Äê10ÔÂ26ÈÕ
  *      Author: sun
  */
-#include <WifiImage.h>
+#include "WifiImage.h"
 #include "MyCamera.h"
 
 uint8 g_wifi_image_open_flag = 0;
