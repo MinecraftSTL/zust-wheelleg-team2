@@ -188,8 +188,6 @@ void    ips200_show_chinese             (uint16 x, uint16 y, uint8 size, const u
 
 void    ips200_init                     (ips200_type_enum type_select);                                                         // 2¥Á IPS“∫æß≥ı ºªØ
 
-void    ips200_draw_square              (uint16 x, uint16 y, uint16 r, const uint16 color);
-
 void    ips200_show_char_color          (uint16 x, uint16 y, const char dat,const uint16 color);
 void    ips200_show_string_color        (uint16 x, uint16 y, const char dat[],const uint16 color);
 void    ips200_show_int_color           (uint16 x, uint16 y, const int32 dat, uint8 num,const uint16 color);

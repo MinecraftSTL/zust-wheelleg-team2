@@ -59,9 +59,6 @@ Page menu_main_arg_k_jump_step0;
 Page menu_main_arg_k_jump_step1;
 Page menu_main_arg_k_jump_step2;
 Page menu_main_arg_k_jump_step3;
-Page menu_main_arg_k_camera;
-Page menu_main_arg_k_camera_horizon;
-Page menu_main_arg_k_camera_deltaH;
 Page menu_main_arg_k_turnA;
 Page menu_main_arg_PID;
 PidPage menu_main_arg_PID_vAy;
@@ -129,7 +126,6 @@ int core0_main(void)
     ListPage_init(&menu_main_arg_k, "k", 3, (Page*[]){
         &menu_main_arg_k_kZero,
         &menu_main_arg_k_jump,
-        &menu_main_arg_k_camera,
         &menu_main_arg_k_turnA,
     });
     FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
@@ -144,12 +140,6 @@ int core0_main(void)
     IntPage_init(&menu_main_arg_k_jump_step1, "1", &(jumpStep[1]), 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step2, "2", &(jumpStep[2]), 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step3, "3", &(jumpStep[3]), 0, 1000);
-    ListPage_init(&menu_main_arg_k_camera, "camera", 2, (Page*[]){
-        &menu_main_arg_k_camera_horizon,
-        &menu_main_arg_k_camera_deltaH,
-    });
-    IntPage_init(&menu_main_arg_k_camera_horizon, "horizon", &camera_horizon, 0, image_h-1);
-    IntPage_init(&menu_main_arg_k_camera_deltaH, "deltaH", &delta_camera_horizon, 0, image_h-1);
     FloatPage_init(&menu_main_arg_k_turnA, "turn_a", &Filter_turn.alpha, 0, 1);
     ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
         PidPage_getRoot(&menu_main_arg_PID_vAy),

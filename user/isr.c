@@ -119,7 +119,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         tg_pitchV = pid(&PID_WxAy, kZero, pitch);
         if(g_Car_Status == status_car_start){
-            tg_yawV = pid(&PID_vAz, 0, g_camera_mid_err-(image_w-2)/2);
+            tg_yawV = pid(&PID_vAz, 0, g_camera_mid_err);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{

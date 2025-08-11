@@ -35,6 +35,16 @@ float pid(PID *this, float TargetValue, float ActualValue)
     return ret;
 }
 
+void PID_clone(PID *this, PID *target){
+    target->Kp = this->Kp;
+    target->Ki = this->Ki;
+    target->Kd = this->Kd;
+    target->Max_I = this->Max_I;
+    target->Max_Out = this->Max_Out;
+    target->Ek_ = this->Ek_;
+    target->Ek_sum = this->Ek_sum;
+}
+
 void PID_clear(PID *this)
 {
     this->Ek_ = NAN; // 上次偏差值初始化

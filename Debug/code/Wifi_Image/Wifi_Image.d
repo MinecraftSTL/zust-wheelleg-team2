@@ -330,3 +330,5 @@ code/Wifi_Image/Wifi_Image.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MYCAMERA.h :
 code/Wifi_Image/Wifi_Image.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_camera.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_camera.h :
+code/Wifi_Image/Wifi_Image.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h :
