@@ -11,7 +11,7 @@
 #include "PID.h"
 #include "Sys.h"
 
-extern PID pitch, Vx;
+extern PID PID_aAy, PID_WPitch, PID_vVx, PID_LPitch;
 
 void PID_param_init();
 

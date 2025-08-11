@@ -16,5 +16,6 @@ float Calculate_Curvature(int array[], int start, int size) ;
 double curvature(double a[2],double b[2],double c[2]);
 double distance(double a[2],double b[2]);
 int collinear(double a[2],double b[2],double c[2]);
+float Q_rsqrt( float number );
 
 #endif /* CODE_SYS_SYS_H_ */

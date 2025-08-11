@@ -4,16 +4,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../code/Gyro/Gyro.c 
+../code/Gyro/Gyro.c \
+../code/Gyro/Gyroscope_Process.c 
 
 COMPILED_SRCS += \
-./code/Gyro/Gyro.src 
+./code/Gyro/Gyro.src \
+./code/Gyro/Gyroscope_Process.src 
 
 C_DEPS += \
-./code/Gyro/Gyro.d 
+./code/Gyro/Gyro.d \
+./code/Gyro/Gyroscope_Process.d 
 
 OBJS += \
-./code/Gyro/Gyro.o 
+./code/Gyro/Gyro.o \
+./code/Gyro/Gyroscope_Process.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -36,7 +40,7 @@ code/Gyro/%.o: ./code/Gyro/%.src code/Gyro/subdir.mk
 clean: clean-code-2f-Gyro
 
 clean-code-2f-Gyro:
-	-$(RM) ./code/Gyro/Gyro.d ./code/Gyro/Gyro.o ./code/Gyro/Gyro.src
+	-$(RM) ./code/Gyro/Gyro.d ./code/Gyro/Gyro.o ./code/Gyro/Gyro.src ./code/Gyro/Gyroscope_Process.d ./code/Gyro/Gyroscope_Process.o ./code/Gyro/Gyroscope_Process.src
 
 .PHONY: clean-code-2f-Gyro
 

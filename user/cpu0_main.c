@@ -49,15 +49,27 @@ const uint16 PIT10ms = 5;
 uint8 pressed = 0;
 
 Page menu_main;
-Page menu_main_PID;
-Page menu_main_PID_pitch;
-Page menu_main_PID_pitch_Kp;
-Page menu_main_PID_pitch_Ki;
-Page menu_main_PID_pitch_Kd;
-Page menu_main_PID_Vx;
-Page menu_main_PID_Vx_Kp;
-Page menu_main_PID_Vx_Ki;
-Page menu_main_PID_Vx_Kd;
+Page menu_main_arg;
+Page menu_main_arg_k;
+Page menu_main_arg_k_kZero;
+Page menu_main_arg_k_kLX2AY;
+Page menu_main_arg_PID;
+Page menu_main_arg_PID_aAy;
+Page menu_main_arg_PID_aAy_Kp;
+Page menu_main_arg_PID_aAy_Ki;
+Page menu_main_arg_PID_aAy_Kd;
+Page menu_main_arg_PID_wPitch;
+Page menu_main_arg_PID_wPitch_Kp;
+Page menu_main_arg_PID_wPitch_Ki;
+Page menu_main_arg_PID_wPitch_Kd;
+Page menu_main_arg_PID_vVx;
+Page menu_main_arg_PID_vVx_Kp;
+Page menu_main_arg_PID_vVx_Ki;
+Page menu_main_arg_PID_vVx_Kd;
+Page menu_main_arg_PID_lPitch;
+Page menu_main_arg_PID_lPitch_Kp;
+Page menu_main_arg_PID_lPitch_Ki;
+Page menu_main_arg_PID_lPitch_Kd;
 Page menu_main_carRun;
 Page menu_main_debug;
 Page menu_main_debug_fs;
@@ -93,35 +105,66 @@ int core0_main(void)
     MyEncoder_Init();
     PID_param_init();
     pit_ms_init(CCU60_CH0, PIT00ms);
+//    pit_ms_init(CCU60_CH1, PIT01ms);
     pit_ms_init(CCU61_CH0, PIT10ms);
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
     ListPage_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", 3, (Page*[]){
-        &menu_main_PID,
+        &menu_main_arg,
         &menu_main_carRun,
         &menu_main_debug,
     });
-    ListPage_init(&menu_main_PID, "PID", 2, (Page*[]){
-        &menu_main_PID_pitch,
-        &menu_main_PID_Vx,
+    ListPage_init(&menu_main_arg, "arg", 2, (Page*[]){
+        &menu_main_arg_k,
+        &menu_main_arg_PID,
     });
-    ListPage_init(&menu_main_PID_pitch, "pitch", 3, (Page*[]){
-        &menu_main_PID_pitch_Kp,
-        &menu_main_PID_pitch_Ki,
-        &menu_main_PID_pitch_Kd,
+    ListPage_init(&menu_main_arg_k, "k", 2, (Page*[]){
+        &menu_main_arg_k_kZero,
+        &menu_main_arg_k_kLX2AY,
     });
-    FFloatPage_init(&menu_main_PID_pitch_Kp, "Kp", &pitch.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_PID_pitch_Ki, "Ki", &pitch.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_PID_pitch_Kd, "Kd", &pitch.Kd, 0, 10000);
-    ListPage_init(&menu_main_PID_Vx, "Vx", 3, (Page*[]){
-        &menu_main_PID_Vx_Kp,
-        &menu_main_PID_Vx_Ki,
-        &menu_main_PID_Vx_Kd,
+    FFloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -2, 2);
+    menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
+    FFloatPage_init(&menu_main_arg_k_kLX2AY, "kLX2AY", &kLX2AY, -2, 2);
+    menu_main_arg_k_kLX2AY.extends.fFloatValue.dot = 1;
+    ListPage_init(&menu_main_arg_PID, "PID", 4, (Page*[]){
+        &menu_main_arg_PID_aAy,
+        &menu_main_arg_PID_wPitch,
+        &menu_main_arg_PID_vVx,
+        &menu_main_arg_PID_lPitch,
     });
-    FFloatPage_init(&menu_main_PID_Vx_Kp, "Kp", &Vx.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_PID_Vx_Ki, "Ki", &Vx.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_PID_Vx_Kd, "Kd", &Vx.Kd, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_aAy, "aAy", 3, (Page*[]){
+        &menu_main_arg_PID_aAy_Kp,
+        &menu_main_arg_PID_aAy_Ki,
+        &menu_main_arg_PID_aAy_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_aAy_Kp, "Kp", &PID_aAy.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_aAy_Ki, "Ki", &PID_aAy.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_aAy_Kd, "Kd", &PID_aAy.Kd, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_wPitch, "wPitch", 3, (Page*[]){
+        &menu_main_arg_PID_wPitch_Kp,
+        &menu_main_arg_PID_wPitch_Ki,
+        &menu_main_arg_PID_wPitch_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_wPitch_Kp, "Kp", &PID_WPitch.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_wPitch_Ki, "Ki", &PID_WPitch.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_wPitch_Kd, "Kd", &PID_WPitch.Kd, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_vVx, "vVx", 3, (Page*[]){
+        &menu_main_arg_PID_vVx_Kp,
+        &menu_main_arg_PID_vVx_Ki,
+        &menu_main_arg_PID_vVx_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_vVx_Kp, "Kp", &PID_vVx.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vVx_Ki, "Ki", &PID_vVx.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vVx_Kd, "Kd", &PID_vVx.Kd, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_lPitch, "lPitch", 3, (Page*[]){
+        &menu_main_arg_PID_lPitch_Kp,
+        &menu_main_arg_PID_lPitch_Ki,
+        &menu_main_arg_PID_lPitch_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_lPitch_Kp, "Kp", &PID_LPitch.Kp, -10000, 10000);
+    FFloatPage_init(&menu_main_arg_PID_lPitch_Ki, "Ki", &PID_LPitch.Ki, -10000, 10000);
+    FFloatPage_init(&menu_main_arg_PID_lPitch_Kd, "Kd", &PID_LPitch.Kd, -10000, 10000);
     BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
     ListPage_init(&menu_main_debug, "debug", 4, (Page*[]){
         &menu_main_debug_fs,
@@ -165,10 +208,10 @@ int core0_main(void)
         &menu_main_debug_fwp_rz,
     });
     BoolPage_init(&menu_main_debug_fwp_en, "enable", &fwpEn, 0x03);
-    IntPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -MAX_X, MAX_X);
-    IntPage_init(&menu_main_debug_fwp_lz, "lt_z", &fwpLz, -MAX_Z, -MIN_Z);
-    IntPage_init(&menu_main_debug_fwp_rx, "rt_x", &fwpRx, -MAX_X, MAX_X);
-    IntPage_init(&menu_main_debug_fwp_rz, "rt_z", &fwpRz, -MAX_Z, -MIN_Z);
+    IntPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -LEG_MAX_X, LEG_MAX_X);
+    IntPage_init(&menu_main_debug_fwp_lz, "lt_z", &fwpLz, -LEG_MAX_Z, -LEG_MIN_Z);
+    IntPage_init(&menu_main_debug_fwp_rx, "rt_x", &fwpRx, -LEG_MAX_X, LEG_MAX_X);
+    IntPage_init(&menu_main_debug_fwp_rz, "rt_z", &fwpRz, -LEG_MAX_Z, -LEG_MIN_Z);
 
     beepLong();
     PageKey_print(&menu_main, 0);

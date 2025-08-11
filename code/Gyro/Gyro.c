@@ -8,6 +8,8 @@
 #include <math.h>
 #include "zf_common_headfile.h"
 
+#include "Gyroscope_Process.h"
+
 float aAx = 0, aAy = 0, aAz = 0;
 float vAx = 0, vAy = 0, vAz = 0;
 float vAx_ = 0, vAy_ = 0, vAz_ = 0;
@@ -17,38 +19,46 @@ float downAy = 0;
 
 uint16 gyro_pitMs = 0;
 
-const float k = 8;
+float kZero = 0.162;
 
 void gyro_init(uint16 pitMs){
     gyro_pitMs = pitMs;
     icm20602_init();
 }
+
 void gyro_get_acc(){
     icm20602_get_acc();
     aXx = -imu660ra_acc_transition(icm20602_acc_x);
     aXy = imu660ra_acc_transition(icm20602_acc_y);
     aXz = -imu660ra_acc_transition(icm20602_acc_z);
 }
-void gyro_reset_xA(){
-    xAx=xAy=xAz=0;
-}
 void gyro_get_gyro(){
     icm20602_get_gyro();
     vAx = -(imu660ra_gyro_transition(icm20602_gyro_x))*gyro_pitMs/1000+0.0085;
     vAy = (imu660ra_gyro_transition(icm20602_gyro_y))*gyro_pitMs/1000+0.0033;
     vAz = -(imu660ra_gyro_transition(icm20602_gyro_z))*gyro_pitMs/1000-0.0015;
-    xAx += vAx;
-    xAy += vAy;
-    xAz += vAz;
-    aAx = vAx - vAx_;
-    aAy = vAy - vAy_;
-    aAz = vAz - vAz_;
-    vAx_ = vAx;
-    vAy_ = vAy;
-    vAz_ = vAz;
+    //    printf("%f, %f, %f\r\n", vAx, vAy, vAz);
 }
 
-void downAy_autoSet(){
+float gyro_z_res = 0,gyro_x_res = 0,gyro_y_res = 0;
+void gyro_get(void)
+{
+    //ÍÓÂÝÒÇÊý¾Ý
+    gyro_get_gyro();
     gyro_get_acc();
-    downAy = (180. / PI)*atan(aXx/aXz)+k;
+    aAx = vAx-vAx_;
+    aAy = vAy-vAy_;
+    aAz = vAz-vAz_;
+    vAx_= vAx;
+    vAy_= vAy;
+    vAz_=vAz;
+    IMUupdate(vAx,vAy,vAz,aXx,aXy,aXz,gyro_pitMs/2000.);
+//    xAx += vAx;
+//    xAy += vAy;
+//    xAz += vAz;
+//    printf("%f, %f, %f\r\n", xAx, xAy, xAz);
+}
+
+void downAy_reset(){
+    downAy = kZero;
 }

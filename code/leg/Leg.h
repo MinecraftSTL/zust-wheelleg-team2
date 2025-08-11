@@ -21,9 +21,9 @@
 #define LBU 60
 #define LBD 90
 
-#define MIN_Z 30
-#define MAX_Z 140
-#define MAX_X 90
+#define LEG_MIN_Z 30
+#define LEG_MAX_Z 140
+#define LEG_MAX_X 90
 
 struct LegServoAngle{
     double f, b;
