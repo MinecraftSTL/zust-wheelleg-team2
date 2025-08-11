@@ -77,7 +77,7 @@ typedef struct Page{
             void (*update)();
         } boolValue;
         struct {
-            uint32 *value;
+            uint8 *value;
             int8 size;
             char names[PAGE_ELEMENT_MAX][PAGE_VALUE_MAX+1];
             void (*update)();
@@ -102,7 +102,7 @@ void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);
 void FloatPage_init(Page *this, char name[], float *value, float max, float min);
 void DoublePage_init(Page *this, char name[], double *value, double max, double min);
 void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir);
-void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]);
+void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]);
 void FuncPage_init(Page *this, char name[], void (*value)());
 
 #endif /* CODE_MENU_H_ */

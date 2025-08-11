@@ -22,4 +22,6 @@ float fwpLz = -45;
 float fwpRx = 0;
 float fwpRz = -45;
 
+uint8 fRb = 0;
+
 uint8 wheelClear = 0;

@@ -522,7 +522,7 @@ void BoolPage_press(Page *this, uint8 pressed[]){
     }
 }
 
-void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]){
+void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
     Page_init(this, name, ENUM_TYPE);
     this->extends.enumValue.value = value;
     for(this->extends.enumValue.size=0; this->extends.enumValue.size<PAGE_ELEMENT_MAX; ++this->extends.enumValue.size){
@@ -547,6 +547,7 @@ void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]){
         this->extends.enumValue.names[i][PAGE_VALUE_MAX] = '\0';
     }
     this->extends.enumValue.update = NULL;
+    printf("%c\r\n",this->extends.enumValue.names[0][1]);
 }
 void EnumPage_print(Page *this, uint8 row){
     if(!row){

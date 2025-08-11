@@ -23,7 +23,7 @@ void CarStatus_set(CarStatus this)
 }
 void CarStatus_update(){
     CameraStatus_set(NONE);
-    carRunTick = 0;
+    carRunMs = 0;
 }
 void CarStatus_add(){
     if(carStatus < CAR_RUN){

@@ -153,26 +153,25 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lx = rx = legX;
         lz = rz = legZ;
         float lza = 0;
-        if(carStatus >= CAR_BALANCE && rollBalance){
+        if(carStatus >= CAR_BALANCE && (rollBalance || fRb)){
             lza = Roll_toPosZ(roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
         lza_ = lpf(&Filter_xAx, lza);
-        if(legZ < -65){
-            if(lza_ < 0){
-                lz += -lza_;
-            }else{
-                rz -= -lza_;
-            }
-        }else{
-            if(lza_ > 0){
-                lz += -lza_;
-            }else{
-                rz -= -lza_;
-            }
+        float k = (legZ - bridgeZ) / (defaultLegZ - bridgeZ);
+
+        if (lza_ < 0) {
+            float amount = -lza_;
+            lz += amount * (1 - k);
+            rz -= amount * k;
+        } else if (lza_ > 0) {
+            float amount = lza_;
+            rz += amount * (1 - k);
+            lz -= amount * k;
         }
         Leg_set_pos(lx, lz, rx, rz);
     }
+    Camera_pit(PIT10ms, Encoder_speed);
 }
 
 IFX_INTERRUPT(cc61_pit_ch1_isr, CCU6_1_CH1_INT_VECTAB_NUM, CCU6_1_CH1_ISR_PRIORITY)

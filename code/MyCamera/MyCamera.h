@@ -28,6 +28,7 @@ typedef enum{
     PO_RCIRCLE,
     O_RCIRCLE,
     OR_CROSS_RCIRCLE,
+    RAMP,
     I_BARRIER,
     R_BARRIER,
     O_BARRIER,
@@ -53,6 +54,8 @@ extern int camera_err;
 extern Rgb565Image showImage;
 
 extern int binDeltaT;
+extern float trapezoidK;
+extern int trapezoidY;
 extern int maxStartYAdd;
 extern int bly2RDL;
 extern float RD2IErr;
@@ -66,17 +69,21 @@ extern float straightErr;
 extern float statusJump;
 extern float statusK;
 extern int zebraY;
-extern int zebraStartTick;
-extern int zebraStopTick;
+extern int zebraStartT;
+extern int zebraStopT;
 extern int crossX;
 extern int circleX;
 extern int circleY;
 extern float circleLine;
-extern int barrierY;
+extern int rampX;
+extern int barrierY0;
+extern int barrierY1;
 extern int barrierT;
 extern int bridgeY;
 extern int bridgeTI;
 extern int bridgeTO;
+extern int bridgeX;
+extern int bridgeZ;
 extern int errY;
 extern int errDeltaY;
 extern uint8 showPInC1;
@@ -84,12 +91,13 @@ extern uint8 showWait;
 
 extern float bendV;
 extern float circleV;
+extern float rampV;
 extern float bridgeV;
 
 extern float cameraV;
 
 extern CameraStatus cameraStatus;
-extern uint64 carRunTick;
+extern uint64 carRunMs;
 
 void MyCamera_Init(void);
 void Image_showCamera(uint16 x, uint16 y);
