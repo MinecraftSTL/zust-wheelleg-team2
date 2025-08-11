@@ -73,5 +73,4 @@ void Rgb565Image_set(Rgb565Image *this, uint16 y, uint16 x, uint16 value);
 void Rgb565Image_mark(Rgb565Image *this, uint16 y, uint16 x, uint16 color, uint16 r);
 void Image_zoom(Image *this, Image *target, float zoom);
 void Image_binaryzation(Image *this, int16 deltaT);
-void Image_drawRectan(Image *this);
 #endif

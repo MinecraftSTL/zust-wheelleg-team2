@@ -8,7 +8,7 @@ Rgb565Image showImage;
 
 int binDeltaT = -16;
 int bly2RDL = 5;
-float RD2IErr = 0.5236;
+float RD2IErr = 0.7854;
 float facingErr = 0.5236;
 int setLineY = 15;
 int StraightYMin = 40;
@@ -98,15 +98,13 @@ void Image_fromCamera(Image *this, uint8 mt9v03x_image[MT9V03X_H][MT9V03X_W])
     memcpy(this->image, mt9v03x_image, MT9V03X_IMAGE_SIZE);
 }
 void Image_clear(Image *this){
-    for(int i=0; i<this->h*this->w; ++i){
-        this->image[i]=0x00;
-    }
+    memset(&this->image, 0x00, sizeof(uint8)*this->h*this->w);
 }
 void Image_clone(Image *this, Image *target)
 {
     zf_assert(this && target);
-    target->h = this->h;
     target->w = this->w;
+    target->h = this->h;
     memcpy(target->image, this->image, this->h*this->w);
 }
 void Image_cut(Image *this, Image *target, uint16 x0, uint16 y0, uint16 x1, uint16 y1){
@@ -285,11 +283,13 @@ void Image_drawRectan(Image *this)
     }
 }
 
-const int8 Bly_SEED[8][2] = {{1,0},{1,1},{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1}};
+const int8 Bly_SEED[8][2] = {{1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1},{0,1},{1,1}};
 void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MAX_BLY][2],
         uint8 lDir[MAX_BLY], uint8 rDir[MAX_BLY], uint16 *lLineL, uint16 *rLineL, int16 *meet,
         uint16 lStart[2], uint16 rStart[2])
 {
+    zf_assert(maxL <= MAX_BLY); //逆天
+
     uint8 lStop = 0, rStop = 0;
 
     *meet = -1;
@@ -310,7 +310,7 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
                 lDir[*lLineL] = (lDir[*lLineL-1]+6+i)&0x07;
                 lLine[*lLineL][0] = lLine[*lLineL-1][0] + Bly_SEED[lDir[*lLineL]][0];
                 lLine[*lLineL][1] = lLine[*lLineL-1][1] + Bly_SEED[lDir[*lLineL]][1];
-                uint8 dir = (lDir[*lLineL]+1)&0x07;
+                uint8 dir = (lDir[*lLineL]+7)&0x07;
                 int16 dot[2];
                 dot[0] = lLine[*lLineL-1][0] + Bly_SEED[dir][0];
                 dot[1] = lLine[*lLineL-1][1] + Bly_SEED[dir][1];
@@ -334,7 +334,7 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
                 rDir[*rLineL] = (rDir[*rLineL-1]+2+(8-i))&0x07;
                 rLine[*rLineL][0] = rLine[*rLineL-1][0] + Bly_SEED[rDir[*rLineL]][0];
                 rLine[*rLineL][1] = rLine[*rLineL-1][1] + Bly_SEED[rDir[*rLineL]][1];
-                uint8 dir = (rDir[*rLineL]+7)&0x07;
+                uint8 dir = (rDir[*rLineL]+1)&0x07;
                 int16 dot[2];
                 dot[0] = rLine[*rLineL-1][0] + Bly_SEED[dir][0];
                 dot[1] = rLine[*rLineL-1][1] + Bly_SEED[dir][1];
@@ -503,20 +503,6 @@ uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint8 dir){
         }
     }
     return 1;
-}
-void Image_blyCutByBorder(Image *this, uint16 border[MT9V03X_H], uint8 dir, int16 line[MAX_BLY][2], uint16 *lineL){
-    uint16 yMin;
-    for(yMin = 0; yMin<this->h; ++yMin){
-        if(!Image_borderIsLose(this, border, yMin, dir)){
-            break;
-        }
-    }
-    for(uint16 i=0; i<*lineL; ++i){
-        if(line[i][0] == yMin && line[i][1] == border[yMin]){
-            *lineL = i+1;
-            break;
-        }
-    }
 }
 
 void Image_blyToRadDir(Image *this, int16 bly[MAX_BLY][2], uint16 blyL, uint16 l,
@@ -737,15 +723,14 @@ void Image_processCamera(){
         }
         Image_cut(&image, &image1, 1, 0, image.w-1, image.h);
 //        Image_cut(&image1, &image, 10, 30, image1.h-20, image1.w-30);
-        Image_binaryzation(&image, binDeltaT);
+        Image_binaryzation(&image1, binDeltaT);
+        Image_clone(&image1, &image);
         Image_getStartPoint(&image, lStartPoint, rStartPoint);
         Image_drawRectan(&image);
-        Image_bly(&image, image.h*3, lLine, rLine, lLineDir, rLineDir,
+        Image_bly(&image, image.h*4, lLine, rLine, lLineDir, rLineDir,
                 &lLineL, &rLineL, &lrMeet, lStartPoint, rStartPoint);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);
         Image_blyToBorder(&image, 1, rLine, rLineL, rBorder);
-        Image_blyCutByBorder(&image, lBorder, 0, lLine, &lLineL);
-        Image_blyCutByBorder(&image, rBorder, 1, rLine, &rLineL);
         Image_blyToRadDir(&image, lLine, lLineL, bly2RDL, lRadDir, lRadDirPos, &lRadDirN);
         Image_blyToRadDir(&image, rLine, rLineL, bly2RDL, rRadDir, rRadDirPos, &rRadDirN);
         RadDir_toInflection(lRadDir, lRadDirPos, lRadDirN, RD2IErr, lInflection, lInflectionDir, &lInflectionN);
