@@ -92,12 +92,12 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     float new_gyro_z = my_gyro_z-zero_my_gyro_z;
 
     if(carStatus > CAR_STOP){
-        if(fabs(roll) > 30 || fabs(pitch) > 60){
+        if(fabs(roll) > 60 || fabs(pitch) > 60){
             CarStatus_set(CAR_STOP);
         }
     }
 
-    float tg_pitchV = 0, tg_yawV = 0, legX = 0, legZ = -45;
+    float tg_pitchV = 0, tg_yawV = 0, legX = targetLegX, legZ = targetLegZ;
     if(carStatus >= CAR_BALANCE){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;
@@ -145,7 +145,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lx = rx = legX;
         lz = rz = legZ;
         float lza = 0;
-        if(carStatus && !ffRow){
+        if(carStatus >= CAR_BALANCE && rollBalance){
             lza = Roll_toPosZ(roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);

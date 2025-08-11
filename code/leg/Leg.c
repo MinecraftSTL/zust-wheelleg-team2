@@ -8,6 +8,11 @@
 
 const uint32 freq = 300;
 
+float targetLegX = defaultLegX;
+float targetLegZ = defaultLegZ;
+
+uint8 rollBalance = 0;
+
 void Leg_init(){
     pwm_init(servo_rb, freq, PWM_DUTY_MAX/2);
     pwm_init(servo_rf, freq, PWM_DUTY_MAX/2);

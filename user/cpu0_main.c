@@ -85,6 +85,10 @@ Page menu_main_arg_k_camera_e_circle_line;
 Page menu_main_arg_k_camera_e_barrier;
 Page menu_main_arg_k_camera_e_barrier_y;
 Page menu_main_arg_k_camera_e_barrier_t;
+Page menu_main_arg_k_camera_e_bridge;
+Page menu_main_arg_k_camera_e_bridge_y;
+Page menu_main_arg_k_camera_e_bridge_ti;
+Page menu_main_arg_k_camera_e_bridge_to;
 Page menu_main_arg_k_camera_setLineY;
 Page menu_main_arg_k_camera_err;
 Page menu_main_arg_k_camera_err_y;
@@ -124,7 +128,6 @@ Page menu_main_debug_fwp_lx;
 Page menu_main_debug_fwp_lz;
 Page menu_main_debug_fwp_rx;
 Page menu_main_debug_fwp_rz;
-Page menu_main_debug_ffRow;
 Page menu_main_debug_jump;
 
 void core0_main(void)
@@ -245,6 +248,7 @@ void core0_main(void)
         &menu_main_arg_k_camera_e_cross,
         &menu_main_arg_k_camera_e_circle,
         &menu_main_arg_k_camera_e_barrier,
+        &menu_main_arg_k_camera_e_bridge,
         NULL
     });
     ListPage_init(&menu_main_arg_k_camera_e_zebra, "zebra", (Page*[]){
@@ -274,7 +278,16 @@ void core0_main(void)
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_e_barrier_y, "y", &barrierY, 0, MT9V03X_H);
-    IntPage_init(&menu_main_arg_k_camera_e_barrier_t, "t", &barrierT, 0, 1000);
+    IntPage_init(&menu_main_arg_k_camera_e_barrier_t, "t", &barrierT, 0, 10000);
+    ListPage_init(&menu_main_arg_k_camera_e_bridge, "bridge", (Page*[]){
+        &menu_main_arg_k_camera_e_bridge_y,
+        &menu_main_arg_k_camera_e_bridge_ti,
+        &menu_main_arg_k_camera_e_bridge_to,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_e_bridge_y, "y", &bridgeY, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_bridge_ti, "ti", &bridgeTI, 0, 10000);
+    IntPage_init(&menu_main_arg_k_camera_e_bridge_to, "to", &bridgeTO, 0, 10000);
     IntPage_init(&menu_main_arg_k_camera_setLineY, "setLineY", &setLineY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_err, "err", (Page*[]){
         &menu_main_arg_k_camera_err_y,
@@ -328,7 +341,6 @@ void core0_main(void)
         &menu_main_debug_fs,
         &menu_main_debug_fl,
         &menu_main_debug_fwp,
-        &menu_main_debug_ffRow,
         &menu_main_debug_jump,
         NULL
     });
@@ -370,7 +382,6 @@ void core0_main(void)
     =menu_main_debug_fwp_lz.extends.floatValue.dot
     =menu_main_debug_fwp_rx.extends.floatValue.dot
     =menu_main_debug_fwp_rz.extends.floatValue.dot=2;
-    BoolPage_init(&menu_main_debug_ffRow, "ffRow", &ffRow, 0x03);
     FuncPage_init(&menu_main_debug_jump, "jump", jump);
 
     beepLong();

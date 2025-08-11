@@ -28,6 +28,4 @@ extern float fwpLz;
 extern float fwpRx;
 extern float fwpRz;
 
-extern uint8 ffRow;
-
 #endif /* CODE_DEBUGARG_DEBUGARG_H_ */

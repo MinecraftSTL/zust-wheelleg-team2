@@ -30,17 +30,15 @@ struct LegServoAngle{
     double f, b;
 };
 
+#define defaultLegX (0);
+#define defaultLegZ (-45);
+extern float targetLegX, targetLegZ;
+extern uint8 rollBalance;
+
 void Leg_init();
 int32 Roll_toPosZ(float roll, float lza);
 void Leg_set_duty(float rb, float rf, float lf, float lb);
 void Leg_set_pos(float lx, float lz, float rx, float rz);
-
-extern const uint32 preRetractLegTime;
-extern const float preRetractLegZ;
-extern const uint32 extendLegTime;
-extern const float extendLegZ;
-extern const uint32 retractLegTime;
-extern const float retractLegZ;
 
 extern const uint32 jumpStep[];
 void jumpPit(uint32 period, float *legZ);

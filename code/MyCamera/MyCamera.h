@@ -31,10 +31,12 @@ typedef enum{
     I_BARRIER,
     R_BARRIER,
     O_BARRIER,
+    I_BRIDGE,
     I_LBRIDGE,
     O_LBRIDGE,
     I_RBRIDGE,
     O_RBRIDGE,
+    O_BRIDGE,
     CAMERA_STATUS_NUMBER,
 }CameraStatus;
 
@@ -72,6 +74,9 @@ extern int circleY;
 extern float circleLine;
 extern int barrierY;
 extern int barrierT;
+extern int bridgeY;
+extern int bridgeTI;
+extern int bridgeTO;
 extern int errY;
 extern int errDeltaY;
 extern uint8 showPInC1;
