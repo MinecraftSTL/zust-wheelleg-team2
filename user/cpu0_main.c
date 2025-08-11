@@ -111,43 +111,48 @@ void core0_main(void)
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
     ListPage_setRoot(&menu_main);
-    ListPage_init(&menu_main, "main", 4, (Page*[]){
+    ListPage_init(&menu_main, "main", (Page*[]){
         &menu_main_carRun,
         &menu_main_arg,
         &menu_main_mod,
         &menu_main_debug,
+        NULL
     });
     IntPage_init(&menu_main_carRun, "car_run", &g_Car_Status, 0, 2);
     menu_main_carRun.select = 9;
-    ListPage_init(&menu_main_arg, "arg", 2, (Page*[]){
+    ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
+        NULL
     });
-    ListPage_init(&menu_main_arg_k, "k", 3, (Page*[]){
+    ListPage_init(&menu_main_arg_k, "k", (Page*[]){
         &menu_main_arg_k_kZero,
         &menu_main_arg_k_jump,
         &menu_main_arg_k_turnA,
+        NULL
     });
     FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
     menu_main_arg_k_kZero.extends.floatValue.dot = 1;
-    ListPage_init(&menu_main_arg_k_jump, "jump", 4, (Page*[]){
+    ListPage_init(&menu_main_arg_k_jump, "jump", (Page*[]){
         &menu_main_arg_k_jump_step0,
         &menu_main_arg_k_jump_step1,
         &menu_main_arg_k_jump_step2,
         &menu_main_arg_k_jump_step3,
+        NULL
     });
     IntPage_init(&menu_main_arg_k_jump_step0, "0", &(jumpStep[0]), 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step1, "1", &(jumpStep[1]), 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step2, "2", &(jumpStep[2]), 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step3, "3", &(jumpStep[3]), 0, 1000);
     FloatPage_init(&menu_main_arg_k_turnA, "turn_a", &Filter_turn.alpha, 0, 1);
-    ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
+    ListPage_init(&menu_main_arg_PID, "PID", (Page*[]){
         PidPage_getRoot(&menu_main_arg_PID_vAy),
         PidPage_getRoot(&menu_main_arg_PID_xAy),
         PidPage_getRoot(&menu_main_arg_PID_vVx),
         PidPage_getRoot(&menu_main_arg_PID_vAz),
         PidPage_getRoot(&menu_main_arg_PID_turn),
         PidPage_getRoot(&menu_main_arg_PID_xAx),
+        NULL
     });
     PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
     PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_WxAy);
@@ -155,36 +160,41 @@ void core0_main(void)
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
     PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
     PidPage_init(&menu_main_arg_PID_xAx, "xAx", &PID_xAx);
-    ListPage_init(&menu_main_mod, "mod", 1, (Page*[]){
+    ListPage_init(&menu_main_mod, "mod", (Page*[]){
         &menu_main_mod_gyro,
+        NULL
     });
     FuncPage_init(&menu_main_mod_gyro, "gyro", gyro_set);
-    ListPage_init(&menu_main_debug, "debug", 6, (Page*[]){
+    ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,
         &menu_main_debug_fv,
         &menu_main_debug_fwp,
         &menu_main_debug_ffRow,
         &menu_main_debug_jump,
+        NULL
     });
-    ListPage_init(&menu_main_debug_fs, "forceSpeed", 2, (Page*[]){
+    ListPage_init(&menu_main_debug_fs, "forceSpeed", (Page*[]){
         &menu_main_debug_fs_en,
         &menu_main_debug_fs_speed,
+        NULL
     });
     BoolPage_init(&menu_main_debug_fs_en, "enable", &fsEn, 0x03);
     IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
-    ListPage_init(&menu_main_debug_fv, "forceV", 2, (Page*[]){
+    ListPage_init(&menu_main_debug_fv, "forceV", (Page*[]){
         &menu_main_debug_fv_en,
         &menu_main_debug_fv_v,
+        NULL
     });
     BoolPage_init(&menu_main_debug_fv_en, "enable", &fvEn, 0x03);
     IntPage_init(&menu_main_debug_fv_v, "V", &fvV, -1000, 1000);
-    ListPage_init(&menu_main_debug_fl, "forceLeg", 5, (Page*[]){
+    ListPage_init(&menu_main_debug_fl, "forceLeg", (Page*[]){
         &menu_main_debug_fl_en,
         &menu_main_debug_fl_rb,
         &menu_main_debug_fl_rf,
         &menu_main_debug_fl_lf,
         &menu_main_debug_fl_lb,
+        NULL
     });
     BoolPage_init(&menu_main_debug_fl_en, "enable", &flEn, 0x03);
     FloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -1.57, 1.57);
@@ -195,12 +205,13 @@ void core0_main(void)
     =menu_main_debug_fl_lf.extends.floatValue.dot
     =menu_main_debug_fl_rf.extends.floatValue.dot
     =menu_main_debug_fl_rb.extends.floatValue.dot=1;
-    ListPage_init(&menu_main_debug_fwp, "forceWPos", 5, (Page*[]){
+    ListPage_init(&menu_main_debug_fwp, "forceWPos", (Page*[]){
         &menu_main_debug_fwp_en,
         &menu_main_debug_fwp_lx,
         &menu_main_debug_fwp_lz,
         &menu_main_debug_fwp_rx,
         &menu_main_debug_fwp_rz,
+        NULL
     });
     BoolPage_init(&menu_main_debug_fwp_en, "enable", &fwpEn, 0x03);
     FloatPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -LEG_MAX_X, LEG_MAX_X);

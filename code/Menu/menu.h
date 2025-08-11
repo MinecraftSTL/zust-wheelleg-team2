@@ -83,7 +83,7 @@ Page *PageKey_getOpened(Page *this);
 Page *PageKey_getByPath(Page *this, char *path);
 uint8 PageKey_back(Page *this);
 void PageKey_home(Page *this);
-void ListPage_init(Page *this, char name[], uint8 size, Page *key[]);
+void ListPage_init(Page *this, char name[], Page *key[]);
 void ListPage_setRoot(Page *this);
 void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);
 void FloatPage_init(Page *this, char name[], float *value, float max, float min);

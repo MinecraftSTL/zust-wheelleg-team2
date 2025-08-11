@@ -8,7 +8,7 @@
 #include "PidPage.h"
 
 void PidPage_init(PidPage *this, char name[], PID *pid){
-    ListPage_init(&this->Pid, name, 5, (Page*[]){&this->Kp, &this->Ki, &this->Kd, &this->Max_I, &this->Max_Out});
+    ListPage_init(&this->Pid, name, (Page*[]){&this->Kp, &this->Ki, &this->Kd, &this->Max_I, &this->Max_Out, NULL});
     FloatPage_init(&this->Kp, "Kp", &pid->Kp, 0, 10000);
     FloatPage_init(&this->Ki, "Ki", &pid->Ki, 0, 10000);
     FloatPage_init(&this->Kd, "Kd", &pid->Kd, 0, 10000);

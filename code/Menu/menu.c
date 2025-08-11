@@ -147,16 +147,22 @@ void PageKey_home(Page *this){
     ips200_clear();
 }
 
-void ListPage_init(Page *this, char name[], uint8 size, Page *key[]){
+void ListPage_init(Page *this, char name[], Page *key[]){
     Page_init(this, name, LIST_TYPE);
-    if(size == 0){
-        this->select = -1;
-    }else if(size >= LIST_PAGE_ELEMENT_MAX){
-        size = LIST_PAGE_ELEMENT_MAX-1;
+    this->extends.listValue.size = 0;
+    for(uint8 i=0; i<LIST_PAGE_ELEMENT_MAX; ++i){
+        if(!key[i]){
+            this->extends.listValue.size = i;
+            break;
+        }
     }
-    memcpy(this->extends.listValue.value, key, sizeof(Page*)*size);
-    this->extends.listValue.size = size;
-    for(int i=0; i<size; ++i){
+    if(this->extends.listValue.size == 0){
+        this->select = -1;
+    }else if(this->extends.listValue.size > LIST_PAGE_ELEMENT_MAX){
+        this->extends.listValue.size = LIST_PAGE_ELEMENT_MAX;
+    }
+    memcpy(this->extends.listValue.value, key, sizeof(Page*)*this->extends.listValue.size);
+    for(int i=0; i<this->extends.listValue.size; ++i){
         key[i]->parent = this;
     }
     this->extends.listValue.open = 0;
