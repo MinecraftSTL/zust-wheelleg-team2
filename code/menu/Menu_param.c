@@ -139,7 +139,7 @@ Page menu_main_debug_jump;
 Page menu_main_about;
 
 void Menu_param_init(){
-    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status", "main.debug", "main.arg.k.camera.show"});
+    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.debug", "main.arg.k.camera.show"});
     Page_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", (Page*[]){
         &menu_main_carStatus,
@@ -341,7 +341,7 @@ void Menu_param_init(){
     });
     IntPage_init(&menu_main_arg_k_camera_e_ramp_s, "s", &rampS, 0, 10000000);
     IntPage_init(&menu_main_arg_k_camera_e_ramp_y, "y", &rampY, 0, MT9V03X_H);
-    IntPage_init(&menu_main_arg_k_camera_e_ramp_z, "z", &rampZ, -LEG_MAX_Z, -LEG_MIN_Z);
+    FloatPage_init(&menu_main_arg_k_camera_e_ramp_z, "z", &rampZ, -LEG_MAX_Z, -LEG_MIN_Z);
     FloatPage_init(&menu_main_arg_k_camera_e_ramp_k, "k", &rampK, 0, 1);
     ListPage_init(&menu_main_arg_k_camera_e_barrier, "barrier", (Page*[]){
         &menu_main_arg_k_camera_e_barrier_y0,

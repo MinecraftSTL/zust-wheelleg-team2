@@ -78,7 +78,7 @@ extern int crossX;
 extern int crossY;
 extern int rampS;
 extern int rampY;
-extern int rampZ;
+extern float rampZ;
 extern float rampK;
 extern int barrierY0;
 extern int barrierY1;

@@ -31,7 +31,7 @@ int crossY = 20;
 int circleX = 7;
 int rampS = 750000;
 int rampY = 40;
-int rampZ = -45;
+float rampZ = -45;
 float rampK = 0.1;
 int barrierY0 = 20;
 int barrierY1 = 50;
@@ -702,7 +702,7 @@ uint64 statusKeepMs = 0;
 int64 statusRunS = 0;
 void CameraStatus_set(CameraStatus value){
     beepMid();
-    memset(statusScore, 0x00, sizeof(float)*CAMERA_STATUS_NUMBER);
+    memset(statusScore, 0x0, sizeof(float)*CAMERA_STATUS_NUMBER);
     statusKeepMs = 0;
     statusRunS = 0;
 
@@ -731,35 +731,22 @@ void Camera_pit(uint32 period, int16 speed){
 void Image_zebra(Image *this, float *cameraV, uint16 *errY){
     uint8 zebra = 0;
     {
-        int edge_left_num = 0;
-        int edge_right_num = 0;
-        int edge_sum = 0;
-        for(uint16 zebra_row = zebraY; zebra_row < zebraY+3; zebra_row++)
-        {
-            for(uint16 i=lBorder[zebra_row];i<=this->w/2;i++)
-            {
-                if(Image_get(this, i, zebra_row) && Image_get(this, i+1, zebra_row) &&
-                        !Image_get(this, i+2, zebra_row) && !Image_get(this, i+3, zebra_row))
-                {
-                    edge_left_num++;
+        int l = 0, r = 0;
+        for(uint16 i = zebraY; i < zebraY+3; ++i){
+            for(uint16 j=lBorder[i];j<=this->w/2;j++){
+                if(Image_get(this, j, i) && Image_get(this, j+1, i) &&
+                        !Image_get(this, j+2, i) && !Image_get(this, j+3, i)){
+                    ++l;
                 }
             }
-            for(uint16 i=rBorder[zebra_row];i>this->w/2;i--)
-            {
-                if(Image_get(this, i, zebra_row) && Image_get(this, i-1, zebra_row) &&
-                        !Image_get(this, i-2, zebra_row) && !Image_get(this,i-3, zebra_row))
-                {
-                    edge_right_num++;
+            for(uint16 j=rBorder[i]; j>this->w/2; --j){
+                if(Image_get(this, j, i) && Image_get(this, j-1, i) &&
+                        !Image_get(this, j-2, i) && !Image_get(this,j-3, i)){
+                    ++r;
                 }
             }
         }
-        edge_sum = edge_left_num + edge_right_num;
-        if(edge_right_num > 200)
-            edge_right_num = 0;
-        if(edge_left_num > 200)
-            edge_left_num = 0;
-        if(edge_sum >= 16 && edge_left_num > 5 && edge_right_num > 5)
-        {
+        if(!(l > 200 || r > 200) && l+r >= 16 && l > 5 && r > 5){
             zebra = 1;
         }
     }

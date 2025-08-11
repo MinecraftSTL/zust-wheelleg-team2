@@ -153,7 +153,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             turn += control[1];
         }
     }else{
-        memset(control, 0.f, 2*sizeof(float));
+        memset(control, 0x0, 2*sizeof(float));
     }
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);
