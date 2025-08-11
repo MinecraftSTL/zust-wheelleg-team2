@@ -4,28 +4,28 @@
 
 # 将这些工具调用的输入和输出添加到构建变量 
 C_SRCS += \
-"../code/Sys/Sys.c" 
+"../code/sys/Sys.c" 
 
 COMPILED_SRCS += \
-"code/Sys/Sys.src" 
+"code/sys/Sys.src" 
 
 C_DEPS += \
-"./code/Sys/Sys.d" 
+"./code/sys/Sys.d" 
 
 OBJS += \
-"code/Sys/Sys.o" 
+"code/sys/Sys.o" 
 
 
 # 每个子目录必须为构建它所贡献的源提供规则
-"code/Sys/Sys.src":"../code/Sys/Sys.c" "code/Sys/subdir.mk"
+"code/sys/Sys.src":"../code/sys/Sys.c" "code/sys/subdir.mk"
 	cctc -cs --dep-file="$*.d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<"
-"code/Sys/Sys.o":"code/Sys/Sys.src" "code/Sys/subdir.mk"
+"code/sys/Sys.o":"code/sys/Sys.src" "code/sys/subdir.mk"
 	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
 
-clean: clean-code-2f-Sys
+clean: clean-code-2f-sys
 
-clean-code-2f-Sys:
-	-$(RM) ./code/Sys/Sys.d ./code/Sys/Sys.o ./code/Sys/Sys.src
+clean-code-2f-sys:
+	-$(RM) ./code/sys/Sys.d ./code/sys/Sys.o ./code/sys/Sys.src
 
-.PHONY: clean-code-2f-Sys
+.PHONY: clean-code-2f-sys
 

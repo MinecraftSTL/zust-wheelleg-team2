@@ -8,7 +8,7 @@
 #ifndef CODE_MENU_GENSHIN_H_
 #define CODE_MENU_GENSHIN_H_
 
-#include "Sys.h"
+#include <Sys.h>
 
 extern const uint16 genshin[76800];
 

@@ -8,7 +8,7 @@
 #ifndef CODE_PIT_PIT_H_
 #define CODE_PIT_PIT_H_
 
-#include "Sys.h"
+#include <Sys.h>
 
 extern const uint32 PIT00ms;
 extern const uint32 PIT01ms;

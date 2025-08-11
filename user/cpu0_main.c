@@ -112,6 +112,7 @@ Page menu_main_arg_k_camera_e_bridge_ti;
 Page menu_main_arg_k_camera_e_bridge_to;
 Page menu_main_arg_k_camera_e_bridge_s;
 Page menu_main_arg_k_camera_e_bridge_z;
+Page menu_main_arg_k_camera_e_bridge_detect;
 Page menu_main_arg_k_camera_setLineY;
 Page menu_main_arg_k_camera_err;
 Page menu_main_arg_k_camera_err_y;
@@ -141,6 +142,7 @@ Page menu_main_debug_wifiIm;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
 Page menu_main_debug_fs_speed;
+Page menu_main_debug_flz;
 Page menu_main_debug_fl;
 Page menu_main_debug_fl_en;
 Page menu_main_debug_fl_rb;
@@ -242,7 +244,7 @@ void core0_main(void)
     FloatPage_init(&menu_main_arg_k_v_barrier, "barrier", &barrierV, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_bridge, "bridge", &bridgeV, -10000, 10000);
     menu_main_arg_k_v_straight.extends.floatValue.dot = menu_main_arg_k_v_bend.extends.floatValue.dot = menu_main_arg_k_v_circle.extends.floatValue.dot =
-            menu_main_arg_k_v_ramp.extends.floatValue.dot = menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
+            menu_main_arg_k_v_ramp.extends.floatValue.dot = menu_main_arg_k_v_barrier.extends.floatValue.dot = menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
         &menu_main_arg_k_camera_trapezoid,
@@ -393,6 +395,7 @@ void core0_main(void)
         &menu_main_arg_k_camera_e_bridge_to,
         &menu_main_arg_k_camera_e_bridge_s,
         &menu_main_arg_k_camera_e_bridge_z,
+        &menu_main_arg_k_camera_e_bridge_detect,
         NULL
     });
     FloatPage_init(&menu_main_arg_k_camera_e_bridge_xAx, "xAxAlpha", &defaultRollAlpha, 0, 1);
@@ -402,7 +405,8 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_e_bridge_ti, "ti", &bridgeTI, 0, 100000);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_to, "to", &bridgeTO, 0, 100000);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_s, "s", &bridgeS, 0, 10000000);
-    IntPage_init(&menu_main_arg_k_camera_e_bridge_z, "z", &bridgeZ, -LEG_MIN_Z, -LEG_MAX_Z);
+    FloatPage_init(&menu_main_arg_k_camera_e_bridge_z, "z", &bridgeZ, -LEG_MIN_Z, -LEG_MAX_Z);
+    BoolPage_init(&menu_main_arg_k_camera_e_bridge_detect, "detectL", &bridgeDetectL, 0x03);
     IntPage_init(&menu_main_arg_k_camera_setLineY, "setLineY", &setLineY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_err, "err", (Page*[]){
         &menu_main_arg_k_camera_err_y,
@@ -457,6 +461,7 @@ void core0_main(void)
         &menu_main_debug_wheelClear,
         &menu_main_debug_wifiIm,
         &menu_main_debug_fs,
+        &menu_main_debug_flz,
         &menu_main_debug_fl,
         &menu_main_debug_fwp,
         &menu_main_debug_frb,
@@ -472,6 +477,7 @@ void core0_main(void)
     });
     BoolPage_init(&menu_main_debug_fs_en, "enable", &fsEn, 0x03);
     IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
+    BoolPage_init(&menu_main_debug_flz, "legZero", &fLz, 0x03);
     ListPage_init(&menu_main_debug_fl, "forceLeg", (Page*[]){
         &menu_main_debug_fl_en,
         &menu_main_debug_fl_rb,

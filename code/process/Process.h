@@ -8,13 +8,13 @@
 #ifndef CODE_PROCESS_PROCESS_H_
 #define CODE_PROCESS_PROCESS_H_
 
-#include "Sys.h"
+#include <Sys.h>
 
 typedef struct{
     uint8 step;
     uint32 time;
 }Step;
 
-Step getStep(uint32 this[], uint32 time);
+Step getStep(const uint32 this[], uint32 time);
 
 #endif /* CODE_PROCESS_PROCESS_H_ */

@@ -8,19 +8,19 @@
 #ifndef CODE_LEG_LEG_H_
 #define CODE_LEG_LEG_H_
 
-#include "Sys.h"
+#include <Sys.h>
 
 #define servo_rb ATOM2_CH3_P11_6
 #define servo_rf ATOM2_CH4_P11_9
 #define servo_lf ATOM2_CH5_P11_10
 #define servo_lb ATOM2_CH6_P11_11
 
-#define DFB 35
-#define LFU 60
-#define LFD 90
-#define LBU 60
-#define LBD 90
-#define DLR 160
+#define DFB (35.f)
+#define LFU (60.f)
+#define LFD (90.f)
+#define LBU (60.f)
+#define LBD (90.f)
+#define DLR (160.f)
 
 #define LEG_MIN_Z 0
 #define LEG_MAX_Z 140
@@ -38,7 +38,8 @@ extern float defaultRollAlpha;
 extern uint8 rollBalance;
 
 void Leg_init();
-int32 Roll_toPosZ(float roll, float lza);
+float Roll_toPosZ(float roll, float lza);
+void Leg_set_zero();
 void Leg_set_duty(float rb, float rf, float lf, float lb);
 void Leg_set_pos(float lx, float lz, float rx, float rz);
 

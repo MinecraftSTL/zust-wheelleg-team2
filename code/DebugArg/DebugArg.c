@@ -10,6 +10,8 @@
 uint8 fsEn = 0;
 int32 fsSpeed = 0;
 
+uint8 fLz = 0;
+
 uint8 flEn = 0;
 float flRb = 0;
 float flRf = 0;

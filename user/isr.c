@@ -93,7 +93,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
     float new_gyro_z = my_gyro_z-zero_my_gyro_z;
 
-    if(fabs(roll) > 60 || fabs(pitch) > 90){
+    if(fabs(roll) > 60){
         if(carStatus > CAR_STOP){
             beepLong();
             CarStatus_set(CAR_STOP);
@@ -147,7 +147,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 //    printf("%d\r\n", speed);
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);
-    if(flEn){
+    if(fLz){
+        Leg_set_zero();
+    }else if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
     }else if(fwpEn){
         Leg_set_pos(fwpLx, fwpLz, fwpRx, fwpRz);
@@ -161,7 +163,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             lza = Roll_toPosZ(roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
-        lza_ = lpf1(&Filter1_xAx, lpf0(&Filter0_xAx, lza));
+        lza_ = lpf0(&Filter0_xAx, lpf1(&Filter1_xAx, lza));
         float k = (legZ - bridgeZ) / (defaultLegZ - bridgeZ);
 
         if (lza_ < 0) {

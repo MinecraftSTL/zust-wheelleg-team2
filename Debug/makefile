@@ -47,6 +47,7 @@ RM := rm -rf
 -include libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/subdir.mk
 -include libraries/infineon_libraries/Configurations/subdir.mk
 -include code/wifiImage/subdir.mk
+-include code/sys/subdir.mk
 -include code/process/subdir.mk
 -include code/pit/subdir.mk
 -include code/pid/subdir.mk
@@ -67,7 +68,6 @@ RM := rm -rf
 -include code/VOFA/subdir.mk
 -include code/UART/subdir.mk
 -include code/SysTimer/subdir.mk
--include code/Sys/subdir.mk
 -include code/Status/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C++_DEPS)),)

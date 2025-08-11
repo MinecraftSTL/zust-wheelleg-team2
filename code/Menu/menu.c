@@ -49,7 +49,7 @@ void Page_init(Page *this, char name[], enum PageExtendsType type){
 
 void PageKey_print(Page *this, uint8 row){
     if(!row&&(this->type!=LIST_TYPE || !this->extends.listValue.open)){
-        ips200_show_string_color((240-8*strlen(this->name))/2, 0, this->name, this->select<0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
+        ips200_show_string_color(40, 0, this->name, this->select<0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
     switch(this->type){
         case LIST_TYPE:

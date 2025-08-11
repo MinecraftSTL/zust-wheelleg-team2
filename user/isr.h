@@ -37,10 +37,10 @@
 #ifndef _isr_h
 #define _isr_h
 
+#include <Sys.h>
 #include "../code/pid/Pid_param.h"
 #include "zf_common_headfile.h"
 
-#include "Sys.h"
 
 extern uint8 mute;
 

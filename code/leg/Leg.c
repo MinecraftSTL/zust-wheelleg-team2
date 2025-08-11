@@ -11,7 +11,7 @@ const uint32 freq = 300;
 const float defaultLegX = 0, defaultLegZ = -30;
 float targetLegX, targetLegZ;
 
-float defaultRollAlpha = 0.012;
+float defaultRollAlpha = 0.02;
 
 uint8 rollBalance = 0;
 
@@ -31,14 +31,14 @@ struct LegServoAngle Pos_toServoAngle(float x, float z){
 
     float DBuW = hypot(DFB/2-x,z);
     float ABBuW = acosf((DBuW*DBuW+LBU*LBU-LBD*LBD)/(2*DBuW*LBU));
-    float AWBuFu = atan2f((float)-z, (DFB/2-x));
+    float AWBuFu = atan2f(-z, (DFB/2-x));
     ret.b = PI - (ABBuW+AWBuFu);
 //    printf("%d, %d, %d, %lf\n",-z, (DFB/2-x), -z/(DFB/2-x), AWBuFu);
 //    printf("%lf, %lf, %lf, %lf\n",DBuW, ABBuW, AWBuFu, ret.b);
 
     float DFuW = hypot(DFB/2+x,z);
     float AFFuW = acosf((DFuW*DFuW+LFU*LFU-LFD*LFD)/(2*DFuW*LFU));
-    float AWFuBu = atan2f((float)-z, (DFB/2+x));
+    float AWFuBu = atan2f(-z, (DFB/2+x));
     ret.f = PI - (AFFuW+AWFuBu);
 
     return ret;
@@ -52,7 +52,7 @@ void Servo_limit(float *a){
     *a = func_limit_ab(*a, -1.57, 1.57);
 }
 
-int32 Roll_toPosZ(float roll, float lza){
+float Roll_toPosZ(float roll, float lza){
     float AGC = PI-roll;
     float AWG = atan2f(lza, DLR)- AGC;
     return DLR*tanf(AWG);
@@ -62,6 +62,12 @@ uint32 Radian_toPwmDuty(float rad){
     return PWM_DUTY_MAX/(1000/freq)*(1+rad/PI/PI*5.6);
 }
 
+void Leg_set_zero(){
+    pwm_set_duty(servo_rb, Radian_toPwmDuty(0));
+    pwm_set_duty(servo_rf, Radian_toPwmDuty(0));
+    pwm_set_duty(servo_lf, Radian_toPwmDuty(0));
+    pwm_set_duty(servo_lb, Radian_toPwmDuty(0));
+}
 void Leg_set_duty(float rb, float rf, float lf, float lb){
     Servo_limit(&rb);
     Servo_limit(&rf);
@@ -83,8 +89,7 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 }
 
 const uint32 jumpStep[] = {
-    100,//‘§ ’Õ»
-    135,//…ÏÕ»
+    140,//…ÏÕ»
     100,// ’Õ»
     0,
 };
@@ -95,12 +100,9 @@ void jumpPit(uint32 period, float *legZ){
     Step step = getStep(jumpStep, jumpTime);
     switch(step.step){
         case 0:
-            *legZ = -30;
-            break;
-        case 1:
             *legZ = -140;
             break;
-        case 2:
+        case 1:
             *legZ = -30;
             break;
         default:

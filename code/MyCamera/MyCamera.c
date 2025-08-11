@@ -7,7 +7,7 @@ Image image1;
 Rgb565Image showImage;
 
 int binDeltaT = 0;
-float trapezoidK = 0.8;
+float trapezoidK = 0.6;
 int trapezoidY = 20;
 int maxStartYAdd = 20;
 int bly2RDL = 3;
@@ -32,26 +32,27 @@ int rampY0 = 10;
 int rampY1 = 5;
 float rampZ = -45;
 int barrierY0 = 20;
-int barrierY1 = 55;
-int barrierT = 400;
+int barrierY1 = 60;
+int barrierT = 200;
 int bridgeX = 10;
 int bridgeY = 5;
 float bridgeKPitchX = 0.5;
 int bridgeTI = 1000;
 int bridgeTO = 10000;
 int bridgeS = 125000;
-int bridgeZ = -100;
+float bridgeZ = -100;
+uint8 bridgeDetectL = 0;
 #define cameraAngle (5)
 int errY = 60;
 int errDeltaY = 30;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
 
-float bendV = 650;
-float circleV = 650;
+float bendV = 525;
+float circleV = 525;
 float rampV = -50;
-float barrierV = 500;
-float bridgeV = 70;
+float barrierV = 550;
+float bridgeV = 110;
 
 float cameraV = 0;
 
@@ -735,14 +736,15 @@ void Image_zebra(Image *this, float *cameraV, uint16 *errY){
             break;
         case O_ZEBRA:
             if(statusRunS >= zebraS){
-                CameraStatus_set(NONE);
-                if(carStatus == CAR_RUN && carRunMs > zebraT){
+                if(carStatus == CAR_RUN){
                     CarStatus_set(CAR_START);
+                }else{
+                    CameraStatus_set(NONE);
                 }
             }
             break;
         default:
-            if(zebra){
+            if(zebra && carRunMs > zebraT){
                 if(cameraStatus != NONE){
                     CameraStatus_set(NONE);
                 }
@@ -851,8 +853,9 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
                 CameraStatus_addScore(R_LCIRCLE);
             }
             int16 x, y = -1;
-            if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 &&
-                    (lInfN <= 1 || (PI < lInfRad[1] || lInfRad[1] < PI*3/4-facingErr) || Inflection_getFacing(lInfRad[0]) == 3)){
+//            if(lInfN == 0 || lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 &&
+//                    (lInfN <= 1 || !(PI*3/4+facingErr < lInfRad[1] && lInfRad[1] < PI) || Inflection_getFacing(lInfRad[0]) == 3)){
+            if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/2)){
                 if(lInfN > 1 && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, rBorder, lLine[lInfLine[1]][0], lLine[lInfLine[1]][1], rStart[0], rStart[1]);
                     x = lLine[lInfLine[1]][0];
@@ -909,7 +912,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case O_LCIRCLE:
-            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4)){
+            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4) || lStraight && rStraight){
                 CameraStatus_addScore(NONE);
             }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
@@ -949,8 +952,9 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
                 CameraStatus_addScore(R_RCIRCLE);
             }
             int16 x, y=-1;
-            if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 &&
-                    (rInfN <= 1 || (PI/4+facingErr < rInfRad[1] || rInfRad[1] < 0) || Inflection_getFacing(rInfRad[0]) == 4)){
+//            if(rInfN == 0 || rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 &&
+//                    (rInfN <= 1 || !(0 < rInfRad[1] && rInfRad[1] < PI/4-facingErr) || Inflection_getFacing(rInfRad[0]) == 4)){
+            if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/2)){
                 if(rInfN > 1 && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, lBorder, rLine[rInfLine[1]][0], rLine[rInfLine[1]][1], lStart[0], lStart[1]);
                     x=rLine[rInfLine[1]][0];
@@ -1007,7 +1011,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case O_RCIRCLE:
-            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4)){
+            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4) || lStraight && rStraight){
                 CameraStatus_addScore(NONE);
             }
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
@@ -1090,6 +1094,10 @@ void Image_barrier(Image *this, float *cameraV, uint16 *errY){
     }
 }
 void Image_bridge(Image *this, float *cameraV, uint16 *errY){
+    if(I_BRIDGE < cameraStatus && cameraStatus <= O_BRIDGE){
+        rollBalance = 1;
+        targetLegZ = bridgeZ;
+    }
     switch(cameraStatus){
         case NONE:
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
@@ -1105,6 +1113,133 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                 }
                 if(notRamp){
                     CameraStatus_addScore(I_BRIDGE);
+                    break;
+                }
+            }
+            if(bridgeDetectL && lStraight &&rStraight){
+                uint16 lDot[MT9V03X_H][2], rDot[MT9V03X_H][2], lDotN = 0, rDotN = 0;
+                for(uint16 i=100; i>straightYMin; --i){
+                    lDot[lDotN][0] = i;
+                    lDot[lDotN][1] = lBorder[i];
+                    ++lDotN;
+                    rDot[rDotN][0] = i;
+                    rDot[rDotN][1] = rBorder[i];
+                    ++rDotN;
+                }
+                float lSlope, lIntercept, rSlope, rIntercept;
+                leastSquares(lDot, lDotN, &lSlope, &lIntercept);
+                leastSquares(rDot, rDotN, &rSlope, &rIntercept);
+                lIntercept+=5;
+                rIntercept-=5;
+                uint16 lWb=0, lBw=0, rWb=0, rBw=0;
+                for(uint16 i=straightYMin; i>0; --i){
+                    if(!lWb){
+                        if(!Image_get(this, i*lSlope+lIntercept, i) && Image_get(this, (i+1)*lSlope+lIntercept, i+1) &&
+                                !Image_get(this, (i-1)*lSlope+lIntercept, i-1) && Image_get(this, (i+2)*lSlope+lIntercept, i+2)){
+                            lWb = i;
+                            uint8 l=0, r=0;
+                            for(uint16 j=i+1; j>=i-1; --j){
+                                if(!Image_get(this, j*lSlope+lIntercept-1, j) && Image_get(this, (j+1)*lSlope+lIntercept, j+1) &&
+                                        !Image_get(this, (j-1)*lSlope+lIntercept, j-1) && Image_get(this, (j+2)*lSlope+lIntercept, j+2)){
+                                    l=1;
+                                }
+                                if(!Image_get(this, j*lSlope+lIntercept-1, j) && Image_get(this, (j+1)*lSlope+lIntercept, j+1) &&
+                                        !Image_get(this, (j-1)*lSlope+lIntercept, j-1) && Image_get(this, (j+2)*lSlope+lIntercept, j+2)){
+                                    r=1;
+                                }
+                                if(!j){
+                                    break;
+                                }
+                            }
+                            if(!l || !r){
+                                lWb = 0;
+                            }
+                        }
+                    }
+                    if(!rWb){
+                        if(!Image_get(this, i*rSlope+rIntercept, i) && Image_get(this, (i+1)*rSlope+rIntercept, i+1) &&
+                                !Image_get(this, (i-1)*rSlope+rIntercept, i-1) && Image_get(this, (i+2)*rSlope+rIntercept, i+2)){
+                            rWb = i;
+                        }
+                        uint8 l=0, r=0;
+                        for(uint16 j=i+1; j>=i-1; --j){
+                            if(!Image_get(this, j*rSlope+rIntercept-1, j) && Image_get(this, (j+1)*rSlope+rIntercept, j+1) &&
+                                    !Image_get(this, (j-1)*rSlope+rIntercept, j-1) && Image_get(this, (j+2)*rSlope+rIntercept, j+2)){
+                                l=1;
+                            }
+                            if(!Image_get(this, j*rSlope+rIntercept-1, j) && Image_get(this, (j+1)*rSlope+rIntercept, j+1) &&
+                                    !Image_get(this, (j-1)*rSlope+rIntercept, j-1) && Image_get(this, (j+2)*rSlope+rIntercept, j+2)){
+                                r=1;
+                            }
+                            if(!j){
+                                break;
+                            }
+                        }
+                        if(!l || !r){
+                            rWb = 0;
+                        }
+                    }
+                    if(!lBw){
+                        if(Image_get(this, i*lSlope+lIntercept, i) && !Image_get(this, (i+1)*lSlope+lIntercept, i+1) &&
+                                Image_get(this, (i-1)*lSlope+lIntercept, i-1) && !Image_get(this, (i+2)*lSlope+lIntercept, i+2)){
+                            lBw = i;
+                        }
+                        uint8 l=0, r=0;
+                        for(uint16 j=i+1; j>=i-1; --j){
+                            if(Image_get(this, j*lSlope+lIntercept-1, j) && !Image_get(this, (j+1)*lSlope+lIntercept, j+1) &&
+                                    Image_get(this, (j-1)*lSlope+lIntercept, j-1) && !Image_get(this, (j+2)*lSlope+lIntercept, j+2)){
+                                l=1;
+                            }
+                            if(Image_get(this, j*lSlope+lIntercept-1, j) && !Image_get(this, (j+1)*lSlope+lIntercept, j+1) &&
+                                    Image_get(this, (j-1)*lSlope+lIntercept, j-1) && !Image_get(this, (j+2)*lSlope+lIntercept, j+2)){
+                                r=1;
+                            }
+                            if(!j){
+                                break;
+                            }
+                        }
+                        if(!l || !r){
+                            lBw = 0;
+                        }
+                    }
+                    if(!rBw){
+                        if(Image_get(this, i*rSlope+rIntercept, i) && !Image_get(this, (i+1)*rSlope+rIntercept, i+1) &&
+                                Image_get(this, (i-1)*rSlope+rIntercept, i-1) && !Image_get(this, (i+2)*rSlope+rIntercept, i+2)){
+                            rBw = i;
+                        }
+                        uint8 l=0, r=0;
+                        for(uint16 j=i+1; j>=i-1; --j){
+                            if(Image_get(this, j*rSlope+rIntercept-1, j) && !Image_get(this, (j+1)*rSlope+rIntercept, j+1) &&
+                                    Image_get(this, (j-1)*rSlope+rIntercept, j-1) && !Image_get(this, (j+2)*rSlope+rIntercept, j+2)){
+                                l=1;
+                            }
+                            if(Image_get(this, j*rSlope+rIntercept-1, j) && !Image_get(this, (j+1)*rSlope+rIntercept, j+1) &&
+                                    Image_get(this, (j-1)*rSlope+rIntercept, j-1) && !Image_get(this, (j+2)*rSlope+rIntercept, j+2)){
+                                r=1;
+                            }
+                            if(!j){
+                                break;
+                            }
+                        }
+                        if(!l || !r){
+                            rBw = 0;
+                        }
+                    }
+                }
+                if(lWb && lBw && rWb && rBw){
+                    if(lWb > lBw && rWb > rBw){
+                        if(lBw >= rWb){
+                            uint16 mid = (lWb+lBw)>>1;
+                            if(Image_get(this, mid*rSlope+rIntercept-1, mid) && Image_get(this, (mid+1)*rSlope+rIntercept-1, mid+1)){
+                                CameraStatus_addScore(I_BRIDGE);
+                            }
+                        }else if(lWb <= rBw){
+                            uint16 mid = (rWb+rBw)>>1;
+                            if(Image_get(this, mid*lSlope+lIntercept-1, mid) && Image_get(this, (mid+1)*lSlope+lIntercept-1, mid+1)){
+                                CameraStatus_addScore(I_BRIDGE);
+                            }
+                        }
+                    }
                 }
             }
             break;
@@ -1157,18 +1292,20 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             }
             break;
         case I_LBRIDGE:
-            rollBalance = 1;
-            targetLegZ = bridgeZ;
             if(lInfN == 0 || lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 1 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
                 CameraStatus_addScore(O_LBRIDGE);
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
                 Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[3]][0], lLine[lInfLine[3]][1]);
+            }else if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+                Image_borderSetDLine(this, lBorder, lLine[lInfLine[1]][1]-bridgeY);
             }
             if(rInfN > 3 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1 &&
                     Inflection_getFacing(rInfRad[2]) == 4 && Inflection_getFacing(rInfRad[3]) == 2){
                 Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
+            }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2){
+                Image_borderSetDLine(this, rBorder, rLine[rInfLine[1]][1]-bridgeY);
             }
             *cameraV = bridgeV;
             if(PID_vVx.Ek_sum < 0){
@@ -1176,8 +1313,6 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             }
             break;
         case O_LBRIDGE:
-            rollBalance = 1;
-            targetLegZ = bridgeZ;
             if(lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                 if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
                     CameraStatus_addScore(I_RBRIDGE);
@@ -1201,33 +1336,14 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             }
             break;
         case I_RBRIDGE:
-            rollBalance = 1;
-            targetLegZ = bridgeZ;
             if(rInfN == 0 || rInfN > 0 && Inflection_getFacing(lInfRad[1]) == 2 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                 CameraStatus_addScore(O_RBRIDGE);
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
                 Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[3]][0], lLine[lInfLine[3]][1]);
-            }
-            if(rInfN > 3 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1 &&
-                    Inflection_getFacing(rInfRad[2]) == 4 && Inflection_getFacing(rInfRad[3]) == 2){
-                Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
-            }
-            *cameraV = bridgeV;
-            if(PID_vVx.Ek_sum < 0){
-                PID_vVx.Ek_sum = 0;
-            }
-            break;
-        case O_RBRIDGE:
-            rollBalance = 1;
-            targetLegZ = bridgeZ;
-            if(rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
-                if(lInfN > 0 && Inflection_getFacing(lInfRad[1]) == 2 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
-                    CameraStatus_addScore(I_LBRIDGE);
-                }else{
-                    CameraStatus_addScore(O_BRIDGE);
-                }
+            }else if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+                Image_borderSetDLine(this, lBorder, lLine[lInfLine[1]][1]-bridgeY);
             }
             if(rInfN > 3 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1 &&
                     Inflection_getFacing(rInfRad[2]) == 4 && Inflection_getFacing(rInfRad[3]) == 2){
@@ -1235,9 +1351,31 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2){
                 Image_borderSetDLine(this, rBorder, rLine[rInfLine[1]][1]-bridgeY);
             }
+            *cameraV = bridgeV;
+            if(PID_vVx.Ek_sum < 0){
+                PID_vVx.Ek_sum = 0;
+            }
+            break;
+        case O_RBRIDGE:
+            if(rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+                if(lInfN > 0 && Inflection_getFacing(lInfRad[1]) == 2 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
+                    CameraStatus_addScore(I_LBRIDGE);
+                }else{
+                    CameraStatus_addScore(O_BRIDGE);
+                }
+            }
+
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
                 Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[3]][0], lLine[lInfLine[3]][1]);
+            }else if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+                Image_borderSetDLine(this, lBorder, lLine[lInfLine[1]][1]-bridgeY);
+            }
+            if(rInfN > 3 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1 &&
+                    Inflection_getFacing(rInfRad[2]) == 4 && Inflection_getFacing(rInfRad[3]) == 2){
+                Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
+            }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2){
+                Image_borderSetDLine(this, rBorder, rLine[rInfLine[1]][1]-bridgeY);
             }
             *cameraV = bridgeV;
             if(PID_vVx.Ek_sum < 0){
@@ -1245,10 +1383,20 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             }
             break;
         case O_BRIDGE:
-            rollBalance = 1;
-            targetLegZ = bridgeZ;
             if(statusKeepMs >= bridgeTO || statusRunS >= bridgeS){
                 CameraStatus_set(NONE);
+            }
+            if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
+                    Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
+                Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[3]][0], lLine[lInfLine[3]][1]);
+            }else if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+                Image_borderSetDLine(this, lBorder, lLine[lInfLine[1]][1]-bridgeY);
+            }
+            if(rInfN > 3 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1 &&
+                    Inflection_getFacing(rInfRad[2]) == 4 && Inflection_getFacing(rInfRad[3]) == 2){
+                Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
+            }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2){
+                Image_borderSetDLine(this, rBorder, rLine[rInfLine[1]][1]-bridgeY);
             }
             *cameraV = bridgeV;
             break;
@@ -1351,7 +1499,7 @@ void Image_processCamera(){
                 while(camera_process_cnt);
             }
         }
-        Image_cut(&image, 1, 0, image.w-1, image.h);
+        Image_cut(&image, 5, 0, image.w, image.h);//TODO:矫正摄像头后删除
         Image_binaryzation(&image, binDeltaT);
 
 //        Image_drawBlackFrame(&image);

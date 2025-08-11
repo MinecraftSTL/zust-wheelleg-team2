@@ -4,11 +4,11 @@
  *  Created on: 2024Äê12ÔÂ23ÈÕ
  *      Author: minec
  */
+#include <Sys.h>
 #include "Beep.h"
 
 #include "isr.h"
 
-#include "Sys.h"
 
 int volume = 3;
 
