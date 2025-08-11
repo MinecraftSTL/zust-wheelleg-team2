@@ -8,7 +8,7 @@
 #ifndef CODE_MENU_PIDPAGE_H_
 #define CODE_MENU_PIDPAGE_H_
 
-#include "../pid/Pid.h"
+#include "Pid.h"
 #include "Menu.h"
 
 typedef struct PidPage{

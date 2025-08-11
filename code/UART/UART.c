@@ -82,7 +82,7 @@ void My_Vofa_CallBack(void)
 * @param : void
 * @return: void
 * @date  : 2025Äê1ÔÂ14ÈÕ23:52:42
-* @author: SJX
+* @author: STL
 ************************************************/
 void Vofa_Adjust(void)
 {

@@ -29,7 +29,7 @@ void AboutPage_press(Page *this, uint8 pressed[]);
 
 int Int_pow(int this, int pow);
 void Int_toString(int this, char *str, uint8 num);
-void Double_toString(float this, char *str, uint8 num, uint8 point);
+void Double_toString(double this, char *str, uint8 num, uint8 point);
 
 void Menu_init(char *exclude[]){
     for(Menu_excludeLen=0; Menu_excludeLen<256; ++Menu_excludeLen){
@@ -404,7 +404,7 @@ Page *IntPage_init(Page *this, char name[], int32 *value, int32 min, int32 max){
     return this;
 }
 void IntPage_print(Page *this, uint8 row){
-    char str[7] = {0};
+    char str[11] = {0};
     Int_toString(*this->extends.intValue.value, str, 9);
     for(int i=0; i<10; ++i){
         if(!str[i]){
@@ -591,7 +591,7 @@ flash_data_union FloatPage_writeFlash(Page *this){
     return ret;
 }
 
-Page *DoublePage_init(Page *this, char name[], float *value, float min, float max){
+Page *DoublePage_init(Page *this, char name[], double *value, double min, double max){
     Page_init(this, name, DOUBLE_TYPE);
     this->extends.doubleValue.value = value;
     this->extends.doubleValue.min = min;

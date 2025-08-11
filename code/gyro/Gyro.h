@@ -26,6 +26,13 @@
 #define my_acc_y icm42688_acc_y
 #define my_acc_x icm42688_acc_x
 
+#define tran_gyro_z my_gyro_z
+#define tran_gyro_y my_gyro_y
+#define tran_gyro_x my_gyro_x
+#define tran_acc_z my_acc_z
+#define tran_acc_y my_acc_y
+#define tran_acc_x my_acc_x
+
 #define Gravity_G 9.80665f
 
 #define Gyro_Kp_back 50.f

@@ -51,7 +51,7 @@ void Flash_init(void)
         }
         ++alreadyWritedCount;
     }
-    zf_assert(alreadyWritedCount == 0 || alreadyWritedCount == EEPROM_PAGE_NUM-1);
+    zf_assert(alreadyWritedCount != 0 && alreadyWritedCount != EEPROM_PAGE_NUM-1);
 }
 
 void Flash_WriteAllVal(void)

@@ -34,7 +34,7 @@
 #define ICM42688_CS_PIN         (P20_13)
 
 // 对ICM42688的CS管脚进行高低电平操作
-#define ICM42688_CS_LEVEL(level)    ((level) ? (gpio_high(ICM20602_CS_PIN)) : (gpio_low(ICM20602_CS_PIN)))
+#define ICM42688_CS_LEVEL(level)    ((level) ? (gpio_high(ICM42688_CS_PIN)) : (gpio_low(ICM42688_CS_PIN)))
 
 extern float icm42688_acc_x  , icm42688_acc_y  , icm42688_acc_z  ;   // 声明ICM42688加速度计数据
 extern float icm42688_gyro_x , icm42688_gyro_y , icm42688_gyro_z ;   // 声明ICM42688角加速度数据
