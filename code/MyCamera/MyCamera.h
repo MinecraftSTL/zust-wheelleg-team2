@@ -7,16 +7,18 @@
 
 typedef enum{
     NONE,
-    IN_ZEBRA,
-    OUT_ZEBRA,
+    I_ZEBRA,
+    O_ZEBRA,
     IN_CROSS,
     CROSS,
-    OUT_CROSS,
-    IN_LCIRCLE,
+    O_CROSS,
+    I_LCIRCLE,
+    PTL_LCIRCLE,
     TL_LCIRCLE,
-    L_CIRCLE,
+    LCIRCLE,
     TR_LCIRCLE,
-    OUT_LCIRCLE,
+    PO_LCIRCLE,
+    O_LCIRCLE,
 }CameraStatus;
 
 typedef struct{
