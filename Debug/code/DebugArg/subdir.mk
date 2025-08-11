@@ -4,28 +4,28 @@
 
 # 将这些工具调用的输入和输出添加到构建变量 
 C_SRCS += \
-"../code/DebugArg/DebugArg.c" 
+"../code/debugArg/DebugArg.c" 
 
 COMPILED_SRCS += \
-"code/DebugArg/DebugArg.src" 
+"code/debugArg/DebugArg.src" 
 
 C_DEPS += \
-"./code/DebugArg/DebugArg.d" 
+"./code/debugArg/DebugArg.d" 
 
 OBJS += \
-"code/DebugArg/DebugArg.o" 
+"code/debugArg/DebugArg.o" 
 
 
 # 每个子目录必须为构建它所贡献的源提供规则
-"code/DebugArg/DebugArg.src":"../code/DebugArg/DebugArg.c" "code/DebugArg/subdir.mk"
+"code/debugArg/DebugArg.src":"../code/debugArg/DebugArg.c" "code/debugArg/subdir.mk"
 	cctc -cs --dep-file="$*.d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<"
-"code/DebugArg/DebugArg.o":"code/DebugArg/DebugArg.src" "code/DebugArg/subdir.mk"
+"code/debugArg/DebugArg.o":"code/debugArg/DebugArg.src" "code/debugArg/subdir.mk"
 	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
 
-clean: clean-code-2f-DebugArg
+clean: clean-code-2f-debugArg
 
-clean-code-2f-DebugArg:
-	-$(RM) ./code/DebugArg/DebugArg.d ./code/DebugArg/DebugArg.o ./code/DebugArg/DebugArg.src
+clean-code-2f-debugArg:
+	-$(RM) ./code/debugArg/DebugArg.d ./code/debugArg/DebugArg.o ./code/debugArg/DebugArg.src
 
-.PHONY: clean-code-2f-DebugArg
+.PHONY: clean-code-2f-debugArg
 

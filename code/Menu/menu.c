@@ -547,7 +547,6 @@ void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
         this->extends.enumValue.names[i][PAGE_VALUE_MAX] = '\0';
     }
     this->extends.enumValue.update = NULL;
-    printf("%c\r\n",this->extends.enumValue.names[0][1]);
 }
 void EnumPage_print(Page *this, uint8 row){
     if(!row){

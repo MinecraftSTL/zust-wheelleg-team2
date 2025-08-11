@@ -79,6 +79,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
 
 float kZero = 0;
 float xZero = 4;
+float kPitchX = 0;
 
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
@@ -103,16 +104,13 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         legZ = defaultLegZ;
     }
     if(carStatus >= CAR_BALANCE){
-    //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;
         if(carStatus >= CAR_RUN){
             targetV = cameraV;
         }
-//        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
-//        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
-        legX += pid(&PID_vVx, targetV, Encoder_speed)/1000;
-//        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
-        tg_pitchV += pid(&PID_WxAy, kZero, pitch);
+        float tg_pitchX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
+        legX += tg_pitchX;
+        tg_pitchV += pid(&PID_WxAy, kZero-kPitchX*tg_pitchX, pitch);
         if(carStatus >= CAR_RUN){
             tg_yawV = pid(&PID_vAz, 0, camera_err);
         }
@@ -126,7 +124,6 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     int speed = 0, turn = 0;
     if(carStatus >= CAR_START){
         speed = lpf(&Filter_speed, pid(&PID_WvAy, tg_pitchV, new_gyro_y));
-        speed = lpf(&Filter_speed, speed);
         turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
     }else{
         PID_clear(&PID_WvAy);
@@ -171,7 +168,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
         Leg_set_pos(lx, lz, rx, rz);
     }
-    Camera_pit(PIT10ms, Encoder_speed);
+    Camera_pit(PIT10ms, Encoder_speed_l<Encoder_speed_r ? Encoder_speed_l : Encoder_speed_r);
 }
 
 IFX_INTERRUPT(cc61_pit_ch1_isr, CCU6_1_CH1_INT_VECTAB_NUM, CCU6_1_CH1_ISR_PRIORITY)

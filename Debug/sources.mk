@@ -24,8 +24,6 @@ SECONDARY_SIZE :=
 
 # 此处必须描述包含源文件的每个子目录
 SUBDIRS := \
-code/DebugArg \
-code/Flash \
 code/Motor \
 code/Status \
 code/Sys \
@@ -33,7 +31,9 @@ code/SysTimer \
 code/UART \
 code/VOFA \
 code/beep \
+code/debugArg \
 code/filter \
+code/flash \
 code/foc \
 code/fps \
 code/gyro \

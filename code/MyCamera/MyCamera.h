@@ -1,5 +1,5 @@
-#ifndef __MyCamera_H
-#define __MyCamera_H
+#ifndef MyCamera_H
+#define MyCamera_H
 
 #include "MyHeadfile.h"
 
@@ -69,20 +69,25 @@ extern float straightErr;
 extern float statusJump;
 extern float statusK;
 extern int zebraY;
-extern int zebraStartT;
-extern int zebraStopT;
+extern int zebraT;
+extern int zebraS;
 extern int crossX;
+extern int crossY;
 extern int circleX;
 extern int circleY;
 extern float circleLine;
-extern int rampX;
+extern int rampS;
+extern int rampY;
+extern int rampZ;
 extern int barrierY0;
 extern int barrierY1;
 extern int barrierT;
+extern int bridgeX;
 extern int bridgeY;
+extern float bridgeKPitchX;
 extern int bridgeTI;
 extern int bridgeTO;
-extern int bridgeX;
+extern int bridgeS;
 extern int bridgeZ;
 extern int errY;
 extern int errDeltaY;
@@ -92,6 +97,7 @@ extern uint8 showWait;
 extern float bendV;
 extern float circleV;
 extern float rampV;
+extern float barrierV;
 extern float bridgeV;
 
 extern float cameraV;

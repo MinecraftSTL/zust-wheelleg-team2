@@ -11,7 +11,7 @@
  * 转向环PID参数分配空间0:48-63
  * 基准速度参数分配空间0:64-71
  */
-#include "FLASH.H"
+#include <Flash.h>
 
 uint8 g_flash_enable_flag = 1;                         //flash启用标志位，为1代表启用，为0默认启用,extern全局变量
 

@@ -11,7 +11,7 @@ const uint32 freq = 300;
 const float defaultLegX = 0, defaultLegZ = -30;
 float targetLegX, targetLegZ;
 
-const float defaultRollAlpha = 0.01;
+float defaultRollAlpha = 0.012;
 
 uint8 rollBalance = 0;
 
@@ -83,9 +83,9 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 }
 
 const uint32 jumpStep[] = {
-    200,//‘§ ’Õ»
+    100,//‘§ ’Õ»
     135,//…ÏÕ»
-    200,// ’Õ»
+    100,// ’Õ»
     0,
 };
 

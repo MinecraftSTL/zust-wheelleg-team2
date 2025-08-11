@@ -37,13 +37,16 @@ float pid(PID *this, float TargetValue, float ActualValue)//¸Ä°æpid
 }
 
 void PID_clone(PID *this, PID *target){
+    PID_cloneArg(this, target);
+    target->Ek_ = this->Ek_;
+    target->Ek_sum = this->Ek_sum;
+}
+void PID_cloneArg(PID *this, PID *target){
     target->Kp = this->Kp;
     target->Ki = this->Ki;
     target->Kd = this->Kd;
     target->Max_I = this->Max_I;
     target->Max_Out = this->Max_Out;
-    target->Ek_ = this->Ek_;
-    target->Ek_sum = this->Ek_sum;
 }
 
 void PID_clear(PID *this)

@@ -12,6 +12,7 @@
 #include "Sys.h"
 
 #include "DebugArg.h"
+#include "Flash.h"
 #include "Pit.h"
 #include "Leg.h"
 #include "Motor.h"
@@ -20,7 +21,6 @@
 #include "Gyro.h"
 #include "Beep.h"
 #include "VOFA.h"
-#include "FLASH.h"
 #include "SYSTIMER.h"
 #include "UART.h"
 #include "Status.h"

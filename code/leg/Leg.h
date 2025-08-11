@@ -33,7 +33,7 @@ struct LegServoAngle{
 extern const float defaultLegX, defaultLegZ;
 extern float targetLegX, targetLegZ;
 
-extern const float defaultRollAlpha;
+extern float defaultRollAlpha;
 
 extern uint8 rollBalance;
 

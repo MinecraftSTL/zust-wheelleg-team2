@@ -43,9 +43,9 @@
 #include "Sys.h"
 
 extern uint8 mute;
-extern float kZero, xZero;
 
-extern uint8 menuJump;
+extern float kZero, xZero;
+extern float kPitchX;
 
 #endif
 
