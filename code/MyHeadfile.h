@@ -5,11 +5,14 @@
 
 #include "zf_common_headfile.h"
 
+#include "cpu0_main.h"
+#include "cpu1_main.h"
+#include "isr.h"
+
 #include "Beep.h"
 #include "menu.h"
 #include "MyCamera.h"
 #include "MyEncoder.h"
-#include "Gyro.h"
 #include "Leg.h"
 #include "Motor.h"
 #include "PID.h"

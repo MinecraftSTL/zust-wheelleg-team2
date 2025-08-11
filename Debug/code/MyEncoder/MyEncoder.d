@@ -324,30 +324,50 @@ code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC37
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu0_main.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu0_main.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Myheadfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Myheadfile.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
-code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h :
-code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h :
-code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyro.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyro.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/leg/Leg.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/leg/Leg.h :
-code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
-code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/Motor.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/Motor.h :
-code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/foc/small_driver_uart_control.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/foc/small_driver_uart_control.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h

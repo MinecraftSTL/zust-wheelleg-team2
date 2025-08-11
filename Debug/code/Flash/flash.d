@@ -328,26 +328,46 @@ code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Openso
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu0_main.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu0_main.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Myheadfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Myheadfile.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
-code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h :
-code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h :
-code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyro.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyro.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/leg/Leg.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/leg/Leg.h :
-code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
-code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/Motor.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/Motor.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/VOFA/VOFA.h

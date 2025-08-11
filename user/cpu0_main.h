@@ -56,12 +56,11 @@
 #include "Sys.h"
 
 #include "menu.h"
-#include "cpu1_main.h"
 
 #include "PID.h"
 #include "zf_device_mpu6050.h"
 #include "MyEncoder.h"
-#include "Gyro.h"
+#include "Gyroscope.h"
 
 #include "PID_param.h"
 /******************************************************************************/

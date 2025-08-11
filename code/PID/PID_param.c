@@ -6,10 +6,13 @@
  */
 #include "PID_param.h"
 
-PID pitch, Vx;
+PID PID_WPitch, PID_vVx, PID_LPitch;
 
 void PID_param_init(){
-    PID_init(&pitch, 200, 0, 800, 10000, 4000);
-//    PID_init(&Vx, 40, 0.2, 0, 1000000, 100000);
-    PID_init(&Vx, 0, 0, 0, 1000000, 100000);
+//    PID_init(&PID_WPitch, 200, 0, 800, 10000, 4000);
+//    PID_init(&PID_vVx, 0.2, 0, 40, 10000, 10000);
+//    PID_init(&PID_LPitch, 0.5, 0, 1, 10000, 100);
+    PID_init(&PID_WPitch, 80, 0, 400, 10000, 4000);
+    PID_init(&PID_vVx, 0.2, 0, 40, 10000, 10000);
+    PID_init(&PID_LPitch, 0, 0, 0, 10000, 100);
 }
