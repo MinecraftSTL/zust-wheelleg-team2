@@ -53,7 +53,6 @@ void core2_main(void)
     for(;;)
     {
         // 此处编写需要循环执行的代码
-        GetSpeed();
         MotorPit();
         if(zero){
             zero = 0;

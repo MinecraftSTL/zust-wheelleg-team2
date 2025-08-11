@@ -6,12 +6,16 @@
 #define MAX_BLY ((MT9V03X_W)*4)
 
 typedef enum{
-    NONE,
+    CAMERA_STATUS_NONE,
     I_ZEBRA,
     O_ZEBRA,
     I_CROSS,
     R_CROSS,
     O_CROSS,
+    I_LBLOCK,
+    O_LBLOCK,
+    I_RBLOCK,
+    O_RBLOCK,
     I_LCIRCLE,
     TI_LCIRCLE,
     R_LCIRCLE,
@@ -74,6 +78,8 @@ extern int zebraY;
 extern int zebraT;
 extern int zebraS;
 extern int crossX;
+extern int blockY;
+extern int circleX;
 extern int rampS;
 extern int rampY;
 extern float rampZ;
