@@ -168,6 +168,11 @@ uint8 Page_readFlash(Page *this){
 uint8 Page_writeFlash(Page *this, uint8 check[(PAGE_FLASH_MOD-1)/(sizeof(uint8))+1]){
     char path[PAGE_PATH_MAX+1];
     Page_getPath(this, path);
+    for(uint8 i=0; i<Menu_excludeLen; ++i){
+        if(String_startWith(path, Menu_exclude[i])){
+            return 1;
+        }
+    }
     uint32 hash = String_hash(path, PAGE_FLASH_MOD);
     uint32 page_num = hash/FLASH_PAGE_USE;
     uint16 page_index = hash%FLASH_PAGE_USE;

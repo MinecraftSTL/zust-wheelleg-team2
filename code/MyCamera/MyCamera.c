@@ -30,8 +30,10 @@ int circleX = 7;
 int circleY = 80;
 float circleLine = 0.4;
 int rampS = 800000;
+int rampX = 5;
 int rampY = 40;
-float rampK = 0.04;
+int rampZ = -60;
+float rampK = 0.1;
 int barrierY0 = 20;
 int barrierY1 = 36;
 int barrierT = 200;
@@ -48,9 +50,9 @@ int errDeltaY = 30;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
 
-float bendV = 525;
-float circleV = 525;
-float rampV = -50;
+float bendV = 550;
+float circleV = 550;
+float rampV = 100;
 float bridgeV = 125;
 
 float cameraV = 0;
@@ -675,7 +677,7 @@ uint64 statusKeepMs = 0;
 int64 statusRunS = 0;
 void CameraStatus_set(CameraStatus value){
     beepMid();
-    memset(statusScore, 0.f, sizeof(float)*CAMERA_STATUS_NUMBER);
+    memset(statusScore, 0x00, sizeof(float)*CAMERA_STATUS_NUMBER);
     statusKeepMs = 0;
     statusRunS = 0;
 
@@ -745,7 +747,7 @@ void Image_zebra(Image *this, float *cameraV, uint16 *errY){
         case O_ZEBRA:
             if(statusRunS >= zebraS){
                 if(carStatus == CAR_RUN){
-                    CarStatus_set(CAR_START);
+                    CarStatus_set(CAR_BALANCE);
                 }else{
                     CameraStatus_set(NONE);
                 }
@@ -1047,34 +1049,65 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
 void Image_ramp(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case NONE:
-            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 4 &&
-                    rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 3){
-                if(this->h - lLine[lInfLine[0]][1] <= 1.25*rampY || this->h - rLine[rInfLine[0]][1] <= 1.25*rampY){
+            {
+                int16 ly0, ly1, ry0, ry1;
+                if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 4){
+                    ly0 = lLine[lInfLine[0]][1];
+                }else if(lInfN ==0){
+                    ly0 = lrMeet;
+                }else{
+                    break;
+                }
+                if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 3){
+                    ry0 = rLine[rInfLine[0]][1];
+                }else if(rInfN ==0){
+                    ry0 = lrMeet;
+                }else{
+                    break;
+                }
+                ly1 = ry1 = 0;
+                for(uint16 i=lStart[1]; i>ly0+rampY; --i){
+                    if(!Image_borderIsLose(this, lBorder, i, 0)){
+                        ly1 = i;
+                        break;
+                    }
+                }
+                for(uint16 i=rStart[1]; i>ry0+rampY; --i){
+                    if(!Image_borderIsLose(this, rBorder, i, 1)){
+                        ry1 = i;
+                        break;
+                    }
+                }
+                if(ly1 - ly0 <= 1.5*rampY || ry1 - ry0 <= 1.5*rampY){
+                    break;
+                }
+                if(!Image_borderIsStraight(this,lBorder,ly0+rampY+rampX,ly1,straightStep,straightErr,0) ||
+                        !Image_borderIsStraight(this,rBorder,ry0+rampY+rampX,ry1,straightStep,straightErr,1)){
                     break;
                 }
                 float lSlope, rSlope, uSlope, dSlope, tIntercept;
                 uint16 pos[MT9V03X_H][2];
                 for(uint16 i = 0; i < rampY; ++i){
-                    pos[i][0] = lLine[lInfLine[0]][1]+i;
-                    pos[i][1] = lBorder[lLine[lInfLine[0]][1]+i];
+                    pos[i][0] = ly0+i;
+                    pos[i][1] = lBorder[ly0+i];
                 }
                 leastSquares(pos, rampY, &uSlope, &tIntercept);
-                for(uint16 i = 0; i < this->h-lLine[lInfLine[0]][1]-rampY; ++i){
-                    pos[i][0] = lLine[lInfLine[0]][1]+i;
-                    pos[i][1] = lBorder[lLine[lInfLine[0]][1]+i];
+                for(uint16 i = 0; i < ly1-ly0-rampY; ++i){
+                    pos[i][0] = ly0+rampY+i;
+                    pos[i][1] = lBorder[ly0+rampY+i];
                 }
-                leastSquares(pos, this->h-lLine[lInfLine[0]][1]-rampY, &dSlope, &tIntercept);
+                leastSquares(pos, ly1-ly0-rampY, &dSlope, &tIntercept);
                 lSlope = uSlope-dSlope;
                 for(uint16 i = 0; i < rampY; ++i){
-                    pos[i][0] = rLine[rInfLine[0]][1]+i;
-                    pos[i][1] = rBorder[rLine[rInfLine[0]][1]+i];
+                    pos[i][0] = ry0+i;
+                    pos[i][1] = rBorder[ry0+i];
                 }
                 leastSquares(pos, rampY, &uSlope, &tIntercept);
-                for(uint16 i = 0; i < this->h-rLine[rInfLine[0]][1]-rampY; ++i){
-                    pos[i][0] = rLine[rInfLine[0]][1]+i;
-                    pos[i][1] = rBorder[rLine[rInfLine[0]][1]+i];
+                for(uint16 i = 0; i < ry1-ry0-rampY; ++i){
+                    pos[i][0] = ry0+rampY+i;
+                    pos[i][1] = rBorder[ry0+rampY+i];
                 }
-                leastSquares(pos, this->h-rLine[rInfLine[0]][1]-rampY, &dSlope, &tIntercept);
+                leastSquares(pos, ry1-ry0-rampY, &dSlope, &tIntercept);
                 rSlope = uSlope-dSlope;
                 if(!isnan(lSlope) && lSlope < rampK || !isnan(rSlope) && -rSlope < rampK){
                     break;
@@ -1083,6 +1116,7 @@ void Image_ramp(Image *this, float *cameraV, uint16 *errY){
             }
             break;
         case RAMP:
+            targetLegZ = rampZ;
             if(statusRunS >= rampS){
                 CameraStatus_set(NONE);
             }
@@ -1284,7 +1318,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
         case I_BRIDGE:
             rollBalance = 1;
             kPitchX = bridgeKPitchX;
-            if(statusKeepMs >= bridgeTI || PID_vVx.Ek_ >= 0){
+            if(statusKeepMs >= bridgeTI || PID_vVx.Ek_ + bridgeV >= 0){
                 uint8 oBridge = 0;
                 if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                         rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){

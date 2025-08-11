@@ -1,6 +1,6 @@
 #include "Motor.h"
 
-float targetV = 650;
+float targetV = 700;
 
 int16 motorPwmLeft = 0, motorPwmRight = 0;
 

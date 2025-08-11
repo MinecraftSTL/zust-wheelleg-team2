@@ -6,8 +6,7 @@
 #include "zf_common_fifo.h"
 
 #include "menu.h"
-
-#include "cpu0_main.h"
+#include "Menu_param.h"
 
 #define UART_INDEX              (DEBUG_UART_INDEX   )                           // д╛хо UART_0
 #define UART_BAUDRATE           (DEBUG_UART_BAUDRATE)                           // д╛хо 115200

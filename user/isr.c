@@ -139,12 +139,14 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         PID_clear(&PID_WvAz);
         LPF1_clear(&Filter1_turn);
     }
-    if(fsEn){
-        speed = fsSpeed;
-        turn = 0;
-    }else if(wheelClear){
-        speed = 2500;
-        turn = 0;
+    if(carStatus == CAR_STOP){
+        if(fsEn){
+            speed = fsSpeed;
+            turn = 0;
+        }else if(wheelClear){
+            speed = 2500;
+            turn = 0;
+        }
     }
     if(carStatus >= CAR_BALANCE){
         if(!fCd){
