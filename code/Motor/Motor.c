@@ -37,5 +37,5 @@ void MotorSetPWM(int pwm_left,int pwm_right)
     //控制电机正反转和转速
     //左电机
 
-    small_driver_set_duty(pwm_left, pwm_right);
+    small_driver_set_duty(-pwm_left, pwm_right);
 }

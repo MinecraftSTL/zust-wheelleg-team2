@@ -76,37 +76,43 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     }
 }
 
-
 IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU60_CH1);
 }
+
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
-    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-    gyro_get_gyro();
-    float VxDownAy = pid(&Vx, V0, Encoder_speed)/1000;
-//    printf("%d, %d, %d\r\n",mpu6050_gyro_x,mpu6050_gyro_y,mpu6050_gyro_z);
-//    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
-//    printf("%f,%f,%f\r\n", -xAx,downAy,-VxDownAy);
-
-    float speed = pid(&pitch, downAy-VxDownAy, xAy);
-//    printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
-    if(!car_run){
-        xAx=xAy=xAz=speed=0;
-        downAy_init();
-        VxDownAy=0;
+    float speed = 0;
+    if(car_run){
+        int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
+    //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
+        gyro_get_gyro();
+        float VxDownAy = pid(&Vx, V0, Encoder_speed)/1000;
+//        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
+    //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
+    //    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
+        printf("%f,%f,%f\r\n", xAy,downAy,VxDownAy);
+        if(fabs(downAy+VxDownAy-xAy)>45){
+            beepLong();
+            car_run=0;
+        }
+        speed = pid(&pitch, downAy+VxDownAy, xAy);
+    //    printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
+    }else{
+        gyro_reset_xA();
+        downAy_autoSet();
         PID_clear(&Vx);
         PID_clear(&pitch);
     }
     if(fsEn){
         speed = fsSpeed;
     }
-    MotorSetPWM(speed,-speed);
+    MotorSetPWM(speed,speed);
     if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
     }
@@ -325,8 +331,7 @@ IFX_INTERRUPT(uart6_rx_isr, UART6_INT_VECTAB_NUM, UART6_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
 
-
-
+    uart_control_callback();
 }
 
 IFX_INTERRUPT(uart8_tx_isr, UART8_INT_VECTAB_NUM, UART8_TX_INT_PRIO)

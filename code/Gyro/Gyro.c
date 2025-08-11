@@ -17,7 +17,7 @@ float downAy = 0;
 
 uint16 gyro_pitMs = 0;
 
-const float k = 13;
+const float k = 8;
 
 void gyro_init(uint16 pitMs){
     gyro_pitMs = pitMs;
@@ -25,15 +25,18 @@ void gyro_init(uint16 pitMs){
 }
 void gyro_get_acc(){
     icm20602_get_acc();
-    aXx = imu660ra_acc_transition(icm20602_acc_x);
+    aXx = -imu660ra_acc_transition(icm20602_acc_x);
     aXy = imu660ra_acc_transition(icm20602_acc_y);
-    aXz = imu660ra_acc_transition(icm20602_acc_z);
+    aXz = -imu660ra_acc_transition(icm20602_acc_z);
+}
+void gyro_reset_xA(){
+    xAx=xAy=xAz=0;
 }
 void gyro_get_gyro(){
     icm20602_get_gyro();
-    vAx = (imu660ra_gyro_transition(icm20602_gyro_x))*gyro_pitMs/1000;
-    vAy = (imu660ra_gyro_transition(icm20602_gyro_y))*gyro_pitMs/1000;
-    vAz = (imu660ra_gyro_transition(icm20602_gyro_z))*gyro_pitMs/1000;
+    vAx = -(imu660ra_gyro_transition(icm20602_gyro_x))*gyro_pitMs/1000+0.0085;
+    vAy = (imu660ra_gyro_transition(icm20602_gyro_y))*gyro_pitMs/1000+0.0033;
+    vAz = -(imu660ra_gyro_transition(icm20602_gyro_z))*gyro_pitMs/1000-0.0015;
     xAx += vAx;
     xAy += vAy;
     xAz += vAz;
@@ -45,7 +48,7 @@ void gyro_get_gyro(){
     vAz_ = vAz;
 }
 
-void downAy_init(){
+void downAy_autoSet(){
     gyro_get_acc();
-    downAy = (180.0 / PI)*atan(aXy/aXz)+k;
+    downAy = (180. / PI)*atan(aXx/aXz)+k;
 }

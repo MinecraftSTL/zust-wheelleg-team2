@@ -8,7 +8,7 @@
 #include "Debug.h"
 
 int32 fsSpeed = 0;
-uint8 fsEn = 1;
+uint8 fsEn = 0;
 
 float flRb = 0;
 float flRf = 0;

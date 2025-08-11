@@ -16,11 +16,13 @@ void Leg_init(){
     Leg_set_duty(0,0,0,0);
 }
 
-uint32 Radian_toPwmDuty(float rad){
+
+
+uint32 Radian_toPwmDuty(double rad){
     return (rad/PI+0.5)*PWM_DUTY_MAX;
 }
 
-void Leg_set_duty(float rb, float rf, float lf, float lb){
+void Leg_set_duty(double rb, double rf, double lf, double lb){
     pwm_set_duty(servo_rb, Radian_toPwmDuty(rb-0.07));
     pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf-0.21));
     pwm_set_duty(servo_lf, Radian_toPwmDuty(lf-0.06));

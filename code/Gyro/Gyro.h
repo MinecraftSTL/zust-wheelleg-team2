@@ -12,12 +12,14 @@ extern float aAx, aAy, aAz;
 extern float vAx, vAy, vAz;
 extern float vAx_, vAy_, vAz_;
 extern float xAx, xAy, xAz;
+extern float aXx, aXy, aXz;
 extern float downAy;
 
 void gyro_init(uint16 pitMs);
 void gyro_get_acc();
+void gyro_reset_xA();
 void gyro_get_gyro();
 
-void downAy_init();
+void downAy_autoSet();
 
 #endif /* CODE_GYRO_GYRO_H_ */

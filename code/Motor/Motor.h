@@ -11,8 +11,8 @@
 
 #include "small_driver_uart_control.h"
 
-#define MOTOR_PWM_MAX 7500
-#define MOTOR_PWM_MIN -7500
+#define MOTOR_PWM_MAX 5000
+#define MOTOR_PWM_MIN -5000
 
 extern PID Motor_Speed_PID_Left;
 extern PID Motor_Speed_PID_Right;
