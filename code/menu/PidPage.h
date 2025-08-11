@@ -13,9 +13,10 @@
 
 typedef struct PidPage{
     Page Pid;
-    Page Kp, Ki, Kd;
+    Page Kp, Ki, Kd, Max_I, Max_Out;
 }PidPage;
 
 void PidPage_init(PidPage *this, char name[], PID *pid);
+Page *PidPage_getRoot(PidPage *this);
 
 #endif /* CODE_MENU_PIDPAGE_H_ */

@@ -120,24 +120,12 @@ int core0_main(void)
         &menu_main_arg_k,
         &menu_main_arg_PID,
     });
-    ListPage_init(&menu_main_arg_k, "k", 4, (Page*[]){
+    ListPage_init(&menu_main_arg_k, "k", 2, (Page*[]){
         &menu_main_arg_k_kZero,
-        &menu_main_arg_k_speedF,
-        &menu_main_arg_k_lx2s,
         &menu_main_arg_k_camera,
     });
-    FFloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
-    menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
-    FFloatPage_init(&menu_main_arg_k_speedF, "speedF", &Filter_speed.alpha, 0, 1);
-    menu_main_arg_k_speedF.extends.fFloatValue.dot = 0;
-    ListPage_init(&menu_main_arg_k_lx2s, "lx2s", 2, (Page*[]){
-        &menu_main_arg_k_lx2s_a,
-        &menu_main_arg_k_lx2s_k,
-    });
-    FFloatPage_init(&menu_main_arg_k_lx2s_a, "a", &Filter_legX2Speed.alpha, 0, 1);
-    menu_main_arg_k_lx2s.extends.fFloatValue.dot = 0;
-    FFloatPage_init(&menu_main_arg_k_lx2s_k, "k", &kLx2s, 0, 100000);
-    menu_main_arg_k_lx2s.extends.fFloatValue.dot = 6;
+    FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
+    menu_main_arg_k_kZero.extends.floatValue.dot = 1;
     ListPage_init(&menu_main_arg_k_camera, "camera", 2, (Page*[]){
         &menu_main_arg_k_camera_horizon,
         &menu_main_arg_k_camera_deltaH,
@@ -145,12 +133,12 @@ int core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_horizon, "horizon", &camera_horizon, 0, image_h-1);
     IntPage_init(&menu_main_arg_k_camera_deltaH, "deltaH", &delta_camera_horizon, 0, image_h-1);
     ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
-        &menu_main_arg_PID_vAy,
-        &menu_main_arg_PID_xAy,
-        &menu_main_arg_PID_vVx,
-        &menu_main_arg_PID_vAz,
-        &menu_main_arg_PID_turn,
-        &menu_main_arg_PID_xAx,
+        PidPage_getRoot(&menu_main_arg_PID_vAy),
+        PidPage_getRoot(&menu_main_arg_PID_xAy),
+        PidPage_getRoot(&menu_main_arg_PID_vVx),
+        PidPage_getRoot(&menu_main_arg_PID_vAz),
+        PidPage_getRoot(&menu_main_arg_PID_turn),
+        PidPage_getRoot(&menu_main_arg_PID_xAx),
     });
     PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
     PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_WxAy);
@@ -186,14 +174,14 @@ int core0_main(void)
         &menu_main_debug_fl_lb,
     });
     BoolPage_init(&menu_main_debug_fl_en, "enable", &flEn, 0x03);
-    FFloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -1.57, 1.57);
-    FFloatPage_init(&menu_main_debug_fl_rf, "rt_fd", &flRf, -1.57, 1.57);
-    FFloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -1.57, 1.57);
-    FFloatPage_init(&menu_main_debug_fl_lb, "lt_bk", &flLb, -1.57, 1.57);
-    menu_main_debug_fl_lb.extends.fFloatValue.dot
-    =menu_main_debug_fl_lf.extends.fFloatValue.dot
-    =menu_main_debug_fl_rf.extends.fFloatValue.dot
-    =menu_main_debug_fl_rb.extends.fFloatValue.dot=1;
+    FloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -1.57, 1.57);
+    FloatPage_init(&menu_main_debug_fl_rf, "rt_fd", &flRf, -1.57, 1.57);
+    FloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -1.57, 1.57);
+    FloatPage_init(&menu_main_debug_fl_lb, "lt_bk", &flLb, -1.57, 1.57);
+    menu_main_debug_fl_lb.extends.floatValue.dot
+    =menu_main_debug_fl_lf.extends.floatValue.dot
+    =menu_main_debug_fl_rf.extends.floatValue.dot
+    =menu_main_debug_fl_rb.extends.floatValue.dot=1;
     ListPage_init(&menu_main_debug_fwp, "forceWPos", 5, (Page*[]){
         &menu_main_debug_fwp_en,
         &menu_main_debug_fwp_lx,
@@ -202,14 +190,14 @@ int core0_main(void)
         &menu_main_debug_fwp_rz,
     });
     BoolPage_init(&menu_main_debug_fwp_en, "enable", &fwpEn, 0x03);
-    FFloatPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -LEG_MAX_X, LEG_MAX_X);
-    FFloatPage_init(&menu_main_debug_fwp_lz, "lt_z", &fwpLz, -LEG_MAX_Z, -LEG_MIN_Z);
-    FFloatPage_init(&menu_main_debug_fwp_rx, "rt_x", &fwpRx, -LEG_MAX_X, LEG_MAX_X);
-    FFloatPage_init(&menu_main_debug_fwp_rz, "rt_z", &fwpRz, -LEG_MAX_Z, -LEG_MIN_Z);
-    menu_main_debug_fwp_lx.extends.fFloatValue.dot
-    =menu_main_debug_fwp_lz.extends.fFloatValue.dot
-    =menu_main_debug_fwp_rx.extends.fFloatValue.dot
-    =menu_main_debug_fwp_rz.extends.fFloatValue.dot=2;
+    FloatPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -LEG_MAX_X, LEG_MAX_X);
+    FloatPage_init(&menu_main_debug_fwp_lz, "lt_z", &fwpLz, -LEG_MAX_Z, -LEG_MIN_Z);
+    FloatPage_init(&menu_main_debug_fwp_rx, "rt_x", &fwpRx, -LEG_MAX_X, LEG_MAX_X);
+    FloatPage_init(&menu_main_debug_fwp_rz, "rt_z", &fwpRz, -LEG_MAX_Z, -LEG_MIN_Z);
+    menu_main_debug_fwp_lx.extends.floatValue.dot
+    =menu_main_debug_fwp_lz.extends.floatValue.dot
+    =menu_main_debug_fwp_rx.extends.floatValue.dot
+    =menu_main_debug_fwp_rz.extends.floatValue.dot=2;
     BoolPage_init(&menu_main_debug_ffRow, "ffRow", &ffRow, 0x03);
     BoolPage_init(&menu_main_debug_jump, "jump", &menuJump, 0x01);
 

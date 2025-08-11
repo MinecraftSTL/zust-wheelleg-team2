@@ -1012,7 +1012,7 @@ void Lost_Left(void)
 * @date  : 2024年10月25日12:28:00
 * @author: SJX
 ************************************************/
-int camera_horizon = 60;           //前瞻
+int camera_horizon = 40;           //前瞻
 int delta_camera_horizon = 40;
 int Camera_Get_MidErr(void)
 {

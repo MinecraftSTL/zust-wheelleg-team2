@@ -28,7 +28,6 @@ enum PageExtendsType{
     LIST_TYPE,
     INT_TYPE,
     FLOAT_TYPE,
-    FFLOAT_TYPE,
     DOUBLE_TYPE,
     BOOL_TYPE,
 };
@@ -53,19 +52,14 @@ typedef struct Page{
             float *value;
             float min;
             float max;
-            uint8 opened;
-        } floatValue;
-        struct {
-            float *value;
-            float min;
-            float max;
             uint8 dot;
             uint8 opened;
-        } fFloatValue;
+        } floatValue;
         struct {
             double *value;
             double min;
             double max;
+            uint8 dot;
             uint8 opened;
         } doubleValue;
         struct {
@@ -85,7 +79,6 @@ void ListPage_init(Page *this, char name[], uint8 size, Page *key[]);
 void ListPage_setRoot(Page *this);
 void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);
 void FloatPage_init(Page *this, char name[], float *value, float max, float min);
-void FFloatPage_init(Page *this, char name[], float *value, float max, float min);
 void DoublePage_init(Page *this, char name[], double *value, double max, double min);
 void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir);
 

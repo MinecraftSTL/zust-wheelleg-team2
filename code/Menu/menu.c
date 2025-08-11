@@ -15,8 +15,6 @@ void IntPage_print(Page *this, uint8 row);
 void IntPage_press(Page *this, uint8 pressed[]);
 void FloatPage_print(Page *this, uint8 row);
 void FloatPage_press(Page *this, uint8 pressed[]);
-void FFloatPage_print(Page *this, uint8 row);
-void FFloatPage_press(Page *this, uint8 pressed[]);
 void DoublePage_print(Page *this, uint8 row);
 void DoublePage_press(Page *this, uint8 pressed[]);
 void BoolPage_print(Page *this, uint8 row);
@@ -48,9 +46,6 @@ void PageKey_print(Page *this, uint8 row){
         case FLOAT_TYPE:
             FloatPage_print(this, row);
             break;
-        case FFLOAT_TYPE:
-            FFloatPage_print(this, row);
-            break;
         case DOUBLE_TYPE:
             DoublePage_print(this, row);
             break;
@@ -69,9 +64,6 @@ uint8 PageKey_press(Page *this, uint8 pressed[]){
             break;
         case FLOAT_TYPE:
             FloatPage_press(this, pressed);
-            break;
-        case FFLOAT_TYPE:
-            FFloatPage_press(this, pressed);
             break;
         case DOUBLE_TYPE:
             DoublePage_press(this, pressed);
@@ -255,12 +247,13 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max)
     Page_init(this, name, FLOAT_TYPE);
     this->extends.floatValue.value = value;
     this->extends.floatValue.min = min;
-    this->extends.floatValue.max = max;
+    this->extends.floatValue.max = max;;
+    this->extends.floatValue.dot = 4;
     this->extends.floatValue.opened = 0;
 }
 void FloatPage_print(Page *this, uint8 row){
     char str[11] = {0};
-    Double_toString(*this->extends.floatValue.value, str, 4, 2);
+    Double_toString(*this->extends.floatValue.value, str, this->extends.floatValue.dot, 6-this->extends.floatValue.dot);
     for(int i=0; i<8; ++i){
         if(!str[i]){
             break;
@@ -294,26 +287,32 @@ void FloatPage_press(Page *this, uint8 pressed[]){
             if(pressed[UP_KEY] || pressed[DOWN_KEY] || this->extends.floatValue.opened&&(pressed[PERV_KEY]||pressed[NEXT_KEY])){
                 *this->extends.floatValue.value = -*this->extends.floatValue.value;
             }
-        }else if(this->open < 5){
+        }else if(this->open < this->extends.floatValue.dot+1){
             if(pressed[DOWN_KEY] || this->extends.floatValue.opened&&pressed[PERV_KEY]){
-                *this->extends.floatValue.value -= powf(10, 4-this->open);
+                *this->extends.floatValue.value -= powf(10, this->extends.floatValue.dot-this->open);
             }
             if(pressed[UP_KEY] || this->extends.floatValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.floatValue.value += powf(10, 4-this->open);
+                *this->extends.floatValue.value += powf(10, this->extends.floatValue.dot-this->open);
             }
-        }else if(this->open == 5){
+        }else if(this->open == this->extends.floatValue.dot+1){
             if(pressed[DOWN_KEY] || this->extends.floatValue.opened&&pressed[PERV_KEY]){
-                *this->extends.floatValue.value/=10;
+                if(this->extends.floatValue.dot>0){
+                    --this->extends.floatValue.dot;
+                    --this->open;
+                }
             }
             if(pressed[UP_KEY] || this->extends.floatValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.floatValue.value*=10;
+                if(this->extends.floatValue.dot<6){
+                    ++this->extends.floatValue.dot;
+                    ++this->open;
+                }
             }
         }else{
             if(pressed[DOWN_KEY] || this->extends.floatValue.opened&&pressed[PERV_KEY]){
-                *this->extends.floatValue.value -= powf(10, 5-this->open);
+                *this->extends.floatValue.value -= powf(10, this->extends.floatValue.dot+1-this->open);
             }
             if(pressed[UP_KEY] || this->extends.floatValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.floatValue.value += powf(10, 5-this->open);
+                *this->extends.floatValue.value += powf(10, this->extends.floatValue.dot+1-this->open);
             }
         }
         if(*this->extends.floatValue.value < this->extends.floatValue.min){
@@ -332,104 +331,17 @@ void FloatPage_press(Page *this, uint8 pressed[]){
     }
 }
 
-void FFloatPage_init(Page *this, char name[], float *value, float min, float max){
-    Page_init(this, name, FFLOAT_TYPE);
-    this->extends.fFloatValue.value = value;
-    this->extends.fFloatValue.min = min;
-    this->extends.fFloatValue.max = max;;
-    this->extends.fFloatValue.dot = 4;
-    this->extends.fFloatValue.opened = 0;
-}
-void FFloatPage_print(Page *this, uint8 row){
-    char str[11] = {0};
-    Double_toString(*this->extends.fFloatValue.value, str, this->extends.fFloatValue.dot, 6-this->extends.fFloatValue.dot);
-    for(int i=0; i<8; ++i){
-        if(!str[i]){
-            break;
-        }
-        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
-    }
-}
-void FFloatPage_press(Page *this, uint8 pressed[]){
-    if(pressed[LEFT_KEY] || !this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
-        --this->open;
-        if(this->open < -1){
-            this->open = 7;
-        }
-    }
-    if(pressed[RIGHT_KEY] || !this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
-        ++this->open;
-        if(this->open > 7){
-            this->open = -1;
-        }
-    }
-    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[LEFT_KEY] || pressed[RIGHT_KEY]){
-        this->extends.fFloatValue.opened = 0;
-    }
-    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
-        if(this->open < 0){
-            if(pressed[UP_KEY]){
-                PageKey_back(this);
-                return;
-            }
-        }else if(this->open == 0){
-            if(pressed[UP_KEY] || pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&(pressed[PERV_KEY]||pressed[NEXT_KEY])){
-                *this->extends.fFloatValue.value = -*this->extends.fFloatValue.value;
-            }
-        }else if(this->open < this->extends.fFloatValue.dot+1){
-            if(pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
-                *this->extends.fFloatValue.value -= powf(10, this->extends.fFloatValue.dot-this->open);
-            }
-            if(pressed[UP_KEY] || this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.fFloatValue.value += powf(10, this->extends.fFloatValue.dot-this->open);
-            }
-        }else if(this->open == this->extends.fFloatValue.dot+1){
-            if(pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
-                if(this->extends.fFloatValue.dot>0){
-                    --this->extends.fFloatValue.dot;
-                    --this->open;
-                }
-            }
-            if(pressed[UP_KEY] || this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
-                if(this->extends.fFloatValue.dot<6){
-                    ++this->extends.fFloatValue.dot;
-                    ++this->open;
-                }
-            }
-        }else{
-            if(pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
-                *this->extends.fFloatValue.value -= powf(10, this->extends.fFloatValue.dot+1-this->open);
-            }
-            if(pressed[UP_KEY] || this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.fFloatValue.value += powf(10, this->extends.fFloatValue.dot+1-this->open);
-            }
-        }
-        if(*this->extends.fFloatValue.value < this->extends.fFloatValue.min){
-            *this->extends.fFloatValue.value = this->extends.fFloatValue.min;
-        }else if(*this->extends.fFloatValue.value > this->extends.fFloatValue.max){
-            *this->extends.fFloatValue.value = this->extends.fFloatValue.max;
-        }
-    }
-    if(pressed[CENTER_KEY]){
-        if(this->open < 0){
-            PageKey_back(this);
-            return;
-        }else{
-            this->extends.fFloatValue.opened = !this->extends.fFloatValue.opened;
-        }
-    }
-}
-
-void DoublePage_init(Page *this, char name[], double *value, float min, float max){
+void DoublePage_init(Page *this, char name[], float *value, float min, float max){
     Page_init(this, name, DOUBLE_TYPE);
     this->extends.doubleValue.value = value;
     this->extends.doubleValue.min = min;
-    this->extends.doubleValue.max = max;
+    this->extends.doubleValue.max = max;;
+    this->extends.doubleValue.dot = 5;
     this->extends.doubleValue.opened = 0;
 }
 void DoublePage_print(Page *this, uint8 row){
     char str[11] = {0};
-    Double_toString(*this->extends.doubleValue.value, str, 5, 3);
+    Double_toString(*this->extends.doubleValue.value, str, this->extends.doubleValue.dot, 10-this->extends.doubleValue.dot);
     for(int i=0; i<10; ++i){
         if(!str[i]){
             break;
@@ -463,26 +375,32 @@ void DoublePage_press(Page *this, uint8 pressed[]){
             if(pressed[UP_KEY] || pressed[DOWN_KEY] || this->extends.doubleValue.opened&&(pressed[PERV_KEY]||pressed[NEXT_KEY])){
                 *this->extends.doubleValue.value = -*this->extends.doubleValue.value;
             }
-        }else if(this->open < 6){
+        }else if(this->open < this->extends.doubleValue.dot+1){
             if(pressed[DOWN_KEY] || this->extends.doubleValue.opened&&pressed[PERV_KEY]){
-                *this->extends.doubleValue.value -= pow(10, 5-this->open);
+                *this->extends.doubleValue.value -= powf(10, this->extends.doubleValue.dot-this->open);
             }
             if(pressed[UP_KEY] || this->extends.doubleValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.doubleValue.value += pow(10, 5-this->open);
+                *this->extends.doubleValue.value += powf(10, this->extends.doubleValue.dot-this->open);
             }
-        }else if(this->open == 6){
+        }else if(this->open == this->extends.doubleValue.dot+1){
             if(pressed[DOWN_KEY] || this->extends.doubleValue.opened&&pressed[PERV_KEY]){
-                *this->extends.doubleValue.value/=10;
+                if(this->extends.doubleValue.dot>0){
+                    --this->extends.doubleValue.dot;
+                    --this->open;
+                }
             }
             if(pressed[UP_KEY] || this->extends.doubleValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.doubleValue.value*=10;
+                if(this->extends.doubleValue.dot<8){
+                    ++this->extends.doubleValue.dot;
+                    ++this->open;
+                }
             }
         }else{
             if(pressed[DOWN_KEY] || this->extends.doubleValue.opened&&pressed[PERV_KEY]){
-                *this->extends.doubleValue.value -= powf(10, 6-this->open);
+                *this->extends.doubleValue.value -= powf(10, this->extends.doubleValue.dot+1-this->open);
             }
             if(pressed[UP_KEY] || this->extends.doubleValue.opened&&pressed[NEXT_KEY]){
-                *this->extends.doubleValue.value += powf(10, 6-this->open);
+                *this->extends.doubleValue.value += powf(10, this->extends.doubleValue.dot+1-this->open);
             }
         }
         if(*this->extends.doubleValue.value < this->extends.doubleValue.min){

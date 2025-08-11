@@ -12,7 +12,7 @@ void PID_param_init(){
     PID_init(&PID_WvAy, 12, 0, 0, 10000, 5000);
     PID_init(&PID_WxAy, 12, 0, 0, 10000, 10000);
     PID_init(&PID_vVx, 60, 0.03, 0, 1000000, 100000);
-    PID_init(&PID_WvAz, 20, 0, 0, 10000, 10000);
-    PID_init(&PID_vAz, 1, 0, 0, 10000, 10000);
+    PID_init(&PID_WvAz, 1, 0, 2, 10000, 10000);
+    PID_init(&PID_vAz, 80, 0, 0, 10000, 10000);
     PID_init(&PID_xAx, 3, 0, 0, 100000, (LEG_MAX_Z-LEG_MIN_Z)*1000);
 }

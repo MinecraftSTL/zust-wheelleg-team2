@@ -44,7 +44,6 @@
 #include "PID_param.h"
 
 extern float kZero;
-extern float kLx2s;
 
 extern uint8 menuJump;
 
