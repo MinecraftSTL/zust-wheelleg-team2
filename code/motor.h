@@ -36,13 +36,13 @@ extern uint8 annulus_L_memory, annulus_R_memory;
 
 //PID²ÎÊı
 struct PID{
-    float err_;
+    float err_, err__;
     float sum;
     float sum_min;
     float sum_max;
     float out_min;
     float out_max;
-    float Kp,Ki,Kd;
+    float Kp,Ki,Kd,Kdd;
 };
 
 

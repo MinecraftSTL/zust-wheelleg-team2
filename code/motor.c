@@ -21,25 +21,28 @@ float arc_Kd=1.74;
 float   S_number       =   0.03;   //S弯偏差基数   0.2
 float   target_number  =  0.03;  //基础偏差基数   0.45
 struct PID motor_l = {
-        0,0
+        0,0,0,
         -2000,2000,
         -2000,2000,
+        0,
         12.1,  //65    //50    //50
         0.7,  //2.2    //2     //8
         70, // 70    //80    //60
 };
 struct PID motor_r = {
-        0,0,
+        0,0,0,
         -2000,2000,
         -2000,2000,
+        0,
         12.1,  //65    //50    //50
         0.7,  //2.2    //2     //8
         70, // 70    //80    //60
 };
 struct PID motor_turn = {
-        0,0
+        0,0,0,
         -1000,1000,
         -1200,1200,
+        0,
         0, //1.5
         0,
         0, //0.5 //0.8
@@ -79,7 +82,9 @@ float Motor_PID(struct PID *pid, float target_val, float actual_val){
 
     float out=pid->Kp*err +
                 pid->Ki*pid->sum +
-                pid->Kd*(err-pid->err_);
+                pid->Kd*(err-pid->err_) +
+                pid->Kdd*(err-2*pid->err_+pid->err__);
+    pid->err__ = pid->err_;
     pid->err_ = err;
 
     out=func_limit_ab(out, pid->out_min, pid->out_max);

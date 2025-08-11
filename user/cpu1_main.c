@@ -62,10 +62,12 @@ struct PagePageValue menu_PID_motorL;
 struct FloatPageValue menu_PID_motorL_Kp;
 struct FloatPageValue menu_PID_motorL_Ki;
 struct FloatPageValue menu_PID_motorL_Kd;
+struct FloatPageValue menu_PID_motorL_Kdd;
 struct PagePageValue menu_PID_motorR;
 struct FloatPageValue menu_PID_motorR_Kp;
 struct FloatPageValue menu_PID_motorR_Ki;
 struct FloatPageValue menu_PID_motorR_Kd;
+struct FloatPageValue menu_PID_motorR_Kdd;
 struct PagePageValue menu_PID_turn;
 struct FloatPageValue menu_PID_turn_Ki;
 struct PagePageValue menu_PID_turn_straight;
@@ -104,18 +106,22 @@ void core1_main(void)
         new_PageKey("Kp", FLOAT_TYPE, &menu_PID_motorL_Kp),
         new_PageKey("Ki", FLOAT_TYPE, &menu_PID_motorL_Ki),
         new_PageKey("Kd", FLOAT_TYPE, &menu_PID_motorL_Kd),
-    }, 3);
+        new_PageKey("Kdd", FLOAT_TYPE, &menu_PID_motorL_Kdd),
+    }, 4);
     FloatPageValue_init(&menu_PID_motorL_Kp, &(motor_l.Kp), 100., -100., 0.1);
     FloatPageValue_init(&menu_PID_motorL_Ki, &(motor_l.Ki), 100., -100., 0.1);
     FloatPageValue_init(&menu_PID_motorL_Kd, &(motor_l.Kd), 1000., -1000., 10);
+    FloatPageValue_init(&menu_PID_motorL_Kdd, &(motor_l.Kdd), 1000., -1000., 10);
     PagePageValue_init(&menu_PID_motorR, &(struct PageKey[]){
         new_PageKey("Kp", FLOAT_TYPE, &menu_PID_motorR_Kp),
         new_PageKey("Ki", FLOAT_TYPE, &menu_PID_motorR_Ki),
         new_PageKey("Kd", FLOAT_TYPE, &menu_PID_motorR_Kd),
-    }, 3);
+        new_PageKey("Kdd", FLOAT_TYPE, &menu_PID_motorR_Kdd),
+    }, 4);
     FloatPageValue_init(&menu_PID_motorR_Kp, &(motor_r.Kp), 100., -100., 0.1);
     FloatPageValue_init(&menu_PID_motorR_Ki, &(motor_r.Ki), 100., -100., 0.1);
     FloatPageValue_init(&menu_PID_motorR_Kd, &(motor_r.Kd), 1000., -1000., 10);
+    FloatPageValue_init(&menu_PID_motorR_Kdd, &(motor_r.Kdd), 1000., -1000., 10);
     PagePageValue_init(&menu_PID_turn, &(struct PageKey[]){
         new_PageKey("Ki", FLOAT_TYPE, &menu_PID_turn_Ki),
         new_PageKey("straight", PAGE_TYPE, &menu_PID_turn_straight),
