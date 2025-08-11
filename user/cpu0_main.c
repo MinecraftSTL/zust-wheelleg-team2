@@ -222,7 +222,7 @@ void core0_main(void)
         &menu_main_arg_k_camera_e_zebra_y,
         NULL
     });
-    IntPage_init(&menu_main_arg_k_camera_e_zebra_y, "y", &zebraY, 0, MT9V03X_H-1);
+    IntPage_init(&menu_main_arg_k_camera_e_zebra_y, "y", &zebraY, 0, MT9V03X_H-1-3);
     ListPage_init(&menu_main_arg_k_camera_e_cross, "cross", (Page*[]){
         &menu_main_arg_k_camera_e_cross_y,
         &menu_main_arg_k_camera_e_cross_x,

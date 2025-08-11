@@ -30,10 +30,6 @@ typedef struct{
     uint16 image[MT9V03X_IMAGE_SIZE];
     uint16 h, w;
 }Rgb565Image;
-typedef struct{
-    uint16 y;
-    float x;
-}Inverse;
 extern int camera_err;
 
 extern Rgb565Image showImage;

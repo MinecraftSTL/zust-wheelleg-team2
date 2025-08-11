@@ -85,7 +85,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kZero = -9;
+float kZero = -11;
 
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
@@ -106,7 +106,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
     }
 
-    float tg_pitchV = 0, tg_yawV = 0, legX = 0, legZ = -30;
+    float tg_pitchV = 0, tg_yawV = 0, legX = 0, legZ = -45;
     if(carStatus){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;

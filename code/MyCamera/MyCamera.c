@@ -4,10 +4,9 @@
 
 Image image;
 Image image1;
-Image inverseImage;
 Rgb565Image showImage;
 
-int binDeltaT = 0;
+int binDeltaT = -16;
 int inverseY = 50;
 float inverseX = 0.004;
 int bly2RDL = 3;
@@ -26,8 +25,6 @@ int errY = 60;
 int errDeltaY = 30;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
-
-Inverse inverse;
 
 uint16 lStartPoint[2];
 uint16 rStartPoint[2];
@@ -172,39 +169,6 @@ void Rgb565Image_mark(Rgb565Image *this, uint16 y, uint16 x, uint16 color, uint1
     for(int i = -r; i <= r; ++i){
         Rgb565Image_set(this, y-i, x-i, color);
         Rgb565Image_set(this, y+i, x-i, color);
-    }
-}
-
-void Inverse_init(Inverse *this, uint16 y ,float x){
-    this->y = y;
-    this->x = x;
-}
-void Inverse_imagePosToPos(Inverse *this, Image *image, int16 y0, int16 x0, int16 *y1, int16 *x1){
-    *y1 = y0;
-    *x1 = (x0-image->w/2)*(1-this->x*(y0-this->y))+image->w/2;
-}
-void Inverse_imagePosFromPos(Inverse *this, Image *image, int16 y0, int16 x0, int16 *y1, int16 *x1){
-    *y1 = y0;
-    *x1 = (x0-image->w/2)/(1-this->x*(y0-this->y))+image->w/2;
-}
-void Inverse_image(Inverse *this, Image *image, Image *target){
-    zf_assert(this && target);
-    target->h = image->h;
-    target->w = image->w;
-    for(uint16 i=0; i<image->h; ++i){
-        for(uint16 j=0; j<image->w; ++j){
-            int16 y,x;
-            Inverse_imagePosFromPos(this, image, i, j, &y, &x);
-            Image_set(target, i, j, Image_get(image, y, x));
-        }
-    }
-}
-void Inverse_bly(Inverse *this, Image *image, int16 bly[MAX_BLY][2], uint16 blyL){
-    for(uint16 i=0; i<blyL; ++i){
-        int16 y,x;
-        Inverse_imagePosToPos(this, image, bly[i][0], bly[i][1], &y, &x);
-        bly[i][0] = y;
-        bly[i][1] = x;
     }
 }
 
@@ -386,12 +350,12 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
                 rStop = 1;
             }
         }
-        if (lStop && rStop){
-            break;
-        }
         if (abs(rLine[*rLineL-1][0] - lLine[*lLineL-1][0]) < 2
             && abs(rLine[*rLineL-1][1] - lLine[*lLineL-1][1]) < 2){
             *meet = (rLine[*rLineL-1][0] + lLine[*lLineL-1][0])>>1;
+            break;
+        }
+        if (lStop && rStop){
             break;
         }
     }
@@ -424,36 +388,6 @@ uint8 inline Image_borderIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16
 uint8 inline Image_borderIsNoneLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
     for(uint16 i=y0; i<=y1; ++i){
         if(Image_borderIsLose(this, border, i, dir)){
-            return 0;
-        }
-    }
-    return 1;
-}
-uint8 inline Image_inverseBorderXIsLose(Image *this, Inverse *inverse, uint16 y, uint16 x, uint8 dir){
-    if(Image_borderXIsLose(this, y, x, dir)){
-        return 1;
-    }
-    int16 iy, ix;
-    Inverse_imagePosFromPos(inverse, this, y, x, &iy, &ix);
-    if(Image_borderXIsLose(this, iy, ix, dir)){
-        return 1;
-    }
-    return 0;
-}
-uint8 inline Image_inverseBorderIsLose(Image *this, Inverse *inverse, uint16 border[MT9V03X_H], uint16 y, uint8 dir){
-    return Image_inverseBorderXIsLose(this, inverse, y, border[y], dir);
-}
-uint8 inline Image_inverseBorderIsAllLose(Image *this, Inverse *inverse, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
-    for(uint16 i=y0; i<=y1; ++i){
-        if(!Image_inverseBorderIsLose(this, inverse, border, i, dir)){
-            return 0;
-        }
-    }
-    return 1;
-}
-uint8 inline Image_inverseBorderIsNoneLose(Image *this, Inverse *inverse, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
-    for(uint16 i=y0; i<=y1; ++i){
-        if(Image_inverseBorderIsLose(this, inverse, border, i, dir)){
             return 0;
         }
     }
@@ -583,7 +517,7 @@ void Image_blyToRadDir(Image *this, int16 bly[MAX_BLY][2], uint16 blyL, uint16 l
     for(uint16 i=0; i<*retN; ++i){
         ret[i]=atan2f(-(bly[(i+1)*l][0]-bly[i*l][0]), bly[(i+1)*l][1]-bly[i*l][1]);
         for(uint16 j=i*l; j<=(i+1)*l; ++j){
-            if(bly[j][0] == 0 || bly[j][0] == this->h-1 || Image_inverseBorderXIsLose(this, &inverse, bly[j][0], bly[j][1], 0) || Image_inverseBorderXIsLose(this, &inverse, bly[j][0], bly[j][1], 1)){
+            if(bly[j][0] == 0 || bly[j][0] == this->h-1 || Image_borderXIsLose(this, bly[j][0], bly[j][1], 0) || Image_borderXIsLose(this, bly[j][0], bly[j][1], 1)){
                 ret[i] = NAN;
                 break;
             }
@@ -602,7 +536,6 @@ void RadDir_toInflection(float this[MAX_BLY], int16 thisPos[MAX_BLY][2], uint16 
         if(PI/2-NormalizeAngle_toPi2(Angle_normalize(this[i+1]-this[i-1])) <= err){
             ret[*retN][0] = thisPos[i][0];
             ret[*retN][1] = thisPos[i][1];
-//            retRad[*retN] = atan2f(sinf(this[i+1])-sinf(this[i-1]),cosf(this[i+1])-cosf(this[i-1]));
             float nA = Angle_normalize(this[i-1]+PI);
             retRad[*retN] = Angle_normalize((this[i+1]+nA)/2+(fabsf(this[i+1]-nA)>PI?PI:0));
             ++*retN;
@@ -633,7 +566,7 @@ void Image_zebraCrossing(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[
     int edge_sum = 0;
     for(uint16 zebra_row = y; zebra_row < y+3; zebra_row++)
     {
-        for(uint16 i=lBorder[zebra_row];i<this->w/2;i++)
+        for(uint16 i=lBorder[zebra_row];i<=this->w/2;i++)
         {
             if(Image_get(this, zebra_row, i) && Image_get(this, zebra_row, i+1) &&
                     !Image_get(this, zebra_row, i+2) && !Image_get(this, zebra_row,i+3))
@@ -743,8 +676,7 @@ int Image_middleToErr(Image *this, int16 middle[MT9V03X_W], uint16 y, uint16 del
 }
 
 void Image_processForShow(){
-    Inverse_image(&inverse, &image, &inverseImage);
-    Image_toRgb565Image(&inverseImage, &showImage);
+    Image_toRgb565Image(&image, &showImage);
     for(uint16 i=0; i<lLineL; ++i){
         Rgb565Image_set(&showImage, lLine[i][0], lLine[i][1], RGB565_YELLOW);
     }
@@ -760,11 +692,8 @@ void Image_processForShow(){
     for(uint16 i=0; i<showImage.h; ++i){
         Rgb565Image_set(&showImage, i, mLine[i], i >= errY && i < errY+errDeltaY ? RGB565_RED : RGB565_BLUE);
     }
-    int16 y, x;
-    Inverse_imagePosToPos(&inverse, &image, lStartPoint[0], lStartPoint[1], &y, &x);
-    Rgb565Image_set(&showImage, y, x, RGB565_RED);
-    Inverse_imagePosToPos(&inverse, &image, rStartPoint[0], rStartPoint[1], &y, &x);
-    Rgb565Image_set(&showImage, y, x, RGB565_RED);
+    Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
+    Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
     for(uint16 i=0; i<lInflectionN; ++i){
         Rgb565Image_mark(&showImage, lInflection[i][0], lInflection[i][1], RGB565_RED, 2);
         Rgb565Image_set(&showImage, lInflection[i][0]-sinf(lInflectionDir[i])*6, lInflection[i][1]+cosf(lInflectionDir[i])*6, RGB565_RED);
@@ -803,11 +732,8 @@ void Image_processCamera(){
         Image_binaryzation(&image, binDeltaT);
         Image_getStartPoint(&image, lStartPoint, rStartPoint);
         Image_drawRectan(&image);
-        Inverse_init(&inverse, inverseY, inverseX);
         Image_bly(&image, image.h*3, lLine, rLine, lLineDir, rLineDir,
                 &lLineL, &rLineL, &lrMeet, lStartPoint, rStartPoint);
-        Inverse_bly(&inverse, &image, lLine, lLineL);
-        Inverse_bly(&inverse, &image, rLine, rLineL);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);
         Image_blyToBorder(&image, 1, rLine, rLineL, rBorder);
         Image_blyCutByBorder(&image, lBorder, 0, lLine, &lLineL);
