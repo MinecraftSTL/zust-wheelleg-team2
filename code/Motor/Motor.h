@@ -10,8 +10,10 @@
 #include "MyEncoder.h"
 #include "MyCamera.h"
 
-#define MOTOR_PWM_MAX 2500
-#define MOTOR_PWM_MIN -2500
+#include "small_driver_uart_control.h"
+
+#define MOTOR_PWM_MAX 7500
+#define MOTOR_PWM_MIN -7500
 
 extern PID Motor_Speed_PID_Left;
 extern PID Motor_Speed_PID_Right;
@@ -32,7 +34,6 @@ extern int pwm_left, pwm_right;
 // ±¸×¢ÐÅÏ¢
 #define     func_limit_ab(x, a, b)  ((x) < (a) ? (a) : ((x) > (b) ? (b) : (x)))
 
-void Motor_Init(void);
 void MotorSetPWM(int pwm_left,int pwm_right);
 
 #endif

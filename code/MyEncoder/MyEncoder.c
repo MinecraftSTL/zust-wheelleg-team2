@@ -8,8 +8,8 @@ int switch_encoder_change_num = 0;
 
 void MyEncoder_Init(void)
 {
-    encoder_dir_init(TIM2_ENCODER, ENCODER_L, ENCODER_DIR_L);//×óÂÖ±àÂëÆ÷
-    encoder_dir_init(TIM6_ENCODER, ENCODER_R, ENCODER_DIR_R);//ÓÒÂÖ±àÂëÆ÷
+//    encoder_dir_init(TIM2_ENCODER, ENCODER_L, ENCODER_DIR_L);//×óÂÖ±àÂëÆ÷
+//    encoder_dir_init(TIM6_ENCODER, ENCODER_R, ENCODER_DIR_R);//ÓÒÂÖ±àÂëÆ÷
     encoder_quad_init(TIM3_ENCODER, Switch_ENCODER_L, Switch_ENCODER_R);
 //    encoder_dir_init(TIM3_ENCODER, Switch_ENCODER_L, Switch_ENCODER_R);
 
@@ -46,8 +46,9 @@ int16 Encoder_MTM(encoder_index_enum gptn,int n,uint8 direct)
 void GetSpeed(void)
 {
  // »ñÈ¡±àÂëÆ÷µÄÖµ
-    Encoder_speed_l = -Encoder_MTM(TIM2_ENCODER,3,1);
-    Encoder_speed_r = -Encoder_MTM(TIM6_ENCODER,3,0);
+    small_driver_get_speed();
+    Encoder_speed_l = motor_value.receive_left_speed_data;
+    Encoder_speed_r = motor_value.receive_right_speed_data;
 //    Encoder_speed_r = -Encoder_MTM(TIM3_ENCODER,1,1);
 };
 
@@ -72,7 +73,7 @@ void Get_Switch_Num(void)
 //            last_switch_encoder_num, switch_encoder_num);
     switch_encoder_change_num = switch_encoder_num - last_switch_encoder_num;
     if(switch_encoder_change_num){
-        beepSTime();
+        beepShort();
     }
     last_switch_encoder_num = switch_encoder_num;
 }

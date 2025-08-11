@@ -21,12 +21,12 @@ void beepStop(){
 void beep(uint32 time){
     beepTime = time;
 }
-void beepSTime(){
+void beepShort(){
     beep(1);
 }
-void beepMTime(){
+void beepMid(){
     beep(10);
 }
-void beepLTime(){
+void beepLong(){
     beep(100);
 }

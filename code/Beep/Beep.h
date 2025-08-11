@@ -16,9 +16,9 @@ void beepStart();
 void beepStop();
 
 void beep(uint32 time);
-void beepSTime();
-void beepMTime();
-void beepLTime();
+void beepShort();
+void beepMid();
+void beepLong();
 
 
 #endif /* CODE_BEEP_BEEP_H_ */

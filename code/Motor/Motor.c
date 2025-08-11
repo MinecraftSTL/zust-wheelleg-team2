@@ -15,21 +15,6 @@ float V0 = 0;
 //float straight_V0 = 100;
 float basic_V0 = 120;
 int pwm_left = 0,pwm_right = 0;
-
-/***********************************************
-* @brief : 电机初始化
-* @param : void
-* @return: void
-* @date  : 2024年10月3日19:54:24
-* @author: 钱文杰
-************************************************/
-void Motor_Init(void)
-{
-    pwm_init(MOTOR_LEFT_1,12500,0);                   //初始化左电机
-    pwm_init(MOTOR_LEFT_2,12500,0);
-    pwm_init(MOTOR_RIGHT_1,12500,0);                  //初始化右电机
-    pwm_init(MOTOR_RIGHT_2,12500,0);
-}
 /***********************************************
 * @brief : PWM输出
 * @param : void
@@ -52,27 +37,5 @@ void MotorSetPWM(int pwm_left,int pwm_right)
     //控制电机正反转和转速
     //左电机
 
-//    pwm_left = 1000;
-//    pwm_right = 1000;
-    if(pwm_left >= 0)
-    {
-        pwm_set_duty(MOTOR_LEFT_1,pwm_left);
-        pwm_set_duty(MOTOR_LEFT_2,0);
-    }
-    else
-    {
-        pwm_set_duty(MOTOR_LEFT_1,0);
-        pwm_set_duty(MOTOR_LEFT_2,-pwm_left);
-    }
-    //右电机
-    if(pwm_right >= 0)
-    {
-        pwm_set_duty(MOTOR_RIGHT_1,pwm_right);
-        pwm_set_duty(MOTOR_RIGHT_2,0);
-    }
-    else
-    {
-        pwm_set_duty(MOTOR_RIGHT_1,0);
-        pwm_set_duty(MOTOR_RIGHT_2,-pwm_right);
-    }
+    small_driver_set_duty(pwm_left, pwm_right);
 }

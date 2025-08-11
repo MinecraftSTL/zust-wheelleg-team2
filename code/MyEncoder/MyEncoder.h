@@ -4,6 +4,8 @@
 #include "MyHeadFile.h"
 #include "IfxGpt12_IncrEnc.h"
 
+#include "small_driver_uart_control.h"
+
 typedef struct
 {
         uint8 distance_record_status;

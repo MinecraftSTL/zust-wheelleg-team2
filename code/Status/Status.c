@@ -35,7 +35,7 @@ void Car_Stop(void)
 void Car_Start(void)
 {
     system_delay_ms(1000);
-    beepSTime();
+    beepShort();
     g_Car_Status = status_car_start;
     PID_clear(&Motor_Speed_PID_Left);
     PID_clear(&Motor_Speed_PID_Right);

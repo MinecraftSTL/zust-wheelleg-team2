@@ -92,8 +92,8 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     {
         mpu6050_get_gyro();
-        vAx = (imu660ra_gyro_transition(mpu6050_gyro_y-3)-0.06)*PIT10ms/1000;
-        vAy = -(imu660ra_gyro_transition(mpu6050_gyro_x+35)-0.023)*PIT10ms/1000;
+        vAx = (imu660ra_gyro_transition(mpu6050_gyro_x+35)-0.023)*PIT10ms/1000;
+        vAy = (imu660ra_gyro_transition(mpu6050_gyro_y-3)-0.06)*PIT10ms/1000;
         vAz = (imu660ra_gyro_transition(mpu6050_gyro_z+11)-0.034)*PIT10ms/1000;
         xAx += vAx;
         xAy += vAy;
@@ -105,23 +105,25 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         vAy_ = vAy;
         vAz_ = vAz;
     }
-    VxDownAy += pid(&Vy, V0, Encoder_speed)/1000;
+    VxDownAy += pid(&Vx, V0, Encoder_speed)/1000;
     VxDownAy = func_limit(VxDownAy, 15);
 //    printf("%d, %d, %d\r\n",mpu6050_gyro_x,mpu6050_gyro_y,mpu6050_gyro_z);
 //    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
-//    printf("%f,%f,%f\r\n", -xAx,downAx,-VyDownAx);
+    printf("%f,%f,%f\r\n", -xAx,downAy,-VxDownAy);
 
     float speed = pid(&pitch, downAy-VxDownAy, xAy);
-    printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
+//    printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     if(!car_run){
         xAx=xAy=xAz=speed=0;
         downAy_init();
-        PID_clear(&Vy);
+        VxDownAy=0;
+        PID_clear(&Vx);
         PID_clear(&pitch);
     }
-    float motorLPWM = pid(&motorL, speed, Encoder_speed_l);
-    float motorRPWM = pid(&motorR, speed, Encoder_speed_r);
-    MotorSetPWM(motorLPWM,motorRPWM);
+    if(fsEn){
+        speed = fsSpeed;
+    }
+    MotorSetPWM(speed,-speed);
 }
 
 IFX_INTERRUPT(cc61_pit_ch1_isr, CCU6_1_CH1_INT_VECTAB_NUM, CCU6_1_CH1_ISR_PRIORITY)

@@ -46,6 +46,7 @@ RM := rm -rf
 -include libraries/infineon_libraries/Infra/Ssw/TC37A/Tricore/subdir.mk
 -include libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/subdir.mk
 -include libraries/infineon_libraries/Configurations/subdir.mk
+-include code/foc/subdir.mk
 -include code/VOFA/subdir.mk
 -include code/UART/subdir.mk
 -include code/SysTimer/subdir.mk

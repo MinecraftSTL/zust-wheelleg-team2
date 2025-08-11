@@ -37,6 +37,7 @@ code/Sys \
 code/SysTimer \
 code/UART \
 code/VOFA \
+code/foc \
 libraries/infineon_libraries/Configurations \
 libraries/infineon_libraries/Infra/Platform/Tricore/Compilers \
 libraries/infineon_libraries/Infra/Ssw/TC37A/Tricore \

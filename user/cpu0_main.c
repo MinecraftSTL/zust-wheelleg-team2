@@ -32,17 +32,7 @@
 * 日期              作者                备注
 * 2022-09-15       pudding            first version
 ********************************************************************************************************************/
-#include "zf_common_headfile.h"
-
-#include "menu.h"
-#include "cpu1_main.h"
-
-#include "PID.h"
-#include "zf_device_mpu6050.h"
-#include "MyEncoder.h"
-#include "Gyro.h"
-
-#include "PID_param.h"
+#include "cpu0_main.h"
 
 #pragma section all "cpu0_dsram"
 // 将本语句与#pragma section all restore语句之间的全局变量都放在CPU0的RAM中
@@ -60,99 +50,84 @@ uint8 pressed = 0;
 
 Page menu_main;
 Page menu_main_PID;
-Page menu_main_start;
-Page menu_main_debug;
-Page menu_main_debug_speed;
-Page menu_main_PID_motorL;
-Page menu_main_PID_motorL_Kp;
-Page menu_main_PID_motorL_Ki;
-Page menu_main_PID_motorL_Kd;
-Page menu_main_PID_motorR;
-Page menu_main_PID_motorR_Kp;
-Page menu_main_PID_motorR_Ki;
-Page menu_main_PID_motorR_Kd;
-Page menu_main_PID_Vy;
-Page menu_main_PID_Vy_Kp;
-Page menu_main_PID_Vy_Ki;
-Page menu_main_PID_Vy_Kd;
 Page menu_main_PID_pitch;
 Page menu_main_PID_pitch_Kp;
 Page menu_main_PID_pitch_Ki;
 Page menu_main_PID_pitch_Kd;
+Page menu_main_PID_Vx;
+Page menu_main_PID_Vx_Kp;
+Page menu_main_PID_Vx_Ki;
+Page menu_main_PID_Vx_Kd;
+Page menu_main_carRun;
+Page menu_main_debug;
+Page menu_main_debug_fs;
+Page menu_main_debug_fs_speed;
+Page menu_main_debug_fs_en;
+
+int32 fsSpeed = 0;
+uint8 fsEn = 1;
 
 int core0_main(void)
 {
     clock_init();                   // 获取时钟频率<务必保留>
-    debug_init();                   // 初始化默认调试串口
+//    debug_init();                   // 初始化默认调试串口
     // 此处编写用户代码 例如外设初始化代码等
     beepStart();
     ips200_init(IPS200_TYPE_SPI);
     mpu6050_init();
-    MyEncoder_Init();
     key_init(PIT00ms);
-    Motor_Init();
+    small_driver_uart_init();
+    MyEncoder_Init();
     PID_param_init();
     pit_ms_init(CCU60_CH0, PIT00ms);
     pit_ms_init(CCU61_CH0, PIT10ms);
     beepStop();
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
-    menu_main.parent = NULL;
-    ListPage_init(&menu_main, "main", 3, &(Page*[]){
+    ListPage_setRoot(&menu_main);
+    ListPage_init(&menu_main, "main", 3, (Page*[]){
         &menu_main_PID,
-        &menu_main_start,
+        &menu_main_carRun,
         &menu_main_debug,
     });
-    ListPage_init(&menu_main_debug, "debug", 1, &(Page*[]){
-        &menu_main_debug_speed,
-    });
-    FloatPage_init(&menu_main_debug_speed, "speed", &V0, -100, 100);
-    ListPage_init(&menu_main_PID, "PID", 4, &(Page*[]){
-        &menu_main_PID_motorL,
-        &menu_main_PID_motorR,
+    ListPage_init(&menu_main_PID, "PID", 2, (Page*[]){
         &menu_main_PID_pitch,
-        &menu_main_PID_Vy,
+        &menu_main_PID_Vx,
     });
-    ListPage_init(&menu_main_PID_motorL, "motorL", 3, &(Page*[]){
-        &menu_main_PID_motorL_Kp,
-        &menu_main_PID_motorL_Ki,
-        &menu_main_PID_motorL_Kd,
-    });
-    FloatPage_init(&menu_main_PID_motorL_Kp, "Kp", &motorL.Kp, -1000, 1000);
-    FloatPage_init(&menu_main_PID_motorL_Ki, "Ki", &motorL.Ki, -1000, 1000);
-    FloatPage_init(&menu_main_PID_motorL_Kd, "Kd", &motorL.Kd, -1000, 1000);
-    ListPage_init(&menu_main_PID_motorR, "motorR", 3, &(Page*[]){
-        &menu_main_PID_motorR_Kp,
-        &menu_main_PID_motorR_Ki,
-        &menu_main_PID_motorR_Kd,
-    });
-    FloatPage_init(&menu_main_PID_motorR_Kp, "Kp", &motorR.Kp, -1000, 1000);
-    FloatPage_init(&menu_main_PID_motorR_Ki, "Ki", &motorR.Ki, -1000, 1000);
-    FloatPage_init(&menu_main_PID_motorR_Kd, "Kd", &motorR.Kd, -1000, 1000);
-    ListPage_init(&menu_main_PID_pitch, "pitch", 3, &(Page*[]){
+    ListPage_init(&menu_main_PID_pitch, "pitch", 3, (Page*[]){
         &menu_main_PID_pitch_Kp,
         &menu_main_PID_pitch_Ki,
         &menu_main_PID_pitch_Kd,
     });
-    FloatPage_init(&menu_main_PID_pitch_Kp, "Kp", &pitch.Kp, -1000, 1000);
-    FloatPage_init(&menu_main_PID_pitch_Ki, "Ki", &pitch.Ki, -1000, 1000);
-    FloatPage_init(&menu_main_PID_pitch_Kd, "Kd", &pitch.Kd, -1000, 1000);
-    ListPage_init(&menu_main_PID_Vy, "Vy", 3, &(Page*[]){
-        &menu_main_PID_Vy_Kp,
-        &menu_main_PID_Vy_Ki,
-        &menu_main_PID_Vy_Kd,
+    FFloatPage_init(&menu_main_PID_pitch_Kp, "Kp", &pitch.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_PID_pitch_Ki, "Ki", &pitch.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_PID_pitch_Kd, "Kd", &pitch.Kd, 0, 10000);
+    ListPage_init(&menu_main_PID_Vx, "Vx", 3, (Page*[]){
+        &menu_main_PID_Vx_Kp,
+        &menu_main_PID_Vx_Ki,
+        &menu_main_PID_Vx_Kd,
     });
-    FloatPage_init(&menu_main_PID_Vy_Kp, "Kp", &Vy.Kp, -1000, 1000);
-    FloatPage_init(&menu_main_PID_Vy_Ki, "Ki", &Vy.Ki, -1000, 1000);
-    FloatPage_init(&menu_main_PID_Vy_Kd, "Kd", &Vy.Kd, -1000, 1000);
-    menu_main_start.parent = &menu_main;
-    BoolPage_init(&menu_main_start, "start", &car_run, 0x03);
-    PageKey_print(&menu_main);
+    FFloatPage_init(&menu_main_PID_Vx_Kp, "Kp", &Vx.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_PID_Vx_Ki, "Ki", &Vx.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_PID_Vx_Kd, "Kd", &Vx.Kd, 0, 10000);
+    BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
+    ListPage_init(&menu_main_debug, "debug", 1, (Page*[]){
+        &menu_main_debug_fs,
+    });
+    ListPage_init(&menu_main_debug_fs, "forceSpeed", 2, (Page*[]){
+        &menu_main_debug_fs_speed,
+        &menu_main_debug_fs_en,
+    });
+    IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
+    BoolPage_init(&menu_main_debug_fs_en, "enable", &fsEn, 0x03);
+
+    beepShort();
+    PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
         if(pressed){
             PageKey_press(&menu_main, pressed);
-            PageKey_print(&menu_main);
+            PageKey_print(&menu_main, 0);
             pressed=0;
         }
         // 此处编写需要循环执行的代码

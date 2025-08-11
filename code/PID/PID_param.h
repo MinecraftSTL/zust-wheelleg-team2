@@ -11,7 +11,7 @@
 #include "PID.h"
 #include "Sys.h"
 
-extern PID motorL, motorR, Vy, pitch;
+extern PID pitch, Vx;
 
 void PID_param_init();
 
