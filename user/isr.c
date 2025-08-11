@@ -98,7 +98,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
     }
 
-    float tg_pitchV, tg_yawV = (image_w-2)/2-g_camera_mid_err, legX = 0, legZ = -45;
+    float tg_pitchV, tg_yawV, legX = 0, legZ = -30;
     if(g_Car_Status){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = V0;
@@ -110,9 +110,10 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
 //        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
-        legX = legZ*tan(pid(&PID_vVx, targetV, Encoder_speed)/1000*PI/180);
+        legX = -pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         tg_pitchV = pid(&PID_WxAy, kZero, pitch);
+        tg_yawV = pid(&PID_vAz, (image_w-2)/2-g_camera_mid_err, yaw);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
         PID_clear(&PID_vVx);

@@ -69,14 +69,18 @@ Page menu_main_arg_PID_xAy;
 Page menu_main_arg_PID_xAy_Kp;
 Page menu_main_arg_PID_xAy_Ki;
 Page menu_main_arg_PID_xAy_Kd;
-Page menu_main_arg_PID_vAz;
-Page menu_main_arg_PID_vAz_Kp;
-Page menu_main_arg_PID_vAz_Ki;
-Page menu_main_arg_PID_vAz_Kd;
 Page menu_main_arg_PID_vVx;
 Page menu_main_arg_PID_vVx_Kp;
 Page menu_main_arg_PID_vVx_Ki;
 Page menu_main_arg_PID_vVx_Kd;
+Page menu_main_arg_PID_vAz;
+Page menu_main_arg_PID_vAz_Kp;
+Page menu_main_arg_PID_vAz_Ki;
+Page menu_main_arg_PID_vAz_Kd;
+Page menu_main_arg_PID_turn;
+Page menu_main_arg_PID_turn_Kp;
+Page menu_main_arg_PID_turn_Ki;
+Page menu_main_arg_PID_turn_Kd;
 Page menu_main_arg_PID_xAx;
 Page menu_main_arg_PID_xAx_Kp;
 Page menu_main_arg_PID_xAx_Ki;
@@ -158,11 +162,12 @@ int core0_main(void)
     });
     IntPage_init(&menu_main_arg_k_camera_horizon, "horizon", &camera_horizon, 0, image_h-1);
     IntPage_init(&menu_main_arg_k_camera_deltaH, "deltaH", &delta_camera_horizon, 0, image_h-1);
-    ListPage_init(&menu_main_arg_PID, "PID", 5, (Page*[]){
+    ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
-        &menu_main_arg_PID_vAz,
         &menu_main_arg_PID_vVx,
+        &menu_main_arg_PID_vAz,
+        &menu_main_arg_PID_turn,
         &menu_main_arg_PID_xAx,
     });
     ListPage_init(&menu_main_arg_PID_vAy, "vAy", 3, (Page*[]){
@@ -181,14 +186,6 @@ int core0_main(void)
     FFloatPage_init(&menu_main_arg_PID_xAy_Kp, "Kp", &PID_WxAy.Kp, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAy_Ki, "Ki", &PID_WxAy.Ki, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAy_Kd, "Kd", &PID_WxAy.Kd, 0, 10000);
-    ListPage_init(&menu_main_arg_PID_vAz, "vAz", 3, (Page*[]){
-        &menu_main_arg_PID_vAz_Kp,
-        &menu_main_arg_PID_vAz_Ki,
-        &menu_main_arg_PID_vAz_Kd,
-    });
-    FFloatPage_init(&menu_main_arg_PID_vAz_Kp, "Kp", &PID_WvAz.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vAz_Ki, "Ki", &PID_WvAz.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vAz_Kd, "Kd", &PID_WvAz.Kd, 0, 10000);
     ListPage_init(&menu_main_arg_PID_vVx, "vVx", 3, (Page*[]){
         &menu_main_arg_PID_vVx_Kp,
         &menu_main_arg_PID_vVx_Ki,
@@ -196,7 +193,23 @@ int core0_main(void)
     });
     FFloatPage_init(&menu_main_arg_PID_vVx_Kp, "Kp", &PID_vVx.Kp, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_vVx_Ki, "Ki", &PID_vVx.Ki, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_vAz, "vAz", 3, (Page*[]){
+        &menu_main_arg_PID_vAz_Kp,
+        &menu_main_arg_PID_vAz_Ki,
+        &menu_main_arg_PID_vAz_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_vAz_Kp, "Kp", &PID_vAz.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vAz_Ki, "Ki", &PID_vAz.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vAz_Kd, "Kd", &PID_vAz.Kd, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_vVx_Kd, "Kd", &PID_vVx.Kd, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_turn, "turn", 3, (Page*[]){
+        &menu_main_arg_PID_turn_Kp,
+        &menu_main_arg_PID_turn_Ki,
+        &menu_main_arg_PID_turn_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_turn_Kp, "Kp", &PID_WvAz.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_turn_Ki, "Ki", &PID_WvAz.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_turn_Kd, "Kd", &PID_WvAz.Kd, 0, 10000);
     ListPage_init(&menu_main_arg_PID_xAx, "xAx", 3, (Page*[]){
         &menu_main_arg_PID_xAx_Kp,
         &menu_main_arg_PID_xAx_Ki,
@@ -205,7 +218,7 @@ int core0_main(void)
     FFloatPage_init(&menu_main_arg_PID_xAx_Kp, "Kp", &PID_xAx.Kp, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAx_Ki, "Ki", &PID_xAx.Ki, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAx_Kd, "Kd", &PID_xAx.Kd, 0, 10000);
-    ListPage_init(&menu_main_debug, "debug", 5, (Page*[]){
+    ListPage_init(&menu_main_debug, "debug", 6, (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,
         &menu_main_debug_fv,
@@ -235,7 +248,7 @@ int core0_main(void)
     BoolPage_init(&menu_main_debug_fl_en, "enable", &flEn, 0x03);
     FFloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -1.57, 1.57);
     FFloatPage_init(&menu_main_debug_fl_rf, "rt_fd", &flRf, -1.57, 1.57);
-    FFloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -3.14, 1.57);
+    FFloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -1.57, 1.57);
     FFloatPage_init(&menu_main_debug_fl_lb, "lt_bk", &flLb, -1.57, 1.57);
     menu_main_debug_fl_lb.extends.fFloatValue.dot
     =menu_main_debug_fl_lf.extends.fFloatValue.dot

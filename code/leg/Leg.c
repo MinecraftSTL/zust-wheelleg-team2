@@ -39,7 +39,7 @@ void Pos_limit(float *x, float *z){
     *z = func_limit_ab(*z, -LEG_MAX_Z, -LEG_MIN_Z);
 }
 void Servo_limit(float *a){
-    *a = func_limit_ab(*a, -PI/6, PI/2);
+    *a = func_limit_ab(*a, -PI/2, PI/2);
 }
 
 int32 Roll_toPosZ(float roll, float lza){
@@ -72,12 +72,12 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
     Leg_set_duty(r.b, r.f, l.f, l.b);
 }
 
-const uint32 preRetractLegTime = 200;
-const float preRetractLegZ = -45;
+const uint32 preRetractLegTime = 2000;
+const float preRetractLegZ = -30;
 const uint32 extendLegTime = 200;
 const float extendLegZ = -130;
 const uint32 retractLegTime = 200;
-const float retractLegZ = -45;
+const float retractLegZ = -30;
 
 uint32 jumpTime = 0;
 
