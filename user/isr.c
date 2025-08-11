@@ -63,9 +63,11 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     if(my_key_get_state(KEY_2) == KEY_SHORT_PRESS){
         if(carStatus < 2){
             ++carStatus;
+        }else{
+            carStatus=1;
         }
     }else if(my_key_get_state(KEY_2) == KEY_LONG_PRESS){
-        carStatus = 0;
+        Car_stop();
     }
     Get_Switch_Num();
     if(switch_encoder_change_num < 0){
@@ -83,7 +85,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kZero = -4;
+float kZero = -9;
 
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)

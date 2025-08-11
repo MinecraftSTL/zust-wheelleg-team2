@@ -54,11 +54,13 @@ Page menu_main_arg_k_speedF;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_bin;
 Page menu_main_arg_k_camera_bin_deltaT;
-Page menu_main_arg_k_camera_compErr;
 Page menu_main_arg_k_camera_i;
 Page menu_main_arg_k_camera_i_bly2RDR;
 Page menu_main_arg_k_camera_i_RD2IE;
 Page menu_main_arg_k_camera_IGFE;
+Page menu_main_arg_k_camera_straight;
+Page menu_main_arg_k_camera_straight_step;
+Page menu_main_arg_k_camera_straight_err;
 Page menu_main_arg_k_camera_e;
 Page menu_main_arg_k_camera_e_cross;
 Page menu_main_arg_k_camera_e_cross_y;
@@ -66,6 +68,7 @@ Page menu_main_arg_k_camera_e_cross_x;
 Page menu_main_arg_k_camera_e_circle;
 Page menu_main_arg_k_camera_e_circle_y;
 Page menu_main_arg_k_camera_e_circle_x;
+Page menu_main_arg_k_camera_setLineY;
 Page menu_main_arg_k_camera_err;
 Page menu_main_arg_k_camera_err_y;
 Page menu_main_arg_k_camera_err_deltaY;
@@ -156,10 +159,11 @@ void core0_main(void)
     menu_main_arg_k_kZero.extends.floatValue.dot = 1;
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
-        &menu_main_arg_k_camera_compErr,
         &menu_main_arg_k_camera_i,
         &menu_main_arg_k_camera_IGFE,
+        &menu_main_arg_k_camera_straight,
         &menu_main_arg_k_camera_e,
+        &menu_main_arg_k_camera_setLineY,
         &menu_main_arg_k_camera_err,
         &menu_main_arg_k_camera_show,
         NULL
@@ -169,7 +173,6 @@ void core0_main(void)
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_bin_deltaT, "deltaT", &binDeltaT, -256, 255);
-    IntPage_init(&menu_main_arg_k_camera_compErr, "compErr", &compareErr,0,255);
     ListPage_init(&menu_main_arg_k_camera_i, "i", (Page*[]){
         &menu_main_arg_k_camera_i_bly2RDR,
         &menu_main_arg_k_camera_i_RD2IE,
@@ -180,11 +183,20 @@ void core0_main(void)
     menu_main_arg_k_camera_i_RD2IE.extends.floatValue.dot = 1;
     FloatPage_init(&menu_main_arg_k_camera_IGFE, "RD2IE", &IGFE, 0, 0.7854);
     menu_main_arg_k_camera_IGFE.extends.floatValue.dot = 0;
+    ListPage_init(&menu_main_arg_k_camera_straight, "straight", (Page*[]){
+        &menu_main_arg_k_camera_straight_step,
+        &menu_main_arg_k_camera_straight_err,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_straight_step, "step", &StraightStep, 0, MT9V03X_H);
+    FloatPage_init(&menu_main_arg_k_camera_straight_err, "err", &StraightErr, 0, 1.57);
+    menu_main_arg_k_camera_straight_err.extends.floatValue.dot = 1;
     ListPage_init(&menu_main_arg_k_camera_e, "element", (Page*[]){
         &menu_main_arg_k_camera_e_cross,
         &menu_main_arg_k_camera_e_circle,
         NULL
     });
+    IntPage_init(&menu_main_arg_k_camera_setLineY, "setLineY", &setLineY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_e_cross, "cross", (Page*[]){
         &menu_main_arg_k_camera_e_cross_y,
         &menu_main_arg_k_camera_e_cross_x,
@@ -316,7 +328,7 @@ void core0_main(void)
         PageKey_print(&menu_main, 0);
         MyCamera_Show(0, 200);
         ips200_show_int(188,200,fps,4);
-        ips200_show_int(188,216,status,4);
+        ips200_show_int(188,216,cameraStatus,4);
         Wifi_Image_Send_Camera();
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);

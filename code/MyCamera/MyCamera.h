@@ -6,6 +6,7 @@ typedef enum{
     IN_ZEBRA,
     OUT_ZEBRA,
     IN_CROSS,
+    CROSS,
     OUT_CROSS,
     IN_L_CIRCLE,
     TL_L_CIRCLE,
@@ -30,12 +31,14 @@ extern int camera_err;
 extern Rgb565Image showImage;
 
 extern int binDeltaT;
-extern int compareErr;
 extern int bly2RDR;
 extern float RD2IE;
 extern float IGFE;
 extern int invY;
 extern float invK;
+extern int setLineY;
+extern int StraightStep;
+extern float StraightErr;
 extern int crossY;
 extern int crossX;
 extern int circleY;
@@ -45,7 +48,7 @@ extern int errDeltaY;
 extern uint8 showPInC1;
 extern uint8 showBin;
 
-extern CameraStatus status;
+extern CameraStatus cameraStatus;
 
 void MyCamera_Init(void);
 void MyCamera_Show(uint16 x, uint16 y);

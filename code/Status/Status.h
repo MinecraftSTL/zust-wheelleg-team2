@@ -24,8 +24,8 @@ typedef enum
 
 extern Car_Status carStatus;
 
-void Car_Stop(void);
-void Car_Start(void);
+void Car_stop(void);
+void Car_start(void);
 
 
 #endif

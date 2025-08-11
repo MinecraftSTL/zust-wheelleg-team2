@@ -27,7 +27,6 @@ void Wifi_Image_Init(void)
         g_wifi_image_open_flag = 0;
         printf("\r\n connect wifi failed. \r\n");
         ips200_show_string(150, 18*2, "failed");
-        break;
     }
     if(i == 0)
     {

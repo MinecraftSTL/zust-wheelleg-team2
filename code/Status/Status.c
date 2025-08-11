@@ -15,10 +15,11 @@ Car_Status carStatus = status_car_stop;
 * @date  : 2024_10
 * @author: SJX
 ************************************************/
-void Car_Stop(void)
+void Car_stop(void)
 {
     beepMid();
     carStatus = status_car_stop;
+    cameraStatus = NONE;
 }
 
 /***********************************************
@@ -28,7 +29,7 @@ void Car_Stop(void)
 * @date  : 2024_10
 * @author: SJX
 ************************************************/
-void Car_Start(void)
+void Car_start(void)
 {
     beepMid();
     carStatus = status_car_start;
