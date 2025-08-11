@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,12 +25,12 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-03       pudding            first version
 ********************************************************************************************************************/
 
 #ifndef _zf_driver_adc_h
@@ -49,32 +49,36 @@ typedef enum    // 枚举ADC通道
     ADC0_CH5_A5,
     ADC0_CH6_A6,
     ADC0_CH7_A7,
-    ADC0_CH8_A8,
-    ADC0_CH10_A10 = 0*16 + 10,
-    ADC0_CH11_A11,
-    ADC0_CH12_A12,
-    ADC0_CH13_A13,
-	
-	// ADC1可选引脚
-	ADC1_CH0_A16  = 1*16 + 0,
-	ADC1_CH1_A17  = 1*16 + 1,
-	ADC1_CH4_A20  = 1*16 + 4,
-	ADC1_CH5_A21  = 1*16 + 5,
-	ADC1_CH8_A24  = 1*16 + 8,
-	ADC1_CH9_A25  = 1*16 + 9,
-	
-	// ADC2可选引脚
-	ADC2_CH3_A35  = 2*16 + 3,
-	ADC2_CH4_A36,
-	ADC2_CH5_A37,
-	ADC2_CH6_A38,
-	ADC2_CH7_A39,
-	ADC2_CH10_A44 = 2*16 + 10,
-	ADC2_CH11_A45,
-	ADC2_CH12_A46,
-	ADC2_CH13_A47,
-	ADC2_CH14_A48,
-	ADC2_CH15_A49,
+
+    // ADC1可选引脚
+    ADC1_CH0_A8   = 1*16 + 0,
+    ADC1_CH2_A10  = 1*16 + 2,
+    ADC1_CH3_A11,
+    ADC1_CH4_A12,
+    ADC1_CH5_A13,
+
+    // ADC2可选引脚
+    ADC2_CH0_A16  = 2*16 + 0,
+    ADC2_CH1_A17  = 2*16 + 1,
+    ADC2_CH4_A20  = 2*16 + 4,
+    ADC2_CH5_A21  = 2*16 + 5,
+
+    // ADC3可选引脚
+    ADC3_CH0_A24  = 3*16 + 0,
+    ADC3_CH1_A25  = 3*16 + 1,
+
+    // ADC8可选引脚
+    ADC8_CH3_A35  = 8*16 + 3,
+    ADC8_CH4_A36,
+    ADC8_CH5_A37,
+    ADC8_CH6_A38,
+    ADC8_CH7_A39,
+    ADC8_CH10_A42 = 8*16 + 10,
+    ADC8_CH11_A43,
+    ADC8_CH12_A44,
+    ADC8_CH13_A45,
+    ADC8_CH14_A46,
+    ADC8_CH15_A47,
 }adc_channel_enum;
 
 // 此枚举定义不允许用户修改

@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,25 +25,25 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-03       pudding            first version
 * 2023-04-26       pudding            新增初始化完成标志等待操作，需要等待CPU0初始化完成后其他CPU才能进行赋值
 ********************************************************************************************************************/
 
 #include "IfxScuEru.h"
 #include "Ifxstm.h"
 #include "Cpu0_Main.h"
-#include "Cpu/Std/IfxCpu.h"
+#include "IfxCpu.h"
 #include "zf_driver_delay.h"
 #include "zf_common_interrupt.h"
 #include "zf_common_clock.h"
 
 
-App_Cpu0 g_AppCpu0;                                 // 频率信息变量
+App_Cpu0 g_AppCpu0;                               // 频率信息变量
 
 static vuint8 cpu_init_finish[IfxCpu_Id_none];      // 核心初始化完成标志位
 
@@ -57,6 +57,7 @@ void set_clock (void)
 {
     IfxScuCcu_setCpuFrequency(IfxCpu_ResourceCpu_0, (float32)AURIX_MCU_FREQUENCY);
     IfxScuCcu_setCpuFrequency(IfxCpu_ResourceCpu_1, (float32)AURIX_MCU_FREQUENCY);
+    IfxScuCcu_setCpuFrequency(IfxCpu_ResourceCpu_2, (float32)AURIX_MCU_FREQUENCY);
 }
 
 //-------------------------------------------------------------------------------------------------------------------

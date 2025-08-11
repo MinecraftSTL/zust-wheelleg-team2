@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,13 +25,13 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
-* 2023-10-07       pudding            新增统一回调函数指针
+* 2022-11-03       pudding            first version
+* 2023-10-10       pudding            新增串口4-串口11
 ********************************************************************************************************************/
 
 #ifndef _zf_driver_uart_h_
@@ -71,6 +71,22 @@ typedef enum            // 枚举串口引脚 此枚举定义不允许用户修改
     UART3_TX_P20_0,
     UART3_TX_P20_3,
     UART3_TX_P21_7,
+
+    UART4_TX_P00_9,     // 串口4 发送引脚可选范围
+
+    UART5_TX_P00_7,     // 串口5 发送引脚可选范围
+    UART5_TX_P22_2,
+
+    UART6_TX_P22_0,     // 串口6 发送引脚可选范围
+
+    UART8_TX_P33_7,     // 串口8 发送引脚可选范围
+
+    UART9_TX_P20_7,     // 串口9 发送引脚可选范围
+
+    UART10_TX_P00_8,    // 串口10 发送引脚可选范围
+    UART10_TX_P13_0,
+
+    UART11_TX_P21_5,    // 串口11 发送引脚可选范围
 }uart_tx_pin_enum;
 
 
@@ -97,6 +113,26 @@ typedef enum            // 枚举串口引脚 此枚举定义不允许用户修改
     UART3_RX_P15_7,
     UART3_RX_P20_3,
     UART3_RX_P21_6,
+
+    UART4_RX_P00_12,    // 串口4 接收引脚可选范围
+
+    UART5_RX_P00_6,     // 串口5 接收引脚可选范围
+    UART5_RX_P22_3,
+    UART5_RX_P33_4,
+
+    UART6_RX_P22_0,     // 串口6 接收引脚可选范围
+    UART6_RX_P23_1,
+
+    UART8_RX_P33_6,     // 串口8 接收引脚可选范围
+
+    UART9_RX_P20_6,     // 串口9 接收引脚可选范围
+
+    UART10_RX_P00_4,    // 串口10 接收引脚可选范围
+    UART10_RX_P00_8,
+    UART10_RX_P13_0,
+    UART10_RX_P13_1,
+
+    UART11_RX_P21_2,    // 串口11 接收引脚可选范围
 }uart_rx_pin_enum;
 
 
@@ -106,6 +142,14 @@ typedef enum            // 枚举串口号 此枚举定义不允许用户修改
     UART_1,
     UART_2,
     UART_3,
+    UART_4,
+    UART_5,
+    UART_6,
+    UART_7,             // 核心板没有引出串口7的引脚 此处仅用作占位
+    UART_8,
+    UART_9,
+    UART_10,
+    UART_11,
 }uart_index_enum;
 
 //创建串口handle变量
@@ -113,6 +157,13 @@ extern IfxAsclin_Asc uart0_handle;
 extern IfxAsclin_Asc uart1_handle;
 extern IfxAsclin_Asc uart2_handle;
 extern IfxAsclin_Asc uart3_handle;
+extern IfxAsclin_Asc uart4_handle;
+extern IfxAsclin_Asc uart5_handle;
+extern IfxAsclin_Asc uart6_handle;
+extern IfxAsclin_Asc uart8_handle;
+extern IfxAsclin_Asc uart9_handle;
+extern IfxAsclin_Asc uart10_handle;
+extern IfxAsclin_Asc uart11_handle;
 
 //====================================================串口 基础函数====================================================
 void    uart_write_byte                     (uart_index_enum uartn, const uint8 dat);

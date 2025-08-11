@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,12 +25,12 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-03       pudding            first version
 * 2023-04-28       pudding            增加中文注释说明
 ********************************************************************************************************************/
 /********************************************************************************************************************
@@ -77,7 +77,7 @@
 #define IPS114_CS_PIN                   (P15_2)                                  // CS 片选引脚
 #define IPS114_BLK_PIN                  (P15_4)                                  // 液晶背光引脚定义
 
-#define IPS114_DEFAULT_DISPLAY_DIR      ( IPS114_PORTAIT        )                // 默认的显示方向
+#define IPS114_DEFAULT_DISPLAY_DIR      (IPS114_PORTAIT)                         // 默认的显示方向
 #define IPS114_DEFAULT_PENCOLOR         (RGB565_RED)                             // 默认的画笔颜色
 #define IPS114_DEFAULT_BGCOLOR          (RGB565_WHITE)                           // 默认的背景颜色
 #define IPS114_DEFAULT_DISPLAY_FONT     (IPS114_8X16_FONT)                       // 默认的字体模式
@@ -104,11 +104,10 @@ typedef enum
     IPS114_8X16_FONT                    = 1,                                     // 8x16     字体
     IPS114_16X16_FONT                   = 2,                                     // 16x16    字体 目前不支持
 }ips114_font_size_enum;
-
 extern  uint16  ips114_width_max ;
 extern  uint16  ips114_height_max;
-
 //=================================================定义 IPS114 参数结构体===============================================
+
 
 //=================================================声明 IPS114 基础函数================================================
 void    ips114_clear                    (void);                                                                             // IPS114 清屏函数

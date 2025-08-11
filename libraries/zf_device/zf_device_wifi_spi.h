@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,7 +25,7 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 * 
 * 修改记录
@@ -54,11 +54,11 @@
 #include "zf_common_typedef.h"
 
           
-#define WIFI_SPI_INDEX              (SPI_3             )        // 定义使用的SPI号
+#define WIFI_SPI_INDEX              (SPI_4             )        // 定义使用的SPI号
 #define WIFI_SPI_SPEED              (30 * 1000 * 1000  )        // 硬件 SPI 速率
-#define WIFI_SPI_SCK_PIN            (SPI3_SCLK_P22_3   )        // 定义SPI_SCK引脚
-#define WIFI_SPI_MOSI_PIN           (SPI3_MOSI_P22_0   )        // 定义SPI_MOSI引脚
-#define WIFI_SPI_MISO_PIN           (SPI3_MISO_P22_1   )        // 定义SPI_MISO引脚  IPS没有MISO引脚，但是这里任然需要定义，在spi的初始化时需要使用
+#define WIFI_SPI_SCK_PIN            (SPI4_SCLK_P22_3   )        // 定义SPI_SCK引脚
+#define WIFI_SPI_MOSI_PIN           (SPI4_MOSI_P22_0   )        // 定义SPI_MOSI引脚
+#define WIFI_SPI_MISO_PIN           (SPI4_MISO_P22_1   )        // 定义SPI_MISO引脚  IPS没有MISO引脚，但是这里任然需要定义，在spi的初始化时需要使用
 #define WIFI_SPI_CS_PIN             (P22_2             )        // 定义SPI_CS引脚 采用软件CS引脚
 #define WIFI_SPI_INT_PIN            (P15_8             )        // 定义握手引脚
 #define WIFI_SPI_RST_PIN            (P23_1             )        // 定义复位引脚

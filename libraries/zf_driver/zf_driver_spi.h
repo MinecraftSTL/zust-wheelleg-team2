@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,14 +25,14 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
-* 2023-04-28       pudding            修复多个SPI同时使用可能产生冲突的问题
+* 2022-11-03       pudding            first version
 ********************************************************************************************************************/
+
 
 #ifndef _zf_driver_spi_h_
 #define _zf_driver_spi_h_
@@ -45,6 +45,7 @@ typedef enum        // SPI模块号
     SPI_1,
     SPI_2,
     SPI_3,
+    SPI_4,
 }spi_index_enum;
 
 typedef enum        // 枚举 SPI 模式 此枚举定义不允许用户修改
@@ -63,7 +64,9 @@ typedef enum                                                                    
 
     SPI2_SCLK_P13_0  = 2*102+0*6 , SPI2_SCLK_P13_1, SPI2_SCLK_P15_3, SPI2_SCLK_P15_6, SPI2_SCLK_P15_8,                      // SPI2 CLK 引脚可选范围
 
-    SPI3_SCLK_P02_7  = 3*102+0*6 , SPI3_SCLK_P22_0, SPI3_SCLK_P22_1, SPI3_SCLK_P22_3, SPI3_SCLK_P33_11,                     // SPI3 CLK 引脚可选范围
+    SPI3_SCLK_P02_7  = 3*102+0*6 , SPI3_SCLK_P01_7,                                                                         // SPI3 CLK 引脚可选范围
+
+    SPI4_SCLK_P22_0  = 4*102+0*6 , SPI4_SCLK_P22_1, SPI4_SCLK_P22_3, SPI4_SCLK_P33_11,                                      // SPI4 CLK 引脚可选范围
 }spi_sck_pin_enum;
 
 typedef enum                                                                                                                // 枚举SPI MOSI引脚 此枚举定义不允许用户修改
@@ -74,7 +77,9 @@ typedef enum                                                                    
 
     SPI2_MOSI_P13_3  = 2*102+1*6 , SPI2_MOSI_P15_5, SPI2_MOSI_P15_6,                                                        // SPI2 MOSI引脚可选范围
 
-    SPI3_MOSI_P02_6  = 3*102+1*6 , SPI3_MOSI_P10_6, SPI3_MOSI_P22_0, SPI3_MOSI_P22_3, SPI3_MOSI_P33_12,                     // SPI3 MOSI引脚可选范围
+    SPI3_MOSI_P02_6  = 3*102+1*6 , SPI3_MOSI_P01_6, SPI3_MOSI_P10_6,                                                        // SPI3 MOSI引脚可选范围
+
+    SPI4_MOSI_P22_3  = 4*102+1*6 , SPI4_MOSI_P22_0, SPI4_MOSI_33_12                                                         // SPI4 CLK 引脚可选范围
 }spi_mosi_pin_enum;
 
 typedef enum                                                                                                                // 枚举SPI MISO引脚 此枚举定义不允许用户修改
@@ -85,7 +90,9 @@ typedef enum                                                                    
 
     SPI2_MISO_P15_2  = 2*102+2*6 , SPI2_MISO_P15_4, SPI2_MISO_P15_7, SPI2_MISO_P21_2, SPI2_MISO_P21_3,                      // SPI2 MISO引脚可选范围
 
-    SPI3_MISO_P02_5  = 3*102+2*6 , SPI3_MISO_P22_1, SPI3_MISO_P21_2, SPI3_MISO_P21_3, SPI3_MISO_P33_13,                     // SPI3 MISO引脚可选范围
+    SPI3_MISO_P02_5  = 3*102+2*6 , SPI3_MISO_P01_5,                                                                         // SPI3 MISO引脚可选范围
+
+    SPI4_MISO_P22_1  = 4*102+2*6 , SPI4_MISO_P21_2, SPI4_MISO_P21_3, SPI4_MISO_P33_13,                                      // SPI4 MISO引脚可选范围
 }spi_miso_pin_enum;
 
 typedef enum                                        // 枚举SPI CS引脚 此枚举定义不允许用户修改
@@ -112,6 +119,7 @@ typedef enum                                        // 枚举SPI CS引脚 此枚举定义
     SPI1_CS7_P33_5   = 1*102+10*6,
     SPI1_CS8_P10_4   = 1*102+11*6,
     SPI1_CS9_P10_5   = 1*102+12*6,
+    SPI1_CS10_P10_0  = 1*102+13*6,
 
     SPI2_CS0_P15_2   = 2*102+3*6 ,
     SPI2_CS1_P14_2   = 2*102+4*6 ,
@@ -124,17 +132,20 @@ typedef enum                                        // 枚举SPI CS引脚 此枚举定义
     SPI2_CS9_P20_3   = 2*102+12*6,
 
     SPI3_CS0_P02_4   = 3*102+3*6 ,
-    SPI3_CS1_P02_0   = 3*102+4*6 , SPI3_CS1_P33_9,
-    SPI3_CS2_P02_1   = 3*102+5*6 , SPI3_CS2_P33_8,
-    SPI3_CS3_P02_2   = 3*102+6*6 ,
-    SPI3_CS4_P02_3   = 3*102+7*6 ,
+    SPI3_CS1_P02_0   = 3*102+4*6 ,
+    SPI3_CS2_P02_1   = 3*102+5*6 ,
+    SPI3_CS3_P00_5   = 3*102+6*6 , SPI3_CS3_P02_2,
+    SPI3_CS4_P00_2   = 3*102+7*6 , SPI3_CS4_P02_3,
     SPI3_CS5_P02_8   = 3*102+8*6 ,
     SPI3_CS6_P00_8   = 3*102+9*6 ,
-    SPI3_CS7_P00_9   = 3*102+10*6, SPI3_CS7_P33_7,
+    SPI3_CS7_P00_9   = 3*102+10*6,
     SPI3_CS8_P10_5   = 3*102+11*6,
-    SPI3_CS11_P33_10 = 3*102+14*6,
-    SPI3_CS12_P22_2  = 3*102+15*6,
-    SPI3_CS13_P23_1  = 3*102+16*6,
+
+    SPI4_CS3_P22_2   = 4*102+6*6,
+    SPI4_CS7_P33_7   = 4*102+10*6, SPI4_CS7_P02_1,
+    SPI4_CS2_P33_8   = 4*102+5*6,
+    SPI4_CS1_P33_9   = 4*102+4*6,
+    SPI4_CS0_P33_10  = 4*102+3*6,
 
     SPI_CS_NULL,
 }spi_cs_pin_enum;

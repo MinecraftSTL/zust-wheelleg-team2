@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,14 +25,14 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-03       pudding            first version
 * 2023-05-26       pudding            新增SPI WIFI 中断回调指针
-* 2024-01-16       pudding            移除SPI WIFI 中断回调指针 SPI WIFI将不再使用外部
+* 2024-01-16       pudding            移除SPI WIFI 中断回调指针 SPI WIFI将不再使用外部中断
 ********************************************************************************************************************/
 
 #include "zf_device_type.h"
@@ -92,7 +92,6 @@ void set_wireless_type (wireless_type_enum type_set, callback_function wireless_
     wireless_type = type_set;
     wireless_module_uart_handler = ((wireless_callback == NULL) ? (type_default_callback) : (wireless_callback));
 }
-
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     设置 ToF 模块类型
 // 参数说明     type_set        选定的 ToF 模块类型

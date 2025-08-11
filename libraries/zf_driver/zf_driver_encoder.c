@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,12 +25,12 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-03       pudding            first version
 ********************************************************************************************************************/
 
 #include "IfxGpt12_IncrEnc.h"
@@ -171,7 +171,7 @@ void encoder_clear_count (encoder_index_enum encoder_n)
 //-------------------------------------------------------------------------------------------------------------------
 void encoder_quad_init (encoder_index_enum encoder_n, encoder_channel1_enum ch1_pin, encoder_channel2_enum ch2_pin)
 {
-    zf_assert(encoder_n <= TIM4_ENCODER);    // 完全正交采集仅 TIM2 TIM3 TIM4支持 如果在这里报错 可以尝试使用下面的方向初始化encoder_dir_init
+//    zf_assert(encoder_n <= TIM4_ENCODER);    // 完全正交采集仅 TIM2 TIM3 TIM4支持 如果在这里报错 可以尝试使用下面的方向初始化encoder_dir_init
 
     IfxGpt12_enableModule(&MODULE_GPT120);
     IfxGpt12_setGpt1BlockPrescaler(&MODULE_GPT120, IfxGpt12_Gpt1BlockPrescaler_4);
@@ -206,22 +206,29 @@ void encoder_quad_init (encoder_index_enum encoder_n, encoder_channel1_enum ch1_
 
         case TIM5_ENCODER:
         {
-            IfxGpt12_T5_setCounterInputMode(&MODULE_GPT120, IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxINOrTxEUD);
+            IfxGpt12_T5_setCounterInputMode(&MODULE_GPT120, IfxGpt12_CounterInputMode_risingEdgeTxIN);
             IfxGpt12_T5_setDirectionSource (&MODULE_GPT120, IfxGpt12_TimerDirectionSource_external);
-            IfxGpt12_T5_setMode            (&MODULE_GPT120, IfxGpt12_Mode_incrementalInterfaceEdgeDetection);
+            IfxGpt12_T5_setMode            (&MODULE_GPT120, IfxGpt12_Mode_counter);
             IfxGpt12_T5_run                (&MODULE_GPT120, IfxGpt12_TimerRun_start);
         }break;
 
         case TIM6_ENCODER:
         {
-            IfxGpt12_T6_setCounterInputMode(&MODULE_GPT120, IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxINOrTxEUD);
+            IfxGpt12_T6_setCounterInputMode(&MODULE_GPT120, IfxGpt12_CounterInputMode_risingEdgeTxIN);
             IfxGpt12_T6_setDirectionSource (&MODULE_GPT120, IfxGpt12_TimerDirectionSource_external);
-            IfxGpt12_T6_setMode            (&MODULE_GPT120, IfxGpt12_Mode_incrementalInterfaceEdgeDetection);
+            IfxGpt12_T6_setMode            (&MODULE_GPT120, IfxGpt12_Mode_counter);
             IfxGpt12_T6_run                (&MODULE_GPT120, IfxGpt12_TimerRun_start);
         }break;
     }
 
-    encoder_mode[encoder_n] = 0;
+    if(encoder_n <= TIM4_ENCODER)
+    {
+        encoder_mode[encoder_n] = 0;
+    }
+    else
+    {
+        encoder_mode[encoder_n] = 1;
+    }
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -285,4 +292,3 @@ void encoder_dir_init (encoder_index_enum encoder_n, encoder_channel1_enum count
 
     encoder_mode[encoder_n] = 1;
 }
-

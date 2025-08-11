@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,21 +25,21 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-03       pudding            first version
 ********************************************************************************************************************/
 
-#include "Vadc/Adc/IfxVadc_Adc.h"
+#include "Evadc/Adc/IfxEvadc_Adc.h"
 #include "zf_common_debug.h"
 #include "zf_driver_adc.h"
 
 #define ADC_SAMPLE_FREQUENCY	10000000 // 最大10Mhz
 
-uint8 adc_resolution[50];
+static uint8 adc_resolution[150];
 
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     ADC 转换一次
@@ -50,16 +50,15 @@ uint8 adc_resolution[50];
 //-------------------------------------------------------------------------------------------------------------------
 uint16 adc_convert (adc_channel_enum vadc_chn)
 {
-	Ifx_VADC_RES result;
-	uint8 temp;
-	do
-	{
-		result = IfxVadc_getResult(&MODULE_VADC.G[(vadc_chn / 16)], vadc_chn%16);
-	} while(!result.B.VF);
+    Ifx_EVADC_G_RES result;
+    uint8 temp;
+    do
+    {
+        result = IfxEvadc_getResult(&MODULE_EVADC.G[(vadc_chn / 16)], vadc_chn%16);
+    } while (!result.B.VF);
 
-	temp = 4 - (adc_resolution[vadc_chn] * 2);
-
-	return((result.U&0x0fff)>>temp);
+    temp = 4 - (adc_resolution[vadc_chn] * 2);
+    return((result.U&0x0fff)>>temp);
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -100,53 +99,53 @@ uint16 adc_mean_filter_convert (adc_channel_enum vadc_chn, uint8 count)
 void adc_init (adc_channel_enum vadc_chn, adc_resolution_enum resolution)
 {
     static uint8 mudule_init_flag = 0;
-    IfxVadc_Adc vadc;
-    IfxVadc_Adc_Group adcGroup;
-    IfxVadc_Adc_Config adcConfig;
+    static uint8 group_init_flag[9];
+    IfxEvadc_Adc evadc;
+    IfxEvadc_Adc_Group adcGroup;
+    IfxEvadc_Adc_Config adcConfig;
+    IfxEvadc_Adc_GroupConfig adcGroupConfig;
 
-    IfxVadc_Adc_initModuleConfig(&adcConfig, &MODULE_VADC);
-
+    IfxEvadc_Adc_initModuleConfig(&adcConfig, &MODULE_EVADC);
     if(!mudule_init_flag)
     {
         mudule_init_flag = 1;
-        IfxVadc_Adc_initModule(&vadc, &adcConfig);
-
+        IfxEvadc_Adc_initModule(&evadc, &adcConfig);
     }
     else
     {
-        vadc.vadc = adcConfig.vadc;
+        evadc.evadc = adcConfig.evadc;
     }
 
-    IfxVadc_Adc_GroupConfig adcGroupConfig;
-    IfxVadc_Adc_initGroupConfig(&adcGroupConfig, &vadc);
+    IfxEvadc_Adc_initGroupConfig(&adcGroupConfig, &evadc);
 
-    adcGroupConfig.groupId = (IfxVadc_GroupId)(vadc_chn / 16);
+    adcGroupConfig.groupId = (IfxEvadc_GroupId)(vadc_chn / 16);
     adcGroupConfig.master  = adcGroupConfig.groupId;
-    adcGroupConfig.arbiter.requestSlotBackgroundScanEnabled = TRUE;
-    adcGroupConfig.backgroundScanRequest.autoBackgroundScanEnabled = TRUE;
-    adcGroupConfig.backgroundScanRequest.triggerConfig.gatingMode = IfxVadc_GatingMode_always;
-    adcGroupConfig.inputClass[0].resolution = IfxVadc_ChannelResolution_12bit;
+    adcGroupConfig.arbiter.requestSlotQueue0Enabled  = TRUE;
+    adcGroupConfig.queueRequest[0].triggerConfig.gatingMode = IfxEvadc_GatingMode_always;
     adcGroupConfig.inputClass[0].sampleTime = 1.0f/ADC_SAMPLE_FREQUENCY;
-    adcGroupConfig.inputClass[1].resolution = IfxVadc_ChannelResolution_12bit;
     adcGroupConfig.inputClass[1].sampleTime = 1.0f/ADC_SAMPLE_FREQUENCY;
 
-    IfxVadc_Adc_initGroup(&adcGroup, &adcGroupConfig);
+    if(!group_init_flag[(vadc_chn / 16)])
+    {
+        group_init_flag[(vadc_chn / 16)] = 1;
+        IfxEvadc_Adc_initGroup(&adcGroup, &adcGroupConfig);
+    }
+    else
+    {
+        adcGroup.groupId = adcGroupConfig.groupId;
+        adcGroup.module = *adcGroupConfig.module;
+        adcGroup.group = &adcGroupConfig.module->evadc->G[adcGroup.groupId];
+    }
 
-    IfxVadc_Adc_ChannelConfig adcChannelConfig;
-    IfxVadc_Adc_Channel       adcChannel;
-    IfxVadc_Adc_initChannelConfig(&adcChannelConfig, &adcGroup);
+    IfxEvadc_Adc_Channel       adcChannel;
+    IfxEvadc_Adc_ChannelConfig adcChannelConfig;
 
-    adcChannelConfig.channelId         = (IfxVadc_ChannelId)(vadc_chn%16);
-    adcChannelConfig.resultRegister    = (IfxVadc_ChannelResult)(vadc_chn%16);
-    adcChannelConfig.backgroundChannel = TRUE;
-
-    IfxVadc_Adc_initChannel(&adcChannel, &adcChannelConfig);
-
-    unsigned channels = (1 << adcChannelConfig.channelId);
-    unsigned mask     = channels;
-    IfxVadc_Adc_setBackgroundScan(&vadc, &adcGroup, channels, mask);
-
-    IfxVadc_Adc_startBackgroundScan(&vadc);
+    IfxEvadc_Adc_initChannelConfig(&adcChannelConfig, &adcGroup);
+    adcChannelConfig.channelId         = (IfxEvadc_ChannelId)(vadc_chn%16);
+    adcChannelConfig.resultRegister    = (IfxEvadc_ChannelResult)(vadc_chn%16);
+    IfxEvadc_Adc_initChannel(&adcChannel, &adcChannelConfig);
+    IfxEvadc_Adc_addToQueue(&adcChannel, IfxEvadc_RequestSource_queue0, IFXEVADC_QUEUE_REFILL);
+    IfxEvadc_Adc_startQueue(&adcGroup, IfxEvadc_RequestSource_queue0);
 
     adc_resolution[vadc_chn] = resolution;
 }

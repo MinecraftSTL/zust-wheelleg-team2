@@ -28,16 +28,20 @@
 
 #ifndef IFX_CFG_H
 #define IFX_CFG_H 1
-
+#include "zf_common_clock.h"
 
 /*********************************************************************************************************************/
 /*------------------------------------------Configuration for IfxScu_cfg.h-------------------------------------------*/
 /*********************************************************************************************************************/
 /* External oscillator frequency in Hz */
-#define IFX_CFG_SCU_XTAL_FREQUENCY      (20000000)  /* Allowed values are9p: 16000000, 20000000 or 40000000 */
-/* PLL frequency in Hz */
-#define IFX_CFG_SCU_PLL_FREQUENCY       (200000000) /* Allowed values are: 80000000, 133000000, 160000000
-                                                     * or 200000000 */
+#define IFX_CFG_SCU_XTAL_FREQUENCY      (20000000)  /* Allowed values are: 40000000, 25000000, 20000000, 16000000 */
+/* System PLL frequency in Hz */
+#define IFX_CFG_SCU_PLL_FREQUENCY       (AURIX_MCU_FREQUENCY) /* Allowed values are: 300000000, 200000000, 160000000, 133000000
+                                                     * or 80000000 */
+/* Peripheral PLL1 frequency in Hz */
+#define IFX_CFG_SCU_PLL1_FREQUENCY      (320000000) /* Allowed values are: 320000000, 160000000 */
+/* Peripheral PLL2 frequency in Hz */
+#define IFX_CFG_SCU_PLL2_FREQUENCY      (200000000) /* Allowed values are: 200000000 */
 
 /*********************************************************************************************************************/
 /*-----------------------------------Configuration for Software managed interrupt------------------------------------*/
@@ -50,4 +54,3 @@
 /* #define IFX_CFG_EXTEND_TRAP_HOOKS */ /* Decomment this line if the project needs to extend trap hook functions */
 
 #endif /* IFX_CFG_H */
-

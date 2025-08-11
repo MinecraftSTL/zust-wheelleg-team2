@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,12 +25,12 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding             first version
+* 2022-11-03       pudding             first version
 ********************************************************************************************************************/
 
 #include "Src/Std/IfxSrc.h"
@@ -51,21 +51,21 @@ static IfxScu_Req_In* get_exit_pin (exti_pin_enum exti_pin)
 
     switch(exti_pin)
     {
-        case ERU_CH0_REQ0_P15_4:   get_exit_pin_config =  &IfxScu_REQ0_P15_4_IN;   break;
-        case ERU_CH1_REQ10_P14_3:  get_exit_pin_config =  &IfxScu_REQ10_P14_3_IN;  break;
-        case ERU_CH2_REQ7_P00_4:   get_exit_pin_config =  &IfxScu_REQ7_P00_4_IN;   break;
-        case ERU_CH2_REQ14_P02_1:  get_exit_pin_config =  &IfxScu_REQ14_P02_1_IN;  break;
-        case ERU_CH2_REQ2_P10_2:   get_exit_pin_config =  &IfxScu_REQ2_P10_2_IN;   break;
-        case ERU_CH3_REQ6_P02_0:   get_exit_pin_config =  &IfxScu_REQ6_P02_0_IN;   break;
-        case ERU_CH3_REQ3_P10_3:   get_exit_pin_config =  &IfxScu_REQ3_P10_3_IN;   break;
-        case ERU_CH3_REQ15_P14_1:  get_exit_pin_config =  &IfxScu_REQ15_P14_1_IN;  break;
-        case ERU_CH4_REQ13_P15_5:  get_exit_pin_config =  &IfxScu_REQ13_P15_5_IN;  break;
-        case ERU_CH4_REQ8_P33_7:   get_exit_pin_config =  &IfxScu_REQ8_P33_7_IN;   break;
-        case ERU_CH5_REQ1_P15_8:   get_exit_pin_config =  &IfxScu_REQ1_P15_8_IN;   break;
-        case ERU_CH6_REQ12_P11_10: get_exit_pin_config =  &IfxScu_REQ12_P11_10_IN; break;
-        case ERU_CH6_REQ9_P20_0:   get_exit_pin_config =  &IfxScu_REQ9_P20_0_IN;   break;
-        case ERU_CH7_REQ16_P15_1:  get_exit_pin_config =  &IfxScu_REQ16_P15_1_IN;  break;
-        case ERU_CH7_REQ11_P20_9:  get_exit_pin_config =  &IfxScu_REQ11_P20_9_IN;  break;
+        case ERU_CH0_REQ0_P15_4:   get_exit_pin_config =  &IfxScu_REQ0A_P15_4_IN;   break;
+        case ERU_CH1_REQ10_P14_3:  get_exit_pin_config =  &IfxScu_REQ1A_P14_3_IN;  break;
+        case ERU_CH2_REQ7_P00_4:   get_exit_pin_config =  &IfxScu_REQ2C_P00_4_IN;   break;
+        case ERU_CH2_REQ14_P02_1:  get_exit_pin_config =  &IfxScu_REQ2B_P02_1_IN;  break;
+        case ERU_CH2_REQ2_P10_2:   get_exit_pin_config =  &IfxScu_REQ2A_P10_2_IN;   break;
+        case ERU_CH3_REQ6_P02_0:   get_exit_pin_config =  &IfxScu_REQ3C_P02_0_IN;   break;
+        case ERU_CH3_REQ3_P10_3:   get_exit_pin_config =  &IfxScu_REQ3A_P10_3_IN;   break;
+        case ERU_CH3_REQ15_P14_1:  get_exit_pin_config =  &IfxScu_REQ3B_P14_1_IN;  break;
+        case ERU_CH4_REQ13_P15_5:  get_exit_pin_config =  &IfxScu_REQ4D_P15_5_IN;  break;
+        case ERU_CH4_REQ8_P33_7:   get_exit_pin_config =  &IfxScu_REQ4A_P33_7_IN;   break;
+        case ERU_CH5_REQ1_P15_8:   get_exit_pin_config =  &IfxScu_REQ5A_P15_8_IN;   break;
+        case ERU_CH6_REQ12_P11_10: get_exit_pin_config =  &IfxScu_REQ6D_P11_10_IN; break;
+        case ERU_CH6_REQ9_P20_0:   get_exit_pin_config =  &IfxScu_REQ6A_P20_0_IN;   break;
+        case ERU_CH7_REQ16_P15_1:  get_exit_pin_config =  &IfxScu_REQ7C_P15_1_IN;  break;
+        case ERU_CH7_REQ11_P20_9:  get_exit_pin_config =  &IfxScu_REQ7A_P20_9_IN;  break;
         default: zf_assert(FALSE); get_exit_pin_config =  NULL;
     }
 
@@ -85,7 +85,7 @@ void exti_enable (exti_pin_enum eru_pin)
 {
     IfxScuEru_OutputChannel    outputChannel = (IfxScuEru_OutputChannel)(eru_pin/3);
 
-    volatile Ifx_SRC_SRCR *src = &MODULE_SRC.SCU.SCU.ERU[(int)outputChannel % 4];
+    volatile Ifx_SRC_SRCR *src = &MODULE_SRC.SCU.SCUERU[(int)outputChannel % 4];
     IfxSrc_enable(src);
 }
 
@@ -100,7 +100,7 @@ void exti_disable (exti_pin_enum eru_pin)
 {
     IfxScuEru_OutputChannel    outputChannel = (IfxScuEru_OutputChannel)(eru_pin/3);
 
-    volatile Ifx_SRC_SRCR *src = &MODULE_SRC.SCU.SCU.ERU[(int)outputChannel % 4];
+    volatile Ifx_SRC_SRCR *src = &MODULE_SRC.SCU.SCUERU[(int)outputChannel % 4];
     IfxSrc_disable(src);
 }
 
@@ -115,7 +115,7 @@ void exti_all_close (void)
     int8 channel;
     for(channel = 0; channel < 4; channel ++)
     {
-        src = &MODULE_SRC.SCU.SCU.ERU[channel];
+        src = &MODULE_SRC.SCU.SCUERU[channel];
         IfxSrc_deinit(src);
     }
 }
@@ -173,7 +173,7 @@ void exti_init (exti_pin_enum exti_pin, exti_trigger_enum trigger)
     IfxScuEru_setInterruptGatingPattern(outputChannel, IfxScuEru_InterruptGatingPattern_alwaysActive);
 
 
-    volatile Ifx_SRC_SRCR *src = &MODULE_SRC.SCU.SCU.ERU[(int)outputChannel % 4];
+    volatile Ifx_SRC_SRCR *src = &MODULE_SRC.SCU.SCUERU[(int)outputChannel % 4];
     IfxSrc_Tos exit_service;
     uint8 exit_priority;
     switch((exti_pin/3)%4)

@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC377 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC377 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -25,12 +25,12 @@
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
 * 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 适用平台          TC377TP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-03       pudding            first version
 * 2023-04-28       pudding            增加中文注释说明
 * 2023-09-15       pudding            转换实际值详细说明
 ********************************************************************************************************************/
@@ -232,11 +232,11 @@ uint8 imu660ra_init (void)
             return_state = 1;
             break;
         }
-        imu660ra_write_register(IMU660RA_PWR_CONF, 0x00);                       // 关闭高级省电模式
+        imu660ra_write_register(IMU660RA_PWR_CONF, 0x00);                   // 关闭高级省电模式
         system_delay_ms(1);
-        imu660ra_write_register(IMU660RA_INIT_CTRL, 0x00);                      // 开始对模块进行初始化配置
+        imu660ra_write_register(IMU660RA_INIT_CTRL, 0x00);                  // 开始对模块进行初始化配置
         imu660ra_write_registers(IMU660RA_INIT_DATA, imu660ra_config_file, sizeof(imu660ra_config_file));                       // 输出配置文件
-        imu660ra_write_register(IMU660RA_INIT_CTRL, 0x01);                      // 初始化配置结束
+        imu660ra_write_register(IMU660RA_INIT_CTRL, 0x01);                  // 初始化配置结束
         system_delay_ms(20);
         if(1 != imu660ra_read_register(IMU660RA_INT_STA))                       // 检查是否配置完成
         {
