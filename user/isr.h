@@ -46,6 +46,7 @@ extern uint8 mute;
 
 extern float kZero, xZero;
 extern float kPitchX;
+extern float ZZZ_xAx;
 
 #endif
 

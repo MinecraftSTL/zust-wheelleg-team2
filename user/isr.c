@@ -80,6 +80,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
 float kZero = 0;
 float xZero = 7;
 float kPitchX = 0;
+float ZZZ_xAx = 5;
 
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
@@ -168,9 +169,16 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lz = rz = legZ;
         float lza = 0;
         if(carStatus >= CAR_BALANCE && (rollBalance || fRb)){
-            lza = Roll_toPosZ(roll*PI/180, lza_);
+            lza = Roll_toPosZ(zzz(roll, ZZZ_xAx)*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
+        if((lza_>0) ^ (lza > lza_)){
+            Filter0_xAx.delta = Filter0_xAx_delta;
+            Filter1_xAx.alpha = Filter1_xAx_alpha;
+        }else{
+            Filter0_xAx.delta = Filter0_xAxE_delta;
+            Filter1_xAx.alpha = Filter1_xAxE_alpha;
+        }
         lza_ = rollBalanceK*lpf0(&Filter0_xAx, lpf1(&Filter1_xAx, lza));
         float k = (legZ + LEG_MIN_Z) / (LEG_MIN_Z - LEG_MAX_Z);
 
