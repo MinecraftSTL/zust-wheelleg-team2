@@ -61,6 +61,25 @@ IFX_INTERRUPT(stm1_isr, 0, IFX_INTPRIO_STM1_SR0)
     stm1_isr_flag = 0;
 }
 //-------------------------------------------------------------------------------------------------------------------
+//  函数简介      systick延时函数
+//  参数说明      time            延时一轮的时间（单位为纳秒，可设置范围0-20000000）
+//  参数说明      num             延时多少轮
+//  返回参数      void
+//  使用示例      无需用户调用，用户请使用h文件中的宏定义
+//-------------------------------------------------------------------------------------------------------------------
+void system_delay (uint32 time, uint32 num)
+{
+    uint32 stm_clk;
+    uint32 delay_time;
+    stm_clk = IfxStm_getFrequency(IfxStm_getAddress((IfxStm_Index)(IfxCpu_getCoreId())));
+    delay_time = (uint32)(stm_clk/1000000*time/1000);
+
+    while(num--)
+    {
+        IfxStm_waitTicks(IfxStm_getAddress((IfxStm_Index)(IfxCpu_getCoreId())), delay_time);
+    }
+}
+//-------------------------------------------------------------------------------------------------------------------
 //  函数简介      system延时函数
 //  参数说明      time            延时一轮的时间（单位为纳秒，可设置范围0-20000000）
 //  返回参数      void

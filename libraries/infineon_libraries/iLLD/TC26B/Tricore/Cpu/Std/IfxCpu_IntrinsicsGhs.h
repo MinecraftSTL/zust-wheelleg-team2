@@ -60,50 +60,50 @@ typedef void (*voidfunc)();
 
 /** Function call without return
  */
-#define Ifx__non_return_call(fun)	__asm__ volatile ("ji %0"::"a"(fun))
+#define Ifx__non_return_call(fun)   __asm__ volatile ("ji %0"::"a"(fun))
 
 /** Jump and link
  */
 IFX_INLINE void Ifx__jump_and_link(void (*fun)(void))
 {
-	__asm__ volatile ("jli %0"::"a"(fun));
+    __asm__ volatile ("jli %0"::"a"(fun));
 }
 
 IFX_INLINE void Ifx__moveToDataParam0(unsigned int var)
 {
-	__asm__ volatile ("mov\t d4, %0"::"d"(var));
+    __asm__ volatile ("mov\t d4, %0"::"d"(var));
 }
 
 IFX_INLINE void Ifx__moveToDataParamRet(unsigned int var)
 {
-	__asm__ volatile ("mov\t d2, %0"::"d"(var));
+    __asm__ volatile ("mov\t d2, %0"::"d"(var));
 }
 
 IFX_INLINE unsigned int Ifx__getDataParamRet(void)
 {
-	unsigned int var;
-	__asm__ volatile (" mov\t %0, d2":"=d"(var));
-	return var;
+    unsigned int var;
+    __asm__ volatile (" mov\t %0, d2":"=d"(var));
+    return var;
 }
 
 IFX_INLINE void Ifx__moveToAddrParam0(const void *var)
 {
-	__asm__ volatile ("mov.aa\t a4, %0"::"a"(var));
+    __asm__ volatile ("mov.aa\t a4, %0"::"a"(var));
 }
 
 IFX_INLINE void Ifx__jumpToFunction(void (*fun)(void))
 {
-	Ifx__non_return_call(fun);
+    Ifx__non_return_call(fun);
 }
 
 IFX_INLINE void Ifx__jumpToFunctionWithLink(void (*fun)(void))
 {
-	Ifx__jump_and_link(fun);
+    Ifx__jump_and_link(fun);
 }
 
 IFX_INLINE void Ifx__jumpBackToLink(void)
 {
-	__asm__ volatile ("ji a11");
+    __asm__ volatile ("ji a11");
 }
 
 /** Insert a memory barrier
@@ -371,7 +371,7 @@ IFX_INLINE sint32 Ifx__extr(sint32 a, uint32 p, uint32 w)
  */
 IFX_INLINE uint32 Ifx__extru(uint32 a, uint32 p, uint32 w)
 {
-	uint32 res;
+    uint32 res;
     __asm__ volatile ("mov d14,%2  \n\
                      mov d15,%3  \n\
                      extr.u %0,%1,e14"\
@@ -1151,7 +1151,7 @@ IFX_INLINE uint32 IfxCpu_calculateCrc32(uint32 *startaddress, uint8 length)
     uint32 returnvalue = 0; /* set seed value to 0 */
     for (;length > 0; length--) 
     { 
-    	  /* calculate the CRC over all data */
+          /* calculate the CRC over all data */
         __asm__ ("CRC32 %0,%0,%1" : "+d" (returnvalue) : "d" (*startaddress)); 
         startaddress++; 
     } 
@@ -1160,7 +1160,7 @@ IFX_INLINE uint32 IfxCpu_calculateCrc32(uint32 *startaddress, uint8 length)
 
 IFX_INLINE uint32 IfxCpu_getRandomVal(uint32 a, uint32 x, uint32 m)
 {
-	uint32 result;
+    uint32 result;
     __asm("      mul.u     %%e14,%1,%2       # d15 = Eh; d14 = El    \n"
         "        mov       %%d12,%%d14       #   e12 = El            \n"
         "        mov       %%d13, 0          #                       \n"
@@ -1178,9 +1178,9 @@ IFX_INLINE uint32 IfxCpu_getRandomVal(uint32 a, uint32 x, uint32 m)
 /* compiler don't know this instruction
 IFX_INLINE sint32 Ifx__popcnt(sint32 a)
 { 
-	sint32 res; 
-	__asm__ volatile ("popcnt %0,%1":"=d"(res):"d"(a)); 
-		return res; 
+    sint32 res;
+    __asm__ volatile ("popcnt %0,%1":"=d"(res):"d"(a));
+        return res;
 }*/
 
 /**  Invalidate cache address "p". Generates CACHEA.I [Ab].

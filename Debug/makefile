@@ -1,5 +1,5 @@
 ################################################################################
-# Automatically-generated file. Do not edit!
+# 自动生成的文件。不要编辑！
 ################################################################################
 
 -include ../makefile.init
@@ -99,6 +99,7 @@ RM := rm -rf
 -include libraries/infineon_libraries/Service/CpuGeneric/StdIf/subdir.mk
 -include libraries/infineon_libraries/Service/CpuGeneric/If/subdir.mk
 -include libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/subdir.mk
+-include code/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C++_DEPS)),)
 -include $(C++_DEPS)
@@ -138,27 +139,27 @@ SECONDARY_SIZE += \
 E09_14_mt9v03x_ips200_display_demo.siz \
 
 
-# All Target
+# 所有目标
 all: main-build
 
-# Main-build Target
+# 主构建目标
 main-build: E09_14_mt9v03x_ips200_display_demo.elf secondary-outputs
 
-# Tool invocations
+# 工具调用
 E09_14_mt9v03x_ips200_display_demo.elf: $(OBJS) makefile $(OPTIONAL_TOOL_DEPS)
-	@echo 'Building target: $@'
-	@echo 'Invoking: TASKING Linker'
-	cctc --lsl-file="../Lcf_Tasking_Tricore_Tc.lsl" -Wl-Oc -Wl-OL -Wl-Ot -Wl-Ox -Wl-Oy "C:\Users\15955\AURIX-v1.9.20-workspace\E09_14_mt9v03x_ips200_display_demo\libraries\zf_device\zf_device_config.a" -Wl--map-file="E09_14_mt9v03x_ips200_display_demo.map" -Wl-mc -Wl-mf -Wl-mi -Wl-mk -Wl-ml -Wl-mm -Wl-md -Wl-mr -Wl-mu --no-warnings= -Wl--error-limit=42 --fp-model=3 -lrt --lsl-core=vtc --exceptions --strict --anachronisms --force-c++ -Ctc26xb -o"E09_14_mt9v03x_ips200_display_demo.elf" -Wl-o"E09_14_mt9v03x_ips200_display_demo.hex:IHEX" $(OBJS)
-	@echo 'Finished building target: $@'
+	@echo '正在构建目标： $@'
+	@echo '正在调用： TASKING Linker'
+	cctc --lsl-file="../Lcf_Tasking_Tricore_Tc.lsl" -Wl-Oc -Wl-OL -Wl-Ot -Wl-Ox -Wl-Oy "E:\User\S\smartc\E09_14_mt9v03x_ips200_display_demo\libraries\zf_device\zf_device_config.a" -Wl--map-file="E09_14_mt9v03x_ips200_display_demo.map" -Wl-mc -Wl-mf -Wl-mi -Wl-mk -Wl-ml -Wl-mm -Wl-md -Wl-mr -Wl-mu --no-warnings= -Wl--error-limit=42 --fp-model=3 -lrt --lsl-core=vtc --exceptions --strict --anachronisms --force-c++ -Ctc26xb -o"E09_14_mt9v03x_ips200_display_demo.elf" -Wl-o"E09_14_mt9v03x_ips200_display_demo.hex:IHEX" $(OBJS)
+	@echo '已结束构建目标： $@'
 	@echo ' '
 
 E09_14_mt9v03x_ips200_display_demo.siz: E09_14_mt9v03x_ips200_display_demo.elf makefile $(OPTIONAL_TOOL_DEPS)
-	@echo 'Invoking: Print Size'
+	@echo '正在调用： Print Size'
 	elfsize  "E09_14_mt9v03x_ips200_display_demo.elf"
-	@echo 'Finished building: $@'
+	@echo '已结束构建： $@'
 	@echo ' '
 
-# Other Targets
+# 其他目标
 clean:
 	find . ! -name "*.mk" ! -name "makefile" ! -name "." -type f -delete 
 	-@echo ' '

@@ -24,7 +24,7 @@
 * 文件名称          isr
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.9.20
+* 开发环境          ADS v1.9.4
 * 适用平台          TC264D
 * 店铺链接          https://seekfree.taobao.com/
 *
@@ -35,7 +35,12 @@
 
 #include "isr_config.h"
 #include "isr.h"
+#include "sys.h"
 
+uint16 start_sum=0;
+uint16 tingche=0;
+float serve_out_pwm=0;
+int paodao_time_juge=0;
 // 对于TC系列默认是不支持中断嵌套的，希望支持中断嵌套需要在中断内使用 interrupt_global_enable(0); 来开启中断嵌套
 // 简单点说实际上进入中断后TC系列的硬件自动调用了 interrupt_global_disable(); 来拒绝响应任何的中断，因此需要我们自己手动调用 interrupt_global_enable(0); 来开启中断的响应。
 
@@ -44,28 +49,54 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU60_CH0);
+    if(speed_qidong)
+        start_sum++;
+    if(start_sum>=300)
+    {
+        if(tingche<150)
+        {
+            tingche++;
+        }
+       // encoder_filter();
+        getspeed();
 
-
-
+        PWM_motor(
+                    func_limit(-Motor_l_PID(Encoder_speed_l),1500),
+                    func_limit(-Motor_r_PID(Encoder_speed_r),1500)
+                 );
+    //    PWM_motor(-2000,-2000);
+        start_sum=300;
+    }
 }
 
 
 IFX_INTERRUPT(cc60_pit_ch1_isr, 0, CCU6_0_CH1_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-    pit_clear_flag(CCU60_CH1);
-
-
-
-
 }
 
 IFX_INTERRUPT(cc61_pit_ch0_isr, 0, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU61_CH0);
-
-
+    mpu6050_get_gyro();
+  if(speed_qidong)
+  {
+    jiaodu=imu660ra_gyro_transition(mpu6050_gyro_z);
+    jiaodu=jiaodu/10;
+    jd_sum+=jiaodu;
+  }
+    //坡道结束延时判断
+  if(hill_flag==2)
+  {
+   if(paodao_time_juge<12)
+      paodao_time_juge++;
+   if(paodao_time_juge==12)
+   {
+       paodao_time_juge=0;
+       hill_flag=0;
+   }
+  }
 
 
 }
@@ -211,7 +242,6 @@ IFX_INTERRUPT(uart2_tx_isr, 0, UART2_TX_INT_PRIO)
 IFX_INTERRUPT(uart2_rx_isr, 0, UART2_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-    wireless_module_uart_handler();                 // 无线模块统一回调函数
 
 
 
@@ -228,7 +258,14 @@ IFX_INTERRUPT(uart3_tx_isr, 0, UART3_TX_INT_PRIO)
 IFX_INTERRUPT(uart3_rx_isr, 0, UART3_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-    gnss_uart_callback();                           // GNSS串口回调函数
+
+
+
+}
+IFX_INTERRUPT(uart4_rx_isr, 0, UART3_RX_INT_PRIO)
+{
+    interrupt_global_enable(0);                     // 开启中断嵌套
+
 
 
 
@@ -238,12 +275,12 @@ IFX_INTERRUPT(uart3_rx_isr, 0, UART3_RX_INT_PRIO)
 IFX_INTERRUPT(uart0_er_isr, 0, UART0_ER_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-    IfxAsclin_Asc_isrError(&uart0_handle);
+    IfxAsclin_Asc_isrError(&uart3_handle);
 }
 IFX_INTERRUPT(uart1_er_isr, 0, UART1_ER_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-    IfxAsclin_Asc_isrError(&uart1_handle);
+    IfxAsclin_Asc_isrError(&uart3_handle);
 }
 IFX_INTERRUPT(uart2_er_isr, 0, UART2_ER_INT_PRIO)
 {

@@ -32,7 +32,15 @@
 * 日期              作者                备注
 * 2022-09-15       pudding            first version
 ********************************************************************************************************************/
+#include "sys.h"
 #include "zf_common_headfile.h"
+
+#include "zf_device_ips200.h"
+#include "motor.h"
+#include "encoder.h"
+#include "camera.h"
+
+
 #pragma section all "cpu0_dsram"
 // 将本语句与#pragma section all restore语句之间的全局变量都放在CPU0的RAM中
 // *************************** 例程硬件连接说明 ***************************
@@ -70,7 +78,10 @@
 
 #define IPS200_TYPE     (IPS200_TYPE_SPI)                                       // 双排排针 并口两寸屏 这里宏定义填写 IPS200_TYPE_PARALLEL8
                                                                                 // 单排排针 SPI 两寸屏 这里宏定义填写 IPS200_TYPE_SPI
-
+float jiaodu=0;
+float jd_sum=0;
+uint8 tingche_flag=0;
+#define Beep    P33_10                          //蜂鸣器
 int core0_main(void)
 {
     clock_init();                   // 获取时钟频率<务必保留>
@@ -78,35 +89,70 @@ int core0_main(void)
     gpio_init(P33_10,GPO,0,GPO_PUSH_PULL);// 初始化默认调试串口
     // 此处编写用户代码 例如外设初始化代码等
 
+    gpio_init(Beep, GPO, 1, GPO_PUSH_PULL);
+    gpio_init(P21_4, GPO, 0, GPO_PUSH_PULL);
+    gpio_init(P21_5, GPO, 1, GPO_PUSH_PULL);
+
     ips200_init(IPS200_TYPE);
+    ips200_show_string(0, 0, "ips200 init success.");
+
+    ips200_show_string(0, 0, "motor init.");
+    motor_init();
+    ips200_show_string(0, 0, "ecounter init.");
+    ecounter_init();
+    ips200_show_string(0, 0, "motor, servo, ecounter");
+    ips200_show_string(0, 20, "init success.");
+
     ips200_show_string(0, 0, "mt9v03x init.");
-    while(1)
+    for(;;)
     {
         if(mt9v03x_init())
-            ips200_show_string(0, 80, "mt9v03x reinit.");
+            ips200_show_string(0, 0, "mt9v03x reinit.");
         else
             break;
         system_delay_ms(500);                                                   // 短延时快速闪灯表示异常
     }
-    ips200_show_string(0, 16, "init success.");
-
-
+    ips200_show_string(0, 0, "init success.");
+    pit_ms_init(CCU60_CH0, 5);           //速度环中断
+    pit_ms_init(CCU60_CH1, 2);           //转向环中断
     // 此处编写用户代码 例如外设初始化代码等
 	cpu_wait_event_ready();         // 等待所有核心初始化完毕
-	while (TRUE)
+	gpio_low(Beep);
+	gpio_high(P21_4);
+	ips200_clear();
+	for(;;)
 	{
         // 此处编写需要循环执行的代码
-
-        if(mt9v03x_finish_flag)
-        {
-            ips200_displayimage03x((const uint8 *)mt9v03x_image, MT9V03X_W, MT9V03X_H);                       // 显示原始图像
-//            ips200_show_gray_image(0, 0, (const uint8 *)mt9v03x_image, MT9V03X_W, MT9V03X_H, 240, 180, 64);     // 显示二值化图像
-            mt9v03x_finish_flag = 0;
-        }
-
-
+	    if(mt9v03x_finish_flag){
+            image_process();
+    //	    ips200_clear();
+    //	    ips200_displayimage03x((const uint8 *)mt9v03x_image, MT9V03X_W, MT9V03X_H);
+            ips200_show_gray_image(0, 0, imag, MT9V03X_W, MT9V03X_H, MT9V03X_W, MT9V03X_H, 0);     // 显示二值化图像
+            for(int i=0; i<120; ++i){
+                ips200_draw_point(left[i],i,RGB565_RED);
+                ips200_draw_point(right[i],i,RGB565_BLUE);
+                ips200_draw_point(middle[i],i,RGB565_GREEN);
+            }
+            gpio_toggle_level(P21_5);
+	    }
         // 此处编写需要循环执行的代码
+	    //环？
+//        PWM_motor(
+//            func_limit(motor_l_out,1500),
+//            func_limit(motor_r_out,1500)
+//        );
+	    //点判断
+//	    PWM_motor(
+//	        -func_limit(1000+(middle[118]-93)*10, 1500),
+//	        -func_limit(1000-(middle[118]-93)*10, 1500)
+//	    );
+//	    getspeed();
+//        ips200_show_int(0,120,middle[118],8);
+	    ips200_show_int(0,160,Encoder_speed_l,8);
+        ips200_show_int(0,180,Encoder_speed_r,8);
+        ips200_show_int(0,200,Encoder_speed_l-Encoder_speed_r,8);
 	}
+	return 0;
 }
 
 #pragma section all restore

@@ -61,8 +61,8 @@
 #define MT9V03X_COF_UART_RX     (UART1_TX_P02_2)                                // 总钻风 UART-RX 引脚 要接在单片机 TX 上
 
 #define MT9V03X_COF_IIC_DELAY   (800)                                           // 总钻风 IIC 延时
-#define MT9V03X_COF_IIC_SCL     (P02_3)                                         // 总钻风 IIC-SCL 引脚
-#define MT9V03X_COF_IIC_SDA     (P02_2)                                         // 总钻风 IIC-SDA 引脚
+#define MT9V03X_COF_IIC_SCL     (P02_2)                                         // 总钻风 IIC-SCL 引脚
+#define MT9V03X_COF_IIC_SDA     (P02_3)                                         // 总钻风 IIC-SDA 引脚
 
 #define MT9V03X_DMA_CH          (IfxDma_ChannelId_5)
 

@@ -1,5 +1,5 @@
 ################################################################################
-# Automatically-generated file. Do not edit!
+# 自动生成的文件。不要编辑！
 ################################################################################
 
 C++_SRCS := 
@@ -24,6 +24,7 @@ SECONDARY_SIZE :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+code \
 libraries/infineon_libraries/Infra/Platform/Tricore/Compilers \
 libraries/infineon_libraries/Service/CpuGeneric/If \
 libraries/infineon_libraries/Service/CpuGeneric/StdIf \

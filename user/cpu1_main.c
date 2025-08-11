@@ -50,22 +50,18 @@
 // **************************** 代码区域 ****************************
 void core1_main(void)
 {
+    gpio_init(P20_8, GPO, 0, GPO_PUSH_PULL);
+    gpio_init(P20_9, GPO, 0, GPO_PUSH_PULL);
     disable_Watchdog();                     // 关闭看门狗
     interrupt_global_enable(0);             // 打开全局中断
     // 此处编写用户代码 例如外设初始化代码等
 
-
-
-
     // 此处编写用户代码 例如外设初始化代码等
 
     cpu_wait_event_ready();                 // 等待所有核心初始化完毕
-    while (TRUE)
+    for(;;)
     {
         // 此处编写需要循环执行的代码
-
-
-
 
         // 此处编写需要循环执行的代码
     }
