@@ -155,6 +155,7 @@ void IntPage_init(Page *this, char name[], int *value, int min, int max, int ste
     this->extends.intValue.min = min;
     this->extends.intValue.max = max;
     this->extends.intValue.step = step;
+    this->extends.intValue.opened = 0;
 }
 void IntPage_print(Page *this){
     char str[7] = {0};
@@ -167,17 +168,20 @@ void IntPage_print(Page *this){
     }
 }
 void IntPage_press(Page *this, uint8 pressed){
-    if(pressed&0x04){
+    if(pressed&0x04 || !this->extends.intValue.opened&&pressed&0x20){
         --this->open;
         if(this->open < -1){
             this->open = 5;
         }
     }
-    if(pressed&0x08){
+    if(pressed&0x08 || !this->extends.intValue.opened&&pressed&0x40){
         ++this->open;
         if(this->open > 5){
             this->open = -1;
         }
+    }
+    if(pressed&0x0C){
+        this->extends.intValue.opened = 0;
     }
     if(pressed&0x03){
         if(this->open < 0){
@@ -185,12 +189,17 @@ void IntPage_press(Page *this, uint8 pressed){
         }else if(this->open == 0){
             *this->extends.intValue.value = -*this->extends.intValue.value;
         }else{
-            if(pressed&0x02){
+            if(pressed&0x02 || this->extends.intValue.opened&&pressed&0x40){
                 this->extends.intValue.value -= lroundf(powf(10, 5-this->open));
             }
-            if(pressed&0x01){
+            if(pressed&0x01 || this->extends.intValue.opened&&pressed&0x20){
                 this->extends.intValue.value += lroundf(powf(10, 5-this->open));
             }
+        }
+    }
+    if(pressed&0x10){
+        if(this->open >= 0){
+            this->extends.intValue.opened = !this->extends.intValue.opened;
         }
     }
 }
@@ -201,6 +210,7 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max,
     this->extends.floatValue.min = min;
     this->extends.floatValue.max = max;
     this->extends.floatValue.step = step;
+    this->extends.floatValue.opened = 0;
 }
 void FloatPage_print(Page *this){
     char str[11] = {0};
@@ -213,13 +223,13 @@ void FloatPage_print(Page *this){
     }
 }
 void FloatPage_press(Page *this, uint8 pressed){
-    if(pressed&0x04){
+    if(pressed&0x04 || !this->extends.floatValue.opened&&pressed&0x20){
         --this->open;
         if(this->open < -1){
             this->open = 9;
         }
     }
-    if(pressed&0x08){
+    if(pressed&0x08 || !this->extends.floatValue.opened&&pressed&0x40){
         ++this->open;
         if(this->open > 9){
             this->open = -1;
@@ -231,26 +241,31 @@ void FloatPage_press(Page *this, uint8 pressed){
         }else if(this->open == 0){
             *this->extends.floatValue.value = -*this->extends.floatValue.value;
         }else if(this->open < 5){
-            if(pressed&0x02){
+            if(pressed&0x02 || this->extends.floatValue.opened&&pressed&0x40){
                 *this->extends.floatValue.value -= powf(10, 4-this->open);
             }
-            if(pressed&0x01){
+            if(pressed&0x01 || this->extends.floatValue.opened&&pressed&0x20){
                 *this->extends.floatValue.value += powf(10, 4-this->open);
             }
         }else if(this->open == 5){
-            if(pressed&0x02){
+            if(pressed&0x02 || this->extends.floatValue.opened&&pressed&0x40){
                 *this->extends.floatValue.value/=10;
             }
-            if(pressed&0x01){
+            if(pressed&0x01 || this->extends.floatValue.opened&&pressed&0x20){
                 *this->extends.floatValue.value*=10;
             }
         }else{
-            if(pressed&0x02){
+            if(pressed&0x02 || this->extends.floatValue.opened&&pressed&0x40){
                 *this->extends.floatValue.value -= powf(10, 5-this->open);
             }
-            if(pressed&0x01){
+            if(pressed&0x01 || this->extends.floatValue.opened&&pressed&0x20){
                 *this->extends.floatValue.value += powf(10, 5-this->open);
             }
+        }
+    }
+    if(pressed&0x10){
+        if(this->open >= 0){
+            this->extends.floatValue.opened = !this->extends.floatValue.opened;
         }
     }
 }
@@ -261,6 +276,7 @@ void DoublePage_init(Page *this, char name[], double *value, float min, float ma
     this->extends.doubleValue.min = min;
     this->extends.doubleValue.max = max;
     this->extends.doubleValue.step = step;
+    this->extends.doubleValue.opened = 0;
 }
 void DoublePage_print(Page *this){
     char str[11] = {0};
@@ -273,13 +289,13 @@ void DoublePage_print(Page *this){
     }
 }
 void DoublePage_press(Page *this, uint8 pressed){
-    if(pressed&0x04){
+    if(pressed&0x04 || !this->extends.doubleValue.opened&&pressed&0x20){
         --this->open;
         if(this->open < -1){
             this->open = 9;
         }
     }
-    if(pressed&0x08){
+    if(pressed&0x08 || !this->extends.doubleValue.opened&&pressed&0x40){
         ++this->open;
         if(this->open > 9){
             this->open = -1;
@@ -291,26 +307,31 @@ void DoublePage_press(Page *this, uint8 pressed){
         }else if(this->open == 0){
             *this->extends.doubleValue.value = -*this->extends.doubleValue.value;
         }else if(this->open < 6){
-            if(pressed&0x02){
+            if(pressed&0x02 || this->extends.doubleValue.opened&&pressed&0x40){
                 *this->extends.doubleValue.value -= pow(10, 5-this->open);
             }
-            if(pressed&0x01){
+            if(pressed&0x01 || this->extends.doubleValue.opened&&pressed&0x20){
                 *this->extends.doubleValue.value += pow(10, 5-this->open);
             }
         }else if(this->open == 6){
-            if(pressed&0x02){
+            if(pressed&0x02 || this->extends.doubleValue.opened&&pressed&0x40){
                 *this->extends.doubleValue.value/=10;
             }
-            if(pressed&0x01){
+            if(pressed&0x01 || this->extends.doubleValue.opened&&pressed&0x20){
                 *this->extends.doubleValue.value*=10;
             }
         }else{
-            if(pressed&0x02){
+            if(pressed&0x02 || this->extends.doubleValue.opened&&pressed&0x40){
                 *this->extends.doubleValue.value -= powf(10, 6-this->open);
             }
-            if(pressed&0x01){
+            if(pressed&0x01 || this->extends.doubleValue.opened&&pressed&0x20){
                 *this->extends.doubleValue.value += powf(10, 6-this->open);
             }
+        }
+    }
+    if(pressed&0x10){
+        if(this->open >= 0){
+            this->extends.doubleValue.opened = !this->extends.doubleValue.opened;
         }
     }
 }
@@ -327,12 +348,12 @@ void BoolPage_press(Page *this, uint8 pressed){
     if(pressed&0x03){
         this->open = -1-this->open;
     }
-    if(pressed&0x0C){
+    if(pressed&0x1C){
         if(this->open < 0){
             PageKey_back(this);
         }else{
-            if(this->extends.boolValue.dir&0x01&&!this->extends.boolValue.value || this->extends.boolValue.dir&0x02&&this->extends.boolValue.value){
-                this->extends.boolValue.value = !this->extends.boolValue.value;
+            if(this->extends.boolValue.dir&0x01&&!*this->extends.boolValue.value || this->extends.boolValue.dir&0x02&&*this->extends.boolValue.value){
+                *this->extends.boolValue.value = !*this->extends.boolValue.value;
             }
         }
     }
@@ -351,14 +372,12 @@ void Int_toString(int this, char *str, uint8 num){
         *str = '+';
     }else{
         *str = '-';
+        this = -this;
     }
-    uint16 e = 1;
-    for(int i=1; i<num; ++i){
-        e*=10;
-    }
-    for(int i=0; i<num; ++i){
-        *(str+i) = this/e+'0';
-        this%=e;
+    for(int i = num - 1; i >= 0; --i){  // 从高位到低位提取数字
+        int digit = this / (int)pow(10, i);  // 获取当前位数字
+        *(str + num - i) = digit + '0';  // 存入字符串对应位置
+        this %= lround(pow(10, i));  // 去掉已提取的最高位数字
     }
     *(str+1+num) = '\0';
 }

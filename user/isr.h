@@ -38,15 +38,7 @@
 
 #include "zf_common_headfile.h"
 
-
-
-
-
-
-
-
-
-
+extern uint16 beepTime;
 
 #endif
 

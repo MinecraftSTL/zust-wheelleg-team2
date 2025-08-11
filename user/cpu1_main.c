@@ -129,7 +129,7 @@ void core1_main(void)
     FloatPage_init(&menu_arg_PID_motorR_Ki, "Ki", &(motor_r.Ki), -100., 100., 0.1);
     FloatPage_init(&menu_arg_PID_motorR_Kd, "Kd", &(motor_r.Kd), -1000., 1000., 10);
 
-    BoolPage_init(&menu_start, "start", &qidong, 0x01);
+    BoolPage_init(&menu_start, "start", &qidong, 0x03);
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();                 // 等待所有核心初始化完毕
     PageKey_print(&main_menu);
@@ -140,8 +140,7 @@ void core1_main(void)
             PageKey_print(&main_menu);
             pressed=0;
         }
-        ips200_show_float(0, 280, *menu_arg_PID_turn_Ki.extends.floatValue.value,5,3);
-        ips200_show_int(0, 300, menu_arg_PID_turn_Ki.open,1);
+//        printf("%d", switch_encoder_num);
         // 此处编写需要循环执行的代码
     }
 }

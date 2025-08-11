@@ -36,18 +36,21 @@ typedef struct Page{
             int min;
             int max;
             int step;
+            uint8 opened;
         } intValue;
         struct {
             float *value;
             float min;
             float max;
             float step;
+            uint8 opened;
         } floatValue;
         struct {
             double *value;
             double min;
             double max;
             double step;
+            uint8 opened;
         } doubleValue;
         struct {
             uint8 *value;
