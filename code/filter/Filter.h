@@ -20,6 +20,6 @@ float lpf(Filter* this, float input);
 void HPF_Init(Filter* this, float cutoff_freq, float sample_freq);
 float hpf(Filter* this, float input);
 
-extern Filter Filter_turn;
+extern Filter Filter_turn, Filter_speed;
 
 #endif /* CODE_FILTER_FILTER_H_ */

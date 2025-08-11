@@ -10,9 +10,9 @@
 
 #include "Sys.h"
 
-extern const uint16 PIT00ms;
-extern const uint16 PIT01ms;
-extern const uint16 PIT10ms;
+extern const uint32 PIT00ms;
+extern const uint32 PIT01ms;
+extern const uint32 PIT10ms;
 
 void Pit_init();
 

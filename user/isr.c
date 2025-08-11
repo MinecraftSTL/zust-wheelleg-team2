@@ -43,6 +43,7 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU60_CH0);
+
     if(beepTime){
         --beepTime;
         beep_start();
@@ -85,13 +86,14 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kZero = -11;
+float kZero = -4;
 
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU61_CH0);
+
     GetSpeed();
     int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     Update_GyroData();
@@ -137,6 +139,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         speed = fsSpeed;
         turn = 0;
     }
+    speed = lpf(&Filter_speed, speed);
 //    printf("%d\r\n", speed);
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);
