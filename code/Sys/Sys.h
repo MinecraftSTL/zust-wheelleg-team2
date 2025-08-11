@@ -12,6 +12,8 @@
 #include <stdint.h>
 #include <math.h>
 
+#define max(a, b) ((a) < (b) ? (b) : (a))
+#define min(a, b) ((a) > (b) ? (b) : (a))
 #define zzz(x, z) ((x) > (z) ? (x) - (z) : (x) < -(z) ? (x) + (z) : 0)
 
 float Calculate_Curvature(int array[], int start, int size);

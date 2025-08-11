@@ -10,13 +10,13 @@ float shadowK = 0.1;
 float vignetteK = 0.1;
 uint8 binStatus = 1;
 int binDeltaT = 0;
-float trapezoidK = 0.6;
+float trapezoidK = 0.8;
 int trapezoidY = 20;
 int startMaxYAdd = 2;
 int bly2RDL = 3;
 float RD2IErr = 0.7854;
 float facingErr = 0.6981317;
-int setLineY = 15;
+int setLineY = 10;
 int straightYMin = 40;
 int straightStep = 10;
 float straightErr = 0.087266;
@@ -1593,10 +1593,10 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
 void Image_other(Image *this, float *cameraV, uint16 *cameraY){
     switch(cameraStatus){
         case CAMERA_STATUS_NONE:
-            if(rStraight==1 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > elementYMin){
+            if(rStraight==1 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > max(elementYMin, straightYMin)){
                 CameraStatus_addScore(OR_CROSS_LCIRCLE);
             }
-            if(lStraight==1 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > elementYMin){
+            if(lStraight==1 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > max(elementYMin, straightYMin)){
                 CameraStatus_addScore(OR_CROSS_RCIRCLE);
             }
             if(lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 &&
@@ -1616,7 +1616,7 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
             *cameraY = (uint16)((errY-bendErrY)*func_limit_ab((Encoder_speed-bendV)/(targetV-bendV), 0, 1)+bendErrY);
             break;
         case OR_CROSS_LCIRCLE:
-            if(!(lInfN > 0 && (rStraight==1 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > elementYMin ||
+            if(!(lInfN > 0 && (rStraight==1 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > max(elementYMin, straightYMin) ||
                     Inflection_getFacing(lInfRad[0]) == 3 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 ||
                     (lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && fabsf(Angle_normalize(PI - lInfRad[1])) <= PI/2 &&
                             lLine[lInfLine[0]][1] - lLine[lInfLine[1]][1] >= elementX || Inflection_getFacing(lInfRad[0]) == 2) &&
@@ -1629,7 +1629,7 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
             *cameraV = circleV;
             break;
         case OR_CROSS_RCIRCLE:
-            if(!(rInfN > 0 && (lStraight==1 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > elementYMin ||
+            if(!(rInfN > 0 && (lStraight==1 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > max(elementYMin, straightYMin) ||
                     Inflection_getFacing(rInfRad[0]) == 4 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 ||
                     (rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && fabsf(Angle_normalize(0 - rInfRad[1])) <= PI/2 &&
                             rLine[rInfLine[0]][1] - rLine[rInfLine[1]][1] >= elementX || Inflection_getFacing(rInfRad[0]) == 1) &&
