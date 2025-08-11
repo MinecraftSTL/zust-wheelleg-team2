@@ -50,7 +50,7 @@ int bridgeTO = 10000;
 int bridgeS = 60000;
 float bridgeZ = -80;
 int bridgeDetectL = 0;
-float otherBPow = 10;
+float otherBPow = 15;
 int errY = 50;
 int errDeltaY = 30;
 
@@ -1492,7 +1492,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
         case I_BRIDGE:
             rollBalance = 1;
             kPitchX = bridgeKPitchX;
-            if(statusKeepMs >= bridgeTI || statusKeepTick > 1 && PID_vVx.Ek_ + bridgeV1 >= bridgeV0){
+            if(statusKeepMs >= bridgeTI || statusKeepTick > 1 && PID_vXx.Ek_ + bridgeV1 >= bridgeV0){
                 uint8 oBridge = 0;
                 if(lInfM > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                         rInfM > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
@@ -1551,8 +1551,8 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
                 Image_borderSetDLine(this, rBorder, rLine[rInfLine[0]][1]-2*bly2RDL);
             }
             *cameraV = bridgeV0;
-            if(PID_vVx.Ek_sum > 0){
-                PID_vVx.Ek_sum = 0;
+            if(PID_vXx.Ek_sum > 0){
+                PID_vXx.Ek_sum = 0;
             }
             break;
         case I_LBRIDGE:
@@ -1590,8 +1590,8 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
                 Image_borderSetDLine(this, rBorder, rLine[rInfLine[0]][1]-2*bly2RDL);
             }
             *cameraV = bridgeV1;
-            if(PID_vVx.Ek_sum < 0){
-                PID_vVx.Ek_sum = 0;
+            if(PID_vXx.Ek_sum < 0){
+                PID_vXx.Ek_sum = 0;
             }
             break;
         case O_LBRIDGE:
@@ -1649,8 +1649,8 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
                 Image_borderSetDLine(this, rBorder, min(rLine[rInfLine[1]][1],rLine[rInfLine[2]][1])-2*bly2RDL);
             }
             *cameraV = bridgeV1;
-            if(PID_vVx.Ek_sum < 0){
-                PID_vVx.Ek_sum = 0;
+            if(PID_vXx.Ek_sum < 0){
+                PID_vXx.Ek_sum = 0;
             }
             break;
         case I_RBRIDGE:
@@ -1688,8 +1688,8 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
                 Image_borderSetDLine(this, rBorder, min(rLine[rInfLine[1]][1],rLine[rInfLine[2]][1])-2*bly2RDL);
             }
             *cameraV = bridgeV1;
-            if(PID_vVx.Ek_sum < 0){
-                PID_vVx.Ek_sum = 0;
+            if(PID_vXx.Ek_sum < 0){
+                PID_vXx.Ek_sum = 0;
             }
             break;
         case O_RBRIDGE:
@@ -1747,8 +1747,8 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
                 Image_borderSetDLine(this, rBorder, rLine[rInfLine[0]][1]-2*bly2RDL);
             }
             *cameraV = bridgeV1;
-            if(PID_vVx.Ek_sum < 0){
-                PID_vVx.Ek_sum = 0;
+            if(PID_vXx.Ek_sum < 0){
+                PID_vXx.Ek_sum = 0;
             }
             break;
         case O_BRIDGE:

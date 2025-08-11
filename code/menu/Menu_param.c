@@ -160,7 +160,7 @@ Page menu_main_arg_PID_gyro_Kp;
 Page menu_main_arg_PID_gyro_Ki;
 PidPage menu_main_arg_PID_vAy;
 PidPage menu_main_arg_PID_xAy;
-PidPage menu_main_arg_PID_vVx;
+PidPage menu_main_arg_PID_vXx;
 PidPage menu_main_arg_PID_vAz;
 PidPage menu_main_arg_PID_turn;
 Page menu_main_arg_filter;
@@ -614,7 +614,7 @@ void Menu_param_init(){
         &menu_main_arg_PID_gyro,
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
-        &menu_main_arg_PID_vVx,
+        &menu_main_arg_PID_vXx,
         &menu_main_arg_PID_vAz,
         &menu_main_arg_PID_turn,
         NULL
@@ -627,9 +627,9 @@ void Menu_param_init(){
     FloatPage_init(&menu_main_arg_PID_gyro_Kp, "Kp", &Gyro_Kp, 0, 10000);
     FloatPage_init(&menu_main_arg_PID_gyro_Ki, "Ki", &Gyro_Ki, 0, 10000);
     menu_main_arg_PID_gyro_Kp.extends.floatValue.dot = menu_main_arg_PID_gyro_Ki.extends.floatValue.dot = 4;
-    PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
-    PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_WxAy);
-    PidPage_init(&menu_main_arg_PID_vVx, "vVx", &PID_vVx);
+    PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_vAy);
+    PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_xAy);
+    PidPage_init(&menu_main_arg_PID_vXx, "vXx", &PID_vXx);
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
     PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
     ListPage_init(&menu_main_arg_filter, "Filter", (Page*[]){

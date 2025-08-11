@@ -32,7 +32,10 @@ void CarStatus_update(){
         return;
     }
     CameraStatus_clear();
+    Gyro_Kp = Gyro_Kp_used;
+
     carRunMs = 0;
+
     wheelClear = 0;
 
     timeProtectNowT = 0;
