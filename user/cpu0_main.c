@@ -549,7 +549,7 @@ void core0_main(void)
         ips200_show_uint(188,216,cameraStatus,3);
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);
-//        printf("%d\r\n", (Encoder_speed_l+Encoder_speed_r)>>1);
+//        printf("%d\r\n", (int)(((Encoder_speed_l+Encoder_speed_r)>>1)-cameraV));
         // 此处编写需要循环执行的代码
     }
 }

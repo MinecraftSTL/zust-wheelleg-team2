@@ -1352,9 +1352,13 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
         case O_LBRIDGE:
             if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
                 if(lStraight || lInfN == 0 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
-                    CameraStatus_addScore(I_RBRIDGE);
+                    if(rLine[rInfLine[1]][1] > lLine[lInfLine[1]][1]){
+                        CameraStatus_addScore(I_RBRIDGE);
+                    }else if(rLine[rInfLine[1]][1] < lLine[lInfLine[1]][1]){
+                        CameraStatus_addScore(I_LBRIDGE);
+                    }
                 }
-            }else if(!(lInfN == 0 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1)){
+            }else if(!(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1)){
                 if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                     CameraStatus_addScore(I_LBRIDGE);
                 }else{
@@ -1402,9 +1406,13 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
         case O_RBRIDGE:
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                 if(rStraight || rInfN == 0 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
-                    CameraStatus_addScore(I_LBRIDGE);
+                    if(lLine[lInfLine[1]][1] > rLine[rInfLine[1]][1]){
+                        CameraStatus_addScore(I_LBRIDGE);
+                    }else if(lLine[lInfLine[1]][1] < rLine[rInfLine[1]][1]){
+                        CameraStatus_addScore(I_RBRIDGE);
+                    }
                 }
-            }else if(!(rInfN == 0 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2)){
+            }else if(!(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2)){
                 if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
                     CameraStatus_addScore(I_RBRIDGE);
                 }else{
