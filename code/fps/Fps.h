@@ -30,10 +30,17 @@
 
 #include "Sys.h"
 
-extern uint32 fps;
+typedef struct{
+    uint16 sepNum;
+    uint16 f[1001];
+    uint32 fps;
+    uint16 p;
+}Fps;
 
-void Fps_init(uint32 period);
-void Fps_scan();
-void Fps_add(uint16 fNum);
+extern Fps fps;
+
+void Fps_init(Fps *this, uint32 period);
+void Fps_scan(Fps *this);
+void Fps_add(Fps *this, uint16 fNum);
 
 #endif /* CODE_FPS_FPS_H_ */

@@ -855,8 +855,8 @@ void Image_cross(Image *this, float *cameraV, uint16 *errY){
 void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case OR_CROSS_LCIRCLE:
-            if((lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 ||
-                    lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2) && rStraight==1){
+            if(lInfN > 0 && (lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 ||
+                     Inflection_getFacing(lInfRad[0]) == 2) && rStraight==1 && lLine[lInfLine[0]][1] > straightYMin + circleX){
                 CameraStatus_addScore(PTI_LCIRCLE);
             }
             break;
@@ -962,8 +962,8 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
 void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case OR_CROSS_RCIRCLE:
-            if((rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 ||
-                    rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1) && lStraight==1){
+            if(rInfN > 0 && (rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 ||
+                    Inflection_getFacing(rInfRad[0]) == 1) && lStraight==1 && rLine[rInfLine[0]][1] > straightYMin + circleX){
                 CameraStatus_addScore(PTI_RCIRCLE);
             }
             break;
@@ -1699,7 +1699,7 @@ void Image_processCamera(){
             }
             Image_processForShow();
         }
-        Fps_add(1);
+        Fps_add(&fps, 1);
         camera_process_cnt=1;
     }
 }

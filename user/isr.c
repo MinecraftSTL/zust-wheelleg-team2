@@ -68,7 +68,7 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         pressed[NEXT_KEY] += switch_encoder_change_num;
     }
     switch_encoder_change_num = 0;
-    Fps_scan();
+    Fps_scan(&fps);
 }
 
 IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORITY)
@@ -172,7 +172,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             lza = Roll_toPosZ(zzz(roll, ZZZ_xAx)*PI/180, lza_);
         }
         lza = func_limit(lza, BRIDGE_MAX_Z);
-        lza_ = rollBalanceK*lpf0(&Filter0_xAx, lpf1(&Filter1_xAx, lza));
+        lza_ = rollBalanceK*lpf0(&Filter0_xAx, lza);
         float k = (legZ + LEG_MIN_Z) / (LEG_MIN_Z - LEG_MAX_Z);
 
         if (lza_ < 0) {
@@ -185,7 +185,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         Leg_set_pos(lx, lz, rx, rz);
     }
     Camera_pit(PIT10ms, Encoder_speed);
-    if(carStatus > CAR_BALANCE && (fps == 0 || fps > 7000)){//摄像头排线松了
+    if(carStatus > CAR_BALANCE && (fps.fps == 0 || fps.fps > 7000)){//摄像头排线松了
         CarStatus_set(CAR_BALANCE);
     }
 }

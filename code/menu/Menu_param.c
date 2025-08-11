@@ -113,8 +113,7 @@ PidPage menu_main_arg_PID_turn;
 Page menu_main_arg_filter;
 Page menu_main_arg_filter_speed;
 Page menu_main_arg_filter_turn;
-Page menu_main_arg_filter_xAx0;
-Page menu_main_arg_filter_xAx1;
+Page menu_main_arg_filter_xAx;
 Page menu_main_arg_filter_zzzXAx;
 Page menu_main_debug;
 Page menu_main_debug_wheelClear;
@@ -437,15 +436,13 @@ void Menu_param_init(){
     ListPage_init(&menu_main_arg_filter, "Filter", (Page*[]){
         &menu_main_arg_filter_turn,
         &menu_main_arg_filter_speed,
-        &menu_main_arg_filter_xAx0,
-        &menu_main_arg_filter_xAx1,
+        &menu_main_arg_filter_xAx,
         &menu_main_arg_filter_zzzXAx,
         NULL
     });
     FloatPage_init(&menu_main_arg_filter_turn, "turn", &Filter1_turn.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter1_speed.alpha, 0, 1);
-    FloatPage_init(&menu_main_arg_filter_xAx0, "xAx0", &Filter0_xAx.delta, 0, 10000);
-    FloatPage_init(&menu_main_arg_filter_xAx1, "xAx1", &Filter1_xAx.alpha, 0, 1);
+    FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter0_xAx.delta, 0, 10000);
     FloatPage_init(&menu_main_arg_filter_zzzXAx, "ZZZ_xAx", &ZZZ_xAx, 0, 90);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wheelClear,

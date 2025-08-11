@@ -59,7 +59,7 @@ void core0_main(void)
     Flash_init();
     Gyro_init();
     MyCamera_Init();
-    Fps_init(PIT00ms);
+    Fps_init(&fps, PIT00ms);
     small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
@@ -76,7 +76,7 @@ void core0_main(void)
         Page_press(&menu_main, pressed);
         Page_print(&menu_main, 0);
         Image_showCamera(0, 200);
-        ips200_show_uint(188,200,fps,4);
+        ips200_show_uint(188,200,fps.fps,4);
         ips200_show_uint(188,216,cameraStatus,3);
         // 此处编写需要循环执行的代码
     }

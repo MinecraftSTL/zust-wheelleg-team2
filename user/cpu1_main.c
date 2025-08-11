@@ -33,7 +33,7 @@
 * 2022-09-15       pudding            first version
 ********************************************************************************************************************/
 
-#include "zf_common_headfile.h"
+#include "cpu1_main.h"
 
 #pragma section all "cpu1_dsram"
 // 将本语句与#pragma section all restore语句之间的全局变量都放在CPU1的RAM中

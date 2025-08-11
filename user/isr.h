@@ -38,7 +38,8 @@
 #define _isr_h
 
 #include "Sys.h"
-#include "../code/pid/Pid_param.h"
+#include "Pid_param.h"
+#include "Fps_param.h"
 #include "zf_common_headfile.h"
 
 

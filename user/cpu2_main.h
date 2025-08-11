@@ -8,6 +8,6 @@
 #ifndef USER_CPU2_MAIN_H_
 #define USER_CPU2_MAIN_H_
 
-#include "motor.h"
+#include "Motor.h"
 
 #endif /* USER_CPU2_MAIN_H_ */

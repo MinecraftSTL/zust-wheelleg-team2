@@ -56,7 +56,7 @@
 #include "Menu_param.h"
 #include "Stl.h"
 #include "PidPage.h"
-#include "Fps.h"
+#include "Fps_param.h"
 
 
 /******************************************************************************/
