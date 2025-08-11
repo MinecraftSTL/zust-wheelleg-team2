@@ -401,7 +401,7 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_e_bridge_ti, "ti", &bridgeTI, 0, 100000);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_to, "to", &bridgeTO, 0, 100000);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_s, "s", &bridgeS, 0, 10000000);
-    FloatPage_init(&menu_main_arg_k_camera_e_bridge_z, "z", &bridgeZ, -LEG_MIN_Z, -LEG_MAX_Z);
+    FloatPage_init(&menu_main_arg_k_camera_e_bridge_z, "z", &bridgeZ, -LEG_MAX_Z, -LEG_MIN_Z);
     BoolPage_init(&menu_main_arg_k_camera_e_bridge_detect, "detectL", &bridgeDetectL, 0x03);
     IntPage_init(&menu_main_arg_k_camera_setLineY, "setLineY", &setLineY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_err, "err", (Page*[]){

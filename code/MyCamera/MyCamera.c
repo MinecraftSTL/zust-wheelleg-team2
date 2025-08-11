@@ -38,8 +38,8 @@ int bridgeY = 5;
 float bridgeKPitchX = 0.5;
 int bridgeTI = 1000;
 int bridgeTO = 10000;
-int bridgeS = 50000;
-float bridgeZ = -100;
+int bridgeS = 51000;
+float bridgeZ = -75;
 uint8 bridgeDetectL = 0;
 #define cameraAngle (5)
 int errY = 60;
@@ -450,13 +450,13 @@ uint8 inline Image_borderXIsLose(Image *this, uint16 x, uint16 y, uint8 dir){
 }
 uint8 inline Image_borderIsLose(Image *this, uint16 border[MT9V03X_H], uint16 y, uint8 dir){
     if(y >= this->h){
-        return 1;
+        return -1;
     }
     return Image_borderXIsLose(this, border[y], y, dir);
 }
 uint8 inline Image_borderIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
     for(uint16 i=y0; i<=y1; ++i){
-        if(!Image_borderIsLose(this, border, i, dir)){
+        if(Image_borderIsLose(this, border, i, dir) != 1){
             return 0;
         }
     }
@@ -464,7 +464,7 @@ uint8 inline Image_borderIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16
 }
 uint8 inline Image_borderIsNoneLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
     for(uint16 i=y0; i<=y1; ++i){
-        if(Image_borderIsLose(this, border, i, dir)){
+        if(Image_borderIsLose(this, border, i, dir) != 0){
             return 0;
         }
     }
@@ -759,18 +759,18 @@ void Image_cross(Image *this, float *cameraV, uint16 *errY){
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 &&
                     lLine[lInfLine[0]][1] > crossX+1 && rLine[rInfLine[0]][1] > crossX+1 &&
                     abs(lLine[lInfLine[0]][1]-rLine[rInfLine[0]][1]) < crossY &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX, 0) && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX-1, 0) &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX, 1) && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX-1, 1)
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX, 0)==1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX-1, 0)==1 &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX, 1)==1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX-1, 1)==1
                     )
             {
                 CameraStatus_addScore(IN_CROSS);
             }
             if((lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[1]][1]+crossX, 0) && Image_borderIsLose(this, lBorder, lLine[lInfLine[1]][1]+crossX+1, 0) &&
-                    Image_borderIsLose(this, rBorder, lLine[lInfLine[0]][1], 1) && Image_borderIsLose(this, rBorder, lLine[lInfLine[0]][1]-1, 1)||
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[1]][1]+crossX, 0)==1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[1]][1]+crossX+1, 0)==1 &&
+                    Image_borderIsLose(this, rBorder, lLine[lInfLine[0]][1], 1)==1 && Image_borderIsLose(this, rBorder, lLine[lInfLine[0]][1]-1, 1)==1||
                     rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[1]][1]+crossX, 1) && Image_borderIsLose(this, rBorder, rLine[rInfLine[1]][1]+crossX+1, 1) &&
-                    Image_borderIsLose(this, lBorder, rLine[rInfLine[0]][1], 0) && Image_borderIsLose(this, lBorder, rLine[rInfLine[0]][1]-1, 0)) &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[1]][1]+crossX, 1)==1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[1]][1]+crossX+1, 1)==1 &&
+                    Image_borderIsLose(this, lBorder, rLine[rInfLine[0]][1], 0)==1 && Image_borderIsLose(this, lBorder, rLine[rInfLine[0]][1]-1, 0))==1 &&
                     lLine[lInfLine[1]][1]+crossX+1 < this->h && rLine[rInfLine[1]][1]+crossX+1 < this->h){
                 CameraStatus_addScore(R_CROSS);
             }
@@ -823,8 +823,8 @@ void Image_cross(Image *this, float *cameraV, uint16 *errY){
 void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case NONE:
-            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX, 0) &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX-1, 0) && lLine[lInfLine[0]][1] > circleY && rStraight){
+            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX, 0)==1 &&
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX-1, 0)==1 && lLine[lInfLine[0]][1] > circleY && rStraight){
                 CameraStatus_addScore(I_LCIRCLE);
             }
             break;
@@ -852,7 +852,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
             }
             int16 x, y = -1;
             if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/2) &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]+circleX, 0)){
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]+circleX, 0)==1){
                 if(lInfN > 1 && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, rBorder, lLine[lInfLine[1]][0], lLine[lInfLine[1]][1], rStart[0], rStart[1]);
                     x = lLine[lInfLine[1]][0];
@@ -921,8 +921,8 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
 void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case NONE:
-            if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX, 1) &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX-1, 1) && rLine[rInfLine[0]][1] > circleY && lStraight){
+            if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX, 1)==1 &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX-1, 1)==1 && rLine[rInfLine[0]][1] > circleY && lStraight){
                 CameraStatus_addScore(I_RCIRCLE);
             }
             break;
@@ -950,7 +950,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
             }
             int16 x, y=-1;
             if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/2) &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]+circleX, 1)){
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]+circleX, 1)==1){
                 if(rInfN > 1 && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, lBorder, rLine[rInfLine[1]][0], rLine[rInfLine[1]][1], lStart[0], lStart[1]);
                     x=rLine[rInfLine[1]][0];
@@ -1265,7 +1265,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                 }
             }else{
                 float k = (float)statusKeepMs/bridgeTI;
-                targetLegZ = (-100-defaultLegZ)*k+defaultLegZ;
+                targetLegZ = (bridgeZ-defaultLegZ)*k+defaultLegZ;
                 Filter1_xAx.alpha = defaultRollAlpha*k;
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
@@ -1425,12 +1425,12 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
 void Image_other(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case NONE:
-            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > circleX+1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX, 0) &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX-1, 0) && rStraight && !lStraight){
+            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > circleX+1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX, 0)==1 &&
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX-1, 0)==1 && rStraight && !lStraight){
                 CameraStatus_addScore(OR_CROSS_LCIRCLE);
             }
-            if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > circleX+1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX, 1) &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX-1, 1) && lStraight && !rStraight){
+            if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > circleX+1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX, 1)==1 &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX-1, 1)==1 && lStraight && !rStraight){
                 CameraStatus_addScore(OR_CROSS_RCIRCLE);
             }
             if(!lStraight || !rStraight){
