@@ -34,20 +34,19 @@ struct LegServoAngle Pos_toServoAngle(float x, float z){
     return ret;
 }
 
-uint8 Pos_isLegal(float x, float z, const struct LegServoAngle a){
-    if(a.f<0 || a.f > PI/2){
-        return 0;
+void Pos_limit(float *x, float *z){
+    if(*x < -LEG_MAX_X){
+        *x = -LEG_MAX_X;
     }
-    if(a.b<0 || a.b > PI/2){
-        return 0;
+    if(*x > LEG_MAX_X){
+        *x = LEG_MAX_X;
     }
-    if(x < -LEG_MAX_X || x > LEG_MAX_X){
-        return 0;
+    if(-*z < LEG_MIN_Z){
+        *z = -LEG_MIN_Z;
     }
-    if(-z < LEG_MIN_Z || -z > LEG_MAX_Z){
-        return 0;
+    if(-*z > LEG_MAX_Z){
+        *z = -LEG_MAX_Z;
     }
-    return 1;
 }
 
 int32 Roll_toPosZ(float roll, float lza){
@@ -68,11 +67,10 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
 }
 
 void Leg_set_pos(float lx, float lz, float rx, float rz){
+    Pos_limit(&lx, &lz);
+    Pos_limit(&rx, &rz);
     struct LegServoAngle l = Pos_toServoAngle(lx, lz);
     struct LegServoAngle r = Pos_toServoAngle(rx, rz);
 //    printf("%lf, %lf, %lf, %lf\n",r.b, r.f, l.b, l.f);
-    if(!Pos_isLegal(lx, lz, l) || !Pos_isLegal(rx, rz, r)){
-        return;
-    }
     Leg_set_duty(r.b, r.f, l.f, l.b);
 }

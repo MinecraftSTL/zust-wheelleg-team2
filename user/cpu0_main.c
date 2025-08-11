@@ -54,6 +54,9 @@ Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
 Page menu_main_arg_k_speedF;
+Page menu_main_arg_k_camera;
+Page menu_main_arg_k_camera_horizon;
+Page menu_main_arg_k_camera_deltaH;
 Page menu_main_arg_PID;
 Page menu_main_arg_PID_vAy;
 Page menu_main_arg_PID_vAy_Kp;
@@ -129,14 +132,21 @@ int core0_main(void)
         &menu_main_arg_k,
         &menu_main_arg_PID,
     });
-    ListPage_init(&menu_main_arg_k, "k", 2, (Page*[]){
+    ListPage_init(&menu_main_arg_k, "k", 3, (Page*[]){
         &menu_main_arg_k_kZero,
         &menu_main_arg_k_speedF,
+        &menu_main_arg_k_camera,
     });
-    FFloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -2, 2);
+    FFloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
     menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
     FFloatPage_init(&menu_main_arg_k_speedF, "speedF", &Filter_speed.alpha, 0, 1);
     menu_main_arg_k_speedF.extends.fFloatValue.dot = 0;
+    ListPage_init(&menu_main_arg_k_camera, "camera", 2, (Page*[]){
+        &menu_main_arg_k_camera_horizon,
+        &menu_main_arg_k_camera_deltaH,
+    });
+    IntPage_init(&menu_main_arg_k_camera_horizon, "horizon", &camera_horizon, 0, image_h-1);
+    IntPage_init(&menu_main_arg_k_camera_deltaH, "deltaH", &delta_camera_horizon, 0, image_h-1);
     ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
@@ -262,6 +272,8 @@ int core0_main(void)
             PageKey_print(&menu_main, 0);
         }
         MyCamera_Show(200);
+//        printf("%d\n", g_camera_mid_err);
+//        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码
     }
 }

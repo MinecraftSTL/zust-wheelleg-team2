@@ -187,9 +187,10 @@ void MyCamera_Show(uint16 y)
           //  middle[i] = (left[i] + right[i]) >> 1;//求中线
           //求中线最好最后求，不管是补线还是做状态机，全程最好使用一组边线，中线最后求出，不能干扰最后的输出
           //当然也有多组边线的找法，但是个人感觉很繁琐，不建议
-            ips200_draw_point((uint16)middle_copy[i], (uint16)i+y,  RGB565_GREEN);
-            ips200_draw_point((uint16)left_copy[i], (uint16)i+y, RGB565_RED);
-            ips200_draw_point((uint16)right_copy[i],(uint16) i+y, RGB565_BLUE);
+            uint8 in_camera_horizon = i>=camera_horizon&&i<camera_horizon+delta_camera_horizon;
+            ips200_draw_point((uint16)middle_copy[i], (uint16)i+y, in_camera_horizon?RGB565_RED:RGB565_GREEN);
+            ips200_draw_point((uint16)left_copy[i], (uint16)i+y, RGB565_GREEN);
+            ips200_draw_point((uint16)right_copy[i],(uint16) i+y, RGB565_GREEN);
         }
 //        seekfree_assistant_camera_send();
     }
@@ -998,18 +999,19 @@ void Lost_Left(void)
 * @date  : 2024年10月25日12:28:00
 * @author: SJX
 ************************************************/
-uint8 camera_horizon = 20;           //前瞻
+int camera_horizon = 60;           //前瞻
+int delta_camera_horizon = 40;
 int Camera_Get_MidErr(void)
 {
 
 #if(MIDDLE_LINE_MODE == 1)
     int i;
     int err_sum = 0, err = 0;
-    for(i=camera_horizon;i < camera_horizon+70; i++)
+    for(i=camera_horizon;i < camera_horizon+delta_camera_horizon; i++)
     {
         err_sum += middle_copy[i] ;
     }
-    err = err_sum / 70;
+    err = err_sum / delta_camera_horizon;
     return err;
 #endif
 #if(MIDDLE_LINE_MODE == 2)

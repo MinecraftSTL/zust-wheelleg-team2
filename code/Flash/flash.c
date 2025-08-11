@@ -47,8 +47,6 @@ void Flash_Init(void)
                 Straight_Speed_PID.Kp = flash_union_buffer[51].float_type;
                 Straight_Speed_PID.Ki = flash_union_buffer[52].float_type;
                 Straight_Speed_PID.Kd = flash_union_buffer[53].float_type;
-
-                basic_V0 = flash_union_buffer[64].float_type;
             }
             else
             {
@@ -78,9 +76,6 @@ void Flash_WriteAllVal(void)
     flash_union_buffer[51].float_type = Straight_Speed_PID.Kp;
     flash_union_buffer[52].float_type = Straight_Speed_PID.Ki;
     flash_union_buffer[53].float_type = Straight_Speed_PID.Kd;
-
-
-    flash_union_buffer[64].float_type = basic_V0;
 
     flash_union_buffer[0].uint32_type = FLASH_KEY;
 

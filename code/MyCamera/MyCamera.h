@@ -31,7 +31,8 @@ extern uint8 circle_flag;
 extern uint8 left_copy[image_h];
 extern uint8 right_copy[image_h];
 extern uint8 middle_copy[image_h];
-extern uint8 camera_horizon;
+extern int camera_horizon;
+extern int delta_camera_horizon;
 extern uint8 cross_road_status;
 extern uint8 Circle_Static_Flag;
 

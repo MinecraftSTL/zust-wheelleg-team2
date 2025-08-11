@@ -76,7 +76,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kZero = 20;
+float kZero = 13;
 
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
@@ -141,7 +141,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lz = rz = legZ;
         float lza = 0;
         if(car_run){
-            lza = Roll_toPosZ(roll*PI/180, lza_);
+            lza = Roll_toPosZ(-roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
         lza_ += pid(&PID_xAx, lza, lza_)/1000;
