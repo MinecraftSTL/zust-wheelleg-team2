@@ -28,7 +28,7 @@ int zebraY = 100;
 int zebraT = 10000;
 int zebraS = 100000;
 int crossX = 15;
-int blockY = 60;
+int blockY = 45;
 int circleX = 7;
 int rampS = 750000;
 int rampY = 40;
@@ -43,8 +43,7 @@ int bridgeTO = 10000;
 int bridgeS = 70000;
 float bridgeZ = -80;
 uint8 bridgeDetectL = 0;
-float otherBPow = 2.5;
-#define cameraAngle (5)
+float otherBPow = 5.f;
 int errY = 60;
 int errDeltaY = 30;
 uint8 showPInC1 = 1;
@@ -757,6 +756,16 @@ void Camera_pit(uint32 period, int16 speed){
     carRunMs += period;
 }
 
+void Image_bendCameraV(Image *this, float *cameraV){
+    for(uint16 y=this->h-1; y>0; --y){
+        if(lBorder[y] > this->w/2 || rBorder[y] < this->w/2){
+            float k = (float)(this->h-y)/this->h;
+            *cameraV = bendV+(*cameraV-bendV)*powf(k, otherBPow);
+            break;
+        }
+    }
+}
+
 void Image_zebra(Image *this, float *cameraV, uint16 *cameraY){
     uint8 zebra = 0;
     {
@@ -834,6 +843,7 @@ void Image_cross(Image *this, float *cameraV, uint16 *cameraY){
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
                 Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
             }
+            Image_bendCameraV(this, cameraV);
             break;
         case R_CROSS:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2 ||
@@ -854,6 +864,7 @@ void Image_cross(Image *this, float *cameraV, uint16 *cameraY){
             }else if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
                 Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
             }
+            Image_bendCameraV(this, cameraV);
             break;
         case O_CROSS:
             if(!(lInfN > 0 && (Inflection_getFacing(lInfRad[0]) == 2 || Inflection_getFacing(lInfRad[0]) == 3) ||
@@ -862,6 +873,7 @@ void Image_cross(Image *this, float *cameraV, uint16 *cameraY){
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && lStraight == 1){
                 CameraStatus_addScore(CAMERA_STATUS_NONE);
             }
+            Image_bendCameraV(this, cameraV);
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2){
                 Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[1]][0], lLine[lInfLine[1]][1]);
             }else if(lInfN > 2 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[lInfN-1]) == 2){
@@ -991,7 +1003,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)((circleErrY-bendErrY)*func_limit_ab((Encoder_speed-bendV)/(circleV-bendV), 0, 1)+bendErrY);
+            *cameraY = (uint16)lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
             break;
         case TO_LCIRCLE:
             if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 && rStraight){
@@ -1093,7 +1105,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)((circleErrY-bendErrY)*func_limit_ab((Encoder_speed-bendV)/(circleV-bendV), 0, 1)+bendErrY);
+            *cameraY = (uint16)lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
             break;
         case TO_RCIRCLE:
             if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 && lStraight){
@@ -1233,7 +1245,6 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
                     lrMeet > barrierY0){
                 CameraStatus_addScore(I_BARRIER);
             }
-            *cameraV = barrierV;
             break;
         case I_BARRIER:
             if(lrMeet > barrierY1){
@@ -1641,15 +1652,9 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
                     CameraStatus_addScore(OR_RAMP_BARRIER);
                 }
             }
-            for(uint16 i=this->h-1; i>0; --i){
-                if(lBorder[i] > this->w/2 || rBorder[i] < this->w/2){
-                    float k = (float)(this->h-i)/(this->h);
-                    *cameraV = bendV+(*cameraV-bendV)*powf(k, otherBPow);
-                    break;
-                }
-            }
+            Image_bendCameraV(this, cameraV);
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)((errY-bendErrY)*func_limit_ab((Encoder_speed-bendV)/(targetV-bendV), 0, 1)+bendErrY);
+            *cameraY = (uint16)lll((float)Encoder_speed, targetV, bendV, *cameraY, bendErrY);
             break;
         case OR_CROSS_LCIRCLE:
             if(!(lInfN > 0 && (rStraight==1 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > max(elementYMin, straightYMin) ||

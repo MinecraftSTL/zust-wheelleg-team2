@@ -369,7 +369,7 @@ void Menu_param_init(){
     IntPage_init(&menu_main_arg_k_camera_eigenvalue_straight_step, "step", &straightStep, 0, MT9V03X_H);
     FloatPage_init(&menu_main_arg_k_camera_eigenvalue_straight_err, "err", &straightErr, 0, 1.57);
     IntPage_init(&menu_main_arg_k_camera_eigenvalue_setLineY, "setLineY", &setLineY, 0, MT9V03X_H);
-    IntPage_init(&menu_main_arg_k_camera_eigenvalue_errDeltaY, "deltaY", &errDeltaY, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_eigenvalue_errDeltaY, "errDeltaY", &errDeltaY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_status, "status", (Page*[]){
         &menu_main_arg_k_camera_status_now,
         &menu_main_arg_k_camera_status_jump,

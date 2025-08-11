@@ -20,20 +20,13 @@ Rgb565Image wifiImage;
 ************************************************/
 void Wifi_Image_Init(void)
 {
-    int i = 0;
     while(wifi_spi_init(WIFI_SSID_TEST, WIFI_PASSWORD_TEST) )
     {
-        i++;
         printf("\r\n connect wifi failed. \r\n");
         ips200_show_string(150, 16*2, "failed");
         if(key_is_pressed()){
             return;
         }
-    }
-    if(i == 0)
-    {
-        ips200_show_string(150, 16*2, "suss");
-        printf("\r\n module ip     :%s",wifi_spi_ip_addr_port);                     // Ä£¿é IP µØÖ·
     }
     g_wifi_image_open_flag = 1;
     seekfree_assistant_interface_init(SEEKFREE_ASSISTANT_WIFI_SPI);

@@ -92,7 +92,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 
     GetSpeed();
     int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-    if(allRunMs >= 5000 && allRunMs < 5000 + PIT10ms){
+    if(allRunMs >= 1000 && allRunMs < 1000 + PIT10ms){
         Gyro_Kp = 1.0f;
     }
     Update_GyroData();

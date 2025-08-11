@@ -17,7 +17,7 @@ void CarStatus_set(CarStatus this)
 }
 void CarStatus_update(){
     beepMid();
-    if(allRunMs < 5000){
+    if(allRunMs < 1000){
         beepLong();
         carStatus = CAR_STOP;
         return;
