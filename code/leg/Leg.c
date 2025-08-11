@@ -69,7 +69,7 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
         Servo_limit(&lb);
     }
     pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+(fLz?0:0.7)));
-    pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf+(fLz?0:0.5)));
+    pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf+(fLz?0:0.6)));
     pwm_set_duty(servo_lf, Radian_toPwmDuty(lf+(fLz?0:0.6)));
     pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb+(fLz?0:0.8)));
 }
@@ -83,7 +83,7 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 
 const int jumpStep[] = {
     0,//‘§ ’Õ»
-    147,//…ÏÕ»
+    110,//…ÏÕ»
     200,// ’Õ»
     -1,
 };

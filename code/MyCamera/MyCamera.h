@@ -52,6 +52,7 @@ extern int cameraErr;
 
 extern Rgb565Image showImage;
 
+extern float shadowK;
 extern float vignetteK;
 extern uint8 binStatus;
 extern int binDeltaT;
@@ -75,16 +76,13 @@ extern int zebraT;
 extern int zebraS;
 extern int crossX;
 extern int crossY;
-extern int circleX;
 extern int rampS;
-extern int rampX;
 extern int rampY;
 extern int rampZ;
 extern float rampK;
-extern int barrierX;
-extern int barrierY;
+extern int barrierY0;
+extern int barrierY1;
 extern int barrierT;
-extern int bridgeX;
 extern float bridgeKPitchX;
 extern int bridgeTI;
 extern int bridgeTO;

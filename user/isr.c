@@ -171,7 +171,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             lza = Roll_toPosZ(roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
-        lza_ = rollBalanceK*lpf0(&Filter0_xAx, lpf1(&Filter1_xAx, lza));
+        lza_ = rollBalanceK*lpf1(&Filter1_xAx, lpf0(&Filter0_xAx, lza));
         float k = (legZ - bridgeZ) / (defaultLegZ - bridgeZ);
 
         if (lza_ < 0) {
