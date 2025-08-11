@@ -11,6 +11,7 @@
 
 #include "Sys.h"
 
+#include "DebugArg.h"
 #include "Pit.h"
 #include "Leg.h"
 #include "Motor.h"
@@ -23,7 +24,6 @@
 #include "SYSTIMER.h"
 #include "UART.h"
 #include "Status.h"
-#include "Debug.h"
 #include "MyCamera.h"
 #include "MyEncoder.h"
 #include "Pid.h"

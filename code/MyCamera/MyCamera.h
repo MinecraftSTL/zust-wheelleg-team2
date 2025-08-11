@@ -10,12 +10,12 @@ typedef enum{
     I_ZEBRA,
     O_ZEBRA,
     IN_CROSS,
-    CROSS,
+    R_CROSS,
     O_CROSS,
     I_LCIRCLE,
     PTI_LCIRCLE,
     TI_LCIRCLE,
-    LCIRCLE,
+    R_LCIRCLE,
     TO_LCIRCLE,
     PO_LCIRCLE,
     O_LCIRCLE,
@@ -23,11 +23,14 @@ typedef enum{
     I_RCIRCLE,
     PTI_RCIRCLE,
     TI_RCIRCLE,
-    RCIRCLE,
+    R_RCIRCLE,
     TO_RCIRCLE,
     PO_RCIRCLE,
     O_RCIRCLE,
     OR_CROSS_RCIRCLE,
+    I_BARRIER,
+    R_BARRIER,
+    O_BARRIER,
     CAMERA_STATUS_NUMBER,
 }CameraStatus;
 
@@ -63,10 +66,14 @@ extern int crossX;
 extern int circleX;
 extern int circleY;
 extern float circleLine;
+extern int barrierY;
+extern int barrierT;
 extern int errY;
 extern int errDeltaY;
 extern uint8 showPInC1;
 extern uint8 showWait;
+
+extern float cameraV;
 
 extern CameraStatus cameraStatus;
 extern uint64 carRunTick;

@@ -238,6 +238,7 @@ void IntPage_init(Page *this, char name[], int32 *value, int32 min, int32 max){
     this->extends.intValue.min = min;
     this->extends.intValue.max = max;
     this->extends.intValue.open = 0;
+    this->extends.intValue.update = NULL;
 }
 void IntPage_print(Page *this, uint8 row){
     char str[7] = {0};
@@ -267,7 +268,7 @@ void IntPage_press(Page *this, uint8 pressed[]){
     }
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->select < 0){
-            if(pressed[LEFT_KEY] || this->extends.intValue.open){
+            if(pressed[UP_KEY] || this->extends.intValue.open){
                 PageKey_back(this);
                 return;
             }
@@ -287,6 +288,9 @@ void IntPage_press(Page *this, uint8 pressed[]){
             *this->extends.intValue.value = this->extends.intValue.min;
         }else if(*this->extends.intValue.value > this->extends.intValue.max){
             *this->extends.intValue.value = this->extends.intValue.max;
+        }
+        if(this->extends.intValue.update){
+            this->extends.intValue.update();
         }
     }
     if(pressed[CENTER_KEY]){
@@ -312,6 +316,7 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max)
     this->extends.floatValue.max = max;
     this->extends.floatValue.dot = 1;
     this->extends.floatValue.open = 0;
+    this->extends.floatValue.update = NULL;
 }
 void FloatPage_print(Page *this, uint8 row){
     char str[11] = {0};
@@ -382,6 +387,9 @@ void FloatPage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.floatValue.value > this->extends.floatValue.max){
             *this->extends.floatValue.value = this->extends.floatValue.max;
         }
+        if(this->extends.floatValue.update){
+            this->extends.floatValue.update();
+        }
     }
     if(pressed[CENTER_KEY]){
         if(this->select < 0){
@@ -400,6 +408,7 @@ void DoublePage_init(Page *this, char name[], float *value, float min, float max
     this->extends.doubleValue.max = max;
     this->extends.doubleValue.dot = 1;
     this->extends.doubleValue.open = 0;
+    this->extends.doubleValue.update = NULL;
 }
 void DoublePage_print(Page *this, uint8 row){
     char str[11] = {0};
@@ -470,6 +479,9 @@ void DoublePage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.doubleValue.value > this->extends.doubleValue.max){
             *this->extends.doubleValue.value = this->extends.doubleValue.max;
         }
+        if(this->extends.doubleValue.update){
+            this->extends.doubleValue.update();
+        }
     }
     if(pressed[CENTER_KEY]){
         if(this->select < 0){
@@ -485,6 +497,7 @@ void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
     Page_init(this, name, BOOL_TYPE);
     this->extends.boolValue.value = value;
     this->extends.boolValue.dir = dir;
+    this->extends.boolValue.update = NULL;
 }
 void BoolPage_print(Page *this, uint8 row){
     ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->select==0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
@@ -501,6 +514,9 @@ void BoolPage_press(Page *this, uint8 pressed[]){
             if(this->extends.boolValue.dir&0x01&&!*this->extends.boolValue.value ||
                     this->extends.boolValue.dir&0x02&&*this->extends.boolValue.value){
                 *this->extends.boolValue.value = !*this->extends.boolValue.value;
+            }
+            if(this->extends.boolValue.update){
+                this->extends.boolValue.update();
             }
         }
     }
@@ -530,6 +546,7 @@ void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]){
         }
         this->extends.enumValue.names[i][PAGE_VALUE_MAX] = '\0';
     }
+    this->extends.enumValue.update = NULL;
 }
 void EnumPage_print(Page *this, uint8 row){
     if(!row){
@@ -565,6 +582,9 @@ void EnumPage_press(Page *this, uint8 pressed[]){
             return;
         }else{
             *this->extends.enumValue.value=this->select;
+            if(this->extends.enumValue.update){
+                this->extends.enumValue.update();
+            }
         }
     }
 }

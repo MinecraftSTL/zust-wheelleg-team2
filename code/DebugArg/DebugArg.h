@@ -5,8 +5,8 @@
  *      Author: minec
  */
 
-#ifndef CODE_DEBUG_DEBUG_H_
-#define CODE_DEBUG_DEBUG_H_
+#ifndef CODE_DEBUGARG_DEBUGARG_H_
+#define CODE_DEBUGARG_DEBUGARG_H_
 
 #include "Sys.h"
 
@@ -30,4 +30,4 @@ extern float fwpRz;
 
 extern uint8 ffRow;
 
-#endif /* CODE_DEBUG_DEBUG_H_ */
+#endif /* CODE_DEBUGARG_DEBUGARG_H_ */

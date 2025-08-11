@@ -53,6 +53,7 @@ typedef struct Page{
             int32 min;
             int32 max;
             uint8 open;
+            void (*update)();
         } intValue;
         struct {
             float *value;
@@ -60,6 +61,7 @@ typedef struct Page{
             float max;
             uint8 dot;
             uint8 open;
+            void (*update)();
         } floatValue;
         struct {
             double *value;
@@ -67,15 +69,18 @@ typedef struct Page{
             double max;
             uint8 dot;
             uint8 open;
+            void (*update)();
         } doubleValue;
         struct {
             uint8 *value;
             uint8 dir;
+            void (*update)();
         } boolValue;
         struct {
             uint32 *value;
             int8 size;
             char names[PAGE_ELEMENT_MAX][PAGE_VALUE_MAX+1];
+            void (*update)();
         } enumValue;
         struct {
             void (*value)();

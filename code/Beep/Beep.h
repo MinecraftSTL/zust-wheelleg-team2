@@ -11,8 +11,9 @@
 #include "zf_common_headfile.h"
 
 #define Beep P15_6
-#define Beep1 P15_7
+#define BeepLouder P15_7
 
+extern int volume;
 extern uint32 beepTime;
 
 void beep_init();

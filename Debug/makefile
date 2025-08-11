@@ -60,7 +60,6 @@ RM := rm -rf
 -include code/fps/subdir.mk
 -include code/foc/subdir.mk
 -include code/filter/subdir.mk
--include code/debug/subdir.mk
 -include code/beep/subdir.mk
 -include code/VOFA/subdir.mk
 -include code/UART/subdir.mk
@@ -69,6 +68,7 @@ RM := rm -rf
 -include code/Status/subdir.mk
 -include code/Motor/subdir.mk
 -include code/Flash/subdir.mk
+-include code/DebugArg/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C++_DEPS)),)
 -include $(C++_DEPS)

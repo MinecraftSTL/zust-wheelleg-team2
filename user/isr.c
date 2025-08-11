@@ -79,7 +79,6 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
 
 float kZero = -4;
 
-float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
@@ -99,21 +98,18 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
 
     float tg_pitchV = 0, tg_yawV = 0, legX = 0, legZ = -45;
-    if(carStatus > CAR_START){
+    if(carStatus >= CAR_BALANCE){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;
-        if(carStatus == CAR_RUN){
-            targetV = V0;
-            if(fvEn){
-                targetV = fvV;
-            }
+        if(carStatus >= CAR_RUN){
+            targetV = cameraV;
         }
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
 //        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
-        legX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
+        legX += pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
-        tg_pitchV = pid(&PID_WxAy, kZero, pitch);
-        if(carStatus == CAR_RUN){
+        tg_pitchV += pid(&PID_WxAy, kZero, pitch);
+        if(carStatus >= CAR_RUN){
             tg_yawV = pid(&PID_vAz, 0, camera_err);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
@@ -123,10 +119,13 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         PID_clear(&PID_vAz);
 //        printf("%f,%f\r\n", pitch,kZero);
     }
-    int speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
-    int turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
-    if(carStatus == CAR_STOP){
-        speed = turn = 0;
+    int speed = 0, turn = 0;
+    if(carStatus >= CAR_START){
+        speed = lpf(&Filter_speed, pid(&PID_WvAy, tg_pitchV, new_gyro_y));
+        turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
+    }else{
+        PID_clear(&PID_WvAy);
+        PID_clear(&PID_WvAz);
     }
     if(fsEn){
         speed = fsSpeed;
@@ -141,15 +140,16 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }else if(fwpEn){
         Leg_set_pos(fwpLx, fwpLz, fwpRx, fwpRz);
     }else{
+        static float lza_ = 0;
         float lx, lz, rx, rz;
         lx = rx = legX;
         lz = rz = legZ;
         float lza = 0;
         if(carStatus && !ffRow){
-            lza = Roll_toPosZ(-roll*PI/180, lza_);
+            lza = Roll_toPosZ(roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
-        lza_ += pid(&PID_xAx, lza, lza_)/1000;
+        lza_ = lpf(&Filter_xAx, lza);
         if(lza_ > 0){
             lz += -lza_;
         }else{
@@ -270,6 +270,11 @@ IFX_INTERRUPT(uart0_tx_isr, UART0_INT_VECTAB_NUM, UART0_TX_INT_PRIO)
 IFX_INTERRUPT(uart0_rx_isr, UART0_INT_VECTAB_NUM, UART0_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
+
+    //#if DEBUG_UART_USE_INTERRUPT                        // 如果开启 debug 串口中断
+    //        debug_interrupr_handler();                  // 调用 debug 串口接收处理函数 数据会被 debug 环形缓冲区读取
+    //#endif                                              // 如果修改了 DEBUG_UART_INDEX 那这段代码需要放到对应的串口中断去
+        My_Vofa_CallBack();
 }
 
 
@@ -415,11 +420,6 @@ IFX_INTERRUPT(uart10_tx_isr, UART10_INT_VECTAB_NUM, UART10_TX_INT_PRIO)
 IFX_INTERRUPT(uart10_rx_isr, UART10_INT_VECTAB_NUM, UART10_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-
-//#if DEBUG_UART_USE_INTERRUPT                        // 如果开启 debug 串口中断
-//        debug_interrupr_handler();                  // 调用 debug 串口接收处理函数 数据会被 debug 环形缓冲区读取
-//#endif                                              // 如果修改了 DEBUG_UART_INDEX 那这段代码需要放到对应的串口中断去
-    My_Vofa_CallBack();
 }
 
 IFX_INTERRUPT(uart11_tx_isr, UART11_INT_VECTAB_NUM, UART11_TX_INT_PRIO)

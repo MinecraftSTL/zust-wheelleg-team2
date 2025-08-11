@@ -10,24 +10,28 @@
 
 #include "Sys.h"
 
+int volume = 3;
+
 uint32 beepTime = 0;
 
 void beep_init(){
     gpio_init(Beep, GPO, 0, GPO_PUSH_PULL);
-    gpio_init(Beep1, GPO, 0, GPO_PUSH_PULL);
+    gpio_init(BeepLouder, GPO, 0, GPO_PUSH_PULL);
 }
 
 void beep_start(){
-    gpio_high(Beep);
-    gpio_high(Beep1);
+    gpio_set_level(Beep, volume & 0x01);
+    gpio_set_level(BeepLouder, volume & 0x02);
 }
 void beep_stop(){
     gpio_low(Beep);
-    gpio_low(Beep1);
+    gpio_low(BeepLouder);
 }
 
 void beep(uint32 time){
-    beepTime = time;
+    if(time > beepTime){
+        beepTime = time;
+    }
 }
 void beepShort(){
     beep(1);

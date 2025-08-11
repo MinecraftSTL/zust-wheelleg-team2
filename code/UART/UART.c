@@ -38,7 +38,7 @@ uint16 RxLine = 0;//指令长度
 uint8 DataBuff[256];//指令内容
 void My_Vofa_CallBack(void)
 {
-    uart_query_byte(UART_0, &RxBuffer);
+    uart_query_byte(UART_INDEX, &RxBuffer);
 
 //    RxLine++; // 增加接收的数据长度
 //    DataBuff[RxLine - 1] = RxBuffer; // 保存接收的数据到缓冲区

@@ -14,8 +14,6 @@
 #define MOTOR_PWM_MAX 5000
 #define MOTOR_PWM_MIN -5000
 
-extern float V0 ;
-
 void MotorSetPWM(int pwm_left,int pwm_right);
 
 #endif

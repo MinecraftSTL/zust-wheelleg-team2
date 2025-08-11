@@ -47,9 +47,10 @@ uint8 pressed[KEY_NUM] = {0};
 
 Page menu_main;
 Page menu_main_carStatus;
-Page menu_main_carStatus_add;
-Page menu_main_carStatus_sub;
-Page menu_main_carStatus_stop;
+Page menu_main_config;
+Page menu_main_config_volume;
+Page menu_main_config_mod;
+Page menu_main_config_mod_gyro;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
@@ -80,6 +81,9 @@ Page menu_main_arg_k_camera_e_circle;
 Page menu_main_arg_k_camera_e_circle_x;
 Page menu_main_arg_k_camera_e_circle_y;
 Page menu_main_arg_k_camera_e_circle_line;
+Page menu_main_arg_k_camera_e_barrier;
+Page menu_main_arg_k_camera_e_barrier_y;
+Page menu_main_arg_k_camera_e_barrier_t;
 Page menu_main_arg_k_camera_setLineY;
 Page menu_main_arg_k_camera_err;
 Page menu_main_arg_k_camera_err_y;
@@ -98,20 +102,15 @@ PidPage menu_main_arg_PID_xAy;
 PidPage menu_main_arg_PID_vVx;
 PidPage menu_main_arg_PID_vAz;
 PidPage menu_main_arg_PID_turn;
-PidPage menu_main_arg_PID_xAx;
 Page menu_main_arg_filter;
 Page menu_main_arg_filter_speed;
 Page menu_main_arg_filter_turn;
-Page menu_main_mod;
-Page menu_main_mod_gyro;
+Page menu_main_arg_filter_xAx;
 Page menu_main_debug;
 Page menu_main_debug_wifiIm;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
 Page menu_main_debug_fs_speed;
-Page menu_main_debug_fv;
-Page menu_main_debug_fv_en;
-Page menu_main_debug_fv_v;
 Page menu_main_debug_fl;
 Page menu_main_debug_fl_en;
 Page menu_main_debug_fl_rb;
@@ -150,20 +149,30 @@ void core0_main(void)
     ListPage_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", (Page*[]){
         &menu_main_carStatus,
+        &menu_main_config,
         &menu_main_arg,
-        &menu_main_mod,
         &menu_main_debug,
         NULL
     });
-    ListPage_init(&menu_main_carStatus, "carStatus", (Page*[]){
-        &menu_main_carStatus_add,
-        &menu_main_carStatus_sub,
-        &menu_main_carStatus_stop,
+    EnumPage_init(&menu_main_carStatus, "carStatus", &carStatus, (char*[]){
+        "stop",
+        "start",
+        "balance",
+        "run",
+        ""
+    });
+    menu_main_carStatus.extends.enumValue.update = CarStatus_update;
+    ListPage_init(&menu_main_config, "config", (Page*[]){
+        &menu_main_config_volume,
+        &menu_main_config_mod,
         NULL
     });
-    FuncPage_init(&menu_main_carStatus_add, "add", CarStatus_add);
-    FuncPage_init(&menu_main_carStatus_sub, "sub", CarStatus_sub);
-    FuncPage_init(&menu_main_carStatus_stop, "stop", CarStatus_stop);
+    IntPage_init(&menu_main_config_volume, "volume", &volume, 0, 3);
+    ListPage_init(&menu_main_config_mod, "mod", (Page*[]){
+        &menu_main_config_mod_gyro,
+        NULL
+    });
+    FuncPage_init(&menu_main_config_mod_gyro, "gyro", gyro_set);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
@@ -231,6 +240,7 @@ void core0_main(void)
         &menu_main_arg_k_camera_e_zebra,
         &menu_main_arg_k_camera_e_cross,
         &menu_main_arg_k_camera_e_circle,
+        &menu_main_arg_k_camera_e_barrier,
         NULL
     });
     ListPage_init(&menu_main_arg_k_camera_e_zebra, "zebra", (Page*[]){
@@ -254,6 +264,13 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_e_circle_y, "y", &circleY, 0, MT9V03X_H);
     FloatPage_init(&menu_main_arg_k_camera_e_circle_line, "line", &circleLine, 0, 1);
     menu_main_arg_k_camera_e_circle_line.extends.floatValue.dot = 0;
+    ListPage_init(&menu_main_arg_k_camera_e_barrier, "barrier", (Page*[]){
+        &menu_main_arg_k_camera_e_barrier_y,
+        &menu_main_arg_k_camera_e_barrier_t,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_e_barrier_y, "y", &barrierY, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_barrier_t, "t", &barrierT, 0, 1000);
     IntPage_init(&menu_main_arg_k_camera_setLineY, "setLineY", &setLineY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_err, "err", (Page*[]){
         &menu_main_arg_k_camera_err_y,
@@ -286,7 +303,6 @@ void core0_main(void)
         &menu_main_arg_PID_vVx,
         &menu_main_arg_PID_vAz,
         &menu_main_arg_PID_turn,
-        &menu_main_arg_PID_xAx,
         NULL
     });
     PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
@@ -294,24 +310,19 @@ void core0_main(void)
     PidPage_init(&menu_main_arg_PID_vVx, "vVx", &PID_vVx);
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
     PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
-    PidPage_init(&menu_main_arg_PID_xAx, "xAx", &PID_xAx);
     ListPage_init(&menu_main_arg_filter, "filter", (Page*[]){
         &menu_main_arg_filter_turn,
         &menu_main_arg_filter_speed,
+        &menu_main_arg_filter_xAx,
         NULL
     });
     FloatPage_init(&menu_main_arg_filter_turn, "turn", &Filter_turn.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter_speed.alpha, 0, 1);
-    ListPage_init(&menu_main_mod, "mod", (Page*[]){
-        &menu_main_mod_gyro,
-        NULL
-    });
-    FuncPage_init(&menu_main_mod_gyro, "gyro", gyro_set);
+    FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter_xAx.alpha, 0, 1);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wifiIm,
         &menu_main_debug_fs,
         &menu_main_debug_fl,
-        &menu_main_debug_fv,
         &menu_main_debug_fwp,
         &menu_main_debug_ffRow,
         &menu_main_debug_jump,
@@ -325,13 +336,6 @@ void core0_main(void)
     });
     BoolPage_init(&menu_main_debug_fs_en, "enable", &fsEn, 0x03);
     IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
-    ListPage_init(&menu_main_debug_fv, "forceV", (Page*[]){
-        &menu_main_debug_fv_en,
-        &menu_main_debug_fv_v,
-        NULL
-    });
-    BoolPage_init(&menu_main_debug_fv_en, "enable", &fvEn, 0x03);
-    IntPage_init(&menu_main_debug_fv_v, "V", &fvV, -1000, 1000);
     ListPage_init(&menu_main_debug_fl, "forceLeg", (Page*[]){
         &menu_main_debug_fl_en,
         &menu_main_debug_fl_rb,
@@ -372,8 +376,8 @@ void core0_main(void)
         PageKey_press(&menu_main, pressed);
         PageKey_print(&menu_main, 0);
         Image_showCamera(0, 200);
-        ips200_show_int(188,200,fps,4);
-        ips200_show_int(188,216,cameraStatus,4);
+        ips200_show_uint(188,200,fps,4);
+        ips200_show_uint(188,216,cameraStatus,4);
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码
