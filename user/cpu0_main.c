@@ -221,10 +221,14 @@ int core0_main(void)
         &menu_main_debug_fwp_rz,
     });
     BoolPage_init(&menu_main_debug_fwp_en, "enable", &fwpEn, 0x03);
-    IntPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -LEG_MAX_X, LEG_MAX_X);
-    IntPage_init(&menu_main_debug_fwp_lz, "lt_z", &fwpLz, -LEG_MAX_Z, -LEG_MIN_Z);
-    IntPage_init(&menu_main_debug_fwp_rx, "rt_x", &fwpRx, -LEG_MAX_X, LEG_MAX_X);
-    IntPage_init(&menu_main_debug_fwp_rz, "rt_z", &fwpRz, -LEG_MAX_Z, -LEG_MIN_Z);
+    FFloatPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -LEG_MAX_X, LEG_MAX_X);
+    FFloatPage_init(&menu_main_debug_fwp_lz, "lt_z", &fwpLz, -LEG_MAX_Z, -LEG_MIN_Z);
+    FFloatPage_init(&menu_main_debug_fwp_rx, "rt_x", &fwpRx, -LEG_MAX_X, LEG_MAX_X);
+    FFloatPage_init(&menu_main_debug_fwp_rz, "rt_z", &fwpRz, -LEG_MAX_Z, -LEG_MIN_Z);
+    menu_main_debug_fwp_lx.extends.fFloatValue.dot
+    =menu_main_debug_fwp_lz.extends.fFloatValue.dot
+    =menu_main_debug_fwp_rx.extends.fFloatValue.dot
+    =menu_main_debug_fwp_rz.extends.fFloatValue.dot=2;
 
     beepLong();
     PageKey_print(&menu_main, 0);

@@ -16,7 +16,7 @@ void Leg_init(){
     Leg_set_duty(0,0,0,0);
 }
 
-struct LegServoAngle Pos_toServoAngle(int32 x, int32 z){
+struct LegServoAngle Pos_toServoAngle(float x, float z){
     struct LegServoAngle ret;
 
     float DBuW = hypot(DFB/2-x,z);
@@ -34,7 +34,7 @@ struct LegServoAngle Pos_toServoAngle(int32 x, int32 z){
     return ret;
 }
 
-uint8 Pos_isLegal(int32 x, int32 z, const struct LegServoAngle a){
+uint8 Pos_isLegal(float x, float z, const struct LegServoAngle a){
     if(a.f<-PI/6 || a.f > PI/2){
         return 0;
     }
@@ -50,7 +50,7 @@ uint8 Pos_isLegal(int32 x, int32 z, const struct LegServoAngle a){
     return 1;
 }
 
-int32 Roll_toPosZ(float roll, int32 lza){
+int32 Roll_toPosZ(float roll, float lza){
     float AGC = PI+roll;
     float AWG = atan2(lza, DLR)- AGC;
     return DLR*tan(AWG);
@@ -67,7 +67,7 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
     pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb+0.5));
 }
 
-void Leg_set_pos(int32 lx, int32 lz, int32 rx, int32 rz){
+void Leg_set_pos(float lx, float lz, float rx, float rz){
     struct LegServoAngle l = Pos_toServoAngle(lx, lz);
     struct LegServoAngle r = Pos_toServoAngle(rx, rz);
 //    printf("%lf, %lf, %lf, %lf\n",r.b, r.f, l.b, l.f);

@@ -23,9 +23,9 @@ extern float flLf;
 extern float flLb;
 
 extern uint8 fwpEn;
-extern int32 fwpLx;
-extern int32 fwpLz;
-extern int32 fwpRx;
-extern int32 fwpRz;
+extern float fwpLx;
+extern float fwpLz;
+extern float fwpRx;
+extern float fwpRz;
 
 #endif /* CODE_DEBUG_DEBUG_H_ */

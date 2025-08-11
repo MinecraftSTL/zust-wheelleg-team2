@@ -20,7 +20,7 @@ float flLf = 0;
 float flLb = 0;
 
 uint8 fwpEn = 0;
-int32 fwpLx = 0;
-int32 fwpLz = -45;
-int32 fwpRx = 0;
-int32 fwpRz = -45;
+float fwpLx = 0;
+float fwpLz = -45;
+float fwpRx = 0;
+float fwpRz = -45;

@@ -31,8 +31,8 @@ struct LegServoAngle{
 };
 
 void Leg_init();
-int32 Roll_toPosZ(float roll, int32 lza);
+int32 Roll_toPosZ(float roll, float lza);
 void Leg_set_duty(float rb, float rf, float lf, float lb);
-void Leg_set_pos(int32 lx, int32 lz, int32 rx, int32 rz);
+void Leg_set_pos(float lx, float lz, float rx, float rz);
 
 #endif /* CODE_LEG_LEG_H_ */
