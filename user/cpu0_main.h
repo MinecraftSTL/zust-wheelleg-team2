@@ -51,12 +51,12 @@
 /******************************************************************************/
 /*----------------------------------Includes----------------------------------*/
 /******************************************************************************/
+#include <WifiImage.h>
 #include "../code/pid/Pid_param.h"
 #include "Cpu/Std/Ifx_Types.h"
 
 #include "Menu.h"
 #include "PidPage.h"
-#include "Wifi_Image.h"
 #include "Fps.h"
 
 #include "Sys.h"

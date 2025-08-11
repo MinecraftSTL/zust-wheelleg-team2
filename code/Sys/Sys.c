@@ -200,5 +200,5 @@ float Angle_normalize(float theta) {
 }
 float NormalizeAngle_toPi2(float theta) {
     theta = fabsf(theta); // ×ª»»µ½ [0, ¦Ð]
-    return (PI - fabsf(2 * theta - PI)) / 2.0f;
+    return (PI - fabsf(2 * theta - PI)) / 2.f;
 }

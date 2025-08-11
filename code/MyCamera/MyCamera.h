@@ -1,6 +1,12 @@
 #ifndef __MyCamera_H
 #define __MyCamera_H
 
+typedef enum{
+    NONE,
+    IN_CROSS,
+    OUT_CROSS,
+}CameraStatus;
+
 typedef struct{
     uint16 y, x;
 }dot;
@@ -23,10 +29,19 @@ extern int camera_err;
 
 extern Rgb565Image showImage;
 
-extern uint16 binR;
+extern int binR;
 extern int binDeltaT;
-extern uint16 bly2RDR;
+extern int bly2RDR;
 extern float RD2IE;
+extern float IGFE;
+extern int invY;
+extern float invK;
+extern int crossY;
+extern int crossX;
+extern uint8 showPInC1;
+extern uint8 showBin;
+
+extern CameraStatus status;
 
 void MyCamera_Init(void);
 void MyCamera_Show(uint16 start_y);
@@ -34,7 +49,7 @@ uint8 Image_get(Image *this, uint16 y, uint16 x);
 void Image_set(Image *this, uint16 y, uint16 x, uint8 value);
 void Image_fromCamera(Image *this, uint8 mt9v03x_image[MT9V03X_H][MT9V03X_W]);
 void Image_clone(Image *this, Image *target);
-void Image_cut(Image *this, Image *target, uint16 h, uint16 w);
+void Image_cut(Image *this, Image *target, uint16 y0, uint16 x0, uint16 y1, uint16 x1);
 void Image_toRgb565Image(Image *this, Rgb565Image *target);
 void Rgb565Image_clone(Rgb565Image *this, Rgb565Image *target);
 void Rgb565Image_mode(Rgb565Image *this, Rgb565Image *target);

@@ -5,8 +5,8 @@
  *      Author: sun
  */
 
-#ifndef CODE_WIFI_IMAGE_WIFI_IMAGE_H_
-#define CODE_WIFI_IMAGE_WIFI_IMAGE_H_
+#ifndef CODE_WIFIIMAGE_WIFIIMAGE_H_
+#define CODE_WIFIIMAGE_WIFIIMAGE_H_
 
 #include "zf_device_wifi_spi.h"
 #include "zf_device_ips200.h"
@@ -29,4 +29,4 @@ extern uint8 image_copy[MT9V03X_H][MT9V03X_W];
 void Wifi_Image_Init(void);
 void Wifi_Image_Send_Camera(void);
 
-#endif /* CODE_WIFI_IMAGE_WIFI_IMAGE_H_ */
+#endif /* CODE_WIFIIMAGE_WIFIIMAGE_H_ */

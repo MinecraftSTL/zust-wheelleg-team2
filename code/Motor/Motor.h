@@ -14,12 +14,6 @@
 #define MOTOR_PWM_MAX 5000
 #define MOTOR_PWM_MIN -5000
 
-extern PID Motor_Speed_PID_Left;
-extern PID Motor_Speed_PID_Right;
-extern PID Turn_Speed_PID;
-extern PID Straight_Speed_PID;
-
-extern int target_left,target_right;
 extern float V0 ;
 
 void MotorSetPWM(int pwm_left,int pwm_right);

@@ -18,11 +18,8 @@ uint8 g_started_debug = 0;
 ************************************************/
 void Car_Stop(void)
 {
-    g_Car_Status = status_car_stop;                      //关闭电机，启用菜单
-//  pit_disable(CCU61_CH0);
-    target_left = 0;
-    target_right = 0;
-//    Motor_Stop();
+    beepMid();
+    g_Car_Status = status_car_stop;
 }
 
 /***********************************************
@@ -34,12 +31,6 @@ void Car_Stop(void)
 ************************************************/
 void Car_Start(void)
 {
-    system_delay_ms(1000);
-    beepShort();
+    beepMid();
     g_Car_Status = status_car_start;
-    PID_clear(&Motor_Speed_PID_Left);
-    PID_clear(&Motor_Speed_PID_Right);
-    PID_clear(&Turn_Speed_PID);
-    PID_clear(&Straight_Speed_PID);
-    pit_enable(CCU61_CH0);
 }

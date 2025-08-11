@@ -58,6 +58,13 @@ Page menu_main_arg_k_camera_bin_deltaT;
 Page menu_main_arg_k_camera_i;
 Page menu_main_arg_k_camera_i_bly2RDR;
 Page menu_main_arg_k_camera_i_RD2IE;
+Page menu_main_arg_k_camera_IGFE;
+Page menu_main_arg_k_camera_cross;
+Page menu_main_arg_k_camera_cross_y;
+Page menu_main_arg_k_camera_cross_x;
+Page menu_main_arg_k_camera_show;
+Page menu_main_arg_k_camera_show_pInC1;
+Page menu_main_arg_k_camera_show_bin;
 Page menu_main_arg_k_jump;
 Page menu_main_arg_k_jump_step0;
 Page menu_main_arg_k_jump_step1;
@@ -74,6 +81,7 @@ PidPage menu_main_arg_PID_xAx;
 Page menu_main_mod;
 Page menu_main_mod_gyro;
 Page menu_main_debug;
+Page menu_main_debug_wifiIm;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
 Page menu_main_debug_fs_speed;
@@ -107,7 +115,7 @@ void core0_main(void)
     gyro_init();
     MyCamera_Init();
     Fps_init(PIT00ms);
-    Wifi_Image_Init();
+//    Wifi_Image_Init();
     small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
@@ -142,6 +150,9 @@ void core0_main(void)
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
         &menu_main_arg_k_camera_i,
+        &menu_main_arg_k_camera_IGFE,
+        &menu_main_arg_k_camera_cross,
+        &menu_main_arg_k_camera_show,
         NULL
     });
     ListPage_init(&menu_main_arg_k_camera_bin, "bin", (Page*[]){
@@ -158,6 +169,23 @@ void core0_main(void)
     });
     IntPage_init(&menu_main_arg_k_camera_i_bly2RDR, "bly2RDR", &bly2RDR, 0, MT9V03X_W);
     FloatPage_init(&menu_main_arg_k_camera_i_RD2IE, "RD2IE", &RD2IE, 0, 1.57);
+    menu_main_arg_k_camera_i_RD2IE.extends.floatValue.dot = 1;
+    FloatPage_init(&menu_main_arg_k_camera_IGFE, "RD2IE", &IGFE, 0, 0.7854);
+    menu_main_arg_k_camera_IGFE.extends.floatValue.dot = 0;
+    ListPage_init(&menu_main_arg_k_camera_cross, "cross", (Page*[]){
+        &menu_main_arg_k_camera_cross_y,
+        &menu_main_arg_k_camera_cross_x,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_cross_y, "y", &crossY, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_cross_x, "x", &crossX, 0, MT9V03X_W);
+    ListPage_init(&menu_main_arg_k_camera_show, "show", (Page*[]){
+        &menu_main_arg_k_camera_show_pInC1,
+        &menu_main_arg_k_camera_show_bin,
+        NULL
+    });
+    BoolPage_init(&menu_main_arg_k_camera_show_pInC1, "pInC1", &showPInC1, 0x03);
+    BoolPage_init(&menu_main_arg_k_camera_show_bin, "bin", &showBin, 0x03);
     ListPage_init(&menu_main_arg_k_jump, "jump", (Page*[]){
         &menu_main_arg_k_jump_step0,
         &menu_main_arg_k_jump_step1,
@@ -171,12 +199,12 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_jump_step3, "3", &(jumpStep[3]), 0, 1000);
     FloatPage_init(&menu_main_arg_k_turnA, "turn_a", &Filter_turn.alpha, 0, 1);
     ListPage_init(&menu_main_arg_PID, "PID", (Page*[]){
-        PidPage_getRoot(&menu_main_arg_PID_vAy),
-        PidPage_getRoot(&menu_main_arg_PID_xAy),
-        PidPage_getRoot(&menu_main_arg_PID_vVx),
-        PidPage_getRoot(&menu_main_arg_PID_vAz),
-        PidPage_getRoot(&menu_main_arg_PID_turn),
-        PidPage_getRoot(&menu_main_arg_PID_xAx),
+        &menu_main_arg_PID_vAy,
+        &menu_main_arg_PID_xAy,
+        &menu_main_arg_PID_vVx,
+        &menu_main_arg_PID_vAz,
+        &menu_main_arg_PID_turn,
+        &menu_main_arg_PID_xAx,
         NULL
     });
     PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
@@ -191,6 +219,7 @@ void core0_main(void)
     });
     FuncPage_init(&menu_main_mod_gyro, "gyro", gyro_set);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
+        &menu_main_debug_wifiIm,
         &menu_main_debug_fs,
         &menu_main_debug_fl,
         &menu_main_debug_fv,
@@ -199,6 +228,7 @@ void core0_main(void)
         &menu_main_debug_jump,
         NULL
     });
+    FuncPage_init(&menu_main_debug_wifiIm, "wifiIm", Wifi_Image_Init);
     ListPage_init(&menu_main_debug_fs, "forceSpeed", (Page*[]){
         &menu_main_debug_fs_en,
         &menu_main_debug_fs_speed,
@@ -255,10 +285,11 @@ void core0_main(void)
     PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
-        while(PageKey_press(&menu_main, pressed));
+        PageKey_press(&menu_main, pressed);
         PageKey_print(&menu_main, 0);
         MyCamera_Show(200);
         ips200_show_int(188,200,fps,4);
+        ips200_show_int(188,216,status,4);
         Wifi_Image_Send_Camera();
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);

@@ -3,13 +3,6 @@
 //Limit函数
 #define LIMIT_VAL(a,min,max) ((a)<(min)?(min):((a)>(max)?(max):(a)))
 
-PID Motor_Speed_PID_Left;
-PID Motor_Speed_PID_Right;
-PID Turn_Speed_PID;
-PID Straight_Speed_PID;
-
-int target_left = 0,target_right = 0;          //左右轮的目标速度的值
-
 float V0 = 200;
 /***********************************************
 * @brief : PWM输出

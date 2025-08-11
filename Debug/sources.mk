@@ -31,7 +31,6 @@ code/Sys \
 code/SysTimer \
 code/UART \
 code/VOFA \
-code/Wifi_Image \
 code/beep \
 code/debug \
 code/filter \
@@ -47,6 +46,7 @@ code/myKey \
 code/pid \
 code/pit \
 code/process \
+code/wifiImage \
 libraries/infineon_libraries/Configurations \
 libraries/infineon_libraries/Infra/Platform/Tricore/Compilers \
 libraries/infineon_libraries/Infra/Ssw/TC38A/Tricore \
