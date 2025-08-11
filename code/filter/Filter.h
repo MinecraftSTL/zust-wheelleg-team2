@@ -40,6 +40,6 @@ float hpf1(Filter1* this, float input);
 void Filter_param_init();
 
 extern Filter0 Filter0_xAx;
-extern Filter1 Filter1_turn, Filter1_speed;
+extern Filter1 Filter1_vXx, Filter1_turn, Filter1_speed;
 
 #endif /* CODE_FILTER_FILTER_H_ */

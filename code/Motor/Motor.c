@@ -1,6 +1,6 @@
 #include "Motor.h"
 
-float targetV = 1000;
+float targetV = 1200;
 
 uint8 Motor_dirL = 1, Motor_dirR = 0;
 

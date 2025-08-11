@@ -11,7 +11,7 @@
 #include "Sys.h"
 #include "Pid.h"
 
-extern PID PID_vAy, PID_xAy, PID_vXx, PID_WvAz, PID_vAz;
+extern PID PID_vAy, PID_xAy, PID_vXx, PID_WvXx, PID_WvAz, PID_vAz;
 
 void PID_param_init();
 

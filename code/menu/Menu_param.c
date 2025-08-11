@@ -160,12 +160,14 @@ Page menu_main_arg_PID_gyro_Kp;
 Page menu_main_arg_PID_gyro_Ki;
 PidPage menu_main_arg_PID_vAy;
 PidPage menu_main_arg_PID_xAy;
+PidPage menu_main_arg_PID_WvXx;
 PidPage menu_main_arg_PID_vXx;
+PidPage menu_main_arg_PID_WvAz;
 PidPage menu_main_arg_PID_vAz;
-PidPage menu_main_arg_PID_turn;
 Page menu_main_arg_filter;
 Page menu_main_arg_filter_speed;
 Page menu_main_arg_filter_turn;
+Page menu_main_arg_filter_vXx;
 Page menu_main_arg_filter_xAx;
 Page menu_main_arg_filter_zzzXAx;
 Page menu_main_dat;
@@ -614,9 +616,10 @@ void Menu_param_init(){
         &menu_main_arg_PID_gyro,
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
+        &menu_main_arg_PID_WvXx,
         &menu_main_arg_PID_vXx,
+        &menu_main_arg_PID_WvAz,
         &menu_main_arg_PID_vAz,
-        &menu_main_arg_PID_turn,
         NULL
     });
     ListPage_init(&menu_main_arg_PID_gyro, "gyro", (Page*[]){
@@ -629,18 +632,21 @@ void Menu_param_init(){
     menu_main_arg_PID_gyro_Kp.extends.floatValue.dot = menu_main_arg_PID_gyro_Ki.extends.floatValue.dot = 4;
     PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_vAy);
     PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_xAy);
+    PidPage_init(&menu_main_arg_PID_WvXx, "WvXx", &PID_WvXx);
     PidPage_init(&menu_main_arg_PID_vXx, "vXx", &PID_vXx);
+    PidPage_init(&menu_main_arg_PID_WvAz, "WvAz", &PID_WvAz);
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
-    PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
     ListPage_init(&menu_main_arg_filter, "Filter", (Page*[]){
         &menu_main_arg_filter_turn,
         &menu_main_arg_filter_speed,
+        &menu_main_arg_filter_vXx,
         &menu_main_arg_filter_xAx,
         &menu_main_arg_filter_zzzXAx,
         NULL
     });
     FloatPage_init(&menu_main_arg_filter_turn, "turn", &Filter1_turn.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter1_speed.alpha, 0, 1);
+    FloatPage_init(&menu_main_arg_filter_vXx, "vXx", &Filter1_vXx.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter0_xAx.delta, 0, 10000);
     FloatPage_init(&menu_main_arg_filter_zzzXAx, "ZZZ_xAx", &ZZZ_xAx, 0, 90);
     ListPage_init(&menu_main_dat, "dat", (Page*[]){
