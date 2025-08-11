@@ -10,7 +10,7 @@ float shadowK = 0.1;
 float vignetteK = 0.1;
 uint8 binStatus = 1;
 int binDeltaT = 0;
-float trapezoidK = 0.8;
+float trapezoidK = 0.6;
 int trapezoidY = 20;
 int startMaxYAdd = 2;
 int bly2RDL = 3;
@@ -868,7 +868,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             break;
         case I_LCIRCLE:
-            if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - lInfRad[1])) > PI/2) &&
+            if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/2) &&
                     Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]+2*bly2RDL, 0)==1){
                 CameraStatus_addScore(TI_LCIRCLE);
             }
@@ -968,7 +968,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             break;
         case I_RCIRCLE:
-            if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - rInfRad[1])) > PI/2) &&
+            if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/2) &&
                     Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]+2*bly2RDL, 1)==1){
                 CameraStatus_addScore(TI_RCIRCLE);
             }
@@ -1153,8 +1153,10 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
             if(lrMeet > barrierY1){
                 CameraStatus_addScore(R_BARRIER);
             }
-            if(!(lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 &&
-                    rInfN == 1 && Inflection_getFacing(rInfRad[0]) == 3)){
+            if(lInfN > 1 || lInfN == 1 && (Inflection_getFacing(lInfRad[0]) != 4 ||
+                    Image_borderIsStraight(this, lBorder, lLine[lInfLine[0]][1]+rampY, lStart[1], straightStep, straightErr, 0) == 0) ||
+                    rInfN > 1 || rInfN == 1 && (Inflection_getFacing(rInfRad[0]) != 3 ||
+                    Image_borderIsStraight(this, rBorder, rLine[rInfLine[0]][1]+rampY, rStart[1], straightStep, straightErr, 1) == 0)){
                 CameraStatus_addScore(NONE);
             }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 4){
@@ -1545,10 +1547,11 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
             *cameraY = (uint16)((errY-bendErrY)*func_limit_ab((Encoder_speed-bendV)/(targetV-bendV), 0, 1)+bendErrY);
             break;
         case OR_CROSS_LCIRCLE:
-            if(!(rStraight==1 && lStraight!=1 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > elementYMin) &&
-                    !(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4) &&
-                    !(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 ||
-                            lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2)){
+            if(!(lInfN > 0 && (rStraight==1 && lStraight!=1 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > elementYMin ||
+                    Inflection_getFacing(lInfRad[0]) == 3 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 ||
+                    (lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
+                            lLine[lInfLine[0]][1] - lLine[lInfLine[1]][1] >= elementX || Inflection_getFacing(lInfRad[0]) == 2) &&
+                            rStraight==1 && lLine[lInfLine[0]][1] > straightYMin + circleX))){
                 CameraStatus_addScore(NONE);
             }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3){
@@ -1557,10 +1560,11 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
             *cameraV = circleV;
             break;
         case OR_CROSS_RCIRCLE:
-            if(!(lStraight==1 && rStraight!=1 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > elementYMin) &&
-                    !(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3) &&
-                    !(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 ||
-                            rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1)){
+            if(!(rInfN > 0 && (lStraight==1 && rStraight!=1 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > elementYMin ||
+                    Inflection_getFacing(rInfRad[0]) == 4 && lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 ||
+                    (rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
+                            rLine[rInfLine[0]][1] - rLine[rInfLine[1]][1] >= elementX || Inflection_getFacing(rInfRad[0]) == 1) &&
+                            lStraight==1 && rLine[rInfLine[0]][1] > straightYMin + circleX))){
                 CameraStatus_addScore(NONE);
             }
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
@@ -1569,9 +1573,10 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
             *cameraV = circleV;
             break;
         case OR_RAMP_BARRIER:
-            if(!(lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 && lLine[lInfLine[0]][1] > barrierY0 &&
-                    rInfN == 1 && Inflection_getFacing(rInfRad[0]) == 3 && rLine[rInfLine[0]][1] > barrierY0 &&
-                    lrMeet > barrierY0)){
+            if(lInfN > 1 || lInfN == 1 && (Inflection_getFacing(lInfRad[0]) != 4 ||
+                    Image_borderIsStraight(this, lBorder, lLine[lInfLine[0]][1]+rampY, lStart[1], straightStep, straightErr, 0) == 0) ||
+                    rInfN > 1 || rInfN == 1 && (Inflection_getFacing(rInfRad[0]) != 3 ||
+                    Image_borderIsStraight(this, rBorder, rLine[rInfLine[0]][1]+rampY, rStart[1], straightStep, straightErr, 1) == 0)){
                 CameraStatus_addScore(NONE);
             }
             break;

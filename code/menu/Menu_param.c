@@ -370,7 +370,7 @@ void Menu_param_init(){
         &menu_main_arg_k_camera_e_other,
         NULL
     });
-    ListPage_init(&menu_main_arg_k_camera_e_element, "cross", (Page*[]){
+    ListPage_init(&menu_main_arg_k_camera_e_element, "element", (Page*[]){
         &menu_main_arg_k_camera_e_element_yMin,
         &menu_main_arg_k_camera_e_element_x,
         NULL
