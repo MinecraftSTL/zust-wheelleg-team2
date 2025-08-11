@@ -53,7 +53,6 @@ Page menu_main_arg_k_kZero;
 Page menu_main_arg_k_speedF;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_bin;
-Page menu_main_arg_k_camera_bin_r;
 Page menu_main_arg_k_camera_bin_deltaT;
 Page menu_main_arg_k_camera_compErr;
 Page menu_main_arg_k_camera_i;
@@ -166,11 +165,9 @@ void core0_main(void)
         NULL
     });
     ListPage_init(&menu_main_arg_k_camera_bin, "bin", (Page*[]){
-        &menu_main_arg_k_camera_bin_r,
         &menu_main_arg_k_camera_bin_deltaT,
         NULL
     });
-    IntPage_init(&menu_main_arg_k_camera_bin_r, "r", &binR, 0, MT9V03X_W);
     IntPage_init(&menu_main_arg_k_camera_bin_deltaT, "deltaT", &binDeltaT, -256, 255);
     IntPage_init(&menu_main_arg_k_camera_compErr, "compErr", &compareErr,0,255);
     ListPage_init(&menu_main_arg_k_camera_i, "i", (Page*[]){
