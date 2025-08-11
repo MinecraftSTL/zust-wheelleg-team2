@@ -1,6 +1,6 @@
 #include "MOTOR.H"
 
-//Limitº¯Êý
+float targetV = 400;
 
 /***********************************************
 * @brief : PWMÊä³ö

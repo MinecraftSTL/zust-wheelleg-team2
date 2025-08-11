@@ -31,6 +31,10 @@ typedef enum{
     I_BARRIER,
     R_BARRIER,
     O_BARRIER,
+    I_LBRIDGE,
+    O_LBRIDGE,
+    I_RBRIDGE,
+    O_RBRIDGE,
     CAMERA_STATUS_NUMBER,
 }CameraStatus;
 

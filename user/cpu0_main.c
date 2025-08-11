@@ -54,6 +54,7 @@ Page menu_main_config_mod_gyro;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
+Page menu_main_arg_k_v;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_bin;
 Page menu_main_arg_k_camera_bin_deltaT;
@@ -181,12 +182,15 @@ void core0_main(void)
     });
     ListPage_init(&menu_main_arg_k, "k", (Page*[]){
         &menu_main_arg_k_kZero,
+        &menu_main_arg_k_v,
         &menu_main_arg_k_camera,
         &menu_main_arg_k_jump,
         NULL
     });
     FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
     menu_main_arg_k_kZero.extends.floatValue.dot = 2;
+    FloatPage_init(&menu_main_arg_k_v, "v", &targetV, -10000, 10000);
+    menu_main_arg_k_v.extends.floatValue.dot = 4;
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
         &menu_main_arg_k_camera_inf,
