@@ -4,9 +4,9 @@
  *  Created on: 2024Äê11ÔÂ14ÈÕ
  *      Author: minec
  */
-#include "menu.h"
-
 #include "sys.h"
+
+#include "menu.h"
 
 #include "zf_device_ips200.h"
 

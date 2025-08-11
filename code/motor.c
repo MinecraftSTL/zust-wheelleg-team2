@@ -3,8 +3,6 @@
        未经授权禁止转售
  */
 
-
-
 #include "sys.h"
 
 float   target_speed   =   240;   //基础速度   205
@@ -13,22 +11,22 @@ float   S_speed        =   230;  //S弯速度    200
 float   annulus_speed  =   210;   //环岛速度   170
 float   hill_speed     =   700 ;  //上坡速度
 
-float bend_Kp=2.30;
-float bend_Kd=2.4;
 float straight_Kp=1.8;
 float straight_Kd=2.40;
+float bend_Kp=2.30;
+float bend_Kd=2.4;
 float arc_Kp=2.56;
 float arc_Kd=1.74;
 
 float   S_number       =   0.03;   //S弯偏差基数   0.2
 float   target_number  =  0.03;  //基础偏差基数   0.45
 struct PID motor_l = {
-        0,0,
+        0,0
         -2000,2000,
         -2000,2000,
         12.1,  //65    //50    //50
         0.7,  //2.2    //2     //8
-        1.4, // 70    //80    //60
+        70, // 70    //80    //60
 };
 struct PID motor_r = {
         0,0,
@@ -36,10 +34,10 @@ struct PID motor_r = {
         -2000,2000,
         12.1,  //65    //50    //50
         0.7,  //2.2    //2     //8
-        1.4, // 70    //80    //60
+        70, // 70    //80    //60
 };
 struct PID motor_turn = {
-        0,0,
+        0,0
         -1000,1000,
         -1200,1200,
         0, //1.5
@@ -75,32 +73,32 @@ void PWM_motor(float motor_1,float motor_2)
 }
 
 float Motor_PID(struct PID *pid, float target_val, float actual_val){
-    //    motor_l.pid_target_val=200;//debug test
-    float pid_err=target_val-actual_val;
-    pid->sum+=pid_err;
+    float err=target_val-actual_val;
+    pid->sum+=err;
     pid->sum=func_limit_ab(pid->sum, pid->sum_min, pid->sum_max);
 
-    float pid_out=pid->Kp*pid_err +
-                pid->Ki*(pid->sum) +
-                pid->Kd*(pid_err-pid->err);
-    pid->err = pid_err;
-    pid_out=func_limit_ab(pid_out, pid->out_min, pid->out_max);
+    float out=pid->Kp*err +
+                pid->Ki*pid->sum +
+                pid->Kd*(err-pid->err_);
+    pid->err_ = err;
 
-    return pid_out;
+    out=func_limit_ab(out, pid->out_min, pid->out_max);
+
+    return out;
 }
 
 float Motor_l_PID(float actual_val, float turn)
 {
-    return Motor_PID(&motor_l, motor_speed_choose(motor_turn.err)*(1-turn/2e8), actual_val);
+    return Motor_PID(&motor_l, motor_speed_choose(motor_turn.err_)*(1-turn*1e-2), actual_val);
 }
 
 float Motor_r_PID(float actual_val, float turn)
 {
-    return Motor_PID(&motor_r, motor_speed_choose(motor_turn.err)*(1+turn/2e8), actual_val);
+    return Motor_PID(&motor_r, motor_speed_choose(motor_turn.err_)*(1+turn*1e-2), actual_val);
 }
-float Motor_t_PID(float target_val, float actual_val){
+void Motor_t_PID(float actual_val, float *ret){// idk why this cant return
     turn_pd_choose(&motor_turn);
-    return Motor_PID(&motor_turn, target_val, actual_val);
+    *ret = Motor_PID(&motor_turn, 0, actual_val);
 }
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     电机初始化
@@ -165,4 +163,6 @@ void turn_pd_choose(struct PID *PID_turn){
         PID_turn->Kp=arc_Kp;//1.2
         PID_turn->Kd=arc_Kd;//0.5
     }
+    PID_turn->Kp=straight_Kp;//debug test
+    PID_turn->Kd=straight_Kd;//debug test
 }

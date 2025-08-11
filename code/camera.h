@@ -62,7 +62,7 @@ extern uint8 threshold_value;
 extern uint8 Effective_length;
 
 extern const int weight[120];
-extern int piancha;
+extern int err;
 extern uint8 xunxian;
 extern uint8 bend_straight_flag;
 extern uint8 zebra_crossing_flag;//斑马线标志

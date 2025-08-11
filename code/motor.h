@@ -26,18 +26,18 @@ extern float S_speed        ;  //S弯速度    200
 extern float annulus_speed  ;   //环岛速度   170
 extern float hill_speed     ;   //上坡速度
 
-extern float bend_Kp;
-extern float bend_Kd;
 extern float straight_Kp;
 extern float straight_Kd;
+extern float bend_Kp;
+extern float bend_Kd;
 extern float arc_Kp;
 extern float arc_Kd;
 extern uint8 annulus_L_memory, annulus_R_memory;
 
 //PID参数
 struct PID{
-    float err;      //上次误差值
-    float sum;          //积分缓存
+    float err_;
+    float sum;
     float sum_min;
     float sum_max;
     float out_min;
@@ -50,7 +50,7 @@ float Motor_l_PID(float actual_val, float turn);
 float Motor_r_PID(float actual_val, float turn);
 void PWM_motor(float motor_1,float motor_2);
 void motor_init(void);
-float motor_speed_choose(void);
+float motor_speed_choose(float turn_err);
 void turn_pd_choose(struct PID *PID_turn);
 
 extern struct PID motor_l;

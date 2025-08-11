@@ -320,5 +320,9 @@ user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries
 e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/infineon_libraries/iLLD/TC26B/Tricore/Cpu/Std/Ifx_Types.h :
 user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/key.h
 e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/key.h :
+user/cpu1_main.o :	../user/isr.h
+../user/isr.h :
+user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/zf_common/zf_common_headfile.h :
 user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/motor.h
 e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/motor.h :

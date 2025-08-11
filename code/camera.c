@@ -29,7 +29,7 @@ const int weight[120]={
 2,2,2,2,2,2,2,2,2,2,//111-120
 };//1-120
 
-int piancha = 0;
+int err = 0;
 uint8 xunxian =0;
 uint8 bend_straight_flag=0;
 
@@ -3148,11 +3148,11 @@ void pian_cha(void)     //Æ«²îº¯Êý
     {
         if(middle[i]!=0)
         {
-     piancha+=weight[i]*(biao_column-middle[i]);
+     err+=weight[i]*(biao_column-middle[i]);
      weight_sum+=weight[i];
         }
     }
-    piancha/=weight_sum;
+    err/=weight_sum;
 
 //
 
