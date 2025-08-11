@@ -53,6 +53,8 @@ extern int cameraErr;
 
 extern Rgb565Image showImage;
 
+extern float vignetteK;
+extern uint8 binStatus;
 extern int binDeltaT;
 extern float trapezoidK;
 extern int trapezoidY;

@@ -6,6 +6,8 @@ Image image;
 Image image1;
 Rgb565Image showImage;
 
+float vignetteK = 0.2;
+uint8 binStatus = 1;
 int binDeltaT = 0;
 float trapezoidK = 0.6;
 int trapezoidY = 20;
@@ -135,6 +137,9 @@ void Image_clone(Image *this, Image *target)
 void Image_cut(Image *this, uint16 x0, uint16 y0, uint16 x1, uint16 y1){
     zf_assert(!!this);
     uint16 w_ = this->w, h_ = this->h, w = x1-x0, h = y1-y0;
+    if(w_ == this->w && h_ == this->h){
+        return;
+    }
     for(uint16 i = 0; i < h; ++i){
         for(uint16 j = 0; j < w; ++j){
             this->w = w_;
@@ -148,6 +153,9 @@ void Image_cut(Image *this, uint16 x0, uint16 y0, uint16 x1, uint16 y1){
 }
 void Image_zoom(Image *this, Image *target, float zoom){
     zf_assert(this && target && zoom > 0.0f);
+    if(zoom == 1){
+        return;
+    }
     target->w = (this->w-1)*zoom+1;
     target->h = (this->h-1)*zoom+1;
     for(uint16 i = 0; i < target->w; ++i){
@@ -169,6 +177,9 @@ void Rgb565Image_clone(Rgb565Image *this, Rgb565Image *target)
     target->w = this->w;
     target->h = this->h;
     memcpy(target->image, this->image, this->h*this->w*sizeof(uint16));
+}
+void Rgb565Image_clear(Rgb565Image *this){
+    memset(&this->image, 0x0000, sizeof(uint16)*this->h*this->w);
 }
 void Rgb565Image_mode(Rgb565Image *this, Rgb565Image *target){
     zf_assert(this && target);
@@ -197,9 +208,22 @@ void Rgb565Image_mark(Rgb565Image *this, uint16 x, uint16 y, uint16 color, uint1
     }
 }
 
+void Image_vignetting(Image *this, float k){
+    for(uint16 i = 0; i < this->h; ++i){
+        uint8 delta = k*i;
+        for(uint16 j = 0; j < this->w; ++j){
+            uint16 value = Image_get(this,j,i);
+            value += delta;
+            if(value > 0xff){
+                value = 0xff;
+            }
+            Image_set(this,j,i,value);
+        }
+    }
+}
+
 uint8 Fast_OTSU(Image *this)
 {
-    static int16 isFirstBinary = 1;                       // 首次二值化标志位
     static int16 threshold;                               // 二值化阈值
     int16        minGrayValue = 0, maxGrayValue = 255;    // 最小、最大有效灰度值（用来减少遍历）
     // int16 Pix_Dis = (ROW_DIS * MT9V03X_CSI_W) / 2;      //去除图像未参与识别的部分
@@ -237,16 +261,6 @@ uint8 Fast_OTSU(Image *this)
     {
         sumOfBackPixel += grayHist[i];        // 背景总像素数
         sumOfBackGray  += i * grayHist[i];    // 背景总灰度值
-        if (!isFirstBinary)  // 不是第一次二值化，本次阈值在上次阈值的附近（这样能快几十us）
-        {
-            if (i < threshold - 5 && maxGrayValue > threshold)    // 和上次阈值的差距 > 某个值，不计算类间方差。
-            {
-                continue;
-            }
-            if (i > threshold + 5 && minGrayValue < threshold) {
-                return (uint8) threshold;    // 最大类间方差对应的灰度值，认为是最佳分割阈值
-            }
-        }                                          // 计算类间方差
         sumOfForcePixel = sumOfPixel - sumOfBackPixel;                 // 前景像素总数
         sumOfForceGray  = sumOfGrayValue - sumOfBackGray;              // 前景总灰度值
         w0              = (float) sumOfBackPixel / sumOfPixel;         // 背景像素比例
@@ -260,7 +274,6 @@ uint8 Fast_OTSU(Image *this)
             threshold   = i;              // 记录最大类间方差对应的灰度值
         }
     }
-    isFirstBinary = 0;           // 完成第一次二值化，清空标志位
     return (uint8) threshold;    // 最大类间方差对应的灰度值，认为是最佳分割阈值
 }
 
@@ -1312,7 +1325,11 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                     CameraStatus_addScore(I_RBRIDGE);
                 }
             }else if(!(lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1)){
-                CameraStatus_addScore(O_BRIDGE);
+                if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
+                    CameraStatus_addScore(I_LBRIDGE);
+                }else{
+                    CameraStatus_addScore(O_BRIDGE);
+                }
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
@@ -1358,7 +1375,11 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                     CameraStatus_addScore(I_LBRIDGE);
                 }
             }else if(!(rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2)){
-                CameraStatus_addScore(O_BRIDGE);
+                if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
+                    CameraStatus_addScore(I_RBRIDGE);
+                }else{
+                    CameraStatus_addScore(O_BRIDGE);
+                }
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
@@ -1381,29 +1402,12 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             if(statusKeepMs >= bridgeTO || statusRunS >= bridgeS){
                 CameraStatus_set(NONE);
             }
-            uint8 oBridge = 0;
-            if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
-                    rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
-                if(lInfN > 3 && Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1 &&
-                        lLine[lInfLine[2]][1] > rLine[rInfLine[1]][1]){
-                    CameraStatus_addScore(I_LBRIDGE);
-                }else if(rInfN > 3 && Inflection_getFacing(rInfRad[2]) == 4 && Inflection_getFacing(rInfRad[3]) == 2 &&
-                        rLine[rInfLine[2]][1] > lLine[lInfLine[1]][1]){
-                    CameraStatus_addScore(I_RBRIDGE);
-                }else{
-                    oBridge=1;
-                }
-            }else{
-                oBridge=1;
-            }
-            if(oBridge){
-                if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1 &&
-                        (rInfN == 0 || rInfN > 1 && lLine[lInfLine[0]][1] > rLine[rInfLine[1]][1])){
-                    CameraStatus_addScore(O_LBRIDGE);
-                }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2 &&
-                        (lInfN == 0 || lInfN > 1 && rLine[rInfLine[0]][1] > lLine[lInfLine[1]][1])){
-                    CameraStatus_addScore(O_RBRIDGE);
-                }
+            if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1 &&
+                    (rInfN == 0 || rInfN > 1 && lLine[lInfLine[0]][1] > rLine[rInfLine[1]][1])){
+                CameraStatus_addScore(O_LBRIDGE);
+            }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2 &&
+                    (lInfN == 0 || lInfN > 1 && rLine[rInfLine[0]][1] > lLine[lInfLine[1]][1])){
+                CameraStatus_addScore(O_RBRIDGE);
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
@@ -1466,7 +1470,13 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
 }
 
 void Image_processForShow(){
-    Image_toRgb565Image(&image, &showImage);
+    if(showPInC1){
+        Image_toRgb565Image(&image, &showImage);
+    }else{
+        showImage.w = image.w;
+        showImage.h = image.h;
+        Rgb565Image_clear(&showImage);
+    }
     for(uint16 i=0; i<lLineL; ++i){
         Rgb565Image_set(&showImage, lLine[i][0], lLine[i][1], RGB565_YELLOW);
     }
@@ -1518,8 +1528,11 @@ void Image_processCamera(){
                 while(camera_process_cnt);
             }
         }
-        Image_cut(&image, 2, 0, image.w, image.h);//TODO:矫正摄像头后删除
-        Image_binaryzation(&image, binDeltaT);
+//        Image_cut(&image, 2, 0, image.w, image.h);//TODO:矫正摄像头后删除
+        Image_vignetting(&image, vignetteK);
+        if(binStatus){
+            Image_binaryzation(&image, binDeltaT);
+        }
 
 //        Image_drawBlackFrame(&image);
         Image_drawBlackTrapezoid(&image);
@@ -1546,12 +1559,11 @@ void Image_processCamera(){
         Image_bridge(&image, &tempCameraV, &tempErrY);
         Image_other(&image, &tempCameraV, &tempErrY);
         cameraV = tempCameraV;
-//
+
         Image_borderToMiddle(&image, lBorder, rBorder, lrMeet, mLine);
         cameraErr = Image_middleToErr(&image, mLine, tempErrY, errDeltaY);
-//        printf("%d\r\n",statusRunX);
-//        printf("%d\r\n",cameraStatus);
 //        SysTimer_Stop();
+//        printf("%d\r\n",cameraStatus);
 //        printf("%d\r\n",GetPastTime());
         if(showPInC1){
             if(showWait){

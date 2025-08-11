@@ -17,14 +17,18 @@ CarStatus carStatus = CAR_STOP;
 ************************************************/
 void CarStatus_set(CarStatus this)
 {
-    beepMid();
     carStatus = this;
     CarStatus_update();
 }
 void CarStatus_update(){
+    beepMid();
     CameraStatus_set(NONE);
     carRunMs = 0;
     wheelClear = 0;
+    showPInC1 = !carStatus;
+    if(carStatus){
+        binStatus = 1;
+    }
 }
 void CarStatus_add(){
     if(carStatus < CAR_RUN){
