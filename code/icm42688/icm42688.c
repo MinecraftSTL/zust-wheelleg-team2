@@ -7,7 +7,7 @@
 #include "icm42688.h"
 
 float icm42688_acc_x  = 0, icm42688_acc_y  = 0, icm42688_acc_z  = 0;    // ICM42688加速度计数据
-float icm42688_gyro_x = 0, icm42688_gyro_y = 0, icm42688_gyro_z = 0;    // ICM42688角加速度数据
+float icm42688_gyro_x = 0, icm42688_gyro_y = 0, icm42688_gyro_z = 0;    // ICM42688角速度数据
 
 // SPI协议读写操作宏定义,初学者无需修改
 #if ICM42688_HARD_SPI

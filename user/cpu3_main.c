@@ -68,6 +68,7 @@ void core3_main(void)
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);
 //        printf("%d\r\n", (int)(((Encoder_speed_l+Encoder_speed_r)/2)-cameraV));
 //        printf("%f\r\n", cameraV);
+        printf("%d, %f\r\n", (Encoder_speed_l+Encoder_speed_r)/2, cameraV);
 //        printf("%d\r\n", cameraStatus);
         // 此处编写需要循环执行的代码
     }

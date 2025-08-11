@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc27120a --dep-file=code/gyro/Gyro_Process.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/gyro/Gyro_Process.src ../code/gyro/Gyro_Process.c"
+	.compiler_invocation	"ctc -f cc12424a --dep-file=code/gyro/Gyro_Process.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/gyro/Gyro_Process.src ../code/gyro/Gyro_Process.c"
 	.compiler_name		"ctc"
 	;source	'../code/gyro/Gyro_Process.c'
 
@@ -16,686 +16,709 @@ $TC162
 .L4:
 IMUupdate:	.type	func
 	sub.a	a10,#32
-.L70:
-	st.w	[a10]16,d4
 .L73:
-	st.w	[a10]4,d5
-.L74:
-	st.w	[a10]12,d6
-.L75:
-	mov	d8,d7
+	st.w	[a10]12,d4
 .L76:
-	ld.w	d9,[a10]32
+	st.w	[a10]4,d5
+.L77:
+	st.w	[a10]8,d6
 .L78:
+	mov	d8,d7
+.L79:
+	ld.w	d9,[a10]32
+.L81:
 	ld.w	d10,[a10]36
-.L80:
-	movh.a	a15,#@his(q0)
-	lea	a15,[a15]@los(q0)
-	ld.w	d0,[a15]
-.L176:
-	movh.a	a15,#@his(q0)
-	lea	a15,[a15]@los(q0)
-	ld.w	d1,[a15]
-.L177:
-	mul.f	d15,d0,d1
-.L82:
-	st.w	[a10]28,d15
-.L84:
-	movh.a	a15,#@his(q0)
-	lea	a15,[a15]@los(q0)
-	ld.w	d0,[a15]
-.L178:
-	movh.a	a15,#@his(q1)
-	lea	a15,[a15]@los(q1)
-	ld.w	d1,[a15]
-.L179:
-	mul.f	d15,d0,d1
 .L83:
-	st.w	[a10]24,d15
-.L86:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
-	ld.w	d15,[a15]
-.L85:
-	movh.a	a15,#@his(q2)
-	lea	a15,[a15]@los(q2)
 	ld.w	d0,[a15]
-.L180:
-	mul.f	d15,d15,d0
+.L177:
+	movh.a	a15,#@his(q0)
+	lea	a15,[a15]@los(q0)
+	ld.w	d1,[a15]
+.L178:
+	mul.f	d15,d0,d1
+.L85:
+	st.w	[a10]28,d15
 .L87:
-	st.w	[a10]8,d15
-.L89:
+	movh.a	a15,#@his(q0)
+	lea	a15,[a15]@los(q0)
+	ld.w	d0,[a15]
+.L179:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
+	ld.w	d1,[a15]
+.L180:
+	mul.f	d15,d0,d1
+.L86:
+	st.w	[a10]24,d15
+.L89:
+	movh.a	a15,#@his(q0)
+	lea	a15,[a15]@los(q0)
 	ld.w	d15,[a15]
 .L88:
-	movh.a	a15,#@his(q1)
-	lea	a15,[a15]@los(q1)
+	movh.a	a15,#@his(q2)
+	lea	a15,[a15]@los(q2)
 	ld.w	d0,[a15]
 .L181:
 	mul.f	d15,d15,d0
 .L90:
-	st.w	[a10]20,d15
+	st.w	[a10]16,d15
 .L92:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
 	ld.w	d15,[a15]
 .L91:
+	movh.a	a15,#@his(q1)
+	lea	a15,[a15]@los(q1)
+	ld.w	d0,[a15]
+.L182:
+	mul.f	d15,d15,d0
+.L93:
+	st.w	[a10]20,d15
+.L95:
+	movh.a	a15,#@his(q1)
+	lea	a15,[a15]@los(q1)
+	ld.w	d15,[a15]
+.L94:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d0,[a15]
-.L182:
-	mul.f	d11,d15,d0
-.L93:
-	movh.a	a15,#@his(q2)
-	lea	a15,[a15]@los(q2)
-	ld.w	d15,[a15]
 .L183:
-	movh.a	a15,#@his(q2)
-	lea	a15,[a15]@los(q2)
-	ld.w	d0,[a15]
-.L184:
-	mul.f	d15,d15,d0
-.L94:
-	st.w	[a10],d15
+	mul.f	d11,d15,d0
 .L96:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	ld.w	d15,[a15]
-.L95:
+.L184:
+	movh.a	a15,#@his(q2)
+	lea	a15,[a15]@los(q2)
+	ld.w	d0,[a15]
+.L185:
+	mul.f	d15,d15,d0
+.L97:
+	st.w	[a10],d15
+.L99:
+	movh.a	a15,#@his(q2)
+	lea	a15,[a15]@los(q2)
+	ld.w	d15,[a15]
+.L98:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d0,[a15]
-.L185:
+.L186:
 	mul.f	d12,d15,d0
-.L97:
+.L100:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d15,[a15]
-.L186:
+.L187:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d0,[a15]
-.L187:
-	mul.f	d13,d15,d0
-.L98:
-	mul.f	d15,d9,d9
 .L188:
-	madd.f	d15,d15,d8,d8
+	mul.f	d13,d15,d0
+.L101:
+	mul.f	d15,d9,d9
 .L189:
+	madd.f	d15,d15,d8,d8
+.L190:
 	madd.f	d4,d15,d10,d10
-.L72:
+.L75:
 	mov	d15,#14269
 	addih	d15,d15,#13702
-.L190:
+.L191:
 	cmp.f	d15,d4,d15
 	extr.u	d15,d15,#2,#1
-.L191:
-	jeq	d15,#0,.L2
-.L63:
-	call	sqrtf
-.L71:
-	mov	d14,d2
-.L100:
-	mov.u	d15,#59402
-.L101:
-	addih	d15,d15,#16668
 .L192:
-	mov.u	d0,#52429
+	jeq	d15,#0,.L2
+.L67:
+	call	sqrtf
+.L74:
+	mov	d14,d2
 .L103:
-	addih	d0,d0,#15692
-.L193:
-	sub.f	d1,d14,d15
-.L194:
-	sub.f	d15,d14,d15
-.L102:
-	mul.f	d15,d1,d15
-.L195:
-	mul.f	d0,d0,d0
+	mov.u	d15,#52429
 .L104:
-	div.f	d4,d15,d0
+	addih	d15,d15,#15692
+.L193:
+	movh.a	a15,#@his(_999001_g)
+	lea	a15,[a15]@los(_999001_g)
+	ld.w	d0,[a15]
+.L194:
+	sub.f	d0,d14,d0
+.L195:
+	movh.a	a15,#@his(_999001_g)
+	lea	a15,[a15]@los(_999001_g)
+	ld.w	d1,[a15]
+.L196:
+	sub.f	d1,d14,d1
+.L197:
+	mul.f	d0,d0,d1
+.L198:
+	mul.f	d15,d15,d15
 .L105:
+	div.f	d4,d0,d15
+.L106:
 	mov.u	d15,#39322
 	addih	d15,d15,#16025
-.L196:
+.L199:
 	call	sqrt
-.L99:
+.L102:
 	mov.u	d0,#39322
 	addih	d0,d0,#16025
-.L197:
-	add.f	d0,d2,d0
-.L198:
-	div.f	d15,d15,d0
-.L106:
-	movh	d0,#16672
-.L199:
-	mul.f	d1,d15,d0
-.L108:
-	movh	d15,#16256
-.L107:
-	div.f	d15,d15,d14
-.L109:
-	mul.f	d2,d8,d15
-.L77:
-	mul.f	d3,d9,d15
-.L79:
-	mul.f	d4,d10,d15
-.L81:
-	ld.w	d15,[a10]8
-.L110:
-	sub.f	d15,d11,d15
-.L113:
-	movh	d0,#16384
 .L200:
-	mul.f	d5,d15,d0
-.L114:
-	ld.w	d15,[a10]24
-.L115:
-	add.f	d15,d15,d12
-.L116:
-	movh	d0,#16384
+	add.f	d0,d2,d0
 .L201:
-	mul.f	d7,d15,d0
+	div.f	d15,d15,d0
+.L107:
+	movh.a	a15,#@his(Gyro_Kp)
+	lea	a15,[a15]@los(Gyro_Kp)
+	ld.w	d0,[a15]
+.L202:
+	mul.f	d1,d0,d15
+.L109:
+	movh	d15,#16256
+.L108:
+	div.f	d15,d15,d14
+.L110:
+	mul.f	d2,d8,d15
+.L80:
+	mul.f	d3,d9,d15
+.L82:
+	mul.f	d4,d10,d15
+.L84:
+	ld.w	d15,[a10]16
+.L111:
+	sub.f	d15,d11,d15
+.L114:
+	movh	d0,#16384
+.L203:
+	mul.f	d5,d15,d0
+.L115:
+	ld.w	d15,[a10]24
+.L116:
+	add.f	d15,d15,d12
 .L117:
-	ld.w	d15,[a10]28
+	movh	d0,#16384
+.L204:
+	mul.f	d7,d15,d0
 .L118:
-	ld.w	d0,[a10]20
-.L120:
-	sub.f	d15,d15,d0
+	ld.w	d15,[a10]28
 .L119:
-	ld.w	d0,[a10]
+	ld.w	d0,[a10]20
 .L121:
 	sub.f	d15,d15,d0
-.L202:
-	add.f	d15,d15,d13
-.L123:
-	mul.f	d0,d3,d15
+.L120:
+	ld.w	d0,[a10]
 .L122:
-	msub.f	d6,d0,d4,d7
-.L125:
-	mul.f	d0,d4,d5
-.L203:
-	msub.f	d4,d0,d2,d15
-.L112:
-	mul.f	d15,d2,d7
+	sub.f	d15,d15,d0
+.L205:
+	add.f	d15,d15,d13
 .L124:
+	mul.f	d0,d3,d15
+.L123:
+	msub.f	d6,d0,d4,d7
+.L126:
+	mul.f	d0,d4,d5
+.L206:
+	msub.f	d4,d0,d2,d15
+.L113:
+	mul.f	d15,d2,d7
+.L125:
 	msub.f	d2,d15,d3,d5
-.L111:
+.L112:
 	movh.a	a15,#@his(I_ex)
 	lea	a15,[a15]@los(I_ex)
 	movh.a	a2,#@his(I_ex)
 	lea	a2,[a2]@los(I_ex)
 	ld.w	d0,[a2]
-.L204:
+.L207:
 	ld.w	d15,[a10]40
-.L126:
-	madd.f	d15,d0,d15,d6
 .L127:
+	madd.f	d15,d0,d15,d6
+.L128:
 	st.w	[a15],d15
-.L205:
+.L208:
 	movh.a	a15,#@his(I_ey)
 	lea	a15,[a15]@los(I_ey)
 	movh.a	a2,#@his(I_ey)
 	lea	a2,[a2]@los(I_ey)
 	ld.w	d0,[a2]
-.L206:
+.L209:
 	ld.w	d15,[a10]40
-.L128:
-	madd.f	d15,d0,d15,d4
 .L129:
+	madd.f	d15,d0,d15,d4
+.L130:
 	st.w	[a15],d15
-.L207:
+.L210:
 	movh.a	a15,#@his(I_ez)
 	lea	a15,[a15]@los(I_ez)
 	movh.a	a2,#@his(I_ez)
 	lea	a2,[a2]@los(I_ez)
 	ld.w	d0,[a2]
-.L208:
+.L211:
 	ld.w	d15,[a10]40
-.L130:
-	madd.f	d15,d0,d15,d2
 .L131:
+	madd.f	d15,d0,d15,d2
+.L132:
 	st.w	[a15],d15
-.L209:
+.L212:
+	movh.a	a15,#@his(Gyro_Ki)
+	lea	a15,[a15]@los(Gyro_Ki)
+	ld.w	d15,[a15]
+.L213:
 	movh.a	a15,#@his(I_ex)
 	lea	a15,[a15]@los(I_ex)
-	ld.w	d15,[a15]
-.L210:
-	mov	d0,#17616
-	addih	d0,d0,#15192
-.L211:
-	mul.f	d15,d15,d0
-.L212:
-	madd.f	d0,d15,d1,d6
-.L213:
-	ld.w	d15,[a10]16
-.L132:
-	add.f	d15,d15,d0
-	st.w	[a10]16,d15
+	ld.w	d0,[a15]
 .L214:
-	movh.a	a15,#@his(I_ey)
-	lea	a15,[a15]@los(I_ey)
-	ld.w	d15,[a15]
-.L133:
-	mov	d0,#17616
-	addih	d0,d0,#15192
+	mul.f	d15,d15,d0
 .L215:
-	mul.f	d15,d15,d0
+	madd.f	d0,d15,d1,d6
 .L216:
-	madd.f	d0,d15,d1,d4
-.L217:
-	ld.w	d15,[a10]4
-.L134:
-	add.f	d15,d15,d0
-	st.w	[a10]4,d15
-.L218:
-	movh.a	a15,#@his(I_ez)
-	lea	a15,[a15]@los(I_ez)
-	ld.w	d15,[a15]
-.L135:
-	mov	d0,#17616
-	addih	d0,d0,#15192
-.L219:
-	mul.f	d15,d15,d0
-.L220:
-	madd.f	d0,d15,d1,d2
-.L221:
 	ld.w	d15,[a10]12
-.L136:
+.L133:
 	add.f	d15,d15,d0
 	st.w	[a10]12,d15
+.L217:
+	movh.a	a15,#@his(Gyro_Ki)
+	lea	a15,[a15]@los(Gyro_Ki)
+	ld.w	d15,[a15]
+.L134:
+	movh.a	a15,#@his(I_ey)
+	lea	a15,[a15]@los(I_ey)
+	ld.w	d0,[a15]
+.L218:
+	mul.f	d15,d15,d0
+.L219:
+	madd.f	d0,d15,d1,d4
+.L220:
+	ld.w	d15,[a10]4
+.L135:
+	add.f	d15,d15,d0
+	st.w	[a10]4,d15
+.L221:
+	movh.a	a15,#@his(Gyro_Ki)
+	lea	a15,[a15]@los(Gyro_Ki)
+	ld.w	d15,[a15]
+.L136:
+	movh.a	a15,#@his(I_ez)
+	lea	a15,[a15]@los(I_ez)
+	ld.w	d0,[a15]
+.L222:
+	mul.f	d15,d15,d0
+.L223:
+	madd.f	d0,d15,d1,d2
+.L224:
+	ld.w	d15,[a10]8
+.L137:
+	add.f	d15,d15,d0
+	st.w	[a10]8,d15
 .L2:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
 	ld.w	d2,[a15]
-.L137:
+.L138:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
 	ld.w	d3,[a15]
-.L139:
+.L140:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	ld.w	d4,[a15]
-.L141:
+.L142:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d5,[a15]
-.L143:
+.L144:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
-.L222:
-	insn.t	d0,d3:31,d3:31
-.L223:
-	ld.w	d15,[a10]16
-.L145:
-	mul.f	d0,d0,d15
-.L224:
-	ld.w	d15,[a10]4
-.L146:
-	msub.f	d0,d0,d4,d15
 .L225:
-	ld.w	d15,[a10]12
-.L147:
-	msub.f	d0,d0,d5,d15
+	insn.t	d0,d3:31,d3:31
 .L226:
+	ld.w	d15,[a10]12
+.L146:
+	mul.f	d0,d0,d15
+.L227:
+	ld.w	d15,[a10]4
+.L147:
+	msub.f	d0,d0,d4,d15
+.L228:
+	ld.w	d15,[a10]8
+.L148:
+	msub.f	d0,d0,d5,d15
+.L229:
 	movh.a	a2,#@his(q0)
 	lea	a2,[a2]@los(q0)
 	ld.w	d1,[a2]
-.L227:
+.L230:
 	ld.w	d15,[a10]40
-.L148:
-	madd.f	d15,d1,d0,d15
 .L149:
+	madd.f	d15,d1,d0,d15
+.L150:
 	st.w	[a15],d15
-.L228:
+.L231:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
-.L229:
-	ld.w	d15,[a10]12
-.L150:
-	mul.f	d0,d4,d15
-.L230:
-	ld.w	d15,[a10]16
-.L151:
-	madd.f	d0,d0,d2,d15
-.L231:
-	ld.w	d15,[a10]4
-.L152:
-	msub.f	d0,d0,d5,d15
 .L232:
+	ld.w	d15,[a10]8
+.L151:
+	mul.f	d0,d4,d15
+.L233:
+	ld.w	d15,[a10]12
+.L152:
+	madd.f	d0,d0,d2,d15
+.L234:
+	ld.w	d15,[a10]4
+.L153:
+	msub.f	d0,d0,d5,d15
+.L235:
 	movh.a	a2,#@his(q1)
 	lea	a2,[a2]@los(q1)
 	ld.w	d1,[a2]
-.L233:
+.L236:
 	ld.w	d15,[a10]40
-.L153:
-	madd.f	d15,d1,d0,d15
 .L154:
+	madd.f	d15,d1,d0,d15
+.L155:
 	st.w	[a15],d15
-.L234:
+.L237:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
-.L235:
-	ld.w	d15,[a10]4
-.L155:
-	mul.f	d0,d2,d15
-.L236:
-	ld.w	d15,[a10]12
-.L156:
-	msub.f	d0,d0,d3,d15
-.L237:
-	ld.w	d15,[a10]16
-.L157:
-	madd.f	d0,d0,d5,d15
 .L238:
+	ld.w	d15,[a10]4
+.L156:
+	mul.f	d0,d2,d15
+.L239:
+	ld.w	d15,[a10]8
+.L157:
+	msub.f	d0,d0,d3,d15
+.L240:
+	ld.w	d15,[a10]12
+.L158:
+	madd.f	d0,d0,d5,d15
+.L241:
 	movh.a	a2,#@his(q2)
 	lea	a2,[a2]@los(q2)
 	ld.w	d1,[a2]
-.L239:
+.L242:
 	ld.w	d15,[a10]40
-.L158:
-	madd.f	d15,d1,d0,d15
 .L159:
+	madd.f	d15,d1,d0,d15
+.L160:
 	st.w	[a15],d15
-.L240:
+.L243:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
-.L241:
-	ld.w	d15,[a10]4
-.L160:
-	mul.f	d0,d3,d15
-.L242:
-	ld.w	d15,[a10]12
-.L161:
-	madd.f	d0,d0,d2,d15
-.L243:
-	ld.w	d15,[a10]16
-.L162:
-	msub.f	d0,d0,d4,d15
 .L244:
+	ld.w	d15,[a10]4
+.L161:
+	mul.f	d0,d3,d15
+.L245:
+	ld.w	d15,[a10]8
+.L162:
+	madd.f	d0,d0,d2,d15
+.L246:
+	ld.w	d15,[a10]12
+.L163:
+	msub.f	d0,d0,d4,d15
+.L247:
 	movh.a	a2,#@his(q3)
 	lea	a2,[a2]@los(q3)
 	ld.w	d1,[a2]
-.L245:
+.L248:
 	ld.w	d15,[a10]40
-.L163:
-	madd.f	d15,d1,d0,d15
 .L164:
+	madd.f	d15,d1,d0,d15
+.L165:
 	st.w	[a15],d15
-.L246:
+.L249:
 	movh	d8,#16256
-.L247:
+.L250:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d15,[a15]
-.L248:
+.L251:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d0,[a15]
-.L249:
+.L252:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	ld.w	d1,[a15]
-.L250:
+.L253:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	ld.w	d2,[a15]
-.L138:
+.L139:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
 	ld.w	d3,[a15]
-.L140:
+.L141:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
 	ld.w	d4,[a15]
-.L142:
+.L143:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
 	ld.w	d5,[a15]
-.L144:
+.L145:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
 	ld.w	d6,[a15]
-.L251:
-	mul.f	d5,d5,d6
-.L252:
-	madd.f	d3,d5,d3,d4
-.L253:
-	madd.f	d1,d3,d1,d2
 .L254:
+	mul.f	d5,d5,d6
+.L255:
+	madd.f	d3,d5,d3,d4
+.L256:
+	madd.f	d1,d3,d1,d2
+.L257:
 	madd.f	d4,d1,d15,d0
 	call	sqrtf
-.L255:
+.L258:
 	div.f	d15,d8,d2
-.L165:
+.L166:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
 	movh.a	a2,#@his(q0)
 	lea	a2,[a2]@los(q0)
 	ld.w	d0,[a2]
-.L256:
+.L259:
 	mul.f	d0,d0,d15
 	st.w	[a15],d0
-.L257:
+.L260:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
 	movh.a	a2,#@his(q1)
 	lea	a2,[a2]@los(q1)
 	ld.w	d0,[a2]
-.L258:
+.L261:
 	mul.f	d0,d0,d15
 	st.w	[a15],d0
-.L259:
+.L262:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	movh.a	a2,#@his(q2)
 	lea	a2,[a2]@los(q2)
 	ld.w	d0,[a2]
-.L260:
+.L263:
 	mul.f	d0,d0,d15
 	st.w	[a15],d0
-.L261:
+.L264:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	movh.a	a2,#@his(q3)
 	lea	a2,[a2]@los(q3)
 	ld.w	d0,[a2]
-.L262:
+.L265:
 	mul.f	d15,d0,d15
-.L166:
+.L167:
 	st.w	[a15],d15
-.L263:
+.L266:
 	movh.a	a12,#@his(pitch)
 	lea	a12,[a12]@los(pitch)
-.L264:
+.L267:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
 	ld.w	d15,[a15]
-.L265:
+.L268:
 	movh	d0,#49152
-.L266:
+.L269:
 	mul.f	d15,d15,d0
-.L267:
+.L270:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d0,[a15]
-.L268:
+.L271:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
 	ld.w	d1,[a15]
-.L269:
+.L272:
 	movh	d2,#16384
-.L270:
+.L273:
 	mul.f	d1,d1,d2
-.L271:
+.L274:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	ld.w	d2,[a15]
-.L272:
+.L275:
 	mul.f	d1,d1,d2
-.L273:
+.L276:
 	madd.f	d4,d1,d15,d0
 	call	asin
-.L274:
+.L277:
 	mov	d15,#2359
 	addih	d15,d15,#16997
-.L275:
+.L278:
 	mul.f	d15,d2,d15
-.L276:
+.L279:
 	st.w	[a12],d15
-.L277:
+.L280:
 	movh.a	a12,#@his(roll)
 	lea	a12,[a12]@los(roll)
-.L278:
+.L281:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	ld.w	d15,[a15]
-.L279:
+.L282:
 	movh	d0,#16384
-.L280:
+.L283:
 	mul.f	d15,d15,d0
-.L281:
+.L284:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d0,[a15]
-.L282:
+.L285:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
 	ld.w	d1,[a15]
-.L283:
-	movh	d2,#16384
-.L284:
-	mul.f	d1,d1,d2
-.L285:
-	movh.a	a15,#@his(q1)
-	lea	a15,[a15]@los(q1)
-	ld.w	d2,[a15]
 .L286:
-	mul.f	d1,d1,d2
+	movh	d2,#16384
 .L287:
-	madd.f	d4,d1,d15,d0
+	mul.f	d1,d1,d2
 .L288:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
-	ld.w	d15,[a15]
+	ld.w	d2,[a15]
 .L289:
-	movh	d0,#49152
+	mul.f	d1,d1,d2
 .L290:
-	mul.f	d15,d15,d0
+	madd.f	d4,d1,d15,d0
 .L291:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
-	ld.w	d0,[a15]
+	ld.w	d15,[a15]
 .L292:
-	mul.f	d15,d15,d0
+	movh	d0,#49152
 .L293:
-	movh.a	a15,#@his(q2)
-	lea	a15,[a15]@los(q2)
-	ld.w	d0,[a15]
+	mul.f	d15,d15,d0
 .L294:
-	movh	d1,#16384
+	movh.a	a15,#@his(q1)
+	lea	a15,[a15]@los(q1)
+	ld.w	d0,[a15]
 .L295:
-	mul.f	d0,d0,d1
+	mul.f	d15,d15,d0
 .L296:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
-	ld.w	d1,[a15]
+	ld.w	d0,[a15]
 .L297:
-	msub.f	d15,d15,d0,d1
+	movh	d1,#16384
 .L298:
-	movh	d0,#16256
+	mul.f	d0,d0,d1
 .L299:
+	movh.a	a15,#@his(q2)
+	lea	a15,[a15]@los(q2)
+	ld.w	d1,[a15]
+.L300:
+	msub.f	d15,d15,d0,d1
+.L301:
+	movh	d0,#16256
+.L302:
 	add.f	d5,d15,d0
 	call	atan2
-.L300:
+.L303:
 	mov	d15,#2359
 	addih	d15,d15,#16997
-.L301:
+.L304:
 	mul.f	d15,d2,d15
-.L302:
+.L305:
 	st.w	[a12],d15
-.L303:
+.L306:
 	movh.a	a12,#@his(yaw)
 	lea	a12,[a12]@los(yaw)
-.L304:
+.L307:
 	movh.a	a15,#@his(q1)
 	lea	a15,[a15]@los(q1)
 	ld.w	d15,[a15]
-.L305:
+.L308:
 	movh	d0,#16384
-.L306:
+.L309:
 	mul.f	d15,d15,d0
-.L307:
+.L310:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
 	ld.w	d0,[a15]
-.L308:
+.L311:
 	movh.a	a15,#@his(q0)
 	lea	a15,[a15]@los(q0)
 	ld.w	d1,[a15]
-.L309:
+.L312:
 	movh	d2,#16384
-.L310:
+.L313:
 	mul.f	d1,d1,d2
-.L311:
+.L314:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
 	ld.w	d2,[a15]
-.L312:
-	mul.f	d1,d1,d2
-.L313:
-	madd.f	d4,d1,d15,d0
-.L314:
-	movh.a	a15,#@his(q2)
-	lea	a15,[a15]@los(q2)
-	ld.w	d15,[a15]
 .L315:
-	movh	d0,#49152
+	mul.f	d1,d1,d2
 .L316:
-	mul.f	d15,d15,d0
+	madd.f	d4,d1,d15,d0
 .L317:
 	movh.a	a15,#@his(q2)
 	lea	a15,[a15]@los(q2)
-	ld.w	d0,[a15]
+	ld.w	d15,[a15]
 .L318:
-	mul.f	d15,d15,d0
+	movh	d0,#49152
 .L319:
-	movh.a	a15,#@his(q3)
-	lea	a15,[a15]@los(q3)
-	ld.w	d0,[a15]
+	mul.f	d15,d15,d0
 .L320:
-	movh	d1,#16384
+	movh.a	a15,#@his(q2)
+	lea	a15,[a15]@los(q2)
+	ld.w	d0,[a15]
 .L321:
-	mul.f	d0,d0,d1
+	mul.f	d15,d15,d0
 .L322:
 	movh.a	a15,#@his(q3)
 	lea	a15,[a15]@los(q3)
-	ld.w	d1,[a15]
+	ld.w	d0,[a15]
 .L323:
-	msub.f	d15,d15,d0,d1
+	movh	d1,#16384
 .L324:
-	movh	d0,#16256
+	mul.f	d0,d0,d1
 .L325:
+	movh.a	a15,#@his(q3)
+	lea	a15,[a15]@los(q3)
+	ld.w	d1,[a15]
+.L326:
+	msub.f	d15,d15,d0,d1
+.L327:
+	movh	d0,#16256
+.L328:
 	add.f	d5,d15,d0
 	call	atan2
-.L326:
+.L329:
 	insn.t	d15,d2:31,d2:31
-.L327:
+.L330:
 	mov	d0,#2359
 	addih	d0,d0,#16997
-.L328:
+.L331:
 	mul.f	d15,d15,d0
-.L329:
+.L332:
 	st.w	[a12],d15
-.L330:
+.L333:
 	ret
-.L34:
+.L38:
 	
 __IMUupdate_function_end:
 	.size	IMUupdate,__IMUupdate_function_end-IMUupdate
 .L13:
 	; End of function
 	
+	.sdecl	'.data.Gyro_Process.Gyro_Kp',data,cluster('Gyro_Kp')
+	.sect	'.data.Gyro_Process.Gyro_Kp'
+	.global	Gyro_Kp
+	.align	2
+Gyro_Kp:	.type	object
+	.size	Gyro_Kp,4
+	.word	1112014848
+	.sdecl	'.data.Gyro_Process.Gyro_Ki',data,cluster('Gyro_Ki')
+	.sect	'.data.Gyro_Process.Gyro_Ki'
+	.global	Gyro_Ki
+	.align	2
+Gyro_Ki:	.type	object
+	.size	Gyro_Ki,4
+	.word	995640528
 	.sdecl	'.data.Gyro_Process.pitch',data,cluster('pitch')
 	.sect	'.data.Gyro_Process.pitch'
 	.global	pitch
@@ -766,6 +789,12 @@ I_ey:	.type	object
 I_ez:	.type	object
 	.size	I_ez,4
 	.space	4
+	.sdecl	'.data.Gyro_Process._999001_g',data,cluster('_999001_g')
+	.sect	'.data.Gyro_Process._999001_g'
+	.align	2
+_999001_g:	.type	object
+	.size	_999001_g,4
+	.word	1092413450
 	.calls	'IMUupdate','sqrtf'
 	.calls	'IMUupdate','sqrt'
 	.calls	'IMUupdate','asin'
@@ -796,7 +825,7 @@ I_ez:	.type	object
 	.word	205
 	.byte	6,0,7
 	.byte	'__fract',0,4,128,1
-.L35:
+.L39:
 	.byte	7
 	.byte	'float',0,4,4,8
 	.byte	'Ifx__float_to_fract',0,3,1,152,2,18
@@ -21880,7 +21909,7 @@ I_ez:	.type	object
 	.byte	'char',0,1,6,15,21
 	.word	158789
 	.byte	16,20,0,3
-	.word	.L167-.L6
+	.word	.L168-.L6
 	.byte	34
 	.byte	'PageExtendsType',0,53,36,6,1,18
 	.byte	'LIST_TYPE',0,0,18
@@ -22015,7 +22044,7 @@ I_ez:	.type	object
 	.word	158806
 	.byte	0,3
 	.word	159617
-.L167:
+.L168:
 	.byte	10
 	.byte	'Page',0,53,46,16,164,1,13
 	.byte	'name',0
@@ -22444,11 +22473,11 @@ I_ez:	.type	object
 	.sdecl	'.debug_line',debug
 	.sect	'.debug_line'
 .L8:
-	.word	.L169-.L168
-.L168:
+	.word	.L170-.L169
+.L169:
 	.half	3
-	.word	.L171-.L170
-.L170:
+	.word	.L172-.L171
+.L171:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg',0
 	.byte	'D:\\Infineon\\AURIX-Studio-1.10.6\\tools\\Compilers\\Tasking_1.1r8\\ctc\\include\\',0
@@ -22548,12 +22577,12 @@ I_ez:	.type	object
 	.byte	'E:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\_PinMap\\IfxGpt12_PinMap.h',0
 	.byte	0,0,0
 	.byte	'IfxGpt12_IncrEnc.h',0,14,0,0,0
-.L171:
-.L169:
+.L172:
+.L170:
 	.sdecl	'.debug_info',debug,cluster('IMUupdate')
 	.sect	'.debug_info'
 .L9:
-	.word	823
+	.word	825
 	.half	3
 	.word	.L10
 	.byte	4,1
@@ -22565,148 +22594,144 @@ I_ez:	.type	object
 	.word	.L5
 	.byte	3
 	.byte	'IMUupdate',0,1,19,6,1,1,1
-	.word	.L4,.L34,.L3
+	.word	.L4,.L38,.L3
 	.byte	4
 	.byte	'gx',0,1,19,22
-	.word	.L35,.L36
+	.word	.L39,.L40
 	.byte	4
 	.byte	'gy',0,1,19,32
-	.word	.L35,.L37
+	.word	.L39,.L41
 	.byte	4
 	.byte	'gz',0,1,19,42
-	.word	.L35,.L38
+	.word	.L39,.L42
 	.byte	4
 	.byte	'ax',0,1,19,52
-	.word	.L35,.L39
+	.word	.L39,.L43
 	.byte	4
 	.byte	'ay',0,1,19,62
-	.word	.L35,.L40
+	.word	.L39,.L44
 	.byte	4
 	.byte	'az',0,1,19,72
-	.word	.L35,.L41
+	.word	.L39,.L45
 	.byte	4
 	.byte	'halfT',0,1,19,82
-	.word	.L35,.L42
+	.word	.L39,.L46
 	.byte	5
-	.word	.L4,.L34
+	.word	.L4,.L38
 	.byte	6
 	.byte	'q0temp',0,1,21,11
-	.word	.L35,.L43
+	.word	.L39,.L47
 	.byte	6
 	.byte	'q1temp',0,1,21,19
-	.word	.L35,.L44
+	.word	.L39,.L48
 	.byte	6
 	.byte	'q2temp',0,1,21,27
-	.word	.L35,.L45
+	.word	.L39,.L49
 	.byte	6
 	.byte	'q3temp',0,1,21,35
-	.word	.L35,.L46
+	.word	.L39,.L50
 	.byte	6
 	.byte	'normr',0,1,22,11
-	.word	.L35,.L47
+	.word	.L39,.L51
 	.byte	6
 	.byte	'vx',0,1,22,18
-	.word	.L35,.L48
+	.word	.L39,.L52
 	.byte	6
 	.byte	'vy',0,1,22,22
-	.word	.L35,.L49
+	.word	.L39,.L53
 	.byte	6
 	.byte	'vz',0,1,22,26
-	.word	.L35,.L50
+	.word	.L39,.L54
 	.byte	6
 	.byte	'ex',0,1,22,30
-	.word	.L35,.L51
+	.word	.L39,.L55
 	.byte	6
 	.byte	'ey',0,1,22,34
-	.word	.L35,.L52
+	.word	.L39,.L56
 	.byte	6
 	.byte	'ez',0,1,22,38
-	.word	.L35,.L53
+	.word	.L39,.L57
 	.byte	6
 	.byte	'q0q0',0,1,23,11
-	.word	.L35,.L54
+	.word	.L39,.L58
 	.byte	6
 	.byte	'q0q1',0,1,24,11
-	.word	.L35,.L55
+	.word	.L39,.L59
 	.byte	6
 	.byte	'q0q2',0,1,25,11
-	.word	.L35,.L56
+	.word	.L39,.L60
 	.byte	6
 	.byte	'q1q1',0,1,26,11
-	.word	.L35,.L57
+	.word	.L39,.L61
 	.byte	6
 	.byte	'q1q3',0,1,27,11
-	.word	.L35,.L58
+	.word	.L39,.L62
 	.byte	6
 	.byte	'q2q2',0,1,28,11
-	.word	.L35,.L59
+	.word	.L39,.L63
 	.byte	6
 	.byte	'q2q3',0,1,29,11
-	.word	.L35,.L60
+	.word	.L39,.L64
 	.byte	6
 	.byte	'q3q3',0,1,30,11
-	.word	.L35,.L61
+	.word	.L39,.L65
 	.byte	6
 	.byte	'a_squared',0,1,32,11
-	.word	.L35,.L62
+	.word	.L39,.L66
 	.byte	5
-	.word	.L63,.L2
+	.word	.L67,.L2
 	.byte	6
 	.byte	'a_norm',0,1,36,15
-	.word	.L35,.L64
-	.byte	6
-	.byte	'g',0,1,37,15
-	.word	.L35,.L65
+	.word	.L39,.L68
+	.byte	7
+	.byte	'g',0,1,37,22
+	.word	.L39
+	.byte	5,3
+	.word	_999001_g
 	.byte	6
 	.byte	'sigma',0,1,38,15
-	.word	.L35,.L66
+	.word	.L39,.L69
 	.byte	6
 	.byte	'chi_square',0,1,39,15
-	.word	.L35,.L67
+	.word	.L39,.L70
 	.byte	6
 	.byte	'alpha',0,1,42,15
-	.word	.L35,.L68
+	.word	.L39,.L71
 	.byte	6
 	.byte	'dynamic_Kp',0,1,43,15
-	.word	.L35,.L69
+	.word	.L39,.L72
 	.byte	0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('IMUupdate')
 	.sect	'.debug_abbrev'
 .L10:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
-	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,7,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
 	.sdecl	'.debug_line',debug,cluster('IMUupdate')
 	.sect	'.debug_line'
 .L11:
-	.word	.L173-.L172
-.L172:
+	.word	.L174-.L173
+.L173:
 	.half	3
-	.word	.L175-.L174
-.L174:
+	.word	.L176-.L175
+.L175:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/gyro/Gyro_Process.c',0,0,0,0,0
-.L175:
+.L176:
 	.byte	5,6,7,0,5,2
 	.word	.L4
 	.byte	3,18,1,5,18,9
-	.half	.L80-.L4
+	.half	.L83-.L4
 	.byte	3,4,1,5,23,9
-	.half	.L176-.L80
+	.half	.L177-.L83
 	.byte	1,5,21,9
-	.half	.L177-.L176
+	.half	.L178-.L177
 	.byte	1,5,18,9
-	.half	.L84-.L177
+	.half	.L87-.L178
 	.byte	3,1,1,5,23,9
-	.half	.L178-.L84
+	.half	.L179-.L87
 	.byte	1,5,21,9
-	.half	.L179-.L178
-	.byte	1,5,18,9
-	.half	.L86-.L179
-	.byte	3,1,1,5,23,9
-	.half	.L85-.L86
-	.byte	1,5,21,9
-	.half	.L180-.L85
+	.half	.L180-.L179
 	.byte	1,5,18,9
 	.half	.L89-.L180
 	.byte	3,1,1,5,23,9
@@ -22720,407 +22745,415 @@ I_ez:	.type	object
 	.byte	1,5,21,9
 	.half	.L182-.L91
 	.byte	1,5,18,9
-	.half	.L93-.L182
+	.half	.L95-.L182
 	.byte	3,1,1,5,23,9
-	.half	.L183-.L93
+	.half	.L94-.L95
 	.byte	1,5,21,9
-	.half	.L184-.L183
+	.half	.L183-.L94
 	.byte	1,5,18,9
-	.half	.L96-.L184
+	.half	.L96-.L183
 	.byte	3,1,1,5,23,9
-	.half	.L95-.L96
+	.half	.L184-.L96
 	.byte	1,5,21,9
-	.half	.L185-.L95
+	.half	.L185-.L184
 	.byte	1,5,18,9
-	.half	.L97-.L185
+	.half	.L99-.L185
 	.byte	3,1,1,5,23,9
-	.half	.L186-.L97
+	.half	.L98-.L99
 	.byte	1,5,21,9
-	.half	.L187-.L186
+	.half	.L186-.L98
+	.byte	1,5,18,9
+	.half	.L100-.L186
+	.byte	3,1,1,5,23,9
+	.half	.L187-.L100
+	.byte	1,5,21,9
+	.half	.L188-.L187
 	.byte	1,5,36,9
-	.half	.L98-.L187
+	.half	.L101-.L188
 	.byte	3,2,1,5,31,9
-	.half	.L188-.L98
+	.half	.L189-.L101
 	.byte	1,5,41,9
-	.half	.L189-.L188
+	.half	.L190-.L189
 	.byte	1,5,21,9
-	.half	.L72-.L189
+	.half	.L75-.L190
 	.byte	3,1,1,5,19,9
-	.half	.L190-.L72
+	.half	.L191-.L75
 	.byte	1,5,5,9
-	.half	.L191-.L190
+	.half	.L192-.L191
 	.byte	1,5,30,7,9
-	.half	.L63-.L191
+	.half	.L67-.L192
 	.byte	3,3,1,5,22,9
-	.half	.L71-.L63
-	.byte	1,5,19,9
-	.half	.L100-.L71
-	.byte	3,1,1,5,23,9
-	.half	.L192-.L100
-	.byte	3,1,1,5,37,9
-	.half	.L193-.L192
-	.byte	3,1,1,5,52,9
-	.half	.L194-.L193
-	.byte	1,5,42,9
-	.half	.L102-.L194
-	.byte	1,5,67,9
-	.half	.L195-.L102
-	.byte	1,5,58,9
-	.half	.L104-.L195
+	.half	.L74-.L67
 	.byte	1,5,23,9
-	.half	.L105-.L104
-	.byte	3,3,1,5,43,9
-	.half	.L196-.L105
-	.byte	1,5,31,9
-	.half	.L99-.L196
-	.byte	1,5,36,9
-	.half	.L197-.L99
-	.byte	1,5,28,9
+	.half	.L103-.L74
+	.byte	3,2,1,5,39,9
+	.half	.L193-.L103
+	.byte	3,1,1,5,37,9
+	.half	.L194-.L193
+	.byte	1,5,54,9
+	.half	.L195-.L194
+	.byte	1,5,52,9
+	.half	.L196-.L195
+	.byte	1,5,42,9
+	.half	.L197-.L196
+	.byte	1,5,67,9
 	.half	.L198-.L197
-	.byte	1,9
-	.half	.L106-.L198
-	.byte	3,1,1,5,31,9
+	.byte	1,5,58,9
+	.half	.L105-.L198
+	.byte	1,5,23,9
+	.half	.L106-.L105
+	.byte	3,3,1,5,43,9
 	.half	.L199-.L106
-	.byte	1,5,17,9
-	.half	.L108-.L199
-	.byte	3,3,1,5,22,9
-	.half	.L107-.L108
-	.byte	1,5,12,9
-	.half	.L109-.L107
-	.byte	3,1,1,9
-	.half	.L77-.L109
-	.byte	3,1,1,9
-	.half	.L79-.L77
-	.byte	3,1,1,5,27,9
-	.half	.L81-.L79
-	.byte	3,3,1,5,14,9
-	.half	.L113-.L81
-	.byte	1,5,19,9
-	.half	.L200-.L113
-	.byte	1,5,27,9
-	.half	.L114-.L200
-	.byte	3,1,1,5,14,9
-	.half	.L116-.L114
-	.byte	1,5,19,9
-	.half	.L201-.L116
+	.byte	1,5,31,9
+	.half	.L102-.L199
+	.byte	1,5,36,9
+	.half	.L200-.L102
+	.byte	1,5,28,9
+	.half	.L201-.L200
 	.byte	1,9
-	.half	.L117-.L201
-	.byte	3,1,1,5,26,9
-	.half	.L119-.L117
-	.byte	1,5,33,9
-	.half	.L202-.L119
-	.byte	1,5,18,9
-	.half	.L123-.L202
-	.byte	3,3,1,5,23,9
-	.half	.L122-.L123
-	.byte	1,5,18,9
-	.half	.L125-.L122
-	.byte	3,1,1,5,23,9
-	.half	.L203-.L125
-	.byte	1,5,18,9
-	.half	.L112-.L203
-	.byte	3,1,1,5,23,9
-	.half	.L124-.L112
-	.byte	1,5,9,9
-	.half	.L111-.L124
+	.half	.L107-.L201
+	.byte	3,1,1,5,36,9
+	.half	.L202-.L107
+	.byte	1,5,17,9
+	.half	.L109-.L202
+	.byte	3,3,1,5,22,9
+	.half	.L108-.L109
+	.byte	1,5,12,9
+	.half	.L110-.L108
+	.byte	3,1,1,9
+	.half	.L80-.L110
+	.byte	3,1,1,9
+	.half	.L82-.L80
+	.byte	3,1,1,5,27,9
+	.half	.L84-.L82
 	.byte	3,3,1,5,14,9
-	.half	.L204-.L111
-	.byte	1,5,9,9
-	.half	.L205-.L204
+	.half	.L114-.L84
+	.byte	1,5,19,9
+	.half	.L203-.L114
+	.byte	1,5,27,9
+	.half	.L115-.L203
 	.byte	3,1,1,5,14,9
-	.half	.L206-.L205
-	.byte	1,5,9,9
-	.half	.L207-.L206
-	.byte	3,1,1,5,14,9
-	.half	.L208-.L207
-	.byte	1,5,38,9
-	.half	.L209-.L208
-	.byte	3,3,1,5,33,9
-	.half	.L210-.L209
-	.byte	1,5,36,9
-	.half	.L211-.L210
-	.byte	1,5,31,9
-	.half	.L212-.L211
-	.byte	1,5,12,9
-	.half	.L213-.L212
-	.byte	1,5,38,9
-	.half	.L214-.L213
-	.byte	3,1,1,5,33,9
-	.half	.L133-.L214
-	.byte	1,5,36,9
-	.half	.L215-.L133
-	.byte	1,5,31,9
-	.half	.L216-.L215
-	.byte	1,5,12,9
-	.half	.L217-.L216
-	.byte	1,5,38,9
-	.half	.L218-.L217
-	.byte	3,1,1,5,33,9
-	.half	.L135-.L218
-	.byte	1,5,36,9
-	.half	.L219-.L135
-	.byte	1,5,31,9
-	.half	.L220-.L219
-	.byte	1,5,12,9
-	.half	.L221-.L220
-	.byte	1,5,14,9
-	.half	.L2-.L221
-	.byte	3,4,1,9
-	.half	.L137-.L2
-	.byte	3,1,1,9
-	.half	.L139-.L137
-	.byte	3,1,1,9
-	.half	.L141-.L139
-	.byte	3,1,1,5,5,9
-	.half	.L143-.L141
-	.byte	3,2,1,5,16,9
-	.half	.L222-.L143
-	.byte	1,5,24,9
-	.half	.L223-.L222
-	.byte	1,5,29,9
-	.half	.L224-.L223
-	.byte	1,5,43,9
-	.half	.L225-.L224
-	.byte	1,5,10,9
-	.half	.L226-.L225
-	.byte	1,5,13,9
-	.half	.L227-.L226
-	.byte	1,5,8,9
-	.half	.L149-.L227
-	.byte	1,5,5,9
-	.half	.L228-.L149
-	.byte	3,1,1,5,37,9
-	.half	.L229-.L228
-	.byte	1,5,28,9
-	.half	.L230-.L229
-	.byte	1,5,42,9
-	.half	.L231-.L230
-	.byte	1,5,10,9
-	.half	.L232-.L231
-	.byte	1,5,13,9
-	.half	.L233-.L232
-	.byte	1,5,8,9
-	.half	.L154-.L233
-	.byte	1,5,5,9
-	.half	.L234-.L154
-	.byte	3,1,1,5,23,9
-	.half	.L235-.L234
-	.byte	1,5,28,9
-	.half	.L236-.L235
-	.byte	1,5,42,9
-	.half	.L237-.L236
-	.byte	1,5,10,9
-	.half	.L238-.L237
-	.byte	1,5,13,9
-	.half	.L239-.L238
-	.byte	1,5,8,9
-	.half	.L159-.L239
-	.byte	1,5,5,9
-	.half	.L240-.L159
-	.byte	3,1,1,5,37,9
-	.half	.L241-.L240
-	.byte	1,5,28,9
-	.half	.L242-.L241
-	.byte	1,5,42,9
-	.half	.L243-.L242
-	.byte	1,5,10,9
-	.half	.L244-.L243
-	.byte	1,5,13,9
-	.half	.L245-.L244
-	.byte	1,5,8,9
-	.half	.L164-.L245
-	.byte	1,5,13,9
-	.half	.L246-.L164
-	.byte	3,3,1,5,50,9
-	.half	.L247-.L246
-	.byte	1,5,53,9
-	.half	.L248-.L247
-	.byte	1,5,42,9
-	.half	.L249-.L248
-	.byte	1,5,45,9
-	.half	.L250-.L249
-	.byte	1,5,26,9
-	.half	.L138-.L250
-	.byte	1,5,29,9
-	.half	.L140-.L138
-	.byte	1,5,34,9
-	.half	.L142-.L140
-	.byte	1,5,37,9
-	.half	.L144-.L142
-	.byte	1,5,36,9
-	.half	.L251-.L144
-	.byte	1,5,32,9
-	.half	.L252-.L251
-	.byte	1,5,40,9
-	.half	.L253-.L252
-	.byte	1,5,48,9
-	.half	.L254-.L253
+	.half	.L117-.L115
+	.byte	1,5,19,9
+	.half	.L204-.L117
+	.byte	1,9
+	.half	.L118-.L204
+	.byte	3,1,1,5,26,9
+	.half	.L120-.L118
+	.byte	1,5,33,9
+	.half	.L205-.L120
 	.byte	1,5,18,9
+	.half	.L124-.L205
+	.byte	3,3,1,5,23,9
+	.half	.L123-.L124
+	.byte	1,5,18,9
+	.half	.L126-.L123
+	.byte	3,1,1,5,23,9
+	.half	.L206-.L126
+	.byte	1,5,18,9
+	.half	.L113-.L206
+	.byte	3,1,1,5,23,9
+	.half	.L125-.L113
+	.byte	1,5,9,9
+	.half	.L112-.L125
+	.byte	3,3,1,5,14,9
+	.half	.L207-.L112
+	.byte	1,5,9,9
+	.half	.L208-.L207
+	.byte	3,1,1,5,14,9
+	.half	.L209-.L208
+	.byte	1,5,9,9
+	.half	.L210-.L209
+	.byte	3,1,1,5,14,9
+	.half	.L211-.L210
+	.byte	1,5,33,9
+	.half	.L212-.L211
+	.byte	3,3,1,5,43,9
+	.half	.L213-.L212
+	.byte	1,5,41,9
+	.half	.L214-.L213
+	.byte	1,5,31,9
+	.half	.L215-.L214
+	.byte	1,5,12,9
+	.half	.L216-.L215
+	.byte	1,5,33,9
+	.half	.L217-.L216
+	.byte	3,1,1,5,43,9
+	.half	.L134-.L217
+	.byte	1,5,41,9
+	.half	.L218-.L134
+	.byte	1,5,31,9
+	.half	.L219-.L218
+	.byte	1,5,12,9
+	.half	.L220-.L219
+	.byte	1,5,33,9
+	.half	.L221-.L220
+	.byte	3,1,1,5,43,9
+	.half	.L136-.L221
+	.byte	1,5,41,9
+	.half	.L222-.L136
+	.byte	1,5,31,9
+	.half	.L223-.L222
+	.byte	1,5,12,9
+	.half	.L224-.L223
+	.byte	1,5,14,9
+	.half	.L2-.L224
+	.byte	3,4,1,9
+	.half	.L138-.L2
+	.byte	3,1,1,9
+	.half	.L140-.L138
+	.byte	3,1,1,9
+	.half	.L142-.L140
+	.byte	3,1,1,5,5,9
+	.half	.L144-.L142
+	.byte	3,2,1,5,16,9
+	.half	.L225-.L144
+	.byte	1,5,24,9
+	.half	.L226-.L225
+	.byte	1,5,29,9
+	.half	.L227-.L226
+	.byte	1,5,43,9
+	.half	.L228-.L227
+	.byte	1,5,10,9
+	.half	.L229-.L228
+	.byte	1,5,13,9
+	.half	.L230-.L229
+	.byte	1,5,8,9
+	.half	.L150-.L230
+	.byte	1,5,5,9
+	.half	.L231-.L150
+	.byte	3,1,1,5,37,9
+	.half	.L232-.L231
+	.byte	1,5,28,9
+	.half	.L233-.L232
+	.byte	1,5,42,9
+	.half	.L234-.L233
+	.byte	1,5,10,9
+	.half	.L235-.L234
+	.byte	1,5,13,9
+	.half	.L236-.L235
+	.byte	1,5,8,9
+	.half	.L155-.L236
+	.byte	1,5,5,9
+	.half	.L237-.L155
+	.byte	3,1,1,5,23,9
+	.half	.L238-.L237
+	.byte	1,5,28,9
+	.half	.L239-.L238
+	.byte	1,5,42,9
+	.half	.L240-.L239
+	.byte	1,5,10,9
+	.half	.L241-.L240
+	.byte	1,5,13,9
+	.half	.L242-.L241
+	.byte	1,5,8,9
+	.half	.L160-.L242
+	.byte	1,5,5,9
+	.half	.L243-.L160
+	.byte	3,1,1,5,37,9
+	.half	.L244-.L243
+	.byte	1,5,28,9
+	.half	.L245-.L244
+	.byte	1,5,42,9
+	.half	.L246-.L245
+	.byte	1,5,10,9
+	.half	.L247-.L246
+	.byte	1,5,13,9
+	.half	.L248-.L247
+	.byte	1,5,8,9
+	.half	.L165-.L248
+	.byte	1,5,13,9
+	.half	.L249-.L165
+	.byte	3,3,1,5,50,9
+	.half	.L250-.L249
+	.byte	1,5,53,9
+	.half	.L251-.L250
+	.byte	1,5,42,9
+	.half	.L252-.L251
+	.byte	1,5,45,9
+	.half	.L253-.L252
+	.byte	1,5,26,9
+	.half	.L139-.L253
+	.byte	1,5,29,9
+	.half	.L141-.L139
+	.byte	1,5,34,9
+	.half	.L143-.L141
+	.byte	1,5,37,9
+	.half	.L145-.L143
+	.byte	1,5,36,9
+	.half	.L254-.L145
+	.byte	1,5,32,9
 	.half	.L255-.L254
-	.byte	1,5,5,9
-	.half	.L165-.L255
-	.byte	3,1,1,5,8,9
-	.half	.L256-.L165
-	.byte	1,5,5,9
+	.byte	1,5,40,9
+	.half	.L256-.L255
+	.byte	1,5,48,9
 	.half	.L257-.L256
-	.byte	3,1,1,5,8,9
+	.byte	1,5,18,9
 	.half	.L258-.L257
 	.byte	1,5,5,9
-	.half	.L259-.L258
+	.half	.L166-.L258
 	.byte	3,1,1,5,8,9
+	.half	.L259-.L166
+	.byte	1,5,5,9
 	.half	.L260-.L259
-	.byte	1,5,5,9
-	.half	.L261-.L260
 	.byte	3,1,1,5,8,9
+	.half	.L261-.L260
+	.byte	1,5,5,9
 	.half	.L262-.L261
-	.byte	1,5,5,9
+	.byte	3,1,1,5,8,9
 	.half	.L263-.L262
-	.byte	3,3,1,5,23,9
+	.byte	1,5,5,9
 	.half	.L264-.L263
-	.byte	1,5,18,9
+	.byte	3,1,1,5,8,9
 	.half	.L265-.L264
-	.byte	1,5,23,9
+	.byte	1,5,5,9
 	.half	.L266-.L265
-	.byte	1,5,28,9
+	.byte	3,3,1,5,23,9
 	.half	.L267-.L266
-	.byte	1,5,37,9
+	.byte	1,5,18,9
 	.half	.L268-.L267
-	.byte	1,5,33,9
+	.byte	1,5,23,9
 	.half	.L269-.L268
-	.byte	1,5,35,9
+	.byte	1,5,28,9
 	.half	.L270-.L269
-	.byte	1,5,42,9
+	.byte	1,5,37,9
 	.half	.L271-.L270
-	.byte	1,5,40,9
+	.byte	1,5,33,9
 	.half	.L272-.L271
-	.byte	1,5,31,9
+	.byte	1,5,35,9
 	.half	.L273-.L272
-	.byte	1,5,48,9
+	.byte	1,5,42,9
 	.half	.L274-.L273
-	.byte	1,5,46,9
+	.byte	1,5,40,9
 	.half	.L275-.L274
-	.byte	1,5,11,9
+	.byte	1,5,31,9
 	.half	.L276-.L275
-	.byte	1,5,5,9
+	.byte	1,5,48,9
 	.half	.L277-.L276
-	.byte	3,1,1,5,22,9
+	.byte	1,5,46,9
 	.half	.L278-.L277
-	.byte	1,5,18,9
-	.half	.L279-.L278
-	.byte	1,5,20,9
-	.half	.L280-.L279
-	.byte	1,5,27,9
-	.half	.L281-.L280
-	.byte	1,5,36,9
-	.half	.L282-.L281
-	.byte	1,5,32,9
-	.half	.L283-.L282
-	.byte	1,5,34,9
-	.half	.L284-.L283
-	.byte	1,5,41,9
-	.half	.L285-.L284
-	.byte	1,5,39,9
-	.half	.L286-.L285
-	.byte	1,5,30,9
-	.half	.L287-.L286
-	.byte	1,5,50,9
-	.half	.L288-.L287
-	.byte	1,5,45,9
-	.half	.L289-.L288
-	.byte	1,5,50,9
-	.half	.L290-.L289
-	.byte	1,5,55,9
-	.half	.L291-.L290
-	.byte	1,5,53,9
-	.half	.L292-.L291
-	.byte	1,5,64,9
-	.half	.L293-.L292
-	.byte	1,5,60,9
-	.half	.L294-.L293
-	.byte	1,5,62,9
-	.half	.L295-.L294
-	.byte	1,5,69,9
-	.half	.L296-.L295
-	.byte	1,5,58,9
-	.half	.L297-.L296
-	.byte	1,5,74,9
-	.half	.L298-.L297
-	.byte	1,5,72,9
-	.half	.L299-.L298
-	.byte	1,5,79,9
-	.half	.L300-.L299
-	.byte	1,5,77,9
-	.half	.L301-.L300
-	.byte	1,5,10,9
-	.half	.L302-.L301
-	.byte	1,5,5,9
-	.half	.L303-.L302
-	.byte	3,1,1,5,22,9
-	.half	.L304-.L303
-	.byte	1,5,18,9
-	.half	.L305-.L304
-	.byte	1,5,20,9
-	.half	.L306-.L305
-	.byte	1,5,27,9
-	.half	.L307-.L306
-	.byte	1,5,36,9
-	.half	.L308-.L307
-	.byte	1,5,32,9
-	.half	.L309-.L308
-	.byte	1,5,34,9
-	.half	.L310-.L309
-	.byte	1,5,41,9
-	.half	.L311-.L310
-	.byte	1,5,39,9
-	.half	.L312-.L311
-	.byte	1,5,30,9
-	.half	.L313-.L312
-	.byte	1,5,50,9
-	.half	.L314-.L313
-	.byte	1,5,45,9
-	.half	.L315-.L314
-	.byte	1,5,50,9
-	.half	.L316-.L315
-	.byte	1,5,55,9
-	.half	.L317-.L316
-	.byte	1,5,53,9
-	.half	.L318-.L317
-	.byte	1,5,64,9
-	.half	.L319-.L318
-	.byte	1,5,60,9
-	.half	.L320-.L319
-	.byte	1,5,62,9
-	.half	.L321-.L320
-	.byte	1,5,69,9
-	.half	.L322-.L321
-	.byte	1,5,58,9
-	.half	.L323-.L322
-	.byte	1,5,74,9
-	.half	.L324-.L323
-	.byte	1,5,72,9
-	.half	.L325-.L324
 	.byte	1,5,11,9
-	.half	.L326-.L325
+	.half	.L279-.L278
+	.byte	1,5,5,9
+	.half	.L280-.L279
+	.byte	3,1,1,5,22,9
+	.half	.L281-.L280
+	.byte	1,5,18,9
+	.half	.L282-.L281
+	.byte	1,5,20,9
+	.half	.L283-.L282
+	.byte	1,5,27,9
+	.half	.L284-.L283
+	.byte	1,5,36,9
+	.half	.L285-.L284
+	.byte	1,5,32,9
+	.half	.L286-.L285
+	.byte	1,5,34,9
+	.half	.L287-.L286
+	.byte	1,5,41,9
+	.half	.L288-.L287
+	.byte	1,5,39,9
+	.half	.L289-.L288
+	.byte	1,5,30,9
+	.half	.L290-.L289
+	.byte	1,5,50,9
+	.half	.L291-.L290
+	.byte	1,5,45,9
+	.half	.L292-.L291
+	.byte	1,5,50,9
+	.half	.L293-.L292
+	.byte	1,5,55,9
+	.half	.L294-.L293
+	.byte	1,5,53,9
+	.half	.L295-.L294
+	.byte	1,5,64,9
+	.half	.L296-.L295
+	.byte	1,5,60,9
+	.half	.L297-.L296
+	.byte	1,5,62,9
+	.half	.L298-.L297
+	.byte	1,5,69,9
+	.half	.L299-.L298
+	.byte	1,5,58,9
+	.half	.L300-.L299
+	.byte	1,5,74,9
+	.half	.L301-.L300
+	.byte	1,5,72,9
+	.half	.L302-.L301
 	.byte	1,5,79,9
-	.half	.L327-.L326
+	.half	.L303-.L302
 	.byte	1,5,77,9
+	.half	.L304-.L303
+	.byte	1,5,10,9
+	.half	.L305-.L304
+	.byte	1,5,5,9
+	.half	.L306-.L305
+	.byte	3,1,1,5,22,9
+	.half	.L307-.L306
+	.byte	1,5,18,9
+	.half	.L308-.L307
+	.byte	1,5,20,9
+	.half	.L309-.L308
+	.byte	1,5,27,9
+	.half	.L310-.L309
+	.byte	1,5,36,9
+	.half	.L311-.L310
+	.byte	1,5,32,9
+	.half	.L312-.L311
+	.byte	1,5,34,9
+	.half	.L313-.L312
+	.byte	1,5,41,9
+	.half	.L314-.L313
+	.byte	1,5,39,9
+	.half	.L315-.L314
+	.byte	1,5,30,9
+	.half	.L316-.L315
+	.byte	1,5,50,9
+	.half	.L317-.L316
+	.byte	1,5,45,9
+	.half	.L318-.L317
+	.byte	1,5,50,9
+	.half	.L319-.L318
+	.byte	1,5,55,9
+	.half	.L320-.L319
+	.byte	1,5,53,9
+	.half	.L321-.L320
+	.byte	1,5,64,9
+	.half	.L322-.L321
+	.byte	1,5,60,9
+	.half	.L323-.L322
+	.byte	1,5,62,9
+	.half	.L324-.L323
+	.byte	1,5,69,9
+	.half	.L325-.L324
+	.byte	1,5,58,9
+	.half	.L326-.L325
+	.byte	1,5,74,9
+	.half	.L327-.L326
+	.byte	1,5,72,9
 	.half	.L328-.L327
-	.byte	1,5,9,9
+	.byte	1,5,11,9
 	.half	.L329-.L328
-	.byte	1,5,1,9
+	.byte	1,5,79,9
 	.half	.L330-.L329
+	.byte	1,5,77,9
+	.half	.L331-.L330
+	.byte	1,5,9,9
+	.half	.L332-.L331
+	.byte	1,5,1,9
+	.half	.L333-.L332
 	.byte	3,1,1,7,9
-	.half	.L13-.L330
+	.half	.L13-.L333
 	.byte	0,1,1
-.L173:
+.L174:
 	.sdecl	'.debug_ranges',debug,cluster('IMUupdate')
 	.sect	'.debug_ranges'
 .L12:
 	.word	-1,.L4,0,.L13-.L4,0,0
-	.sdecl	'.debug_info',debug,cluster('pitch')
+	.sdecl	'.debug_info',debug,cluster('Gyro_Kp')
 	.sect	'.debug_info'
 .L14:
-	.word	221
+	.word	223
 	.half	3
 	.word	.L15
 	.byte	4,1
@@ -23129,20 +23162,20 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'pitch',0,25,13,7
-	.word	.L35
+	.byte	'Gyro_Kp',0,25,9,7
+	.word	.L39
 	.byte	1,5,3
-	.word	pitch
+	.word	Gyro_Kp
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('pitch')
+	.sdecl	'.debug_abbrev',debug,cluster('Gyro_Kp')
 	.sect	'.debug_abbrev'
 .L15:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('roll')
+	.sdecl	'.debug_info',debug,cluster('Gyro_Ki')
 	.sect	'.debug_info'
 .L16:
-	.word	220
+	.word	223
 	.half	3
 	.word	.L17
 	.byte	4,1
@@ -23151,20 +23184,20 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'roll',0,25,13,18
-	.word	.L35
+	.byte	'Gyro_Ki',0,25,11,7
+	.word	.L39
 	.byte	1,5,3
-	.word	roll
+	.word	Gyro_Ki
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('roll')
+	.sdecl	'.debug_abbrev',debug,cluster('Gyro_Ki')
 	.sect	'.debug_abbrev'
 .L17:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('yaw')
+	.sdecl	'.debug_info',debug,cluster('pitch')
 	.sect	'.debug_info'
 .L18:
-	.word	219
+	.word	221
 	.half	3
 	.word	.L19
 	.byte	4,1
@@ -23173,20 +23206,20 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'yaw',0,25,13,28
-	.word	.L35
+	.byte	'pitch',0,25,13,7
+	.word	.L39
 	.byte	1,5,3
-	.word	yaw
+	.word	pitch
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('yaw')
+	.sdecl	'.debug_abbrev',debug,cluster('pitch')
 	.sect	'.debug_abbrev'
 .L19:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('q0')
+	.sdecl	'.debug_info',debug,cluster('roll')
 	.sect	'.debug_info'
 .L20:
-	.word	218
+	.word	220
 	.half	3
 	.word	.L21
 	.byte	4,1
@@ -23195,20 +23228,20 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'q0',0,25,15,7
-	.word	.L35
+	.byte	'roll',0,25,13,18
+	.word	.L39
 	.byte	1,5,3
-	.word	q0
+	.word	roll
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('q0')
+	.sdecl	'.debug_abbrev',debug,cluster('roll')
 	.sect	'.debug_abbrev'
 .L21:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('q1')
+	.sdecl	'.debug_info',debug,cluster('yaw')
 	.sect	'.debug_info'
 .L22:
-	.word	218
+	.word	219
 	.half	3
 	.word	.L23
 	.byte	4,1
@@ -23217,17 +23250,17 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'q1',0,25,15,15
-	.word	.L35
+	.byte	'yaw',0,25,13,28
+	.word	.L39
 	.byte	1,5,3
-	.word	q1
+	.word	yaw
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('q1')
+	.sdecl	'.debug_abbrev',debug,cluster('yaw')
 	.sect	'.debug_abbrev'
 .L23:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('q2')
+	.sdecl	'.debug_info',debug,cluster('q0')
 	.sect	'.debug_info'
 .L24:
 	.word	218
@@ -23239,17 +23272,17 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'q2',0,25,15,23
-	.word	.L35
+	.byte	'q0',0,25,15,7
+	.word	.L39
 	.byte	1,5,3
-	.word	q2
+	.word	q0
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('q2')
+	.sdecl	'.debug_abbrev',debug,cluster('q0')
 	.sect	'.debug_abbrev'
 .L25:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('q3')
+	.sdecl	'.debug_info',debug,cluster('q1')
 	.sect	'.debug_info'
 .L26:
 	.word	218
@@ -23261,20 +23294,20 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'q3',0,25,15,31
-	.word	.L35
+	.byte	'q1',0,25,15,15
+	.word	.L39
 	.byte	1,5,3
-	.word	q3
+	.word	q1
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('q3')
+	.sdecl	'.debug_abbrev',debug,cluster('q1')
 	.sect	'.debug_abbrev'
 .L27:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('I_ex')
+	.sdecl	'.debug_info',debug,cluster('q2')
 	.sect	'.debug_info'
 .L28:
-	.word	220
+	.word	218
 	.half	3
 	.word	.L29
 	.byte	4,1
@@ -23283,20 +23316,20 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'I_ex',0,25,17,7
-	.word	.L35
+	.byte	'q2',0,25,15,23
+	.word	.L39
 	.byte	1,5,3
-	.word	I_ex
+	.word	q2
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('I_ex')
+	.sdecl	'.debug_abbrev',debug,cluster('q2')
 	.sect	'.debug_abbrev'
 .L29:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('I_ey')
+	.sdecl	'.debug_info',debug,cluster('q3')
 	.sect	'.debug_info'
 .L30:
-	.word	220
+	.word	218
 	.half	3
 	.word	.L31
 	.byte	4,1
@@ -23305,17 +23338,17 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'I_ey',0,25,17,13
-	.word	.L35
+	.byte	'q3',0,25,15,31
+	.word	.L39
 	.byte	1,5,3
-	.word	I_ey
+	.word	q3
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('I_ey')
+	.sdecl	'.debug_abbrev',debug,cluster('q3')
 	.sect	'.debug_abbrev'
 .L31:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('I_ez')
+	.sdecl	'.debug_info',debug,cluster('I_ex')
 	.sect	'.debug_info'
 .L32:
 	.word	220
@@ -23327,121 +23360,206 @@ I_ez:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L5
 	.byte	3
-	.byte	'I_ez',0,25,17,19
+	.byte	'I_ex',0,25,17,7
+	.word	.L39
+	.byte	1,5,3
+	.word	I_ex
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('I_ex')
+	.sect	'.debug_abbrev'
+.L33:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('I_ey')
+	.sect	'.debug_info'
+.L34:
+	.word	220
+	.half	3
 	.word	.L35
+	.byte	4,1
+	.byte	'../code/gyro/Gyro_Process.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
+	.word	.L5
+	.byte	3
+	.byte	'I_ey',0,25,17,13
+	.word	.L39
+	.byte	1,5,3
+	.word	I_ey
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('I_ey')
+	.sect	'.debug_abbrev'
+.L35:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('I_ez')
+	.sect	'.debug_info'
+.L36:
+	.word	220
+	.half	3
+	.word	.L37
+	.byte	4,1
+	.byte	'../code/gyro/Gyro_Process.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
+	.word	.L5
+	.byte	3
+	.byte	'I_ez',0,25,17,19
+	.word	.L39
 	.byte	1,5,3
 	.word	I_ez
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('I_ez')
 	.sect	'.debug_abbrev'
-.L33:
+.L37:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
 	.sdecl	'.debug_loc',debug,cluster('IMUupdate')
 	.sect	'.debug_loc'
 .L3:
-	.word	-1,.L4,0,.L70-.L4
+	.word	-1,.L4,0,.L73-.L4
 	.half	2
 	.byte	138,0
-	.word	.L70-.L4,.L34-.L4
+	.word	.L73-.L4,.L38-.L4
 	.half	2
 	.byte	138,32
-	.word	.L34-.L4,.L34-.L4
+	.word	.L38-.L4,.L38-.L4
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L64:
-	.word	-1,.L4,.L71-.L4,.L99-.L4
+.L68:
+	.word	-1,.L4,.L74-.L4,.L102-.L4
 	.half	1
 	.byte	82
-	.word	.L100-.L4,.L2-.L4
+	.word	.L103-.L4,.L2-.L4
 	.half	1
 	.byte	94
 	.word	0,0
-.L62:
-	.word	-1,.L4,.L72-.L4,.L71-.L4
+.L66:
+	.word	-1,.L4,.L75-.L4,.L74-.L4
 	.half	1
 	.byte	84
 	.word	0,0
-.L68:
-	.word	-1,.L4,.L106-.L4,.L107-.L4
+.L71:
+	.word	-1,.L4,.L107-.L4,.L108-.L4
 	.half	1
 	.byte	95
 	.word	0,0
-.L39:
-	.word	-1,.L4,0,.L71-.L4
+.L43:
+	.word	-1,.L4,0,.L74-.L4
 	.half	1
 	.byte	87
-	.word	.L76-.L4,.L77-.L4
+	.word	.L79-.L4,.L80-.L4
 	.half	1
 	.byte	88
-	.word	.L77-.L4,.L111-.L4
+	.word	.L80-.L4,.L112-.L4
+	.half	1
+	.byte	82
+	.word	0,0
+.L44:
+	.word	-1,.L4,0,.L38-.L4
+	.half	2
+	.byte	145,0
+	.word	.L81-.L4,.L82-.L4
+	.half	1
+	.byte	89
+	.word	.L82-.L4,.L2-.L4
+	.half	1
+	.byte	83
+	.word	0,0
+.L45:
+	.word	-1,.L4,0,.L38-.L4
+	.half	2
+	.byte	145,4
+	.word	.L83-.L4,.L84-.L4
+	.half	1
+	.byte	90
+	.word	.L84-.L4,.L113-.L4
+	.half	1
+	.byte	84
+	.word	0,0
+.L70:
+	.word	-1,.L4,.L106-.L4,.L102-.L4
+	.half	1
+	.byte	84
+	.word	0,0
+.L72:
+	.word	-1,.L4,.L109-.L4,.L2-.L4
+	.half	1
+	.byte	81
+	.word	0,0
+.L55:
+	.word	-1,.L4,.L126-.L4,.L2-.L4
+	.half	1
+	.byte	86
+	.word	0,0
+.L56:
+	.word	-1,.L4,.L113-.L4,.L2-.L4
+	.half	1
+	.byte	84
+	.word	0,0
+.L57:
+	.word	-1,.L4,.L112-.L4,.L2-.L4
 	.half	1
 	.byte	82
 	.word	0,0
 .L40:
-	.word	-1,.L4,0,.L34-.L4
+	.word	-1,.L4,0,.L75-.L4
+	.half	1
+	.byte	84
+	.word	.L76-.L4,.L38-.L4
 	.half	2
-	.byte	145,0
-	.word	.L78-.L4,.L79-.L4
+	.byte	145,108
+	.word	.L133-.L4,.L134-.L4
 	.half	1
-	.byte	89
-	.word	.L79-.L4,.L2-.L4
+	.byte	95
+	.word	.L146-.L4,.L147-.L4
 	.half	1
-	.byte	83
+	.byte	95
+	.word	.L152-.L4,.L153-.L4
+	.half	1
+	.byte	95
+	.word	.L158-.L4,.L159-.L4
+	.half	1
+	.byte	95
+	.word	.L163-.L4,.L164-.L4
+	.half	1
+	.byte	95
 	.word	0,0
 .L41:
-	.word	-1,.L4,0,.L34-.L4
+	.word	-1,.L4,0,.L74-.L4
+	.half	1
+	.byte	85
+	.word	.L77-.L4,.L38-.L4
 	.half	2
-	.byte	145,4
-	.word	.L80-.L4,.L81-.L4
+	.byte	145,100
+	.word	.L135-.L4,.L136-.L4
 	.half	1
-	.byte	90
-	.word	.L81-.L4,.L112-.L4
+	.byte	95
+	.word	.L147-.L4,.L148-.L4
 	.half	1
-	.byte	84
+	.byte	95
+	.word	.L153-.L4,.L154-.L4
+	.half	1
+	.byte	95
+	.word	.L156-.L4,.L157-.L4
+	.half	1
+	.byte	95
+	.word	.L161-.L4,.L162-.L4
+	.half	1
+	.byte	95
 	.word	0,0
-.L67:
-	.word	-1,.L4,.L105-.L4,.L99-.L4
-	.half	1
-	.byte	84
-	.word	0,0
-.L69:
-	.word	-1,.L4,.L108-.L4,.L2-.L4
-	.half	1
-	.byte	81
-	.word	0,0
-.L51:
-	.word	-1,.L4,.L125-.L4,.L2-.L4
+.L42:
+	.word	-1,.L4,0,.L74-.L4
 	.half	1
 	.byte	86
-	.word	0,0
-.L52:
-	.word	-1,.L4,.L112-.L4,.L2-.L4
-	.half	1
-	.byte	84
-	.word	0,0
-.L53:
-	.word	-1,.L4,.L111-.L4,.L2-.L4
-	.half	1
-	.byte	82
-	.word	0,0
-.L65:
-	.word	-1,.L4,.L101-.L4,.L102-.L4
-	.half	1
-	.byte	95
-	.word	0,0
-.L36:
-	.word	-1,.L4,0,.L72-.L4
-	.half	1
-	.byte	84
-	.word	.L73-.L4,.L34-.L4
+	.word	.L78-.L4,.L38-.L4
 	.half	2
-	.byte	145,112
-	.word	.L132-.L4,.L133-.L4
+	.byte	145,104
+	.word	.L137-.L4,.L2-.L4
 	.half	1
 	.byte	95
-	.word	.L145-.L4,.L146-.L4
+	.word	.L148-.L4,.L149-.L4
 	.half	1
 	.byte	95
 	.word	.L151-.L4,.L152-.L4
@@ -23454,199 +23572,153 @@ I_ez:	.type	object
 	.half	1
 	.byte	95
 	.word	0,0
-.L37:
-	.word	-1,.L4,0,.L71-.L4
-	.half	1
-	.byte	85
-	.word	.L74-.L4,.L34-.L4
-	.half	2
-	.byte	145,100
-	.word	.L134-.L4,.L135-.L4
-	.half	1
-	.byte	95
-	.word	.L146-.L4,.L147-.L4
-	.half	1
-	.byte	95
-	.word	.L152-.L4,.L153-.L4
-	.half	1
-	.byte	95
-	.word	.L155-.L4,.L156-.L4
-	.half	1
-	.byte	95
-	.word	.L160-.L4,.L161-.L4
-	.half	1
-	.byte	95
-	.word	0,0
-.L38:
-	.word	-1,.L4,0,.L71-.L4
-	.half	1
-	.byte	86
-	.word	.L75-.L4,.L34-.L4
-	.half	2
-	.byte	145,108
-	.word	.L136-.L4,.L2-.L4
-	.half	1
-	.byte	95
-	.word	.L147-.L4,.L148-.L4
-	.half	1
-	.byte	95
-	.word	.L150-.L4,.L151-.L4
-	.half	1
-	.byte	95
-	.word	.L156-.L4,.L157-.L4
-	.half	1
-	.byte	95
-	.word	.L161-.L4,.L162-.L4
-	.half	1
-	.byte	95
-	.word	0,0
-.L42:
-	.word	-1,.L4,0,.L34-.L4
+.L46:
+	.word	-1,.L4,0,.L38-.L4
 	.half	2
 	.byte	145,8
-	.word	.L126-.L4,.L127-.L4
+	.word	.L127-.L4,.L128-.L4
 	.half	1
 	.byte	95
-	.word	.L128-.L4,.L129-.L4
+	.word	.L129-.L4,.L130-.L4
 	.half	1
 	.byte	95
-	.word	.L130-.L4,.L131-.L4
+	.word	.L131-.L4,.L132-.L4
 	.half	1
 	.byte	95
-	.word	.L148-.L4,.L149-.L4
+	.word	.L149-.L4,.L150-.L4
 	.half	1
 	.byte	95
-	.word	.L153-.L4,.L154-.L4
+	.word	.L154-.L4,.L155-.L4
 	.half	1
 	.byte	95
-	.word	.L158-.L4,.L159-.L4
+	.word	.L159-.L4,.L160-.L4
 	.half	1
 	.byte	95
-	.word	.L163-.L4,.L164-.L4
+	.word	.L164-.L4,.L165-.L4
+	.half	1
+	.byte	95
+	.word	0,0
+.L51:
+	.word	-1,.L4,.L110-.L4,.L111-.L4
+	.half	1
+	.byte	95
+	.word	.L166-.L4,.L167-.L4
+	.half	1
+	.byte	95
+	.word	0,0
+.L58:
+	.word	-1,.L4,.L85-.L4,.L86-.L4
+	.half	1
+	.byte	95
+	.word	.L87-.L4,.L38-.L4
+	.half	2
+	.byte	145,124
+	.word	.L119-.L4,.L120-.L4
+	.half	1
+	.byte	95
+	.word	0,0
+.L59:
+	.word	-1,.L4,.L86-.L4,.L88-.L4
+	.half	1
+	.byte	95
+	.word	.L89-.L4,.L38-.L4
+	.half	2
+	.byte	145,120
+	.word	.L116-.L4,.L117-.L4
+	.half	1
+	.byte	95
+	.word	0,0
+.L60:
+	.word	-1,.L4,.L90-.L4,.L91-.L4
+	.half	1
+	.byte	95
+	.word	.L92-.L4,.L38-.L4
+	.half	2
+	.byte	145,112
+	.word	.L111-.L4,.L114-.L4
 	.half	1
 	.byte	95
 	.word	0,0
 .L47:
-	.word	-1,.L4,.L109-.L4,.L110-.L4
-	.half	1
-	.byte	95
-	.word	.L165-.L4,.L166-.L4
-	.half	1
-	.byte	95
-	.word	0,0
-.L54:
-	.word	-1,.L4,.L82-.L4,.L83-.L4
-	.half	1
-	.byte	95
-	.word	.L84-.L4,.L34-.L4
-	.half	2
-	.byte	145,124
-	.word	.L118-.L4,.L119-.L4
-	.half	1
-	.byte	95
-	.word	0,0
-.L55:
-	.word	-1,.L4,.L83-.L4,.L85-.L4
-	.half	1
-	.byte	95
-	.word	.L86-.L4,.L34-.L4
-	.half	2
-	.byte	145,120
-	.word	.L115-.L4,.L116-.L4
-	.half	1
-	.byte	95
-	.word	0,0
-.L56:
-	.word	-1,.L4,.L87-.L4,.L88-.L4
-	.half	1
-	.byte	95
-	.word	.L89-.L4,.L34-.L4
-	.half	2
-	.byte	145,104
-	.word	.L110-.L4,.L113-.L4
-	.half	1
-	.byte	95
-	.word	0,0
-.L43:
-	.word	-1,.L4,.L137-.L4,.L138-.L4
+	.word	-1,.L4,.L138-.L4,.L139-.L4
 	.half	1
 	.byte	82
 	.word	0,0
-.L57:
-	.word	-1,.L4,.L90-.L4,.L91-.L4
+.L61:
+	.word	-1,.L4,.L93-.L4,.L94-.L4
 	.half	1
 	.byte	95
-	.word	.L92-.L4,.L34-.L4
+	.word	.L95-.L4,.L38-.L4
 	.half	2
 	.byte	145,116
-	.word	.L120-.L4,.L121-.L4
-	.half	5
-	.byte	144,32,157,32,0
-	.word	0,0
-.L58:
-	.word	-1,.L4,.L93-.L4,.L34-.L4
-	.half	1
-	.byte	91
-	.word	0,0
-.L44:
-	.word	-1,.L4,.L139-.L4,.L140-.L4
-	.half	1
-	.byte	83
-	.word	0,0
-.L59:
-	.word	-1,.L4,.L94-.L4,.L95-.L4
-	.half	1
-	.byte	95
-	.word	.L96-.L4,.L34-.L4
-	.half	2
-	.byte	145,96
 	.word	.L121-.L4,.L122-.L4
 	.half	5
 	.byte	144,32,157,32,0
 	.word	0,0
-.L60:
-	.word	-1,.L4,.L97-.L4,.L34-.L4
+.L62:
+	.word	-1,.L4,.L96-.L4,.L38-.L4
 	.half	1
-	.byte	92
+	.byte	91
 	.word	0,0
-.L45:
-	.word	-1,.L4,.L141-.L4,.L142-.L4
+.L48:
+	.word	-1,.L4,.L140-.L4,.L141-.L4
 	.half	1
-	.byte	84
+	.byte	83
 	.word	0,0
-.L61:
-	.word	-1,.L4,.L98-.L4,.L34-.L4
+.L63:
+	.word	-1,.L4,.L97-.L4,.L98-.L4
 	.half	1
-	.byte	93
-	.word	0,0
-.L46:
-	.word	-1,.L4,.L143-.L4,.L144-.L4
-	.half	1
-	.byte	85
-	.word	0,0
-.L66:
-	.word	-1,.L4,.L103-.L4,.L104-.L4
+	.byte	95
+	.word	.L99-.L4,.L38-.L4
+	.half	2
+	.byte	145,96
+	.word	.L122-.L4,.L123-.L4
 	.half	5
 	.byte	144,32,157,32,0
 	.word	0,0
-.L48:
-	.word	-1,.L4,.L114-.L4,.L2-.L4
+.L64:
+	.word	-1,.L4,.L100-.L4,.L38-.L4
+	.half	1
+	.byte	92
+	.word	0,0
+.L49:
+	.word	-1,.L4,.L142-.L4,.L143-.L4
+	.half	1
+	.byte	84
+	.word	0,0
+.L65:
+	.word	-1,.L4,.L101-.L4,.L38-.L4
+	.half	1
+	.byte	93
+	.word	0,0
+.L50:
+	.word	-1,.L4,.L144-.L4,.L145-.L4
 	.half	1
 	.byte	85
 	.word	0,0
-.L49:
-	.word	-1,.L4,.L117-.L4,.L2-.L4
+.L69:
+	.word	-1,.L4,.L104-.L4,.L105-.L4
+	.half	1
+	.byte	95
+	.word	0,0
+.L52:
+	.word	-1,.L4,.L115-.L4,.L2-.L4
+	.half	1
+	.byte	85
+	.word	0,0
+.L53:
+	.word	-1,.L4,.L118-.L4,.L2-.L4
 	.half	1
 	.byte	87
 	.word	0,0
-.L50:
-	.word	-1,.L4,.L123-.L4,.L124-.L4
+.L54:
+	.word	-1,.L4,.L124-.L4,.L125-.L4
 	.half	1
 	.byte	95
 	.word	0,0
 	.sdecl	'.debug_frame',debug
 	.sect	'.debug_frame'
-.L331:
+.L334:
 	.word	48
 	.word	-1
 	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
@@ -23654,10 +23726,10 @@ I_ez:	.type	object
 	.sdecl	'.debug_frame',debug,cluster('IMUupdate')
 	.sect	'.debug_frame'
 	.word	36
-	.word	.L331,.L4,.L34-.L4
+	.word	.L334,.L4,.L38-.L4
 	.byte	4
-	.word	(.L70-.L4)/2
+	.word	(.L73-.L4)/2
 	.byte	19,32,22,26,3,19,138,32,4
-	.word	(.L34-.L70)/2
+	.word	(.L38-.L73)/2
 	.byte	19,0,8,26,0,0
 	; Module end

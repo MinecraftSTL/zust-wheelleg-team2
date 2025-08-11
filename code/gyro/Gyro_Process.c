@@ -6,9 +6,9 @@
  */
 #include "Gyro_Process.h"
 
-#define Kp 10.0f // 这里的KpKi是用于调整加速度计修正陀螺仪的速度
+float Gyro_Kp = 50.0f; // 这里的KpKi是用于调整加速度计修正陀螺仪的速度
 
-#define Ki 0.0033f
+float Gyro_Ki = 0.0033f;
 
 float pitch = 0, roll = 0, yaw = 0;//0：当前角度   1：上一时刻角度
 
@@ -34,13 +34,13 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float
     {
         // 计算加速度模长
         float a_norm = sqrtf(a_squared);
-        float g = 9.80665f;
+        static float g = 9.80665f;
         float sigma = 0.05f; // 经验设定的噪声标准差
         float chi_square = ((a_norm - g) * (a_norm - g)) / (sigma * sigma);
 
         // 动态调整权重
         float alpha = 0.3f / (0.3f + sqrt(chi_square));
-        float dynamic_Kp = Kp * alpha;
+        float dynamic_Kp = Gyro_Kp * alpha;
 
         // 单位化加速度
         normr = 1.0f / a_norm;
@@ -64,9 +64,9 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float
         I_ez += halfT * ez;
 
         // PI修正
-        gx += dynamic_Kp * ex + Ki * I_ex;
-        gy += dynamic_Kp * ey + Ki * I_ey;
-        gz += dynamic_Kp * ez + Ki * I_ez;
+        gx += dynamic_Kp * ex + Gyro_Ki * I_ex;
+        gy += dynamic_Kp * ey + Gyro_Ki * I_ey;
+        gz += dynamic_Kp * ez + Gyro_Ki * I_ez;
     }
 
     // 四元数更新

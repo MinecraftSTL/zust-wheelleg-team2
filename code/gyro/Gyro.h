@@ -11,6 +11,7 @@
 #include "Gyro_Process.h"
 #include "Pit.h"
 #include "icm42688.h"
+#include "Beep.h"
 
 #define my_gyroscope_init() Init_ICM42688()
 #define my_get_acc() Get_Acc_ICM42688()

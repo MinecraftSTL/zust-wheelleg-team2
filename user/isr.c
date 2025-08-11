@@ -92,6 +92,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 
     GetSpeed();
     int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
+    if(allRunMs >= 5000 && allRunMs < 5000 + PIT10ms){
+        Gyro_Kp = 1.0f;
+    }
     Update_GyroData();
     float new_gyro_x = my_gyro_x-zero_my_gyro_x;
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
@@ -105,6 +108,10 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         if(wheelClear){
             beepLong();
             wheelClear = 0;
+        }
+        if(fsEn){
+            beepLong();
+            fsEn = 0;
         }
     }
 
@@ -122,11 +129,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             targetV += control[0];
         }
         float tg_pitchX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
-        if(legXReset){
-            PID_clear(&PID_vVx);
-        }else{
-            legX += tg_pitchX;
-        }
+        legX += tg_pitchX;
         tg_pitchV += pid(&PID_WxAy, kZero-kPitchX*tg_pitchX, pitch);
         if(carStatus >= CAR_RUN){
             tg_yawV = pid(&PID_vAz, 0, cameraErr);
@@ -192,6 +195,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
         Leg_set_pos(lx, lz, rx, rz);
     }
+    CarStatus_pit(PIT10ms);
     Camera_pit(PIT10ms, Encoder_speed);
     if(carStatus > CAR_BALANCE && (fps.fps <= 0 || fps.fps >= 7000)){//иЦоЯм╥ееоъкиак
         CarStatus_set(CAR_BALANCE);

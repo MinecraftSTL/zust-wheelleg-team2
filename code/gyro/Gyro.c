@@ -5,7 +5,6 @@
  *      Author: Â¬¾¢º­
  */
 #include "Gyro.h"
-#include "Beep.h"
 
 float Sum_my_gyro_z = 0,Sum_my_gyro_y = 0,Sum_my_gyro_x = 0,Sum_my_acc_z = 0,Sum_my_acc_y = 0,Sum_my_acc_x = 0;
 float zero_my_gyro_z = 0,zero_my_gyro_y = 0,zero_my_gyro_x = 0,zero_my_acc_z = 0,zero_my_acc_y = 0,zero_my_acc_x = 0;
@@ -15,7 +14,6 @@ float Lowpass_Alpha = 0.3;
 void Gyro_init()
 {
     my_gyroscope_init();
-    Set_LowpassFilter_Range_ICM42688(ICM42688_AFS_8G, ICM42688_AODR_1000HZ, ICM42688_GFS_1000DPS, ICM42688_GODR_1000HZ);
 }
 void Gyro_set(){
     system_delay_ms(1000);

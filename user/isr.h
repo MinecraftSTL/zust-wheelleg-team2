@@ -41,6 +41,7 @@
 #include "Pid_param.h"
 #include "Fps_param.h"
 #include "zf_common_headfile.h"
+#include "Gyro_Process.h"
 
 
 extern uint8 mute;

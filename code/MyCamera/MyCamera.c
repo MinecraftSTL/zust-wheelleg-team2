@@ -35,7 +35,7 @@ int rampY = 40;
 float rampZ = -60;
 float rampK = 0.1;
 int barrierY0 = 20;
-int barrierY1 = 40;
+int barrierY1 = 55;
 int barrierT = 200;
 float bridgeKPitchX = 0.5;
 int bridgeTI = 1000;
@@ -672,7 +672,7 @@ void RadDir_toInflection(float this[MAX_BLY], int16 thisLine[MAX_BLY], uint16 th
         int16 retLine[MAX_BLY], float retRad[MAX_BLY], uint16 *retN){
     *retN = 0;
     for(uint16 i = 1; i < thisN-1; ++i){
-        if(isnan(this[i-1]) || isnan(this[i+1])){
+        if(isnan(this[i-1]) || isnan(this[i]) || isnan(this[i+1])){
             continue;
         }
         if(fabs(Angle_normalize(this[i+1]-this[i-1])) >= PI/2-err){
@@ -715,7 +715,6 @@ void CameraStatus_set(CameraStatus value){
     statusRunS = 0;
 
     targetLegZ = defaultLegZ;
-    legXReset = 0;
     rollBalance = 0;
     rollBalanceK = 1;
     kPitchX = 0;
@@ -1216,9 +1215,9 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
                     lrMeet > barrierY0){
                 CameraStatus_addScore(I_BARRIER);
             }
+            *cameraV = barrierV;
             break;
         case I_BARRIER:
-            legXReset = 1;
             if(lrMeet > barrierY1){
                 CameraStatus_addScore(R_BARRIER);
             }
@@ -1243,7 +1242,6 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
             *cameraV = iBarrierV;
             break;
         case R_BARRIER:
-            legXReset = 1;
             if(carStatus == CAR_RUN){
                 jump();
             }
@@ -1251,7 +1249,6 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
             *cameraV = iBarrierV;
             break;
         case O_BARRIER:
-            legXReset = 1;
             if(statusKeepMs >= barrierT){
                 CameraStatus_set(CAMERA_STATUS_NONE);
             }
@@ -1491,7 +1488,9 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
             break;
         case O_LBRIDGE:
             if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
-                if(lStraight==1 || lInfN == 0 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
+                if(lStraight==1 || lInfN == 0){
+                    CameraStatus_addScore(I_RBRIDGE);
+                }else if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                     if(rLine[rInfLine[1]][1] > lLine[lInfLine[1]][1]){
                         CameraStatus_addScore(I_RBRIDGE);
                     }else if(rLine[rInfLine[1]][1] < lLine[lInfLine[1]][1]){
@@ -1545,7 +1544,9 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
             break;
         case O_RBRIDGE:
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
-                if(rStraight==1 || rInfN == 0 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
+                if(rStraight==1 || rInfN == 0){
+                    CameraStatus_addScore(I_LBRIDGE);
+                }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
                     if(lLine[lInfLine[1]][1] > rLine[rInfLine[1]][1]){
                         CameraStatus_addScore(I_LBRIDGE);
                     }else if(lLine[lInfLine[1]][1] < rLine[rInfLine[1]][1]){

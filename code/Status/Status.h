@@ -23,6 +23,8 @@ typedef enum
     open_status,
 }Status_Flag;
 
+extern uint64 allRunMs;
+
 extern CarStatus carStatus;
 
 void CarStatus_set(CarStatus this);
@@ -31,5 +33,6 @@ void CarStatus_menu_update(Page *page);
 void CarStatus_add();
 void CarStatus_sub();
 void CarStatus_stop();
+void CarStatus_pit(uint32 period);
 
 #endif

@@ -46,10 +46,9 @@ Page menu_main_arg_k_errY_straight;
 Page menu_main_arg_k_errY_bend;
 Page menu_main_arg_k_errY_circle;
 Page menu_main_arg_k_camera;
-Page menu_main_arg_k_camera_shadow;
-Page menu_main_arg_k_camera_shadow_k;
-Page menu_main_arg_k_camera_vignette;
-Page menu_main_arg_k_camera_vignette_k;
+Page menu_main_arg_k_camera_compensate;
+Page menu_main_arg_k_camera_compensate_shadow;
+Page menu_main_arg_k_camera_compensate_vignette;
 Page menu_main_arg_k_camera_bin;
 Page menu_main_arg_k_camera_bin_status;
 Page menu_main_arg_k_camera_bin_deltaT;
@@ -115,6 +114,9 @@ Page menu_main_arg_k_jump_step0;
 Page menu_main_arg_k_jump_step1;
 Page menu_main_arg_k_jump_step2;
 Page menu_main_arg_PID;
+Page menu_main_arg_PID_gyro;
+Page menu_main_arg_PID_gyro_Kp;
+Page menu_main_arg_PID_gyro_Ki;
 PidPage menu_main_arg_PID_vAy;
 PidPage menu_main_arg_PID_xAy;
 PidPage menu_main_arg_PID_vVx;
@@ -126,13 +128,28 @@ Page menu_main_arg_filter_turn;
 Page menu_main_arg_filter_xAx;
 Page menu_main_arg_filter_zzzXAx;
 Page menu_main_dat;
+Page menu_main_dat_allRunMs;
 Page menu_main_dat_encoder;
 Page menu_main_dat_encoder_l;
 Page menu_main_dat_encoder_r;
 Page menu_main_dat_gyro;
-Page menu_main_dat_gyro_x;
-Page menu_main_dat_gyro_y;
-Page menu_main_dat_gyro_z;
+Page menu_main_dat_gyro_gyro;
+Page menu_main_dat_gyro_gyro_x;
+Page menu_main_dat_gyro_gyro_y;
+Page menu_main_dat_gyro_gyro_z;
+Page menu_main_dat_gyro_gyro_vAx;
+Page menu_main_dat_gyro_gyro_vAy;
+Page menu_main_dat_gyro_gyro_vAz;
+Page menu_main_dat_gyro_gyro_xAx;
+Page menu_main_dat_gyro_gyro_xAy;
+Page menu_main_dat_gyro_gyro_xAz;
+Page menu_main_dat_gyro_acc;
+Page menu_main_dat_gyro_acc_x;
+Page menu_main_dat_gyro_acc_y;
+Page menu_main_dat_gyro_acc_z;
+Page menu_main_dat_gyro_acc_aXx;
+Page menu_main_dat_gyro_acc_aXy;
+Page menu_main_dat_gyro_acc_aXz;
 Page menu_main_debug;
 Page menu_main_debug_wheelClear;
 Page menu_main_debug_flash;
@@ -165,7 +182,7 @@ Page menu_main_debug_jump;
 Page menu_main_about;
 
 void Menu_param_init(){
-    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.debug", "main.arg.k.camera.show", ""});
+    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.dat", "main.debug", "main.arg.k.camera.show", ""});
     Page_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", (Page*[]){
         &menu_main_carStatus,
@@ -278,8 +295,7 @@ void Menu_param_init(){
     IntPage_init(&menu_main_arg_k_errY_bend, "bend", &bendErrY, 0, MT9V03X_H-1);
     IntPage_init(&menu_main_arg_k_errY_circle, "circle", &circleErrY, 0, MT9V03X_H-1);
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
-        &menu_main_arg_k_camera_shadow,
-        &menu_main_arg_k_camera_vignette,
+        &menu_main_arg_k_camera_compensate,
         &menu_main_arg_k_camera_bin,
         &menu_main_arg_k_camera_trapezoid,
         &menu_main_arg_k_camera_eigenvalue,
@@ -288,16 +304,13 @@ void Menu_param_init(){
         &menu_main_arg_k_camera_show,
         NULL
     });
-    ListPage_init(&menu_main_arg_k_camera_vignette, "vignette", (Page*[]){
-        &menu_main_arg_k_camera_vignette_k,
+    ListPage_init(&menu_main_arg_k_camera_compensate, "compensate", (Page*[]){
+        &menu_main_arg_k_camera_compensate_shadow,
+        &menu_main_arg_k_camera_compensate_vignette,
         NULL
     });
-    FloatPage_init(&menu_main_arg_k_camera_vignette_k, "k", &vignetteK, 0, 255);
-    ListPage_init(&menu_main_arg_k_camera_shadow, "shadow", (Page*[]){
-        &menu_main_arg_k_camera_shadow_k,
-        NULL
-    });
-    FloatPage_init(&menu_main_arg_k_camera_shadow_k, "k", &shadowK, 0, 255);
+    FloatPage_init(&menu_main_arg_k_camera_compensate_vignette, "vignetteK", &vignetteK, 0, 255);
+    FloatPage_init(&menu_main_arg_k_camera_compensate_shadow, "shadowK", &shadowK, 0, 255);
     ListPage_init(&menu_main_arg_k_camera_bin, "bin", (Page*[]){
         &menu_main_arg_k_camera_bin_status,
         &menu_main_arg_k_camera_bin_deltaT,
@@ -466,6 +479,7 @@ void Menu_param_init(){
     IntPage_init(&menu_main_arg_k_jump_step1, "1", jumpStep+1, 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step2, "2", jumpStep+2, 0, 1000);
     ListPage_init(&menu_main_arg_PID, "PID", (Page*[]){
+        &menu_main_arg_PID_gyro,
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
         &menu_main_arg_PID_vVx,
@@ -473,6 +487,14 @@ void Menu_param_init(){
         &menu_main_arg_PID_turn,
         NULL
     });
+    ListPage_init(&menu_main_arg_PID_gyro, "gyro", (Page*[]){
+        &menu_main_arg_PID_gyro_Kp,
+        &menu_main_arg_PID_gyro_Ki,
+        NULL
+    });
+    FloatPage_init(&menu_main_arg_PID_gyro_Kp, "Kp", &Gyro_Kp, 0, 10000);
+    FloatPage_init(&menu_main_arg_PID_gyro_Ki, "Ki", &Gyro_Ki, 0, 10000);
+    menu_main_arg_PID_gyro_Kp.extends.floatValue.dot = menu_main_arg_PID_gyro_Ki.extends.floatValue.dot = 4;
     PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
     PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_WxAy);
     PidPage_init(&menu_main_arg_PID_vVx, "vVx", &PID_vVx);
@@ -490,10 +512,12 @@ void Menu_param_init(){
     FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter0_xAx.delta, 0, 10000);
     FloatPage_init(&menu_main_arg_filter_zzzXAx, "ZZZ_xAx", &ZZZ_xAx, 0, 90);
     ListPage_init(&menu_main_dat, "dat", (Page*[]){
+        &menu_main_dat_allRunMs,
         &menu_main_dat_encoder,
         &menu_main_dat_gyro,
         NULL
     });
+    IntPage_init(&menu_main_dat_allRunMs, "allRunMs", &allRunMs, -2147483648, 2147483647);
     ListPage_init(&menu_main_dat_encoder, "encoder", (Page*[]){
         &menu_main_dat_encoder_l,
         &menu_main_dat_encoder_r,
@@ -502,14 +526,51 @@ void Menu_param_init(){
     IntPage_init(&menu_main_dat_encoder_l, "l", &Encoder_speed_r, -2147483648, 2147483647);
     IntPage_init(&menu_main_dat_encoder_r, "r", &Encoder_speed_l, -2147483648, 2147483647);
     ListPage_init(&menu_main_dat_gyro, "gyro", (Page*[]){
-        &menu_main_dat_gyro_x,
-        &menu_main_dat_gyro_y,
-        &menu_main_dat_gyro_z,
+        &menu_main_dat_gyro_gyro,
+        &menu_main_dat_gyro_acc,
         NULL
     });
-    FloatPage_init(&menu_main_dat_gyro_x, "x", &pitch, -720, 720);
-    FloatPage_init(&menu_main_dat_gyro_y, "y", &roll, -720, 720);
-    FloatPage_init(&menu_main_dat_gyro_z, "z", &yaw, -720, 720);
+    ListPage_init(&menu_main_dat_gyro_gyro, "gyro", (Page*[]){
+        &menu_main_dat_gyro_gyro_x,
+        &menu_main_dat_gyro_gyro_y,
+        &menu_main_dat_gyro_gyro_z,
+        &menu_main_dat_gyro_gyro_vAx,
+        &menu_main_dat_gyro_gyro_vAy,
+        &menu_main_dat_gyro_gyro_vAz,
+        &menu_main_dat_gyro_gyro_xAx,
+        &menu_main_dat_gyro_gyro_xAy,
+        &menu_main_dat_gyro_gyro_xAz,
+        NULL
+    });
+    FloatPage_init(&menu_main_dat_gyro_gyro_x, "x_deg", &my_gyro_x, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_y, "y_deg", &my_gyro_y, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_z, "z_deg", &my_gyro_z, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_vAx, "vAx_rad", &gyro_x, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_vAy, "vAy_rad", &gyro_y, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_vAz, "vAz_rad", &gyro_z, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_xAx, "xAx_deg", &pitch, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_xAy, "xAy_deg", &roll, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_gyro_xAz, "xAz_deg", &yaw, -INFINITY, INFINITY);
+    menu_main_dat_gyro_gyro_x.extends.floatValue.dot = menu_main_dat_gyro_gyro_y.extends.floatValue.dot = menu_main_dat_gyro_gyro_z.extends.floatValue.dot =
+            menu_main_dat_gyro_gyro_vAx.extends.floatValue.dot = menu_main_dat_gyro_gyro_vAy.extends.floatValue.dot = menu_main_dat_gyro_gyro_vAz.extends.floatValue.dot =
+            menu_main_dat_gyro_gyro_xAx.extends.floatValue.dot = menu_main_dat_gyro_gyro_xAy.extends.floatValue.dot = menu_main_dat_gyro_gyro_xAz.extends.floatValue.dot = 3;
+    ListPage_init(&menu_main_dat_gyro_acc, "acc", (Page*[]){
+        &menu_main_dat_gyro_acc_x,
+        &menu_main_dat_gyro_acc_y,
+        &menu_main_dat_gyro_acc_z,
+        &menu_main_dat_gyro_acc_aXx,
+        &menu_main_dat_gyro_acc_aXy,
+        &menu_main_dat_gyro_acc_aXz,
+        NULL
+    });
+    FloatPage_init(&menu_main_dat_gyro_acc_x, "x_g", &my_acc_x, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_acc_y, "y_g", &my_acc_y, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_acc_z, "z_g", &my_acc_z, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_acc_aXx, "aXx_mpss", &acc_x, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_acc_aXy, "aXy_mpss", &acc_y, -INFINITY, INFINITY);
+    FloatPage_init(&menu_main_dat_gyro_acc_aXz, "aXz_mpss", &acc_z, -INFINITY, INFINITY);
+    menu_main_dat_gyro_acc_x.extends.floatValue.dot = menu_main_dat_gyro_acc_y.extends.floatValue.dot = menu_main_dat_gyro_acc_z.extends.floatValue.dot =
+            menu_main_dat_gyro_acc_aXx.extends.floatValue.dot = menu_main_dat_gyro_acc_aXy.extends.floatValue.dot = menu_main_dat_gyro_acc_aXz.extends.floatValue.dot = 3;
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wheelClear,
         &menu_main_debug_flash,

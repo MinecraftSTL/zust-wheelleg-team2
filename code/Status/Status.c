@@ -6,6 +6,8 @@
 
 #include "Status.h"
 
+uint64 allRunMs = 0;
+
 CarStatus carStatus = CAR_STOP;
 
 void CarStatus_set(CarStatus this)
@@ -15,6 +17,11 @@ void CarStatus_set(CarStatus this)
 }
 void CarStatus_update(){
     beepMid();
+    if(allRunMs < 5000){
+        beepLong();
+        carStatus = CAR_STOP;
+        return;
+    }
     CameraStatus_clear();
     carRunMs = 0;
     wheelClear = 0;
@@ -38,4 +45,7 @@ void CarStatus_sub(){
 }
 void CarStatus_stop(){
     CarStatus_set(CAR_STOP);
+}
+void CarStatus_pit(uint32 period){
+    allRunMs += period;
 }
