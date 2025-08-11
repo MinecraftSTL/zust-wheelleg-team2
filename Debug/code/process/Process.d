@@ -1,462 +1,462 @@
-code/process/Process.o :	../code/process/Process.c
+Process.o :	../code/process/Process.c
 ../code/process/Process.c :
-code/process/Process.o :	../code/process/Process.h
-../code/process/Process.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/math.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/math.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/typeinfo.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/typeinfo.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdio.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdio.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdarg.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdarg.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdint.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdint.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdbool.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdbool.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/string.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/string.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/ifxAsclin_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/ifxAsclin_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxAsclin_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxAsclin_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/Ifx_TypesReg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/Ifx_TypesReg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/SysSe/Bsp/Bsp.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/SysSe/Bsp/Bsp.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Configurations/Ifx_Cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Configurations/Ifx_Cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_clock.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_clock.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_typedef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_typedef.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdlib.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdlib.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/ifx_types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/ifx_types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/Compilers.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/Compilers.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Configurations/Ifx_Cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Configurations/Ifx_Cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/CompilerTasking.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/CompilerTasking.h :
-code/process/Process.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stddef.h
-d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stddef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Platform_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Platform_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_TypesTasking.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_TypesTasking.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/PLATFORM_TYPES.H
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/PLATFORM_TYPES.H :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu_Intrinsics.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu_Intrinsics.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu_IntrinsicsTasking.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu_IntrinsicsTasking.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxCpu_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxCpu_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCpu_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCpu_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCpu_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCpu_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSrc_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSrc_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSrc_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSrc_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxScu_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxScu_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxScu_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxScu_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxStm_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxStm_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxStm_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxStm_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxScu_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxScu_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxScu_bf.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxScu_bf.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.asm.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.asm.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/IfxCpu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxScu_PinMap.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxScu_PinMap.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxPort_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxPort_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxPort_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxPort_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxPort_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxPort_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSmu_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSmu_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSmu_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxSmu_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Src/Std/IfxSrc.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Src/Std/IfxSrc.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxSrc_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxSrc_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Stm/Std/IfxStm.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Stm/Std/IfxStm.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxStm_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxStm_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Ccu6/Timer/IfxCcu6_Timer.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Ccu6/Timer/IfxCcu6_Timer.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Ccu6/Std/IfxCcu6.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Ccu6/Std/IfxCcu6.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxCcu6_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxCcu6_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCcu6_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCcu6_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCcu6_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCcu6_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCcu6_bf.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxCcu6_bf.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxCcu6_PinMap.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxCcu6_PinMap.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxCcu6_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxCcu6_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/If/Ccu6If/Timer.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/If/Ccu6If/Timer.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuEru.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuEru.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxScu_PinMap.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxScu_PinMap.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_debug.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_debug.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_interrupt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_interrupt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_fifo.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_fifo.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_font.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_font.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_function.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_function.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/isr_config.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/isr_config.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_adc.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_adc.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_delay.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_delay.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_dma.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_dma.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Dma/Std/IfxDma.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Dma/Std/IfxDma.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxDma_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxDma_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxDma_bf.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxDma_bf.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxDma_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxDma_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxDma_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxDma_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_exti.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_exti.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuEru.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuEru.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_encoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_encoder.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_exti.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_exti.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_flash.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_flash.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/ifxFlash_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/ifxFlash_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_gpio.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_gpio.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IFXPORT.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IFXPORT.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_pit.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_pit.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_pwm.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_pwm.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_soft_iic.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_soft_iic.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_spi.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_spi.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_soft_spi.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_soft_spi.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Asclin/Asc/ifxAsclin_Asc.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Asclin/Asc/ifxAsclin_Asc.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Asclin/Std/IfxAsclin.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Asclin/Std/IfxAsclin.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxAsclin_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxAsclin_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxAsclin_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxAsclin_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuWdt.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxAsclin_PinMap.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxAsclin_PinMap.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxAsclin_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxAsclin_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Lib/DataHandling/Ifx_Fifo.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Lib/DataHandling/Ifx_Fifo.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/SysSe/Bsp/Bsp.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/SysSe/Bsp/Bsp.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_DPipe.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_DPipe.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_timer.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_timer.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_absolute_encoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_absolute_encoder.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ble6a20.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ble6a20.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_bluetooth_ch9141.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_bluetooth_ch9141.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_gnss.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_gnss.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_camera.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_camera.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_type.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_type.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_dl1a.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_dl1a.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_dl1b.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_dl1b.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_icm20602.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_icm20602.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_imu660ra.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_imu660ra.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_imu963ra.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_imu963ra.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ips114.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ips114.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ips200.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ips200.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_key.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_key.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_menc15a.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_menc15a.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_mpu6050.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_mpu6050.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_mt9v03x.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_mt9v03x.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_oled.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_oled.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ov7725.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_ov7725.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_scc8660.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_scc8660.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_tft180.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_tft180.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_tsl1401.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_tsl1401.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_uart_receiver.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_uart_receiver.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_virtual_oscilloscope.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_virtual_oscilloscope.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_wifi_uart.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_wifi_uart.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_wifi_spi.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_wifi_spi.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_wireless_uart.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_wireless_uart.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid_param.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid_param.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/PidPage.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/PidPage.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Wifi_Image/Wifi_Image.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Wifi_Image/Wifi_Image.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_Key.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_Key.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/BEEP.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/BEEP.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MYCAMERA.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MYCAMERA.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_camera.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_device/zf_device_camera.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu1_main.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu1_main.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/isr.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/isr.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pit/Pit.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pit/Pit.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_DPipe.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_DPipe.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/SysSe/Math/Ifx_LowPassPt1F32.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/SysSe/Math/Ifx_LowPassPt1F32.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/Std/IfxGpt12.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/Std/IfxGpt12.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxGpt12_cfg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_Impl/IfxGpt12_cfg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Scu/Std/IfxScuCcu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxGpt12_reg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxGpt12_reg.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxGpt12_regdef.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Infra/Sfr/TC38A/_Reg/IfxGpt12_regdef.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxGpt12_PinMap.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/_PinMap/IfxGpt12_PinMap.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Port/Std/IfxPort.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/filter/Filter.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/filter/Filter.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro_Process.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro_Process.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Flash/FLASH.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Flash/FLASH.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/MOTOR.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/MOTOR.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/SysTimer/SYSTIMER.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/SysTimer/SYSTIMER.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/UART/UART.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/UART/UART.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/menu.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/menu.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Status/Status.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Status/Status.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h :
-code/process/Process.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
+Process.o :	..\code\process\Process.h
+..\code\process\Process.h :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\math.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\math.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\typeinfo.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\typeinfo.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdio.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdio.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdarg.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdarg.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdint.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdint.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdbool.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdbool.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\string.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\string.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\ifxAsclin_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\ifxAsclin_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxAsclin_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxAsclin_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\Ifx_TypesReg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\Ifx_TypesReg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\SysSe\Bsp\Bsp.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\SysSe\Bsp\Bsp.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Configurations\Ifx_Cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Configurations\Ifx_Cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_clock.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_clock.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_typedef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_typedef.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdlib.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stdlib.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\ifx_types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\ifx_types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Platform\Tricore\Compilers\Compilers.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Platform\Tricore\Compilers\Compilers.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Configurations\Ifx_Cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Configurations\Ifx_Cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Platform\Tricore\Compilers\CompilerTasking.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Platform\Tricore\Compilers\CompilerTasking.h" :
+Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stddef.h"
+"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\stddef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\Platform_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\Platform_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\Ifx_TypesTasking.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\Ifx_TypesTasking.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\PLATFORM_TYPES.H"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Cpu\\Std\PLATFORM_TYPES.H" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu_Intrinsics.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu_Intrinsics.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu_IntrinsicsTasking.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu_IntrinsicsTasking.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxCpu_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxCpu_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCpu_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCpu_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCpu_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCpu_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSrc_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSrc_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSrc_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSrc_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxScu_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxScu_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxScu_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxScu_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxStm_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxStm_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxStm_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxStm_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxScu_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxScu_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxScu_bf.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxScu_bf.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.asm.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.asm.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\IfxCpu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxScu_PinMap.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxScu_PinMap.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxPort_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxPort_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxPort_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxPort_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxPort_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxPort_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSmu_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSmu_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSmu_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxSmu_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Src\Std\IfxSrc.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Src\Std\IfxSrc.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxSrc_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxSrc_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Stm\Std\IfxStm.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Stm\Std\IfxStm.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxStm_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxStm_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Ccu6\\Timer\IfxCcu6_Timer.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Ccu6\\Timer\IfxCcu6_Timer.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Ccu6\Std\IfxCcu6.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Ccu6\Std\IfxCcu6.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxCcu6_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxCcu6_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCcu6_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCcu6_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCcu6_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCcu6_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCcu6_bf.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxCcu6_bf.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxCcu6_PinMap.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxCcu6_PinMap.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxCcu6_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxCcu6_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\If\Ccu6If\Timer.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\If\Ccu6If\Timer.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Scu\\Std\IfxScuEru.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Scu\\Std\IfxScuEru.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxScu_PinMap.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxScu_PinMap.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_debug.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_debug.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_interrupt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_interrupt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_fifo.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_fifo.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_font.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_font.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_function.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_function.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\isr_config.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\isr_config.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_adc.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_adc.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_delay.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_delay.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_dma.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_dma.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Dma\\Std\IfxDma.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Dma\\Std\IfxDma.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxDma_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxDma_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxDma_bf.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxDma_bf.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxDma_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxDma_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxDma_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxDma_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_exti.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_exti.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Scu\\Std\IfxScuEru.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Scu\\Std\IfxScuEru.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_encoder.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_encoder.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_exti.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_exti.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_flash.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_flash.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\_Impl\ifxFlash_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\_Impl\ifxFlash_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_gpio.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_gpio.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Port\\Std\IFXPORT.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Port\\Std\IFXPORT.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_pit.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_pit.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_pwm.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_pwm.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_soft_iic.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_soft_iic.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_spi.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_spi.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_soft_spi.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_soft_spi.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Asclin\\Asc\ifxAsclin_Asc.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Asclin\\Asc\ifxAsclin_Asc.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Asclin\Std\IfxAsclin.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Asclin\Std\IfxAsclin.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxAsclin_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxAsclin_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxAsclin_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxAsclin_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuWdt.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxAsclin_PinMap.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxAsclin_PinMap.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxAsclin_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxAsclin_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Lib\DataHandling\Ifx_Fifo.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Lib\DataHandling\Ifx_Fifo.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\SysSe\Bsp\Bsp.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\SysSe\Bsp\Bsp.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf_DPipe.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf_DPipe.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_timer.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_timer.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_absolute_encoder.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_absolute_encoder.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ble6a20.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ble6a20.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_bluetooth_ch9141.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_bluetooth_ch9141.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_gnss.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_gnss.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_camera.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_camera.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_type.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_type.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_dl1a.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_dl1a.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_dl1b.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_dl1b.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_icm20602.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_icm20602.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_imu660ra.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_imu660ra.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_imu963ra.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_imu963ra.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ips114.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ips114.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ips200.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ips200.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_key.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_key.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_menc15a.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_menc15a.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_mpu6050.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_mpu6050.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_mt9v03x.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_mt9v03x.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_oled.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_oled.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ov7725.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_ov7725.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_scc8660.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_scc8660.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_tft180.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_tft180.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_tsl1401.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_tsl1401.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_uart_receiver.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_uart_receiver.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_virtual_oscilloscope.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_virtual_oscilloscope.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_wifi_uart.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_wifi_uart.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_wifi_spi.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_wifi_spi.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_wireless_uart.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_wireless_uart.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_components\seekfree_assistant.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_components\seekfree_assistant.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_components\seekfree_assistant_interface.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_components\seekfree_assistant_interface.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\cpu0_main.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\cpu0_main.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\pid\Pid_param.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\pid\Pid_param.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\pid\Pid.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\pid\Pid.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Menu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Menu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\PidPage.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\PidPage.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pid\Pid.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pid\Pid.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Menu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Menu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Wifi_Image\Wifi_Image.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Wifi_Image\Wifi_Image.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_Key.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_Key.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\beep\BEEP.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\beep\BEEP.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\myCamera\MYCAMERA.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\myCamera\MYCAMERA.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_camera.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_device\zf_device_camera.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\cpu1_main.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\cpu1_main.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\isr.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\isr.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pit\Pit.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pit\Pit.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\leg\Leg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\leg\Leg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Motor\Motor.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Motor\Motor.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\myEncoder\MyEncoder.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\myEncoder\MyEncoder.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Gpt12\\IncrEnc\IfxGpt12_IncrEnc.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\\Gpt12\\IncrEnc\IfxGpt12_IncrEnc.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf_Pos.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf_Pos.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf_DPipe.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\StdIf\IfxStdIf_DPipe.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\SysSe\Math\Ifx_LowPassPt1F32.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\SysSe\Math\Ifx_LowPassPt1F32.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Gpt12\Std\IfxGpt12.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Gpt12\Std\IfxGpt12.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxGpt12_cfg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_Impl\IfxGpt12_cfg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Service\\CpuGeneric\_Utilities\Ifx_Assert.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Scu\Std\IfxScuCcu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxGpt12_reg.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxGpt12_reg.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxGpt12_regdef.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\Infra\\Sfr\\TC38A\\_Reg\IfxGpt12_regdef.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxGpt12_PinMap.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\_PinMap\IfxGpt12_PinMap.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Port\Std\IfxPort.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\foc\small_driver_uart_control.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\foc\small_driver_uart_control.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\myCamera\MyCamera.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\myCamera\MyCamera.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\foc\small_driver_uart_control.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\foc\small_driver_uart_control.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\filter\Filter.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\filter\Filter.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\process\Process.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\process\Process.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\gyro\Gyro.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\gyro\Gyro.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\gyro\Gyro_Process.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\gyro\Gyro_Process.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadfile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadfile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\icm42688\icm42688.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\icm42688\icm42688.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\Myheadfile.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\Myheadfile.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\beep\Beep.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\beep\Beep.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\VOFA\VOFA.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\VOFA\VOFA.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Flash\FLASH.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Flash\FLASH.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Motor\MOTOR.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Motor\MOTOR.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\SysTimer\SYSTIMER.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\SysTimer\SYSTIMER.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\UART\UART.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\UART\UART.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_driver\zf_driver_uart.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\menu.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\menu.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\cpu0_main.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\user\cpu0_main.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Status\Status.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Status\Status.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\debug\Debug.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\debug\Debug.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\myCamera\MyCamera.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\myCamera\MyCamera.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\myEncoder\MyEncoder.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\myEncoder\MyEncoder.h" :
+Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\pid\Pid.h"
+"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\pid\Pid.h" :

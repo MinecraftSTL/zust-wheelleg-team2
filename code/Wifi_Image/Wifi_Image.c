@@ -9,6 +9,8 @@
 
 uint8 g_wifi_image_open_flag = 1;
 
+Rgb565Image wifiImage;
+
 /***********************************************
 * @brief : wifi图传初始化
 * @param : 无
@@ -46,7 +48,8 @@ void Wifi_Image_Init(void)
 void Wifi_Image_Send_Camera(void)
 {
     if(g_wifi_image_open_flag){
-        seekfree_assistant_camera_information_config(SEEKFREE_ASSISTANT_RGB565, showImage.image, showImage.w, showImage.h);
+        Rgb565Image_mode(&showImage, &wifiImage);
+        seekfree_assistant_camera_information_config(SEEKFREE_ASSISTANT_RGB565, wifiImage.image, wifiImage.w, wifiImage.h);
         seekfree_assistant_camera_send();
     }
 }

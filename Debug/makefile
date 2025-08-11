@@ -129,7 +129,7 @@ Seekfree_TC387_Opensource_Library.siz: Seekfree_TC387_Opensource_Library.elf mak
 
 # 其他目标
 clean:
-	find . ! -name "*.mk" ! -name "makefile" ! -name "." -type f -delete 
+	-$(RM) Seekfree_TC387_Opensource_Library.siz Seekfree_TC387_Opensource_Library.elf
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_SIZE)

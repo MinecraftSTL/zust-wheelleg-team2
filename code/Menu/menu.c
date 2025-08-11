@@ -230,6 +230,9 @@ void IntPage_print(Page *this, uint8 row){
         }
         ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
+    if(!row){
+        ips200_show_string(224,0,this->extends.intValue.open?"^v":"<>");
+    }
 }
 void IntPage_press(Page *this, uint8 pressed[]){
     if(pressed[LEFT_KEY] || !this->extends.intValue.open&&pressed[PERV_KEY]){
@@ -303,6 +306,9 @@ void FloatPage_print(Page *this, uint8 row){
             break;
         }
         ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+    }
+    if(!row){
+        ips200_show_string(224,0,this->extends.floatValue.open?"^v":"<>");
     }
 }
 void FloatPage_press(Page *this, uint8 pressed[]){
@@ -391,6 +397,9 @@ void DoublePage_print(Page *this, uint8 row){
             break;
         }
         ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+    }
+    if(!row){
+        ips200_show_string(224,0,this->extends.doubleValue.open?"^v":"<>");
     }
 }
 void DoublePage_press(Page *this, uint8 pressed[]){

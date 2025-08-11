@@ -4,38 +4,31 @@
 
 # 将这些工具调用的输入和输出添加到构建变量 
 C_SRCS += \
-../libraries/zf_components/seekfree_assistant.c \
-../libraries/zf_components/seekfree_assistant_interface.c 
+"../libraries/zf_components/seekfree_assistant.c" \
+"../libraries/zf_components/seekfree_assistant_interface.c" 
 
 COMPILED_SRCS += \
-./libraries/zf_components/seekfree_assistant.src \
-./libraries/zf_components/seekfree_assistant_interface.src 
+"libraries/zf_components/seekfree_assistant.src" \
+"libraries/zf_components/seekfree_assistant_interface.src" 
 
 C_DEPS += \
-./libraries/zf_components/seekfree_assistant.d \
-./libraries/zf_components/seekfree_assistant_interface.d 
+"./libraries/zf_components/seekfree_assistant.d" \
+"./libraries/zf_components/seekfree_assistant_interface.d" 
 
 OBJS += \
-./libraries/zf_components/seekfree_assistant.o \
-./libraries/zf_components/seekfree_assistant_interface.o 
+"libraries/zf_components/seekfree_assistant.o" \
+"libraries/zf_components/seekfree_assistant_interface.o" 
 
 
 # 每个子目录必须为构建它所贡献的源提供规则
-libraries/zf_components/%.src: ../libraries/zf_components/%.c libraries/zf_components/subdir.mk
-	@echo '正在构建文件： $<'
-	@echo '正在调用： TASKING C/C++ Compiler'
-	cctc -cs --dep-file="$(basename $@).d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<" && \
-	if [ -f "$(basename $@).d" ]; then sed.exe -r  -e 's/\b(.+\.o)\b/libraries\/zf_components\/\1/g' -e 's/\\/\//g' -e 's/\/\//\//g' -e 's/"//g' -e 's/([a-zA-Z]:\/)/\L\1/g' -e 's/\d32:/@TARGET_DELIMITER@/g; s/\\\d32/@ESCAPED_SPACE@/g; s/\d32/\\\d32/g; s/@ESCAPED_SPACE@/\\\d32/g; s/@TARGET_DELIMITER@/\d32:/g' "$(basename $@).d" > "$(basename $@).d_sed" && cp "$(basename $@).d_sed" "$(basename $@).d" && rm -f "$(basename $@).d_sed" 2>/dev/null; else echo 'No dependency file to process';fi
-	@echo '已结束构建： $<'
-	@echo ' '
-
-libraries/zf_components/%.o: ./libraries/zf_components/%.src libraries/zf_components/subdir.mk
-	@echo '正在构建文件： $<'
-	@echo '正在调用： TASKING Assembler'
+"libraries/zf_components/seekfree_assistant.src":"../libraries/zf_components/seekfree_assistant.c" "libraries/zf_components/subdir.mk"
+	cctc -cs --dep-file="$*.d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<"
+"libraries/zf_components/seekfree_assistant.o":"libraries/zf_components/seekfree_assistant.src" "libraries/zf_components/subdir.mk"
 	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
-	@echo '已结束构建： $<'
-	@echo ' '
-
+"libraries/zf_components/seekfree_assistant_interface.src":"../libraries/zf_components/seekfree_assistant_interface.c" "libraries/zf_components/subdir.mk"
+	cctc -cs --dep-file="$*.d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<"
+"libraries/zf_components/seekfree_assistant_interface.o":"libraries/zf_components/seekfree_assistant_interface.src" "libraries/zf_components/subdir.mk"
+	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
 
 clean: clean-libraries-2f-zf_components
 

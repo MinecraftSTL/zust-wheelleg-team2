@@ -182,3 +182,23 @@ float Q_rsqrt( float number )
 
     return y;
 }
+
+uint16 Bits_reverse(uint16 value, int bits) {
+    uint16 reversed = 0;
+    for (int i = 0; i < bits; ++i) {
+        if (value & (1U << i)) {
+            reversed |= (1U << (bits - 1 - i));
+        }
+    }
+    return reversed;
+}
+
+float Angle_normalize(float theta) {
+    float r = fmodf(theta + PI, 2*PI);  // 平移并取模
+    r = fmodf(r + 2*PI, 2*PI);          // 确保余数非负
+    return r - PI;                        // 逆向平移
+}
+float NormalizeAngle_toPi2(float theta) {
+    theta = fabsf(theta); // 转换到 [0, π]
+    return (PI - fabsf(2 * theta - PI)) / 2.0f;
+}
