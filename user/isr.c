@@ -84,6 +84,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
 
 float kLX2AY = 0.6;
 float kZero = -4;
+int32 lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
@@ -122,9 +123,22 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }else if(fwpEn){
         Leg_set_pos(fwpLx, fwpLz, fwpRx, fwpRz);
     }else{
-        int lx, lz, rx, rz;
+        int32 lx, lz, rx, rz;
         lx = rx = legX;
         lz = rz = legY;
+        int32 lza = Roll_toPosZ(roll*PI/180, lza_);
+        if(lza > LEG_MAX_Z-LEG_MIN_Z){
+            lza = LEG_MAX_Z-LEG_MIN_Z;
+        }else if(lza < -LEG_MAX_Z+LEG_MIN_Z){
+            lza = -LEG_MAX_Z+LEG_MIN_Z;
+        }
+        lza_ = pid(&PID_xAx, lza, lza_);
+        printf("%d, %d\r\n", lza, lza_);
+        if(lza_ > 0){
+            lz -= lza_;
+        }else{
+            rz += lza_;
+        }
         Leg_set_pos(lx, lz, rx, rz);
     }
 }

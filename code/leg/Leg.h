@@ -20,6 +20,7 @@
 #define LFD 90
 #define LBU 60
 #define LBD 90
+#define DLR 161
 
 #define LEG_MIN_Z 30
 #define LEG_MAX_Z 140
@@ -30,6 +31,7 @@ struct LegServoAngle{
 };
 
 void Leg_init();
+int32 Roll_toPosZ(float roll, int32 lza);
 void Leg_set_duty(float rb, float rf, float lf, float lb);
 void Leg_set_pos(int32 lx, int32 lz, int32 rx, int32 rz);
 

@@ -21,23 +21,23 @@ void PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Ou
     this->Max_Out = max_Out;
 }
 
-float pid(PID *PID, float TargetValue, float ActualValue)
+float pid(PID *this, float TargetValue, float ActualValue)
 {
     float ret;
     float Ek = TargetValue - ActualValue;
-    PID->Ek_sum += Ek;
-    PID->Ek_sum = func_limit(PID->Ek_sum, PID->Max_I);
+    this->Ek_sum += Ek;
+    this->Ek_sum = func_limit(this->Ek_sum, this->Max_I);
 
-    ret = (PID->Kp * Ek) +
-             (PID->Ki * PID->Ek_sum) +
-             (PID->Kd * (Ek - PID->Ek_));
-    PID->Ek_ = Ek;
-    ret = func_limit(ret, PID->Max_Out);
+    ret = this->Kp * Ek +
+             this->Ki * this->Ek_sum +
+             (isnan(this->Ek_)?0:(this->Kd * (Ek - this->Ek_)));
+    this->Ek_ = Ek;
+    ret = func_limit(ret, this->Max_Out);
     return ret;
 }
 
 void PID_clear(PID *this)
 {
-    this->Ek_ = 0; // 上次偏差值初始化
+    this->Ek_ = NAN; // 上次偏差值初始化
     this->Ek_sum = 0; // 上上次偏差值初始化
 }

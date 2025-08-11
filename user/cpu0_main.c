@@ -70,6 +70,10 @@ Page menu_main_arg_PID_lPitch;
 Page menu_main_arg_PID_lPitch_Kp;
 Page menu_main_arg_PID_lPitch_Ki;
 Page menu_main_arg_PID_lPitch_Kd;
+Page menu_main_arg_PID_xAx;
+Page menu_main_arg_PID_xAx_Kp;
+Page menu_main_arg_PID_xAx_Ki;
+Page menu_main_arg_PID_xAx_Kd;
 Page menu_main_carRun;
 Page menu_main_debug;
 Page menu_main_debug_fs;
@@ -127,11 +131,12 @@ int core0_main(void)
     menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
     FFloatPage_init(&menu_main_arg_k_kLX2AY, "kLX2AY", &kLX2AY, -2, 2);
     menu_main_arg_k_kLX2AY.extends.fFloatValue.dot = 1;
-    ListPage_init(&menu_main_arg_PID, "PID", 4, (Page*[]){
+    ListPage_init(&menu_main_arg_PID, "PID", 5, (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
         &menu_main_arg_PID_vVx,
         &menu_main_arg_PID_lPitch,
+        &menu_main_arg_PID_xAx,
     });
     ListPage_init(&menu_main_arg_PID_vAy, "aAy", 3, (Page*[]){
         &menu_main_arg_PID_vAy_Kp,
@@ -165,6 +170,14 @@ int core0_main(void)
     FFloatPage_init(&menu_main_arg_PID_lPitch_Kp, "Kp", &PID_LPitch.Kp, -10000, 10000);
     FFloatPage_init(&menu_main_arg_PID_lPitch_Ki, "Ki", &PID_LPitch.Ki, -10000, 10000);
     FFloatPage_init(&menu_main_arg_PID_lPitch_Kd, "Kd", &PID_LPitch.Kd, -10000, 10000);
+    ListPage_init(&menu_main_arg_PID_xAx, "xAx", 3, (Page*[]){
+        &menu_main_arg_PID_xAx_Kp,
+        &menu_main_arg_PID_xAx_Ki,
+        &menu_main_arg_PID_xAx_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_xAx_Kp, "Kp", &PID_xAx.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_xAx_Ki, "Ki", &PID_xAx.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_xAx_Kd, "Kd", &PID_xAx.Kd, 0, 10000);
     BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
     ListPage_init(&menu_main_debug, "debug", 4, (Page*[]){
         &menu_main_debug_fs,

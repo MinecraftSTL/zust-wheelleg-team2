@@ -96,5 +96,5 @@ void Update_GyroData(void)
     my_get_acc();
     my_get_gyro();
     get_gyorscope_data();
-    printf("%f, %f, %f\r\n", pitch, roll, yaw);
+//    printf("%f, %f, %f\r\n", pitch, roll, yaw);
 }

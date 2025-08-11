@@ -50,6 +50,12 @@ uint8 Pos_isLegal(int32 x, int32 z, const struct LegServoAngle a){
     return 1;
 }
 
+int32 Roll_toPosZ(float roll, int32 lza){
+    float AGC = PI+roll;
+    float AWG = atan2(lza, DLR)- AGC;
+    return DLR*tan(AWG);
+}
+
 uint32 Radian_toPwmDuty(float rad){
     return PWM_DUTY_MAX/(1000/freq)*(1+rad/PI/PI*5.6);
 }
