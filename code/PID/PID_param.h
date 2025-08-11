@@ -11,10 +11,7 @@
 #include "PID.h"
 #include "Sys.h"
 
-extern PID motorL, motorR, pitch, Vy;
-extern float TVyX, tVy_, tdVy_;
-extern uint32 TVyTms;
-extern const uint32 TVyTMax;
+extern PID motorL, motorR, Vy, pitch;
 
 void PID_param_init();
 

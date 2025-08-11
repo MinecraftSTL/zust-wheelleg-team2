@@ -89,49 +89,35 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
-    {
-        float VyDownAx;
-        int tVy = Encoder_speed_l+Encoder_speed_r;
-        float tdVy = tVy-tVy_;
-        if(tdVy_ < 0 && tdVy>=0 || TVyTms >= TVyTMax){
-            VyDownAx = pid(&Vy, 0, TVyX/TVyTms/2)/10000;
-//            if(isnan(VyDownAx)){
-//                VyDownAx = 0;
-//            }
-        //    printf("%d,%d,%d\r\n", Encoder_speed_l,Encoder_speed_r,(Encoder_speed_l+Encoder_speed_r)/2);
-            if(fabs(VyDownAx) > 2){
-                car_run=0;
-                pressed=0x80;
-            }
-            downAx -= VyDownAx;
-            TVyX=0;
-            TVyTms=0;
-        }else{
-            TVyTms += PIT10ms;
-            TVyX += tVy;
-        }
-        printf("%d,%f,%f\r\n", TVyTms,TVyX,-VyDownAx);
-        tVy_=tVy;
-        tdVy_=tdVy;
-    }
+    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     {
         mpu6050_get_gyro();
-        Ax += (imu660ra_gyro_transition(mpu6050_gyro_x+35)-0.023)*PIT10ms/1000;
-        Ay += (imu660ra_gyro_transition(mpu6050_gyro_y-3)-0.06)*PIT10ms/1000;
-        Az += (imu660ra_gyro_transition(mpu6050_gyro_z+11)-0.034)*PIT10ms/1000;
+        vAx = (imu660ra_gyro_transition(mpu6050_gyro_y-3)-0.06)*PIT10ms/1000;
+        vAy = -(imu660ra_gyro_transition(mpu6050_gyro_x+35)-0.023)*PIT10ms/1000;
+        vAz = (imu660ra_gyro_transition(mpu6050_gyro_z+11)-0.034)*PIT10ms/1000;
+        xAx += vAx;
+        xAy += vAy;
+        xAz += vAz;
+        aAx = vAx - vAx_;
+        aAy = vAy - vAy_;
+        aAz = vAz - vAz_;
+        vAx_ = vAx;
+        vAy_ = vAy;
+        vAz_ = vAz;
     }
+    VxDownAy += pid(&Vy, V0, Encoder_speed)/1000;
+    VxDownAy = func_limit(VxDownAy, 15);
 //    printf("%d, %d, %d\r\n",mpu6050_gyro_x,mpu6050_gyro_y,mpu6050_gyro_z);
 //    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
-//    printf("%f,%f,%f\r\n", -Ax,downAx,-VyDownAx);
-    float speed = pid(&pitch, downAx, -Ax);
+//    printf("%f,%f,%f\r\n", -xAx,downAx,-VyDownAx);
+
+    float speed = pid(&pitch, downAy-VxDownAy, xAy);
+    printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     if(!car_run){
-        Ax=Ay=Az=speed = 0;
-        tVy_=tdVy_=0;
-        TVyTms=0;
-        TVyX=0;
-        PID_clear(&pitch);
+        xAx=xAy=xAz=speed=0;
+        downAy_init();
         PID_clear(&Vy);
-        downAx_init();
+        PID_clear(&pitch);
     }
     float motorLPWM = pid(&motorL, speed, Encoder_speed_l);
     float motorRPWM = pid(&motorR, speed, Encoder_speed_r);

@@ -10,10 +10,13 @@
 
 const float k = 13;
 
-float Ax = 0, Ay = 0, Az = 0;
-float downAx = 0;
+float aAx = 0, aAy = 0, aAz = 0;
+float vAx = 0, vAy = 0, vAz = 0;
+float vAx_ = 0, vAy_ = 0, vAz_ = 0;
+float xAx = 0, xAy = 0, xAz = 0;
+float downAy = 0, VxDownAy = 0;
 
-void downAx_init(){
+void downAy_init(){
     mpu6050_get_acc();
-    downAx = (180.0 / PI)*atan(imu660ra_acc_transition(mpu6050_acc_y)/imu660ra_acc_transition(mpu6050_acc_z))+k;
+    downAy = (180.0 / PI)*atan(imu660ra_acc_transition(mpu6050_acc_y)/imu660ra_acc_transition(mpu6050_acc_z))+k;
 }

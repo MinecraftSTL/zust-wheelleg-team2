@@ -61,6 +61,8 @@ uint8 pressed = 0;
 Page menu_main;
 Page menu_main_PID;
 Page menu_main_start;
+Page menu_main_debug;
+Page menu_main_debug_speed;
 Page menu_main_PID_motorL;
 Page menu_main_PID_motorL_Kp;
 Page menu_main_PID_motorL_Ki;
@@ -69,14 +71,14 @@ Page menu_main_PID_motorR;
 Page menu_main_PID_motorR_Kp;
 Page menu_main_PID_motorR_Ki;
 Page menu_main_PID_motorR_Kd;
+Page menu_main_PID_Vy;
+Page menu_main_PID_Vy_Kp;
+Page menu_main_PID_Vy_Ki;
+Page menu_main_PID_Vy_Kd;
 Page menu_main_PID_pitch;
 Page menu_main_PID_pitch_Kp;
 Page menu_main_PID_pitch_Ki;
 Page menu_main_PID_pitch_Kd;
-Page menu_main_PID_Vz;
-Page menu_main_PID_Vz_Kp;
-Page menu_main_PID_Vz_Ki;
-Page menu_main_PID_Vz_Kd;
 
 int core0_main(void)
 {
@@ -96,15 +98,20 @@ int core0_main(void)
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
     menu_main.parent = NULL;
-    ListPage_init(&menu_main, "main", 2, &(Page*[]){
+    ListPage_init(&menu_main, "main", 3, &(Page*[]){
         &menu_main_PID,
         &menu_main_start,
+        &menu_main_debug,
     });
+    ListPage_init(&menu_main_debug, "debug", 1, &(Page*[]){
+        &menu_main_debug_speed,
+    });
+    FloatPage_init(&menu_main_debug_speed, "speed", &V0, -100, 100);
     ListPage_init(&menu_main_PID, "PID", 4, &(Page*[]){
         &menu_main_PID_motorL,
         &menu_main_PID_motorR,
         &menu_main_PID_pitch,
-        &menu_main_PID_Vz,
+        &menu_main_PID_Vy,
     });
     ListPage_init(&menu_main_PID_motorL, "motorL", 3, &(Page*[]){
         &menu_main_PID_motorL_Kp,
@@ -130,14 +137,14 @@ int core0_main(void)
     FloatPage_init(&menu_main_PID_pitch_Kp, "Kp", &pitch.Kp, -1000, 1000);
     FloatPage_init(&menu_main_PID_pitch_Ki, "Ki", &pitch.Ki, -1000, 1000);
     FloatPage_init(&menu_main_PID_pitch_Kd, "Kd", &pitch.Kd, -1000, 1000);
-    ListPage_init(&menu_main_PID_Vz, "Vz", 3, &(Page*[]){
-        &menu_main_PID_Vz_Kp,
-        &menu_main_PID_Vz_Ki,
-        &menu_main_PID_Vz_Kd,
+    ListPage_init(&menu_main_PID_Vy, "Vy", 3, &(Page*[]){
+        &menu_main_PID_Vy_Kp,
+        &menu_main_PID_Vy_Ki,
+        &menu_main_PID_Vy_Kd,
     });
-    FloatPage_init(&menu_main_PID_Vz_Kp, "Kp", &Vy.Kp, -1000, 1000);
-    FloatPage_init(&menu_main_PID_Vz_Ki, "Ki", &Vy.Ki, -1000, 1000);
-    FloatPage_init(&menu_main_PID_Vz_Kd, "Kd", &Vy.Kd, -1000, 1000);
+    FloatPage_init(&menu_main_PID_Vy_Kp, "Kp", &Vy.Kp, -1000, 1000);
+    FloatPage_init(&menu_main_PID_Vy_Ki, "Ki", &Vy.Ki, -1000, 1000);
+    FloatPage_init(&menu_main_PID_Vy_Kd, "Kd", &Vy.Kd, -1000, 1000);
     menu_main_start.parent = &menu_main;
     BoolPage_init(&menu_main_start, "start", &car_run, 0x03);
     PageKey_print(&menu_main);

@@ -10,7 +10,7 @@ PID Straight_Speed_PID;
 
 int target_left = 0,target_right = 0;          //左右轮的目标速度的值
 
-float V0 = 80;
+float V0 = 0;
 //float turn_V0 = 70;
 //float straight_V0 = 100;
 float basic_V0 = 120;

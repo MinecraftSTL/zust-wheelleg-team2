@@ -13,8 +13,7 @@
 
 void PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Out)
 {
-    this->Ek_ = 0;
-    this->Ek_sum = 0;
+    PID_clear(this);
     this->Kp = kp;
     this->Ki = ki;
     this->Kd = kd;
