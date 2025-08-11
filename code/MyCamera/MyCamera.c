@@ -6,14 +6,15 @@ Image image;
 Image image1;
 Rgb565Image showImage;
 
-int binDeltaT = -16;
+int binDeltaT = 0;
 int bly2RDL = 5;
+int maxStartYAdd = 20;
 float RD2IErr = 0.7854;
 float facingErr = 0.5236;
 int setLineY = 15;
-int StraightYMin = 40;
-int StraightStep = 15;
-float StraightErr = 0.349;
+int straightYMin = 40;
+int straightStep = 15;
+float straightErr = 0.349;
 int zebraY = 70;
 int crossY = 20;
 int crossX = 15;
@@ -24,8 +25,8 @@ int errDeltaY = 30;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
 
-uint16 lStartPoint[2];
-uint16 rStartPoint[2];
+uint16 lStart[2];
+uint16 rStart[2];
 
 int16 lLine[MAX_BLY][2];
 uint8 lLineDir[MAX_BLY];
@@ -247,23 +248,56 @@ void Image_binaryzation(Image *this, int16 deltaT){
         this->image[i]=this->image[i]>threshold?0xFF:0;
     }
 }
-void Image_getStartPoint(Image *this, uint16 lStartPoint[2], uint16 rStartPoint[2]){
+void Image_getStartPoint(Image *this, uint16 maxYAdd, uint16 lStart[2], uint16 rStart[2]){
     uint16 x = this->w/2;
     uint16 y = this->h-2;
 
-    lStartPoint[1]=y;
-    for(lStartPoint[0] = x; lStartPoint[0] >= 1; --lStartPoint[0]){
-        if(!Image_get(this, lStartPoint[0], y) && Image_get(this, lStartPoint[0]+1, y) &&
-                !Image_get(this, lStartPoint[0]-1, y) && Image_get(this, lStartPoint[0]+2, y)){
+    while(maxYAdd--){
+        lStart[1]=rStart[1]=y;
+        uint8 lFind = 0, rFind = 0;
+        for(lStart[0] = x-1; lStart[0] >= 1; --lStart[0]){
+            if(!Image_get(this, lStart[0], y) && Image_get(this, lStart[0]+1, y) &&
+                    !Image_get(this, lStart[0]-1, y) && Image_get(this, lStart[0]+2, y)){
+                lFind = 1;
+                break;
+            }
+        }
+        if(!lFind){
+            uint8 white = 1;
+            for(uint16 i = x-1; i >= 0; --i){
+                if(!Image_get(this, i, y)){
+                    white = 0;
+                    break;
+                }
+                if(i==0)break;
+            }
+            if(white){
+                lFind = 1;
+            }
+        }
+        for(rStart[0] = x; rStart[0] < this->w-1; ++rStart[0]){
+            if(!Image_get(this, rStart[0], y) && Image_get(this, rStart[0]-1, y) &&
+                    !Image_get(this, rStart[0]+1, y) && Image_get(this, rStart[0]-2, y)){
+                rFind = 1;
+                break;
+            }
+        }
+        if(!rFind){
+            uint8 white = 1;
+            for(uint16 i = x; i < this->w; ++i){
+                if(!Image_get(this, i, y)){
+                    white = 0;
+                    break;
+                }
+            }
+            if(white){
+                rFind = 1;
+            }
+        }
+        if(lFind && rFind){
             break;
         }
-    }
-    rStartPoint[1]=y;
-    for(rStartPoint[0] = x-1; rStartPoint[0] < this->w-1; ++rStartPoint[0]){
-        if(!Image_get(this, rStartPoint[0], y) && Image_get(this, rStartPoint[0]-1, y) &&
-                !Image_get(this, rStartPoint[0]+1, y) && Image_get(this, rStartPoint[0]-2, y)){
-            break;
-        }
+        --y;
     }
 }
 void Image_drawRectan(Image *this)
@@ -469,7 +503,7 @@ void Image_borderSetULine(Image *this, uint16 border[MT9V03X_H], uint16 y){
     if(!isnan(slope) && !isnan(intercept)){
         for(uint16 i = y; i >= 0; --i){
             float x = slope*i+intercept;
-            border[i] = func_limit_ab((uint16)x, 0, this->w-1);
+            border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
             if (i == 0) break; // 防止uint16下溢
         }
     }
@@ -488,17 +522,17 @@ void Image_borderSetDLine(Image *this, uint16 border[MT9V03X_H], uint16 y){
     if(!isnan(slope) && !isnan(intercept)){
         for(uint16 i = y; i < this->h; ++i){
             float x = slope*i+intercept;
-            border[i] = func_limit_ab((uint16)x, 0, this->w-1);
+            border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
         }
     }
 }
-uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint8 dir){
+uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint16 yMin, uint16 yMax, uint16 step, float err, uint8 dir){
     if(!Image_borderIsNoneLose(this, border, 1, this->h-2, dir)){
         return 0;
     }
     float all = atan2f(border[this->h-2]-border[1],this->h-3);
-    for(uint16 i=StraightYMin; i+StraightStep<this->h-1; i+=StraightStep){
-        if(fabsf(all-atan2f(border[i+StraightStep]-border[i],StraightStep)) > StraightErr){
+    for(uint16 i=yMin; i+step<yMax; i+=step){
+        if(fabsf(all-atan2f(border[i+step]-border[i],step)) > err){
             return 0;
         }
     }
@@ -527,7 +561,7 @@ void RadDir_toInflection(float this[MAX_BLY], int16 thisPos[MAX_BLY][2], uint16 
         if(isnan(this[i-1]) || isnan(this[i+1])){
             continue;
         }
-        if(PI/2-NormalizeAngle_toPi2(Angle_normalize(this[i+1]-this[i-1])) <= err){
+        if(fabs(Angle_normalize(this[i+1]-this[i-1])) >= PI/2-err){
             ret[*retN][0] = thisPos[i][0];
             ret[*retN][1] = thisPos[i][1];
             float nA = Angle_normalize(this[i-1]+PI);
@@ -686,8 +720,8 @@ void Image_processForShow(){
     for(uint16 i=0; i<showImage.h; ++i){
         Rgb565Image_set(&showImage, mLine[i], i, i >= errY && i < errY+errDeltaY ? RGB565_RED : RGB565_BLUE);
     }
-    Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
-    Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
+    Rgb565Image_set(&showImage, lStart[0], lStart[1], RGB565_RED);
+    Rgb565Image_set(&showImage, rStart[0], rStart[1], RGB565_RED);
     for(uint16 i=0; i<lInflectionN; ++i){
         Rgb565Image_mark(&showImage, lInflection[i][0], lInflection[i][1], RGB565_RED, 2);
         Rgb565Image_set(&showImage, lInflection[i][0]+cosf(lInflectionDir[i])*6, lInflection[i][1]-sinf(lInflectionDir[i])*6, RGB565_RED);
@@ -722,21 +756,20 @@ void Image_processCamera(){
             }
         }
         Image_cut(&image, &image1, 1, 0, image.w-1, image.h);
-//        Image_cut(&image1, &image, 10, 30, image1.h-20, image1.w-30);
-        Image_binaryzation(&image1, binDeltaT);
-        Image_clone(&image1, &image);
-        Image_getStartPoint(&image, lStartPoint, rStartPoint);
+        Image_cut(&image1, &image, 20, 10, image1.w-20, image1.h-20);
+        Image_binaryzation(&image, binDeltaT);
+        Image_getStartPoint(&image, maxStartYAdd, lStart, rStart);
         Image_drawRectan(&image);
         Image_bly(&image, image.h*4, lLine, rLine, lLineDir, rLineDir,
-                &lLineL, &rLineL, &lrMeet, lStartPoint, rStartPoint);
+                &lLineL, &rLineL, &lrMeet, lStart, rStart);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);
         Image_blyToBorder(&image, 1, rLine, rLineL, rBorder);
         Image_blyToRadDir(&image, lLine, lLineL, bly2RDL, lRadDir, lRadDirPos, &lRadDirN);
         Image_blyToRadDir(&image, rLine, rLineL, bly2RDL, rRadDir, rRadDirPos, &rRadDirN);
         RadDir_toInflection(lRadDir, lRadDirPos, lRadDirN, RD2IErr, lInflection, lInflectionDir, &lInflectionN);
         RadDir_toInflection(rRadDir, rRadDirPos, rRadDirN, RD2IErr, rInflection, rInflectionDir, &rInflectionN);
-        lStraight = Image_borderIsStraight(&image, lBorder, 0);
-        rStraight = Image_borderIsStraight(&image, rBorder, 1);
+        lStraight = Image_borderIsStraight(&image, lBorder, straightYMin, lStart[1], straightStep, straightErr, 0);
+        rStraight = Image_borderIsStraight(&image, rBorder, straightYMin, rStart[1], straightStep, straightErr, 1);
         Image_zebraCrossing(&image, lBorder, rBorder, zebraY);
         Image_cross(&image, lInflection, lInflectionDir, lInflectionN, rInflection, rInflectionDir, rInflectionN, lBorder, rBorder);
 //        SysTimer_Stop();
