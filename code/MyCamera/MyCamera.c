@@ -19,7 +19,8 @@ float statusJump = 3;
 float statusK = 0.9;
 int crossX = 15;
 int zebraY = 70;
-int zebraTick = 1000;
+int zebraStartTick = 1000;
+int zebraStopTick = 50;
 int circleX = 5;
 int circleY = 80;
 float circleLine = 0.4;
@@ -59,8 +60,6 @@ uint16 lInfN;
 uint16 rInfLine[MAX_BLY];
 float rInfRad[MAX_BLY];
 uint16 rInfN;
-
-CameraStatus cameraStatus = NONE;
 
 uint8 camera_process_cnt = 0;
 
@@ -612,7 +611,9 @@ int16 Inflection_getFirstFacing(uint16 this[MAX_BLY], float thisRad[MAX_BLY], ui
     return -1;
 }
 
+
 uint64 carRunTick = 0;
+CameraStatus cameraStatus = NONE;
 float statusScore[CAMERA_STATUS_NUMBER] = {0};
 uint64 statusKeepTick = 0;
 void CameraStatus_set(CameraStatus this){
@@ -676,9 +677,11 @@ void Image_zebraCrossing(Image *this, uint16 y){
             }
             break;
         case O_ZEBRA:
-            CameraStatus_set(NONE);
-            if(carStatus == CAR_RUN && carRunTick > zebraTick){
-                CarStatus_set(CAR_STOP);
+            if(statusKeepTick >= zebraStopTick){
+                CameraStatus_set(NONE);
+                if(carStatus == CAR_RUN && carRunTick > zebraStartTick){
+                    CarStatus_set(CAR_BALANCE);
+                }
             }
             break;
     }
