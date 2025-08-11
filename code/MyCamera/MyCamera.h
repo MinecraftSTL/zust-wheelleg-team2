@@ -117,6 +117,7 @@ extern uint64 carRunMs;
 void MyCamera_Init(void);
 void Image_showCamera(uint16 x, uint16 y);
 void CameraStatus_set(CameraStatus this);
+void CameraStatus_clear();
 void Camera_pit(uint32 period, int16 speed);
 
 #endif

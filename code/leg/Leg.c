@@ -15,7 +15,7 @@ uint8 legXReset = 0;
 uint8 rollBalance = 0;
 float rollBalanceK = 1;
 
-float LegDRb = 0.6, LegDRf = 0.6, LegDLf = 0.7, LegDLb = 0.8;
+float LegDRb = 0.65, LegDRf = -0.775, LegDLf = 0.55, LegDLb = -0.575;
 
 void Leg_init(){
     pwm_init(servo_rb, freq, PWM_DUTY_MAX/2);
@@ -71,9 +71,9 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
         Servo_limit(&lf);
         Servo_limit(&lb);
         rb += LegDRb;
-        rf -= LegDRf;
+        rf += LegDRf;
         lf += LegDLf;
-        lb -= LegDLb;
+        lb += LegDLb;
     }
     pwm_set_duty(servo_rb, Radian_toPwmDuty(rb));
     pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf));

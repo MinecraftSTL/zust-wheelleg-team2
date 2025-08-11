@@ -2,7 +2,7 @@
 
 float targetV = 700;
 
-uint8 Motor_dirL = 0, Motor_dirR = 0;
+uint8 Motor_dirL = 1, Motor_dirR = 0;
 
 int16 motorPwmLeft = 0, motorPwmRight = 0;
 

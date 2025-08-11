@@ -15,7 +15,7 @@ void CarStatus_set(CarStatus this)
 }
 void CarStatus_update(){
     beepMid();
-    CameraStatus_set(CAMERA_STATUS_NONE);
+    CameraStatus_clear();
     carRunMs = 0;
     wheelClear = 0;
     showPInC1 = carStatus != CAR_RUN;

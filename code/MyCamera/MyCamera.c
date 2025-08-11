@@ -10,7 +10,7 @@ float shadowK = 0.1;
 float vignetteK = 0.1;
 uint8 binStatus = 1;
 int binDeltaT = 0;
-float trapezoidK = 0.8;
+float trapezoidK = 0.6;
 int trapezoidY = 20;
 int startMaxYAdd = 2;
 int bly2RDL = 3;
@@ -53,7 +53,7 @@ uint8 showWait = 0;
 float bendV = 500;
 float circleV = 550;
 float rampDV = 200;
-float barrierV = 700;
+float barrierV = 500;
 float bridgeV = 250;
 
 int bendErrY = 88;
@@ -710,7 +710,6 @@ uint64 statusKeepMs = 0;
 int64 statusRunS = 0;
 void CameraStatus_set(CameraStatus value){
     beepMid();
-    memset(statusScore, 0x0, sizeof(float)*CAMERA_STATUS_NUMBER);
     statusKeepTick = 0;
     statusKeepMs = 0;
     statusRunS = 0;
@@ -722,6 +721,10 @@ void CameraStatus_set(CameraStatus value){
     kPitchX = 0;
 
     cameraStatus = value;
+}
+void CameraStatus_clear(){
+    memset(statusScore, 0x0, sizeof(float)*CAMERA_STATUS_NUMBER);
+    CameraStatus_set(CAMERA_STATUS_NONE);
 }
 void CameraStatus_addScore(CameraStatus value){
     if(++statusScore[value] >= statusJump){
@@ -1202,6 +1205,7 @@ void Image_ramp(Image *this, float *cameraV, uint16 *cameraY){
     }
 }
 void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
+    static float iBarrierV;
     switch(cameraStatus){
         case CAMERA_STATUS_NONE:
         case OR_RAMP_BARRIER:
@@ -1230,7 +1234,13 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 3){
                 Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
             }
-            *cameraV = barrierV;
+            if(statusKeepTick <= 1){
+                iBarrierV = (Encoder_speed_l+Encoder_speed_r)/2;
+                if(iBarrierV < barrierV){
+                    iBarrierV = barrierV;
+                }
+            }
+            *cameraV = iBarrierV;
             break;
         case R_BARRIER:
             legXReset = 1;
@@ -1238,7 +1248,7 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
                 jump();
             }
             CameraStatus_set(O_BARRIER);
-            *cameraV = barrierV;
+            *cameraV = iBarrierV;
             break;
         case O_BARRIER:
             legXReset = 1;
@@ -1248,6 +1258,7 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
             for(uint16 i=0; i<this->h; ++i){
                 lBorder[i] = rBorder[i] = this->w/2;
             }
+            *cameraV = iBarrierV;
             break;
     }
 }
@@ -1410,7 +1421,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *cameraY){
         case I_BRIDGE:
             rollBalance = 1;
             kPitchX = bridgeKPitchX;
-            if(statusKeepMs >= bridgeTI || statusKeepTick > 0 && PID_vVx.Ek_ >= 0){
+            if(statusKeepMs >= bridgeTI || statusKeepTick > 1 && PID_vVx.Ek_ >= 0){
                 uint8 oBridge = 0;
                 if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                         rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
