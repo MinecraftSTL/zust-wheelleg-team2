@@ -847,7 +847,6 @@ void get_left(uint16 total_L)
     {
         left[i] = Border_Min;
         left_copy[i] = Border_Min;
-
     }
     h = image_h - 2;               //从118行开始提取
     //左边

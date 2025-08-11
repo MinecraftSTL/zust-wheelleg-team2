@@ -129,10 +129,11 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 //        printf("%f,%f\r\n", pitch,kZero);
     }
     int speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
+    int turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
     if(fsEn){
         speed = fsSpeed;
+        turn = 0;
     }
-    int turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
 //    printf("%d\r\n", speed);
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);

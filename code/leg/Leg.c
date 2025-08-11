@@ -75,7 +75,7 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 const uint32 jumpStep[] = {
     100,//ÉìÍÈ
     100,//ÊÕÍÈ
-    50,//ÉìÍÈ
+    75,//ÉìÍÈ
     100,//ÂıÊÕÍÈ
 };
 
