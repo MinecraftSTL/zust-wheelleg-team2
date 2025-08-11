@@ -14,6 +14,6 @@ const uint32 TVyTMax = 1000;
 void PID_param_init(){
     PID_init(&motorL, 10, 1, 10, 10000, 6000);
     PID_init(&motorR, 10, 1, 10, 10000, 6000);
-    PID_init(&pitch, 50, 0, 100, 10000, 2000);
-    PID_init(&Vy, 50, 0, 10, 10000, 20000);
+    PID_init(&pitch, 10, 0, 300, 10000, 2000);
+    PID_init(&Vy, 100, 0, 20, 10000, 20000);
 }

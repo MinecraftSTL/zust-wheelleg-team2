@@ -94,12 +94,12 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         int tVy = Encoder_speed_l+Encoder_speed_r;
         float tdVy = tVy-tVy_;
         if(tdVy_ < 0 && tdVy>=0 || TVyTms >= TVyTMax){
-            VyDownAx = pid(&Vy, 0, TVyX/2)/10000;
+            VyDownAx = pid(&Vy, 0, TVyX/TVyTms/2)/10000;
 //            if(isnan(VyDownAx)){
 //                VyDownAx = 0;
 //            }
         //    printf("%d,%d,%d\r\n", Encoder_speed_l,Encoder_speed_r,(Encoder_speed_l+Encoder_speed_r)/2);
-            if(fabs(VyDownAx) > 30){
+            if(fabs(VyDownAx) > 2){
                 car_run=0;
                 pressed=0x80;
             }
