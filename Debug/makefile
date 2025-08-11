@@ -6,7 +6,7 @@
 
 RM := rm -rf
 
-# All of the sources participating in the build are defined here
+# 此处定义了参与生成的所有源
 -include sources.mk
 -include user/subdir.mk
 -include libraries/zf_driver/subdir.mk
@@ -97,7 +97,7 @@ BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
-# Add inputs and outputs from these tool invocations to the build variables 
+# 将这些工具调用的输入和输出添加到构建变量 
 SECONDARY_SIZE += \
 Seekfree_TC377_Opensource_Library.siz \
 

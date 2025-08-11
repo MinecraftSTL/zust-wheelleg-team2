@@ -2,7 +2,7 @@
 # 自动生成的文件。不要编辑！
 ################################################################################
 
-# Add inputs and outputs from these tool invocations to the build variables 
+# 将这些工具调用的输入和输出添加到构建变量 
 C_SRCS += \
 ../libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/CompilerDcc.c \
 ../libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/CompilerGhs.c \
@@ -28,7 +28,7 @@ OBJS += \
 ./libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/CompilerTasking.o 
 
 
-# Each subdirectory must supply rules for building sources it contributes
+# 每个子目录必须为构建它所贡献的源提供规则
 libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/%.src: ../libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/%.c libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING C/C++ Compiler'

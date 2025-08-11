@@ -96,9 +96,9 @@ int core0_main(void)
     // 此处编写用户代码 例如外设初始化代码等
     beep_init();
     ips200_init(IPS200_TYPE_SPI);
-    gyroscope_init();
+//    gyroscope_init();
     key_init(PIT00ms);
-    small_driver_uart_init();
+//    small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
     MyCamera_Init();

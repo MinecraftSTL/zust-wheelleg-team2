@@ -22,7 +22,7 @@ EXECUTABLES :=
 OBJS := 
 SECONDARY_SIZE := 
 
-# Every subdirectory with source files must be described here
+# 此处必须描述包含源文件的每个子目录
 SUBDIRS := \
 code/Beep \
 code/Flash \
