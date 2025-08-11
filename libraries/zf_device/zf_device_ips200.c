@@ -1285,6 +1285,44 @@ void ips200_init (ips200_type_enum type_select)
 }
 
 //-------------------------------------------------------------------------------------------------------------------
+// 函数简介     绘制实心正方形（中心点+半边长模式）
+// 参数说明     x               中心点x坐标 [0, ips200_width_max-1]
+// 参数说明     y               中心点y坐标 [0, ips200_height_max-1]
+// 参数说明     r               半边长（中心到边的距离）
+// 参数说明     color           填充颜色 RGB565格式
+// 返回参数     void
+// 使用示例     ips200_draw_square_filled(100, 100, 50, RGB565_GREEN);  // 绘制101x101像素的绿色实心正方形
+// 备注信息     自动处理边界越界
+//-------------------------------------------------------------------------------------------------------------------
+void ips200_draw_square(uint16 x, uint16 y, uint16 r, uint16 color)
+{
+    // 转换为32位类型防止运算溢出
+    int32_t x_center = x;
+    int32_t y_center = y;
+    int32_t half_side = r;
+
+    // 计算扫描范围
+    int32_t x_start = x_center - half_side;
+    int32_t x_end = x_center + half_side;
+    int32_t y_start = y_center - half_side;
+    int32_t y_end = y_center + half_side;
+
+    // 屏幕边界裁剪
+    x_start = (x_start < 0) ? 0 : x_start;
+    x_end = (x_end >= ips200_width_max) ? (ips200_width_max - 1) : x_end;
+    y_start = (y_start < 0) ? 0 : y_start;
+    y_end = (y_end >= ips200_height_max) ? (ips200_height_max - 1) : y_end;
+
+    // 直接填充矩形区域
+    for (int32_t ix = x_start; ix <= x_end; ix++)
+    {
+        for (int32_t iy = y_start; iy <= y_end; iy++)
+        {
+            ips200_draw_point((uint16_t)ix, (uint16_t)iy, color);
+        }
+    }
+}
+//-------------------------------------------------------------------------------------------------------------------
 // 函数简介     IPS200 显示有颜色字符
 // 参数说明     x               坐标x方向的起点 参数范围 [0, ips200_x_max-1]
 // 参数说明     y               坐标y方向的起点 参数范围 [0, ips200_y_max-1]

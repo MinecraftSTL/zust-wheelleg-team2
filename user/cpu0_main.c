@@ -91,7 +91,7 @@ Page menu_main_debug_fwp_rz;
 Page menu_main_debug_ffRow;
 Page menu_main_debug_jump;
 
-int core0_main(void)
+void core0_main(void)
 {
     clock_init();                   // 获取时钟频率<务必保留>
     debug_init();                   // 初始化默认调试串口
@@ -118,7 +118,7 @@ int core0_main(void)
         &menu_main_debug,
     });
     IntPage_init(&menu_main_carRun, "car_run", &g_Car_Status, 0, 2);
-    menu_main_carRun.open = 9;
+    menu_main_carRun.select = 9;
     ListPage_init(&menu_main_arg, "arg", 2, (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,

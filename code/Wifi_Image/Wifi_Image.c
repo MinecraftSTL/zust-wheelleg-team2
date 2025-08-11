@@ -33,7 +33,6 @@ void Wifi_Image_Init(void)
         printf("\r\n module ip     :%s",wifi_spi_ip_addr_port);                     // Ä£¿é IP µØÖ·
     }
     seekfree_assistant_interface_init(SEEKFREE_ASSISTANT_WIFI_SPI);
-    seekfree_assistant_camera_information_config(SEEKFREE_ASSISTANT_MT9V03X, imageShow.image, MT9V03X_W, MT9V03X_H);
     beepMid();
 
 }
@@ -47,6 +46,7 @@ void Wifi_Image_Init(void)
 void Wifi_Image_Send_Camera(void)
 {
     if(g_wifi_image_open_flag){
+        seekfree_assistant_camera_information_config(SEEKFREE_ASSISTANT_RGB565, showImage.image, showImage.w, showImage.h);
         seekfree_assistant_camera_send();
     }
 }

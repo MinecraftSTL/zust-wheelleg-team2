@@ -37,33 +37,33 @@ enum PageExtendsType{
 typedef struct Page{
     char name[16];
     struct Page *parent;
-    int8 open;
+    int8 select;
     enum PageExtendsType type;
     union {
         struct {
             uint8 size;
             struct Page *value[LIST_PAGE_ELEMENT_MAX];
-            uint8 opened;
+            uint8 open;
         } listValue;
         struct {
             int32 *value;
             int32 min;
             int32 max;
-            uint8 opened;
+            uint8 open;
         } intValue;
         struct {
             float *value;
             float min;
             float max;
             uint8 dot;
-            uint8 opened;
+            uint8 open;
         } floatValue;
         struct {
             double *value;
             double min;
             double max;
             uint8 dot;
-            uint8 opened;
+            uint8 open;
         } doubleValue;
         struct {
             uint8 *value;
