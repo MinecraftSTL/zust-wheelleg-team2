@@ -44,7 +44,7 @@
 // **************************** ´úÂëÇøÓò ****************************
 const uint16 PIT00ms = 5;
 const uint16 PIT01ms = 5;
-const uint16 PIT10ms = 5;
+const uint16 PIT10ms = 1;
 
 uint8 pressed = 0;
 

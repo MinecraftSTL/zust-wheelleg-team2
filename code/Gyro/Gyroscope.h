@@ -31,7 +31,7 @@ void get_gyro(void);
 void get_gyorscope_data(void);
 void Update_GyroData(void);
 extern float gyro_z,gyro_y,gyro_x;
-extern float gyro_z_res,gyro_x_res,gyro_y_res;
+//extern float gyro_z_res,gyro_x_res,gyro_y_res;
 extern float acc_z,acc_y,acc_x;
 
 extern float zero_my_gyro_z,zero_my_gyro_y ,zero_my_gyro_x,zero_my_acc_z,zero_my_acc_y,zero_my_acc_x;

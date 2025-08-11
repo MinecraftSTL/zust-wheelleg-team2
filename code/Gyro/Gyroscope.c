@@ -63,32 +63,33 @@ void get_gyro(void)
 //    {
 //        new_gyro_y = 0;
 //    }
-    gyro_y=new_gyro_y * PI / 180.0;
+    gyro_y=-new_gyro_y * PI / 180.0;
 
    // acc_y = Lowpass_Alpha * acc_y + (1 - Lowpass_Alpha) * (float)my_acc_y;
-    acc_y = my_acc_y * Gravity_G;
+    acc_y = -my_acc_y * Gravity_G;
 
     new_gyro_x=my_gyro_x-zero_my_gyro_x;
 //    if((new_gyro_x>-2)&&(new_gyro_x<2))
 //    {
 //        new_gyro_x = 0;
 //    }
-    gyro_x=new_gyro_x * PI / 180.0;
+    gyro_x=-new_gyro_x * PI / 180.0;
 
    // acc_x = Lowpass_Alpha * acc_x + (1 - Lowpass_Alpha) * (float)my_acc_x;
-    acc_x = my_acc_x * Gravity_G;
+    acc_x = -my_acc_x * Gravity_G;
 
 }
-float gyro_z_res = 0,gyro_x_res = 0,gyro_y_res = 0;
+//float gyro_z_res = 0,gyro_x_res = 0,gyro_y_res = 0;
 void get_gyorscope_data(void)
 {
     //ÍÓÂÝÒÇÊý¾Ý
     get_gyro();
+//    printf("%f, %f, %f\r\n", gyro_x,gyro_y,gyro_z);
 //    gyro_x_res = LPF2_T2(gyro_x);
 //	gyro_y_res = LPF2_T2(gyro_y);
 //    gyro_z_res = LPF2_T2(gyro_z);
 
-    IMUupdate(gyro_x,gyro_y,gyro_z,acc_x,acc_y,acc_z, PIT01ms/2000.);
+    IMUupdate(gyro_x,gyro_y,gyro_z,acc_x,acc_y,acc_z, PIT10ms/2000.);
 }
 
 void Update_GyroData(void)

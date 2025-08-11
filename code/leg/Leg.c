@@ -51,7 +51,7 @@ uint8 Pos_isLegal(float x, float z, const struct LegServoAngle a){
 }
 
 int32 Roll_toPosZ(float roll, float lza){
-    float AGC = PI+roll;
+    float AGC = PI-roll;
     float AWG = atan2(lza, DLR)- AGC;
     return DLR*tan(AWG);
 }

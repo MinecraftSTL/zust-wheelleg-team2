@@ -27,6 +27,9 @@ float pid(PID *this, float TargetValue, float ActualValue)
     float Ek = TargetValue - ActualValue;
     this->Ek_sum += Ek;
     this->Ek_sum = func_limit(this->Ek_sum, this->Max_I);
+    if(isnan(this->Ek_sum)){
+        this->Ek_sum=0;
+    }
 
     ret = this->Kp * Ek +
              this->Ki * this->Ek_sum +

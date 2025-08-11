@@ -22,7 +22,6 @@ extern PID Straight_Speed_PID;
 extern int target_left,target_right;
 extern float V0 ;
 extern float basic_V0;
-extern int pwm_left, pwm_right;
 
 // 函数简介     双边限幅 数据范围是 [-32768,32767]
 // 参数说明     x               被限幅的数据

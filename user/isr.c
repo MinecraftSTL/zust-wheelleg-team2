@@ -92,9 +92,11 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     GetSpeed();
     Update_GyroData();
 
-    if(fabs(roll) > 45 || fabs(pitch) > 90){
-        beepLong();
-        car_run=0;
+    if(car_run){
+        if(fabs(roll) > 45 || fabs(pitch) > 45){
+            beepLong();
+            car_run=0;
+        }
     }
 
     float speed = 0, tg_pitchV, legX = 0, legY = -45;
@@ -108,9 +110,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         float VxDownAy = pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
     //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
-//        printf("%f,%f,%f\r\n", xAy,downAy,VxDownAy);
+//        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         legX = pid(&PID_LPitch, 0, pitch)/10;
-        tg_pitchV = -pid(&PID_WxAy, kZero-VxDownAy, pitch+kLX2AY*legX);
+        tg_pitchV = pid(&PID_WxAy, kZero+VxDownAy, pitch+kLX2AY*legX);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
         PID_clear(&PID_vVx);
@@ -118,7 +120,11 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         PID_clear(&PID_LPitch);
 //        printf("%f,%f\r\n", pitch,kZero);
     }
-    speed = pid(&PID_WvAy, tg_pitchV, gyro_y);
+    float new_gyro_y = gyro_y*180/PI;
+    if(isnan(new_gyro_y)){
+        new_gyro_y = 0;
+    }
+    speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
     if(fsEn){
         speed = fsSpeed;
     }
@@ -132,14 +138,16 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         float lx, lz, rx, rz;
         lx = rx = legX;
         lz = rz = legY;
-        float lza = Roll_toPosZ(roll*PI/180, lza_);
+        float lza = 0;
+        if(car_run){
+            lza = Roll_toPosZ(roll*PI/180, lza_);
+        }
         if(lza > LEG_MAX_Z-LEG_MIN_Z){
             lza = LEG_MAX_Z-LEG_MIN_Z;
         }else if(lza < -LEG_MAX_Z+LEG_MIN_Z){
             lza = -LEG_MAX_Z+LEG_MIN_Z;
         }
-        lza_ = pid(&PID_xAx, lza, lza_);
-        printf("%f, %f\r\n", lza, lza_);
+        lza_ = pid(&PID_xAx, lza, lza_)/100;
         if(lza_ > 0){
             lz -= lza_;
         }else{

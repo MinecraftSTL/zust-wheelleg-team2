@@ -14,7 +14,6 @@ float V0 = 0;
 //float turn_V0 = 70;
 //float straight_V0 = 100;
 float basic_V0 = 120;
-int pwm_left = 0,pwm_right = 0;
 /***********************************************
 * @brief : PWMÊä³ö
 * @param : void

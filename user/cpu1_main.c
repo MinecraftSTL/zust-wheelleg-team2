@@ -50,6 +50,7 @@ void core1_main(void)
     cpu_wait_event_ready();                 // 等待所有核心初始化完毕
     for(;;){
         // 此处编写需要循环执行的代码
+//        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码
     }
 }
