@@ -4,8 +4,14 @@
 typedef enum{
     NONE,
     IN_ZEBRA,
+    OUT_ZEBRA,
     IN_CROSS,
     OUT_CROSS,
+    IN_L_CIRCLE,
+    TL_L_CIRCLE,
+    L_CIRCLE,
+    TR_L_CIRCLE,
+    OUT_L_CIRCLE,
 }CameraStatus;
 
 typedef struct{
@@ -40,13 +46,17 @@ extern int invY;
 extern float invK;
 extern int crossY;
 extern int crossX;
+extern int circleY;
+extern int circleX;
+extern int errY;
+extern int errDeltaY;
 extern uint8 showPInC1;
 extern uint8 showBin;
 
 extern CameraStatus status;
 
 void MyCamera_Init(void);
-void MyCamera_Show(uint16 start_y);
+void MyCamera_Show(uint16 x, uint16 y);
 uint8 Image_get(Image *this, uint16 y, uint16 x);
 void Image_set(Image *this, uint16 y, uint16 x, uint8 value);
 void Image_fromCamera(Image *this, uint8 mt9v03x_image[MT9V03X_H][MT9V03X_W]);
@@ -57,7 +67,7 @@ void Rgb565Image_clone(Rgb565Image *this, Rgb565Image *target);
 void Rgb565Image_mode(Rgb565Image *this, Rgb565Image *target);
 uint16 Rgb565Image_get(Rgb565Image *this, uint16 y, uint16 x);
 void Rgb565Image_set(Rgb565Image *this, uint16 y, uint16 x, uint16 value);
-void Rgb565Image_mark(Rgb565Image *this, uint16 y, uint16 x, uint16 color, uint16 size);
+void Rgb565Image_mark(Rgb565Image *this, uint16 y, uint16 x, uint16 color, uint16 r);
 void Image_zoom(Image *this, Image *target, float zoom);
 void Image_binaryzation(Image *this, Image *target, uint16 r, int16 deltaT);
 void BinImage_init(BinImage *this, Image *image, uint16 r, int16 deltaT);

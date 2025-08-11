@@ -61,11 +61,11 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         ++pressed[BACK_KEY];
     }
     if(my_key_get_state(KEY_2) == KEY_SHORT_PRESS){
-        if(g_Car_Status < 2){
-            ++g_Car_Status;
+        if(carStatus < 2){
+            ++carStatus;
         }
     }else if(my_key_get_state(KEY_2) == KEY_LONG_PRESS){
-        g_Car_Status = 0;
+        carStatus = 0;
     }
     Get_Switch_Num();
     if(switch_encoder_change_num < 0){
@@ -97,18 +97,18 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
     float new_gyro_z = my_gyro_z-zero_my_gyro_z;
 
-    if(g_Car_Status){
+    if(carStatus){
         if(fabs(roll) > 60 || fabs(pitch) > 60){
             beepLong();
-            g_Car_Status=status_car_stop;
+            carStatus=status_car_stop;
         }
     }
 
     float tg_pitchV = 0, tg_yawV = 0, legX = 0, legZ = -30;
-    if(g_Car_Status){
+    if(carStatus){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;
-        if(g_Car_Status == status_car_start){
+        if(carStatus == status_car_start){
             targetV = V0;
             if(fvEn){
                 targetV = fvV;
@@ -119,7 +119,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         legX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         tg_pitchV = pid(&PID_WxAy, kZero, pitch);
-        if(g_Car_Status == status_car_start){
+        if(carStatus == status_car_start){
             tg_yawV = pid(&PID_vAz, 0, camera_err);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
@@ -147,7 +147,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lx = rx = legX;
         lz = rz = legZ;
         float lza = 0;
-        if(g_Car_Status && !ffRow){
+        if(carStatus && !ffRow){
             lza = Roll_toPosZ(-roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);

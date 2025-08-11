@@ -22,8 +22,7 @@ typedef enum
     open_status,
 }Status_Flag;
 
-extern Car_Status g_Car_Status;
-extern uint8 g_started_debug;
+extern Car_Status carStatus;
 
 void Car_Stop(void);
 void Car_Start(void);

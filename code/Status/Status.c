@@ -6,8 +6,7 @@
 
 #include "Status.h"
 
-Car_Status g_Car_Status = status_car_stop ;
-uint8 g_started_debug = 0;
+Car_Status carStatus = status_car_stop;
 
 /***********************************************
 * @brief : Í£³µ
@@ -19,7 +18,7 @@ uint8 g_started_debug = 0;
 void Car_Stop(void)
 {
     beepMid();
-    g_Car_Status = status_car_stop;
+    carStatus = status_car_stop;
 }
 
 /***********************************************
@@ -32,5 +31,5 @@ void Car_Stop(void)
 void Car_Start(void)
 {
     beepMid();
-    g_Car_Status = status_car_start;
+    carStatus = status_car_start;
 }

@@ -60,9 +60,16 @@ Page menu_main_arg_k_camera_i;
 Page menu_main_arg_k_camera_i_bly2RDR;
 Page menu_main_arg_k_camera_i_RD2IE;
 Page menu_main_arg_k_camera_IGFE;
-Page menu_main_arg_k_camera_cross;
-Page menu_main_arg_k_camera_cross_y;
-Page menu_main_arg_k_camera_cross_x;
+Page menu_main_arg_k_camera_e;
+Page menu_main_arg_k_camera_e_cross;
+Page menu_main_arg_k_camera_e_cross_y;
+Page menu_main_arg_k_camera_e_cross_x;
+Page menu_main_arg_k_camera_e_circle;
+Page menu_main_arg_k_camera_e_circle_y;
+Page menu_main_arg_k_camera_e_circle_x;
+Page menu_main_arg_k_camera_err;
+Page menu_main_arg_k_camera_err_y;
+Page menu_main_arg_k_camera_err_deltaY;
 Page menu_main_arg_k_camera_show;
 Page menu_main_arg_k_camera_show_pInC1;
 Page menu_main_arg_k_camera_show_bin;
@@ -132,7 +139,7 @@ void core0_main(void)
         &menu_main_debug,
         NULL
     });
-    IntPage_init(&menu_main_carRun, "car_run", &g_Car_Status, 0, 2);
+    IntPage_init(&menu_main_carRun, "car_run", &carStatus, 0, 2);
     menu_main_carRun.select = 9;
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
@@ -153,7 +160,8 @@ void core0_main(void)
         &menu_main_arg_k_camera_compErr,
         &menu_main_arg_k_camera_i,
         &menu_main_arg_k_camera_IGFE,
-        &menu_main_arg_k_camera_cross,
+        &menu_main_arg_k_camera_e,
+        &menu_main_arg_k_camera_err,
         &menu_main_arg_k_camera_show,
         NULL
     });
@@ -175,13 +183,32 @@ void core0_main(void)
     menu_main_arg_k_camera_i_RD2IE.extends.floatValue.dot = 1;
     FloatPage_init(&menu_main_arg_k_camera_IGFE, "RD2IE", &IGFE, 0, 0.7854);
     menu_main_arg_k_camera_IGFE.extends.floatValue.dot = 0;
-    ListPage_init(&menu_main_arg_k_camera_cross, "cross", (Page*[]){
-        &menu_main_arg_k_camera_cross_y,
-        &menu_main_arg_k_camera_cross_x,
+    ListPage_init(&menu_main_arg_k_camera_e, "element", (Page*[]){
+        &menu_main_arg_k_camera_e_cross,
+        &menu_main_arg_k_camera_e_circle,
         NULL
     });
-    IntPage_init(&menu_main_arg_k_camera_cross_y, "y", &crossY, 0, MT9V03X_H);
-    IntPage_init(&menu_main_arg_k_camera_cross_x, "x", &crossX, 0, MT9V03X_W);
+    ListPage_init(&menu_main_arg_k_camera_e_cross, "cross", (Page*[]){
+        &menu_main_arg_k_camera_e_cross_y,
+        &menu_main_arg_k_camera_e_cross_x,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_e_cross_y, "y", &crossY, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_cross_x, "x", &crossX, 0, MT9V03X_W);
+    ListPage_init(&menu_main_arg_k_camera_e_circle, "cross", (Page*[]){
+        &menu_main_arg_k_camera_e_circle_y,
+        &menu_main_arg_k_camera_e_circle_x,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_e_circle_y, "y", &circleY, 0, MT9V03X_W);
+    IntPage_init(&menu_main_arg_k_camera_e_circle_x, "x", &circleX, 0, MT9V03X_W);
+    ListPage_init(&menu_main_arg_k_camera_err, "err", (Page*[]){
+        &menu_main_arg_k_camera_err_y,
+        &menu_main_arg_k_camera_err_deltaY,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_err_y, "y", &errY, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_err_deltaY, "deltaY", &errDeltaY, 0, MT9V03X_W);
     ListPage_init(&menu_main_arg_k_camera_show, "show", (Page*[]){
         &menu_main_arg_k_camera_show_pInC1,
         &menu_main_arg_k_camera_show_bin,
@@ -290,7 +317,7 @@ void core0_main(void)
         // 此处编写需要循环执行的代码
         PageKey_press(&menu_main, pressed);
         PageKey_print(&menu_main, 0);
-        MyCamera_Show(200);
+        MyCamera_Show(0, 200);
         ips200_show_int(188,200,fps,4);
         ips200_show_int(188,216,status,4);
         Wifi_Image_Send_Camera();
