@@ -88,7 +88,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
     int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-    get_gyro();
+    gyro_get_gyro();
     float VxDownAy = pid(&Vx, V0, Encoder_speed)/1000;
 //    printf("%d, %d, %d\r\n",mpu6050_gyro_x,mpu6050_gyro_y,mpu6050_gyro_z);
 //    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
@@ -107,6 +107,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         speed = fsSpeed;
     }
     MotorSetPWM(speed,-speed);
+    if(flEn){
+        Leg_set_duty(flRb, flRf, flLf, flLb);
+    }
 }
 
 IFX_INTERRUPT(cc61_pit_ch1_isr, CCU6_1_CH1_INT_VECTAB_NUM, CCU6_1_CH1_ISR_PRIORITY)

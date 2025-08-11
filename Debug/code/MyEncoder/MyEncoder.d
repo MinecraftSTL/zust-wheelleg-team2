@@ -362,6 +362,8 @@ code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC37
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Status/Status.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/debug/Debug.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/debug/Debug.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h

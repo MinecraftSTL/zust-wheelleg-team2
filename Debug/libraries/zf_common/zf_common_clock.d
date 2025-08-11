@@ -404,6 +404,8 @@ libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Se
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_driver/zf_driver_uart.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Status/Status.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Status/Status.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/debug/Debug.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/debug/Debug.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h

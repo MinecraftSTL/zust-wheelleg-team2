@@ -29,7 +29,7 @@ void gyro_get_acc(){
     aXy = imu660ra_acc_transition(icm20602_acc_y);
     aXz = imu660ra_acc_transition(icm20602_acc_z);
 }
-void gyro_get_gryo(){
+void gyro_get_gyro(){
     icm20602_get_gyro();
     vAx = (imu660ra_gyro_transition(icm20602_gyro_x))*gyro_pitMs/1000;
     vAy = (imu660ra_gyro_transition(icm20602_gyro_y))*gyro_pitMs/1000;

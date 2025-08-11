@@ -16,7 +16,7 @@ extern float downAy;
 
 void gyro_init(uint16 pitMs);
 void gyro_get_acc();
-void gyro_get_gryo();
+void gyro_get_gyro();
 
 void downAy_init();
 

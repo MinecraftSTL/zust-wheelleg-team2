@@ -4,6 +4,7 @@
 
 
 #include "zf_common_headfile.h"
+
 #include "Beep.h"
 #include "menu.h"
 #include "MyCamera.h"
@@ -15,6 +16,8 @@
 #include "SYSTIMER.h"
 #include "UART.h"
 #include "Status.h"
+#include "Debug.h"
+
 #include "Sys.h"
 
 

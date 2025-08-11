@@ -61,11 +61,14 @@ Page menu_main_PID_Vx_Kd;
 Page menu_main_carRun;
 Page menu_main_debug;
 Page menu_main_debug_fs;
-Page menu_main_debug_fs_speed;
 Page menu_main_debug_fs_en;
-
-int32 fsSpeed = 0;
-uint8 fsEn = 1;
+Page menu_main_debug_fs_speed;
+Page menu_main_debug_fl;
+Page menu_main_debug_fl_en;
+Page menu_main_debug_fl_rb;
+Page menu_main_debug_fl_rf;
+Page menu_main_debug_fl_lf;
+Page menu_main_debug_fl_lb;
 
 int core0_main(void)
 {
@@ -77,6 +80,7 @@ int core0_main(void)
     gyro_init(PIT10ms);
     key_init(PIT00ms);
     small_driver_uart_init();
+    Leg_init();
     MyEncoder_Init();
     PID_param_init();
     pit_ms_init(CCU60_CH0, PIT00ms);
@@ -110,15 +114,32 @@ int core0_main(void)
     FFloatPage_init(&menu_main_PID_Vx_Ki, "Ki", &Vx.Ki, 0, 10000);
     FFloatPage_init(&menu_main_PID_Vx_Kd, "Kd", &Vx.Kd, 0, 10000);
     BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
-    ListPage_init(&menu_main_debug, "debug", 1, (Page*[]){
+    ListPage_init(&menu_main_debug, "debug", 2, (Page*[]){
         &menu_main_debug_fs,
+        &menu_main_debug_fl,
     });
     ListPage_init(&menu_main_debug_fs, "forceSpeed", 2, (Page*[]){
-        &menu_main_debug_fs_speed,
         &menu_main_debug_fs_en,
+        &menu_main_debug_fs_speed,
     });
-    IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
     BoolPage_init(&menu_main_debug_fs_en, "enable", &fsEn, 0x03);
+    IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
+    ListPage_init(&menu_main_debug_fl, "forceLeg", 5, (Page*[]){
+        &menu_main_debug_fl_en,
+        &menu_main_debug_fl_rb,
+        &menu_main_debug_fl_rf,
+        &menu_main_debug_fl_lf,
+        &menu_main_debug_fl_lb,
+    });
+    BoolPage_init(&menu_main_debug_fl_en, "enable", &flEn, 0x03);
+    FFloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -3.14, 3.14);
+    menu_main_debug_fl_rb.extends.fFloatValue.dot=1;
+    FFloatPage_init(&menu_main_debug_fl_rf, "rt_fd", &flRf, -3.14, 3.14);
+    menu_main_debug_fl_rf.extends.fFloatValue.dot=1;
+    FFloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -3.14, 3.14);
+    menu_main_debug_fl_lf.extends.fFloatValue.dot=1;
+    FFloatPage_init(&menu_main_debug_fl_lb, "lt_bk", &flLb, -3.14, 3.14);
+    menu_main_debug_fl_lb.extends.fFloatValue.dot=1;
 
     beepLong();
     PageKey_print(&menu_main, 0);
