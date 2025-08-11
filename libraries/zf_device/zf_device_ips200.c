@@ -391,28 +391,8 @@ static void ips200_debug_init (void)
 //-------------------------------------------------------------------------------------------------------------------
 void ips200_clear (void)
 {
-    uint16 color_buffer[ips200_width_max];
-    uint16 i = 0, j = 0;
-
-    if(IPS200_TYPE_SPI == ips200_display_type)
-    {
-        IPS200_CS(0);
-    }
-    ips200_set_region(0, 0, ips200_width_max - 1, ips200_height_max - 1);
-    for(i = 0; i < ips200_width_max; i ++)
-    {
-        color_buffer[i] = ips200_bgcolor;
-    }
-    for (j = 0; j < ips200_height_max; j ++)
-    {
-        ips200_write_16bit_data_array(color_buffer, ips200_width_max);
-    }
-    if(IPS200_TYPE_SPI == ips200_display_type)
-    {
-        IPS200_CS(1);
-    }
+    ips200_full(ips200_bgcolor);
 }
-
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     IPS200 屏幕填充函数
 // 参数说明     color           颜色格式 RGB565 或者可以使用 zf_common_font.h 内 rgb565_color_enum 枚举值或者自行写入

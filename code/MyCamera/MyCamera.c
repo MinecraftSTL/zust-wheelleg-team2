@@ -10,7 +10,7 @@ int binDeltaT = 0;
 int bly2RDR = 3;
 float RD2IE = 0.7854;
 float IGFE = 0.349;
-float facingErr = 0.7854;
+float facingErr = 0.5236;
 int setLineY = 15;
 int StraightStep = 15;
 float StraightErr = 0.349;
@@ -381,20 +381,15 @@ uint8 inline Image_borderIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16
     }
     return 1;
 }
-uint8 inline Image_blyXIsLose(Image *this, uint16 x, uint8 dir){
-    return dir?x >= this->w-2:x < 2;
-}
-uint8 inline Image_blyIsLose(Image *this, uint16 border[MT9V03X_H], uint16 y, uint8 dir){
-    return Image_blyXIsLose(this, border[y], dir);
-}
-uint8 inline Image_blyIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
+uint8 inline Image_borderIsNoneLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
     for(uint16 i=y0; i<=y1; ++i){
-        if(!Image_blyIsLose(this, border, i, dir)){
+        if(Image_borderIsLose(this, border, i, dir)){
             return 0;
         }
     }
     return 1;
 }
+
 void Image_borderToMiddle(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H], uint16 ret[MT9V03X_H]){
     for(uint16 i=0; i<this->h; ++i){
         ret[i] = (lBorder[i]+rBorder[i])>>1;
@@ -435,7 +430,10 @@ void Image_borderSetDLine(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint
         border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
     }
 }
-uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H]){
+uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint8 dir){
+    if(!Image_borderIsNoneLose(this, border, 1, this->h-2, dir)){
+        return 0;
+    }
     float all = atan2f(border[this->h-2]-border[1],this->h-3);
     for(uint16 i=1; i+StraightStep<this->h-1; i+=StraightStep){
         if(fabsf(all-atan2f(border[i+StraightStep]-border[i],StraightStep)) > StraightErr){
@@ -465,7 +463,7 @@ void Image_blyToRadDir(Image *this, int16 bly[MT9V03X_W*3][2], uint16 blyL, uint
     for(uint16 i=0; i<*retN; ++i){
         ret[i]=atan2f(-(bly[(i+1)*l][0]-bly[i*l][0]), bly[(i+1)*l][1]-bly[i*l][1]);
         for(uint16 j=i*l; j<=(i+1)*l; ++j){
-            if(Image_blyXIsLose(this, bly[j][1], 0) || Image_blyXIsLose(this, bly[j][1], 1)){
+            if(bly[j][0] == 0 || bly[j][0] == this->h-1 || Image_borderXIsLose(this, bly[j][1], 0) || Image_borderXIsLose(this, bly[j][1], 1)){
                 ret[i] = NAN;
                 break;
             }
@@ -499,6 +497,14 @@ uint8 Inflection_getFacing(float rad){
         }
     }
     return 0;
+}
+int16 Inflection_getFirstFacing(int16 this[MT9V03X_W*3][2], float thisRad[MT9V03X_W*3], uint16 thisN, uint8 facing){
+    for(uint16 i=0; i<thisN; ++i){
+        if(Inflection_getFacing(thisRad[i])==facing){
+            return i;
+        }
+    }
+    return -1;
 }
 
 void Image_zebraCrossing(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H], uint16 y){
@@ -549,11 +555,10 @@ void Image_cross(Image *this, int16 lInf[MT9V03X_W*3][2], float lInfRad[MT9V03X_
         case NONE:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 &&
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 &&
-                    lInf[0][0] >= crossX+1 && rInf[0][0] >= crossX+1 &&
-                    Image_blyIsLose(this, lBorder, lInf[0][0]-crossX, 0) &&
-                    Image_blyIsLose(this, lBorder, lInf[0][0]-crossX-1, 0) &&
-                    Image_blyIsLose(this, rBorder, rInf[0][0]-crossX, 1) &&
-                    Image_blyIsLose(this, rBorder, rInf[0][0]-crossX-1, 1)
+                    Image_borderIsLose(this, lBorder, lInf[0][0]-crossX, 0) &&
+                    Image_borderIsLose(this, lBorder, lInf[0][0]-crossX-1, 0) &&
+                    Image_borderIsLose(this, rBorder, rInf[0][0]-crossX, 1) &&
+                    Image_borderIsLose(this, rBorder, rInf[0][0]-crossX-1, 1)
                     )
             {
                 beepMid();
@@ -568,7 +573,6 @@ void Image_cross(Image *this, int16 lInf[MT9V03X_W*3][2], float lInfRad[MT9V03X_
             }
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
-                    lInf[0][0] >= crossX+1 && rInf[0][0] >= crossX+1 &&
                     lInf[1][0]+crossX+1 < this->h && rInf[1][0]+crossX+1 < this->h){
                 beepMid();
                 cameraStatus = CROSS;
@@ -603,7 +607,7 @@ void Image_cross(Image *this, int16 lInf[MT9V03X_W*3][2], float lInfRad[MT9V03X_
                 Image_borderSetDLine(this, rBorder, rInf[0][0], this->h-1);
             }
             if(!(lInfN > 0 && (Inflection_getFacing(lInfRad[0]) == 2 || Inflection_getFacing(lInfRad[0]) == 3) ||
-                    rInfN > 0 && (Inflection_getFacing(rInfRad[0]) == 1 || Inflection_getFacing(lInfRad[0]) == 4) )){
+                    rInfN > 0 && (Inflection_getFacing(rInfRad[0]) == 1 || Inflection_getFacing(rInfRad[0]) == 4))){
                 beepMid();
                 cameraStatus = NONE;
             }
@@ -663,15 +667,15 @@ void Image_processCamera(){
     if(mt9v03x_finish_flag)              //判断一幅图像是否接收完成
     {
 //        SysTimer_Start();
-        Image_fromCamera(&image, mt9v03x_image);
+        Image_fromCamera(&image1, mt9v03x_image);
         mt9v03x_finish_flag = 0;
         if(!showPInC1){
             if(showWait){
                 while(camera_process_cnt);
             }
         }
-        Image_cut(&image, &image1, 0, 1, image.h, image.w-1);
-        Image_cut(&image1, &image, 10, 30, image1.h-20, image1.w-30);
+        Image_cut(&image1, &image, 0, 1, image1.h, image1.w-1);
+//        Image_cut(&image1, &image, 10, 30, image1.h-20, image1.w-30);
         Image_binaryzation(&image, binDeltaT);
         Image_getStartPoint(&image, lStartPoint, rStartPoint);
         Image_drawRectan(&image);
@@ -679,8 +683,8 @@ void Image_processCamera(){
                 &lLineL, &rLineL, &lrMeet, lStartPoint, rStartPoint);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);
         Image_blyToBorder(&image, 1, rLine, rLineL, rBorder);
-        lStraight = Image_borderIsStraight(&image, lBorder);
-        rStraight = Image_borderIsStraight(&image, rBorder);
+        lStraight = Image_borderIsStraight(&image, lBorder, 0);
+        rStraight = Image_borderIsStraight(&image, rBorder, 1);
         Image_blyCutByBorder(&image, lBorder, 0, lLine, &lLineL);
         Image_blyCutByBorder(&image, rBorder, 1, rLine, &rLineL);
         Image_zebraCrossing(&image, lBorder, rBorder, 70);

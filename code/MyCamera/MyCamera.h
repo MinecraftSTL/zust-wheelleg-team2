@@ -8,11 +8,11 @@ typedef enum{
     IN_CROSS,
     CROSS,
     OUT_CROSS,
-    IN_L_CIRCLE,
-    TL_L_CIRCLE,
+    IN_LCIRCLE,
+    TL_LCIRCLE,
     L_CIRCLE,
-    TR_L_CIRCLE,
-    OUT_L_CIRCLE,
+    TR_LCIRCLE,
+    OUT_LCIRCLE,
 }CameraStatus;
 
 typedef struct{

@@ -12,7 +12,7 @@
 #define IPS200_DEFAULT_SELECTCOLOR         (0x7BFF  )
 #define IPS200_DEFAULT_OPENCOLOR           (0x001F  )
 
-#define PAGE_ELEMENT_MAX 11
+#define PAGE_ELEMENT_MAX 14
 
 enum KeyType{
     NULL_KEY,
@@ -44,7 +44,7 @@ typedef struct Page{
     union {
         struct {
             struct Page *value[PAGE_ELEMENT_MAX];
-            uint8 size;
+            int8 size;
             uint8 open;
         } listValue;
         struct {
@@ -73,7 +73,7 @@ typedef struct Page{
         } boolValue;
         struct {
             uint32 *value;
-            uint8 size;
+            int8 size;
             char *names[PAGE_ELEMENT_MAX];
         } enumValue;
         struct {

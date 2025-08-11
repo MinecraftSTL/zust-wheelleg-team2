@@ -499,7 +499,7 @@ void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]){
     Page_init(this, name, ENUM_TYPE);
     this->extends.enumValue.value = value;
     for(this->extends.enumValue.size=0; this->extends.enumValue.size<PAGE_ELEMENT_MAX; ++this->extends.enumValue.size){
-        if(!*names[this->extends.enumValue.size]){
+        if(names[this->extends.enumValue.size][0] == '\0'){
             break;
         }
     }
