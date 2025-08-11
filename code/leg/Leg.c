@@ -11,7 +11,7 @@ const uint32 freq = 300;
 const float defaultLegX = 0, defaultLegZ = -30;
 float targetLegX, targetLegZ;
 
-float defaultRollAlpha = 0.012;
+float defaultRollAlpha = 0.013;
 
 uint8 rollBalance = 0;
 

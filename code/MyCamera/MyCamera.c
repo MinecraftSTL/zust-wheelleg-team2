@@ -14,14 +14,14 @@ int bly2RDL = 3;
 float RD2IErr = 0.7854;
 float facingErr = 0.5236;
 int setLineY = 15;
-int straightYMin = 50;
+int straightYMin = 40;
 int straightStep = 10;
 float straightErr = 0.087266;
 float statusJump = 3;
 float statusK = 0.98;
 int crossX = 15;
 int crossY = 50;
-int zebraY = 110;
+int zebraY = 100;
 int zebraT = 10000;
 int zebraS = 100000;
 int circleX = 7;
@@ -31,14 +31,14 @@ int rampS = 300000;
 int rampY = 10;
 int rampZ = -45;
 int barrierY0 = 20;
-int barrierY1 = 65;
-int barrierT = 600;
+int barrierY1 = 55;
+int barrierT = 400;
 int bridgeX = 10;
 int bridgeY = 5;
 float bridgeKPitchX = 0.1;
 int bridgeTI = 1000;
 int bridgeTO = 10000;
-int bridgeS = 300000;
+int bridgeS = 125000;
 int bridgeZ = -100;
 #define cameraAngle (5)
 int errY = 60;
@@ -46,11 +46,11 @@ int errDeltaY = 30;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
 
-float bendV = 450;
-float circleV = 450;
-float rampV = 100;
-float barrierV = 400;
-float bridgeV = 50;
+float bendV = 550;
+float circleV = 550;
+float rampV = -50;
+float barrierV = 500;
+float bridgeV = 75;
 
 float cameraV = 0;
 
@@ -71,6 +71,7 @@ uint16 mLine[MT9V03X_H];
 
 uint8 lStraight;
 uint8 rStraight;
+uint8 mStraight;
 
 float lRadDir[MAX_BLY];
 uint16 lRadDirLine[MAX_BLY];
@@ -733,6 +734,9 @@ void Image_zebra(Image *this, float *cameraV, uint16 *errY){
             break;
         default:
             if(zebra){
+                if(cameraStatus != NONE){
+                    CameraStatus_set(NONE);
+                }
                 CameraStatus_set(I_ZEBRA);
             }
             break;
@@ -1070,16 +1074,12 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                 }
                 if(notRamp){
                     CameraStatus_addScore(I_BRIDGE);
-                }else{
-                    if(rLine[rInfLine[1]][1] > rampY && lLine[lInfLine[1]][1] > rampY){
-                        CameraStatus_addScore(RAMP);
-                    }
                 }
             }
             Filter_xAx.alpha = defaultRollAlpha;
             break;
         case I_BRIDGE:
-            if(statusKeepMs >= bridgeTI || PID_vVx.Ek_ >= -bridgeV){
+            if(statusKeepMs >= bridgeTI || PID_vVx.Ek_ >= 0){
                 uint8 oBridge = 0;
                 if(lInfN > 1 && rInfN > 1){
                     if(lInfN > 3 && Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1 &&
@@ -1232,11 +1232,11 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
     switch(cameraStatus){
         case NONE:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > circleX+1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX, 0) &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX-1, 0) && rStraight){
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-circleX-1, 0) && rStraight && !lStraight){
                 CameraStatus_addScore(OR_CROSS_LCIRCLE);
             }
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > circleX+1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX, 1) &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX-1, 1) && lStraight){
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-circleX-1, 1) && lStraight && !rStraight){
                 CameraStatus_addScore(OR_CROSS_RCIRCLE);
             }
             if(!lStraight || !rStraight){
@@ -1363,7 +1363,6 @@ void Image_processCamera(){
         cameraV = tempCameraV;
 //
         Image_borderToMiddle(&image, lBorder, rBorder, lrMeet, mLine);
-////            Bend_Straight_Opinion();        //判断是否是直线
         camera_err = Image_middleToErr(&image, mLine, tempErrY, errDeltaY);
 //        printf("%d\r\n",statusRunX);
 //        printf("%d\r\n",cameraStatus);

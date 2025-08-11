@@ -24,6 +24,7 @@ void CarStatus_set(CarStatus this)
 void CarStatus_update(){
     CameraStatus_set(NONE);
     carRunMs = 0;
+    wheelClear = 0;
 }
 void CarStatus_add(){
     if(carStatus < CAR_RUN){

@@ -94,8 +94,14 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     float new_gyro_z = my_gyro_z-zero_my_gyro_z;
 
     if(fabs(roll) > 60 || fabs(pitch) > 90){
-        CarStatus_set(CAR_STOP);
-        wheelClear = 0;
+        if(carStatus > CAR_STOP){
+            beepLong();
+            CarStatus_set(CAR_STOP);
+        }
+        if(wheelClear){
+            beepLong();
+            wheelClear = 0;
+        }
     }
 
     float tg_pitchV = 0, tg_yawV = 0, legX = targetLegX+xZero, legZ = targetLegZ;
