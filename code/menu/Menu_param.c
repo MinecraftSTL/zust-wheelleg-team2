@@ -674,8 +674,8 @@ void Menu_param_init(){
         &menu_main_dat_encoder_r,
         NULL
     });
-    IntPage_init(&menu_main_dat_encoder_l, "l", &Encoder_speed_r, -2147483648, 2147483647);
-    IntPage_init(&menu_main_dat_encoder_r, "r", &Encoder_speed_l, -2147483648, 2147483647);
+    IntPage_init(&menu_main_dat_encoder_l, "l", &Encoder_speed_l, -2147483648, 2147483647);
+    IntPage_init(&menu_main_dat_encoder_r, "r", &Encoder_speed_r, -2147483648, 2147483647);
     ListPage_init(&menu_main_dat_gyro, "gyro", (Page*[]){
         &menu_main_dat_gyro_gyro,
         &menu_main_dat_gyro_acc,

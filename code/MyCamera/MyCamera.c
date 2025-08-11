@@ -1019,7 +1019,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            float tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            float tempY = lol((float)Encoder_speed, targetV, bendV, errY, bendErrY);
             *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case R_LCIRCLE:
@@ -1029,7 +1029,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
 //            *cameraV = circleV;、
             Image_bendCameraV(this, cameraV);
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            tempY = lol((float)Encoder_speed, targetV, bendV, errY, bendErrY);
             *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case TO_LCIRCLE:
@@ -1062,7 +1062,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             Image_bendCameraV(this, cameraV);
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            tempY = lol((float)Encoder_speed, targetV, bendV, errY, bendErrY);
             *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case O_LCIRCLE:
@@ -1153,7 +1153,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            float tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            float tempY = lol((float)Encoder_speed, targetV, bendV, errY, bendErrY);
             *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case R_RCIRCLE:
@@ -1163,7 +1163,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
 //            *cameraV = circleV;
             Image_bendCameraV(this, cameraV);
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            tempY = lol((float)Encoder_speed, targetV, bendV, errY, bendErrY);
             *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case TO_RCIRCLE:
@@ -1196,7 +1196,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             Image_bendCameraV(this, cameraV);
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            tempY = lol((float)Encoder_speed, targetV, bendV, errY, bendErrY);
             *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case O_RCIRCLE:
@@ -1306,7 +1306,7 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
             break;
         case I_BARRIER:
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            tempY = lll((float)Encoder_speed,barrierV0,barrierV1,barrierY10,barrierY11);
+            tempY = lol((float)Encoder_speed,barrierV0,barrierV1,barrierY10,barrierY11);
             startYMin = min(lStart[1], rStart[1]);
             if(lrMeet > (int16)func_limit_ab(tempY, barrierY0, startYMin)){
                 CameraStatus_addScore(R_BARRIER);
@@ -1834,7 +1834,7 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
             }
             Image_bendCameraV(this, cameraV);
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            float tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            float tempY = lol((float)Encoder_speed, targetV, bendV, errY, bendErrY);
             *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case OR_CROSS_LCIRCLE:

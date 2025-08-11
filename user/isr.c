@@ -158,7 +158,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
         tg_pitchV += pid(&PID_xAy, kZero-kPitchX*tg_pitchX, pitch);
         if(carStatus >= CAR_RUN){
-            tg_yawV = pid(&PID_vAz, 0, cameraErr);
+            tg_yawV = -pid(&PID_vAz, cameraErr, 0);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
@@ -171,7 +171,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     int speed = 0, turn = 0;
     if(carStatus >= CAR_START){
         speed = lpf1(&Filter1_speed, pid(&PID_vAy, tg_pitchV, new_gyro_y));
-        turn = lpf1(&Filter1_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
+        turn = lpf1(&Filter1_turn, -pid(&PID_WvAz, tg_yawV, new_gyro_z));
     }else{
         PID_clear(&PID_vAy);
         LPF1_clear(&Filter1_speed);
@@ -189,7 +189,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
     if(carStatus >= CAR_BALANCE){
         if(!fCd){
-            turn += control[1];
+            turn -= control[1];
         }
     }else{
         memset(control, 0x0, 2*sizeof(float));

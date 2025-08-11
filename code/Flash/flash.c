@@ -39,6 +39,19 @@ void Flash_init(void)
     zero_my_gyro_y = flash_union_buffer[1].float_type;
     zero_my_gyro_z = flash_union_buffer[2].float_type;
     printf("%f,%f,%f\r\n",zero_my_gyro_x,zero_my_gyro_y,zero_my_gyro_z);
+    uint32 alreadyWritedCount = 0;
+    for(uint32 i=0; i<EEPROM_PAGE_NUM-1; ++i){
+        if(!flash_check(0,EEPROM_PAGE_NUM-1)){
+            continue;
+        }
+        flash_data_union flash_union_buffer[EEPROM_PAGE_LENGTH];
+        flash_read_page(0, i, flash_union_buffer, EEPROM_PAGE_LENGTH);
+        if(flash_union_buffer[EEPROM_PAGE_LENGTH-1].uint32_type != FLASH_KEY^i){
+            continue;
+        }
+        ++alreadyWritedCount;
+    }
+    zf_assert(alreadyWritedCount == 0 || alreadyWritedCount == EEPROM_PAGE_NUM-1);
 }
 
 void Flash_WriteAllVal(void)

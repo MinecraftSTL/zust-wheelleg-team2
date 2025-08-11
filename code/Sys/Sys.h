@@ -15,7 +15,7 @@
 #define min(a, b) ((a) > (b) ? (b) : (a))
 #define max(a, b) ((a) < (b) ? (b) : (a))
 #define zzz(x, z) ((x) > (z) ? (x) - (z) : (x) < -(z) ? (x) + (z) : 0)
-#define lll(x, x0, x1, y0, y1) (((x) - (x0)) * ((y1) - (y0)) / ((x1) - (x0)) + (y0))
+#define lol(x, x0, x1, y0, y1) (((x) - (x0)) * ((y1) - (y0)) / ((x1) - (x0)) + (y0))
 
 float Calculate_Curvature(int array[], int start, int size);
 double curvature(double a[2],double b[2],double c[2]);

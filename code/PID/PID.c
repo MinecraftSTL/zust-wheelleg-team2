@@ -2,7 +2,7 @@
  * pid.c
  *
  * Created on: 2024Äê1ÔÂ24ÈÕ
- *     Author: ÅËÉêÆæ
+ *     Author: STL
  */
 #include "Pid.h"
 #include "Sys.h"

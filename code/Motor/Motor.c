@@ -13,7 +13,7 @@ uint8 Motor_zero = 0;
 * @param : void
 * @return: void
 * @date  : 2024年10月3日19:58:54
-* @author: 钱文杰
+* @author: STL
 ************************************************/
 void MotorSetPWM(int16 pwm_left,int16 pwm_right)
 {
@@ -30,8 +30,8 @@ void MotorSetPWM(int16 pwm_left,int16 pwm_right)
     //左电机
 
 //    printf("%d, %d\r\n", pwm_left, pwm_right);
-    motorPwmLeft = pwm_right;
-    motorPwmRight = pwm_left;
+    motorPwmLeft = pwm_left;
+    motorPwmRight = pwm_right;
 }
 
 void MotorZero(){
