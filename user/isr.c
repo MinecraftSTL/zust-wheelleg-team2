@@ -82,16 +82,15 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float downAy;
 float kLX2AY = 0.6;
-float kZero = 6.4;
+float kZero = -4;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
-    get_gyorscope_data();
-    float speed = 0, legX = 0, legY = -45;
+    Update_GyroData();
+    float speed = 0, tg_pitchV, legX = 0, legY = -45;
     if(car_run){
         int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
@@ -99,26 +98,20 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         if(fvEn){
             targetV = fvV;
         }
-        float VxDownAy = pid(&PID_vVx, -targetV, Encoder_speed)/1000;
+        float VxDownAy = pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
     //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
 //        printf("%f,%f,%f\r\n", xAy,downAy,VxDownAy);
-
-        if(fabs(VxDownAy)>5){
-            beepLong();
-            car_run=0;
-        }
-        downAy+=VxDownAy;
-        legX = -pid(&PID_LPitch, 0, pitch[0])/10;
-        speed = pid(&PID_WPitch, downAy, pitch[0]+kLX2AY*legX);
+        legX = pid(&PID_LPitch, 0, pitch)/10;
+        tg_pitchV = -pid(&PID_WxAy, kZero-VxDownAy, pitch+kLX2AY*legX);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
-        downAy = kZero;
         PID_clear(&PID_vVx);
-        PID_clear(&PID_WPitch);
+        PID_clear(&PID_WxAy);
         PID_clear(&PID_LPitch);
-        printf("%f,%f\r\n", pitch[0],downAy);
+//        printf("%f,%f\r\n", pitch,kZero);
     }
+    speed = pid(&PID_WvAy, tg_pitchV, gyro_y);
     if(fsEn){
         speed = fsSpeed;
     }

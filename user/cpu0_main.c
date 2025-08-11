@@ -54,14 +54,14 @@ Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
 Page menu_main_arg_k_kLX2AY;
 Page menu_main_arg_PID;
-Page menu_main_arg_PID_aAy;
-Page menu_main_arg_PID_aAy_Kp;
-Page menu_main_arg_PID_aAy_Ki;
-Page menu_main_arg_PID_aAy_Kd;
-Page menu_main_arg_PID_wPitch;
-Page menu_main_arg_PID_wPitch_Kp;
-Page menu_main_arg_PID_wPitch_Ki;
-Page menu_main_arg_PID_wPitch_Kd;
+Page menu_main_arg_PID_vAy;
+Page menu_main_arg_PID_vAy_Kp;
+Page menu_main_arg_PID_vAy_Ki;
+Page menu_main_arg_PID_vAy_Kd;
+Page menu_main_arg_PID_xAy;
+Page menu_main_arg_PID_xAy_Kp;
+Page menu_main_arg_PID_xAy_Ki;
+Page menu_main_arg_PID_xAy_Kd;
 Page menu_main_arg_PID_vVx;
 Page menu_main_arg_PID_vVx_Kp;
 Page menu_main_arg_PID_vVx_Ki;
@@ -127,19 +127,28 @@ int core0_main(void)
     menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
     FFloatPage_init(&menu_main_arg_k_kLX2AY, "kLX2AY", &kLX2AY, -2, 2);
     menu_main_arg_k_kLX2AY.extends.fFloatValue.dot = 1;
-    ListPage_init(&menu_main_arg_PID, "PID", 3, (Page*[]){
-        &menu_main_arg_PID_wPitch,
+    ListPage_init(&menu_main_arg_PID, "PID", 4, (Page*[]){
+        &menu_main_arg_PID_vAy,
+        &menu_main_arg_PID_xAy,
         &menu_main_arg_PID_vVx,
         &menu_main_arg_PID_lPitch,
     });
-    ListPage_init(&menu_main_arg_PID_wPitch, "wPitch", 3, (Page*[]){
-        &menu_main_arg_PID_wPitch_Kp,
-        &menu_main_arg_PID_wPitch_Ki,
-        &menu_main_arg_PID_wPitch_Kd,
+    ListPage_init(&menu_main_arg_PID_vAy, "aAy", 3, (Page*[]){
+        &menu_main_arg_PID_vAy_Kp,
+        &menu_main_arg_PID_vAy_Ki,
+        &menu_main_arg_PID_vAy_Kd,
     });
-    FFloatPage_init(&menu_main_arg_PID_wPitch_Kp, "Kp", &PID_WPitch.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_wPitch_Ki, "Ki", &PID_WPitch.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_wPitch_Kd, "Kd", &PID_WPitch.Kd, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vAy_Kp, "Kp", &PID_WvAy.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vAy_Ki, "Ki", &PID_WvAy.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vAy_Kd, "Kd", &PID_WvAy.Kd, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_xAy, "vAy", 3, (Page*[]){
+        &menu_main_arg_PID_xAy_Kp,
+        &menu_main_arg_PID_xAy_Ki,
+        &menu_main_arg_PID_xAy_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_xAy_Kp, "Kp", &PID_WxAy.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_xAy_Ki, "Ki", &PID_WxAy.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_xAy_Kd, "Kd", &PID_WxAy.Kd, 0, 10000);
     ListPage_init(&menu_main_arg_PID_vVx, "vVx", 3, (Page*[]){
         &menu_main_arg_PID_vVx_Kp,
         &menu_main_arg_PID_vVx_Ki,

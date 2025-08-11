@@ -87,6 +87,7 @@
 #include "zf_device_camera.h"
 #include "zf_device_dl1a.h"
 #include "zf_device_dl1b.h"
+#include "icm42688.h"
 #include "zf_device_icm20602.h"
 #include "zf_device_imu660ra.h"
 #include "zf_device_imu963ra.h"
