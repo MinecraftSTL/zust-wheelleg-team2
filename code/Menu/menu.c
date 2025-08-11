@@ -19,6 +19,8 @@ void DoublePage_print(Page *this, uint8 row);
 void DoublePage_press(Page *this, uint8 pressed[]);
 void BoolPage_print(Page *this, uint8 row);
 void BoolPage_press(Page *this, uint8 pressed[]);
+void EnumPage_print(Page *this, uint8 row);
+void EnumPage_press(Page *this, uint8 pressed[]);
 void FuncPage_print(Page *this, uint8 row);
 void FuncPage_press(Page *this, uint8 pressed[]);
 
@@ -36,7 +38,7 @@ void Page_init(Page *this, char name[], enum PageExtendsType type){
 
 void PageKey_print(Page *this, uint8 row){
     if(!row&&(this->type!=LIST_TYPE || !this->extends.listValue.open)){
-        ips200_show_string_color(8, 0, this->name, this->select<0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+        ips200_show_string_color((240-8*strlen(this->name))/2, 0, this->name, this->select<0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
     switch(this->type){
         case LIST_TYPE:
@@ -53,6 +55,9 @@ void PageKey_print(Page *this, uint8 row){
             break;
         case BOOL_TYPE:
             BoolPage_print(this, row);
+            break;
+        case ENUM_TYPE:
+            EnumPage_print(this, row);
             break;
         case FUNC_TYPE:
             FuncPage_print(this, row);
@@ -75,6 +80,9 @@ uint8 PageKey_press(Page *this, uint8 pressed[]){
             break;
         case BOOL_TYPE:
             BoolPage_press(this, pressed);
+            break;
+        case ENUM_TYPE:
+            EnumPage_press(this, pressed);
             break;
         case FUNC_TYPE:
             FuncPage_press(this, pressed);
@@ -152,17 +160,13 @@ void PageKey_home(Page *this){
 
 void ListPage_init(Page *this, char name[], Page *key[]){
     Page_init(this, name, LIST_TYPE);
-    this->extends.listValue.size = 0;
-    for(uint8 i=0; i<LIST_PAGE_ELEMENT_MAX; ++i){
-        if(!key[i]){
-            this->extends.listValue.size = i;
+    for(this->extends.listValue.size=0; this->extends.listValue.size<PAGE_ELEMENT_MAX; ++this->extends.listValue.size){
+        if(!key[this->extends.listValue.size]){
             break;
         }
     }
     if(this->extends.listValue.size == 0){
         this->select = -1;
-    }else if(this->extends.listValue.size > LIST_PAGE_ELEMENT_MAX){
-        this->extends.listValue.size = LIST_PAGE_ELEMENT_MAX;
     }
     memcpy(this->extends.listValue.value, key, sizeof(Page*)*this->extends.listValue.size);
     for(int i=0; i<this->extends.listValue.size; ++i){
@@ -180,7 +184,7 @@ void ListPage_print(Page *this, uint8 row){
             return;
         }
         for(int i=0; i<this->extends.listValue.size; ++i){
-            ips200_show_string_color(0, (i+1)*16, this->extends.listValue.value[i]->name, this->select==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+            ips200_show_string_color(0, (i+1)*16, this->extends.listValue.value[i]->name, this->select==i ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
             PageKey_print(this->extends.listValue.value[i], i+1);
         }
     }
@@ -231,10 +235,7 @@ void IntPage_print(Page *this, uint8 row){
         if(!str[i]){
             break;
         }
-        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
-    }
-    if(!row){
-        ips200_show_string(224,0,this->extends.intValue.open?"^v":"<>");
+        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i?this->extends.intValue.open?IPS200_DEFAULT_OPENCOLOR:IPS200_DEFAULT_SELECTCOLOR:IPS200_DEFAULT_PENCOLOR);
     }
 }
 void IntPage_press(Page *this, uint8 pressed[]){
@@ -308,10 +309,7 @@ void FloatPage_print(Page *this, uint8 row){
         if(!str[i]){
             break;
         }
-        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
-    }
-    if(!row){
-        ips200_show_string(224,0,this->extends.floatValue.open?"^v":"<>");
+        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i?this->extends.floatValue.open?IPS200_DEFAULT_OPENCOLOR:IPS200_DEFAULT_SELECTCOLOR:IPS200_DEFAULT_PENCOLOR);
     }
 }
 void FloatPage_press(Page *this, uint8 pressed[]){
@@ -399,10 +397,7 @@ void DoublePage_print(Page *this, uint8 row){
         if(!str[i]){
             break;
         }
-        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
-    }
-    if(!row){
-        ips200_show_string(224,0,this->extends.doubleValue.open?"^v":"<>");
+        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->select==i?this->extends.doubleValue.open?IPS200_DEFAULT_OPENCOLOR:IPS200_DEFAULT_SELECTCOLOR:IPS200_DEFAULT_PENCOLOR);
     }
 }
 void DoublePage_press(Page *this, uint8 pressed[]){
@@ -481,7 +476,7 @@ void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
     this->extends.boolValue.dir = dir;
 }
 void BoolPage_print(Page *this, uint8 row){
-    ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->select==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+    ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->select==0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
 }
 void BoolPage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
@@ -499,12 +494,62 @@ void BoolPage_press(Page *this, uint8 pressed[]){
         }
     }
 }
+
+void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]){
+    Page_init(this, name, ENUM_TYPE);
+    this->extends.enumValue.value = value;
+    for(this->extends.enumValue.size=0; this->extends.enumValue.size<PAGE_ELEMENT_MAX; ++this->extends.enumValue.size){
+        if(!*names[this->extends.enumValue.size]){
+            break;
+        }
+    }
+    if(this->extends.enumValue.size == 0){
+        this->select = -1;
+    }
+    memcpy(this->extends.enumValue.names, names, sizeof(char*)*this->extends.enumValue.size);
+}
+void EnumPage_print(Page *this, uint8 row){
+    if(!row){
+        for(uint8 i=0; i<this->extends.enumValue.size; ++i){
+            ips200_show_string_color(0, i*16+16, this->extends.enumValue.names[i], i==*this->extends.enumValue.value?IPS200_DEFAULT_OPENCOLOR:i==this->select?IPS200_DEFAULT_SELECTCOLOR:IPS200_DEFAULT_PENCOLOR);
+        }
+    }else{
+        ips200_show_string_color(160, row*16, this->extends.enumValue.names[*this->extends.enumValue.value], IPS200_DEFAULT_PENCOLOR);
+    }
+}
+void EnumPage_press(Page *this, uint8 pressed[]){
+    if(pressed[UP_KEY] || pressed[PERV_KEY]){
+        --this->select;
+        if(this->select < -1){
+            this->select = this->extends.enumValue.size-1;
+        }
+    }
+    if(pressed[DOWN_KEY] || pressed[NEXT_KEY]){
+        ++this->select;
+        if(this->select > this->extends.enumValue.size-1){
+            this->select = -1;
+        }
+    }
+    if(pressed[LEFT_KEY]){
+        PageKey_back(this);
+        return;
+    }
+    if(pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
+        if(this->select < 0){
+            PageKey_back(this);
+            return;
+        }else{
+            *this->extends.enumValue.value=this->select;
+        }
+    }
+}
+
 void FuncPage_init(Page *this, char name[], void (*value)()){
     Page_init(this, name, FUNC_TYPE);
     this->extends.funcValue.value = value;
 }
 void FuncPage_print(Page *this, uint8 row){
-    ips200_show_string_color(row?160:0, row?row*16:16, "run", !row&&this->select==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+    ips200_show_string_color(row?160:0, row?row*16:16, "run", !row&&this->select==0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
 }
 void FuncPage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){

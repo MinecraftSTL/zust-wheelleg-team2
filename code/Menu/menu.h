@@ -9,9 +9,10 @@
 #define CODE_MENU_H_
 #include "Cpu/Std/Ifx_Types.h"
 
-#define IPS200_DEFAULT_HIGHLIGHTCOLOR         (0x7BFF  )
+#define IPS200_DEFAULT_SELECTCOLOR         (0x7BFF  )
+#define IPS200_DEFAULT_OPENCOLOR           (0x001F  )
 
-#define LIST_PAGE_ELEMENT_MAX 11
+#define PAGE_ELEMENT_MAX 11
 
 enum KeyType{
     NULL_KEY,
@@ -32,6 +33,7 @@ enum PageExtendsType{
     FLOAT_TYPE,
     DOUBLE_TYPE,
     BOOL_TYPE,
+    ENUM_TYPE,
     FUNC_TYPE,
 };
 typedef struct Page{
@@ -41,8 +43,8 @@ typedef struct Page{
     enum PageExtendsType type;
     union {
         struct {
+            struct Page *value[PAGE_ELEMENT_MAX];
             uint8 size;
-            struct Page *value[LIST_PAGE_ELEMENT_MAX];
             uint8 open;
         } listValue;
         struct {
@@ -70,6 +72,11 @@ typedef struct Page{
             uint8 dir;
         } boolValue;
         struct {
+            uint32 *value;
+            uint8 size;
+            char *names[PAGE_ELEMENT_MAX];
+        } enumValue;
+        struct {
             void (*value)();
         } funcValue;
     } extends;
@@ -89,6 +96,7 @@ void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);
 void FloatPage_init(Page *this, char name[], float *value, float max, float min);
 void DoublePage_init(Page *this, char name[], double *value, double max, double min);
 void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir);
+void EnumPage_init(Page *this, char name[], uint32 *value, char *names[]);
 void FuncPage_init(Page *this, char name[], void (*value)());
 
 #endif /* CODE_MENU_H_ */

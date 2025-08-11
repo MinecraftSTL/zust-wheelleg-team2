@@ -46,7 +46,7 @@ extern int circleX;
 extern int errY;
 extern int errDeltaY;
 extern uint8 showPInC1;
-extern uint8 showBin;
+extern uint8 showWait;
 
 extern CameraStatus cameraStatus;
 

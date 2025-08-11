@@ -129,6 +129,9 @@ void Vofa_Adjust(void)
                 case BOOL_TYPE:
                     *menu->extends.boolValue.value = (uint8)atoi(equal+1);
                     break;;
+                case ENUM_TYPE:
+                    *menu->extends.enumValue.value = (uint32)atoi(equal+1);
+                    break;
                 case FUNC_TYPE:
                     menu->extends.funcValue.value();
                     break;

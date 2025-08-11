@@ -74,7 +74,7 @@ Page menu_main_arg_k_camera_err_y;
 Page menu_main_arg_k_camera_err_deltaY;
 Page menu_main_arg_k_camera_show;
 Page menu_main_arg_k_camera_show_pInC1;
-Page menu_main_arg_k_camera_show_bin;
+Page menu_main_arg_k_camera_show_wait;
 Page menu_main_arg_k_jump;
 Page menu_main_arg_k_jump_step0;
 Page menu_main_arg_k_jump_step1;
@@ -141,8 +141,12 @@ void core0_main(void)
         &menu_main_debug,
         NULL
     });
-    IntPage_init(&menu_main_carRun, "car_run", &carStatus, 0, 2);
-    menu_main_carRun.select = 9;
+    EnumPage_init(&menu_main_carRun, "car_run", &carStatus, (char*[]){
+            "stop",
+            "balance",
+            "run",
+            "",
+    });
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
@@ -220,11 +224,11 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_err_deltaY, "deltaY", &errDeltaY, 0, MT9V03X_W);
     ListPage_init(&menu_main_arg_k_camera_show, "show", (Page*[]){
         &menu_main_arg_k_camera_show_pInC1,
-        &menu_main_arg_k_camera_show_bin,
+        &menu_main_arg_k_camera_show_wait,
         NULL
     });
     BoolPage_init(&menu_main_arg_k_camera_show_pInC1, "pInC1", &showPInC1, 0x03);
-    BoolPage_init(&menu_main_arg_k_camera_show_bin, "bin", &showBin, 0x03);
+    BoolPage_init(&menu_main_arg_k_camera_show_wait, "wait", &showWait, 0x03);
     ListPage_init(&menu_main_arg_k_jump, "jump", (Page*[]){
         &menu_main_arg_k_jump_step0,
         &menu_main_arg_k_jump_step1,

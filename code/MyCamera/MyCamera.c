@@ -21,7 +21,7 @@ int circleX = 5;
 int errY = 60;
 int errDeltaY = 30;
 uint8 showPInC1 = 1;
-uint8 showBin = 0;
+uint8 showWait = 0;
 
 uint16 lStartPoint[2];
 uint16 rStartPoint[2];
@@ -594,14 +594,12 @@ void Image_cross(Image *this, int16 lInf[MT9V03X_W*3][2], float lInfRad[MT9V03X_
         case OUT_CROSS:
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2){
                 Image_borderSetCLine(this, lBorder, lInf[0][0], lInf[0][1], lInf[1][0], lInf[1][1]);
+            }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
+                Image_borderSetDLine(this, lBorder, lInf[0][0], this->h-1);
             }
             if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1){
                 Image_borderSetCLine(this, rBorder, rInf[0][0], rInf[0][1], rInf[1][0], rInf[1][1]);
-            }
-            if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
-                Image_borderSetDLine(this, lBorder, lInf[0][0], this->h-1);
-            }
-            if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
+            }else if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
                 Image_borderSetDLine(this, rBorder, rInf[0][0], this->h-1);
             }
             if(!(lInfN > 0 && (Inflection_getFacing(lInfRad[0]) == 2 || Inflection_getFacing(lInfRad[0]) == 3) ||
@@ -653,9 +651,12 @@ void MyCamera_Show(uint16 x, uint16 y)
     if(camera_process_cnt){
         if(!showPInC1){
             Image_processForShow();
+            camera_process_cnt=0;
         }
         ips200_show_rgb565_image(x, y, showImage.image, showImage.w, showImage.h, showImage.w, showImage.h, 0);
-        camera_process_cnt=0;
+        if(showPInC1){
+            camera_process_cnt=0;
+        }
     }
 }
 void Image_processCamera(){
@@ -664,6 +665,11 @@ void Image_processCamera(){
 //        SysTimer_Start();
         Image_fromCamera(&image, mt9v03x_image);
         mt9v03x_finish_flag = 0;
+        if(!showPInC1){
+            if(showWait){
+                while(camera_process_cnt);
+            }
+        }
         Image_cut(&image, &image1, 0, 1, image.h, image.w-1);
         Image_cut(&image1, &image, 10, 30, image1.h-20, image1.w-30);
         Image_binaryzation(&image, binDeltaT);
@@ -699,7 +705,9 @@ void Image_processCamera(){
 //            camera_process_cnt_show++;
 //        }
         if(showPInC1){
-//            while(camera_process_cnt);
+            if(showWait){
+                while(camera_process_cnt);
+            }
             Image_processForShow();
         }
         Fps_add(1);
