@@ -1,7 +1,7 @@
 code/Beep/Beep.o :	../code/Beep/Beep.c
 ../code/Beep/Beep.c :
-code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MYHEADFILE.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MYHEADFILE.h :
+code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h :
 code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Beep/Beep.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/math.h
@@ -322,6 +322,12 @@ code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensour
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
+code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
+code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
+code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PIN.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PIN.h :
 code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/MOTOR.h
@@ -368,6 +374,8 @@ code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensour
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h :
 code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
+code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
 code/Beep/Beep.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h

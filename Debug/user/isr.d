@@ -322,6 +322,12 @@ user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Lib
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
+user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
+user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
+user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h :
 user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
@@ -396,6 +402,8 @@ user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Lib
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/_PinMap/IfxGpt12_PinMap.h :
 user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Port/Std/IfxPort.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Port/Std/IfxPort.h :
+user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
 user/isr.o :	../user/cpu1_main.h
 ../user/cpu1_main.h :
 user/isr.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h

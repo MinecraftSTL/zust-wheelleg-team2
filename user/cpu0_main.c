@@ -34,6 +34,14 @@
 ********************************************************************************************************************/
 #include "zf_common_headfile.h"
 
+#include "menu.h"
+
+#include "PID.h"
+#include "zf_device_mpu6050.h"
+#include "MyEncoder.h"
+
+#include "PID_param.h"
+
 #pragma section all "cpu0_dsram"
 // 将本语句与#pragma section all restore语句之间的全局变量都放在CPU0的RAM中
 
@@ -42,24 +50,96 @@
 // 本例程是开源库空工程 可用作移植或者测试各类内外设
 
 // **************************** 代码区域 ****************************
+uint8 pressed = 0;
+
+Page menu_main;
+Page menu_main_PID;
+Page menu_main_PID_motorL;
+Page menu_main_PID_motorL_Kp;
+Page menu_main_PID_motorL_Ki;
+Page menu_main_PID_motorL_Kd;
+Page menu_main_PID_motorR;
+Page menu_main_PID_motorR_Kp;
+Page menu_main_PID_motorR_Ki;
+Page menu_main_PID_motorR_Kd;
+Page menu_main_PID_pitch;
+Page menu_main_PID_pitch_Kp;
+Page menu_main_PID_pitch_Ki;
+Page menu_main_PID_pitch_Kd;
+Page menu_main_PID_Vz;
+Page menu_main_PID_Vz_Kp;
+Page menu_main_PID_Vz_Ki;
+Page menu_main_PID_Vz_Kd;
+
 int core0_main(void)
 {
     clock_init();                   // 获取时钟频率<务必保留>
     debug_init();                   // 初始化默认调试串口
     // 此处编写用户代码 例如外设初始化代码等
-    Beep_Start();
-    gpio_init(P21_4, GPO, 1, GPO_PUSH_PULL);
-    key_init(5);
-    MyEncoder_Init();
+    beepStart();
     ips200_init(IPS200_TYPE_SPI);
+    mpu6050_init();
+    MyEncoder_Init();
+    key_init(5);
     pit_ms_init(CCU60_CH0, 5);
+    pit_ms_init(CCU61_CH0, 20);
     Motor_Init();
-    Beep_Stop();
+    PID_param_init();
+    beepStop();
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
+    menu_main.parent = NULL;
+    ListPage_init(&menu_main, "main", 1, &(Page*[]){
+        &menu_main_PID,
+    });
+    ListPage_init(&menu_main_PID, "PID", 4, &(Page*[]){
+        &menu_main_PID_motorL,
+        &menu_main_PID_motorR,
+        &menu_main_PID_pitch,
+        &menu_main_PID_Vz,
+    });
+    ListPage_init(&menu_main_PID_motorL, "motorL", 3, &(Page*[]){
+        &menu_main_PID_motorL_Kp,
+        &menu_main_PID_motorL_Ki,
+        &menu_main_PID_motorL_Kd,
+    });
+    FloatPage_init(&menu_main_PID_motorL_Kp, "Kp", &motorL.Kp, -1000, 1000);
+    FloatPage_init(&menu_main_PID_motorL_Ki, "Ki", &motorL.Ki, -1000, 1000);
+    FloatPage_init(&menu_main_PID_motorL_Kd, "Kd", &motorL.Kd, -1000, 1000);
+    ListPage_init(&menu_main_PID_motorR, "motorR", 3, &(Page*[]){
+        &menu_main_PID_motorR_Kp,
+        &menu_main_PID_motorR_Ki,
+        &menu_main_PID_motorR_Kd,
+    });
+    FloatPage_init(&menu_main_PID_motorR_Kp, "Kp", &motorR.Kp, -1000, 1000);
+    FloatPage_init(&menu_main_PID_motorR_Ki, "Ki", &motorR.Ki, -1000, 1000);
+    FloatPage_init(&menu_main_PID_motorR_Kd, "Kd", &motorR.Kd, -1000, 1000);
+    ListPage_init(&menu_main_PID_pitch, "pitch", 3, &(Page*[]){
+        &menu_main_PID_pitch_Kp,
+        &menu_main_PID_pitch_Ki,
+        &menu_main_PID_pitch_Kd,
+    });
+    FloatPage_init(&menu_main_PID_pitch_Kp, "Kp", &pitch.Kp, -1000, 1000);
+    FloatPage_init(&menu_main_PID_pitch_Ki, "Ki", &pitch.Ki, -1000, 1000);
+    FloatPage_init(&menu_main_PID_pitch_Kd, "Kd", &pitch.Kd, -1000, 1000);
+    ListPage_init(&menu_main_PID_Vz, "Vz", 3, &(Page*[]){
+        &menu_main_PID_Vz_Kp,
+        &menu_main_PID_Vz_Ki,
+        &menu_main_PID_Vz_Kd,
+    });
+    FloatPage_init(&menu_main_PID_Vz_Kp, "Kp", &Vz.Kp, -1000, 1000);
+    FloatPage_init(&menu_main_PID_Vz_Ki, "Ki", &Vz.Ki, -1000, 1000);
+    FloatPage_init(&menu_main_PID_Vz_Kd, "Kd", &Vz.Kd, -1000, 1000);
+    PageKey_print(&menu_main);
     for(;;){
         // 此处编写需要循环执行的代码
-        MotorSetPWM(150, 150);
+        if(pressed){
+            PageKey_press(&menu_main, pressed);
+            PageKey_print(&menu_main);
+            pressed=0;
+        }
+        ips200_show_int(0, 280, Encoder_speed_l, 8);
+        ips200_show_int(0, 300, Encoder_speed_r, 8);
         // 此处编写需要循环执行的代码
     }
 }

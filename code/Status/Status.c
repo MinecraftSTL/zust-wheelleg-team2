@@ -22,7 +22,7 @@ void Car_Stop(void)
 //  pit_disable(CCU61_CH0);
     target_left = 0;
     target_right = 0;
-    Motor_Stop();
+//    Motor_Stop();
 }
 
 /***********************************************
@@ -35,7 +35,7 @@ void Car_Stop(void)
 void Car_Start(void)
 {
     system_delay_ms(1000);
-    Beep_ShortRing();
+    beepSTime();
     g_Car_Status = status_car_start;
     PID_clear(&Motor_Speed_PID_Left);
     PID_clear(&Motor_Speed_PID_Right);

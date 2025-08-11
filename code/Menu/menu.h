@@ -28,7 +28,7 @@ typedef struct Page{
     union {
         struct {
             uint8 size;
-            struct Page *value[16];
+            struct Page *value[9];
             uint8 opened;
         } listValue;
         struct {

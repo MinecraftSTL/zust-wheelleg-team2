@@ -36,7 +36,6 @@ void Page_init(Page *this, char name[], enum PageExtendsType type){
 }
 
 void PageKey_print(Page *this){
-    ips200_clear();
     if(this->type!=LIST_TYPE || !this->extends.listValue.opened){
         ips200_show_string_color(8, 0, this->name, this->open<0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
@@ -93,6 +92,7 @@ uint8 PageKey_back(Page *this){
     }else{
         opened->parent->extends.listValue.opened = 0;
     }
+    ips200_clear();
     return 1;
 }
 void PageKey_home(Page *this){
@@ -101,10 +101,14 @@ void PageKey_home(Page *this){
         opened->parent->extends.listValue.opened = 0;
         opened = opened->parent;
     }
+    ips200_clear();
 }
 
 void ListPage_init(Page *this, char name[], uint8 size, Page *key[]){
     Page_init(this, name, LIST_TYPE);
+    if(size == 0){
+        this->open = -1;
+    }
     memcpy(&this->extends.listValue.value, key, sizeof(Page)*size);
     this->extends.listValue.size = size;
     for(int i=0; i<size; ++i){
@@ -146,6 +150,7 @@ void ListPage_press(Page *this, uint8 pressed){
             PageKey_back(this);
         }else{
             this->extends.listValue.opened = 1;
+            ips200_clear();
         }
     }
 }
@@ -243,12 +248,12 @@ void FloatPage_press(Page *this, uint8 pressed){
     if(pressed&0x04 || !this->extends.floatValue.opened&&pressed&0x20){
         --this->open;
         if(this->open < -1){
-            this->open = 9;
+            this->open = 7;
         }
     }
     if(pressed&0x08 || !this->extends.floatValue.opened&&pressed&0x40){
         ++this->open;
-        if(this->open > 9){
+        if(this->open > 7){
             this->open = -1;
         }
     }
@@ -318,7 +323,7 @@ void FloatPage_press(Page *this, uint8 pressed){
 }
 
 void DoublePage_init(Page *this, char name[], double *value, float min, float max){
-    Page_init(this, name, FLOAT_TYPE);
+    Page_init(this, name, DOUBLE_TYPE);
     this->extends.doubleValue.value = value;
     this->extends.doubleValue.min = min;
     this->extends.doubleValue.max = max;
@@ -472,7 +477,7 @@ void Double_toString(double this, char *str, uint8 num, uint8 point){
         *str = '-';
         this = -this;
     }
-    this+=5*powf(10,-point-1);
+    this+=5*pow(10, -point-1);
     int intThis = (int)this;  // 先将浮点数转换为整数（忽略小数部分，虽然存在精度问题但先聚焦逻辑）
     for(int i = num - 1; i >= 0; --i){  // 从高位到低位提取数字
         intThis %= lround(pow(10, i+1));  // 去掉已提取的最高位数字

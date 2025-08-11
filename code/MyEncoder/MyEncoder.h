@@ -28,7 +28,6 @@ void MyEncoder_Init(void);
 void GetSpeed(void);
 void Get_Switch_Num(void);
 int16 My_Switch_encoder_get_count (encoder_index_enum encoder_n);
-uint8 If_Switch_Encoder_Change(void);
 void Get_Encoder_Distance(Encoder_Distance_Typedef *Distance_Structure);
 void Encoder_Distance_Start(Encoder_Distance_Typedef *Distance_Structure);
 void Encoder_Distance_Stop(Encoder_Distance_Typedef *Distance_Structure);

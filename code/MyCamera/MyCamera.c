@@ -1844,7 +1844,7 @@ void Cross_Road(void)
                 {
                     cross_road_flag=0;
                     cross_road_status=0;
-                    Beep_Stop();
+                    beepStop();
                 }
             }
 
@@ -2073,7 +2073,7 @@ void Zebra_Crossing(void)
         while(Encoder_Distance_MaxLimit(&Zebra_Crossing_Structure, 25));
 
         Car_Stop();
-        Beep_ShortRing();
+        beepSTime();
 //        system_delay_ms(1000);
 
     }

@@ -5,10 +5,8 @@ int16 Encoder_speed_r = 0;
 
 int switch_encoder_num = 0;
 int switch_encoder_change_num = 0;
-uint8 switch_encode_bring_flag;
-uint8 switch_encode_change_get_buff_flag = 0;                   //变化缓冲，谨防变化未用上就将变化值清零
 
-uint8 encoder_distance_open_flag = open_status;                           //是否启用里程计
+uint8 encoder_distance_open_flag = close_status;                           //是否启用里程计
 int left_encoder_distance_cnt = 0;
 int right_encoder_distance_cnt = 0;
 float left_encoder_distance = 0;
@@ -120,49 +118,19 @@ void GetSpeed(void)
 ************************************************/
 void Get_Switch_Num(void)
 {
-    int tmp = 0;
     static int encoder_cnt, timer_cnt, last_switch_encoder_num = 0;
     timer_cnt = -My_Switch_encoder_get_count(TIM3_ENCODER);
     encoder_clear_count(TIM3_ENCODER);
 
-    if(abs(timer_cnt) < 4)
-    {
-        encoder_cnt += timer_cnt;
-    }
-    else
-    {
-        tmp = timer_cnt / 4;
-        switch_encoder_num += tmp;
-        tmp = timer_cnt % 4;
-        encoder_cnt += tmp;
-    }
-    if(abs(encoder_cnt) >= 4)
-    {
-        tmp = encoder_cnt / 4;
-        switch_encoder_num += tmp;
-        tmp = encoder_cnt % 4;
-        encoder_cnt = 0;
-        encoder_cnt += tmp;
-    }
+    encoder_cnt += timer_cnt;
+    switch_encoder_num += encoder_cnt / 4;
+    encoder_cnt %= 4;
 
-    printf("%d, %d, %d, %d\r\n", timer_cnt, switch_encode_change_get_buff_flag,
-            last_switch_encoder_num, switch_encoder_num);
-    if((last_switch_encoder_num != switch_encoder_num ) && switch_encode_change_get_buff_flag == 0)
-    {
-        switch_encode_change_get_buff_flag = 1;
-        switch_encoder_change_num = switch_encoder_num - last_switch_encoder_num;
-        Beep_Timer_ShortRing();
-
-    }
-    else if((last_switch_encoder_num != switch_encoder_num )&& switch_encode_change_get_buff_flag == 1)
-    {
-        switch_encoder_change_num = switch_encoder_change_num + switch_encoder_num - last_switch_encoder_num;
-        Beep_Timer_ShortRing();
-    }
-    if((last_switch_encoder_num == switch_encoder_num ) && switch_encode_change_get_buff_flag == 0)
-    {
-        switch_encoder_change_num = 0;
-//        Beep_Stop();
+//    printf("%d, %d, %d, %d\r\n", timer_cnt, switch_encode_change_get_buff_flag,
+//            last_switch_encoder_num, switch_encoder_num);
+    switch_encoder_change_num = switch_encoder_num - last_switch_encoder_num;
+    if(switch_encoder_change_num){
+        beepSTime();
     }
     last_switch_encoder_num = switch_encoder_num;
 }
@@ -187,26 +155,6 @@ int16 My_Switch_encoder_get_count (encoder_index_enum encoder_n)
     }
     return encoder_data;
 
-}
-
-/***********************************************
-* @brief : 判断旋转编码器是否出现变化
-* @param : void
-* @return: uint8            1变化 0不变
-* @date  : 2024年11月6日12:27:38
-* @author: SJX
-************************************************/
-uint8 If_Switch_Encoder_Change(void)
-{
-    switch_encode_change_get_buff_flag = 0;
-    if(switch_encoder_change_num != 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
 }
 
 /***********************************************

@@ -12,9 +12,9 @@
 #define Switch_ENCODER_L         TIM3_ENCODER_CH1_P02_6        //右编码器计数引脚
 #define Switch_ENCODER_R         TIM3_ENCODER_CH2_P02_7        //右编码器方向引脚
 
-#define  MOTOR_LEFT_1  ATOM0_CH0_P21_2
+#define  MOTOR_LEFT_1 ATOM0_CH0_P21_2
 #define  MOTOR_LEFT_2 ATOM0_CH1_P21_3
-#define  MOTOR_RIGHT_2 ATOM0_CH2_P21_4
 #define  MOTOR_RIGHT_1 ATOM0_CH3_P21_5
+#define  MOTOR_RIGHT_2 ATOM0_CH2_P21_4
 
 #endif

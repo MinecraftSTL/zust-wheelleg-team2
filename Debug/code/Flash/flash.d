@@ -336,6 +336,8 @@ code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Openso
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PIN.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
+code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
 code/Flash/flash.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h

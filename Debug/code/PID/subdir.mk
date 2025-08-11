@@ -4,16 +4,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../code/PID/PID.c 
+../code/PID/PID.c \
+../code/PID/PID_param.c 
 
 COMPILED_SRCS += \
-./code/PID/PID.src 
+./code/PID/PID.src \
+./code/PID/PID_param.src 
 
 C_DEPS += \
-./code/PID/PID.d 
+./code/PID/PID.d \
+./code/PID/PID_param.d 
 
 OBJS += \
-./code/PID/PID.o 
+./code/PID/PID.o \
+./code/PID/PID_param.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -36,7 +40,7 @@ code/PID/%.o: ./code/PID/%.src code/PID/subdir.mk
 clean: clean-code-2f-PID
 
 clean-code-2f-PID:
-	-$(RM) ./code/PID/PID.d ./code/PID/PID.o ./code/PID/PID.src
+	-$(RM) ./code/PID/PID.d ./code/PID/PID.o ./code/PID/PID.src ./code/PID/PID_param.d ./code/PID/PID_param.o ./code/PID/PID_param.src
 
 .PHONY: clean-code-2f-PID
 

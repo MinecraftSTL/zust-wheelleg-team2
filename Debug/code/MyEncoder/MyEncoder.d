@@ -338,6 +338,8 @@ code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC37
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
+code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
 code/MyEncoder/MyEncoder.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h

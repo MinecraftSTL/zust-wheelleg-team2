@@ -13,11 +13,11 @@
 
 void PID_Init(PID *this, float kp, float ki, float kd, float max_I, float max_Out)
 {
-    this->Ek_ = 0; // 上次偏差值初始化
-    this->Ek_sum = 0; // 上上次偏差值初始化
-    this->Kp = kp; // 比例常数
-    this->Ki = ki; // 积分常数
-    this->Kd = kd; // 微分常数
+    this->Ek_ = 0;
+    this->Ek_sum = 0;
+    this->Kp = kp;
+    this->Ki = ki;
+    this->Kd = kd;
     this->OUT = 0;
     this->Max_I = max_I;
     this->Max_Out = max_Out;
