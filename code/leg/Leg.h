@@ -21,15 +21,16 @@
 #define LBU 60
 #define LBD 90
 
-#define MAX_Z 120
+#define MIN_Z 30
+#define MAX_Z 140
 #define MAX_X 90
 
-struct ServoAngle{
+struct LegServoAngle{
     double f, b;
 };
 
 void Leg_init();
-void Leg_set_duty(double rb, double rf, double lf, double lb);
+void Leg_set_duty(float rb, float rf, float lf, float lb);
 void Leg_set_pos(int32 lx, int32 lz, int32 rx, int32 rz);
 
 #endif /* CODE_LEG_LEG_H_ */
