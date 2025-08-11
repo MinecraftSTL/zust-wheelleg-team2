@@ -11,6 +11,8 @@
 
 #define IPS200_DEFAULT_HIGHLIGHTCOLOR         (0x7BFF  )
 
+#define LIST_PAGE_ELEMENT_MAX 11
+
 enum KeyType{
     NULL_KEY,
     UP_KEY,
@@ -40,7 +42,7 @@ typedef struct Page{
     union {
         struct {
             uint8 size;
-            struct Page *value[9];
+            struct Page *value[LIST_PAGE_ELEMENT_MAX];
             uint8 opened;
         } listValue;
         struct {
@@ -78,6 +80,7 @@ void PageKey_print(Page *this, uint8 row);
 void PageKey_press(Page *this, uint8 pressed[]);
 Page *PageKey_getRoot(Page *this);
 Page *PageKey_getOpened(Page *this);
+Page *PageKey_getPath(Page *this, char *path);
 uint8 PageKey_back(Page *this);
 void PageKey_home(Page *this);
 void ListPage_init(Page *this, char name[], uint8 size, Page *key[]);

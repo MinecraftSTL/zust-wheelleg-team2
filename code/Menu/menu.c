@@ -108,6 +108,23 @@ Page *PageKey_getOpened(Page *this){
         return this;
     }
 }
+Page *PageKey_getPath(Page *this, char *path){
+    char *dot = strchr(path, '.');
+    if(dot == NULL){
+        dot = path + strlen(path);
+    }
+    for(uint8 i=0; i<this->extends.listValue.size; ++i){
+        Page *next = this->extends.listValue.value[i];
+        if(!strncmp(path, next->name, dot-path)){
+            if(*dot){
+                return PageKey_getPath(next, dot+1);
+            }else{
+                return next;
+            }
+        }
+    }
+    return NULL;
+}
 uint8 PageKey_back(Page *this){
     Page *opened = PageKey_getOpened(this);
     if(opened->parent == NULL){
@@ -131,6 +148,8 @@ void ListPage_init(Page *this, char name[], uint8 size, Page *key[]){
     Page_init(this, name, LIST_TYPE);
     if(size == 0){
         this->open = -1;
+    }else if(size >= LIST_PAGE_ELEMENT_MAX){
+        size = LIST_PAGE_ELEMENT_MAX-1;
     }
     memcpy(this->extends.listValue.value, key, sizeof(Page*)*size);
     this->extends.listValue.size = size;

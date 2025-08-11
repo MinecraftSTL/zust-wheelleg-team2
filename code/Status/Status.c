@@ -6,7 +6,7 @@
 
 #include "Status.h"
 
-uint8 g_Car_Status = status_car_stop ;
+Car_Status g_Car_Status = status_car_stop ;
 uint8 g_started_debug = 0;
 
 /***********************************************

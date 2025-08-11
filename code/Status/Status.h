@@ -22,7 +22,7 @@ typedef enum
     open_status,
 }Status_Flag;
 
-extern uint8 g_Car_Status;
+extern Car_Status g_Car_Status;
 extern uint8 g_started_debug;
 
 void Car_Stop(void);

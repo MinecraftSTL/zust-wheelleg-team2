@@ -10,7 +10,6 @@
 #include "cpu1_main.h"
 #include "isr.h"
 
-#include "Gyroscope.h"
 #include "Leg.h"
 #include "Motor.h"
 #include "Filter.h"
@@ -21,6 +20,7 @@
 #include "UART.h"
 #include "Status.h"
 #include "Debug.h"
+#include "gyroscope/Gyroscope.h"
 #include "myCamera/MyCamera.h"
 #include "myEncoder/MyEncoder.h"
 #include "pid/Pid.h"

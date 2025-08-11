@@ -61,6 +61,13 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     }else if(my_key_get_state(KEY_1) == KEY_LONG_PRESS){
         ++pressed[BACK_KEY];
     }
+    if(my_key_get_state(KEY_2) == KEY_SHORT_PRESS){
+        if(g_Car_Status < 2){
+            ++g_Car_Status;
+        }
+    }else if(my_key_get_state(KEY_2) == KEY_LONG_PRESS){
+        g_Car_Status = 0;
+    }
     Get_Switch_Num();
     if(switch_encoder_change_num < 0){
         pressed[PERV_KEY] -= switch_encoder_change_num;
@@ -266,9 +273,10 @@ IFX_INTERRUPT(uart0_rx_isr, UART0_INT_VECTAB_NUM, UART0_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
 
-#if DEBUG_UART_USE_INTERRUPT                        // 如果开启 debug 串口中断
-        debug_interrupr_handler();                  // 调用 debug 串口接收处理函数 数据会被 debug 环形缓冲区读取
-#endif                                              // 如果修改了 DEBUG_UART_INDEX 那这段代码需要放到对应的串口中断去
+//#if DEBUG_UART_USE_INTERRUPT                        // 如果开启 debug 串口中断
+//        debug_interrupr_handler();                  // 调用 debug 串口接收处理函数 数据会被 debug 环形缓冲区读取
+//#endif                                              // 如果修改了 DEBUG_UART_INDEX 那这段代码需要放到对应的串口中断去
+    My_Vofa_CallBack();
 }
 
 

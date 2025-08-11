@@ -22,10 +22,9 @@ EXECUTABLES :=
 OBJS := 
 SECONDARY_SIZE := 
 
-# Every subdirectory with source files must be described here
+# 此处必须描述包含源文件的每个子目录
 SUBDIRS := \
 code/Flash \
-code/Gyro \
 code/Motor \
 code/Status \
 code/Sys \
@@ -36,6 +35,7 @@ code/beep \
 code/debug \
 code/filter \
 code/foc \
+code/gyroscope \
 code/icm42688 \
 code/leg \
 code/menu \

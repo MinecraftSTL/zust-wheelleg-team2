@@ -5,6 +5,10 @@
 #include "zf_common_debug.h"
 #include "zf_common_fifo.h"
 
+#include "menu.h"
+
+#include "cpu0_main.h"
+
 #define UART_INDEX              (DEBUG_UART_INDEX   )                           // д╛хо UART_0
 #define UART_BAUDRATE           (DEBUG_UART_BAUDRATE)                           // д╛хо 115200
 #define UART_TX_PIN             (DEBUG_UART_TX_PIN  )                           // д╛хо UART0_TX_P14_0
@@ -14,5 +18,6 @@ extern fifo_struct uart_data_fifo;
 
 void UART_Init(void);
 //void MyUART_Write_Buffer(float DATA1, float DATA2, float DATA3, float DATA4 );
+void My_Vofa_CallBack(void);
 
 #endif

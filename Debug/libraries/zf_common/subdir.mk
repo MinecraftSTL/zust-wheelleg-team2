@@ -2,7 +2,7 @@
 # 自动生成的文件。不要编辑！
 ################################################################################
 
-# Add inputs and outputs from these tool invocations to the build variables 
+# 将这些工具调用的输入和输出添加到构建变量 
 C_SRCS += \
 ../libraries/zf_common/zf_common_clock.c \
 ../libraries/zf_common/zf_common_debug.c \
@@ -36,7 +36,7 @@ OBJS += \
 ./libraries/zf_common/zf_common_interrupt.o 
 
 
-# Each subdirectory must supply rules for building sources it contributes
+# 每个子目录必须为构建它所贡献的源提供规则
 libraries/zf_common/%.src: ../libraries/zf_common/%.c libraries/zf_common/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING C/C++ Compiler'

@@ -4,7 +4,7 @@
  *  Created on: 2023年12月13日
  *      Author: 卢劲涵
  */
-#include "Gyroscope_Process.h"
+#include <gyroscope/Gyroscope_Process.h>
 
 #define Kp 10.0f // 这里的KpKi是用于调整加速度计修正陀螺仪的速度
 
@@ -35,7 +35,7 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float
     {
         // 计算加速度模长
         float a_norm = sqrt(ax * ax + ay * ay + az * az);
-        float g = 9.81f;
+        float g = 9.80665f;
         float sigma = 0.05f; // 经验设定的噪声标准差
         float chi_square = ((a_norm - g) * (a_norm - g)) / (sigma * sigma);
 
