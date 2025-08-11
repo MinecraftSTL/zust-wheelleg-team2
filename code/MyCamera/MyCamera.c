@@ -31,7 +31,7 @@ int crossY = 20;
 int circleX = 7;
 int rampS = 750000;
 int rampY = 40;
-int rampZ = -45;
+int rampZ = -60;
 float rampK = 0.1;
 int barrierY0 = 20;
 int barrierY1 = 50;
@@ -1574,7 +1574,9 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
             }
             break;
         case OR_CROSS_LCIRCLE:
-            if(lInfN == 0 && rInfN == 0 || lStraight==1 && rStraight==1){
+            if(!(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3) && !(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4) &&
+                    !(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 ||
+                            lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2)){
                 CameraStatus_addScore(NONE);
             }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3){
@@ -1583,7 +1585,9 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case OR_CROSS_RCIRCLE:
-            if(lInfN == 0 && rInfN == 0 || lStraight==1 && rStraight==1){
+            if(!(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4) && !(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3) &&
+                    !(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 ||
+                            rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1)){
                 CameraStatus_addScore(NONE);
             }
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
