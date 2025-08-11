@@ -154,7 +154,7 @@ int core0_main(void)
     });
     PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
     PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_WxAy);
-    PidPage_init(&menu_main_arg_PID_vVx, "vVx", &PID_vVx.Kd);
+    PidPage_init(&menu_main_arg_PID_vVx, "vVx", &PID_vVx);
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
     PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
     PidPage_init(&menu_main_arg_PID_xAx, "xAx", &PID_xAx);

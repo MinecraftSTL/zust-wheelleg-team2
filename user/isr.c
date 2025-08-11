@@ -110,7 +110,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
 //        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
-        legX = -pid(&PID_vVx, targetV, Encoder_speed)/1000;
+        legX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         tg_pitchV = pid(&PID_WxAy, kZero, pitch);
         tg_yawV = pid(&PID_vAz, (image_w-2)/2-g_camera_mid_err, yaw);
