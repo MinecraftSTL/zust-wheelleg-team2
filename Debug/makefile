@@ -60,6 +60,7 @@ RM := rm -rf
 -include code/filter/subdir.mk
 -include code/debug/subdir.mk
 -include code/beep/subdir.mk
+-include code/Wifi_Image/subdir.mk
 -include code/VOFA/subdir.mk
 -include code/UART/subdir.mk
 -include code/SysTimer/subdir.mk

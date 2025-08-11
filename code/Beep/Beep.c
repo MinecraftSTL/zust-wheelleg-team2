@@ -4,6 +4,7 @@
  *  Created on: 2024Äê12ÔÂ23ÈÕ
  *      Author: minec
  */
+#include "Beep.h"
 
 #include "isr.h"
 

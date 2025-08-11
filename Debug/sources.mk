@@ -31,6 +31,7 @@ code/Sys \
 code/SysTimer \
 code/UART \
 code/VOFA \
+code/Wifi_Image \
 code/beep \
 code/debug \
 code/filter \

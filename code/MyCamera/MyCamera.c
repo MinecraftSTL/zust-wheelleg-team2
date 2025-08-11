@@ -2035,7 +2035,7 @@ void Zebra_Crossing(void)
         Zebra_Crossing_Structure.distance_record_status = close_status;
 
         Car_Stop();
-        beepShort();
+        beepMid();
 //        system_delay_ms(1000);
 
     }

@@ -100,14 +100,15 @@ int core0_main(void)
     debug_init();                   // 初始化默认调试串口
     // 此处编写用户代码 例如外设初始化代码等
     beep_init();
-    Flash_Init();
     ips200_init(IPS200_TYPE_SPI);
-    gyro_init();
+    Flash_Init();
     my_key_init(PIT00ms);
+    gyro_init();
+    MyCamera_Init();
+    Wifi_Image_Init();
     small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
-    MyCamera_Init();
     PID_param_init();
     Pit_init();
     // 此处编写用户代码 例如外设初始化代码等
@@ -231,6 +232,8 @@ int core0_main(void)
         PageKey_press(&menu_main, pressed);
         PageKey_print(&menu_main, 0);
         MyCamera_Show(200);
+        Wifi_Image_Send_Camera();
+
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码
