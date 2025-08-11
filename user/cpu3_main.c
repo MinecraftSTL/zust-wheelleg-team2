@@ -59,12 +59,11 @@ void core3_main(void)
 
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();                 // 等待所有核心初始化完毕
-    while (TRUE)
+    for(;;)
     {
         // 此处编写需要循环执行的代码
 
-
-
+        Wifi_Image_Send_Camera();
 
         // 此处编写需要循环执行的代码
     }

@@ -6,7 +6,7 @@
 
 #include "Status.h"
 
-Car_Status carStatus = status_car_stop;
+CarStatus carStatus = CAR_STOP;
 
 /***********************************************
 * @brief : Í£³µ
@@ -15,22 +15,10 @@ Car_Status carStatus = status_car_stop;
 * @date  : 2024_10
 * @author: SJX
 ************************************************/
-void Car_stop(void)
+void CarStatus_set(CarStatus this)
 {
     beepMid();
-    carStatus = status_car_stop;
-    cameraStatus = NONE;
-}
-
-/***********************************************
-* @brief : Æô¶¯
-* @param : void
-* @return: void
-* @date  : 2024_10
-* @author: SJX
-************************************************/
-void Car_start(void)
-{
-    beepMid();
-    carStatus = status_car_start;
+    carStatus = this;
+    CameraStatus_set(NONE);
+    carRunTick = 0;
 }

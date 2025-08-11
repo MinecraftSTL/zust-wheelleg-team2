@@ -70,6 +70,7 @@ Page menu_main_arg_k_camera_status_k;
 Page menu_main_arg_k_camera_e;
 Page menu_main_arg_k_camera_e_zebra;
 Page menu_main_arg_k_camera_e_zebra_y;
+Page menu_main_arg_k_camera_e_zebra_tick;
 Page menu_main_arg_k_camera_e_cross;
 Page menu_main_arg_k_camera_e_cross_x;
 Page menu_main_arg_k_camera_e_circle;
@@ -231,6 +232,7 @@ void core0_main(void)
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_e_zebra_y, "y", &zebraY, 0, MT9V03X_H-1-3);
+    IntPage_init(&menu_main_arg_k_camera_e_zebra_tick, "tick", &zebraTick, 0, 2147483647);
     ListPage_init(&menu_main_arg_k_camera_e_cross, "cross", (Page*[]){
         &menu_main_arg_k_camera_e_cross_x,
         NULL
@@ -366,7 +368,6 @@ void core0_main(void)
         Image_showCamera(0, 200);
         ips200_show_int(188,200,fps,4);
         ips200_show_int(188,216,cameraStatus,4);
-        Wifi_Image_Send_Camera();
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码

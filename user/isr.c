@@ -63,12 +63,12 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     }
     if(my_key_get_state(KEY_2) == KEY_SHORT_PRESS){
         if(carStatus < 2){
-            ++carStatus;
+            CarStatus_set(carStatus+1);
         }else{
-            carStatus=1;
+            CarStatus_set(CAR_BALANCE);
         }
     }else if(my_key_get_state(KEY_2) == KEY_LONG_PRESS){
-        Car_stop();
+        CarStatus_set(CAR_STOP);
     }
     Get_Switch_Num();
     if(switch_encoder_change_num < 0){
@@ -103,8 +103,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 
     if(carStatus){
         if(fabs(roll) > 60 || fabs(pitch) > 60){
-            beepLong();
-            carStatus=status_car_stop;
+            CarStatus_set(CAR_STOP);
         }
     }
 
@@ -112,7 +111,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     if(carStatus){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;
-        if(carStatus == status_car_start){
+        if(carStatus == CAR_RUN){
             targetV = V0;
             if(fvEn){
                 targetV = fvV;
@@ -123,7 +122,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         legX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         tg_pitchV = pid(&PID_WxAy, kZero, pitch);
-        if(carStatus == status_car_start){
+        if(carStatus == CAR_RUN){
             tg_yawV = pid(&PID_vAz, 0, camera_err);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);

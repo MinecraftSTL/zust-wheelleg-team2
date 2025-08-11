@@ -57,6 +57,7 @@ extern float straightErr;
 extern float statusJump;
 extern float statusK;
 extern int zebraY;
+extern int zebraTick;
 extern int crossX;
 extern int circleX;
 extern int circleY;
@@ -67,20 +68,9 @@ extern uint8 showPInC1;
 extern uint8 showWait;
 
 extern CameraStatus cameraStatus;
+extern uint64 carRunTick;
 
 void MyCamera_Init(void);
 void Image_showCamera(uint16 x, uint16 y);
-uint8 Image_get(Image *this, uint16 y, uint16 x);
-void Image_set(Image *this, uint16 y, uint16 x, uint8 value);
-void Image_fromCamera(Image *this, uint8 mt9v03x_image[MT9V03X_H][MT9V03X_W]);
-void Image_clone(Image *this, Image *target);
-void Image_cut(Image *this, Image *target, uint16 y0, uint16 x0, uint16 y1, uint16 x1);
-void Image_toRgb565Image(Image *this, Rgb565Image *target);
-void Rgb565Image_clone(Rgb565Image *this, Rgb565Image *target);
-void Rgb565Image_mode(Rgb565Image *this, Rgb565Image *target);
-uint16 Rgb565Image_get(Rgb565Image *this, uint16 y, uint16 x);
-void Rgb565Image_set(Rgb565Image *this, uint16 y, uint16 x, uint16 value);
-void Rgb565Image_mark(Rgb565Image *this, uint16 y, uint16 x, uint16 color, uint16 r);
-void Image_zoom(Image *this, Image *target, float zoom);
-void Image_binaryzation(Image *this, int16 deltaT);
+void CameraStatus_set(CameraStatus this);
 #endif

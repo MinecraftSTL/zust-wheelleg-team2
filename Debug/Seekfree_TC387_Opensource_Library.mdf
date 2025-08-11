@@ -7,11 +7,11 @@ space	mpe:tc0:abs18	103	8
 space	mpe:tc0:csa	104	8
 space	mpe:tc1:linear	201	8
 space	mpe:tc1:abs24	202	8
-space	mpe:tc3:abs24	402	8
-space	mpe:tc3:abs18	403	8
 space	mpe:tc3:csa	404	8
-space	mpe:vtc:abs24	2	8
+space	mpe:tc3:abs18	403	8
 space	mpe:vtc:abs18	3	8
+space	mpe:vtc:abs24	2	8
+space	mpe:tc3:abs24	402	8
 space	mpe:vtc:linear	1	8
 space	mpe:tc1:abs18	203	8
 space	mpe:tc1:csa	204	8
@@ -34,10 +34,10 @@ chip	mpe:psram3	1	8	65536	ram
 chip	mpe:pfls3	11	8	3145728	rom
 chip	mpe:psram2	3	8	65536	ram
 chip	mpe:dsram2	2	8	98304	ram
-chip	mpe:lmuram	18	8	131072	ram
 chip	mpe:cpu3_dlmu	17	8	65536	ram
 chip	mpe:cpu2_dlmu	16	8	65536	ram
 chip	mpe:cpu1_dlmu	15	8	65536	ram
+chip	mpe:lmuram	18	8	131072	ram
 # map <space id> <start in space> <size in space> <chip id> <start on chip>
 map	401	3489660928	98304	0	0
 map	402	3489660928	98304	0	0

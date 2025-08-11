@@ -3,7 +3,7 @@
 //Limit函数
 #define LIMIT_VAL(a,min,max) ((a)<(min)?(min):((a)>(max)?(max):(a)))
 
-float V0 = 400;
+float V0 = 475;
 /***********************************************
 * @brief : PWM输出
 * @param : void
@@ -14,7 +14,7 @@ float V0 = 400;
 void MotorSetPWM(int pwm_left,int pwm_right)
 {
     //对输入电机的pwm进行限幅
-
+    pwm_left = -pwm_left;
     if(pwm_left>MOTOR_PWM_MAX)
         pwm_left = MOTOR_PWM_MAX;
     else if(pwm_left<MOTOR_PWM_MIN)
@@ -27,5 +27,5 @@ void MotorSetPWM(int pwm_left,int pwm_right)
     //左电机
 
 //    printf("%d, %d\r\n", pwm_left, pwm_right);
-    small_driver_set_duty(-pwm_left, pwm_right);
+    small_driver_set_duty(pwm_left, pwm_right);
 }

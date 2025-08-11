@@ -11,10 +11,10 @@
 
 typedef enum
 {
-    status_car_stop,
-    status_car_gyroscope_run,
-    status_car_start,
-}Car_Status;
+    CAR_STOP,
+    CAR_BALANCE,
+    CAR_RUN,
+}CarStatus;
 
 typedef enum
 {
@@ -22,10 +22,9 @@ typedef enum
     open_status,
 }Status_Flag;
 
-extern Car_Status carStatus;
+extern CarStatus carStatus;
 
-void Car_stop(void);
-void Car_start(void);
+void CarStatus_set(CarStatus this);
 
 
 #endif
