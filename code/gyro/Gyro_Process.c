@@ -6,7 +6,7 @@
  */
 #include "Gyro_Process.h"
 
-float Gyro_Kp = 50.0f; // 这里的KpKi是用于调整加速度计修正陀螺仪的速度
+float Gyro_Kp = Gyro_Kp_back; // 这里的KpKi是用于调整加速度计修正陀螺仪的速度
 
 float Gyro_Ki = 0.0033f;
 

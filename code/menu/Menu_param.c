@@ -16,8 +16,10 @@ Page menu_main_config_volume;
 Page menu_main_config_init;
 Page menu_main_config_init_ips200;
 Page menu_main_config_init_camera;
+Page menu_main_config_init_gyro;
 Page menu_main_config_mod;
 Page menu_main_config_mod_gyro;
+Page menu_main_config_mod_gyroValue;
 Page menu_main_config_mod_foc;
 Page menu_main_config_mod_flash;
 Page menu_main_config_motor;
@@ -253,17 +255,21 @@ void Menu_param_init(){
     ListPage_init(&menu_main_config_init, "init", (Page*[]){
         &menu_main_config_init_ips200,
         &menu_main_config_init_camera,
+        &menu_main_config_init_gyro,
         NULL
     });
     FuncPage_init(&menu_main_config_init_ips200, "ips200", ips200_init_spi);
     FuncPage_init(&menu_main_config_init_camera, "camera", MyCamera_Init);
+    FuncPage_init(&menu_main_config_init_gyro, "gyro", Gyro_init);
     ListPage_init(&menu_main_config_mod, "mod", (Page*[]){
         &menu_main_config_mod_gyro,
+        &menu_main_config_mod_gyroValue,
         &menu_main_config_mod_foc,
         &menu_main_config_mod_flash,
         NULL
     });
     FuncPage_init(&menu_main_config_mod_gyro, "gyro", Gyro_set);
+    FuncPage_init(&menu_main_config_mod_gyroValue, "gyroValue", Gyro_back);
     FuncPage_init(&menu_main_config_mod_foc, "foc", MotorZero);
     FuncPage_init(&menu_main_config_mod_flash, "flash", Flash_clear);
     ListPage_init(&menu_main_config_motor, "motor", (Page*[]){

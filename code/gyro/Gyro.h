@@ -28,12 +28,15 @@
 
 #define Gravity_G 9.80665f
 
+#define Gyro_Kp_back 50.f
+#define Gyro_Kp_used 1.f
 
 void Gyro_init();
 void Gyro_set();
 void get_gyro();
 void get_gyorscope_data(void);
 void Update_GyroData(void);
+void Gyro_back();
 extern float gyro_z,gyro_y,gyro_x;
 //extern float gyro_z_res,gyro_x_res,gyro_y_res;
 extern float acc_z,acc_y,acc_x;

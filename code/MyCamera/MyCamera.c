@@ -1020,22 +1020,22 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
                 CameraStatus_addScore(O_LCIRCLE);
             }
             if(lrMeet >= 0){
-                int16 *u;
+                int16 *d;
                 if(rInfN > 0){
-                    u = rLine[rInfLine[0]];
+                    d = rLine[rInfLine[0]];
                 }else{
-                    u = rStart;
+                    d = rStart;
                 }
                 int16 x, y=-1;
-                for(uint16 i=lrMeet; i<u[1]; ++i){
+                for(uint16 i=lrMeet; i<d[1]; ++i){
                     if(Image_borderIsLose(this, lBorder, i, 0) != 0 && Image_borderIsLose(this, lBorder, i+1, 0) != 0){
                         x = Image_getTrapezoidX(this, i);
                         y = i;
                         break;
                     }
                 }
-                if(y >= 0){
-                    Image_borderSetCLine(this, rBorder, x, y, u[0], u[1]);
+                if(y >= 0 && (rInfN > 0 || Image_borderIsStraight(this,rBorder,y,d[1],straightStep,straightErr,1) != 0)){
+                    Image_borderSetCLine(this, rBorder, x, y, d[0], d[1]);
                     for(; y>=0; --y){
                         rBorder[y] = x;
                         lBorder[y] = 0;
@@ -1154,22 +1154,22 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
                 CameraStatus_addScore(O_RCIRCLE);
             }
             if(lrMeet >= 0){
-                int16 *u;
+                int16 *d;
                 if(lInfN > 0){
-                    u = lLine[lInfLine[0]];
+                    d = lLine[lInfLine[0]];
                 }else{
-                    u = lStart;
+                    d = lStart;
                 }
                 int16 x, y=-1;
-                for(uint16 i=lrMeet; i<u[1]; ++i){
+                for(uint16 i=lrMeet; i<d[1]; ++i){
                     if(Image_borderIsLose(this, rBorder, i, 1) != 0 && Image_borderIsLose(this, rBorder, i+1, 1) != 0){
                         x = this->w-1-Image_getTrapezoidX(this, i);
                         y = i;
                         break;
                     }
                 }
-                if(y >= 0){
-                    Image_borderSetCLine(this, lBorder, x, y, u[0], u[1]);
+                if(y >= 0 && (lInfN > 0 || Image_borderIsStraight(this,lBorder,y,d[1],straightStep,straightErr,0) != 0)){
+                    Image_borderSetCLine(this, lBorder, x, y, d[0], d[1]);
                     for(; y>=0; --y){
                         lBorder[y] = x;
                         rBorder[y] = this->w-1;

@@ -99,3 +99,11 @@ void Update_GyroData(void)
     get_gyorscope_data();
 //    printf("%f, %f, %f\r\n", pitch, roll, yaw);
 }
+
+void Gyro_back(){
+    beepLong();
+    Gyro_Kp = Gyro_Kp_back;
+    system_delay_ms(1000);
+    beepMid();
+    Gyro_Kp = Gyro_Kp_used;
+}
