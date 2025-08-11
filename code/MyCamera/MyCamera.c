@@ -761,27 +761,30 @@ void Image_lCircle(Image *this){
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
                 CameraStatus_set(TO_LCIRCLE);
             }
-            if(lStraight && rStraight){
-                CameraStatus_set(NONE);
-            }
             break;
         case TO_LCIRCLE:
             if(rInfN == 0){
                 CameraStatus_set(PO_LCIRCLE);
             }
-            if(lStraight && rStraight){
-                CameraStatus_set(NONE);
-            }
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
-                Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
+//                Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
+                if(lrMeet >= 0){
+                    int16 y = -1;
+                    for(uint16 i=lrMeet; i<this->h; ++i){
+                        if(Image_borderIsLose(this, lBorder, i, 0)){
+                            y = i;
+                            break;
+                        }
+                    }
+                    if(y>=0){
+                        Image_borderSetCLine(this, rBorder, 0, y, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1]);
+                    }
+                }
             }
             break;
         case PO_LCIRCLE:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2 && setLineY < lLine[lInfLine[0]][1]){
                 CameraStatus_set(O_LCIRCLE);
-            }
-            if(lStraight && rStraight){
-                CameraStatus_set(NONE);
             }
             break;
         case O_LCIRCLE:
@@ -846,27 +849,30 @@ void Image_rCircle(Image *this){
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3){
                 CameraStatus_set(TO_RCIRCLE);
             }
-            if(lStraight && rStraight){
-                CameraStatus_set(NONE);
-            }
             break;
         case TO_RCIRCLE:
             if(lInfN == 0){
                 CameraStatus_set(PO_RCIRCLE);
             }
-            if(lStraight && rStraight){
-                CameraStatus_set(NONE);
-            }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3){
-                Image_borderSetULine(this, lBorder, lLine[lInfLine[0]][1]);
+//                Image_borderSetULine(this, lBorder, lLine[lInfLine[0]][1]);
+                if(lrMeet >= 0){
+                    int16 y = -1;
+                    for(uint16 i=lrMeet; i<this->h; ++i){
+                        if(Image_borderIsLose(this, rBorder, i, 1)){
+                            y = i;
+                            break;
+                        }
+                    }
+                    if(y >= 0){
+                        Image_borderSetCLine(this, lBorder, this->w-1, y, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1]);
+                    }
+                }
             }
             break;
         case PO_RCIRCLE:
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1 && setLineY < rLine[rInfLine[0]][1]){
                 CameraStatus_set(O_RCIRCLE);
-            }
-            if(lStraight && rStraight){
-                CameraStatus_set(NONE);
             }
             break;
         case O_RCIRCLE:
