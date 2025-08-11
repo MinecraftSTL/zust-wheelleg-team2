@@ -34,5 +34,5 @@ void MotorSetPWM(int pwm_left,int pwm_right)
     //×óµç»ú
 
 //    printf("%d, %d\r\n", pwm_left, pwm_right);
-//    small_driver_set_duty(-pwm_left, pwm_right);
+    small_driver_set_duty(-pwm_left, pwm_right);
 }

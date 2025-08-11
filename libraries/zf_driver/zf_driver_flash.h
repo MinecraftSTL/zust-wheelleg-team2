@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC387 Opensourec Library 即（TC387 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC377 开源库的一部分
+* 本文件是 TC387 开源库的一部分
 *
-* TC377 开源库 是免费软件
+* TC387 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -24,13 +24,13 @@
 * 文件名称          zf_driver_flash
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.9.20
-* 适用平台          TC377TP
+* 开发环境          ADS v1.10.2
+* 适用平台          TC387QP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-11-03       pudding            first version
+* 2022-11-04       pudding            first version
 * 2023-07-14       pudding            修复错误的注释
 ********************************************************************************************************************/
 
@@ -41,9 +41,9 @@
 #include "zf_common_typedef.h"
 
 #define EEPROM_BASE_ADDR             (IFXFLASH_DFLASH_START)
-#define EEPROM_SIZE                  (IFXFLASH_DFLASH_SIZE)                     // 一共有256KB
+#define EEPROM_SIZE                  (IFXFLASH_DFLASH_SIZE)                     // 一共有512KB
 #define EEPROM_PAGE_SIZE             (EEPROM_SIZE / IFXFLASH_DFLASH_NUM_LOG_SECTORS)
-#define EEPROM_PAGE_NUM              (IFXFLASH_DFLASH_NUM_LOG_SECTORS)          // 256KB分为了64页
+#define EEPROM_PAGE_NUM              (IFXFLASH_DFLASH_NUM_LOG_SECTORS)          // 512KB分为了128页
 
 #define FLASH_DATA_SIZE              (IFXFLASH_DFLASH_PAGE_LENGTH)
 #define EEPROM_PAGE_LENGTH           (EEPROM_PAGE_SIZE/FLASH_DATA_SIZE)         // 每页可以存512个uint32类型的数据

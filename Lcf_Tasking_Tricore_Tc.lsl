@@ -38,16 +38,25 @@
 #define LCF_USTACK2_SIZE 2k
 #define LCF_ISTACK2_SIZE 1k
 
+#define LCF_CSA3_SIZE 8k
+#define LCF_USTACK3_SIZE 2k
+#define LCF_ISTACK3_SIZE 1k
+
 #define LCF_HEAP_SIZE  4k
 
 #define LCF_CPU0 0
 #define LCF_CPU1 1
 #define LCF_CPU2 2
+#define LCF_CPU3 3
 
 /*Un comment one of the below statements to enable CpuX DMI RAM to hold global variables*/
 #define LCF_DEFAULT_HOST LCF_CPU0
 /*#define LCF_DEFAULT_HOST LCF_CPU1*/
 /*#define LCF_DEFAULT_HOST LCF_CPU2*/
+/*#define LCF_DEFAULT_HOST LCF_CPU3*/
+
+#define LCF_DSPR3_START 0x40000000
+#define LCF_DSPR3_SIZE  96k
 
 #define LCF_DSPR2_START 0x50000000
 #define LCF_DSPR2_SIZE  96k
@@ -57,6 +66,10 @@
 
 #define LCF_DSPR0_START 0x70000000
 #define LCF_DSPR0_SIZE  240k
+
+#define LCF_CSA3_OFFSET     (LCF_DSPR3_SIZE - 1k - LCF_CSA3_SIZE)
+#define LCF_ISTACK3_OFFSET  (LCF_CSA3_OFFSET - 256 - LCF_ISTACK3_SIZE)
+#define LCF_USTACK3_OFFSET  (LCF_ISTACK3_OFFSET - 256 - LCF_USTACK3_SIZE)
 
 #define LCF_CSA2_OFFSET     (LCF_DSPR2_SIZE - 1k - LCF_CSA2_SIZE)
 #define LCF_ISTACK2_OFFSET  (LCF_CSA2_OFFSET - 256 - LCF_ISTACK2_SIZE)
@@ -73,29 +86,36 @@
 #define LCF_HEAP0_OFFSET    (LCF_USTACK0_OFFSET - LCF_HEAP_SIZE)
 #define LCF_HEAP1_OFFSET    (LCF_USTACK1_OFFSET - LCF_HEAP_SIZE)
 #define LCF_HEAP2_OFFSET    (LCF_USTACK2_OFFSET - LCF_HEAP_SIZE)
+#define LCF_HEAP3_OFFSET    (LCF_USTACK3_OFFSET - LCF_HEAP_SIZE)
 
 #define LCF_INTVEC0_START 0x802FE000
-#define LCF_INTVEC1_START 0x805FC000
-#define LCF_INTVEC2_START 0x805FE000
+#define LCF_INTVEC1_START 0x805FE000
+#define LCF_INTVEC2_START 0x808FE000
+#define LCF_INTVEC3_START 0x809FE000
 
 #define LCF_TRAPVEC0_START 0x80000100
 #define LCF_TRAPVEC1_START 0x80300000
-#define LCF_TRAPVEC2_START 0x80300100
+#define LCF_TRAPVEC2_START 0x80600000
+#define LCF_TRAPVEC3_START 0x80900000
 
 #define LCF_STARTPTR_CPU0 0x80000000
-#define LCF_STARTPTR_CPU1 0x80300200
-#define LCF_STARTPTR_CPU2 0x80300220
+#define LCF_STARTPTR_CPU1 0x80300100
+#define LCF_STARTPTR_CPU2 0x80600100
+#define LCF_STARTPTR_CPU3 0x80900100
 
 #define LCF_STARTPTR_NC_CPU0 0xA0000000
-#define LCF_STARTPTR_NC_CPU1 0xA0300200
-#define LCF_STARTPTR_NC_CPU2 0xA0300220
+#define LCF_STARTPTR_NC_CPU1 0xA0300100
+#define LCF_STARTPTR_NC_CPU2 0xA0600100
+#define LCF_STARTPTR_NC_CPU3 0xA0900100
 
 #define INTTAB0             (LCF_INTVEC0_START)
 #define INTTAB1             (LCF_INTVEC1_START)
 #define INTTAB2             (LCF_INTVEC2_START)
+#define INTTAB3             (LCF_INTVEC3_START)
 #define TRAPTAB0            (LCF_TRAPVEC0_START)
 #define TRAPTAB1            (LCF_TRAPVEC1_START)
 #define TRAPTAB2            (LCF_TRAPVEC2_START)
+#define TRAPTAB3            (LCF_TRAPVEC3_START)
 
 #define RESET LCF_STARTPTR_NC_CPU0
 
@@ -105,10 +125,10 @@
 
 processor mpe
 {
-    derivative = tc37;
+    derivative = tc38;
 }
 
-derivative tc37
+derivative tc38
 {
     core tc0
     {
@@ -131,12 +151,20 @@ derivative tc37
         copytable_space = vtc:linear;     // use the copy table in the virtual core for 'bss' and initialized data sections
     }
     
+    core tc3 // core 3 TC16P
+    {
+        architecture = TC1V1.6.2;
+        space_id_offset = 400;            // add 300 to all space IDs in the architecture definition
+        copytable_space = vtc:linear;     // use the copy table in the virtual core for 'bss' and initialized data sections
+    }
+    
     core vtc
     {
         architecture = TC1V1.6.2;
         import tc0;                     // add all address spaces of core tc0 to core vtc for linking and locating
         import tc1;                     //                                tc1
         import tc2;                     //                                tc2
+        import tc3;                     //                                tc3
     }
     
     bus sri
@@ -148,9 +176,28 @@ derivative tc37
         map (dest=bus:tc0:fpi_bus, src_offset=0, dest_offset=0, size=0xc0000000);
         map (dest=bus:tc1:fpi_bus, src_offset=0, dest_offset=0, size=0xc0000000);
         map (dest=bus:tc2:fpi_bus, src_offset=0, dest_offset=0, size=0xc0000000);
+        map (dest=bus:tc3:fpi_bus, src_offset=0, dest_offset=0, size=0xc0000000);
         map (dest=bus:vtc:fpi_bus, src_offset=0, dest_offset=0, size=0xc0000000);
     }
     
+    memory dsram3 // Data Scratch Pad Ram
+    {
+        mau = 8;
+        size = 96k;
+        type = ram;
+        map (dest=bus:tc3:fpi_bus, dest_offset=0xd0000000, size=96k, priority=8);
+        map (dest=bus:sri, dest_offset=0x40000000, size=96k);
+    }
+    
+    memory psram3 // Program Scratch Pad Ram
+    {
+        mau = 8;
+        size = 64k;
+        type = ram;
+        map (dest=bus:tc3:fpi_bus, dest_offset=0xc0000000, size=64k, priority=8);
+        map (dest=bus:sri, dest_offset=0x40100000, size=64k);
+    }
+
     memory dsram2 // Data Scratch Pad Ram
     {
         mau = 8;
@@ -223,12 +270,30 @@ derivative tc37
         map not_cached (dest=bus:sri, dest_offset=0xa0300000, reserved, size=3M);
     }
     
+    memory pfls2
+    {
+        mau = 8;
+        size = 3M;
+        type = rom;
+        map     cached (dest=bus:sri, dest_offset=0x80600000,           size=3M);
+        map not_cached (dest=bus:sri, dest_offset=0xa0600000, reserved, size=3M);
+    }
+    
+    memory pfls3
+    {
+        mau = 8;
+        size = 3M;
+        type = rom;
+        map     cached (dest=bus:sri, dest_offset=0x80900000,           size=3M);
+        map not_cached (dest=bus:sri, dest_offset=0xa0900000, reserved, size=3M);
+    }
+    
     memory dfls0
     {
         mau = 8;
-        size = 256K;
+        size = 1M;
         type = reserved nvram;
-        map (dest=bus:sri, dest_offset=0xaf000000, size=256K);
+        map (dest=bus:sri, dest_offset=0xaf000000, size=1M  );
     }
     
     memory ucb
@@ -266,14 +331,22 @@ derivative tc37
         map not_cached (dest=bus:sri, dest_offset=0xb0020000, reserved, size=64k);
     }
     
-    /*In case of TC37xPD it doesn't contain EMEM, the below memory needs to be commented*/
-    memory edmem
+    memory cpu3_dlmu
     {
         mau = 8;
-        size = 3M;
+        size = 64k;
         type = ram;
-        map (dest=bus:sri, dest_offset=0x99000000, size=3M);
-        map (dest=bus:sri, dest_offset=0xb9000000, reserved, size=3M);
+        map     cached (dest=bus:sri, dest_offset=0x90030000,           size=64k);
+        map not_cached (dest=bus:sri, dest_offset=0xb0030000, reserved, size=64k);
+    }
+    
+    memory lmuram
+    {
+        mau = 8;
+        size = 128K;
+        type = ram;
+        map     cached (dest=bus:sri, dest_offset=0x90040000,           size=128K);
+        map not_cached (dest=bus:sri, dest_offset=0xb0040000, reserved, size=128K);
     }
 
 #if (__VERSION__ >= 6003)    
@@ -299,6 +372,8 @@ derivative tc37
         stack "istack_tc1" (min_size = 1k, fixed, align = 8);
         stack "ustack_tc2" (min_size = 1k, fixed, align = 8);
         stack "istack_tc2" (min_size = 1k, fixed, align = 8);
+        stack "ustack_tc3" (min_size = 1k, fixed, align = 8);
+        stack "istack_tc3" (min_size = 1k, fixed, align = 8);
     }
     
     /*Section setup for the copy table*/
@@ -322,6 +397,11 @@ derivative tc37
             {
                 symbol = "_lc_ub_table_tc2";
                 space = :tc2:linear, :tc2:abs24, :tc2:abs18, :tc2:csa;
+            },
+            table
+            {
+                symbol = "_lc_ub_table_tc3";
+                space = :tc3:linear, :tc3:abs24, :tc3:abs18, :tc3:csa;
             }
         );
     }
@@ -331,6 +411,27 @@ derivative tc37
     section_layout :vtc:linear
     {
         /*Fixed memory Allocations for stack memory and CSA*/
+        group (ordered)
+        {
+            group ustack3(align = 8, run_addr = mem:dsram3[LCF_USTACK3_OFFSET])
+            {
+                stack "ustack_tc3" (size = LCF_USTACK3_SIZE);
+            }
+            "__USTACK3":= sizeof(group:ustack3) > 0  ? "_lc_ue_ustack_tc3" : 0;
+            "__USTACK3_END"="_lc_gb_ustack3";
+            
+            group istack3(align = 8, run_addr = mem:dsram3[LCF_ISTACK3_OFFSET])
+            {
+                stack "istack_tc3" (size = LCF_ISTACK3_SIZE);
+            }
+            "__ISTACK3":= sizeof(group:istack3) > 0  ? "_lc_ue_istack_tc3" : 0;
+            "__ISTACK3_END"="_lc_gb_istack3";
+            
+            group (align = 64, attributes=rw, run_addr=mem:dsram3[LCF_CSA3_OFFSET]) 
+                reserved "csa_tc3" (size = LCF_CSA3_SIZE);
+            "__CSA3":=        "_lc_ub_csa_tc3";
+            "__CSA3_END":=    "_lc_ue_csa_tc3";        
+        }
         group (ordered)
         {
             group ustack2(align = 8, run_addr = mem:dsram2[LCF_USTACK2_OFFSET])
@@ -413,6 +514,7 @@ derivative tc37
             "__START0" := LCF_STARTPTR_NC_CPU0;
             "__START1" := LCF_STARTPTR_NC_CPU1;
             "__START2" := LCF_STARTPTR_NC_CPU2;
+            "__START3" := LCF_STARTPTR_NC_CPU3;
         }
         
         /*Fixed memory Allocations for Trap Vector Table*/
@@ -439,9 +541,17 @@ derivative tc37
                     select "(.text.traptab_cpu2*)";
                 }
             }
+            group trapvec_tc3 (align = 8, run_addr=LCF_TRAPVEC3_START)
+            {
+                section "trapvec_tc3" (size=0x100, attributes=rx, fill=0)
+                {
+                    select "(.text.traptab_cpu3*)";
+                }
+            }
             "__TRAPTAB_CPU0" := TRAPTAB0;
             "__TRAPTAB_CPU1" := TRAPTAB1;
             "__TRAPTAB_CPU2" := TRAPTAB2;
+            "__TRAPTAB_CPU3" := TRAPTAB3;
         }
         
         /*Fixed memory Allocations for Start up code*/
@@ -453,18 +563,20 @@ derivative tc37
             }
             group start_tc1 (run_addr=LCF_STARTPTR_NC_CPU1)
             {
-                section "start_tc1" (size=0x20, attributes=rx, fill=0)
-                {
-                    select "(.text.start_cpu1*)";
-                }
+                select "(.text.start_cpu1*)";
             }
             group start_tc2 (run_addr=LCF_STARTPTR_NC_CPU2)
             {
                 select "(.text.start_cpu2*)";
             }
+            group start_tc3 (run_addr=LCF_STARTPTR_NC_CPU3)
+            {
+                select "(.text.start_cpu3*)";
+            }
             "__ENABLE_INDIVIDUAL_C_INIT_CPU0" := 0; /* Not used */
             "__ENABLE_INDIVIDUAL_C_INIT_CPU1" := 0;
             "__ENABLE_INDIVIDUAL_C_INIT_CPU2" := 0;
+            "__ENABLE_INDIVIDUAL_C_INIT_CPU3" := 0;
         }
         
         /*Fixed memory Allocations for Interrupt Vector Table*/
@@ -482,10 +594,15 @@ derivative tc37
             {
 #                include "inttab2.lsl"
             }
+            group int_tab_tc3 (ordered)
+            {
+#                include "inttab3.lsl"
+            }
             "_lc_u_int_tab" = (LCF_INTVEC0_START);
             "__INTTAB_CPU0" = (LCF_INTVEC0_START);
             "__INTTAB_CPU1" = (LCF_INTVEC1_START);
             "__INTTAB_CPU2" = (LCF_INTVEC2_START);
+            "__INTTAB_CPU3" = (LCF_INTVEC3_START);
         }
         
         /*Fixed memory Allocations for BMHD*/
@@ -535,6 +652,12 @@ derivative tc37
         /*Near Absolute Data, selectable with patterns and user defined sections*/
         group
         {
+            group (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram3)
+            {
+                select "(.zdata.zdata_cpu3|.zdata.zdata_cpu3.*)";
+                select "(.zbss.zbss_cpu3|.zbss.zbss_cpu3.*)";
+            }
+            
             group (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram2)
             {
                 select "(.zdata.zdata_cpu2|.zdata.zdata_cpu2.*)";
@@ -561,6 +684,9 @@ derivative tc37
         }
 
         /*Near Absolute Data, selectable by toolchain*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram3)
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
         group (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram2)
 #        endif
@@ -621,9 +747,11 @@ derivative tc37
                 select ".zrodata.Ifx_Ssw_Tc0.*";
                 select ".zrodata.Ifx_Ssw_Tc1.*";
                 select ".zrodata.Ifx_Ssw_Tc2.*";
+                select ".zrodata.Ifx_Ssw_Tc3.*";
                 select ".zrodata.Cpu0_Main.*";
                 select ".zrodata.Cpu1_Main.*";
                 select ".zrodata.Cpu2_Main.*";
+                select ".zrodata.Cpu3_Main.*";
                 
                 /*Near Absolute Const, selectable by toolchain*/
                 select ".zrodata.const.cpu0.32bit";
@@ -641,6 +769,9 @@ derivative tc37
     section_layout :vtc:linear
     {
         /*Relative A0 Addressable Data, selectable by toolchain*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group a0 (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram3)
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
         group a0 (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram2)
 #        endif
@@ -659,8 +790,11 @@ derivative tc37
         
         /*Relative A1 Addressable Const, selectable by toolchain*/
         /*Small constant sections, No option given for CPU specific user sections to make generated code portable across Cpus*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group  a1 (ordered, align = 4, run_addr=mem:pfls3)
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
-        group  a1 (ordered, align = 4, run_addr=mem:pfls1)
+        group  a1 (ordered, align = 4, run_addr=mem:pfls2)
 #        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU1
         group  a1 (ordered, align = 4, run_addr=mem:pfls1)
@@ -676,7 +810,7 @@ derivative tc37
         "__A1_MEM" = "_LITERAL_DATA_";
         
         /*Relative A9 Addressable Data, selectable with patterns and user defined sections*/
-        group a9 (ordered, align = 4, run_addr=mem:cpu0_dlmu)
+        group a9 (ordered, align = 4, run_addr=mem:lmuram)
         {
             select "(.data_a9.a9sdata|.data_a9.a9sdata.*)";
             select "(.bss_a9.a9sbss|.bss_a9.a9sbss.*)";
@@ -685,8 +819,11 @@ derivative tc37
         "__A9_MEM" = "_A9_DATA_";
 
         /*Relative A8 Addressable Const, selectable with patterns and user defined sections*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group  a8 (ordered, align = 4, run_addr=mem:pfls3)
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
-        group  a8 (ordered, align = 4, run_addr=mem:pfls1)
+        group  a8 (ordered, align = 4, run_addr=mem:pfls2)
 #        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU1
         group  a8 (ordered, align = 4, run_addr=mem:pfls1)
@@ -710,6 +847,19 @@ derivative tc37
             /*DSRAM sections*/
             group
             {
+                group (ordered, attributes=rw, run_addr=mem:dsram3)
+                {
+                    select ".data.Ifx_Ssw_Tc3.*";
+                    select ".data.Cpu3_Main.*";
+                    select "(.data.data_cpu3|.data.data_cpu3.*)";
+                    select ".bss.Ifx_Ssw_Tc3.*";
+                    select ".bss.Cpu3_Main.*";
+                    select "(.bss.bss_cpu3|.bss.bss_cpu3.*)";
+                    
+                    select ".bss.cpu3_dsram|.bss.cpu3_dsram.*";
+	                select ".data.cpu3_dsram|.data.cpu3_dsram.*";
+	                select ".zdata.cpu3_dsram|.zdata.cpu3_dsram.*";
+                }
                 group (ordered, attributes=rw, run_addr=mem:dsram2)
                 {
                     select ".data.Ifx_Ssw_Tc2.*";
@@ -758,8 +908,6 @@ derivative tc37
                 {
                     select "(.data.lmudata_cpu0|.data.lmudata_cpu0.*)";
                     select "(.bss.lmubss_cpu0|.bss.lmubss_cpu0.*)";
-                    select "(.data.lmudata|.data.lmudata.*)";
-                    select "(.bss.lmubss|.bss.lmubss.*)";
                 }
                 group (ordered, attributes=rw, run_addr = mem:cpu1_dlmu)
                 {
@@ -771,10 +919,23 @@ derivative tc37
                     select "(.data.lmudata_cpu2|.data.lmudata_cpu2.*)";
                     select "(.bss.lmubss_cpu2|.bss.lmubss_cpu2.*)";
                 }
+                group (ordered, attributes=rw, run_addr = mem:cpu3_dlmu)
+                {
+                    select "(.data.lmudata_cpu3|.data.lmudata_cpu3.*)";
+                    select "(.bss.lmubss_cpu3|.bss.lmubss_cpu3.*)";
+                }
+                group (ordered, attributes=rw, run_addr=mem:lmuram)
+                {
+                    select "(.data.lmudata|.data.lmudata.*)";
+                    select "(.bss.lmubss|.bss.lmubss.*)";
+                }
             }
         }
         
         /*Far Data Sections, selectable by toolchain*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram3)
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
         group (ordered, contiguous, align = 4, attributes=rw, run_addr = mem:dsram2)
 #        endif
@@ -814,6 +975,9 @@ derivative tc37
         }
         
         /*Heap allocation*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group (ordered, align = 4, run_addr = mem:dsram3[LCF_HEAP3_OFFSET])
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
         group (ordered, align = 4, run_addr = mem:dsram2[LCF_HEAP2_OFFSET])
 #        endif
@@ -842,17 +1006,26 @@ derivative tc37
                 select ".rodata.Ifx_Ssw_Tc1.*";
                 select "(.rodata.rodata_cpu1|.rodata.rodata_cpu1.*)";
             }
-            group (ordered, align = 4, run_addr=mem:pfls1)
+            group (ordered, align = 4, run_addr=mem:pfls2)
             {
                 select ".rodata.Ifx_Ssw_Tc2.*";
                 select ".rodata.Cpu2_Main.*";
                 select "(.rodata.rodata_cpu2|.rodata.rodata_cpu2.*)";
             }
+            group (ordered, align = 4, run_addr=mem:pfls3)
+            {
+                select ".rodata.Ifx_Ssw_Tc3.*";
+                select ".rodata.Cpu3_Main.*";
+                select "(.rodata.rodata_cpu3|.rodata.rodata_cpu3.*)";
+            }
         }
 
         /*Far Const Sections, selectable by toolchain*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group (ordered, align = 4, run_addr=mem:pfls3)
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
-        group (ordered, align = 4, run_addr=mem:pfls1)
+        group (ordered, align = 4, run_addr=mem:pfls2)
 #        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU1
         group (ordered, align = 4, run_addr=mem:pfls1)
@@ -892,6 +1065,11 @@ derivative tc37
                     select "(.text.cpu2_psram|.text.cpu2_psram.*)";
                     select "(.text.psram_text_cpu2|.text.psram_text_cpu2.*)";
                 }
+                group code_psram3 (ordered, attributes=rwx, copy, run_addr=mem:psram3)
+                {
+                    select "(.text.cpu3_psram|.text.cpu3_psram.*)";
+                    select "(.text.psram_text_cpu3|.text.psram_text_cpu3.*)";
+                }
             }
         }
     }
@@ -918,18 +1096,27 @@ derivative tc37
                     select ".text.Cpu1_Main.*";
                     select "(.text.text_cpu1|.text.text_cpu1.*)";
                 }
-                group (ordered, align = 4, run_addr=mem:pfls1)
+                group (ordered, align = 4, run_addr=mem:pfls2)
                 {
                     select ".text.Ifx_Ssw_Tc2.*";
                     select ".text.Cpu2_Main.*";
                     select "(.text.text_cpu2|.text.text_cpu2.*)";
                 }
+                group (ordered, align = 4, run_addr=mem:pfls3)
+                {
+                    select ".text.Ifx_Ssw_Tc3.*";
+                    select ".text.Cpu3_Main.*";
+                    select "(.text.text_cpu3|.text.text_cpu3.*)";
+                }
             }
         }
         
         /*Code Sections, selectable by toolchain*/
+#        if LCF_DEFAULT_HOST == LCF_CPU3
+        group (ordered, run_addr=mem:pfls3)
+#        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU2
-        group (ordered, run_addr=mem:pfls1)
+        group (ordered, run_addr=mem:pfls2)
 #        endif
 #        if LCF_DEFAULT_HOST == LCF_CPU1
         group (ordered, run_addr=mem:pfls1)

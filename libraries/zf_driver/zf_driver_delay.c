@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC387 Opensourec Library 即（TC387 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC377 开源库的一部分
+* 本文件是 TC387 开源库的一部分
 *
-* TC377 开源库 是免费软件
+* TC387 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -24,13 +24,13 @@
 * 文件名称          zf_driver_delay
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.9.20
-* 适用平台          TC377TP
+* 开发环境          ADS v1.10.2
+* 适用平台          TC387QP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-11-03       pudding            first version
+* 2022-11-04       pudding            first version
 * 2023-11-28       pudding            修改普通延时逻辑为中断触发，若总中断关闭则使用寄存器循环读取延时
 ********************************************************************************************************************/
 
@@ -44,10 +44,12 @@
 #define IFX_INTPRIO_STM0_SR0  220
 #define IFX_INTPRIO_STM1_SR0  221
 #define IFX_INTPRIO_STM2_SR0  222
+#define IFX_INTPRIO_STM3_SR0  223
 
 static vuint8 stm0_isr_flag = 1;
 static vuint8 stm1_isr_flag = 1;
 static vuint8 stm2_isr_flag = 1;
+static vuint8 stm3_isr_flag = 1;
 
 IFX_INTERRUPT(stm0_isr, 0, IFX_INTPRIO_STM0_SR0)
 {
@@ -68,6 +70,13 @@ IFX_INTERRUPT(stm2_isr, 2, IFX_INTPRIO_STM2_SR0)
     interrupt_global_enable(0);                     // 开启中断嵌套
     IfxStm_clearCompareFlag(&MODULE_STM2, IfxStm_Comparator_0);
     stm2_isr_flag = 0;
+}
+
+IFX_INTERRUPT(stm3_isr, 3, IFX_INTPRIO_STM3_SR0)
+{
+    interrupt_global_enable(0);                     // 开启中断嵌套
+    IfxStm_clearCompareFlag(&MODULE_STM3, IfxStm_Comparator_0);
+    stm3_isr_flag = 0;
 }
 //-------------------------------------------------------------------------------------------------------------------
 //  函数简介      system延时函数
@@ -117,6 +126,15 @@ void system_delay_10ns (uint32 time)
                 stm_sfr->CMP[0].U = stm_sfr->TIM0.U + time;
                 interrupt_global_enable(interrupt_global_state);         // 打开全局中断
                 while(stm2_isr_flag);
+            }break;
+            case IfxStm_Index_3:
+            {
+                Ifx_STM *stm_sfr = &MODULE_STM3;
+                stm3_isr_flag = 1;
+                interrupt_global_state = interrupt_global_disable();     // 关闭全局中断
+                stm_sfr->CMP[0].U = stm_sfr->TIM0.U + time;
+                interrupt_global_enable(interrupt_global_state);         // 打开全局中断
+                while(stm3_isr_flag);
             }break;
             case IfxStm_Index_none: break;
         }
@@ -226,6 +244,17 @@ void system_delay_init(void)
 
     IfxStm_initCompare(&MODULE_STM2, &stmConfig);
     IfxStm_clearCompareFlag(&MODULE_STM2, IfxStm_Comparator_0);
+
+    stmConfig.comparator          = IfxStm_Comparator_0;
+    stmConfig.compareOffset       = IfxStm_ComparatorOffset_0;
+    stmConfig.compareSize         = IfxStm_ComparatorSize_32Bits;
+    stmConfig.comparatorInterrupt = IfxStm_ComparatorInterrupt_ir0;
+    stmConfig.ticks               = 1;
+    stmConfig.triggerPriority     = IFX_INTPRIO_STM3_SR0;
+    stmConfig.typeOfService       = IfxSrc_Tos_cpu3;
+
+    IfxStm_initCompare(&MODULE_STM3, &stmConfig);
+    IfxStm_clearCompareFlag(&MODULE_STM3, IfxStm_Comparator_0);
 
     restoreInterrupts(interrupt_state);
 }

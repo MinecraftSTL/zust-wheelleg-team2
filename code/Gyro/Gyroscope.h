@@ -9,6 +9,7 @@
 #define CODE_GYROSCOPE_GYROSCOPE_H_
 
 #include "Gyroscope_Process.h"
+#include "icm42688.h"
 
 #define my_gyroscope_init() Init_ICM42688()
 #define my_get_acc() Get_Acc_ICM42688()

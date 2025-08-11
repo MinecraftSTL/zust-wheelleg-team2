@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC387 Opensourec Library 即（TC387 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC264 开源库的一部分
+* 本文件是 TC387 开源库的一部分
 *
-* TC264 开源库 是免费软件
+* TC387 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -24,13 +24,13 @@
 * 文件名称          isr
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.9.20
-* 适用平台          TC264D
+* 开发环境          ADS v1.10.2
+* 适用平台          TC387QP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-09-15       pudding            first version
+* 2022-11-04       pudding            first version
 ********************************************************************************************************************/
 
 #include "isr_config.h"
@@ -50,15 +50,15 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     }else{
         beep_stop();
     }
-    key_scanner();
+    my_key_scanner();
 //    for(int i=0; i<KEY_NUMBER; ++i){
-//        if(key_get_state(i) == KEY_SHORT_PRESS){
+//        if(my_key_get_state(i) == KEY_SHORT_PRESS){
 //            ++pressed[UP_KEY+i];
 //        }
 //    }
-    if(key_get_state(KEY_4) == KEY_SHORT_PRESS){
+    if(my_key_get_state(KEY_1) == KEY_SHORT_PRESS){
         ++pressed[CENTER_KEY];
-    }else if(key_get_state(KEY_4) == KEY_LONG_PRESS){
+    }else if(my_key_get_state(KEY_1) == KEY_LONG_PRESS){
         ++pressed[BACK_KEY];
     }
     Get_Switch_Num();
@@ -309,6 +309,7 @@ IFX_INTERRUPT(uart2_rx_isr, UART2_INT_VECTAB_NUM, UART2_RX_INT_PRIO)
 
 
 
+
 }
 // 串口3默认连接到GPS定位模块
 IFX_INTERRUPT(uart3_tx_isr, UART3_INT_VECTAB_NUM, UART3_TX_INT_PRIO)
@@ -371,6 +372,9 @@ IFX_INTERRUPT(uart6_tx_isr, UART6_INT_VECTAB_NUM, UART6_TX_INT_PRIO)
 IFX_INTERRUPT(uart6_rx_isr, UART6_INT_VECTAB_NUM, UART6_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
+
+
+
 }
 
 IFX_INTERRUPT(uart8_tx_isr, UART8_INT_VECTAB_NUM, UART8_TX_INT_PRIO)

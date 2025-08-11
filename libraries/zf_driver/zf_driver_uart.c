@@ -1,10 +1,10 @@
 /*********************************************************************************************************************
-* TC377 Opensourec Library 即（TC377 开源库）是一个基于官方 SDK 接口的第三方开源库
+* TC387 Opensourec Library 即（TC387 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
-* 本文件是 TC377 开源库的一部分
+* 本文件是 TC387 开源库的一部分
 *
-* TC377 开源库 是免费软件
+* TC387 开源库 是免费软件
 * 您可以根据自由软件基金会发布的 GPL（GNU General Public License，即 GNU通用公共许可证）的条款
 * 即 GPL 的第3版（即 GPL3.0）或（您选择的）任何后来的版本，重新发布和/或修改它
 *
@@ -24,15 +24,13 @@
 * 文件名称          zf_driver_uart
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.9.20
-* 适用平台          TC377TP
+* 开发环境          ADS v1.10.2
+* 适用平台          TC387QP
 * 店铺链接          https://seekfree.taobao.com/
 *
 * 修改记录
 * 日期              作者                备注
-* 2022-11-03       pudding            first version
-* 2023-09-27       pudding            修改串口发送和接收的通信逻辑，将直接从底层读取或者写入数据，不再通过中断处理
-* 2023-10-10       pudding            新增串口4-串口11
+* 2022-11-04       pudding            first version
 ********************************************************************************************************************/
 
 #include "IFXPORT.h"
@@ -515,6 +513,7 @@ void uart_write_string (uart_index_enum uart_n, const char *str)
 //-------------------------------------------------------------------------------------------------------------------
 uint8 uart_read_byte (uart_index_enum uart_n)
 {
+
     uint8 return_num = 0;
     IfxAsclin_Asc* uart_handle;
     uart_handle = uart_get_handle(uart_n);
