@@ -81,8 +81,5 @@ typedef struct
 /******************************************************************************/
 
 IFX_EXTERN App_Cpu0 g_AppCpu0;
-extern uint8  tingche_flag;
-extern float jd_sum;
-extern float jiaodu;
 
 #endif

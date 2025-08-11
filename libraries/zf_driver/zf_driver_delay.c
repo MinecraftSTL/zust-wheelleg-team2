@@ -60,25 +60,8 @@ IFX_INTERRUPT(stm1_isr, 0, IFX_INTPRIO_STM1_SR0)
     IfxStm_clearCompareFlag(&MODULE_STM1, IfxStm_Comparator_0);
     stm1_isr_flag = 0;
 }
-//-------------------------------------------------------------------------------------------------------------------
-//  函数简介      systick延时函数
-//  参数说明      time            延时一轮的时间（单位为纳秒，可设置范围0-20000000）
-//  参数说明      num             延时多少轮
-//  返回参数      void
-//  使用示例      无需用户调用，用户请使用h文件中的宏定义
-//-------------------------------------------------------------------------------------------------------------------
-void system_delay (uint32 time, uint32 num)
-{
-    uint32 stm_clk;
-    uint32 delay_time;
-    stm_clk = IfxStm_getFrequency(IfxStm_getAddress((IfxStm_Index)(IfxCpu_getCoreId())));
-    delay_time = (uint32)(stm_clk/1000000*time/1000);
 
-    while(num--)
-    {
-        IfxStm_waitTicks(IfxStm_getAddress((IfxStm_Index)(IfxCpu_getCoreId())), delay_time);
-    }
-}
+
 //-------------------------------------------------------------------------------------------------------------------
 //  函数简介      system延时函数
 //  参数说明      time            延时一轮的时间（单位为纳秒，可设置范围0-20000000）
@@ -87,6 +70,8 @@ void system_delay (uint32 time, uint32 num)
 //-------------------------------------------------------------------------------------------------------------------
 void system_delay_10ns (uint32 time)
 {
+    uint32 interrupt_global_state;
+
     IfxStm_Index stm_index;
 
     stm_index = (IfxStm_Index)IfxCpu_getCoreId();
@@ -102,15 +87,19 @@ void system_delay_10ns (uint32 time)
             case IfxStm_Index_0:
             {
                 Ifx_STM *stm_sfr = &MODULE_STM0;
-                stm_sfr->CMP[0].U = stm_sfr->TIM0.U + time;
                 stm0_isr_flag = 1;
+                interrupt_global_state = interrupt_global_disable();     // 关闭全局中断
+                stm_sfr->CMP[0].U = stm_sfr->TIM0.U + time;
+                interrupt_global_enable(interrupt_global_state);         // 打开全局中断
                 while(stm0_isr_flag);
             }break;
             case IfxStm_Index_1:
             {
                 Ifx_STM *stm_sfr = &MODULE_STM1;
-                stm_sfr->CMP[0].U = stm_sfr->TIM0.U + time;
                 stm1_isr_flag = 1;
+                interrupt_global_state = interrupt_global_disable();     // 关闭全局中断
+                stm_sfr->CMP[0].U = stm_sfr->TIM0.U + time;
+                interrupt_global_enable(interrupt_global_state);         // 打开全局中断
                 while(stm1_isr_flag);
             }break;
             case IfxStm_Index_none: break;
@@ -118,9 +107,23 @@ void system_delay_10ns (uint32 time)
     }
 }
 
+//-------------------------------------------------------------------------------------------------------------------
+//  函数简介      system 微秒 延时函数(访问寄存器)
+//  参数说明      time            延时时间  单位：us
+//  返回参数      void
+//  使用示例      system_delay_us_register(100);  // 延时100微秒
+//-------------------------------------------------------------------------------------------------------------------
+void system_delay_us_register (uint32 time)
+{
+    IfxStm_Index stm_index;
+
+    stm_index = (IfxStm_Index)IfxCpu_getCoreId();
+
+    IfxStm_waitTicks(IfxStm_getAddress(stm_index), time * 100);
+}
 
 //-------------------------------------------------------------------------------------------------------------------
-//  函数简介      system 微秒 延时函数
+//  函数简介      system 微秒 延时函数(定时器中断)
 //  参数说明      time            延时时间  单位：us
 //  返回参数      void
 //  使用示例      system_delay_us(100);  // 延时100微秒

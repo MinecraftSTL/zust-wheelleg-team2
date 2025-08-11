@@ -45,7 +45,7 @@
 #define dma_set_destination(dma_ch, destination_addr)       (IfxDma_setChannelDestinationAddress(&MODULE_DMA, (dma_ch), (void *)IFXCPU_GLB_ADDR_DSPR(IfxCpu_getCoreId(), (destination_addr))))
 
 //====================================================DMA 基础函数====================================================
-uint8 dma_init      (IfxDma_ChannelId dma_ch, uint8 *source_addr, uint8 *destination_addr, exti_pin_enum eru_pin, exti_trigger_enum trigger, uint16 dma_count);
+uint8 dma_init      (IfxDma_ChannelId dma_ch, uint8 *source_addr, uint8 *destination_addr, exti_pin_enum eru_pin, exti_trigger_enum trigger, uint32 dma_count);
 void  dma_disable   (IfxDma_ChannelId dma_ch);
 void  dma_enable    (IfxDma_ChannelId dma_ch);
 //====================================================DMA 基础函数====================================================

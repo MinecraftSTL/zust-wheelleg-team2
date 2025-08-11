@@ -24,7 +24,7 @@
 * 文件名称          isr
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.9.4
+* 开发环境          ADS v1.9.20
 * 适用平台          TC264D
 * 店铺链接          https://seekfree.taobao.com/
 *
@@ -38,9 +38,13 @@
 
 #include "zf_common_headfile.h"
 
-extern char hill_flag;
-extern float turn_out;
-extern uint16 tingche;
+
+
+
+
+
+
+
 
 
 

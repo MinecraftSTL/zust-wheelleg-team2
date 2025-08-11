@@ -41,6 +41,7 @@
 
 //====================================================ÑÓÊ± »ù´¡º¯Êý====================================================
 void    system_delay                (uint32 time, uint32 num);
+void    system_delay_us_register    (uint32 time);
 void    system_delay_us             (uint32 time);
 void    system_delay_ms             (uint32 time);
 void    system_delay_init           (void);

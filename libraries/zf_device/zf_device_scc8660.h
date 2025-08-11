@@ -79,7 +79,7 @@
 
 #define SCC8660_AUTO_EXP_DEF    (0  )                                           // 自动曝光     默认不开启自动曝光设置  范围 [0-1] 0为关闭
 #define SCC8660_BRIGHT_DEF      (500)                                           // 亮度设置     手动曝光默认：300   手动曝光时：参数范围0-65535   自动曝光推荐值：100 自动曝光时参数设置范围0-255
-#define SCC8660_FPS_DEF         (50 )                                           // 图像帧率     默认：50        可选参数为：60 50 30 25。 实际帧率还需要看SCC8660_PCLK_DIV参数的设置
+#define SCC8660_FPS_DEF         (60 )                                           // 图像帧率     默认：50        可选参数为：60 50 30 25。 实际帧率还需要看SCC8660_PCLK_DIV参数的设置
 #define SCC8660_PCLK_DIV_DEF    (2  )                                           // PCLK分频系数 默认：5         可选参数为：<0:1/1> <1:2/3> <2:1/2> <3:1/3> <4:1/4> <5:1/8>
                                                                                 //              分频系数越大，PCLK频率越低，降低PCLK可以减轻DVP接口的干扰，但降低PCLK频率则会影响帧率。若无特殊需求请保持默认。
                                                                                 //              例如设置FPS为50帧，但是pclk分频系数选择的为5，则摄像头输出的帧率为50*（1/8）=6.25帧
@@ -134,7 +134,7 @@ extern uint16       scc8660_image[SCC8660_H][SCC8660_W];                        
 uint16      scc8660_get_id              (void);                                 // 获取摄像头 ID
 uint16      scc8660_get_parameter       (uint16 config);                        // 单独设置摄像头曝光时间
 uint16      scc8660_get_version         (void);                                 // 获取彩色摄像头固件版本
-uint8       scc8660_set_bright          (uint16 data);                          // 单独设置图像亮度
+uint8       scc8660_set_brightness      (uint16 data);                          // 单独设置图像亮度
 uint8       scc8660_set_white_balance   (uint16 data);                          // 单独设置白平衡
 uint8       scc8660_set_reg             (uint8 addr, uint16 data);              // 对摄像头内部寄存器进行写操作
 uint8       scc8660_init                (void);                                 // SCC8660 摄像头初始化

@@ -113,7 +113,7 @@
 #define IPS200_D7_PIN_PARALLEL8         (P13_3 )                                // 双排针(并口)液晶数据引脚D7
 
 #define IPS200_DEFAULT_DISPLAY_DIR      (IPS200_PORTAIT)                        // 默认的显示方向
-#define IPS200_DEFAULT_PENCOLOR         (RGB565_GREEN    )                        // 默认的画笔颜色
+#define IPS200_DEFAULT_PENCOLOR         (RGB565_GREEN  )                        // 默认的画笔颜色
 #define IPS200_DEFAULT_BGCOLOR          (RGB565_BLACK  )                        // 默认的背景颜色
 #define IPS200_DEFAULT_DISPLAY_FONT     (IPS200_8X16_FONT)                      // 默认的字体模式
 
@@ -158,8 +158,8 @@ typedef enum
     IPS200_16X16_FONT                   = 2,                                    // 16x16    字体 目前不支持
 }ips200_font_size_enum;
 
-extern  uint16  ips200_width_max;
-extern  uint16  ips200_height_max;
+extern  uint16  ips200_x_max;
+extern  uint16  ips200_y_max;
 
 //==================================================定义 IPS200 参数结构体===============================================
 
@@ -177,6 +177,12 @@ void    ips200_show_string              (uint16 x, uint16 y, const char dat[]);
 void    ips200_show_int                 (uint16 x, uint16 y, const int32 dat, uint8 num);
 void    ips200_show_uint                (uint16 x, uint16 y, const uint32 dat, uint8 num);
 void    ips200_show_float               (uint16 x, uint16 y, const double dat, uint8 num, uint8 pointnum);
+
+void    ips200_show_char_color          (uint16 x, uint16 y, const char dat,const uint16 color);
+void    ips200_show_string_color        (uint16 x, uint16 y, const char dat[],const uint16 color);
+void    ips200_show_int_color           (uint16 x, uint16 y, const int32 dat, uint8 num,const uint16 color);
+void    ips200_show_uint_color          (uint16 x, uint16 y, const uint32 dat, uint8 num,const uint16 color);
+void    ips200_show_float_color         (uint16 x, uint16 y, const float dat, uint8 num, uint8 pointnum,const uint16 color);
 
 void    ips200_show_binary_image        (uint16 x, uint16 y, const uint8 *image, uint16 width, uint16 height, uint16 dis_width, uint16 dis_height);                      // IPS200 显示二值图像 数据每八个点组成一个字节数据
 void    ips200_show_gray_image          (uint16 x, uint16 y, const uint8 *image, uint16 width, uint16 height, uint16 dis_width, uint16 dis_height, uint8 threshold);     // IPS200 显示 8bit 灰度图像 带二值化阈值

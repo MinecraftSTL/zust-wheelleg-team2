@@ -115,7 +115,7 @@ void camera_fifo_init (void)
 // @return      void
 // Sample usage:                camera_init();
 //-------------------------------------------------------------------------------------------------------------------
-uint8 camera_init (uint8 *source_addr, uint8 *destination_addr, uint16 image_size)
+uint8 camera_init (uint8 *source_addr, uint8 *destination_addr, uint32 image_size)
 {
     uint8 num;
     uint8 link_list_num;

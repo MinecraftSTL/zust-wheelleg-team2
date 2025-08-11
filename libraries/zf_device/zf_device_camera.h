@@ -52,7 +52,7 @@ extern uint8 camera_send_image_frame_header[4];     // ÉùÃ÷ÉãÏñÍ·Êı¾İ·¢ËÍµ½ÉÏÎ»»
 void  camera_binary_image_decompression (const uint8 *data1, uint8 *data2, uint32 image_size);                  // ÉãÏñÍ·¶ş½øÖÆÍ¼ÏñÊı¾İ½âÑ¹ÎªÊ®Áù½øÖÆ°ËÎ»Êı¾İ Ğ¡×ê·çÓÃ
 void  camera_send_image                 (uart_index_enum uartn, const uint8 *image_addr, uint32 image_size);    // ÉãÏñÍ·Í¼Ïñ·¢ËÍÖÁÉÏÎ»»ú²é¿´Í¼Ïñ
 void  camera_fifo_init                  (void);                                                                 // ÉãÏñÍ·´®¿Ú FIFO ³õÊ¼»¯
-uint8 camera_init                       (uint8 *source_addr, uint8 *destination_addr, uint16 image_size);       // ÉãÏñÍ·²É¼¯³õÊ¼»¯
+uint8 camera_init                       (uint8 *source_addr, uint8 *destination_addr, uint32 image_size);       // ÉãÏñÍ·²É¼¯³õÊ¼»¯
 //=================================================ÉãÏñÍ·¹«¹²¿â »ù´¡º¯Êı================================================
 
 #endif
