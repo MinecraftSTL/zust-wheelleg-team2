@@ -131,11 +131,11 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float
 
                 // 其中YAW航向角由于加速度计对其没有修正作用，因此此处直接用陀螺仪积分代替
 
-                xAy = asinf(-2 * q1 * q3 + 2 * q0 * q2); // xAy
+                xAy = asinf(-2 * q1 * q3 + 2 * q0 * q2)*57.3; // xAy
 
-                xAx = atan2f(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2 * q2 + 1); // roll
+                xAx = atan2f(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2 * q2 + 1)*57.3; // roll
 
-                xAz = -atan2f(2 * q1 * q2 + 2 * q0 * q3, -2 * q2 * q2 - 2 * q3 * q3 + 1);
+                xAz = -atan2f(2 * q1 * q2 + 2 * q0 * q3, -2 * q2 * q2 - 2 * q3 * q3 + 1)*57.3;
 
         }
 }

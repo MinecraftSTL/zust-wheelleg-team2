@@ -82,14 +82,13 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kLX2AY = 0.6;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
     gyro_get();
-    float speed = 0, target_aAy, legX = 0, legY = -45;
+    float speed = 0;
     if(car_run){
         int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
@@ -97,41 +96,31 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         if(fvEn){
             targetV = fvV;
         }
-        float VxDownAy = pid(&PID_vVx, -targetV, Encoder_speed)/100;
+        float VxDownAy = pid(&Vx, targetV, Encoder_speed)/1000;
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
-    //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
+//        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
+    //    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
 //        printf("%f,%f,%f\r\n", xAy,downAy,VxDownAy);
-
-        if(fabs(VxDownAy)>0.1){
+        if(fabs(downAy+VxDownAy-xAy)>45){
             beepLong();
             car_run=0;
         }
-        downAy+=VxDownAy;
-        legX = -pid(&PID_LPitch, 0, xAy)/10;
-        target_aAy = pid(&PID_WPitch, downAy, xAy+kLX2AY*legX)*100;
-        speed = pid(&PID_aAy, target_aAy, aAy);
-//        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
+        speed = pid(&pitch, downAy+VxDownAy, xAy);
+        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
-        downAy_reset();
-        PID_clear(&PID_vVx);
-        PID_clear(&PID_WPitch);
-        PID_clear(&PID_LPitch);
-//        printf("%f,%f\r\n", xAy,downAy);
+        downAy_autoSet();
+        PID_clear(&Vx);
+        PID_clear(&pitch);
     }
     if(fsEn){
         speed = fsSpeed;
     }
-//    printf("%f\r\n", speed);
-    MotorSetPWM(speed, speed);
+    MotorSetPWM(speed,speed);
+    if(fwpEn){
+        Leg_set_pos(fwpLx, fwpLz, fwpRx, fwpRz);
+    }
     if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
-    }else if(fwpEn){
-        Leg_set_pos(fwpLx, fwpLz, fwpRx, fwpRz);
-    }else{
-        int lx, lz, rx, rz;
-        lx = rx = legX;
-        lz = rz = legY;
-        Leg_set_pos(lx, lz, rx, rz);
     }
 }
 

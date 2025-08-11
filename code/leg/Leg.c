@@ -41,10 +41,10 @@ uint8 Pos_isLegal(int32 x, int32 z, const struct LegServoAngle a){
     if(a.b<-PI/6 || a.b > PI/2){
         return 0;
     }
-    if(x < -LEG_MAX_X || x > LEG_MAX_X){
+    if(x < -MAX_X || x > MAX_X){
         return 0;
     }
-    if(-z < LEG_MIN_Z || -z > LEG_MAX_Z){
+    if(-z < MIN_Z || -z > MAX_Z){
         return 0;
     }
     return 1;
@@ -68,5 +68,5 @@ void Leg_set_pos(int32 lx, int32 lz, int32 rx, int32 rz){
     if(!Pos_isLegal(lx, lz, l) || !Pos_isLegal(rx, rz, r)){
         return;
     }
-    Leg_set_duty(r.b, r.f, l.f, l.b);
+    Leg_set_duty(r.b, r.f, l.b, l.f);
 }
