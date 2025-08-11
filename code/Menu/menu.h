@@ -32,24 +32,21 @@ typedef struct Page{
             uint8 opened;
         } listValue;
         struct {
-            int *value;
-            int min;
-            int max;
-            int step;
+            int32 *value;
+            int32 min;
+            int32 max;
             uint8 opened;
         } intValue;
         struct {
             float *value;
             float min;
             float max;
-            float step;
             uint8 opened;
         } floatValue;
         struct {
             double *value;
             double min;
             double max;
-            double step;
             uint8 opened;
         } doubleValue;
         struct {
@@ -66,9 +63,9 @@ Page *PageKey_getOpened(Page *this);
 uint8 PageKey_back(Page *this);
 void PageKey_home(Page *this);
 void ListPage_init(Page *this, char name[], uint8 size, struct Page *key[]);
-void IntPage_init(Page *this, char name[], int *value, int max, int min, int step);
-void FloatPage_init(Page *this, char name[], float *value, float max, float min, float step);
-void DoublePage_init(Page *this, char name[], double *value, float max, float min, float step);
+void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);
+void FloatPage_init(Page *this, char name[], float *value, float max, float min);
+void DoublePage_init(Page *this, char name[], double *value, double max, double min);
 void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir);
 
 #endif /* CODE_MENU_H_ */
