@@ -11,7 +11,7 @@
 #include "Sys.h"
 
 typedef struct {
-    float deltaMax;     // 滤波系数
+    float delta;     // 滤波系数
     float y;
 }Filter0;
 typedef struct {

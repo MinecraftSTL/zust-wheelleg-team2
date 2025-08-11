@@ -17,7 +17,6 @@ typedef enum{
     TI_LCIRCLE,
     R_LCIRCLE,
     TO_LCIRCLE,
-    PO_LCIRCLE,
     O_LCIRCLE,
     OR_CROSS_LCIRCLE,
     I_RCIRCLE,
@@ -25,7 +24,6 @@ typedef enum{
     TI_RCIRCLE,
     R_RCIRCLE,
     TO_RCIRCLE,
-    PO_RCIRCLE,
     O_RCIRCLE,
     OR_CROSS_RCIRCLE,
     RAMP,
@@ -92,6 +90,7 @@ extern int bridgeTO;
 extern int bridgeS;
 extern float bridgeZ;
 extern uint8 bridgeDetectL;
+extern float otherBPow;
 extern int errY;
 extern int errDeltaY;
 extern uint8 showPInC1;

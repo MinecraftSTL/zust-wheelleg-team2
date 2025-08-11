@@ -7,7 +7,7 @@
 #include "Filter.h"
 
 Filter0* LPF0_init(Filter0* this, float deltaMax) {
-    this->deltaMax = deltaMax;
+    this->delta = deltaMax;
     // 初始化历史数据
     LPF1_clear(this);
 
@@ -23,10 +23,10 @@ float lpf0(Filter0* this, float input) {
     float delta = input - this->y;
     if(isnan(this->y)){
         this->y=input;
-    }else if(delta > this->deltaMax){
-        this->y+=this->deltaMax;
-    }else if(delta < this->deltaMax){
-        this->y-=this->deltaMax;
+    }else if(delta > this->delta){
+        this->y+=this->delta;
+    }else if(delta < -this->delta){
+        this->y-=this->delta;
     }else{
         this->y=input;
     }

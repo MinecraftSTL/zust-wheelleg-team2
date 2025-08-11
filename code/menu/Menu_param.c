@@ -81,7 +81,6 @@ Page menu_main_arg_k_camera_e_barrier_zMax;
 Page menu_main_arg_k_camera_e_barrier_zMin;
 Page menu_main_arg_k_camera_e_barrier_t;
 Page menu_main_arg_k_camera_e_bridge;
-Page menu_main_arg_k_camera_e_bridge_xAx;
 Page menu_main_arg_k_camera_e_bridge_y;
 Page menu_main_arg_k_camera_e_bridge_kPitchX;
 Page menu_main_arg_k_camera_e_bridge_ti;
@@ -90,6 +89,7 @@ Page menu_main_arg_k_camera_e_bridge_s;
 Page menu_main_arg_k_camera_e_bridge_z;
 Page menu_main_arg_k_camera_e_bridge_detect;
 Page menu_main_arg_k_camera_e_other;
+Page menu_main_arg_k_camera_e_other_bPow;
 Page menu_main_arg_k_camera_show;
 Page menu_main_arg_k_camera_show_pInC1;
 Page menu_main_arg_k_camera_show_wait;
@@ -292,32 +292,6 @@ void Menu_param_init(){
             "I_CROSS",
             "R_CROSS",
             "O_CROSS",
-            "I_LCIRCLE",
-            "PTI_LCIRCLE",
-            "TI_LCIRCLE",
-            "R_LCIRCLE",
-            "TO_LCIRCLE",
-            "PO_LCIRCLE",
-            "O_LCIRCLE",
-            "OR_CROSS_LCIRCLE",
-            "I_RCIRCLE",
-            "PTI_RCIRCLE",
-            "TI_RCIRCLE",
-            "R_RCIRCLE",
-            "TO_RCIRCLE",
-            "PO_RCIRCLE",
-            "O_RCIRCLE",
-            "OR_CROSS_RCIRCLE",
-            "RAMP",
-            "I_BARRIER",
-            "R_BARRIER",
-            "O_BARRIER",
-            "I_BRIDGE",
-            "I_LBRIDGE",
-            "O_LBRIDGE",
-            "I_RBRIDGE",
-            "O_RBRIDGE",
-            "O_BRIDGE",
             ""
         });
     FloatPage_init(&menu_main_arg_k_camera_status_jump, "jump", &statusJump, 0, 0xFF);
@@ -383,7 +357,6 @@ void Menu_param_init(){
     FloatPage_init(&menu_main_arg_k_camera_e_barrier_zMin, "zMin", &jumpLegZMin, -LEG_MAX_Z, -LEG_MIN_Z);
     IntPage_init(&menu_main_arg_k_camera_e_barrier_t, "t", &barrierT, 0, 100000);
     ListPage_init(&menu_main_arg_k_camera_e_bridge, "bridge", (Page*[]){
-        &menu_main_arg_k_camera_e_bridge_xAx,
         &menu_main_arg_k_camera_e_bridge_y,
         &menu_main_arg_k_camera_e_bridge_kPitchX,
         &menu_main_arg_k_camera_e_bridge_ti,
@@ -393,7 +366,6 @@ void Menu_param_init(){
         &menu_main_arg_k_camera_e_bridge_detect,
         NULL
     });
-    FloatPage_init(&menu_main_arg_k_camera_e_bridge_xAx, "xAxAlpha", &defaultRollAlpha, 0, 1);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_y, "y", &bridgeY, 0, MT9V03X_H);
     FloatPage_init(&menu_main_arg_k_camera_e_bridge_kPitchX, "kPitchX", &bridgeKPitchX, -100, 100);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_ti, "ti", &bridgeTI, 0, 100000);
@@ -402,8 +374,10 @@ void Menu_param_init(){
     FloatPage_init(&menu_main_arg_k_camera_e_bridge_z, "z", &bridgeZ, -LEG_MAX_Z, -LEG_MIN_Z);
     BoolPage_init(&menu_main_arg_k_camera_e_bridge_detect, "detectL", &bridgeDetectL, 0x03);
     ListPage_init(&menu_main_arg_k_camera_e_other, "other", (Page*[]){
+        &menu_main_arg_k_camera_e_other_bPow,
         NULL
     });
+    FloatPage_init(&menu_main_arg_k_camera_e_other_bPow, "bPow", &otherBPow, 0, 100);
     ListPage_init(&menu_main_arg_k_camera_show, "show", (Page*[]){
         &menu_main_arg_k_camera_show_pInC1,
         &menu_main_arg_k_camera_show_wait,
@@ -442,7 +416,7 @@ void Menu_param_init(){
     });
     FloatPage_init(&menu_main_arg_filter_turn, "turn", &Filter1_turn.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter1_speed.alpha, 0, 1);
-    FloatPage_init(&menu_main_arg_filter_xAx0, "xAx0", &Filter0_xAx.deltaMax, 0, 10000);
+    FloatPage_init(&menu_main_arg_filter_xAx0, "xAx0", &Filter0_xAx.delta, 0, 10000);
     FloatPage_init(&menu_main_arg_filter_xAx1, "xAx1", &Filter1_xAx.alpha, 0, 1);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wheelClear,

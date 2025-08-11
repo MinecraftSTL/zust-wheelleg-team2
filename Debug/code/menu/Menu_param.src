@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc28252a --dep-file=code/menu/Menu_param.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/menu/Menu_param.src ../code/menu/Menu_param.c"
+	.compiler_invocation	"ctc -f cc39948a --dep-file=code/menu/Menu_param.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/menu/Menu_param.src ../code/menu/Menu_param.c"
 	.compiler_name		"ctc"
 	;source	'../code/menu/Menu_param.c'
 
@@ -655,8 +655,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_status_jump)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_status_jump)
 .L494:
-	movh.a	a5,#@his(.101.str)
-	lea	a5,[a5]@los(.101.str)
+	movh.a	a5,#@his(.75.str)
+	lea	a5,[a5]@los(.75.str)
 .L495:
 	movh.a	a6,#@his(statusJump)
 	lea	a6,[a6]@los(statusJump)
@@ -683,21 +683,21 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e)
 .L504:
-	movh.a	a5,#@his(.102.str)
-	lea	a5,[a5]@los(.102.str)
+	movh.a	a5,#@his(.76.str)
+	lea	a5,[a5]@los(.76.str)
 .L505:
-	movh.a	a6,#@his(.103.lit)
-	lea	a6,[a6]@los(.103.lit)
+	movh.a	a6,#@his(.77.lit)
+	lea	a6,[a6]@los(.77.lit)
 	call	ListPage_init
 .L506:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_zebra)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_zebra)
 .L507:
-	movh.a	a5,#@his(.104.str)
-	lea	a5,[a5]@los(.104.str)
+	movh.a	a5,#@his(.78.str)
+	lea	a5,[a5]@los(.78.str)
 .L508:
-	movh.a	a6,#@his(.105.lit)
-	lea	a6,[a6]@los(.105.lit)
+	movh.a	a6,#@his(.79.lit)
+	lea	a6,[a6]@los(.79.lit)
 	call	ListPage_init
 .L509:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_zebra_y)
@@ -717,8 +717,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_zebra_t)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_zebra_t)
 .L515:
-	movh.a	a5,#@his(.106.str)
-	lea	a5,[a5]@los(.106.str)
+	movh.a	a5,#@his(.80.str)
+	lea	a5,[a5]@los(.80.str)
 .L516:
 	movh.a	a6,#@his(zebraT)
 	lea	a6,[a6]@los(zebraT)
@@ -732,8 +732,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_zebra_s)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_zebra_s)
 .L520:
-	movh.a	a5,#@his(.107.str)
-	lea	a5,[a5]@los(.107.str)
+	movh.a	a5,#@his(.81.str)
+	lea	a5,[a5]@los(.81.str)
 .L521:
 	movh.a	a6,#@his(zebraS)
 	lea	a6,[a6]@los(zebraS)
@@ -747,11 +747,11 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_cross)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_cross)
 .L525:
-	movh.a	a5,#@his(.108.str)
-	lea	a5,[a5]@los(.108.str)
+	movh.a	a5,#@his(.82.str)
+	lea	a5,[a5]@los(.82.str)
 .L526:
-	movh.a	a6,#@his(.109.lit)
-	lea	a6,[a6]@los(.109.lit)
+	movh.a	a6,#@his(.83.lit)
+	lea	a6,[a6]@los(.83.lit)
 	call	ListPage_init
 .L527:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_cross_x)
@@ -788,8 +788,8 @@ Menu_param_init:	.type	func
 	movh.a	a5,#@his(.36.str)
 	lea	a5,[a5]@los(.36.str)
 .L539:
-	movh.a	a6,#@his(.110.lit)
-	lea	a6,[a6]@los(.110.lit)
+	movh.a	a6,#@his(.84.lit)
+	lea	a6,[a6]@los(.84.lit)
 	call	ListPage_init
 .L540:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_circle_x)
@@ -809,8 +809,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_circle_line)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_circle_line)
 .L546:
-	movh.a	a5,#@his(.111.str)
-	lea	a5,[a5]@los(.111.str)
+	movh.a	a5,#@his(.85.str)
+	lea	a5,[a5]@los(.85.str)
 .L547:
 	movh.a	a6,#@his(circleLine)
 	lea	a6,[a6]@los(circleLine)
@@ -833,15 +833,15 @@ Menu_param_init:	.type	func
 	movh.a	a5,#@his(.37.str)
 	lea	a5,[a5]@los(.37.str)
 .L555:
-	movh.a	a6,#@his(.112.lit)
-	lea	a6,[a6]@los(.112.lit)
+	movh.a	a6,#@his(.86.lit)
+	lea	a6,[a6]@los(.86.lit)
 	call	ListPage_init
 .L556:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_ramp_s)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_ramp_s)
 .L557:
-	movh.a	a5,#@his(.107.str)
-	lea	a5,[a5]@los(.107.str)
+	movh.a	a5,#@his(.81.str)
+	lea	a5,[a5]@los(.81.str)
 .L558:
 	movh.a	a6,#@his(rampS)
 	lea	a6,[a6]@los(rampS)
@@ -883,8 +883,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_ramp_z)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_ramp_z)
 .L572:
-	movh.a	a5,#@his(.113.str)
-	lea	a5,[a5]@los(.113.str)
+	movh.a	a5,#@his(.87.str)
+	lea	a5,[a5]@los(.87.str)
 .L573:
 	movh.a	a6,#@his(rampZ)
 	lea	a6,[a6]@los(rampZ)
@@ -911,18 +911,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_barrier)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_barrier)
 .L582:
-	movh.a	a5,#@his(.114.str)
-	lea	a5,[a5]@los(.114.str)
+	movh.a	a5,#@his(.88.str)
+	lea	a5,[a5]@los(.88.str)
 .L583:
-	movh.a	a6,#@his(.115.lit)
-	lea	a6,[a6]@los(.115.lit)
+	movh.a	a6,#@his(.89.lit)
+	lea	a6,[a6]@los(.89.lit)
 	call	ListPage_init
 .L584:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_barrier_y0)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_barrier_y0)
 .L585:
-	movh.a	a5,#@his(.116.str)
-	lea	a5,[a5]@los(.116.str)
+	movh.a	a5,#@his(.90.str)
+	lea	a5,[a5]@los(.90.str)
 .L586:
 	movh.a	a6,#@his(barrierY0)
 	lea	a6,[a6]@los(barrierY0)
@@ -935,8 +935,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_barrier_y1)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_barrier_y1)
 .L590:
-	movh.a	a5,#@his(.117.str)
-	lea	a5,[a5]@los(.117.str)
+	movh.a	a5,#@his(.91.str)
+	lea	a5,[a5]@los(.91.str)
 .L591:
 	movh.a	a6,#@his(barrierY1)
 	lea	a6,[a6]@los(barrierY1)
@@ -949,8 +949,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_barrier_zMax)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_barrier_zMax)
 .L595:
-	movh.a	a5,#@his(.118.str)
-	lea	a5,[a5]@los(.118.str)
+	movh.a	a5,#@his(.92.str)
+	lea	a5,[a5]@los(.92.str)
 .L596:
 	movh.a	a6,#@his(jumpLegZMax)
 	lea	a6,[a6]@los(jumpLegZMax)
@@ -963,8 +963,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_barrier_zMin)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_barrier_zMin)
 .L600:
-	movh.a	a5,#@his(.119.str)
-	lea	a5,[a5]@los(.119.str)
+	movh.a	a5,#@his(.93.str)
+	lea	a5,[a5]@los(.93.str)
 .L601:
 	movh.a	a6,#@his(jumpLegZMin)
 	lea	a6,[a6]@los(jumpLegZMin)
@@ -977,8 +977,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_barrier_t)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_barrier_t)
 .L605:
-	movh.a	a5,#@his(.106.str)
-	lea	a5,[a5]@los(.106.str)
+	movh.a	a5,#@his(.80.str)
+	lea	a5,[a5]@los(.80.str)
 .L606:
 	movh.a	a6,#@his(barrierT)
 	lea	a6,[a6]@los(barrierT)
@@ -995,60 +995,61 @@ Menu_param_init:	.type	func
 	movh.a	a5,#@his(.38.str)
 	lea	a5,[a5]@los(.38.str)
 .L611:
-	movh.a	a6,#@his(.120.lit)
-	lea	a6,[a6]@los(.120.lit)
+	movh.a	a6,#@his(.94.lit)
+	lea	a6,[a6]@los(.94.lit)
 	call	ListPage_init
 .L612:
-	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_xAx)
-	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_xAx)
+	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_y)
+	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_y)
 .L613:
-	movh.a	a5,#@his(.121.str)
-	lea	a5,[a5]@los(.121.str)
+	movh.a	a5,#@his(.49.str)
+	lea	a5,[a5]@los(.49.str)
 .L614:
-	movh.a	a6,#@his(defaultRollAlpha)
-	lea	a6,[a6]@los(defaultRollAlpha)
+	movh.a	a6,#@his(bridgeY)
+	lea	a6,[a6]@los(bridgeY)
 .L615:
 	mov	d4,#0
 .L616:
-	movh	d5,#16256
-	call	FloatPage_init
-.L617:
-	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_y)
-	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_y)
-.L618:
-	movh.a	a5,#@his(.49.str)
-	lea	a5,[a5]@los(.49.str)
-.L619:
-	movh.a	a6,#@his(bridgeY)
-	lea	a6,[a6]@los(bridgeY)
-.L620:
-	mov	d4,#0
-.L621:
 	mov	d5,#120
 	call	IntPage_init
-.L622:
+.L617:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_kPitchX)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_kPitchX)
-.L623:
-	movh.a	a5,#@his(.122.str)
-	lea	a5,[a5]@los(.122.str)
-.L624:
+.L618:
+	movh.a	a5,#@his(.95.str)
+	lea	a5,[a5]@los(.95.str)
+.L619:
 	movh.a	a6,#@his(bridgeKPitchX)
 	lea	a6,[a6]@los(bridgeKPitchX)
-.L625:
+.L620:
 	movh	d4,#49864
-.L626:
+.L621:
 	movh	d5,#17096
 	call	FloatPage_init
-.L627:
+.L622:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_ti)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_ti)
-.L628:
-	movh.a	a5,#@his(.123.str)
-	lea	a5,[a5]@los(.123.str)
-.L629:
+.L623:
+	movh.a	a5,#@his(.96.str)
+	lea	a5,[a5]@los(.96.str)
+.L624:
 	movh.a	a6,#@his(bridgeTI)
 	lea	a6,[a6]@los(bridgeTI)
+.L625:
+	mov	d4,#0
+.L626:
+	mov	d5,#3125
+	sh	d5,#5
+	call	IntPage_init
+.L627:
+	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_to)
+	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_to)
+.L628:
+	movh.a	a5,#@his(.97.str)
+	lea	a5,[a5]@los(.97.str)
+.L629:
+	movh.a	a6,#@his(bridgeTO)
+	lea	a6,[a6]@los(bridgeTO)
 .L630:
 	mov	d4,#0
 .L631:
@@ -1056,87 +1057,86 @@ Menu_param_init:	.type	func
 	sh	d5,#5
 	call	IntPage_init
 .L632:
-	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_to)
-	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_to)
+	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_s)
+	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_s)
 .L633:
-	movh.a	a5,#@his(.124.str)
-	lea	a5,[a5]@los(.124.str)
+	movh.a	a5,#@his(.81.str)
+	lea	a5,[a5]@los(.81.str)
 .L634:
-	movh.a	a6,#@his(bridgeTO)
-	lea	a6,[a6]@los(bridgeTO)
+	movh.a	a6,#@his(bridgeS)
+	lea	a6,[a6]@los(bridgeS)
 .L635:
 	mov	d4,#0
 .L636:
-	mov	d5,#3125
-	sh	d5,#5
-	call	IntPage_init
-.L637:
-	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_s)
-	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_s)
-.L638:
-	movh.a	a5,#@his(.107.str)
-	lea	a5,[a5]@los(.107.str)
-.L639:
-	movh.a	a6,#@his(bridgeS)
-	lea	a6,[a6]@los(bridgeS)
-.L640:
-	mov	d4,#0
-.L641:
 	mov.u	d5,#38528
 	addih	d5,d5,#152
 	call	IntPage_init
-.L642:
+.L637:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_z)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_z)
-.L643:
-	movh.a	a5,#@his(.113.str)
-	lea	a5,[a5]@los(.113.str)
-.L644:
+.L638:
+	movh.a	a5,#@his(.87.str)
+	lea	a5,[a5]@los(.87.str)
+.L639:
 	movh.a	a6,#@his(bridgeZ)
 	lea	a6,[a6]@los(bridgeZ)
-.L645:
+.L640:
 	movh	d4,#49939
-.L646:
+.L641:
 	movh	d5,#49616
 	call	FloatPage_init
-.L647:
+.L642:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_bridge_detect)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_bridge_detect)
-.L648:
-	movh.a	a5,#@his(.125.str)
-	lea	a5,[a5]@los(.125.str)
-.L649:
+.L643:
+	movh.a	a5,#@his(.98.str)
+	lea	a5,[a5]@los(.98.str)
+.L644:
 	movh.a	a6,#@his(bridgeDetectL)
 	lea	a6,[a6]@los(bridgeDetectL)
-.L650:
+.L645:
 	mov	d4,#3
 	call	BoolPage_init
-.L651:
+.L646:
 	movh.a	a4,#@his(menu_main_arg_k_camera_e_other)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_e_other)
-.L652:
-	movh.a	a5,#@his(.126.str)
-	lea	a5,[a5]@los(.126.str)
-.L653:
-	movh.a	a6,#@his(.127.lit)
-	lea	a6,[a6]@los(.127.lit)
+.L647:
+	movh.a	a5,#@his(.99.str)
+	lea	a5,[a5]@los(.99.str)
+.L648:
+	movh.a	a6,#@his(.100.lit)
+	lea	a6,[a6]@los(.100.lit)
 	call	ListPage_init
+.L649:
+	movh.a	a4,#@his(menu_main_arg_k_camera_e_other_bPow)
+	lea	a4,[a4]@los(menu_main_arg_k_camera_e_other_bPow)
+.L650:
+	movh.a	a5,#@his(.101.str)
+	lea	a5,[a5]@los(.101.str)
+.L651:
+	movh.a	a6,#@his(otherBPow)
+	lea	a6,[a6]@los(otherBPow)
+.L652:
+	mov	d4,#0
+.L653:
+	movh	d5,#17096
+	call	FloatPage_init
 .L654:
 	movh.a	a4,#@his(menu_main_arg_k_camera_show)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_show)
 .L655:
-	movh.a	a5,#@his(.128.str)
-	lea	a5,[a5]@los(.128.str)
+	movh.a	a5,#@his(.102.str)
+	lea	a5,[a5]@los(.102.str)
 .L656:
-	movh.a	a6,#@his(.129.lit)
-	lea	a6,[a6]@los(.129.lit)
+	movh.a	a6,#@his(.103.lit)
+	lea	a6,[a6]@los(.103.lit)
 	call	ListPage_init
 .L657:
 	movh.a	a4,#@his(menu_main_arg_k_camera_show_pInC1)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_show_pInC1)
 .L658:
-	movh.a	a5,#@his(.130.str)
-	lea	a5,[a5]@los(.130.str)
+	movh.a	a5,#@his(.104.str)
+	lea	a5,[a5]@los(.104.str)
 .L659:
 	movh.a	a6,#@his(showPInC1)
 	lea	a6,[a6]@los(showPInC1)
@@ -1147,8 +1147,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_camera_show_wait)
 	lea	a4,[a4]@los(menu_main_arg_k_camera_show_wait)
 .L662:
-	movh.a	a5,#@his(.131.str)
-	lea	a5,[a5]@los(.131.str)
+	movh.a	a5,#@his(.105.str)
+	lea	a5,[a5]@los(.105.str)
 .L663:
 	movh.a	a6,#@his(showWait)
 	lea	a6,[a6]@los(showWait)
@@ -1159,18 +1159,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_jump)
 	lea	a4,[a4]@los(menu_main_arg_k_jump)
 .L666:
-	movh.a	a5,#@his(.101.str)
-	lea	a5,[a5]@los(.101.str)
+	movh.a	a5,#@his(.75.str)
+	lea	a5,[a5]@los(.75.str)
 .L667:
-	movh.a	a6,#@his(.132.lit)
-	lea	a6,[a6]@los(.132.lit)
+	movh.a	a6,#@his(.106.lit)
+	lea	a6,[a6]@los(.106.lit)
 	call	ListPage_init
 .L668:
 	movh.a	a4,#@his(menu_main_arg_k_jump_step0)
 	lea	a4,[a4]@los(menu_main_arg_k_jump_step0)
 .L669:
-	movh.a	a5,#@his(.133.str)
-	lea	a5,[a5]@los(.133.str)
+	movh.a	a5,#@his(.107.str)
+	lea	a5,[a5]@los(.107.str)
 .L670:
 	movh.a	a6,#@his(jumpStep)
 	lea	a6,[a6]@los(jumpStep)
@@ -1183,8 +1183,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_jump_step1)
 	lea	a4,[a4]@los(menu_main_arg_k_jump_step1)
 .L674:
-	movh.a	a5,#@his(.134.str)
-	lea	a5,[a5]@los(.134.str)
+	movh.a	a5,#@his(.108.str)
+	lea	a5,[a5]@los(.108.str)
 .L675:
 	movh.a	a6,#@his(jumpStep)
 	lea	a6,[a6]@los(jumpStep)
@@ -1199,8 +1199,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_k_jump_step2)
 	lea	a4,[a4]@los(menu_main_arg_k_jump_step2)
 .L680:
-	movh.a	a5,#@his(.135.str)
-	lea	a5,[a5]@los(.135.str)
+	movh.a	a5,#@his(.109.str)
+	lea	a5,[a5]@los(.109.str)
 .L681:
 	movh.a	a15,#@his(jumpStep)
 	lea	a15,[a15]@los(jumpStep)
@@ -1215,18 +1215,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_PID)
 	lea	a4,[a4]@los(menu_main_arg_PID)
 .L686:
-	movh.a	a5,#@his(.136.str)
-	lea	a5,[a5]@los(.136.str)
+	movh.a	a5,#@his(.110.str)
+	lea	a5,[a5]@los(.110.str)
 .L687:
-	movh.a	a6,#@his(.137.lit)
-	lea	a6,[a6]@los(.137.lit)
+	movh.a	a6,#@his(.111.lit)
+	lea	a6,[a6]@los(.111.lit)
 	call	ListPage_init
 .L688:
 	movh.a	a4,#@his(menu_main_arg_PID_vAy)
 	lea	a4,[a4]@los(menu_main_arg_PID_vAy)
 .L689:
-	movh.a	a5,#@his(.138.str)
-	lea	a5,[a5]@los(.138.str)
+	movh.a	a5,#@his(.112.str)
+	lea	a5,[a5]@los(.112.str)
 .L690:
 	movh.a	a6,#@his(PID_WvAy)
 	lea	a6,[a6]@los(PID_WvAy)
@@ -1235,8 +1235,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_PID_xAy)
 	lea	a4,[a4]@los(menu_main_arg_PID_xAy)
 .L692:
-	movh.a	a5,#@his(.139.str)
-	lea	a5,[a5]@los(.139.str)
+	movh.a	a5,#@his(.113.str)
+	lea	a5,[a5]@los(.113.str)
 .L693:
 	movh.a	a6,#@his(PID_WxAy)
 	lea	a6,[a6]@los(PID_WxAy)
@@ -1245,8 +1245,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_PID_vVx)
 	lea	a4,[a4]@los(menu_main_arg_PID_vVx)
 .L695:
-	movh.a	a5,#@his(.140.str)
-	lea	a5,[a5]@los(.140.str)
+	movh.a	a5,#@his(.114.str)
+	lea	a5,[a5]@los(.114.str)
 .L696:
 	movh.a	a6,#@his(PID_vVx)
 	lea	a6,[a6]@los(PID_vVx)
@@ -1255,8 +1255,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_PID_vAz)
 	lea	a4,[a4]@los(menu_main_arg_PID_vAz)
 .L698:
-	movh.a	a5,#@his(.141.str)
-	lea	a5,[a5]@los(.141.str)
+	movh.a	a5,#@his(.115.str)
+	lea	a5,[a5]@los(.115.str)
 .L699:
 	movh.a	a6,#@his(PID_vAz)
 	lea	a6,[a6]@los(PID_vAz)
@@ -1265,8 +1265,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_PID_turn)
 	lea	a4,[a4]@los(menu_main_arg_PID_turn)
 .L701:
-	movh.a	a5,#@his(.142.str)
-	lea	a5,[a5]@los(.142.str)
+	movh.a	a5,#@his(.116.str)
+	lea	a5,[a5]@los(.116.str)
 .L702:
 	movh.a	a6,#@his(PID_WvAz)
 	lea	a6,[a6]@los(PID_WvAz)
@@ -1275,18 +1275,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_filter)
 	lea	a4,[a4]@los(menu_main_arg_filter)
 .L704:
-	movh.a	a5,#@his(.143.str)
-	lea	a5,[a5]@los(.143.str)
+	movh.a	a5,#@his(.117.str)
+	lea	a5,[a5]@los(.117.str)
 .L705:
-	movh.a	a6,#@his(.144.lit)
-	lea	a6,[a6]@los(.144.lit)
+	movh.a	a6,#@his(.118.lit)
+	lea	a6,[a6]@los(.118.lit)
 	call	ListPage_init
 .L706:
 	movh.a	a4,#@his(menu_main_arg_filter_turn)
 	lea	a4,[a4]@los(menu_main_arg_filter_turn)
 .L707:
-	movh.a	a5,#@his(.142.str)
-	lea	a5,[a5]@los(.142.str)
+	movh.a	a5,#@his(.116.str)
+	lea	a5,[a5]@los(.116.str)
 .L708:
 	movh.a	a6,#@his(Filter1_turn)
 	lea	a6,[a6]@los(Filter1_turn)
@@ -1299,8 +1299,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_filter_speed)
 	lea	a4,[a4]@los(menu_main_arg_filter_speed)
 .L712:
-	movh.a	a5,#@his(.145.str)
-	lea	a5,[a5]@los(.145.str)
+	movh.a	a5,#@his(.119.str)
+	lea	a5,[a5]@los(.119.str)
 .L713:
 	movh.a	a6,#@his(Filter1_speed)
 	lea	a6,[a6]@los(Filter1_speed)
@@ -1313,8 +1313,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_filter_xAx0)
 	lea	a4,[a4]@los(menu_main_arg_filter_xAx0)
 .L717:
-	movh.a	a5,#@his(.146.str)
-	lea	a5,[a5]@los(.146.str)
+	movh.a	a5,#@his(.120.str)
+	lea	a5,[a5]@los(.120.str)
 .L718:
 	movh.a	a6,#@his(Filter0_xAx)
 	lea	a6,[a6]@los(Filter0_xAx)
@@ -1328,8 +1328,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_arg_filter_xAx1)
 	lea	a4,[a4]@los(menu_main_arg_filter_xAx1)
 .L722:
-	movh.a	a5,#@his(.147.str)
-	lea	a5,[a5]@los(.147.str)
+	movh.a	a5,#@his(.121.str)
+	lea	a5,[a5]@los(.121.str)
 .L723:
 	movh.a	a6,#@his(Filter1_xAx)
 	lea	a6,[a6]@los(Filter1_xAx)
@@ -1342,18 +1342,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug)
 	lea	a4,[a4]@los(menu_main_debug)
 .L727:
-	movh.a	a5,#@his(.148.str)
-	lea	a5,[a5]@los(.148.str)
+	movh.a	a5,#@his(.122.str)
+	lea	a5,[a5]@los(.122.str)
 .L728:
-	movh.a	a6,#@his(.149.lit)
-	lea	a6,[a6]@los(.149.lit)
+	movh.a	a6,#@his(.123.lit)
+	lea	a6,[a6]@los(.123.lit)
 	call	ListPage_init
 .L729:
 	movh.a	a4,#@his(menu_main_debug_wheelClear)
 	lea	a4,[a4]@los(menu_main_debug_wheelClear)
 .L730:
-	movh.a	a5,#@his(.150.str)
-	lea	a5,[a5]@los(.150.str)
+	movh.a	a5,#@his(.124.str)
+	lea	a5,[a5]@los(.124.str)
 .L731:
 	movh.a	a6,#@his(wheelClear)
 	lea	a6,[a6]@los(wheelClear)
@@ -1367,15 +1367,15 @@ Menu_param_init:	.type	func
 	movh.a	a5,#@his(.23.str)
 	lea	a5,[a5]@los(.23.str)
 .L735:
-	movh.a	a6,#@his(.151.lit)
-	lea	a6,[a6]@los(.151.lit)
+	movh.a	a6,#@his(.125.lit)
+	lea	a6,[a6]@los(.125.lit)
 	call	ListPage_init
 .L736:
 	movh.a	a4,#@his(menu_main_debug_flash_write)
 	lea	a4,[a4]@los(menu_main_debug_flash_write)
 .L737:
-	movh.a	a5,#@his(.152.str)
-	lea	a5,[a5]@los(.152.str)
+	movh.a	a5,#@his(.126.str)
+	lea	a5,[a5]@los(.126.str)
 .L738:
 	movh.a	a6,#@his(Flash_pageAllWrite)
 	lea	a6,[a6]@los(Flash_pageAllWrite)
@@ -1384,8 +1384,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_flash_read)
 	lea	a4,[a4]@los(menu_main_debug_flash_read)
 .L740:
-	movh.a	a5,#@his(.153.str)
-	lea	a5,[a5]@los(.153.str)
+	movh.a	a5,#@his(.127.str)
+	lea	a5,[a5]@los(.127.str)
 .L741:
 	movh.a	a6,#@his(Flash_pageAllRead)
 	lea	a6,[a6]@los(Flash_pageAllRead)
@@ -1394,8 +1394,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_flash_clear)
 	lea	a4,[a4]@los(menu_main_debug_flash_clear)
 .L743:
-	movh.a	a5,#@his(.154.str)
-	lea	a5,[a5]@los(.154.str)
+	movh.a	a5,#@his(.128.str)
+	lea	a5,[a5]@los(.128.str)
 .L744:
 	movh.a	a6,#@his(Flash_menuClear)
 	lea	a6,[a6]@los(Flash_menuClear)
@@ -1404,18 +1404,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_vofa)
 	lea	a4,[a4]@los(menu_main_debug_vofa)
 .L746:
-	movh.a	a5,#@his(.155.str)
-	lea	a5,[a5]@los(.155.str)
+	movh.a	a5,#@his(.129.str)
+	lea	a5,[a5]@los(.129.str)
 .L747:
-	movh.a	a6,#@his(.156.lit)
-	lea	a6,[a6]@los(.156.lit)
+	movh.a	a6,#@his(.130.lit)
+	lea	a6,[a6]@los(.130.lit)
 	call	ListPage_init
 .L748:
 	movh.a	a4,#@his(menu_main_debug_vofa_send)
 	lea	a4,[a4]@los(menu_main_debug_vofa_send)
 .L749:
-	movh.a	a5,#@his(.157.str)
-	lea	a5,[a5]@los(.157.str)
+	movh.a	a5,#@his(.131.str)
+	lea	a5,[a5]@los(.131.str)
 .L750:
 	movh.a	a6,#@his(Vofa_pageAllSend)
 	lea	a6,[a6]@los(Vofa_pageAllSend)
@@ -1424,8 +1424,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_vofa_receive)
 	lea	a4,[a4]@los(menu_main_debug_vofa_receive)
 .L752:
-	movh.a	a5,#@his(.158.str)
-	lea	a5,[a5]@los(.158.str)
+	movh.a	a5,#@his(.132.str)
+	lea	a5,[a5]@los(.132.str)
 .L753:
 	movh.a	a6,#@his(Vofa_pageAllReceive)
 	lea	a6,[a6]@los(Vofa_pageAllReceive)
@@ -1434,8 +1434,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_wifiIm)
 	lea	a4,[a4]@los(menu_main_debug_wifiIm)
 .L755:
-	movh.a	a5,#@his(.159.str)
-	lea	a5,[a5]@los(.159.str)
+	movh.a	a5,#@his(.133.str)
+	lea	a5,[a5]@los(.133.str)
 .L756:
 	movh.a	a6,#@his(Wifi_Image_Init)
 	lea	a6,[a6]@los(Wifi_Image_Init)
@@ -1444,18 +1444,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fs)
 	lea	a4,[a4]@los(menu_main_debug_fs)
 .L758:
-	movh.a	a5,#@his(.160.str)
-	lea	a5,[a5]@los(.160.str)
+	movh.a	a5,#@his(.134.str)
+	lea	a5,[a5]@los(.134.str)
 .L759:
-	movh.a	a6,#@his(.161.lit)
-	lea	a6,[a6]@los(.161.lit)
+	movh.a	a6,#@his(.135.lit)
+	lea	a6,[a6]@los(.135.lit)
 	call	ListPage_init
 .L760:
 	movh.a	a4,#@his(menu_main_debug_fs_en)
 	lea	a4,[a4]@los(menu_main_debug_fs_en)
 .L761:
-	movh.a	a5,#@his(.162.str)
-	lea	a5,[a5]@los(.162.str)
+	movh.a	a5,#@his(.136.str)
+	lea	a5,[a5]@los(.136.str)
 .L762:
 	movh.a	a6,#@his(fsEn)
 	lea	a6,[a6]@los(fsEn)
@@ -1466,8 +1466,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fs_speed)
 	lea	a4,[a4]@los(menu_main_debug_fs_speed)
 .L765:
-	movh.a	a5,#@his(.145.str)
-	lea	a5,[a5]@los(.145.str)
+	movh.a	a5,#@his(.119.str)
+	lea	a5,[a5]@los(.119.str)
 .L766:
 	movh.a	a6,#@his(fsSpeed)
 	lea	a6,[a6]@los(fsSpeed)
@@ -1480,8 +1480,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_flz)
 	lea	a4,[a4]@los(menu_main_debug_flz)
 .L770:
-	movh.a	a5,#@his(.163.str)
-	lea	a5,[a5]@los(.163.str)
+	movh.a	a5,#@his(.137.str)
+	lea	a5,[a5]@los(.137.str)
 .L771:
 	movh.a	a6,#@his(fLz)
 	lea	a6,[a6]@los(fLz)
@@ -1492,18 +1492,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fl)
 	lea	a4,[a4]@los(menu_main_debug_fl)
 .L774:
-	movh.a	a5,#@his(.164.str)
-	lea	a5,[a5]@los(.164.str)
+	movh.a	a5,#@his(.138.str)
+	lea	a5,[a5]@los(.138.str)
 .L775:
-	movh.a	a6,#@his(.165.lit)
-	lea	a6,[a6]@los(.165.lit)
+	movh.a	a6,#@his(.139.lit)
+	lea	a6,[a6]@los(.139.lit)
 	call	ListPage_init
 .L776:
 	movh.a	a4,#@his(menu_main_debug_fl_en)
 	lea	a4,[a4]@los(menu_main_debug_fl_en)
 .L777:
-	movh.a	a5,#@his(.162.str)
-	lea	a5,[a5]@los(.162.str)
+	movh.a	a5,#@his(.136.str)
+	lea	a5,[a5]@los(.136.str)
 .L778:
 	movh.a	a6,#@his(flEn)
 	lea	a6,[a6]@los(flEn)
@@ -1514,8 +1514,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fl_rb)
 	lea	a4,[a4]@los(menu_main_debug_fl_rb)
 .L781:
-	movh.a	a5,#@his(.166.str)
-	lea	a5,[a5]@los(.166.str)
+	movh.a	a5,#@his(.140.str)
+	lea	a5,[a5]@los(.140.str)
 .L782:
 	movh.a	a6,#@his(flRb)
 	lea	a6,[a6]@los(flRb)
@@ -1530,8 +1530,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fl_rf)
 	lea	a4,[a4]@los(menu_main_debug_fl_rf)
 .L786:
-	movh.a	a5,#@his(.167.str)
-	lea	a5,[a5]@los(.167.str)
+	movh.a	a5,#@his(.141.str)
+	lea	a5,[a5]@los(.141.str)
 .L787:
 	movh.a	a6,#@his(flRf)
 	lea	a6,[a6]@los(flRf)
@@ -1546,8 +1546,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fl_lf)
 	lea	a4,[a4]@los(menu_main_debug_fl_lf)
 .L791:
-	movh.a	a5,#@his(.168.str)
-	lea	a5,[a5]@los(.168.str)
+	movh.a	a5,#@his(.142.str)
+	lea	a5,[a5]@los(.142.str)
 .L792:
 	movh.a	a6,#@his(flLf)
 	lea	a6,[a6]@los(flLf)
@@ -1562,8 +1562,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fl_lb)
 	lea	a4,[a4]@los(menu_main_debug_fl_lb)
 .L796:
-	movh.a	a5,#@his(.169.str)
-	lea	a5,[a5]@los(.169.str)
+	movh.a	a5,#@his(.143.str)
+	lea	a5,[a5]@los(.143.str)
 .L797:
 	movh.a	a6,#@his(flLb)
 	lea	a6,[a6]@los(flLb)
@@ -1578,18 +1578,18 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fwp)
 	lea	a4,[a4]@los(menu_main_debug_fwp)
 .L801:
-	movh.a	a5,#@his(.170.str)
-	lea	a5,[a5]@los(.170.str)
+	movh.a	a5,#@his(.144.str)
+	lea	a5,[a5]@los(.144.str)
 .L802:
-	movh.a	a6,#@his(.171.lit)
-	lea	a6,[a6]@los(.171.lit)
+	movh.a	a6,#@his(.145.lit)
+	lea	a6,[a6]@los(.145.lit)
 	call	ListPage_init
 .L803:
 	movh.a	a4,#@his(menu_main_debug_fwp_en)
 	lea	a4,[a4]@los(menu_main_debug_fwp_en)
 .L804:
-	movh.a	a5,#@his(.162.str)
-	lea	a5,[a5]@los(.162.str)
+	movh.a	a5,#@his(.136.str)
+	lea	a5,[a5]@los(.136.str)
 .L805:
 	movh.a	a6,#@his(fwpEn)
 	lea	a6,[a6]@los(fwpEn)
@@ -1600,8 +1600,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fwp_lx)
 	lea	a4,[a4]@los(menu_main_debug_fwp_lx)
 .L808:
-	movh.a	a5,#@his(.172.str)
-	lea	a5,[a5]@los(.172.str)
+	movh.a	a5,#@his(.146.str)
+	lea	a5,[a5]@los(.146.str)
 .L809:
 	movh.a	a6,#@his(fwpLx)
 	lea	a6,[a6]@los(fwpLx)
@@ -1614,8 +1614,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fwp_lz)
 	lea	a4,[a4]@los(menu_main_debug_fwp_lz)
 .L813:
-	movh.a	a5,#@his(.173.str)
-	lea	a5,[a5]@los(.173.str)
+	movh.a	a5,#@his(.147.str)
+	lea	a5,[a5]@los(.147.str)
 .L814:
 	movh.a	a6,#@his(fwpLz)
 	lea	a6,[a6]@los(fwpLz)
@@ -1628,8 +1628,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fwp_rx)
 	lea	a4,[a4]@los(menu_main_debug_fwp_rx)
 .L818:
-	movh.a	a5,#@his(.174.str)
-	lea	a5,[a5]@los(.174.str)
+	movh.a	a5,#@his(.148.str)
+	lea	a5,[a5]@los(.148.str)
 .L819:
 	movh.a	a6,#@his(fwpRx)
 	lea	a6,[a6]@los(fwpRx)
@@ -1642,8 +1642,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fwp_rz)
 	lea	a4,[a4]@los(menu_main_debug_fwp_rz)
 .L823:
-	movh.a	a5,#@his(.175.str)
-	lea	a5,[a5]@los(.175.str)
+	movh.a	a5,#@his(.149.str)
+	lea	a5,[a5]@los(.149.str)
 .L824:
 	movh.a	a6,#@his(fwpRz)
 	lea	a6,[a6]@los(fwpRz)
@@ -1680,8 +1680,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_frb)
 	lea	a4,[a4]@los(menu_main_debug_frb)
 .L838:
-	movh.a	a5,#@his(.176.str)
-	lea	a5,[a5]@los(.176.str)
+	movh.a	a5,#@his(.150.str)
+	lea	a5,[a5]@los(.150.str)
 .L839:
 	movh.a	a6,#@his(fRb)
 	lea	a6,[a6]@los(fRb)
@@ -1692,8 +1692,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_fcd)
 	lea	a4,[a4]@los(menu_main_debug_fcd)
 .L842:
-	movh.a	a5,#@his(.177.str)
-	lea	a5,[a5]@los(.177.str)
+	movh.a	a5,#@his(.151.str)
+	lea	a5,[a5]@los(.151.str)
 .L843:
 	movh.a	a6,#@his(fCd)
 	lea	a6,[a6]@los(fCd)
@@ -1704,8 +1704,8 @@ Menu_param_init:	.type	func
 	movh.a	a4,#@his(menu_main_debug_jump)
 	lea	a4,[a4]@los(menu_main_debug_jump)
 .L846:
-	movh.a	a5,#@his(.101.str)
-	lea	a5,[a5]@los(.101.str)
+	movh.a	a5,#@his(.75.str)
+	lea	a5,[a5]@los(.75.str)
 .L847:
 	movh.a	a6,#@his(jump)
 	lea	a6,[a6]@los(jump)
@@ -2234,13 +2234,6 @@ menu_main_arg_k_camera_e_barrier_t:	.type	object
 menu_main_arg_k_camera_e_bridge:	.type	object
 	.size	menu_main_arg_k_camera_e_bridge,164
 	.space	164
-	.sdecl	'.bss.cpu0_dsram',data,cluster('menu_main_arg_k_camera_e_bridge_xAx')
-	.sect	'.bss.cpu0_dsram'
-	.global	menu_main_arg_k_camera_e_bridge_xAx
-	.align	4
-menu_main_arg_k_camera_e_bridge_xAx:	.type	object
-	.size	menu_main_arg_k_camera_e_bridge_xAx,164
-	.space	164
 	.sdecl	'.bss.cpu0_dsram',data,cluster('menu_main_arg_k_camera_e_bridge_y')
 	.sect	'.bss.cpu0_dsram'
 	.global	menu_main_arg_k_camera_e_bridge_y
@@ -2296,6 +2289,13 @@ menu_main_arg_k_camera_e_bridge_detect:	.type	object
 	.align	4
 menu_main_arg_k_camera_e_other:	.type	object
 	.size	menu_main_arg_k_camera_e_other,164
+	.space	164
+	.sdecl	'.bss.cpu0_dsram',data,cluster('menu_main_arg_k_camera_e_other_bPow')
+	.sect	'.bss.cpu0_dsram'
+	.global	menu_main_arg_k_camera_e_other_bPow
+	.align	4
+menu_main_arg_k_camera_e_other_bPow:	.type	object
+	.size	menu_main_arg_k_camera_e_other_bPow,164
 	.space	164
 	.sdecl	'.bss.cpu0_dsram',data,cluster('menu_main_arg_k_camera_show')
 	.sect	'.bss.cpu0_dsram'
@@ -3119,703 +3119,523 @@ menu_main_about:	.type	object
 	.byte	79,95,67,82
 	.byte	79,83,83
 	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.75.str:	.type	object
-	.size	.75.str,10
-	.byte	73,95,76,67,73,82,67,76
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.76.str:	.type	object
-	.size	.76.str,12
-	.byte	80,84,73,95,76,67,73,82
-	.byte	67,76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.77.str:	.type	object
-	.size	.77.str,11
-	.byte	84,73,95,76,67,73,82,67
-	.byte	76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.78.str:	.type	object
-	.size	.78.str,10
-	.byte	82,95,76,67,73,82,67,76
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.79.str:	.type	object
-	.size	.79.str,11
-	.byte	84,79,95,76,67,73,82,67
-	.byte	76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.80.str:	.type	object
-	.size	.80.str,11
-	.byte	80,79,95,76,67,73,82,67
-	.byte	76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.81.str:	.type	object
-	.size	.81.str,10
-	.byte	79,95,76,67,73,82,67,76
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.82.str:	.type	object
-	.size	.82.str,17
-	.byte	79,82,95,67,82,79,83,83
-	.byte	95,76,67,73,82,67,76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.83.str:	.type	object
-	.size	.83.str,10
-	.byte	73,95,82,67,73,82,67,76
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.84.str:	.type	object
-	.size	.84.str,12
-	.byte	80,84,73,95,82,67,73,82
-	.byte	67,76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.85.str:	.type	object
-	.size	.85.str,11
-	.byte	84,73,95,82,67,73,82,67
-	.byte	76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.86.str:	.type	object
-	.size	.86.str,10
-	.byte	82,95,82,67,73,82,67,76
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.87.str:	.type	object
-	.size	.87.str,11
-	.byte	84,79,95,82,67,73,82,67
-	.byte	76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.88.str:	.type	object
-	.size	.88.str,11
-	.byte	80,79,95,82,67,73,82,67
-	.byte	76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.89.str:	.type	object
-	.size	.89.str,10
-	.byte	79,95,82,67,73,82,67,76
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.90.str:	.type	object
-	.size	.90.str,17
-	.byte	79,82,95,67,82,79,83,83
-	.byte	95,82,67,73,82,67,76,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.91.str:	.type	object
-	.size	.91.str,5
-	.byte	82,65,77,80
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.92.str:	.type	object
-	.size	.92.str,10
-	.byte	73,95,66,65,82,82,73,69
-	.byte	82
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.93.str:	.type	object
-	.size	.93.str,10
-	.byte	82,95,66,65,82,82,73,69
-	.byte	82
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.94.str:	.type	object
-	.size	.94.str,10
-	.byte	79,95,66,65,82,82,73,69
-	.byte	82
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.95.str:	.type	object
-	.size	.95.str,9
-	.byte	73,95,66,82,73,68,71,69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.96.str:	.type	object
-	.size	.96.str,10
-	.byte	73,95,76,66,82,73,68,71
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.97.str:	.type	object
-	.size	.97.str,10
-	.byte	79,95,76,66,82,73,68,71
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.98.str:	.type	object
-	.size	.98.str,10
-	.byte	73,95,82,66,82,73,68,71
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.99.str:	.type	object
-	.size	.99.str,10
-	.byte	79,95,82,66,82,73,68,71
-	.byte	69
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.100.str:	.type	object
-	.size	.100.str,9
-	.byte	79,95,66,82,73,68,71,69
-	.space	1
 	.sdecl	'.data.cpu0_dsram',data,cluster('.68.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
 .68.lit:	.type	object
-	.size	.68.lit,132
-	.word	.69.str,.70.str,.71.str,.72.str,.73.str,.74.str,.75.str,.76.str
-	.word	.77.str,.78.str,.79.str,.80.str,.81.str,.82.str,.83.str,.84.str
-	.word	.85.str,.86.str,.87.str,.88.str,.89.str,.90.str,.91.str,.92.str
-	.word	.93.str,.94.str,.95.str,.96.str,.97.str,.98.str,.99.str,.100.str
-	.word	.15.str
+	.size	.68.lit,28
+	.word	.69.str,.70.str,.71.str,.72.str
+	.word	.73.str,.74.str,.15.str
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.101.str:	.type	object
-	.size	.101.str,5
+.75.str:	.type	object
+	.size	.75.str,5
 	.byte	106,117,109,112
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.102.str:	.type	object
-	.size	.102.str,8
+.76.str:	.type	object
+	.size	.76.str,8
 	.byte	101,108,101,109
 	.byte	101,110,116
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.103.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.77.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.103.lit:	.type	object
-	.size	.103.lit,32
+.77.lit:	.type	object
+	.size	.77.lit,32
 	.word	menu_main_arg_k_camera_e_zebra,menu_main_arg_k_camera_e_cross,menu_main_arg_k_camera_e_circle,menu_main_arg_k_camera_e_ramp
 	.word	menu_main_arg_k_camera_e_barrier,menu_main_arg_k_camera_e_bridge,menu_main_arg_k_camera_e_other
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.104.str:	.type	object
-	.size	.104.str,6
+.78.str:	.type	object
+	.size	.78.str,6
 	.byte	122,101,98,114
 	.byte	97
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.105.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.79.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.105.lit:	.type	object
-	.size	.105.lit,16
+.79.lit:	.type	object
+	.size	.79.lit,16
 	.word	menu_main_arg_k_camera_e_zebra_y,menu_main_arg_k_camera_e_zebra_t,menu_main_arg_k_camera_e_zebra_s
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.106.str:	.type	object
-	.size	.106.str,2
+.80.str:	.type	object
+	.size	.80.str,2
 	.byte	116
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.107.str:	.type	object
-	.size	.107.str,2
+.81.str:	.type	object
+	.size	.81.str,2
 	.byte	115
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.108.str:	.type	object
-	.size	.108.str,6
+.82.str:	.type	object
+	.size	.82.str,6
 	.byte	99,114,111,115
 	.byte	115
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.109.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.83.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.109.lit:	.type	object
-	.size	.109.lit,12
+.83.lit:	.type	object
+	.size	.83.lit,12
 	.word	menu_main_arg_k_camera_e_cross_x,menu_main_arg_k_camera_e_cross_y
 	.space	4
-	.sdecl	'.data.cpu0_dsram',data,cluster('.110.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.84.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.110.lit:	.type	object
-	.size	.110.lit,12
+.84.lit:	.type	object
+	.size	.84.lit,12
 	.word	menu_main_arg_k_camera_e_circle_x,menu_main_arg_k_camera_e_circle_line
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.111.str:	.type	object
-	.size	.111.str,5
+.85.str:	.type	object
+	.size	.85.str,5
 	.byte	108,105,110,101
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.112.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.86.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.112.lit:	.type	object
-	.size	.112.lit,24
+.86.lit:	.type	object
+	.size	.86.lit,24
 	.word	menu_main_arg_k_camera_e_ramp_s,menu_main_arg_k_camera_e_ramp_x,menu_main_arg_k_camera_e_ramp_y,menu_main_arg_k_camera_e_ramp_z
 	.word	menu_main_arg_k_camera_e_ramp_k
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.113.str:	.type	object
-	.size	.113.str,2
+.87.str:	.type	object
+	.size	.87.str,2
 	.byte	122
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.114.str:	.type	object
-	.size	.114.str,8
+.88.str:	.type	object
+	.size	.88.str,8
 	.byte	98,97,114,114
 	.byte	105,101,114
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.115.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.89.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.115.lit:	.type	object
-	.size	.115.lit,24
+.89.lit:	.type	object
+	.size	.89.lit,24
 	.word	menu_main_arg_k_camera_e_barrier_y0,menu_main_arg_k_camera_e_barrier_y1,menu_main_arg_k_camera_e_barrier_zMax,menu_main_arg_k_camera_e_barrier_zMin
 	.word	menu_main_arg_k_camera_e_barrier_t
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.116.str:	.type	object
-	.size	.116.str,3
+.90.str:	.type	object
+	.size	.90.str,3
 	.byte	121,48
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.117.str:	.type	object
-	.size	.117.str,3
+.91.str:	.type	object
+	.size	.91.str,3
 	.byte	121,49
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.118.str:	.type	object
-	.size	.118.str,5
+.92.str:	.type	object
+	.size	.92.str,5
 	.byte	122,77,97,120
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.119.str:	.type	object
-	.size	.119.str,5
+.93.str:	.type	object
+	.size	.93.str,5
 	.byte	122,77,105,110
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.120.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.94.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.120.lit:	.type	object
-	.size	.120.lit,36
-	.word	menu_main_arg_k_camera_e_bridge_xAx,menu_main_arg_k_camera_e_bridge_y,menu_main_arg_k_camera_e_bridge_kPitchX,menu_main_arg_k_camera_e_bridge_ti,menu_main_arg_k_camera_e_bridge_to,menu_main_arg_k_camera_e_bridge_s,menu_main_arg_k_camera_e_bridge_z,menu_main_arg_k_camera_e_bridge_detect
+.94.lit:	.type	object
+	.size	.94.lit,32
+	.word	menu_main_arg_k_camera_e_bridge_y,menu_main_arg_k_camera_e_bridge_kPitchX,menu_main_arg_k_camera_e_bridge_ti,menu_main_arg_k_camera_e_bridge_to
+	.word	menu_main_arg_k_camera_e_bridge_s,menu_main_arg_k_camera_e_bridge_z,menu_main_arg_k_camera_e_bridge_detect
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.121.str:	.type	object
-	.size	.121.str,9
-	.byte	120,65,120,65,108,112,104,97
-	.space	1
-	.sdecl	'.rodata.cpu0_dsram',data,rom
-	.sect	'.rodata.cpu0_dsram'
-.122.str:	.type	object
-	.size	.122.str,8
+.95.str:	.type	object
+	.size	.95.str,8
 	.byte	107,80,105,116
 	.byte	99,104,88
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.123.str:	.type	object
-	.size	.123.str,3
+.96.str:	.type	object
+	.size	.96.str,3
 	.byte	116,105
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.124.str:	.type	object
-	.size	.124.str,3
+.97.str:	.type	object
+	.size	.97.str,3
 	.byte	116,111
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.125.str:	.type	object
-	.size	.125.str,8
+.98.str:	.type	object
+	.size	.98.str,8
 	.byte	100,101,116,101
 	.byte	99,116,76
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.126.str:	.type	object
-	.size	.126.str,6
+.99.str:	.type	object
+	.size	.99.str,6
 	.byte	111,116,104,101
 	.byte	114
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.127.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.100.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.127.lit:	.type	object
-	.size	.127.lit,4
+.100.lit:	.type	object
+	.size	.100.lit,8
+	.word	menu_main_arg_k_camera_e_other_bPow
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.128.str:	.type	object
-	.size	.128.str,5
+.101.str:	.type	object
+	.size	.101.str,5
+	.byte	98,80,111,119
+	.space	1
+	.sdecl	'.rodata.cpu0_dsram',data,rom
+	.sect	'.rodata.cpu0_dsram'
+.102.str:	.type	object
+	.size	.102.str,5
 	.byte	115,104,111,119
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.129.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.103.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.129.lit:	.type	object
-	.size	.129.lit,12
+.103.lit:	.type	object
+	.size	.103.lit,12
 	.word	menu_main_arg_k_camera_show_pInC1,menu_main_arg_k_camera_show_wait
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.130.str:	.type	object
-	.size	.130.str,6
+.104.str:	.type	object
+	.size	.104.str,6
 	.byte	112,73,110,67
 	.byte	49
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.131.str:	.type	object
-	.size	.131.str,5
+.105.str:	.type	object
+	.size	.105.str,5
 	.byte	119,97,105,116
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.132.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.106.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.132.lit:	.type	object
-	.size	.132.lit,16
+.106.lit:	.type	object
+	.size	.106.lit,16
 	.word	menu_main_arg_k_jump_step0,menu_main_arg_k_jump_step1,menu_main_arg_k_jump_step2
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.133.str:	.type	object
-	.size	.133.str,2
+.107.str:	.type	object
+	.size	.107.str,2
 	.byte	48
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.134.str:	.type	object
-	.size	.134.str,2
+.108.str:	.type	object
+	.size	.108.str,2
 	.byte	49
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.135.str:	.type	object
-	.size	.135.str,2
+.109.str:	.type	object
+	.size	.109.str,2
 	.byte	50
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.136.str:	.type	object
-	.size	.136.str,4
+.110.str:	.type	object
+	.size	.110.str,4
 	.byte	80,73,68
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.137.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.111.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.137.lit:	.type	object
-	.size	.137.lit,24
+.111.lit:	.type	object
+	.size	.111.lit,24
 	.word	menu_main_arg_PID_vAy,menu_main_arg_PID_xAy,menu_main_arg_PID_vVx,menu_main_arg_PID_vAz
 	.word	menu_main_arg_PID_turn
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.138.str:	.type	object
-	.size	.138.str,4
+.112.str:	.type	object
+	.size	.112.str,4
 	.byte	118,65,121
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.139.str:	.type	object
-	.size	.139.str,4
+.113.str:	.type	object
+	.size	.113.str,4
 	.byte	120,65,121
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.140.str:	.type	object
-	.size	.140.str,4
+.114.str:	.type	object
+	.size	.114.str,4
 	.byte	118,86,120
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.141.str:	.type	object
-	.size	.141.str,4
+.115.str:	.type	object
+	.size	.115.str,4
 	.byte	118,65,122
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.142.str:	.type	object
-	.size	.142.str,5
+.116.str:	.type	object
+	.size	.116.str,5
 	.byte	116,117,114,110
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.143.str:	.type	object
-	.size	.143.str,7
+.117.str:	.type	object
+	.size	.117.str,7
 	.byte	70,105,108,116
 	.byte	101,114
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.144.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.118.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.144.lit:	.type	object
-	.size	.144.lit,20
+.118.lit:	.type	object
+	.size	.118.lit,20
 	.word	menu_main_arg_filter_turn,menu_main_arg_filter_speed,menu_main_arg_filter_xAx0,menu_main_arg_filter_xAx1
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.145.str:	.type	object
-	.size	.145.str,6
+.119.str:	.type	object
+	.size	.119.str,6
 	.byte	115,112,101,101
 	.byte	100
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.146.str:	.type	object
-	.size	.146.str,5
+.120.str:	.type	object
+	.size	.120.str,5
 	.byte	120,65,120,48
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.147.str:	.type	object
-	.size	.147.str,5
+.121.str:	.type	object
+	.size	.121.str,5
 	.byte	120,65,120,49
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.148.str:	.type	object
-	.size	.148.str,6
+.122.str:	.type	object
+	.size	.122.str,6
 	.byte	100,101,98,117
 	.byte	103
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.149.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.123.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.149.lit:	.type	object
-	.size	.149.lit,48
+.123.lit:	.type	object
+	.size	.123.lit,48
 	.word	menu_main_debug_wheelClear,menu_main_debug_flash,menu_main_debug_vofa,menu_main_debug_wifiIm,menu_main_debug_fs,menu_main_debug_flz,menu_main_debug_fl,menu_main_debug_fwp
 	.word	menu_main_debug_frb,menu_main_debug_fcd,menu_main_debug_jump
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.150.str:	.type	object
-	.size	.150.str,7
+.124.str:	.type	object
+	.size	.124.str,7
 	.byte	119,67,108,101
 	.byte	97,114
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.151.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.125.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.151.lit:	.type	object
-	.size	.151.lit,16
+.125.lit:	.type	object
+	.size	.125.lit,16
 	.word	menu_main_debug_flash_write,menu_main_debug_flash_read,menu_main_debug_flash_clear
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.152.str:	.type	object
-	.size	.152.str,6
+.126.str:	.type	object
+	.size	.126.str,6
 	.byte	119,114,105,116
 	.byte	101
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.153.str:	.type	object
-	.size	.153.str,5
+.127.str:	.type	object
+	.size	.127.str,5
 	.byte	114,101,97,100
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.154.str:	.type	object
-	.size	.154.str,6
+.128.str:	.type	object
+	.size	.128.str,6
 	.byte	99,108,101,97
 	.byte	114
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.155.str:	.type	object
-	.size	.155.str,5
+.129.str:	.type	object
+	.size	.129.str,5
 	.byte	118,111,102,97
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.156.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.130.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.156.lit:	.type	object
-	.size	.156.lit,12
+.130.lit:	.type	object
+	.size	.130.lit,12
 	.word	menu_main_debug_vofa_send,menu_main_debug_vofa_receive
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.157.str:	.type	object
-	.size	.157.str,5
+.131.str:	.type	object
+	.size	.131.str,5
 	.byte	115,101,110,100
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.158.str:	.type	object
-	.size	.158.str,8
+.132.str:	.type	object
+	.size	.132.str,8
 	.byte	114,101,99,101
 	.byte	105,118,101
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.159.str:	.type	object
-	.size	.159.str,7
+.133.str:	.type	object
+	.size	.133.str,7
 	.byte	119,105,102,105
 	.byte	73,109
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.160.str:	.type	object
-	.size	.160.str,11
+.134.str:	.type	object
+	.size	.134.str,11
 	.byte	102,111,114,99,101,83,112,101
 	.byte	101,100
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.161.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.135.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.161.lit:	.type	object
-	.size	.161.lit,12
+.135.lit:	.type	object
+	.size	.135.lit,12
 	.word	menu_main_debug_fs_en,menu_main_debug_fs_speed
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.162.str:	.type	object
-	.size	.162.str,7
+.136.str:	.type	object
+	.size	.136.str,7
 	.byte	101,110,97,98
 	.byte	108,101
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.163.str:	.type	object
-	.size	.163.str,8
+.137.str:	.type	object
+	.size	.137.str,8
 	.byte	108,101,103,90
 	.byte	101,114,111
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.164.str:	.type	object
-	.size	.164.str,9
+.138.str:	.type	object
+	.size	.138.str,9
 	.byte	102,111,114,99,101,76,101,103
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.165.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.139.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.165.lit:	.type	object
-	.size	.165.lit,24
+.139.lit:	.type	object
+	.size	.139.lit,24
 	.word	menu_main_debug_fl_en,menu_main_debug_fl_rb,menu_main_debug_fl_rf,menu_main_debug_fl_lf
 	.word	menu_main_debug_fl_lb
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.166.str:	.type	object
-	.size	.166.str,6
+.140.str:	.type	object
+	.size	.140.str,6
 	.byte	114,116,95,98
 	.byte	107
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.167.str:	.type	object
-	.size	.167.str,6
+.141.str:	.type	object
+	.size	.141.str,6
 	.byte	114,116,95,102
 	.byte	100
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.168.str:	.type	object
-	.size	.168.str,6
+.142.str:	.type	object
+	.size	.142.str,6
 	.byte	108,116,95,102
 	.byte	100
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.169.str:	.type	object
-	.size	.169.str,6
+.143.str:	.type	object
+	.size	.143.str,6
 	.byte	108,116,95,98
 	.byte	107
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.170.str:	.type	object
-	.size	.170.str,10
+.144.str:	.type	object
+	.size	.144.str,10
 	.byte	102,111,114,99,101,87,80,111
 	.byte	115
 	.space	1
-	.sdecl	'.data.cpu0_dsram',data,cluster('.171.lit')
+	.sdecl	'.data.cpu0_dsram',data,cluster('.145.lit')
 	.sect	'.data.cpu0_dsram'
 	.align	4
-.171.lit:	.type	object
-	.size	.171.lit,24
+.145.lit:	.type	object
+	.size	.145.lit,24
 	.word	menu_main_debug_fwp_en,menu_main_debug_fwp_lx,menu_main_debug_fwp_lz,menu_main_debug_fwp_rx
 	.word	menu_main_debug_fwp_rz
 	.space	4
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.172.str:	.type	object
-	.size	.172.str,5
+.146.str:	.type	object
+	.size	.146.str,5
 	.byte	108,116,95,120
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.173.str:	.type	object
-	.size	.173.str,5
+.147.str:	.type	object
+	.size	.147.str,5
 	.byte	108,116,95,122
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.174.str:	.type	object
-	.size	.174.str,5
+.148.str:	.type	object
+	.size	.148.str,5
 	.byte	114,116,95,120
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.175.str:	.type	object
-	.size	.175.str,5
+.149.str:	.type	object
+	.size	.149.str,5
 	.byte	114,116,95,122
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.176.str:	.type	object
-	.size	.176.str,4
+.150.str:	.type	object
+	.size	.150.str,4
 	.byte	102,114,98
 	.space	1
 	.sdecl	'.rodata.cpu0_dsram',data,rom
 	.sect	'.rodata.cpu0_dsram'
-.177.str:	.type	object
-	.size	.177.str,4
+.151.str:	.type	object
+	.size	.151.str,4
 	.byte	102,99,100
 	.space	1
 	.calls	'__INDIRECT__','MotorZero'
@@ -3888,6 +3708,7 @@ menu_main_about:	.type	object
 	.extern	bridgeS
 	.extern	bridgeZ
 	.extern	bridgeDetectL
+	.extern	otherBPow
 	.extern	errY
 	.extern	errDeltaY
 	.extern	showPInC1
@@ -3930,7 +3751,6 @@ menu_main_about:	.type	object
 	.extern	Flash_pageAllWrite
 	.extern	carStatus
 	.extern	CarStatus_menu_update
-	.extern	defaultRollAlpha
 	.extern	jumpStep
 	.extern	jumpLegZMin
 	.extern	jumpLegZMax
@@ -3948,7 +3768,7 @@ menu_main_about:	.type	object
 	.sdecl	'.debug_info',debug
 	.sect	'.debug_info'
 .L5:
-	.word	168493
+	.word	168457
 	.half	3
 	.word	.L6
 	.byte	4
@@ -10601,7 +10421,7 @@ menu_main_about:	.type	object
 	.byte	'page',0,30,30,34
 	.word	40545
 	.byte	0,35
-	.byte	'jump',0,31,51,6,1,1,1,35
+	.byte	'jump',0,31,50,6,1,1,1,35
 	.byte	'Vofa_pageAllSend',0,32,21,6,1,1,1,35
 	.byte	'Vofa_pageAllReceive',0,32,22,6,1,1,1,36
 	.byte	'Wifi_Image_Init',0,33,29,6,1,1,1,1,35
@@ -25786,167 +25606,168 @@ menu_main_about:	.type	object
 	.byte	'TI_LCIRCLE',0,8,18
 	.byte	'R_LCIRCLE',0,9,18
 	.byte	'TO_LCIRCLE',0,10,18
-	.byte	'PO_LCIRCLE',0,11,18
-	.byte	'O_LCIRCLE',0,12,18
-	.byte	'OR_CROSS_LCIRCLE',0,13,18
-	.byte	'I_RCIRCLE',0,14,18
-	.byte	'PTI_RCIRCLE',0,15,18
-	.byte	'TI_RCIRCLE',0,16,18
-	.byte	'R_RCIRCLE',0,17,18
-	.byte	'TO_RCIRCLE',0,18,18
-	.byte	'PO_RCIRCLE',0,19,18
-	.byte	'O_RCIRCLE',0,20,18
-	.byte	'OR_CROSS_RCIRCLE',0,21,18
-	.byte	'RAMP',0,22,18
-	.byte	'I_BARRIER',0,23,18
-	.byte	'R_BARRIER',0,24,18
-	.byte	'O_BARRIER',0,25,18
-	.byte	'I_BRIDGE',0,26,18
-	.byte	'I_LBRIDGE',0,27,18
-	.byte	'O_LBRIDGE',0,28,18
-	.byte	'I_RBRIDGE',0,29,18
-	.byte	'O_RBRIDGE',0,30,18
-	.byte	'O_BRIDGE',0,31,18
-	.byte	'CAMERA_STATUS_NUMBER',0,32,0,21
-	.byte	'CameraStatus',0,67,42,2
+	.byte	'O_LCIRCLE',0,11,18
+	.byte	'OR_CROSS_LCIRCLE',0,12,18
+	.byte	'I_RCIRCLE',0,13,18
+	.byte	'PTI_RCIRCLE',0,14,18
+	.byte	'TI_RCIRCLE',0,15,18
+	.byte	'R_RCIRCLE',0,16,18
+	.byte	'TO_RCIRCLE',0,17,18
+	.byte	'O_RCIRCLE',0,18,18
+	.byte	'OR_CROSS_RCIRCLE',0,19,18
+	.byte	'RAMP',0,20,18
+	.byte	'I_BARRIER',0,21,18
+	.byte	'R_BARRIER',0,22,18
+	.byte	'O_BARRIER',0,23,18
+	.byte	'I_BRIDGE',0,24,18
+	.byte	'I_LBRIDGE',0,25,18
+	.byte	'O_LBRIDGE',0,26,18
+	.byte	'I_RBRIDGE',0,27,18
+	.byte	'O_RBRIDGE',0,28,18
+	.byte	'O_BRIDGE',0,29,18
+	.byte	'CAMERA_STATUS_NUMBER',0,30,0,21
+	.byte	'CameraStatus',0,67,40,2
 	.word	166362
 	.byte	39
-	.byte	'vignetteK',0,67,56,14
+	.byte	'vignetteK',0,67,54,14
 	.word	260
 	.byte	1,1,39
-	.byte	'binStatus',0,67,57,14
+	.byte	'binStatus',0,67,55,14
 	.word	639
 	.byte	1,1,39
-	.byte	'binDeltaT',0,67,58,12
+	.byte	'binDeltaT',0,67,56,12
 	.word	480
 	.byte	1,1,39
-	.byte	'trapezoidK',0,67,59,14
+	.byte	'trapezoidK',0,67,57,14
 	.word	260
 	.byte	1,1,39
-	.byte	'trapezoidY',0,67,60,12
+	.byte	'trapezoidY',0,67,58,12
 	.word	480
 	.byte	1,1,39
-	.byte	'startMaxYAdd',0,67,61,12
+	.byte	'startMaxYAdd',0,67,59,12
 	.word	480
 	.byte	1,1,39
-	.byte	'bly2RDL',0,67,62,12
+	.byte	'bly2RDL',0,67,60,12
 	.word	480
 	.byte	1,1,39
-	.byte	'RD2IErr',0,67,63,14
+	.byte	'RD2IErr',0,67,61,14
 	.word	260
 	.byte	1,1,39
-	.byte	'facingErr',0,67,64,14
+	.byte	'facingErr',0,67,62,14
 	.word	260
 	.byte	1,1,39
-	.byte	'setLineY',0,67,67,12
+	.byte	'setLineY',0,67,65,12
 	.word	480
 	.byte	1,1,39
-	.byte	'straightYMin',0,67,68,12
+	.byte	'straightYMin',0,67,66,12
 	.word	480
 	.byte	1,1,39
-	.byte	'straightStep',0,67,69,12
+	.byte	'straightStep',0,67,67,12
 	.word	480
 	.byte	1,1,39
-	.byte	'straightErr',0,67,70,14
+	.byte	'straightErr',0,67,68,14
 	.word	260
 	.byte	1,1,39
-	.byte	'statusJump',0,67,71,14
+	.byte	'statusJump',0,67,69,14
 	.word	260
 	.byte	1,1,39
-	.byte	'statusK',0,67,72,14
+	.byte	'statusK',0,67,70,14
 	.word	260
 	.byte	1,1,39
-	.byte	'zebraY',0,67,73,12
+	.byte	'zebraY',0,67,71,12
 	.word	480
 	.byte	1,1,39
-	.byte	'zebraT',0,67,74,12
+	.byte	'zebraT',0,67,72,12
 	.word	480
 	.byte	1,1,39
-	.byte	'zebraS',0,67,75,12
+	.byte	'zebraS',0,67,73,12
 	.word	480
 	.byte	1,1,39
-	.byte	'crossX',0,67,76,12
+	.byte	'crossX',0,67,74,12
 	.word	480
 	.byte	1,1,39
-	.byte	'crossY',0,67,77,12
+	.byte	'crossY',0,67,75,12
 	.word	480
 	.byte	1,1,39
-	.byte	'circleX',0,67,78,12
+	.byte	'circleX',0,67,76,12
 	.word	480
 	.byte	1,1,39
-	.byte	'circleLine',0,67,79,14
+	.byte	'circleLine',0,67,77,14
 	.word	260
 	.byte	1,1,39
-	.byte	'rampS',0,67,80,12
+	.byte	'rampS',0,67,78,12
 	.word	480
 	.byte	1,1,39
-	.byte	'rampX',0,67,81,12
+	.byte	'rampX',0,67,79,12
 	.word	480
 	.byte	1,1,39
-	.byte	'rampY',0,67,82,12
+	.byte	'rampY',0,67,80,12
 	.word	480
 	.byte	1,1,39
-	.byte	'rampZ',0,67,83,12
+	.byte	'rampZ',0,67,81,12
 	.word	480
 	.byte	1,1,39
-	.byte	'rampK',0,67,84,14
+	.byte	'rampK',0,67,82,14
 	.word	260
 	.byte	1,1,39
-	.byte	'barrierY0',0,67,85,12
+	.byte	'barrierY0',0,67,83,12
 	.word	480
 	.byte	1,1,39
-	.byte	'barrierY1',0,67,86,12
+	.byte	'barrierY1',0,67,84,12
 	.word	480
 	.byte	1,1,39
-	.byte	'barrierT',0,67,87,12
+	.byte	'barrierT',0,67,85,12
 	.word	480
 	.byte	1,1,39
-	.byte	'bridgeY',0,67,88,12
+	.byte	'bridgeY',0,67,86,12
 	.word	480
 	.byte	1,1,39
-	.byte	'bridgeKPitchX',0,67,89,14
+	.byte	'bridgeKPitchX',0,67,87,14
 	.word	260
 	.byte	1,1,39
-	.byte	'bridgeTI',0,67,90,12
+	.byte	'bridgeTI',0,67,88,12
 	.word	480
 	.byte	1,1,39
-	.byte	'bridgeTO',0,67,91,12
+	.byte	'bridgeTO',0,67,89,12
 	.word	480
 	.byte	1,1,39
-	.byte	'bridgeS',0,67,92,12
+	.byte	'bridgeS',0,67,90,12
 	.word	480
 	.byte	1,1,39
-	.byte	'bridgeZ',0,67,93,14
+	.byte	'bridgeZ',0,67,91,14
 	.word	260
 	.byte	1,1,39
-	.byte	'bridgeDetectL',0,67,94,14
+	.byte	'bridgeDetectL',0,67,92,14
 	.word	639
 	.byte	1,1,39
-	.byte	'errY',0,67,95,12
+	.byte	'otherBPow',0,67,93,14
+	.word	260
+	.byte	1,1,39
+	.byte	'errY',0,67,94,12
 	.word	480
 	.byte	1,1,39
-	.byte	'errDeltaY',0,67,96,12
+	.byte	'errDeltaY',0,67,95,12
 	.word	480
 	.byte	1,1,39
-	.byte	'showPInC1',0,67,97,14
+	.byte	'showPInC1',0,67,96,14
 	.word	639
 	.byte	1,1,39
-	.byte	'showWait',0,67,98,14
+	.byte	'showWait',0,67,97,14
 	.word	639
 	.byte	1,1,39
-	.byte	'bendV',0,67,100,14
+	.byte	'bendV',0,67,99,14
 	.word	260
 	.byte	1,1,39
-	.byte	'circleV',0,67,101,14
+	.byte	'circleV',0,67,100,14
 	.word	260
 	.byte	1,1,39
-	.byte	'rampV',0,67,102,14
+	.byte	'rampV',0,67,101,14
 	.word	260
 	.byte	1,1,39
-	.byte	'bridgeV',0,67,103,14
+	.byte	'bridgeV',0,67,102,14
 	.word	260
 	.byte	1,1,39
-	.byte	'cameraStatus',0,67,107,21
+	.byte	'cameraStatus',0,67,106,21
 	.word	166362
 	.byte	1,1,39
 	.byte	'targetV',0,27,17,14
@@ -26029,35 +25850,32 @@ menu_main_about:	.type	object
 	.byte	'CAR_BALANCE',0,2,18
 	.byte	'CAR_RUN',0,3,0,21
 	.byte	'CarStatus',0,30,18,2
-	.word	168085
+	.word	168079
 	.byte	39
 	.byte	'carStatus',0,30,26,18
-	.word	168085
-	.byte	1,1,39
-	.byte	'defaultRollAlpha',0,31,38,14
-	.word	260
+	.word	168079
 	.byte	1,1,37
 	.word	480
 	.byte	38,0,33
-	.word	168203
+	.word	168170
 	.byte	39
-	.byte	'jumpStep',0,31,47,18
-	.word	168210
+	.byte	'jumpStep',0,31,46,18
+	.word	168177
 	.byte	1,1,39
-	.byte	'jumpLegZMin',0,31,48,14
+	.byte	'jumpLegZMin',0,31,47,14
 	.word	260
 	.byte	1,1,39
-	.byte	'jumpLegZMax',0,31,48,27
+	.byte	'jumpLegZMax',0,31,47,27
 	.word	260
 	.byte	1,1,20,71,13,9,8,13
-	.byte	'deltaMax',0
+	.byte	'delta',0
 	.word	260
 	.byte	4,2,35,0,13
 	.byte	'y',0
 	.word	260
 	.byte	4,2,35,4,0,21
 	.byte	'Filter0',0,71,16,2
-	.word	168278
+	.word	168245
 	.byte	20,71,17,9,12,13
 	.byte	'alpha',0
 	.word	260
@@ -26069,19 +25887,19 @@ menu_main_about:	.type	object
 	.word	260
 	.byte	4,2,35,8,0,21
 	.byte	'Filter1',0,71,20,2
-	.word	168329
+	.word	168293
 	.byte	39
 	.byte	'Filter0_xAx',0,71,42,16
-	.word	168278
+	.word	168245
 	.byte	1,1,39
 	.byte	'Filter1_turn',0,71,43,16
-	.word	168329
+	.word	168293
 	.byte	1,1,39
 	.byte	'Filter1_speed',0,71,43,30
-	.word	168329
+	.word	168293
 	.byte	1,1,39
 	.byte	'Filter1_xAx',0,71,43,45
-	.word	168329
+	.word	168293
 	.byte	1,1,39
 	.byte	'volume',0,72,16,12
 	.word	480
@@ -26699,7 +26517,7 @@ menu_main_about:	.type	object
 	.half	.L492-.L491
 	.byte	1,5,21,9
 	.half	.L493-.L492
-	.byte	3,35,1,5,57,9
+	.byte	3,9,1,5,57,9
 	.half	.L494-.L493
 	.byte	1,5,66,9
 	.half	.L495-.L494
@@ -26935,35 +26753,35 @@ menu_main_about:	.type	object
 	.half	.L610-.L609
 	.byte	1,5,72,9
 	.half	.L611-.L610
-	.byte	1,5,21,9
-	.half	.L612-.L611
-	.byte	3,11,1,5,58,9
-	.half	.L613-.L612
-	.byte	1,5,71,9
-	.half	.L614-.L613
-	.byte	1,5,89,9
-	.half	.L615-.L614
-	.byte	1,5,92,9
-	.half	.L616-.L615
 	.byte	1,5,19,9
-	.half	.L617-.L616
-	.byte	3,1,1,5,54,9
-	.half	.L618-.L617
+	.half	.L612-.L611
+	.byte	3,10,1,5,54,9
+	.half	.L613-.L612
 	.byte	1,5,60,9
-	.half	.L619-.L618
+	.half	.L614-.L613
 	.byte	1,5,69,9
-	.half	.L620-.L619
+	.half	.L615-.L614
 	.byte	1,5,72,9
-	.half	.L621-.L620
+	.half	.L616-.L615
 	.byte	1,5,21,9
-	.half	.L622-.L621
+	.half	.L617-.L616
 	.byte	3,1,1,5,62,9
-	.half	.L623-.L622
+	.half	.L618-.L617
 	.byte	1,5,74,9
-	.half	.L624-.L623
+	.half	.L619-.L618
 	.byte	1,5,89,9
-	.half	.L625-.L624
+	.half	.L620-.L619
 	.byte	1,5,95,9
+	.half	.L621-.L620
+	.byte	1,5,19,9
+	.half	.L622-.L621
+	.byte	3,1,1,5,55,9
+	.half	.L623-.L622
+	.byte	1,5,62,9
+	.half	.L624-.L623
+	.byte	1,5,72,9
+	.half	.L625-.L624
+	.byte	1,5,75,9
 	.half	.L626-.L625
 	.byte	1,5,19,9
 	.half	.L627-.L626
@@ -26977,51 +26795,51 @@ menu_main_about:	.type	object
 	.half	.L631-.L630
 	.byte	1,5,19,9
 	.half	.L632-.L631
-	.byte	3,1,1,5,55,9
-	.half	.L633-.L632
-	.byte	1,5,62,9
-	.half	.L634-.L633
-	.byte	1,5,72,9
-	.half	.L635-.L634
-	.byte	1,5,75,9
-	.half	.L636-.L635
-	.byte	1,5,19,9
-	.half	.L637-.L636
 	.byte	3,1,1,5,54,9
-	.half	.L638-.L637
+	.half	.L633-.L632
 	.byte	1,5,60,9
-	.half	.L639-.L638
+	.half	.L634-.L633
 	.byte	1,5,69,9
-	.half	.L640-.L639
+	.half	.L635-.L634
 	.byte	1,5,72,9
-	.half	.L641-.L640
+	.half	.L636-.L635
 	.byte	1,5,21,9
-	.half	.L642-.L641
+	.half	.L637-.L636
 	.byte	3,1,1,5,56,9
-	.half	.L643-.L642
+	.half	.L638-.L637
 	.byte	1,5,62,9
-	.half	.L644-.L643
+	.half	.L639-.L638
 	.byte	1,5,71,9
-	.half	.L645-.L644
+	.half	.L640-.L639
 	.byte	1,5,83,9
-	.half	.L646-.L645
+	.half	.L641-.L640
 	.byte	1,5,20,9
-	.half	.L647-.L646
+	.half	.L642-.L641
 	.byte	3,1,1,5,60,9
-	.half	.L648-.L647
+	.half	.L643-.L642
 	.byte	1,5,72,9
-	.half	.L649-.L648
+	.half	.L644-.L643
 	.byte	1,5,87,9
-	.half	.L650-.L649
+	.half	.L645-.L644
 	.byte	1,5,20,9
-	.half	.L651-.L650
+	.half	.L646-.L645
 	.byte	3,1,1,5,52,9
-	.half	.L652-.L651
+	.half	.L647-.L646
 	.byte	1,5,70,9
+	.half	.L648-.L647
+	.byte	1,5,21,9
+	.half	.L649-.L648
+	.byte	3,4,1,5,58,9
+	.half	.L650-.L649
+	.byte	1,5,67,9
+	.half	.L651-.L650
+	.byte	1,5,78,9
+	.half	.L652-.L651
+	.byte	1,5,81,9
 	.half	.L653-.L652
 	.byte	1,5,20,9
 	.half	.L654-.L653
-	.byte	3,3,1,5,49,9
+	.byte	3,1,1,5,49,9
 	.half	.L655-.L654
 	.byte	1,5,66,9
 	.half	.L656-.L655
@@ -27149,9 +26967,9 @@ menu_main_about:	.type	object
 	.half	.L717-.L716
 	.byte	1,5,57,9
 	.half	.L718-.L717
-	.byte	1,5,79,9
+	.byte	1,5,76,9
 	.half	.L719-.L718
-	.byte	1,5,82,9
+	.byte	1,5,79,9
 	.half	.L720-.L719
 	.byte	1,5,21,9
 	.half	.L721-.L720
@@ -29007,10 +28825,10 @@ menu_main_about:	.type	object
 .L156:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_xAx')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_y')
 	.sect	'.debug_info'
 .L157:
-	.word	249
+	.word	247
 	.half	3
 	.word	.L158
 	.byte	4,1
@@ -29019,20 +28837,20 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_xAx',0,34,84,6
+	.byte	'menu_main_arg_k_camera_e_bridge_y',0,34,84,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_xAx
+	.word	menu_main_arg_k_camera_e_bridge_y
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_xAx')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_y')
 	.sect	'.debug_abbrev'
 .L158:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_y')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_kPitchX')
 	.sect	'.debug_info'
 .L159:
-	.word	247
+	.word	253
 	.half	3
 	.word	.L160
 	.byte	4,1
@@ -29041,20 +28859,20 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_y',0,34,85,6
+	.byte	'menu_main_arg_k_camera_e_bridge_kPitchX',0,34,85,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_y
+	.word	menu_main_arg_k_camera_e_bridge_kPitchX
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_y')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_kPitchX')
 	.sect	'.debug_abbrev'
 .L160:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_kPitchX')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_ti')
 	.sect	'.debug_info'
 .L161:
-	.word	253
+	.word	248
 	.half	3
 	.word	.L162
 	.byte	4,1
@@ -29063,17 +28881,17 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_kPitchX',0,34,86,6
+	.byte	'menu_main_arg_k_camera_e_bridge_ti',0,34,86,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_kPitchX
+	.word	menu_main_arg_k_camera_e_bridge_ti
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_kPitchX')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_ti')
 	.sect	'.debug_abbrev'
 .L162:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_ti')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_to')
 	.sect	'.debug_info'
 .L163:
 	.word	248
@@ -29085,20 +28903,20 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_ti',0,34,87,6
+	.byte	'menu_main_arg_k_camera_e_bridge_to',0,34,87,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_ti
+	.word	menu_main_arg_k_camera_e_bridge_to
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_ti')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_to')
 	.sect	'.debug_abbrev'
 .L164:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_to')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_s')
 	.sect	'.debug_info'
 .L165:
-	.word	248
+	.word	247
 	.half	3
 	.word	.L166
 	.byte	4,1
@@ -29107,17 +28925,17 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_to',0,34,88,6
+	.byte	'menu_main_arg_k_camera_e_bridge_s',0,34,88,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_to
+	.word	menu_main_arg_k_camera_e_bridge_s
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_to')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_s')
 	.sect	'.debug_abbrev'
 .L166:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_s')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_z')
 	.sect	'.debug_info'
 .L167:
 	.word	247
@@ -29129,20 +28947,20 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_s',0,34,89,6
+	.byte	'menu_main_arg_k_camera_e_bridge_z',0,34,89,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_s
+	.word	menu_main_arg_k_camera_e_bridge_z
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_s')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_z')
 	.sect	'.debug_abbrev'
 .L168:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_z')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_detect')
 	.sect	'.debug_info'
 .L169:
-	.word	247
+	.word	252
 	.half	3
 	.word	.L170
 	.byte	4,1
@@ -29151,20 +28969,20 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_z',0,34,90,6
+	.byte	'menu_main_arg_k_camera_e_bridge_detect',0,34,90,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_z
+	.word	menu_main_arg_k_camera_e_bridge_detect
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_z')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_detect')
 	.sect	'.debug_abbrev'
 .L170:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_bridge_detect')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_other')
 	.sect	'.debug_info'
 .L171:
-	.word	252
+	.word	244
 	.half	3
 	.word	.L172
 	.byte	4,1
@@ -29173,20 +28991,20 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_bridge_detect',0,34,91,6
+	.byte	'menu_main_arg_k_camera_e_other',0,34,91,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_bridge_detect
+	.word	menu_main_arg_k_camera_e_other
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_bridge_detect')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_other')
 	.sect	'.debug_abbrev'
 .L172:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_other')
+	.sdecl	'.debug_info',debug,cluster('menu_main_arg_k_camera_e_other_bPow')
 	.sect	'.debug_info'
 .L173:
-	.word	244
+	.word	249
 	.half	3
 	.word	.L174
 	.byte	4,1
@@ -29195,12 +29013,12 @@ menu_main_about:	.type	object
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
 	.word	.L4
 	.byte	3
-	.byte	'menu_main_arg_k_camera_e_other',0,34,92,6
+	.byte	'menu_main_arg_k_camera_e_other_bPow',0,34,92,6
 	.word	.L272
 	.byte	1,5,3
-	.word	menu_main_arg_k_camera_e_other
+	.word	menu_main_arg_k_camera_e_other_bPow
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_other')
+	.sdecl	'.debug_abbrev',debug,cluster('menu_main_arg_k_camera_e_other_bPow')
 	.sect	'.debug_abbrev'
 .L174:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9

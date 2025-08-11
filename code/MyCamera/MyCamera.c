@@ -14,7 +14,7 @@ int trapezoidY = 20;
 int startMaxYAdd = 2;
 int bly2RDL = 3;
 float RD2IErr = 0.7854;
-float facingErr = 0.5236;
+float facingErr = 0.6981317;
 int setLineY = 15;
 int straightYMin = 40;
 int straightStep = 10;
@@ -31,7 +31,7 @@ float circleLine = 0.4;
 int rampS = 750000;
 int rampX = 5;
 int rampY = 40;
-int rampZ = -60;
+int rampZ = -45;
 float rampK = 0.1;
 int barrierY0 = 20;
 int barrierY1 = 40;
@@ -43,6 +43,7 @@ int bridgeTO = 10000;
 int bridgeS = 70000;
 float bridgeZ = -80;
 uint8 bridgeDetectL = 0;
+float otherBPow = 2.5;
 #define cameraAngle (5)
 int errY = 60;
 int errDeltaY = 30;
@@ -52,7 +53,7 @@ uint8 showWait = 0;
 float bendV = 550;
 float circleV = 550;
 float rampV = 100;
-float bridgeV = 250;
+float bridgeV = 150;
 
 float cameraV = 0;
 
@@ -680,7 +681,7 @@ void CameraStatus_set(CameraStatus value){
     statusRunS = 0;
 
     targetLegZ = defaultLegZ;
-    Filter1_xAx.alpha = defaultRollAlpha;
+    rollBalanceK = 1;
     rollBalance = 0;
     kPitchX = 0;
 
@@ -908,31 +909,11 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case TO_LCIRCLE:
-            if(rInfN == 0 || rStraight==1){
-                CameraStatus_addScore(PO_LCIRCLE);
-            }
-            if(rInfN > 0 && fabsf(Angle_normalize(0 - rInfRad[0])) <= facingErr + PI/2){
-                if(lrMeet >= 0){
-                    int16 y = -1;
-                    for(uint16 i=lrMeet; i<this->h; ++i){
-                        if(Image_borderIsLose(this, lBorder, i, 0)){
-                            y = i;
-                            break;
-                        }
-                    }
-                    if(y>=0){
-                        Image_borderSetCLine(this, rBorder, 0, y, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1]);
-                    }
-                }
-            }
-            *cameraV = circleV;
-            break;
-        case PO_LCIRCLE:
             if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 && setLineY < lLine[lInfLine[0]][1]){
                 CameraStatus_addScore(O_LCIRCLE);
             }
-            if(lrMeet > 0){
-                Image_borderSetCLine(this, rBorder, this->w*(1-circleLine), lrMeet, rStart[0], rStart[1]);
+            if(lrMeet >= 0){
+                Image_borderSetCLine(this, rBorder, this->w*(1-circleLine), lrMeet, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1]);
             }
             *cameraV = circleV;
             break;
@@ -1006,31 +987,11 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV = circleV;
             break;
         case TO_RCIRCLE:
-            if(lInfN == 0 || lStraight==1){
-                CameraStatus_addScore(PO_RCIRCLE);
-            }
-            if(lInfN > 0 && fabsf(Angle_normalize(PI - lInfRad[0])) <= facingErr + PI/2){
-                if(lrMeet >= 0){
-                    int16 y = -1;
-                    for(uint16 i=lrMeet; i<this->h; ++i){
-                        if(Image_borderIsLose(this, rBorder, i, 1)){
-                            y = i;
-                            break;
-                        }
-                    }
-                    if(y >= 0){
-                        Image_borderSetCLine(this, lBorder, this->w-1, y, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1]);
-                    }
-                }
-            }
-            *cameraV = circleV;
-            break;
-        case PO_RCIRCLE:
             if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 && setLineY < rLine[rInfLine[0]][1]){
                 CameraStatus_addScore(O_RCIRCLE);
             }
-            if(lrMeet > 0){
-                Image_borderSetCLine(this, lBorder, this->w*circleLine, lrMeet, lStart[0], lStart[1]);
+            if(lrMeet >= 0){
+                Image_borderSetCLine(this, lBorder, this->w*circleLine, lrMeet, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1]);
             }
             *cameraV = circleV;
             break;
@@ -1051,14 +1012,14 @@ void Image_ramp(Image *this, float *cameraV, uint16 *errY){
                 int16 ly0, ly1, ry0, ry1;
                 if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 4){
                     ly0 = lLine[lInfLine[0]][1];
-                }else if(lInfN ==0){
+                }else if(lInfN==0 && lrMeet>=0){
                     ly0 = lrMeet;
                 }else{
                     break;
                 }
                 if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 3){
                     ry0 = rLine[rInfLine[0]][1];
-                }else if(rInfN ==0){
+                }else if(rInfN==0 && lrMeet>=0){
                     ry0 = lrMeet;
                 }else{
                     break;
@@ -1346,7 +1307,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             }else{
                 float k = (float)statusKeepMs/bridgeTI;
                 targetLegZ = (bridgeZ-defaultLegZ)*k+defaultLegZ;
-                Filter1_xAx.alpha = defaultRollAlpha*k;
+                rollBalanceK = k;
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
@@ -1507,8 +1468,15 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
             if(lStraight==1 && rStraight!=1 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 && rLine[rInfLine[0]][1] > circleX+1){
                 CameraStatus_addScore(OR_CROSS_RCIRCLE);
             }
-            if(lStraight!=1 || rStraight!=1){
-                *cameraV = bendV;
+//            if(lStraight!=1 || rStraight!=1){
+//                *cameraV = bendV;
+//            }
+            for(uint16 i=this->h-1; i>0; --i){
+                if(lBorder[i] > this->w/2 || rBorder[i] < this->w/2){
+                    float k = (float)(this->h-i)/(this->h);
+                    *cameraV = bendV+(*cameraV-bendV)*powf(k, otherBPow);
+                    break;
+                }
             }
             break;
         case OR_CROSS_LCIRCLE:
@@ -1602,9 +1570,11 @@ void Image_processCamera(){
             case O_CROSS:
             case I_LCIRCLE:
             case PTI_LCIRCLE:
+            case TI_LCIRCLE:
             case OR_CROSS_LCIRCLE:
             case I_RCIRCLE:
             case PTI_RCIRCLE:
+            case TI_RCIRCLE:
             case OR_CROSS_RCIRCLE:
                 trapezoidStatus=1;
                 break;
@@ -1613,8 +1583,7 @@ void Image_processCamera(){
         }
         Image_drawBlackTrapezoid(&image);
         Image_getStartPoint(&image, startMaxYAdd, lStart, rStart);
-        Image_bly(&image, image.h*4, lLine, rLine, lLineDir, rLineDir,
-                &lLineL, &rLineL, &lrMeet, lStart, rStart);
+        Image_bly(&image, image.h*4, lLine, rLine, lLineDir, rLineDir, &lLineL, &rLineL, &lrMeet, lStart, rStart);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);
         Image_blyToBorder(&image, 1, rLine, rLineL, rBorder);
         Image_blyToRadDir(&image, lLine, lLineL, bly2RDL, lRadDir, lRadDirLine, &lRadDirN);

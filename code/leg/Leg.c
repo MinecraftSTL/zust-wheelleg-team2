@@ -11,9 +11,8 @@ const uint32 freq = 300;
 const float defaultLegX = 0, defaultLegZ = -30;
 float targetLegX, targetLegZ;
 
-float defaultRollAlpha = 0.02;
-
 uint8 rollBalance = 0;
+float rollBalanceK = 1;
 
 void Leg_init(){
     pwm_init(servo_rb, freq, PWM_DUTY_MAX/2);
@@ -74,13 +73,11 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
     pwm_set_duty(servo_lf, Radian_toPwmDuty(lf+(fLz?0:0.2)));
     pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb+(fLz?0:0.8)));
 }
-
 void Leg_set_pos(float lx, float lz, float rx, float rz){
     Pos_limit(&lx, &lz);
     Pos_limit(&rx, &rz);
     struct LegServoAngle l = Pos_toServoAngle(lx, lz);
     struct LegServoAngle r = Pos_toServoAngle(rx, rz);
-//    printf("%lf, %lf, %lf, %lf\n",r.b, r.f, l.b, l.f);
     Leg_set_duty(r.b, r.f, l.f, l.b);
 }
 
