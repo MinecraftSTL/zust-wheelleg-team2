@@ -9,6 +9,7 @@
 #include "menu.h"
 #include "MyCamera.h"
 #include "MyEncoder.h"
+#include "Leg.h"
 #include "Motor.h"
 #include "PID.h"
 #include "VOFA.h"

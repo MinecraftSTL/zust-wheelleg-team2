@@ -91,12 +91,16 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     if(car_run){
         int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
+        float targetV = V0;
+        if(fvEn){
+            targetV = fvV;
+        }
         gyro_get_gyro();
-        float VxDownAy = pid(&Vx, V0, Encoder_speed)/1000;
+        float VxDownAy = pid(&Vx, targetV, Encoder_speed)/1000;
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
     //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
     //    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
-        printf("%f,%f,%f\r\n", xAy,downAy,VxDownAy);
+//        printf("%f,%f,%f\r\n", xAy,downAy,VxDownAy);
         if(fabs(downAy+VxDownAy-xAy)>45){
             beepLong();
             car_run=0;
@@ -113,6 +117,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         speed = fsSpeed;
     }
     MotorSetPWM(speed,speed);
+    if(fwpEn){
+        Leg_set_pos(fwpLx, fwpLz, fwpRx, fwpRz);
+    }
     if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
     }

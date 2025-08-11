@@ -63,12 +63,21 @@ Page menu_main_debug;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
 Page menu_main_debug_fs_speed;
+Page menu_main_debug_fv;
+Page menu_main_debug_fv_en;
+Page menu_main_debug_fv_v;
 Page menu_main_debug_fl;
 Page menu_main_debug_fl_en;
 Page menu_main_debug_fl_rb;
 Page menu_main_debug_fl_rf;
 Page menu_main_debug_fl_lf;
 Page menu_main_debug_fl_lb;
+Page menu_main_debug_fwp;
+Page menu_main_debug_fwp_en;
+Page menu_main_debug_fwp_lx;
+Page menu_main_debug_fwp_lz;
+Page menu_main_debug_fwp_rx;
+Page menu_main_debug_fwp_rz;
 
 int core0_main(void)
 {
@@ -114,9 +123,11 @@ int core0_main(void)
     FFloatPage_init(&menu_main_PID_Vx_Ki, "Ki", &Vx.Ki, 0, 10000);
     FFloatPage_init(&menu_main_PID_Vx_Kd, "Kd", &Vx.Kd, 0, 10000);
     BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
-    ListPage_init(&menu_main_debug, "debug", 2, (Page*[]){
+    ListPage_init(&menu_main_debug, "debug", 4, (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,
+        &menu_main_debug_fv,
+        &menu_main_debug_fwp,
     });
     ListPage_init(&menu_main_debug_fs, "forceSpeed", 2, (Page*[]){
         &menu_main_debug_fs_en,
@@ -124,6 +135,12 @@ int core0_main(void)
     });
     BoolPage_init(&menu_main_debug_fs_en, "enable", &fsEn, 0x03);
     IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
+    ListPage_init(&menu_main_debug_fv, "forceV", 2, (Page*[]){
+        &menu_main_debug_fv_en,
+        &menu_main_debug_fv_v,
+    });
+    BoolPage_init(&menu_main_debug_fv_en, "enable", &fvEn, 0x03);
+    IntPage_init(&menu_main_debug_fv_v, "V", &fvV, -100, 100);
     ListPage_init(&menu_main_debug_fl, "forceLeg", 5, (Page*[]){
         &menu_main_debug_fl_en,
         &menu_main_debug_fl_rb,
@@ -133,13 +150,25 @@ int core0_main(void)
     });
     BoolPage_init(&menu_main_debug_fl_en, "enable", &flEn, 0x03);
     FFloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -3.14, 3.14);
-    menu_main_debug_fl_rb.extends.fFloatValue.dot=1;
     FFloatPage_init(&menu_main_debug_fl_rf, "rt_fd", &flRf, -3.14, 3.14);
-    menu_main_debug_fl_rf.extends.fFloatValue.dot=1;
     FFloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -3.14, 3.14);
-    menu_main_debug_fl_lf.extends.fFloatValue.dot=1;
     FFloatPage_init(&menu_main_debug_fl_lb, "lt_bk", &flLb, -3.14, 3.14);
-    menu_main_debug_fl_lb.extends.fFloatValue.dot=1;
+    menu_main_debug_fl_lb.extends.fFloatValue.dot
+    =menu_main_debug_fl_lf.extends.fFloatValue.dot
+    =menu_main_debug_fl_rf.extends.fFloatValue.dot
+    =menu_main_debug_fl_rb.extends.fFloatValue.dot=1;
+    ListPage_init(&menu_main_debug_fwp, "forceWPos", 5, (Page*[]){
+        &menu_main_debug_fwp_en,
+        &menu_main_debug_fwp_lx,
+        &menu_main_debug_fwp_lz,
+        &menu_main_debug_fwp_rx,
+        &menu_main_debug_fwp_rz,
+    });
+    BoolPage_init(&menu_main_debug_fwp_en, "enable", &fwpEn, 0x03);
+    IntPage_init(&menu_main_debug_fwp_lx, "lt_x", &fwpLx, -MAX_X, MAX_X);
+    IntPage_init(&menu_main_debug_fwp_lz, "lt_z", &fwpLz, -MAX_Z, 0);
+    IntPage_init(&menu_main_debug_fwp_rx, "rt_x", &fwpRx, -MAX_X, MAX_X);
+    IntPage_init(&menu_main_debug_fwp_rz, "rt_z", &fwpRz, -MAX_Z, 0);
 
     beepLong();
     PageKey_print(&menu_main, 0);
