@@ -53,8 +53,14 @@ Page menu_main_config_mod;
 Page menu_main_config_mod_gyro;
 Page menu_main_arg;
 Page menu_main_arg_k;
-Page menu_main_arg_k_kZero;
+Page menu_main_arg_k_zero;
+Page menu_main_arg_k_zero_k;
+Page menu_main_arg_k_zero_x;
 Page menu_main_arg_k_v;
+Page menu_main_arg_k_v_straight;
+Page menu_main_arg_k_v_bend;
+Page menu_main_arg_k_v_circle;
+Page menu_main_arg_k_v_bridge;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_bin;
 Page menu_main_arg_k_camera_bin_deltaT;
@@ -75,7 +81,7 @@ Page menu_main_arg_k_camera_status_k;
 Page menu_main_arg_k_camera_e;
 Page menu_main_arg_k_camera_e_zebra;
 Page menu_main_arg_k_camera_e_zebra_y;
-Page menu_main_arg_k_camera_e_zebra_tick;
+Page menu_main_arg_k_camera_e_zebra_t;
 Page menu_main_arg_k_camera_e_cross;
 Page menu_main_arg_k_camera_e_cross_x;
 Page menu_main_arg_k_camera_e_circle;
@@ -185,16 +191,33 @@ void core0_main(void)
         NULL
     });
     ListPage_init(&menu_main_arg_k, "k", (Page*[]){
-        &menu_main_arg_k_kZero,
+        &menu_main_arg_k_zero,
         &menu_main_arg_k_v,
         &menu_main_arg_k_camera,
         &menu_main_arg_k_jump,
         NULL
     });
-    FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
-    menu_main_arg_k_kZero.extends.floatValue.dot = 2;
-    FloatPage_init(&menu_main_arg_k_v, "v", &targetV, -10000, 10000);
-    menu_main_arg_k_v.extends.floatValue.dot = 4;
+    ListPage_init(&menu_main_arg_k_zero, "zero", (Page*[]){
+        &menu_main_arg_k_zero_k,
+        &menu_main_arg_k_zero_x,
+        NULL
+    });
+    FloatPage_init(&menu_main_arg_k_zero_k, "k", &kZero, -30, 30);
+    FloatPage_init(&menu_main_arg_k_zero_x, "x", &xZero, -LEG_MAX_X, LEG_MAX_X);
+    menu_main_arg_k_zero_k.extends.floatValue.dot = menu_main_arg_k_zero_x.extends.floatValue.dot = 2;
+    ListPage_init(&menu_main_arg_k_v, "v", (Page*[]){
+        &menu_main_arg_k_v_straight,
+        &menu_main_arg_k_v_bend,
+        &menu_main_arg_k_v_circle,
+        &menu_main_arg_k_v_bridge,
+        NULL
+    });
+    FloatPage_init(&menu_main_arg_k_v_straight, "straight", &targetV, -10000, 10000);
+    FloatPage_init(&menu_main_arg_k_v_bend, "bend", &bendV, -10000, 10000);
+    FloatPage_init(&menu_main_arg_k_v_circle, "circle", &circleV, -10000, 10000);
+    FloatPage_init(&menu_main_arg_k_v_bridge, "bridge", &bridgeV, -10000, 10000);
+    menu_main_arg_k_v_straight.extends.floatValue.dot = menu_main_arg_k_v_bend.extends.floatValue.dot =
+            menu_main_arg_k_v_circle.extends.floatValue.dot = menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
         &menu_main_arg_k_camera_inf,
@@ -254,10 +277,11 @@ void core0_main(void)
     });
     ListPage_init(&menu_main_arg_k_camera_e_zebra, "zebra", (Page*[]){
         &menu_main_arg_k_camera_e_zebra_y,
+        &menu_main_arg_k_camera_e_zebra_t,
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_e_zebra_y, "y", &zebraY, 0, MT9V03X_H-1-3);
-    IntPage_init(&menu_main_arg_k_camera_e_zebra_tick, "tick", &zebraStartTick, 0, 2147483647);
+    IntPage_init(&menu_main_arg_k_camera_e_zebra_t, "t", &zebraStartTick, 0, 2147483647);
     ListPage_init(&menu_main_arg_k_camera_e_cross, "cross", (Page*[]){
         &menu_main_arg_k_camera_e_cross_x,
         NULL

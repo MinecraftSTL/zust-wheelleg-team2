@@ -7,4 +7,4 @@
 
 #include "Filter.h"
 
-Filter Filter_turn={0.9, NAN, NAN}, Filter_speed={0.9, NAN, NAN}, Filter_xAx={0.01, NAN, NAN};
+Filter Filter_turn={0.9, NAN, NAN}, Filter_speed={0.9, NAN, NAN}, Filter_xAx={0, NAN, NAN};

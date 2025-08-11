@@ -17,19 +17,19 @@ void PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Ou
     this->Max_Out = max_Out;
 }
 
-float pid(PID *this, float TargetValue, float ActualValue)
+float pid(PID *this, float TargetValue, float ActualValue)//¸Ä°æpid
 {
     zf_assert(!!this);
     float ret;
     float Ek = TargetValue - ActualValue;
-    this->Ek_sum += Ek;
+    this->Ek_sum += this->Ki * Ek;
     this->Ek_sum = func_limit(this->Ek_sum, this->Max_I);
     if(isnan(this->Ek_sum)){
         this->Ek_sum=0;
     }
 
     ret = this->Kp * Ek +
-             this->Ki * this->Ek_sum +
+             this->Ek_sum +
              (isnan(this->Ek_)?0:(this->Kd * (Ek - this->Ek_)));
     this->Ek_ = Ek;
     ret = func_limit(ret, this->Max_Out);

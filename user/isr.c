@@ -77,7 +77,8 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kZero = -4;
+float kZero = 0;
+float xZero = 4;
 
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
@@ -96,7 +97,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         wheelClear = 0;
     }
 
-    float tg_pitchV = 0, tg_yawV = 0, legX = targetLegX, legZ = targetLegZ;
+    float tg_pitchV = 0, tg_yawV = 0, legX = targetLegX+xZero, legZ = targetLegZ;
     if(carStatus <= CAR_START){
         legX = defaultLegX;
         legZ = defaultLegZ;
@@ -136,7 +137,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         speed = fsSpeed;
         turn = 0;
     }else if(wheelClear){
-        speed = 1000;
+        speed = 2500;
         turn = 0;
     }
 //    printf("%d\r\n", speed);
@@ -157,10 +158,18 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
         lza_ = lpf(&Filter_xAx, lza);
-        if(lza_ > 0){
-            rz -= -lza_;
+        if(legZ < -65){
+            if(lza_ < 0){
+                lz += -lza_;
+            }else{
+                rz -= -lza_;
+            }
         }else{
-            lz += -lza_;
+            if(lza_ > 0){
+                lz += -lza_;
+            }else{
+                rz -= -lza_;
+            }
         }
         Leg_set_pos(lx, lz, rx, rz);
     }

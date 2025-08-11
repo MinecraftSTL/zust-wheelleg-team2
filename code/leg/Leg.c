@@ -8,8 +8,10 @@
 
 const uint32 freq = 300;
 
-float targetLegX = defaultLegX;
-float targetLegZ = defaultLegZ;
+const float defaultLegX = 0, defaultLegZ = -30;
+float targetLegX, targetLegZ;
+
+const float defaultRollAlpha = 0.01;
 
 uint8 rollBalance = 0;
 
@@ -19,6 +21,9 @@ void Leg_init(){
     pwm_init(servo_lf, freq, PWM_DUTY_MAX/2);
     pwm_init(servo_lb, freq, PWM_DUTY_MAX/2);
     Leg_set_duty(0,0,0,0);
+
+    targetLegX = defaultLegX;
+    targetLegZ = defaultLegZ;
 }
 
 struct LegServoAngle Pos_toServoAngle(float x, float z){
@@ -64,7 +69,7 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
     Servo_limit(&lb);
     pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+0.8));
     pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf+0.5));
-    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf));
+    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf-0.1));
     pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb));
 }
 
@@ -78,8 +83,9 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 }
 
 const uint32 jumpStep[] = {
-    100,//…ÏÕ»
-    100,// ’Õ»
+    200,//‘§ ’Õ»
+    135,//…ÏÕ»
+    200,// ’Õ»
     0,
 };
 
@@ -89,9 +95,12 @@ void jumpPit(uint32 period, float *legZ){
     Step step = getStep(jumpStep, jumpTime);
     switch(step.step){
         case 0:
-            *legZ = -130;
+            *legZ = -30;
             break;
         case 1:
+            *legZ = -140;
+            break;
+        case 2:
             *legZ = -30;
             break;
         default:

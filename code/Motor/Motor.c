@@ -1,6 +1,6 @@
 #include "MOTOR.H"
 
-float targetV = 500;
+float targetV = 600;
 
 /***********************************************
 * @brief : PWMÊä³ö

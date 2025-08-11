@@ -43,7 +43,7 @@
 #include "Sys.h"
 
 extern uint8 mute;
-extern float kZero;
+extern float kZero, xZero;
 
 extern uint8 menuJump;
 

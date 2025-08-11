@@ -82,6 +82,10 @@ extern int errDeltaY;
 extern uint8 showPInC1;
 extern uint8 showWait;
 
+extern float bendV;
+extern float circleV;
+extern float bridgeV;
+
 extern float cameraV;
 
 extern CameraStatus cameraStatus;
