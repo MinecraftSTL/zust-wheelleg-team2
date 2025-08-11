@@ -44,18 +44,18 @@ uint8 lStraight;
 uint8 rStraight;
 
 float lRadDir[MAX_BLY];
-int16 lRadDirPos[MAX_BLY][2];
+uint16 lRadDirLine[MAX_BLY];
 uint16 lRadDirN;
 float rRadDir[MAX_BLY];
-int16 rRadDirPos[MAX_BLY][2];
+uint16 rRadDirLine[MAX_BLY];
 uint16 rRadDirN;
 
-int16 lInflection[MAX_BLY][2];
-float lInflectionDir[MAX_BLY];
-uint16 lInflectionN;
-int16 rInflection[MAX_BLY][2];
-float rInflectionDir[MAX_BLY];
-uint16 rInflectionN;
+uint16 lInfLine[MAX_BLY];
+float lInfRad[MAX_BLY];
+uint16 lInfN;
+uint16 rInfLine[MAX_BLY];
+float rInfRad[MAX_BLY];
+uint16 rInfN;
 
 CameraStatus cameraStatus = NONE;
 
@@ -540,7 +540,7 @@ uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint16 yMin,
 }
 
 void Image_blyToRadDir(Image *this, int16 bly[MAX_BLY][2], uint16 blyL, uint16 l,
-        float ret[MAX_BLY], int16 retPos[MAX_BLY][2], uint16 *retN){
+        float ret[MAX_BLY], int16 retPosLine[MAX_BLY], uint16 *retN){
     *retN = (blyL-1)/l;
     for(uint16 i=0; i<*retN; ++i){
         ret[i]=atan2f(-(bly[(i+1)*l][1]-bly[i*l][1]), bly[(i+1)*l][0]-bly[i*l][0]);
@@ -550,20 +550,18 @@ void Image_blyToRadDir(Image *this, int16 bly[MAX_BLY][2], uint16 blyL, uint16 l
                 break;
             }
         }
-        retPos[i][0] = (bly[i*l][0]+bly[(i+1)*l][0])>>1;
-        retPos[i][1] = (bly[i*l][1]+bly[(i+1)*l][1])>>1;
+        retPosLine[i] = i*l+(l>>1);
     }
 }
-void RadDir_toInflection(float this[MAX_BLY], int16 thisPos[MAX_BLY][2], uint16 thisN, float err,
-        int16 ret[MAX_BLY][2], float retRad[MAX_BLY], uint16 *retN){
+void RadDir_toInflection(float this[MAX_BLY], int16 thisLine[MAX_BLY], uint16 thisN, float err,
+        int16 retLine[MAX_BLY], float retRad[MAX_BLY], uint16 *retN){
     *retN = 0;
     for(uint16 i = 1; i < thisN-1; ++i){
         if(isnan(this[i-1]) || isnan(this[i+1])){
             continue;
         }
         if(fabs(Angle_normalize(this[i+1]-this[i-1])) >= PI/2-err){
-            ret[*retN][0] = thisPos[i][0];
-            ret[*retN][1] = thisPos[i][1];
+            retLine[*retN] = thisLine[i];
             float nA = Angle_normalize(this[i-1]+PI);
             retRad[*retN] = Angle_normalize((this[i+1]+nA)/2+(fabsf(this[i+1]-nA)>PI?PI:0));
             ++*retN;
@@ -587,8 +585,11 @@ int16 Inflection_getFirstFacing(int16 this[MAX_BLY][2], float thisRad[MAX_BLY], 
     }
     return -1;
 }
-
-void Image_zebraCrossing(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H], uint16 y){
+void CameraStatus_set(CameraStatus this){
+    beepMid();
+    cameraStatus = this;
+}
+void Image_zebraCrossing(Image *this, uint16 y){
     int edge_left_num = 0;
     int edge_right_num = 0;
     int edge_sum = 0;
@@ -618,79 +619,77 @@ void Image_zebraCrossing(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[
         edge_left_num = 0;
     if(edge_sum >= 16 && edge_left_num > 5 && edge_right_num > 5)                      //停车
     {
-        beepMid();
-        cameraStatus = IN_ZEBRA;
+        CameraStatus_set(IN_ZEBRA);
     }
     switch(cameraStatus){
         case IN_ZEBRA:
-            beepMid();
-            cameraStatus = OUT_ZEBRA;
+            CameraStatus_set(OUT_ZEBRA);
             Car_stop();
             break;
     }
 }
-void Image_cross(Image *this, int16 lInf[MAX_BLY][2], float lInfRad[MAX_BLY], uint16 lInfN,
-        int16 rInf[MAX_BLY][2], float rInfRad[MAX_BLY], uint16 rInfN,
-        uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H]){
+void Image_cross(Image *this){
     switch(cameraStatus){
         case NONE:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 &&
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 &&
-                    Image_borderIsLose(this, lBorder, lInf[0][1]-crossX, 0) &&
-                    Image_borderIsLose(this, lBorder, lInf[0][1]-crossX-1, 0) &&
-                    Image_borderIsLose(this, rBorder, rInf[0][1]-crossX, 1) &&
-                    Image_borderIsLose(this, rBorder, rInf[0][1]-crossX-1, 1)
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX, 0) &&
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX-1, 0) &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX, 1) &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX-1, 1)
                     )
             {
-                beepMid();
-                cameraStatus = IN_CROSS;
+                CameraStatus_set(IN_CROSS);
+            }
+            if((lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
+                    Image_borderIsLose(&this, lBorder, lLine[lInfLine[1]][1]+crossX, 0) && Image_borderIsLose(&this, lBorder, lLine[lInfLine[1]][1]+crossX+1, 0)||
+                    rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
+                    Image_borderIsLose(&this, rBorder, rLine[rInfLine[1]][1]+crossX, 1) && Image_borderIsLose(&this, rBorder, rLine[rInfLine[1]][1]+crossX+1, 1)) &&
+                    lLine[lInfLine[1]][1]+crossX+1 < this->h && rLine[rInfLine[1]][1]+crossX+1 < this->h){
+                CameraStatus_set(CROSS);
             }
             break;
         case IN_CROSS:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 &&
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
-                Image_borderSetULine(this, lBorder, lInf[0][1]);
-                Image_borderSetULine(this, rBorder, rInf[0][1]);
+                Image_borderSetULine(this, lBorder, lLine[lInfLine[0]][1]);
+                Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
             }
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
-                    lInf[1][1]+crossX+1 < this->h && rInf[1][1]+crossX+1 < this->h){
-                beepMid();
-                cameraStatus = CROSS;
+                    lLine[lInfLine[1]][1]+crossX+1 < this->h && rLine[rInfLine[1]][1]+crossX+1 < this->h){
+                CameraStatus_set(CROSS);
             }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2 ||
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
-                beepMid();
-                cameraStatus = OUT_CROSS;
+                CameraStatus_set(OUT_CROSS);
             }
             break;
         case CROSS:
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2){
-                Image_borderSetCLine(this, lBorder, lInf[0][0], lInf[0][1], lInf[1][0], lInf[1][1]);
+                Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[1]][0], lLine[lInfLine[1]][1]);
             }
             if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1){
-                Image_borderSetCLine(this, rBorder, rInf[0][0], rInf[0][1], rInf[1][0], rInf[1][1]);
+                Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[1]][0], rLine[rInfLine[1]][1]);
             }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2 ||
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
-                beepMid();
-                cameraStatus = OUT_CROSS;
+                CameraStatus_set(OUT_CROSS);
             }
             break;
         case OUT_CROSS:
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2){
-                Image_borderSetCLine(this, lBorder, lInf[0][0], lInf[0][1], lInf[1][0], lInf[1][1]);
+                Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[1]][0], lLine[lInfLine[1]][1]);
             }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
-                Image_borderSetDLine(this, lBorder, lInf[0][1]);
+                Image_borderSetDLine(this, lBorder, lLine[lInfLine[0]][1]);
             }
             if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1){
-                Image_borderSetCLine(this, rBorder, rInf[0][0], rInf[0][1], rInf[1][0], rInf[1][1]);
+                Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[1]][0], rLine[rInfLine[1]][1]);
             }else if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
-                Image_borderSetDLine(this, rBorder, rInf[0][1]);
+                Image_borderSetDLine(this, rBorder, rLine[rInfLine[0]][1]);
             }
             if(!(lInfN > 0 && (Inflection_getFacing(lInfRad[0]) == 2 || Inflection_getFacing(lInfRad[0]) == 3) ||
                     rInfN > 0 && (Inflection_getFacing(rInfRad[0]) == 1 || Inflection_getFacing(rInfRad[0]) == 4))){
-                beepMid();
-                cameraStatus = NONE;
+                CameraStatus_set(NONE);
             }
             break;
     }
@@ -722,13 +721,13 @@ void Image_processForShow(){
     }
     Rgb565Image_set(&showImage, lStart[0], lStart[1], RGB565_RED);
     Rgb565Image_set(&showImage, rStart[0], rStart[1], RGB565_RED);
-    for(uint16 i=0; i<lInflectionN; ++i){
-        Rgb565Image_mark(&showImage, lInflection[i][0], lInflection[i][1], RGB565_RED, 2);
-        Rgb565Image_set(&showImage, lInflection[i][0]+cosf(lInflectionDir[i])*6, lInflection[i][1]-sinf(lInflectionDir[i])*6, RGB565_RED);
+    for(uint16 i=0; i<lInfN; ++i){
+        Rgb565Image_mark(&showImage, lLine[lInfLine[i]][0], lLine[lInfLine[i]][1], RGB565_RED, 2);
+        Rgb565Image_set(&showImage, lLine[lInfLine[i]][0]+cosf(lInfRad[i])*6, lLine[lInfLine[i]][1]-sinf(lInfRad[i])*6, RGB565_RED);
     }
-    for(uint16 i=0; i<rInflectionN; ++i){
-        Rgb565Image_mark(&showImage, rInflection[i][0], rInflection[i][1], RGB565_RED, 2);;
-        Rgb565Image_set(&showImage, rInflection[i][0]+cosf(rInflectionDir[i])*6, rInflection[i][1]-sinf(rInflectionDir[i])*6, RGB565_RED);
+    for(uint16 i=0; i<rInfN; ++i){
+        Rgb565Image_mark(&showImage, rLine[rInfLine[i]][0], rLine[rInfLine[i]][1], RGB565_RED, 2);;
+        Rgb565Image_set(&showImage, rLine[rInfLine[i]][0]+cosf(rInfRad[i])*6, rLine[rInfLine[i]][1]-sinf(rInfRad[i])*6, RGB565_RED);
     }
 }
 void Image_showCamera(uint16 x, uint16 y)
@@ -764,14 +763,14 @@ void Image_processCamera(){
                 &lLineL, &rLineL, &lrMeet, lStart, rStart);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);
         Image_blyToBorder(&image, 1, rLine, rLineL, rBorder);
-        Image_blyToRadDir(&image, lLine, lLineL, bly2RDL, lRadDir, lRadDirPos, &lRadDirN);
-        Image_blyToRadDir(&image, rLine, rLineL, bly2RDL, rRadDir, rRadDirPos, &rRadDirN);
-        RadDir_toInflection(lRadDir, lRadDirPos, lRadDirN, RD2IErr, lInflection, lInflectionDir, &lInflectionN);
-        RadDir_toInflection(rRadDir, rRadDirPos, rRadDirN, RD2IErr, rInflection, rInflectionDir, &rInflectionN);
+        Image_blyToRadDir(&image, lLine, lLineL, bly2RDL, lRadDir, lRadDirLine, &lRadDirN);
+        Image_blyToRadDir(&image, rLine, rLineL, bly2RDL, rRadDir, rRadDirLine, &rRadDirN);
+        RadDir_toInflection(lRadDir, lRadDirLine, lRadDirN, RD2IErr, lInfLine, lInfRad, &lInfN);
+        RadDir_toInflection(rRadDir, rRadDirLine, rRadDirN, RD2IErr, rInfLine, rInfRad, &rInfN);
         lStraight = Image_borderIsStraight(&image, lBorder, straightYMin, lStart[1], straightStep, straightErr, 0);
         rStraight = Image_borderIsStraight(&image, rBorder, straightYMin, rStart[1], straightStep, straightErr, 1);
-        Image_zebraCrossing(&image, lBorder, rBorder, zebraY);
-        Image_cross(&image, lInflection, lInflectionDir, lInflectionN, rInflection, rInflectionDir, rInflectionN, lBorder, rBorder);
+        Image_zebraCrossing(&image, zebraY);
+        Image_cross(&image);
 //        SysTimer_Stop();
 //        printf("%d\r\n",GetPastTime());
 //
