@@ -666,11 +666,6 @@ void Image_zebraCrossing(Image *this, uint16 y){
         }
     }
     switch(cameraStatus){
-        case NONE:
-            if(zebra){
-                CameraStatus_set(I_ZEBRA);
-            }
-            break;
         case I_ZEBRA:
             if(!zebra){
                 CameraStatus_addScore(O_ZEBRA);
@@ -682,6 +677,11 @@ void Image_zebraCrossing(Image *this, uint16 y){
                 if(carStatus == CAR_RUN && carRunTick > zebraStartTick){
                     CarStatus_set(CAR_BALANCE);
                 }
+            }
+            break;
+        default:
+            if(zebra){
+                CameraStatus_set(I_ZEBRA);
             }
             break;
     }

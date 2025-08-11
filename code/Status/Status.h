@@ -12,6 +12,7 @@
 typedef enum
 {
     CAR_STOP,
+    CAR_START,
     CAR_BALANCE,
     CAR_RUN,
 }CarStatus;

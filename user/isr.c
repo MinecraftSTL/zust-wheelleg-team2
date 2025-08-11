@@ -62,7 +62,7 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         ++pressed[BACK_KEY];
     }
     if(my_key_get_state(KEY_2) == KEY_SHORT_PRESS){
-        if(carStatus < 2){
+        if(carStatus < CAR_RUN){
             CarStatus_set(carStatus+1);
         }else{
             CarStatus_set(CAR_BALANCE);
@@ -101,14 +101,14 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
     float new_gyro_z = my_gyro_z-zero_my_gyro_z;
 
-    if(carStatus){
+    if(carStatus > CAR_STOP){
         if(fabs(roll) > 30 || fabs(pitch) > 60){
             CarStatus_set(CAR_STOP);
         }
     }
 
     float tg_pitchV = 0, tg_yawV = 0, legX = 0, legZ = -45;
-    if(carStatus){
+    if(carStatus > CAR_START){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;
         if(carStatus == CAR_RUN){
@@ -134,6 +134,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
     int speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
     int turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
+    if(carStatus == CAR_STOP){
+        speed = turn = 0;
+    }
     if(fsEn){
         speed = fsSpeed;
         turn = 0;

@@ -154,6 +154,7 @@ void core0_main(void)
     });
     EnumPage_init(&menu_main_carRun, "car_run", &carStatus, (char*[]){
             "stop",
+            "start",
             "balance",
             "run",
             "",
