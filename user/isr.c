@@ -61,10 +61,9 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
        // encoder_filter();
         getspeed();
         PWM_motor(
-                    func_limit(Motor_l_PID(Encoder_speed_l, turn_out),speed_limit),
-                    func_limit(Motor_r_PID(Encoder_speed_r, turn_out),speed_limit)
+                    func_limit(Motor_l_PID(Encoder_speed_l, turn_out)*(1-Kl),speed_limit),
+                    func_limit(Motor_r_PID(Encoder_speed_r, turn_out)*(1+Kl),speed_limit)
                  );
-//        PWM_motor(1000,1000);//debug test
         start_sum=300;
     }
 }

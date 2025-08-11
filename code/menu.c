@@ -183,20 +183,20 @@ struct pressReturn PagePageValue_press(struct PagePageValue *this, uint8 pressed
     return ret;
 }
 
-struct IntPageValue *new_IntPageValue(int *value, int max, int min, int step) {
+struct IntPageValue *new_IntPageValue(int *value, int min, int max, int step) {
     struct IntPageValue *ret = (struct IntPageValue *)malloc(sizeof(struct IntPageValue));
     if (ret!= NULL) {
         ret->value = value;
-        ret->max = max;
         ret->min = min;
+        ret->max = max;
         ret->step = step;
     }
     return ret;
 }
-void IntPageValue_init(struct IntPageValue *this, int *value, int max, int min, int step){
+void IntPageValue_init(struct IntPageValue *this, int *value, int min, int max, int step){
     this->value = value;
-    this->max = max;
     this->min = min;
+    this->max = max;
     this->step = step;
 }
 void IntPageValue_print(struct IntPageValue *this, int opened, int open){

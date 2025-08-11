@@ -64,12 +64,10 @@ struct PagePageValue menu_arg_PID_motorL;
 struct FloatPageValue menu_arg_PID_motorL_Kp;
 struct FloatPageValue menu_arg_PID_motorL_Ki;
 struct FloatPageValue menu_arg_PID_motorL_Kd;
-struct FloatPageValue menu_arg_PID_motorL_Kdd;
 struct PagePageValue menu_arg_PID_motorR;
 struct FloatPageValue menu_arg_PID_motorR_Kp;
 struct FloatPageValue menu_arg_PID_motorR_Ki;
 struct FloatPageValue menu_arg_PID_motorR_Kd;
-struct FloatPageValue menu_arg_PID_motorR_Kdd;
 struct PagePageValue menu_arg_PID_turn;
 struct FloatPageValue menu_arg_PID_turn_Ki;
 struct PagePageValue menu_arg_PID_turn_straight;
@@ -115,7 +113,8 @@ void core1_main(void)
     PagePageValue_init(&menu_arg, &(struct PageKey[]){
         new_PageKey("PID", PAGE_TYPE, &menu_arg_PID),
         new_PageKey("V", PAGE_TYPE, &menu_arg_V),
-    }, 2);
+        new_PageKey("cameraH", INT_TYPE, new_IntPageValue(&camera_horizon, 0, 89, 1)),
+    }, 3);
     PagePageValue_init(&menu_arg_PID, &(struct PageKey[]){
         new_PageKey("motorL", PAGE_TYPE, &menu_arg_PID_motorL),
         new_PageKey("motorR", PAGE_TYPE, &menu_arg_PID_motorR),
@@ -125,29 +124,25 @@ void core1_main(void)
         new_PageKey("Kp", FLOAT_TYPE, &menu_arg_PID_motorL_Kp),
         new_PageKey("Ki", FLOAT_TYPE, &menu_arg_PID_motorL_Ki),
         new_PageKey("Kd", FLOAT_TYPE, &menu_arg_PID_motorL_Kd),
-        new_PageKey("Kdd", FLOAT_TYPE, &menu_arg_PID_motorL_Kdd),
-    }, 4);
+    }, 3);
     FloatPageValue_init(&menu_arg_PID_motorL_Kp, &(motor_l.Kp), -100., 100., 0.1);
     FloatPageValue_init(&menu_arg_PID_motorL_Ki, &(motor_l.Ki), -100., 100., 0.1);
     FloatPageValue_init(&menu_arg_PID_motorL_Kd, &(motor_l.Kd), -1000., 1000., 10);
-    FloatPageValue_init(&menu_arg_PID_motorL_Kdd, &(motor_l.Kdd), -1000., 1000., 10);
     PagePageValue_init(&menu_arg_PID_motorR, &(struct PageKey[]){
         new_PageKey("Kp", FLOAT_TYPE, &menu_arg_PID_motorR_Kp),
         new_PageKey("Ki", FLOAT_TYPE, &menu_arg_PID_motorR_Ki),
         new_PageKey("Kd", FLOAT_TYPE, &menu_arg_PID_motorR_Kd),
-        new_PageKey("Kdd", FLOAT_TYPE, &menu_arg_PID_motorR_Kdd),
-    }, 4);
+    }, 3);
     FloatPageValue_init(&menu_arg_PID_motorR_Kp, &(motor_r.Kp), -100., 100., 0.1);
     FloatPageValue_init(&menu_arg_PID_motorR_Ki, &(motor_r.Ki), -100., 100., 0.1);
     FloatPageValue_init(&menu_arg_PID_motorR_Kd, &(motor_r.Kd), -1000., 1000., 10);
-    FloatPageValue_init(&menu_arg_PID_motorR_Kdd, &(motor_r.Kdd), -1000., 1000., 10);
     PagePageValue_init(&menu_arg_PID_turn, &(struct PageKey[]){
+        new_PageKey("Kl", FLOAT_TYPE, new_FloatPageValue(&Kl, -1, 1, 0.01)),
         new_PageKey("Ki", FLOAT_TYPE, &menu_arg_PID_turn_Ki),
-        new_PageKey("Kdd", FLOAT_TYPE, new_FloatPageValue(&(motor_turn.Kdd), -1000., 1000., 10)),
         new_PageKey("straight", PAGE_TYPE, &menu_arg_PID_turn_straight),
         new_PageKey("bend", PAGE_TYPE, &menu_arg_PID_turn_bend),
         new_PageKey("arc", PAGE_TYPE, &menu_arg_PID_turn_arc),
-    }, 5);
+    }, 4);
     FloatPageValue_init(&menu_arg_PID_turn_Ki, &(motor_turn.Ki), -1., 1., 0.01);
     PagePageValue_init(&menu_arg_PID_turn_straight, &(struct PageKey[]){
         new_PageKey("Kp", FLOAT_TYPE, &menu_arg_PID_turn_straight_Kp),
@@ -174,11 +169,11 @@ void core1_main(void)
         new_PageKey("annulus", FLOAT_TYPE, &menu_arg_V_annulus),
         new_PageKey("hill", FLOAT_TYPE, &menu_arg_V_hill),
     }, 5);
-    FloatPageValue_init(&menu_arg_V_target, &target_speed, -500., 500., 25);
-    FloatPageValue_init(&menu_arg_V_straight, &straight_speed, -500., 500., 25);
-    FloatPageValue_init(&menu_arg_V_S, &S_speed, -500., 500., 25);
-    FloatPageValue_init(&menu_arg_V_annulus, &annulus_speed, -500., 500., 25);
-    FloatPageValue_init(&menu_arg_V_hill, &hill_speed, -500., 500., 25);
+    FloatPageValue_init(&menu_arg_V_target, &target_speed, -500., 500., 10);
+    FloatPageValue_init(&menu_arg_V_straight, &straight_speed, -500., 500., 10);
+    FloatPageValue_init(&menu_arg_V_S, &S_speed, -500., 500., 10);
+    FloatPageValue_init(&menu_arg_V_annulus, &annulus_speed, -500., 500., 10);
+    FloatPageValue_init(&menu_arg_V_hill, &hill_speed, -500., 500., 10);
     PagePageValue_init(&menu_debug, &(struct PageKey[]){
         new_PageKey("forceVEn", BOOL_TYPE, &menu_debug_forceSpeedEn),
         new_PageKey("forceV", FLOAT_TYPE, &menu_debug_forceSpeed),
@@ -187,7 +182,7 @@ void core1_main(void)
         new_PageKey("forceTurnKd", FLOAT_TYPE, &menu_debug_forceTurnKd),
     }, 5);
     BooleanPageValue_init(&menu_debug_forceSpeedEn, &debug_forceSpeedEn);
-    FloatPageValue_init(&menu_debug_forceSpeed, &debug_forceSpeed, -500., 500., 25);
+    FloatPageValue_init(&menu_debug_forceSpeed, &debug_forceSpeed, -500., 500., 10);
     BooleanPageValue_init(&menu_debug_forceTurnEn, &debug_forceTurnEn);
     FloatPageValue_init(&menu_debug_forceTurnKp, &debug_forceTurnKp, -100., 100., 0.1);
     FloatPageValue_init(&menu_debug_forceTurnKd, &debug_forceTurnKd, -9990., 9990., 5);

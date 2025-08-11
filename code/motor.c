@@ -5,10 +5,12 @@
 
 #include "sys.h"
 
-const uint16 speed_limit = 1500;
+const uint16 speed_limit = 3000;
+
+float Kl = 0.09;//0.12;//因为驱动不平衡,根据坡道情况调
 
 float target_speed   = 50;//240;   //基础速度   205
-float straight_speed = 75;//260;   //直线速度   240
+float straight_speed = 70;//260;   //直线速度   240
 float S_speed        = 50;//230;  //S弯速度    200
 float annulus_speed  = 50;//210;   //环岛速度   170
 float hill_speed     = 200;//700;  //上坡速度
@@ -20,37 +22,34 @@ float bend_Kd=20;
 float arc_Kp=2.5;
 float arc_Kd=0;
 
-int debug_forceSpeedEn = 0;
-float debug_forceSpeed = 25;
-int debug_forceTurnEn = 0;
-float debug_forceTurnKp = 0.5;
-float debug_forceTurnKd = 30;
+int debug_forceSpeedEn = 1;
+float debug_forceSpeed = 40;
+int debug_forceTurnEn = 1;
+float debug_forceTurnKp = 1.8;
+float debug_forceTurnKd = 60;
 
 float   S_number       =   0.03;   //S弯偏差基数   0.2
 float   target_number  =  0.03;  //基础偏差基数   0.45
 struct PID motor_l = {
-        0,0,0,
+        0,0,
+        -10000,10000,
         -2000,2000,
-        -2000,2000,
-        12.1,  //65    //50    //50
-        0.7,  //2.2    //2     //8
-        70, // 70    //80    //60
-        0,
+        50,  //65    //50    //50
+        2,  //2.2    //2     //8
+        60, // 70    //80    //60
 };
 struct PID motor_r = {
-        0,0,0,
+        0,0,
+        -10000,10000,
         -2000,2000,
-        -2000,2000,
-        12.1,  //65    //50    //50
-        0.7,  //2.2    //2     //8
-        70, // 70    //80    //60
-        0,
+        65,  //65    //50    //50
+        8,  //2.2    //2     //8
+        80, // 70    //80    //60
 };
 struct PID motor_turn = {
-        0,0,0,
+        0,0,
         -1000,1000,
         -1200,1200,
-        0,
         0, //1.5
         0,
         0, //0.5 //0.8
@@ -90,9 +89,7 @@ float Motor_PID(struct PID *pid, float target_val, float actual_val){
 
     float out=pid->Kp*err +
                 pid->Ki*pid->sum +
-                pid->Kd*(err-pid->err_) +
-                pid->Kdd*(err-2*pid->err_+pid->err__);
-    pid->err__ = pid->err_;
+                pid->Kd*(err-pid->err_);
     pid->err_ = err;
 
     out=func_limit_ab(out, pid->out_min, pid->out_max);
@@ -102,12 +99,16 @@ float Motor_PID(struct PID *pid, float target_val, float actual_val){
 
 float Motor_l_PID(float actual_val, float turn)
 {
-    return Motor_PID(&motor_l, motor_speed_choose(motor_turn.err_)*(1-turn*1e-2), actual_val);
+    float i;
+    i = Motor_PID(&motor_l, motor_speed_choose(motor_turn.err_)*(1-turn*1e-2), actual_val);
+    return i;
+//    return Motor_PID(&motor_l, motor_speed_choose(motor_turn.err_)-turn, actual_val);
 }
 
 float Motor_r_PID(float actual_val, float turn)
 {
     return Motor_PID(&motor_r, motor_speed_choose(motor_turn.err_)*(1+turn*1e-2), actual_val);
+//    return Motor_PID(&motor_r, motor_speed_choose(motor_turn.err_)+turn, actual_val);
 }
 void Motor_t_PID(float actual_val, float *ret){// idk why this cant use return
     turn_pd_choose(&motor_turn);
@@ -131,15 +132,23 @@ float motor_speed_choose(float turn_err)
     if(!xunxian||tingche_flag){
         pid_target_val=0;
         return pid_target_val;
-    }else if(annulus_L_Flag||annulus_R_Flag){
+    }
+    else if(annulus_L_Flag||annulus_R_Flag)
+    {
         pid_target_val=annulus_speed-(float)turn_err*target_number;
-    }else if(straight_flag){
+    }
+    else if(straight_flag)
+    {
         pid_target_val=straight_speed;
-    }else if(S_road_Flag){
+    }
+    else if(S_road_Flag)
+    {
          pid_target_val=S_speed-(float)turn_err*S_number;
 //    }else if(hill_flag){
 //        pid_target_val=hill_speed;
-    }else{
+    }
+    else
+    {
         pid_target_val=target_speed-(float)turn_err*target_number;
     }
     if(debug_forceSpeedEn){

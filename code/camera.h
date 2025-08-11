@@ -31,9 +31,9 @@ void IPS_show(void);
 float absolute(float z);
 void right_straight(void);
 void breadth_Addingline(uint8 choice);
-void Addingline1( uint8 choice, uint8 startX, uint8 startY);
-void Addingline( uint8 choice, uint8 startX, uint8 startY, uint8 endX, uint8 endY);
-void Addingline2( uint8 choice, uint8 startX, uint8 startY);
+void Addingline1(uint8 choice, uint8 startX, uint8 startY);
+void Addingline(uint8 choice, uint8 startX, uint8 startY, uint8 endX, uint8 endY);
+void Addingline2(uint8 choice, uint8 startX, uint8 startY);
 void Element_recognition(void);
 uint8 OtsuThreshold(uint8 *image, uint16 col, uint16 row);
 void advanced_regression(int type, int startline1, int endline1, int startline2, int endline2);
@@ -54,6 +54,7 @@ void level_out_juge(void);//
 void roadblock_addline(void);
 void Endline_L_R_(void);
 void show_point(uint8 x, uint8 y, rgb565_color_enum c);//»­µã
+extern int camera_horizon;
 extern int  left[120];
 extern int  right[120];
 extern int  middle[120];

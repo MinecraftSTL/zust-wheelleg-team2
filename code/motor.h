@@ -17,6 +17,8 @@
 
 extern const uint16 speed_limit;
 
+extern float Kl;
+
 extern float target_speed   ;   //基础速度   205
 extern float straight_speed     ;   //直线速度   240
 extern float S_speed        ;  //S弯速度    200
@@ -40,13 +42,13 @@ extern uint8 annulus_L_memory, annulus_R_memory;
 
 //PID参数
 struct PID{
-    float err_, err__;
+    float err_;
     float sum;
     float sum_min;
     float sum_max;
     float out_min;
     float out_max;
-    float Kp,Ki,Kd,Kdd;
+    float Kp,Ki,Kd;
 };
 
 
