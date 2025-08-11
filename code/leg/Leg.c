@@ -90,7 +90,7 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 
 const int jumpStep[] = {
     0,//‘§ ’Õ»
-    150,//…ÏÕ»
+    147,//…ÏÕ»
     100,// ’Õ»
     -1,
 };

@@ -9,7 +9,7 @@ typedef enum{
     NONE,
     I_ZEBRA,
     O_ZEBRA,
-    IN_CROSS,
+    I_CROSS,
     R_CROSS,
     O_CROSS,
     I_LCIRCLE,

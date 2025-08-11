@@ -272,7 +272,7 @@ void core0_main(void)
     });
     BoolPage_init(&menu_main_arg_k_camera_bin_status, "status", &binStatus, 0x03);
     IntPage_init(&menu_main_arg_k_camera_bin_deltaT, "deltaT", &binDeltaT, -256, 255);
-    ListPage_init(&menu_main_arg_k_camera_trapezoid, "black", (Page*[]){
+    ListPage_init(&menu_main_arg_k_camera_trapezoid, "trapezoid", (Page*[]){
         &menu_main_arg_k_camera_trapezoid_k,
         &menu_main_arg_k_camera_trapezoid_y,
         NULL
@@ -327,7 +327,7 @@ void core0_main(void)
             "NONE",
             "I_ZEBRA",
             "O_ZEBRA",
-            "IN_CROSS",
+            "I_CROSS",
             "R_CROSS",
             "O_CROSS",
             "I_LCIRCLE",
@@ -546,6 +546,7 @@ void core0_main(void)
         ips200_show_uint(188,216,cameraStatus,3);
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);
+//        printf("%d\r\n", (Encoder_speed_l+Encoder_speed_r)>>1);
         // 此处编写需要循环执行的代码
     }
 }

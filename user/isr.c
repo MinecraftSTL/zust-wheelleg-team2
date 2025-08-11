@@ -87,7 +87,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     pit_clear_flag(CCU61_CH0);
 
     GetSpeed();
-    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
+    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)>>1;
     Update_GyroData();
     float new_gyro_x = my_gyro_x-zero_my_gyro_x;
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
