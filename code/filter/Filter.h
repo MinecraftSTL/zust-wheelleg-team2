@@ -25,15 +25,15 @@ typedef struct {
     float y1, y2;     // Êä³öÀúÊ·×´Ì¬£¨y[n-1], y[n-2]£©
 }Filter2;
 
-void LPF0_init(Filter0* this, float deltaMax);
+Filter0* LPF0_init(Filter0* this, float deltaMax);
 void LPF0_clear(Filter0* this);
 float lpf0(Filter0* this, float input);
-void LPF1_init(Filter1* this, float cutoffFreq, float sampleFreq);
+Filter1* LPF1_init(Filter1* this, float cutoffFreq, float sampleFreq);
 void LPF1_clear(Filter1* this);
 float lpf1(Filter1* this, float input);
-void LPF2_init(Filter2* this, float cutoffFreq, float Q, float sampleFreq);
+Filter2* LPF2_init(Filter2* this, float cutoffFreq, float Q, float sampleFreq);
 float lpf2(Filter2* this, float input);
-void HPF1_Init(Filter1* this, float cutoffFreq, float sampleFreq);
+Filter1* HPF1_init(Filter1* this, float cutoffFreq, float sampleFreq);
 void HPF1_clear(Filter1* this);
 float hpf1(Filter1* this, float input);
 

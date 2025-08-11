@@ -56,7 +56,6 @@ void core0_main(void)
     if(key_is_pressed()){
         flashStatus = 0;
     }
-    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status", "main.debug", "main.arg.k.camera.show"});
     Flash_init();
     Gyro_init();
     MyCamera_Init();

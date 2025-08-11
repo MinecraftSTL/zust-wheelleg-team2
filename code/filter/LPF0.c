@@ -6,10 +6,12 @@
  */
 #include "Filter.h"
 
-void LPF0_init(Filter0* this, float deltaMax) {
+Filter0* LPF0_init(Filter0* this, float deltaMax) {
     this->deltaMax = deltaMax;
     // 初始化历史数据
     LPF1_clear(this);
+
+    return this;
 }
 
 void LPF0_clear(Filter0* this){

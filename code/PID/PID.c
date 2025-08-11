@@ -7,7 +7,7 @@
 #include "Pid.h"
 #include "Sys.h"
 
-void PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Out)
+PID *PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Out)
 {
     PID_clear(this);
     this->Kp = kp;
@@ -15,6 +15,7 @@ void PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Ou
     this->Kd = kd;
     this->Max_I = max_I;
     this->Max_Out = max_Out;
+    return this;
 }
 
 float pid(PID *this, float TargetValue, float ActualValue)//¸Ä°æpid

@@ -10,7 +10,7 @@
 // 初始化滤波器参数
 // cutoff_freq: 截止频率(Hz)
 // sample_freq: 采样频率(Hz)
-void HPF1_Init(Filter1* this, float cutoffFreq, float sampleFreq) {
+Filter1* HPF1_init(Filter1* this, float cutoffFreq, float sampleFreq) {
     // 计算时间常数RC
     float RC = 1.f / (2.f * PI * cutoffFreq);
     // 计算采样间隔
@@ -19,6 +19,8 @@ void HPF1_Init(Filter1* this, float cutoffFreq, float sampleFreq) {
     this->alpha = RC / (RC + dt);
     // 初始化历史数据
     HPF1_clear(this);
+
+    return this;
 }
 
 void HPF1_clear(Filter1* this){

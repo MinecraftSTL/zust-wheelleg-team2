@@ -56,7 +56,7 @@ void Page_init(Page *this, char name[], enum PageExtendsType type){
 
 void Page_print(Page *this, uint8 row){
     if(!row&&(this->type!=LIST_TYPE || !this->extends.listValue.open)){
-        ips200_show_string_color((240-8*strlen(this->name))>>1, 0, this->name, this->select<0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
+        ips200_show_string_color((240-8*strlen(this->name))/2, 0, this->name, this->select<0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
     switch(this->type){
         case LIST_TYPE:
@@ -329,7 +329,10 @@ void Page_home(Page *this){
     ips200_clear();
 }
 
-void ListPage_init(Page *this, char name[], Page *key[]){
+void Page_setRoot(Page *this){
+    this->parent=NULL;
+}
+Page *ListPage_init(Page *this, char name[], Page *key[]){
     Page_init(this, name, LIST_TYPE);
     for(this->extends.listValue.size=0; this->extends.listValue.size<PAGE_ELEMENT_MAX; ++this->extends.listValue.size){
         if(!key[this->extends.listValue.size]){
@@ -344,9 +347,7 @@ void ListPage_init(Page *this, char name[], Page *key[]){
         key[i]->parent = this;
     }
     this->extends.listValue.open = 0;
-}
-void ListPage_setRoot(Page *this){
-    this->parent=NULL;
+    return this;
 }
 void ListPage_print(Page *this, uint8 row){
     if(!row){
@@ -395,7 +396,7 @@ void ListPage_press(Page *this, uint8 pressed[]){
     }
 }
 
-void IntPage_init(Page *this, char name[], int32 *value, int32 min, int32 max){
+Page *IntPage_init(Page *this, char name[], int32 *value, int32 min, int32 max){
     Page_init(this, name, INT_TYPE);
     this->extends.intValue.value = value;
     this->extends.intValue.min = min;
@@ -404,6 +405,7 @@ void IntPage_init(Page *this, char name[], int32 *value, int32 min, int32 max){
     if(flashStatus){
         Page_readFlash(this);
     }
+    return this;
 }
 void IntPage_print(Page *this, uint8 row){
     char str[7] = {0};
@@ -486,7 +488,7 @@ flash_data_union IntPage_writeFlash(Page *this){
     return ret;
 }
 
-void FloatPage_init(Page *this, char name[], float *value, float min, float max){
+Page *FloatPage_init(Page *this, char name[], float *value, float min, float max){
     Page_init(this, name, FLOAT_TYPE);
     this->extends.floatValue.value = value;
     this->extends.floatValue.min = min;
@@ -496,6 +498,7 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max)
     if(flashStatus){
         Page_readFlash(this);
     }
+    return this;
 }
 void FloatPage_print(Page *this, uint8 row){
     char str[11] = {0};
@@ -592,13 +595,14 @@ flash_data_union FloatPage_writeFlash(Page *this){
     return ret;
 }
 
-void DoublePage_init(Page *this, char name[], float *value, float min, float max){
+Page *DoublePage_init(Page *this, char name[], float *value, float min, float max){
     Page_init(this, name, DOUBLE_TYPE);
     this->extends.doubleValue.value = value;
     this->extends.doubleValue.min = min;
     this->extends.doubleValue.max = max;
     this->extends.doubleValue.dot = 1;
     this->extends.doubleValue.open = 0;
+    return this;
 }
 void DoublePage_print(Page *this, uint8 row){
     char str[11] = {0};
@@ -685,13 +689,14 @@ void DoublePage_press(Page *this, uint8 pressed[]){
     }
 }
 
-void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
+Page *BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
     Page_init(this, name, BOOL_TYPE);
     this->extends.boolValue.value = value;
     this->extends.boolValue.dir = dir;
     if(flashStatus){
         Page_readFlash(this);
     }
+    return this;
 }
 void BoolPage_print(Page *this, uint8 row){
     ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->select==0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
@@ -728,7 +733,7 @@ flash_data_union BoolPage_writeFlash(Page *this){
     return ret;
 }
 
-void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
+Page *EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
     Page_init(this, name, ENUM_TYPE);
     this->extends.enumValue.value = value;
     for(this->extends.enumValue.size=0; this->extends.enumValue.size<PAGE_ELEMENT_MAX; ++this->extends.enumValue.size){
@@ -745,6 +750,7 @@ void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
     if(flashStatus){
         Page_readFlash(this);
     }
+    return this;
 }
 void EnumPage_print(Page *this, uint8 row){
     if(!row){
@@ -799,9 +805,10 @@ flash_data_union EnumPage_writeFlash(Page *this){
     return ret;
 }
 
-void FuncPage_init(Page *this, char name[], void (*value)()){
+Page *FuncPage_init(Page *this, char name[], void (*value)()){
     Page_init(this, name, FUNC_TYPE);
     this->extends.funcValue.value = value;
+    return this;
 }
 void FuncPage_print(Page *this, uint8 row){
     ips200_show_string_color(row?160:0, row?row*16:16, "run", !row&&this->select==0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
@@ -824,10 +831,11 @@ void FuncPage_press(Page *this, uint8 pressed[]){
         }
     }
 }
-void AboutPage_init(Page *this, const uint8 *chinese_buffer, uint8 number){
+Page *AboutPage_init(Page *this, const uint8 *chinese_buffer, uint8 number){
     Page_init(this, "about", ABOUT_TYPE);
     this->extends.aboutValue.chinese_buffer = chinese_buffer;
     this->extends.aboutValue.number = number;
+    return this;
 }
 void AboutPage_print(Page *this, uint8 row){
     if(!row){

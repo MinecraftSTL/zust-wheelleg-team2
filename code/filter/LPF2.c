@@ -6,7 +6,7 @@
  */
 #include "Filter.h"
 
-void LPF2_init(Filter2* this, float cutoffFreq, float Q, float sampleFreq) {
+Filter2* LPF2_init(Filter2* this, float cutoffFreq, float Q, float sampleFreq) {
     // 计算截止频率对应的角频率（预畸变校正）
     float omega0 = 2 * PI * cutoffFreq / sampleFreq;
     float alpha = sinf(omega0) / (2 * Q);
@@ -31,6 +31,8 @@ void LPF2_init(Filter2* this, float cutoffFreq, float Q, float sampleFreq) {
     this->x2 = 0;
     this->y1 = 0;
     this->y2 = 0;
+
+    return this;
 }
 
 float lpf2(Filter2* this, float input) {

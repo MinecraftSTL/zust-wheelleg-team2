@@ -76,7 +76,6 @@ extern int zebraS;
 extern int crossX;
 extern int crossY;
 extern int circleX;
-extern int circleY;
 extern float circleLine;
 extern int rampS;
 extern int rampX;

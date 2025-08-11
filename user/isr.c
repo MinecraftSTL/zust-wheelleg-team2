@@ -86,7 +86,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU61_CH0);
 
-    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)>>1;
+    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     Update_GyroData();
     float new_gyro_x = my_gyro_x-zero_my_gyro_x;
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
@@ -157,9 +157,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);
-    if(fLz){
-        Leg_set_zero();
-    }else if(flEn){
+    if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
     }else if(fwpEn){
         Leg_set_pos(fwpLx, fwpLz, fwpRx, fwpRz);
@@ -187,7 +185,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
         Leg_set_pos(lx, lz, rx, rz);
     }
-    Camera_pit(PIT10ms, Encoder_speed_l<Encoder_speed_r ? Encoder_speed_l : Encoder_speed_r);
+    Camera_pit(PIT10ms, Encoder_speed);
     if(carStatus > CAR_BALANCE && (fps == 0 || fps > 7000)){//摄像头排线松了
         CarStatus_set(CAR_BALANCE);
     }

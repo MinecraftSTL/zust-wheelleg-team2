@@ -1,47 +1,54 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc28940a --dep-file=code/filter/HPF1.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/filter/HPF1.src ../code/filter/HPF1.c"
+	.compiler_invocation	"ctc -f cc19972a --dep-file=code/filter/HPF1.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/filter/HPF1.src ../code/filter/HPF1.c"
 	.compiler_name		"ctc"
 	;source	'../code/filter/HPF1.c'
 
 	
 $TC162
 	
-	.sdecl	'.text.HPF1.HPF1_Init',code,cluster('HPF1_Init')
-	.sect	'.text.HPF1.HPF1_Init'
+	.sdecl	'.text.HPF1.HPF1_init',code,cluster('HPF1_init')
+	.sect	'.text.HPF1.HPF1_init'
 	.align	2
 	
-	.global	HPF1_Init
-; Function HPF1_Init
-.L8:
-HPF1_Init:	.type	func
+	.global	HPF1_init
+; Function HPF1_init
+.L9:
+HPF1_init:	.type	func
+	mov.aa	a15,a4
+.L49:
 	movh	d15,#16256
-.L65:
+.L68:
 	mov	d0,#4059
 	addih	d0,d0,#16585
-.L66:
-	mul.f	d0,d4,d0
-.L67:
-	div.f	d15,d15,d0
-.L48:
-	movh	d0,#16256
-.L68:
-	div.f	d0,d0,d5
-.L50:
-	add.f	d0,d15,d0
-.L51:
-	div.f	d15,d15,d0
-.L49:
-	st.w	[a4],d15
 .L69:
+	mul.f	d0,d4,d0
+.L70:
+	div.f	d15,d15,d0
+.L50:
+	movh	d0,#16256
+.L71:
+	div.f	d0,d0,d5
+.L52:
+	add.f	d0,d15,d0
+.L53:
+	div.f	d15,d15,d0
+.L51:
+	st.w	[a15],d15
+.L72:
+	mov.aa	a4,a15
 	call	HPF1_clear
-.L47:
+.L48:
+	mov.aa	a2,a15
+.L54:
+	j	.L2
+.L2:
 	ret
-.L32:
+.L34:
 	
-__HPF1_Init_function_end:
-	.size	HPF1_Init,__HPF1_Init_function_end-HPF1_Init
-.L21:
+__HPF1_init_function_end:
+	.size	HPF1_init,__HPF1_init_function_end-HPF1_init
+.L22:
 	; End of function
 	
 	.sdecl	'.text.HPF1.HPF1_clear',code,cluster('HPF1_clear')
@@ -50,22 +57,22 @@ __HPF1_Init_function_end:
 	
 	.global	HPF1_clear
 ; Function HPF1_clear
-.L10:
+.L11:
 HPF1_clear:	.type	func
 	movh	d15,#32704
-.L74:
-	st.w	[a4]4,d15
-.L75:
-	mov	d15,#0
-.L76:
-	st.w	[a4]8,d15
 .L77:
+	st.w	[a4]4,d15
+.L78:
+	mov	d15,#0
+.L79:
+	st.w	[a4]8,d15
+.L80:
 	ret
-.L40:
+.L41:
 	
 __HPF1_clear_function_end:
 	.size	HPF1_clear,__HPF1_clear_function_end-HPF1_clear
-.L26:
+.L27:
 	; End of function
 	
 	.sdecl	'.text.HPF1.hpf1',code,cluster('hpf1')
@@ -74,64 +81,64 @@ __HPF1_clear_function_end:
 	
 	.global	hpf1
 ; Function hpf1
-.L12:
+.L13:
 hpf1:	.type	func
 	mov.aa	a15,a4
-.L54:
+.L57:
 	mov	d8,d4
-.L55:
+.L58:
 	mov.a	a2,#0
 	eq.a	d15,a15,a2
 	eq	d4,d15,#0
-.L52:
+.L55:
 	movh.a	a4,#@his(.2.str)
-.L53:
+.L56:
 	lea	a4,[a4]@los(.2.str)
-	mov	d5,#31
+	mov	d5,#33
 	call	debug_assert_handler
-.L45:
+.L46:
 	ld.w	d4,[a15]4
 	call	_isnanf
-	jeq	d2,#0,.L2
-.L82:
+	jeq	d2,#0,.L3
+.L85:
 	mov	d9,#0
-.L83:
-	j	.L3
-.L2:
-	ld.w	d15,[a15]4
-.L84:
-	sub.f	d9,d8,d15
+.L86:
+	j	.L4
 .L3:
+	ld.w	d15,[a15]4
+.L87:
+	sub.f	d9,d8,d15
+.L4:
 	ld.w	d4,[a15]8
 	call	_isnanf
-	jeq	d2,#0,.L4
-.L85:
-	mov	d15,#0
-.L86:
-	j	.L5
-.L4:
-	ld.w	d15,[a15]8
-.L87:
-	add.f	d15,d15,d9
-.L5:
-	ld.w	d0,[a15]
+	jeq	d2,#0,.L5
 .L88:
-	mul.f	d15,d0,d15
+	mov	d15,#0
 .L89:
-	st.w	[a15]8,d15
-.L90:
-	st.w	[a15]4,d8
-.L91:
-	ld.w	d2,[a15]8
-.L92:
 	j	.L6
+.L5:
+	ld.w	d15,[a15]8
+.L90:
+	add.f	d15,d15,d9
 .L6:
+	ld.w	d0,[a15]
+.L91:
+	mul.f	d15,d0,d15
+.L92:
+	st.w	[a15]8,d15
+.L93:
+	st.w	[a15]4,d8
+.L94:
+	ld.w	d2,[a15]8
+.L95:
+	j	.L7
+.L7:
 	ret
-.L42:
+.L43:
 	
 __hpf1_function_end:
 	.size	hpf1,__hpf1_function_end-hpf1
-.L31:
+.L32:
 	; End of function
 	
 	.sdecl	'.rodata.HPF1..2.str',data,rom
@@ -143,27 +150,27 @@ __hpf1_function_end:
 	.byte	80,70,49,46
 	.byte	99
 	.space	1
-	.calls	'HPF1_Init','HPF1_clear'
+	.calls	'HPF1_init','HPF1_clear'
 	.calls	'hpf1','debug_assert_handler'
 	.calls	'hpf1','_isnanf'
-	.calls	'HPF1_Init','',0
+	.calls	'HPF1_init','',0
 	.calls	'HPF1_clear','',0
 	.extern	_isnanf
 	.extern	debug_assert_handler
 	.calls	'hpf1','',0
 	.sdecl	'.debug_info',debug
 	.sect	'.debug_info'
-.L14:
+.L15:
 	.word	165245
 	.half	3
-	.word	.L15
+	.word	.L16
 	.byte	4
-.L13:
+.L14:
 	.byte	1
 	.byte	'../code/filter/HPF1.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L16
+	.word	.L17
 	.byte	2,1,1,3
 	.word	196
 	.byte	4
@@ -172,7 +179,7 @@ __hpf1_function_end:
 	.word	199
 	.byte	6,0,7
 	.byte	'__fract',0,4,128,1
-.L35:
+.L36:
 	.byte	7
 	.byte	'float',0,4,4,8
 	.byte	'Ifx__float_to_fract',0,3,1,152,2,18
@@ -21264,7 +21271,7 @@ __hpf1_function_end:
 	.byte	15,21
 	.word	39560
 	.byte	16,20,0,3
-	.word	.L56-.L14
+	.word	.L59-.L15
 	.byte	35
 	.byte	'PageExtendsType',0,55,36,6,1,18
 	.byte	'LIST_TYPE',0,0,18
@@ -21393,7 +21400,7 @@ __hpf1_function_end:
 	.word	158835
 	.byte	0,3
 	.word	159586
-.L56:
+.L59:
 	.byte	10
 	.byte	'Page',0,55,46,16,164,1,13
 	.byte	'name',0
@@ -21811,7 +21818,7 @@ __hpf1_function_end:
 	.byte	0
 	.sdecl	'.debug_abbrev',debug
 	.sect	'.debug_abbrev'
-.L15:
+.L16:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,39,12,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32,13
 	.byte	58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,36,0,3,8,11,15,62
 	.byte	15,0,0,8,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,9,59,0,3,8,0,0,10,19,1,3,8,58,15,59,15
@@ -21825,12 +21832,12 @@ __hpf1_function_end:
 	.byte	15,0,0,0
 	.sdecl	'.debug_line',debug
 	.sect	'.debug_line'
-.L16:
-	.word	.L58-.L57
-.L57:
+.L17:
+	.word	.L61-.L60
+.L60:
 	.half	3
-	.word	.L60-.L59
-.L59:
+	.word	.L63-.L62
+.L62:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg',0
 	.byte	'D:\\Infineon\\AURIX-Studio-1.10.6\\tools\\Compilers\\Tasking_1.1r8\\ctc\\include\\',0
@@ -21932,327 +21939,339 @@ __hpf1_function_end:
 	.byte	'E:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\_PinMap\\IfxGpt12_PinMap.h',0
 	.byte	0,0,0
 	.byte	'IfxGpt12_IncrEnc.h',0,14,0,0,0
-.L60:
-.L58:
-	.sdecl	'.debug_info',debug,cluster('HPF1_Init')
+.L63:
+.L61:
+	.sdecl	'.debug_info',debug,cluster('HPF1_init')
 	.sect	'.debug_info'
-.L17:
-	.word	335
+.L18:
+	.word	339
 	.half	3
-	.word	.L18
+	.word	.L19
 	.byte	4,1
 	.byte	'../code/filter/HPF1.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L20,.L19
+	.word	.L21,.L20
 	.byte	2
-	.word	.L13
+	.word	.L14
 	.byte	3
-	.byte	'HPF1_Init',0,1,13,6,1,1,1
-	.word	.L8,.L32,.L7
+	.byte	'HPF1_init',0,1,13,10
+	.word	.L33
+	.byte	1,1,1
+	.word	.L9,.L34,.L8
 	.byte	4
-	.byte	'this',0,1,13,25
-	.word	.L33,.L34
+	.byte	'this',0,1,13,29
+	.word	.L33,.L35
 	.byte	4
-	.byte	'cutoffFreq',0,1,13,37
-	.word	.L35,.L36
+	.byte	'cutoffFreq',0,1,13,41
+	.word	.L36,.L37
 	.byte	4
-	.byte	'sampleFreq',0,1,13,55
-	.word	.L35,.L37
+	.byte	'sampleFreq',0,1,13,59
+	.word	.L36,.L38
 	.byte	5
-	.word	.L8,.L32
+	.word	.L9,.L34
 	.byte	6
 	.byte	'RC',0,1,15,11
-	.word	.L35,.L38
+	.word	.L36,.L39
 	.byte	6
 	.byte	'dt',0,1,17,11
-	.word	.L35,.L39
+	.word	.L36,.L40
 	.byte	0,0,0
-	.sdecl	'.debug_abbrev',debug,cluster('HPF1_Init')
+	.sdecl	'.debug_abbrev',debug,cluster('HPF1_init')
 	.sect	'.debug_abbrev'
-.L18:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
-	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
-	.sdecl	'.debug_line',debug,cluster('HPF1_Init')
-	.sect	'.debug_line'
 .L19:
-	.word	.L62-.L61
-.L61:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('HPF1_init')
+	.sect	'.debug_line'
+.L20:
+	.word	.L65-.L64
+.L64:
 	.half	3
-	.word	.L64-.L63
-.L63:
+	.word	.L67-.L66
+.L66:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/filter/HPF1.c',0,0,0,0,0
-.L64:
-	.byte	5,16,7,0,5,2
-	.word	.L8
-	.byte	3,14,1,5,27,9
-	.half	.L65-.L8
+.L67:
+	.byte	5,10,7,0,5,2
+	.word	.L9
+	.byte	3,12,1,5,16,9
+	.half	.L49-.L9
+	.byte	3,2,1,5,27,9
+	.half	.L68-.L49
 	.byte	1,5,34,9
-	.half	.L66-.L65
+	.half	.L69-.L68
 	.byte	1,5,20,9
-	.half	.L67-.L66
+	.half	.L70-.L69
 	.byte	1,5,16,9
-	.half	.L48-.L67
+	.half	.L50-.L70
 	.byte	3,2,1,5,20,9
-	.half	.L68-.L48
+	.half	.L71-.L50
 	.byte	1,5,28,9
-	.half	.L50-.L68
+	.half	.L52-.L71
 	.byte	3,2,1,5,22,9
-	.half	.L51-.L50
+	.half	.L53-.L52
 	.byte	1,5,17,9
-	.half	.L49-.L51
+	.half	.L51-.L53
 	.byte	1,5,16,9
-	.half	.L69-.L49
+	.half	.L72-.L51
+	.byte	3,2,1,5,5,9
+	.half	.L48-.L72
 	.byte	3,2,1,5,1,9
-	.half	.L47-.L69
+	.half	.L2-.L48
 	.byte	3,1,1,7,9
-	.half	.L21-.L47
+	.half	.L22-.L2
 	.byte	0,1,1
-.L62:
-	.sdecl	'.debug_ranges',debug,cluster('HPF1_Init')
+.L65:
+	.sdecl	'.debug_ranges',debug,cluster('HPF1_init')
 	.sect	'.debug_ranges'
-.L20:
-	.word	-1,.L8,0,.L21-.L8,0,0
+.L21:
+	.word	-1,.L9,0,.L22-.L9,0,0
 	.sdecl	'.debug_info',debug,cluster('HPF1_clear')
 	.sect	'.debug_info'
-.L22:
+.L23:
 	.word	259
 	.half	3
-	.word	.L23
+	.word	.L24
 	.byte	4,1
 	.byte	'../code/filter/HPF1.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L25,.L24
+	.word	.L26,.L25
 	.byte	2
-	.word	.L13
+	.word	.L14
 	.byte	3
-	.byte	'HPF1_clear',0,1,24,6,1,1,1
-	.word	.L10,.L40,.L9
+	.byte	'HPF1_clear',0,1,26,6,1,1,1
+	.word	.L11,.L41,.L10
 	.byte	4
-	.byte	'this',0,1,24,26
-	.word	.L33,.L41
+	.byte	'this',0,1,26,26
+	.word	.L33,.L42
 	.byte	5
-	.word	.L10,.L40
+	.word	.L11,.L41
 	.byte	0,0
 	.sdecl	'.debug_abbrev',debug,cluster('HPF1_clear')
 	.sect	'.debug_abbrev'
-.L23:
+.L24:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
 	.sdecl	'.debug_line',debug,cluster('HPF1_clear')
 	.sect	'.debug_line'
-.L24:
-	.word	.L71-.L70
-.L70:
+.L25:
+	.word	.L74-.L73
+.L73:
 	.half	3
-	.word	.L73-.L72
-.L72:
+	.word	.L76-.L75
+.L75:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/filter/HPF1.c',0,0,0,0,0
-.L73:
+.L76:
 	.byte	5,15,7,0,5,2
-	.word	.L10
-	.byte	3,24,1,5,13,9
-	.half	.L74-.L10
+	.word	.L11
+	.byte	3,26,1,5,13,9
+	.half	.L77-.L11
 	.byte	1,5,15,9
-	.half	.L75-.L74
+	.half	.L78-.L77
 	.byte	3,1,1,5,13,9
-	.half	.L76-.L75
+	.half	.L79-.L78
 	.byte	1,5,1,9
-	.half	.L77-.L76
+	.half	.L80-.L79
 	.byte	3,1,1,7,9
-	.half	.L26-.L77
+	.half	.L27-.L80
 	.byte	0,1,1
-.L71:
+.L74:
 	.sdecl	'.debug_ranges',debug,cluster('HPF1_clear')
 	.sect	'.debug_ranges'
-.L25:
-	.word	-1,.L10,0,.L26-.L10,0,0
+.L26:
+	.word	-1,.L11,0,.L27-.L11,0,0
 	.sdecl	'.debug_info',debug,cluster('hpf1')
 	.sect	'.debug_info'
-.L27:
+.L28:
 	.word	306
 	.half	3
-	.word	.L28
+	.word	.L29
 	.byte	4,1
 	.byte	'../code/filter/HPF1.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L30,.L29
+	.word	.L31,.L30
 	.byte	2
-	.word	.L13
+	.word	.L14
 	.byte	3
-	.byte	'hpf1',0,1,30,7
-	.word	.L35
+	.byte	'hpf1',0,1,32,7
+	.word	.L36
 	.byte	1,1,1
-	.word	.L12,.L42,.L11
+	.word	.L13,.L43,.L12
 	.byte	4
-	.byte	'this',0,1,30,21
-	.word	.L33,.L43
+	.byte	'this',0,1,32,21
+	.word	.L33,.L44
 	.byte	4
-	.byte	'input',0,1,30,33
-	.word	.L35,.L44
+	.byte	'input',0,1,32,33
+	.word	.L36,.L45
 	.byte	5
-	.word	.L12,.L42
+	.word	.L13,.L43
 	.byte	5
-	.word	.L45,.L42
+	.word	.L46,.L43
 	.byte	6
-	.byte	'delta_x',0,1,33,11
-	.word	.L35,.L46
+	.byte	'delta_x',0,1,35,11
+	.word	.L36,.L47
 	.byte	0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('hpf1')
 	.sect	'.debug_abbrev'
-.L28:
+.L29:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
 	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
 	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('hpf1')
 	.sect	'.debug_line'
-.L29:
-	.word	.L79-.L78
-.L78:
+.L30:
+	.word	.L82-.L81
+.L81:
 	.half	3
-	.word	.L81-.L80
-.L80:
+	.word	.L84-.L83
+.L83:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/filter/HPF1.c',0,0,0,0,0
-.L81:
+.L84:
 	.byte	5,7,7,0,5,2
-	.word	.L12
-	.byte	3,29,1,5,5,9
-	.half	.L55-.L12
+	.word	.L13
+	.byte	3,31,1,5,5,9
+	.half	.L58-.L13
 	.byte	3,1,1,5,21,9
-	.half	.L45-.L55
+	.half	.L46-.L58
 	.byte	3,2,1,5,36,9
-	.half	.L82-.L45
+	.half	.L85-.L46
 	.byte	1,5,40,9
-	.half	.L83-.L82
-	.byte	1,5,52,9
-	.half	.L2-.L83
-	.byte	1,5,47,9
-	.half	.L84-.L2
-	.byte	1,5,30,9
-	.half	.L3-.L84
-	.byte	3,2,1,5,44,9
-	.half	.L85-.L3
-	.byte	1,5,46,9
 	.half	.L86-.L85
-	.byte	1,5,51,9
-	.half	.L4-.L86
-	.byte	1,5,55,9
-	.half	.L87-.L4
-	.byte	1,5,19,9
-	.half	.L5-.L87
-	.byte	1,5,27,9
-	.half	.L88-.L5
-	.byte	1,5,13,9
+	.byte	1,5,52,9
+	.half	.L3-.L86
+	.byte	1,5,47,9
+	.half	.L87-.L3
+	.byte	1,5,30,9
+	.half	.L4-.L87
+	.byte	3,2,1,5,44,9
+	.half	.L88-.L4
+	.byte	1,5,46,9
 	.half	.L89-.L88
-	.byte	1,9
-	.half	.L90-.L89
-	.byte	3,2,1,5,16,9
-	.half	.L91-.L90
-	.byte	3,1,1,5,5,9
+	.byte	1,5,51,9
+	.half	.L5-.L89
+	.byte	1,5,55,9
+	.half	.L90-.L5
+	.byte	1,5,19,9
+	.half	.L6-.L90
+	.byte	1,5,27,9
+	.half	.L91-.L6
+	.byte	1,5,13,9
 	.half	.L92-.L91
+	.byte	1,9
+	.half	.L93-.L92
+	.byte	3,2,1,5,16,9
+	.half	.L94-.L93
+	.byte	3,1,1,5,5,9
+	.half	.L95-.L94
 	.byte	1,5,1,9
-	.half	.L6-.L92
+	.half	.L7-.L95
 	.byte	3,1,1,7,9
-	.half	.L31-.L6
+	.half	.L32-.L7
 	.byte	0,1,1
-.L79:
+.L82:
 	.sdecl	'.debug_ranges',debug,cluster('hpf1')
 	.sect	'.debug_ranges'
-.L30:
-	.word	-1,.L12,0,.L31-.L12,0,0
-	.sdecl	'.debug_loc',debug,cluster('HPF1_Init')
+.L31:
+	.word	-1,.L13,0,.L32-.L13,0,0
+	.sdecl	'.debug_loc',debug,cluster('HPF1_clear')
 	.sect	'.debug_loc'
-.L7:
-	.word	-1,.L8,0,.L32-.L8
+.L10:
+	.word	-1,.L11,0,.L41-.L11
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L38:
-	.word	-1,.L8,.L48-.L8,.L49-.L8
+.L42:
+	.word	-1,.L11,0,.L41-.L11
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('HPF1_init')
+	.sect	'.debug_loc'
+.L8:
+	.word	-1,.L9,0,.L34-.L9
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L39:
+	.word	-1,.L9,.L50-.L9,.L51-.L9
 	.half	1
 	.byte	95
 	.word	0,0
-.L36:
-	.word	-1,.L8,0,.L47-.L8
+.L37:
+	.word	-1,.L9,0,.L48-.L9
 	.half	1
 	.byte	84
 	.word	0,0
-.L39:
-	.word	-1,.L8,.L50-.L8,.L51-.L8
+.L40:
+	.word	-1,.L9,.L52-.L9,.L53-.L9
 	.half	5
 	.byte	144,32,157,32,0
 	.word	0,0
-.L37:
-	.word	-1,.L8,0,.L47-.L8
+.L38:
+	.word	-1,.L9,0,.L48-.L9
 	.half	1
 	.byte	85
 	.word	0,0
-.L34:
-	.word	-1,.L8,0,.L47-.L8
+.L35:
+	.word	-1,.L9,0,.L48-.L9
 	.half	1
 	.byte	100
-	.word	0,0
-	.sdecl	'.debug_loc',debug,cluster('HPF1_clear')
-	.sect	'.debug_loc'
-.L9:
-	.word	-1,.L10,0,.L40-.L10
-	.half	2
-	.byte	138,0
-	.word	0,0
-.L41:
-	.word	-1,.L10,0,.L40-.L10
+	.word	.L49-.L9,.L34-.L9
 	.half	1
-	.byte	100
+	.byte	111
+	.word	.L54-.L9,.L34-.L9
+	.half	1
+	.byte	98
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('hpf1')
 	.sect	'.debug_loc'
-.L46:
+.L47:
 	.word	0,0
-.L11:
-	.word	-1,.L12,0,.L42-.L12
+.L12:
+	.word	-1,.L13,0,.L43-.L13
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L44:
-	.word	-1,.L12,0,.L52-.L12
+.L45:
+	.word	-1,.L13,0,.L55-.L13
 	.half	1
 	.byte	84
-	.word	.L55-.L12,.L42-.L12
+	.word	.L58-.L13,.L43-.L13
 	.half	1
 	.byte	88
 	.word	0,0
-.L43:
-	.word	-1,.L12,0,.L53-.L12
+.L44:
+	.word	-1,.L13,0,.L56-.L13
 	.half	1
 	.byte	100
-	.word	.L54-.L12,.L42-.L12
+	.word	.L57-.L13,.L43-.L13
 	.half	1
 	.byte	111
 	.word	0,0
 	.sdecl	'.debug_frame',debug
 	.sect	'.debug_frame'
-.L93:
+.L96:
 	.word	48
 	.word	-1
 	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
 	.byte	8,39
-	.sdecl	'.debug_frame',debug,cluster('HPF1_Init')
+	.sdecl	'.debug_frame',debug,cluster('HPF1_init')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L93,.L8,.L32-.L8
+	.word	.L96,.L9,.L34-.L9
 	.sdecl	'.debug_frame',debug,cluster('HPF1_clear')
 	.sect	'.debug_frame'
 	.word	24
-	.word	.L93,.L10,.L40-.L10
+	.word	.L96,.L11,.L41-.L11
 	.byte	8,18,8,19,8,21,8,22,8,23,0,0
 	.sdecl	'.debug_frame',debug,cluster('hpf1')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L93,.L12,.L42-.L12
+	.word	.L96,.L13,.L43-.L13
 	; Module end

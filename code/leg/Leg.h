@@ -9,6 +9,7 @@
 #define CODE_LEG_LEG_H_
 
 #include "Sys.h"
+#include "DebugArg.h"
 
 #define servo_rb ATOM2_CH3_P11_6
 #define servo_rf ATOM2_CH4_P11_9
@@ -40,7 +41,6 @@ extern uint8 rollBalance;
 
 void Leg_init();
 float Roll_toPosZ(float roll, float lza);
-void Leg_set_zero();
 void Leg_set_duty(float rb, float rf, float lf, float lb);
 void Leg_set_pos(float lx, float lz, float rx, float rz);
 
