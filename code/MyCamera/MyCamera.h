@@ -19,6 +19,7 @@ typedef enum{
     TO_LCIRCLE,
     PO_LCIRCLE,
     O_LCIRCLE,
+    OR_CROSS_LCIRCLE,
     I_RCIRCLE,
     PTI_RCIRCLE,
     TI_RCIRCLE,
@@ -26,6 +27,8 @@ typedef enum{
     TO_RCIRCLE,
     PO_RCIRCLE,
     O_RCIRCLE,
+    OR_CROSS_RCIRCLE,
+    CAMERA_STATUS_NUMBER,
 }CameraStatus;
 
 typedef struct{
@@ -51,10 +54,12 @@ extern int setLineY;
 extern int straightYMin;
 extern int straightStep;
 extern float straightErr;
+extern int statusJump;
 extern int zebraY;
 extern int crossX;
 extern int circleX;
 extern int circleY;
+extern float circleLine;
 extern int errY;
 extern int errDeltaY;
 extern uint8 showPInC1;

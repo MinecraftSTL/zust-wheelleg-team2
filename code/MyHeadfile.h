@@ -24,9 +24,9 @@
 #include "UART.h"
 #include "Status.h"
 #include "Debug.h"
-#include "myCamera/MyCamera.h"
-#include "myEncoder/MyEncoder.h"
-#include "pid/Pid.h"
+#include "MyCamera.h"
+#include "MyEncoder.h"
+#include "Pid.h"
 
 
 

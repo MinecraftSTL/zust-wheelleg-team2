@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc7536a --dep-file=libraries/zf_device/zf_device_ips200.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debug -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o libraries/zf_device/zf_device_ips200.src ../libraries/zf_device/zf_device_ips200.c"
+	.compiler_invocation	"ctc -f cc52396a --dep-file=libraries/zf_device/zf_device_ips200.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debug -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o libraries/zf_device/zf_device_ips200.src ../libraries/zf_device/zf_device_ips200.c"
 	.compiler_name		"ctc"
 	;source	'../libraries/zf_device/zf_device_ips200.c'
 
@@ -17,43 +17,43 @@ ips200_write_data:	.type	func
 	movh.a	a15,#@his(IfxPort_cfg_indexMap)
 	lea	a15,[a15]@los(IfxPort_cfg_indexMap)
 	ld.a	a2,[a15]32
-.L1623:
+.L1671:
 	sha	d15,d4,#9
-.L1624:
+.L1672:
 	movh.a	a15,#@his(IfxPort_cfg_indexMap)
 	lea	a15,[a15]@los(IfxPort_cfg_indexMap)
 	ld.a	a15,[a15]32
 	ld.w	d0,[a15]
-.L1625:
+.L1673:
 	insert	d0,d0,#0,#9,#4
-.L1626:
+.L1674:
 	or	d15,d0
-.L1627:
+.L1675:
 	st.w	[a2],d15
-.L1628:
+.L1676:
 	movh.a	a15,#@his(IfxPort_cfg_indexMap)
 	lea	a15,[a15]@los(IfxPort_cfg_indexMap)
 	ld.a	a2,[a15]48
-.L1629:
+.L1677:
 	sha	d4,#-4
 .L681:
 	movh.a	a15,#@his(IfxPort_cfg_indexMap)
 	lea	a15,[a15]@los(IfxPort_cfg_indexMap)
 	ld.a	a15,[a15]48
 	ld.w	d15,[a15]
-.L1630:
+.L1678:
 	insert	d15,d15,#0,#0,#4
-.L1631:
+.L1679:
 	or	d4,d15
-.L1632:
+.L1680:
 	st.w	[a2],d4
-.L1633:
+.L1681:
 	ret
-.L655:
+.L672:
 	
 __ips200_write_data_function_end:
 	.size	ips200_write_data,__ips200_write_data_function_end-ips200_write_data
-.L417:
+.L442:
 	; End of function
 	
 	.sdecl	'.text.zf_device_ips200.ips200_write_command',code,cluster('ips200_write_command')
@@ -68,9 +68,9 @@ ips200_write_command:	.type	func
 	movh.a	a15,#@his(ips200_display_type)
 	lea	a15,[a15]@los(ips200_display_type)
 	ld.bu	d15,[a15]
-.L1638:
+.L1686:
 	jne	d15,#0,.L2
-.L1639:
+.L1687:
 	mov	d15,#0
 	jeq	d15,#0,.L3
 	mov	d4,#480
@@ -223,17 +223,18 @@ ips200_write_command:	.type	func
 .L21:
 .L7:
 	ret
-.L657:
+.L674:
 	
 __ips200_write_command_function_end:
 	.size	ips200_write_command,__ips200_write_command_function_end-ips200_write_command
-.L422:
+.L447:
 	; End of function
 	
 	.sdecl	'.text.zf_device_ips200.ips200_write_8bit_data',code,cluster('ips200_write_8bit_data')
 	.sect	'.text.zf_device_ips200.ips200_write_8bit_data'
 	.align	2
 	
+	.global	ips200_write_8bit_data
 ; Function ips200_write_8bit_data
 .L272:
 ips200_write_8bit_data:	.type	func
@@ -242,9 +243,9 @@ ips200_write_8bit_data:	.type	func
 	movh.a	a15,#@his(ips200_display_type)
 	lea	a15,[a15]@los(ips200_display_type)
 	ld.bu	d15,[a15]
-.L1644:
+.L1623:
 	jne	d15,#0,.L22
-.L1645:
+.L1624:
 	mov	d4,#2
 .L691:
 	mov	d5,d8
@@ -336,17 +337,18 @@ ips200_write_8bit_data:	.type	func
 .L33:
 .L23:
 	ret
-.L660:
+.L655:
 	
 __ips200_write_8bit_data_function_end:
 	.size	ips200_write_8bit_data,__ips200_write_8bit_data_function_end-ips200_write_8bit_data
-.L427:
+.L417:
 	; End of function
 	
 	.sdecl	'.text.zf_device_ips200.ips200_write_8bit_data_array',code,cluster('ips200_write_8bit_data_array')
 	.sect	'.text.zf_device_ips200.ips200_write_8bit_data_array'
 	.align	2
 	
+	.global	ips200_write_8bit_data_array
 ; Function ips200_write_8bit_data_array
 .L274:
 ips200_write_8bit_data_array:	.type	func
@@ -357,9 +359,9 @@ ips200_write_8bit_data_array:	.type	func
 	movh.a	a2,#@his(ips200_display_type)
 	lea	a2,[a2]@los(ips200_display_type)
 	ld.bu	d15,[a2]
-.L1650:
+.L1629:
 	jne	d15,#0,.L34
-.L1651:
+.L1630:
 	mov	d4,#2
 .L700:
 	mov.aa	a4,a15
@@ -422,7 +424,7 @@ ips200_write_8bit_data_array:	.type	func
 .L43:
 	ld.bu	d4,[a15]
 	call	ips200_write_data
-.L1652:
+.L1631:
 	mov	d15,#1
 	jeq	d15,#0,.L44
 	mov	d4,#485
@@ -442,9 +444,9 @@ ips200_write_8bit_data_array:	.type	func
 .L40:
 	mov	d15,d8
 	add	d8,#-1
-.L1653:
+.L1632:
 	jne	d15,#0,.L41
-.L1654:
+.L1633:
 	mov	d15,#1
 	jeq	d15,#0,.L46
 	mov	d4,#482
@@ -462,11 +464,11 @@ ips200_write_8bit_data_array:	.type	func
 .L47:
 .L35:
 	ret
-.L663:
+.L658:
 	
 __ips200_write_8bit_data_array_function_end:
 	.size	ips200_write_8bit_data_array,__ips200_write_8bit_data_array_function_end-ips200_write_8bit_data_array
-.L432:
+.L422:
 	; End of function
 	
 	.sdecl	'.text.zf_device_ips200.ips200_write_16bit_data',code,cluster('ips200_write_16bit_data')
@@ -482,9 +484,9 @@ ips200_write_16bit_data:	.type	func
 	movh.a	a15,#@his(ips200_display_type)
 	lea	a15,[a15]@los(ips200_display_type)
 	ld.bu	d15,[a15]
-.L1659:
+.L1638:
 	jne	d15,#0,.L48
-.L1660:
+.L1639:
 	mov	d4,#2
 .L708:
 	mov	d5,d8
@@ -541,9 +543,9 @@ ips200_write_16bit_data:	.type	func
 	st.w	[a2],d15
 .L55:
 	sha	d4,d8,#-8
-.L1661:
+.L1640:
 	call	ips200_write_data
-.L1662:
+.L1641:
 	mov	d15,#1
 	jeq	d15,#0,.L56
 	mov	d4,#485
@@ -575,9 +577,9 @@ ips200_write_16bit_data:	.type	func
 	st.w	[a2],d15
 .L59:
 	and	d4,d8,#255
-.L1663:
+.L1642:
 	call	ips200_write_data
-.L1664:
+.L1643:
 	mov	d15,#1
 	jeq	d15,#0,.L60
 	mov	d4,#485
@@ -610,17 +612,18 @@ ips200_write_16bit_data:	.type	func
 .L63:
 .L49:
 	ret
-.L666:
+.L661:
 	
 __ips200_write_16bit_data_function_end:
 	.size	ips200_write_16bit_data,__ips200_write_16bit_data_function_end-ips200_write_16bit_data
-.L437:
+.L427:
 	; End of function
 	
 	.sdecl	'.text.zf_device_ips200.ips200_write_16bit_data_array',code,cluster('ips200_write_16bit_data_array')
 	.sect	'.text.zf_device_ips200.ips200_write_16bit_data_array'
 	.align	2
 	
+	.global	ips200_write_16bit_data_array
 ; Function ips200_write_16bit_data_array
 .L278:
 ips200_write_16bit_data_array:	.type	func
@@ -631,9 +634,9 @@ ips200_write_16bit_data_array:	.type	func
 	movh.a	a2,#@his(ips200_display_type)
 	lea	a2,[a2]@los(ips200_display_type)
 	ld.bu	d15,[a2]
-.L1669:
+.L1648:
 	jne	d15,#0,.L64
-.L1670:
+.L1649:
 	mov	d4,#2
 .L715:
 	mov.aa	a4,a15
@@ -695,11 +698,11 @@ ips200_write_16bit_data_array:	.type	func
 	st.w	[a2],d15
 .L73:
 	ld.hu	d4,[a15]0
-.L1671:
+.L1650:
 	sha	d4,#-8
-.L1672:
+.L1651:
 	call	ips200_write_data
-.L1673:
+.L1652:
 	mov	d15,#1
 	jeq	d15,#0,.L74
 	mov	d4,#485
@@ -731,11 +734,11 @@ ips200_write_16bit_data_array:	.type	func
 	st.w	[a2],d15
 .L77:
 	ld.hu	d15,[a15]0
-.L1674:
+.L1653:
 	and	d4,d15,#255
-.L1675:
+.L1654:
 	call	ips200_write_data
-.L1676:
+.L1655:
 	mov	d15,#1
 	jeq	d15,#0,.L78
 	mov	d4,#485
@@ -755,9 +758,9 @@ ips200_write_16bit_data_array:	.type	func
 .L70:
 	mov	d15,d8
 	add	d8,#-1
-.L1677:
+.L1656:
 	jne	d15,#0,.L71
-.L1678:
+.L1657:
 	mov	d15,#1
 	jeq	d15,#0,.L80
 	mov	d4,#482
@@ -775,17 +778,18 @@ ips200_write_16bit_data_array:	.type	func
 .L81:
 .L65:
 	ret
-.L669:
+.L664:
 	
 __ips200_write_16bit_data_array_function_end:
 	.size	ips200_write_16bit_data_array,__ips200_write_16bit_data_array_function_end-ips200_write_16bit_data_array
-.L442:
+.L432:
 	; End of function
 	
 	.sdecl	'.text.zf_device_ips200.ips200_set_region',code,cluster('ips200_set_region')
 	.sect	'.text.zf_device_ips200.ips200_set_region'
 	.align	2
 	
+	.global	ips200_set_region
 ; Function ips200_set_region
 .L280:
 ips200_set_region:	.type	func
@@ -815,7 +819,7 @@ ips200_set_region:	.type	func
 	lea	a4,[a4]@los(.2.str)
 	mov	d5,#333
 	call	debug_assert_handler
-.L1683:
+.L1662:
 	movh.a	a15,#@his(ips200_width_max)
 	lea	a15,[a15]@los(ips200_width_max)
 	ld.hu	d0,[a15]0
@@ -826,7 +830,7 @@ ips200_set_region:	.type	func
 	lea	a4,[a4]@los(.2.str)
 	mov	d5,#334
 	call	debug_assert_handler
-.L1684:
+.L1663:
 	movh.a	a15,#@his(ips200_height_max)
 	lea	a15,[a15]@los(ips200_height_max)
 	ld.hu	d0,[a15]0
@@ -835,10 +839,10 @@ ips200_set_region:	.type	func
 	lea	a4,[a4]@los(.2.str)
 	mov	d5,#335
 	call	debug_assert_handler
-.L1685:
+.L1664:
 	mov	d4,#42
 	call	ips200_write_command
-.L1686:
+.L1665:
 	mov	d4,d15
 .L732:
 	call	ips200_write_16bit_data
@@ -860,13 +864,13 @@ ips200_set_region:	.type	func
 .L740:
 	mov	d4,#44
 	call	ips200_write_command
-.L1687:
+.L1666:
 	ret
-.L672:
+.L667:
 	
 __ips200_set_region_function_end:
 	.size	ips200_set_region,__ips200_set_region_function_end-ips200_set_region
-.L447:
+.L437:
 	; End of function
 	
 	.sdecl	'.text.zf_device_ips200.ips200_debug_init',code,cluster('ips200_debug_init')
@@ -3963,45 +3967,53 @@ ips200_height_max:	.type	object
 	.half	320
 	.sdecl	'.data.zf_device_ips200.ips200_pencolor',data,cluster('ips200_pencolor')
 	.sect	'.data.zf_device_ips200.ips200_pencolor'
+	.global	ips200_pencolor
 	.align	2
 ips200_pencolor:	.type	object
 	.size	ips200_pencolor,2
 	.half	2016
 	.sdecl	'.data.zf_device_ips200.ips200_bgcolor',data,cluster('ips200_bgcolor')
 	.sect	'.data.zf_device_ips200.ips200_bgcolor'
+	.global	ips200_bgcolor
 	.align	2
 ips200_bgcolor:	.type	object
 	.size	ips200_bgcolor,2
 	.space	2
 	.sdecl	'.data.zf_device_ips200.ips200_display_type',data,cluster('ips200_display_type')
 	.sect	'.data.zf_device_ips200.ips200_display_type'
+	.global	ips200_display_type
 ips200_display_type:	.type	object
 	.size	ips200_display_type,1
 	.space	1
 	.sdecl	'.data.zf_device_ips200.ips200_display_dir',data,cluster('ips200_display_dir')
 	.sect	'.data.zf_device_ips200.ips200_display_dir'
+	.global	ips200_display_dir
 ips200_display_dir:	.type	object
 	.size	ips200_display_dir,1
 	.space	1
 	.sdecl	'.data.zf_device_ips200.ips200_display_font',data,cluster('ips200_display_font')
 	.sect	'.data.zf_device_ips200.ips200_display_font'
+	.global	ips200_display_font
 ips200_display_font:	.type	object
 	.size	ips200_display_font,1
 	.byte	1
 	.sdecl	'.data.zf_device_ips200.ips_rst_pin',data,cluster('ips_rst_pin')
 	.sect	'.data.zf_device_ips200.ips_rst_pin'
+	.global	ips_rst_pin
 	.align	2
 ips_rst_pin:	.type	object
 	.size	ips_rst_pin,2
 	.half	481
 	.sdecl	'.data.zf_device_ips200.ips_bl_pin',data,cluster('ips_bl_pin')
 	.sect	'.data.zf_device_ips200.ips_bl_pin'
+	.global	ips_bl_pin
 	.align	2
 ips_bl_pin:	.type	object
 	.size	ips_bl_pin,2
 	.half	484
 	.sdecl	'.data.zf_device_ips200.ips_cs_pin',data,cluster('ips_cs_pin')
 	.sect	'.data.zf_device_ips200.ips_cs_pin'
+	.global	ips_cs_pin
 	.align	2
 ips_cs_pin:	.type	object
 	.size	ips_cs_pin,2
@@ -10789,7 +10801,14 @@ ips_cs_pin:	.type	object
 .L653:
 	.byte	17,30,144,1,9,1,18
 	.byte	'IPS200_TYPE_SPI',0,0,18
-	.byte	'IPS200_TYPE_PARALLEL8',0,1,0,31
+	.byte	'IPS200_TYPE_PARALLEL8',0,1,0
+.L656:
+	.byte	30
+	.word	655
+.L662:
+	.byte	30
+	.word	672
+	.byte	31
 	.word	9941
 	.byte	32
 	.word	9964
@@ -11060,15 +11079,9 @@ ips_cs_pin:	.type	object
 	.byte	32
 	.word	38622
 	.byte	6,0
-.L658:
+.L675:
 	.byte	30
 	.word	655
-.L661:
-	.byte	30
-	.word	655
-.L667:
-	.byte	30
-	.word	672
 	.byte	36
 	.byte	'__INDIRECT__',0,31,1,1,1,1,1,21
 	.byte	'__wchar_t',0,31,1,1
@@ -25706,7 +25719,7 @@ ips_cs_pin:	.type	object
 	.byte	16,20,0,3
 	.word	.L1101-.L320
 	.byte	41
-	.byte	'PageExtendsType',0,60,32,6,1,18
+	.byte	'PageExtendsType',0,60,31,6,1,18
 	.byte	'LIST_TYPE',0,0,18
 	.byte	'INT_TYPE',0,1,18
 	.byte	'FLOAT_TYPE',0,2,18
@@ -25715,7 +25728,7 @@ ips_cs_pin:	.type	object
 	.byte	'ENUM_TYPE',0,5,18
 	.byte	'FUNC_TYPE',0,6,0,15,44
 	.word	162730
-	.byte	16,10,0,20,60,47,9,48,13
+	.byte	16,10,0,20,60,46,9,48,13
 	.byte	'value',0
 	.word	162843
 	.byte	44,2,35,0,13
@@ -25726,7 +25739,7 @@ ips_cs_pin:	.type	object
 	.word	655
 	.byte	1,2,35,45,0,3
 	.word	496
-	.byte	20,60,52,9,16,13
+	.byte	20,60,51,9,16,13
 	.byte	'value',0
 	.word	162901
 	.byte	4,2,35,0,13
@@ -25740,7 +25753,7 @@ ips_cs_pin:	.type	object
 	.word	655
 	.byte	1,2,35,12,0,3
 	.word	276
-	.byte	20,60,58,9,16,13
+	.byte	20,60,57,9,16,13
 	.byte	'value',0
 	.word	162967
 	.byte	4,2,35,0,13
@@ -25755,7 +25768,7 @@ ips_cs_pin:	.type	object
 	.byte	1,2,35,12,13
 	.byte	'open',0
 	.word	655
-	.byte	1,2,35,13,0,20,60,65,9,16,13
+	.byte	1,2,35,13,0,20,60,64,9,16,13
 	.byte	'value',0
 	.word	162967
 	.byte	4,2,35,0,13
@@ -25772,7 +25785,7 @@ ips_cs_pin:	.type	object
 	.word	655
 	.byte	1,2,35,13,0,3
 	.word	655
-	.byte	20,60,72,9,8,13
+	.byte	20,60,71,9,8,13
 	.byte	'value',0
 	.word	163120
 	.byte	4,2,35,0,13
@@ -25784,7 +25797,7 @@ ips_cs_pin:	.type	object
 	.word	38729
 	.byte	16,10,0,15,121
 	.word	163164
-	.byte	16,10,0,20,60,76,9,128,1,13
+	.byte	16,10,0,20,60,75,9,128,1,13
 	.byte	'value',0
 	.word	163159
 	.byte	4,2,35,0,13
@@ -25793,10 +25806,10 @@ ips_cs_pin:	.type	object
 	.byte	1,2,35,4,13
 	.byte	'names',0
 	.word	163173
-	.byte	121,2,35,5,0,20,60,81,9,4,13
+	.byte	121,2,35,5,0,20,60,80,9,4,13
 	.byte	'value',0
 	.word	45142
-	.byte	4,2,35,0,0,12,60,46,5,128,1,13
+	.byte	4,2,35,0,0,12,60,45,5,128,1,13
 	.byte	'listValue',0
 	.word	162852
 	.byte	48,2,35,0,13
@@ -25820,7 +25833,7 @@ ips_cs_pin:	.type	object
 	.byte	4,2,35,0,0
 .L1101:
 	.byte	10
-	.byte	'Page',0,60,41,16,160,1,13
+	.byte	'Page',0,60,40,16,160,1,13
 	.byte	'name',0
 	.word	162721
 	.byte	21,2,35,0,13
@@ -25836,7 +25849,7 @@ ips_cs_pin:	.type	object
 	.byte	'extends',0
 	.word	163254
 	.byte	128,1,2,35,32,0,21
-	.byte	'Page',0,60,85,3
+	.byte	'Page',0,60,84,3
 	.word	163397
 	.byte	20,61,75,9,16,13
 	.byte	'sysFreq',0
@@ -29068,10 +29081,10 @@ ips_cs_pin:	.type	object
 	.sect	'.debug_ranges'
 .L411:
 	.word	-1,.L318,0,.L412-.L318,0,0
-	.sdecl	'.debug_info',debug,cluster('ips200_write_data')
+	.sdecl	'.debug_info',debug,cluster('ips200_write_8bit_data')
 	.sect	'.debug_info'
 .L413:
-	.word	286
+	.word	292
 	.half	3
 	.word	.L414
 	.byte	4,1
@@ -29082,20 +29095,20 @@ ips_cs_pin:	.type	object
 	.byte	2
 	.word	.L319
 	.byte	3
-	.byte	'ips200_write_data',0,1,173,1,13,1,1
-	.word	.L268,.L655,.L267
+	.byte	'ips200_write_8bit_data',0,1,215,1,6,1,1,1
+	.word	.L272,.L655,.L271
 	.byte	4
-	.byte	'dat',0,1,173,1,37
-	.word	.L518,.L656
+	.byte	'dat',0,1,215,1,42
+	.word	.L656,.L657
 	.byte	5
-	.word	.L268,.L655
+	.word	.L272,.L655
 	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_data')
+	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_8bit_data')
 	.sect	'.debug_abbrev'
 .L414:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('ips200_write_data')
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ips200_write_8bit_data')
 	.sect	'.debug_line'
 .L415:
 	.word	.L1620-.L1619
@@ -29106,44 +29119,42 @@ ips_cs_pin:	.type	object
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
 .L1622:
-	.byte	5,5,7,0,5,2
-	.word	.L268
-	.byte	3,174,1,1,5,29,9
-	.half	.L1623-.L268
-	.byte	1,5,52,9
+	.byte	5,6,7,0,5,2
+	.word	.L272
+	.byte	3,214,1,1,5,27,9
+	.half	.L692-.L272
+	.byte	3,2,1,5,5,9
+	.half	.L1623-.L692
+	.byte	1,5,9,7,9
 	.half	.L1624-.L1623
-	.byte	1,5,69,9
-	.half	.L1625-.L1624
-	.byte	1,5,49,9
-	.half	.L1626-.L1625
-	.byte	1,5,22,9
-	.half	.L1627-.L1626
-	.byte	1,5,5,9
-	.half	.L1628-.L1627
-	.byte	3,1,1,5,29,9
-	.half	.L1629-.L1628
-	.byte	1,5,57,9
-	.half	.L681-.L1629
-	.byte	1,5,74,9
-	.half	.L1630-.L681
-	.byte	1,5,54,9
-	.half	.L1631-.L1630
-	.byte	1,5,22,9
-	.half	.L1632-.L1631
-	.byte	1,5,1,9
-	.half	.L1633-.L1632
-	.byte	3,1,1,7,9
-	.half	.L417-.L1633
+	.byte	3,2,1,5,40,9
+	.half	.L694-.L1624
+	.byte	1,5,9,9
+	.half	.L22-.L694
+	.byte	3,4,1,9
+	.half	.L25-.L22
+	.byte	3,1,1,9
+	.half	.L27-.L25
+	.byte	3,1,1,5,27,9
+	.half	.L29-.L27
+	.byte	3,1,1,5,9,9
+	.half	.L698-.L29
+	.byte	3,1,1,9
+	.half	.L31-.L698
+	.byte	3,1,1,5,1,9
+	.half	.L23-.L31
+	.byte	3,2,1,7,9
+	.half	.L417-.L23
 	.byte	0,1,1
 .L1620:
-	.sdecl	'.debug_ranges',debug,cluster('ips200_write_data')
+	.sdecl	'.debug_ranges',debug,cluster('ips200_write_8bit_data')
 	.sect	'.debug_ranges'
 .L416:
-	.word	-1,.L268,0,.L417-.L268,0,0
-	.sdecl	'.debug_info',debug,cluster('ips200_write_command')
+	.word	-1,.L272,0,.L417-.L272,0,0
+	.sdecl	'.debug_info',debug,cluster('ips200_write_8bit_data_array')
 	.sect	'.debug_info'
 .L418:
-	.word	293
+	.word	315
 	.half	3
 	.word	.L419
 	.byte	4,1
@@ -29154,22 +29165,103 @@ ips_cs_pin:	.type	object
 	.byte	2
 	.word	.L319
 	.byte	3
-	.byte	'ips200_write_command',0,1,187,1,13,1,1
-	.word	.L270,.L657,.L269
+	.byte	'ips200_write_8bit_data_array',0,1,238,1,6,1,1,1
+	.word	.L274,.L658,.L273
 	.byte	4
-	.byte	'command',0,1,187,1,47
-	.word	.L658,.L659
+	.byte	'dat',0,1,238,1,49
+	.word	.L578,.L659
+	.byte	4
+	.byte	'len',0,1,238,1,61
+	.word	.L559,.L660
 	.byte	5
-	.word	.L270,.L657
+	.word	.L274,.L658
 	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_command')
+	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_8bit_data_array')
 	.sect	'.debug_abbrev'
 .L419:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('ips200_write_command')
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ips200_write_8bit_data_array')
 	.sect	'.debug_line'
 .L420:
+	.word	.L1626-.L1625
+.L1625:
+	.half	3
+	.word	.L1628-.L1627
+.L1627:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
+.L1628:
+	.byte	5,6,7,0,5,2
+	.word	.L274
+	.byte	3,237,1,1,5,27,9
+	.half	.L702-.L274
+	.byte	3,2,1,5,5,9
+	.half	.L1629-.L702
+	.byte	1,5,9,7,9
+	.half	.L1630-.L1629
+	.byte	3,2,1,5,51,9
+	.half	.L699-.L1630
+	.byte	1,5,9,9
+	.half	.L34-.L699
+	.byte	3,4,1,9
+	.half	.L37-.L34
+	.byte	3,1,1,5,21,9
+	.half	.L39-.L37
+	.byte	3,1,1,5,13,9
+	.half	.L41-.L39
+	.byte	3,2,1,5,38,9
+	.half	.L43-.L41
+	.byte	3,1,1,5,13,9
+	.half	.L1631-.L43
+	.byte	3,1,1,5,17,9
+	.half	.L45-.L1631
+	.byte	3,1,1,5,19,9
+	.half	.L40-.L45
+	.byte	3,123,1,5,21,9
+	.half	.L1632-.L40
+	.byte	1,5,9,7,9
+	.half	.L1633-.L1632
+	.byte	3,7,1,5,1,9
+	.half	.L35-.L1633
+	.byte	3,2,1,7,9
+	.half	.L422-.L35
+	.byte	0,1,1
+.L1626:
+	.sdecl	'.debug_ranges',debug,cluster('ips200_write_8bit_data_array')
+	.sect	'.debug_ranges'
+.L421:
+	.word	-1,.L274,0,.L422-.L274,0,0
+	.sdecl	'.debug_info',debug,cluster('ips200_write_16bit_data')
+	.sect	'.debug_info'
+.L423:
+	.word	293
+	.half	3
+	.word	.L424
+	.byte	4,1
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
+	.word	.L426,.L425
+	.byte	2
+	.word	.L319
+	.byte	3
+	.byte	'ips200_write_16bit_data',0,1,139,2,6,1,1,1
+	.word	.L276,.L661,.L275
+	.byte	4
+	.byte	'dat',0,1,139,2,44
+	.word	.L662,.L663
+	.byte	5
+	.word	.L276,.L661
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_16bit_data')
+	.sect	'.debug_abbrev'
+.L424:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ips200_write_16bit_data')
+	.sect	'.debug_line'
+.L425:
 	.word	.L1635-.L1634
 .L1634:
 	.half	3
@@ -29178,16 +29270,344 @@ ips_cs_pin:	.type	object
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
 .L1637:
+	.byte	5,6,7,0,5,2
+	.word	.L276
+	.byte	3,138,2,1,5,27,9
+	.half	.L709-.L276
+	.byte	3,2,1,5,5,9
+	.half	.L1638-.L709
+	.byte	1,5,9,7,9
+	.half	.L1639-.L1638
+	.byte	3,2,1,5,41,9
+	.half	.L711-.L1639
+	.byte	1,5,9,9
+	.half	.L48-.L711
+	.byte	3,4,1,9
+	.half	.L51-.L48
+	.byte	3,1,1,9
+	.half	.L53-.L51
+	.byte	3,1,1,5,39,9
+	.half	.L55-.L53
+	.byte	3,1,1,5,27,9
+	.half	.L1640-.L55
+	.byte	1,5,9,9
+	.half	.L1641-.L1640
+	.byte	3,1,1,9
+	.half	.L57-.L1641
+	.byte	3,1,1,5,39,9
+	.half	.L59-.L57
+	.byte	3,1,1,5,27,9
+	.half	.L1642-.L59
+	.byte	1,5,9,9
+	.half	.L1643-.L1642
+	.byte	3,1,1,9
+	.half	.L61-.L1643
+	.byte	3,1,1,5,1,9
+	.half	.L49-.L61
+	.byte	3,2,1,7,9
+	.half	.L427-.L49
+	.byte	0,1,1
+.L1635:
+	.sdecl	'.debug_ranges',debug,cluster('ips200_write_16bit_data')
+	.sect	'.debug_ranges'
+.L426:
+	.word	-1,.L276,0,.L427-.L276,0,0
+	.sdecl	'.debug_info',debug,cluster('ips200_write_16bit_data_array')
+	.sect	'.debug_info'
+.L428:
+	.word	316
+	.half	3
+	.word	.L429
+	.byte	4,1
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
+	.word	.L431,.L430
+	.byte	2
+	.word	.L319
+	.byte	3
+	.byte	'ips200_write_16bit_data_array',0,1,166,2,6,1,1,1
+	.word	.L278,.L664,.L277
+	.byte	4
+	.byte	'dat',0,1,166,2,51
+	.word	.L610,.L665
+	.byte	4
+	.byte	'len',0,1,166,2,63
+	.word	.L559,.L666
+	.byte	5
+	.word	.L278,.L664
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_16bit_data_array')
+	.sect	'.debug_abbrev'
+.L429:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ips200_write_16bit_data_array')
+	.sect	'.debug_line'
+.L430:
+	.word	.L1645-.L1644
+.L1644:
+	.half	3
+	.word	.L1647-.L1646
+.L1646:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
+.L1647:
+	.byte	5,6,7,0,5,2
+	.word	.L278
+	.byte	3,165,2,1,5,27,9
+	.half	.L717-.L278
+	.byte	3,2,1,5,5,9
+	.half	.L1648-.L717
+	.byte	1,5,9,7,9
+	.half	.L1649-.L1648
+	.byte	3,2,1,5,52,9
+	.half	.L714-.L1649
+	.byte	1,5,9,9
+	.half	.L64-.L714
+	.byte	3,4,1,9
+	.half	.L67-.L64
+	.byte	3,1,1,5,21,9
+	.half	.L69-.L67
+	.byte	3,1,1,5,13,9
+	.half	.L71-.L69
+	.byte	3,2,1,5,39,9
+	.half	.L73-.L71
+	.byte	3,1,1,5,44,9
+	.half	.L1650-.L73
+	.byte	1,5,31,9
+	.half	.L1651-.L1650
+	.byte	1,5,13,9
+	.half	.L1652-.L1651
+	.byte	3,1,1,9
+	.half	.L75-.L1652
+	.byte	3,1,1,5,39,9
+	.half	.L77-.L75
+	.byte	3,1,1,5,44,9
+	.half	.L1653-.L77
+	.byte	1,5,31,9
+	.half	.L1654-.L1653
+	.byte	1,5,13,9
+	.half	.L1655-.L1654
+	.byte	3,1,1,5,17,9
+	.half	.L79-.L1655
+	.byte	3,1,1,5,19,9
+	.half	.L70-.L79
+	.byte	3,120,1,5,21,9
+	.half	.L1656-.L70
+	.byte	1,5,9,7,9
+	.half	.L1657-.L1656
+	.byte	3,10,1,5,1,9
+	.half	.L65-.L1657
+	.byte	3,2,1,7,9
+	.half	.L432-.L65
+	.byte	0,1,1
+.L1645:
+	.sdecl	'.debug_ranges',debug,cluster('ips200_write_16bit_data_array')
+	.sect	'.debug_ranges'
+.L431:
+	.word	-1,.L278,0,.L432-.L278,0,0
+	.sdecl	'.debug_info',debug,cluster('ips200_set_region')
+	.sect	'.debug_info'
+.L433:
+	.word	334
+	.half	3
+	.word	.L434
+	.byte	4,1
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
+	.word	.L436,.L435
+	.byte	2
+	.word	.L319
+	.byte	3
+	.byte	'ips200_set_region',0,1,199,2,6,1,1,1
+	.word	.L280,.L667,.L279
+	.byte	4
+	.byte	'x1',0,1,199,2,32
+	.word	.L479,.L668
+	.byte	4
+	.byte	'y1',0,1,199,2,43
+	.word	.L479,.L669
+	.byte	4
+	.byte	'x2',0,1,199,2,54
+	.word	.L479,.L670
+	.byte	4
+	.byte	'y2',0,1,199,2,65
+	.word	.L479,.L671
+	.byte	5
+	.word	.L280,.L667
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ips200_set_region')
+	.sect	'.debug_abbrev'
+.L434:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ips200_set_region')
+	.sect	'.debug_line'
+.L435:
+	.word	.L1659-.L1658
+.L1658:
+	.half	3
+	.word	.L1661-.L1660
+.L1660:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
+.L1661:
+	.byte	5,6,7,0,5,2
+	.word	.L280
+	.byte	3,198,2,1,5,5,9
+	.half	.L727-.L280
+	.byte	3,5,1,9
+	.half	.L724-.L727
+	.byte	3,1,1,9
+	.half	.L1662-.L724
+	.byte	3,1,1,9
+	.half	.L1663-.L1662
+	.byte	3,1,1,5,26,9
+	.half	.L1664-.L1663
+	.byte	3,2,1,5,29,9
+	.half	.L1665-.L1664
+	.byte	3,1,1,9
+	.half	.L733-.L1665
+	.byte	3,1,1,5,26,9
+	.half	.L735-.L733
+	.byte	3,2,1,5,29,9
+	.half	.L736-.L735
+	.byte	3,1,1,9
+	.half	.L738-.L736
+	.byte	3,1,1,5,26,9
+	.half	.L740-.L738
+	.byte	3,2,1,5,1,9
+	.half	.L1666-.L740
+	.byte	3,1,1,7,9
+	.half	.L437-.L1666
+	.byte	0,1,1
+.L1659:
+	.sdecl	'.debug_ranges',debug,cluster('ips200_set_region')
+	.sect	'.debug_ranges'
+.L436:
+	.word	-1,.L280,0,.L437-.L280,0,0
+	.sdecl	'.debug_info',debug,cluster('ips200_write_data')
+	.sect	'.debug_info'
+.L438:
+	.word	286
+	.half	3
+	.word	.L439
+	.byte	4,1
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
+	.word	.L441,.L440
+	.byte	2
+	.word	.L319
+	.byte	3
+	.byte	'ips200_write_data',0,1,173,1,13,1,1
+	.word	.L268,.L672,.L267
+	.byte	4
+	.byte	'dat',0,1,173,1,37
+	.word	.L518,.L673
+	.byte	5
+	.word	.L268,.L672
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_data')
+	.sect	'.debug_abbrev'
+.L439:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ips200_write_data')
+	.sect	'.debug_line'
+.L440:
+	.word	.L1668-.L1667
+.L1667:
+	.half	3
+	.word	.L1670-.L1669
+.L1669:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
+.L1670:
+	.byte	5,5,7,0,5,2
+	.word	.L268
+	.byte	3,174,1,1,5,29,9
+	.half	.L1671-.L268
+	.byte	1,5,52,9
+	.half	.L1672-.L1671
+	.byte	1,5,69,9
+	.half	.L1673-.L1672
+	.byte	1,5,49,9
+	.half	.L1674-.L1673
+	.byte	1,5,22,9
+	.half	.L1675-.L1674
+	.byte	1,5,5,9
+	.half	.L1676-.L1675
+	.byte	3,1,1,5,29,9
+	.half	.L1677-.L1676
+	.byte	1,5,57,9
+	.half	.L681-.L1677
+	.byte	1,5,74,9
+	.half	.L1678-.L681
+	.byte	1,5,54,9
+	.half	.L1679-.L1678
+	.byte	1,5,22,9
+	.half	.L1680-.L1679
+	.byte	1,5,1,9
+	.half	.L1681-.L1680
+	.byte	3,1,1,7,9
+	.half	.L442-.L1681
+	.byte	0,1,1
+.L1668:
+	.sdecl	'.debug_ranges',debug,cluster('ips200_write_data')
+	.sect	'.debug_ranges'
+.L441:
+	.word	-1,.L268,0,.L442-.L268,0,0
+	.sdecl	'.debug_info',debug,cluster('ips200_write_command')
+	.sect	'.debug_info'
+.L443:
+	.word	293
+	.half	3
+	.word	.L444
+	.byte	4,1
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
+	.word	.L446,.L445
+	.byte	2
+	.word	.L319
+	.byte	3
+	.byte	'ips200_write_command',0,1,187,1,13,1,1
+	.word	.L270,.L674,.L269
+	.byte	4
+	.byte	'command',0,1,187,1,47
+	.word	.L675,.L676
+	.byte	5
+	.word	.L270,.L674
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_command')
+	.sect	'.debug_abbrev'
+.L444:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ips200_write_command')
+	.sect	'.debug_line'
+.L445:
+	.word	.L1683-.L1682
+.L1682:
+	.half	3
+	.word	.L1685-.L1684
+.L1684:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
+.L1685:
 	.byte	5,13,7,0,5,2
 	.word	.L270
 	.byte	3,186,1,1,5,27,9
 	.half	.L683-.L270
 	.byte	3,2,1,5,5,9
-	.half	.L1638-.L683
+	.half	.L1686-.L683
 	.byte	1,5,9,7,9
-	.half	.L1639-.L1638
+	.half	.L1687-.L1686
 	.byte	3,2,1,9
-	.half	.L4-.L1639
+	.half	.L4-.L1687
 	.byte	3,1,1,9
 	.half	.L686-.L4
 	.byte	3,1,1,9
@@ -29209,420 +29629,13 @@ ips_cs_pin:	.type	object
 	.byte	3,1,1,5,1,9
 	.half	.L7-.L19
 	.byte	3,2,1,7,9
-	.half	.L422-.L7
+	.half	.L447-.L7
 	.byte	0,1,1
-.L1635:
+.L1683:
 	.sdecl	'.debug_ranges',debug,cluster('ips200_write_command')
 	.sect	'.debug_ranges'
-.L421:
-	.word	-1,.L270,0,.L422-.L270,0,0
-	.sdecl	'.debug_info',debug,cluster('ips200_write_8bit_data')
-	.sect	'.debug_info'
-.L423:
-	.word	291
-	.half	3
-	.word	.L424
-	.byte	4,1
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L426,.L425
-	.byte	2
-	.word	.L319
-	.byte	3
-	.byte	'ips200_write_8bit_data',0,1,215,1,13,1,1
-	.word	.L272,.L660,.L271
-	.byte	4
-	.byte	'dat',0,1,215,1,49
-	.word	.L661,.L662
-	.byte	5
-	.word	.L272,.L660
-	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_8bit_data')
-	.sect	'.debug_abbrev'
-.L424:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('ips200_write_8bit_data')
-	.sect	'.debug_line'
-.L425:
-	.word	.L1641-.L1640
-.L1640:
-	.half	3
-	.word	.L1643-.L1642
-.L1642:
-	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
-.L1643:
-	.byte	5,13,7,0,5,2
-	.word	.L272
-	.byte	3,214,1,1,5,27,9
-	.half	.L692-.L272
-	.byte	3,2,1,5,5,9
-	.half	.L1644-.L692
-	.byte	1,5,9,7,9
-	.half	.L1645-.L1644
-	.byte	3,2,1,5,40,9
-	.half	.L694-.L1645
-	.byte	1,5,9,9
-	.half	.L22-.L694
-	.byte	3,4,1,9
-	.half	.L25-.L22
-	.byte	3,1,1,9
-	.half	.L27-.L25
-	.byte	3,1,1,5,27,9
-	.half	.L29-.L27
-	.byte	3,1,1,5,9,9
-	.half	.L698-.L29
-	.byte	3,1,1,9
-	.half	.L31-.L698
-	.byte	3,1,1,5,1,9
-	.half	.L23-.L31
-	.byte	3,2,1,7,9
-	.half	.L427-.L23
-	.byte	0,1,1
-.L1641:
-	.sdecl	'.debug_ranges',debug,cluster('ips200_write_8bit_data')
-	.sect	'.debug_ranges'
-.L426:
-	.word	-1,.L272,0,.L427-.L272,0,0
-	.sdecl	'.debug_info',debug,cluster('ips200_write_8bit_data_array')
-	.sect	'.debug_info'
-.L428:
-	.word	314
-	.half	3
-	.word	.L429
-	.byte	4,1
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L431,.L430
-	.byte	2
-	.word	.L319
-	.byte	3
-	.byte	'ips200_write_8bit_data_array',0,1,238,1,13,1,1
-	.word	.L274,.L663,.L273
-	.byte	4
-	.byte	'dat',0,1,238,1,56
-	.word	.L578,.L664
-	.byte	4
-	.byte	'len',0,1,238,1,68
-	.word	.L559,.L665
-	.byte	5
-	.word	.L274,.L663
-	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_8bit_data_array')
-	.sect	'.debug_abbrev'
-.L429:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('ips200_write_8bit_data_array')
-	.sect	'.debug_line'
-.L430:
-	.word	.L1647-.L1646
-.L1646:
-	.half	3
-	.word	.L1649-.L1648
-.L1648:
-	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
-.L1649:
-	.byte	5,13,7,0,5,2
-	.word	.L274
-	.byte	3,237,1,1,5,27,9
-	.half	.L702-.L274
-	.byte	3,2,1,5,5,9
-	.half	.L1650-.L702
-	.byte	1,5,9,7,9
-	.half	.L1651-.L1650
-	.byte	3,2,1,5,51,9
-	.half	.L699-.L1651
-	.byte	1,5,9,9
-	.half	.L34-.L699
-	.byte	3,4,1,9
-	.half	.L37-.L34
-	.byte	3,1,1,5,21,9
-	.half	.L39-.L37
-	.byte	3,1,1,5,13,9
-	.half	.L41-.L39
-	.byte	3,2,1,5,38,9
-	.half	.L43-.L41
-	.byte	3,1,1,5,13,9
-	.half	.L1652-.L43
-	.byte	3,1,1,5,17,9
-	.half	.L45-.L1652
-	.byte	3,1,1,5,19,9
-	.half	.L40-.L45
-	.byte	3,123,1,5,21,9
-	.half	.L1653-.L40
-	.byte	1,5,9,7,9
-	.half	.L1654-.L1653
-	.byte	3,7,1,5,1,9
-	.half	.L35-.L1654
-	.byte	3,2,1,7,9
-	.half	.L432-.L35
-	.byte	0,1,1
-.L1647:
-	.sdecl	'.debug_ranges',debug,cluster('ips200_write_8bit_data_array')
-	.sect	'.debug_ranges'
-.L431:
-	.word	-1,.L274,0,.L432-.L274,0,0
-	.sdecl	'.debug_info',debug,cluster('ips200_write_16bit_data')
-	.sect	'.debug_info'
-.L433:
-	.word	293
-	.half	3
-	.word	.L434
-	.byte	4,1
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L436,.L435
-	.byte	2
-	.word	.L319
-	.byte	3
-	.byte	'ips200_write_16bit_data',0,1,139,2,6,1,1,1
-	.word	.L276,.L666,.L275
-	.byte	4
-	.byte	'dat',0,1,139,2,44
-	.word	.L667,.L668
-	.byte	5
-	.word	.L276,.L666
-	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_16bit_data')
-	.sect	'.debug_abbrev'
-.L434:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('ips200_write_16bit_data')
-	.sect	'.debug_line'
-.L435:
-	.word	.L1656-.L1655
-.L1655:
-	.half	3
-	.word	.L1658-.L1657
-.L1657:
-	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
-.L1658:
-	.byte	5,6,7,0,5,2
-	.word	.L276
-	.byte	3,138,2,1,5,27,9
-	.half	.L709-.L276
-	.byte	3,2,1,5,5,9
-	.half	.L1659-.L709
-	.byte	1,5,9,7,9
-	.half	.L1660-.L1659
-	.byte	3,2,1,5,41,9
-	.half	.L711-.L1660
-	.byte	1,5,9,9
-	.half	.L48-.L711
-	.byte	3,4,1,9
-	.half	.L51-.L48
-	.byte	3,1,1,9
-	.half	.L53-.L51
-	.byte	3,1,1,5,39,9
-	.half	.L55-.L53
-	.byte	3,1,1,5,27,9
-	.half	.L1661-.L55
-	.byte	1,5,9,9
-	.half	.L1662-.L1661
-	.byte	3,1,1,9
-	.half	.L57-.L1662
-	.byte	3,1,1,5,39,9
-	.half	.L59-.L57
-	.byte	3,1,1,5,27,9
-	.half	.L1663-.L59
-	.byte	1,5,9,9
-	.half	.L1664-.L1663
-	.byte	3,1,1,9
-	.half	.L61-.L1664
-	.byte	3,1,1,5,1,9
-	.half	.L49-.L61
-	.byte	3,2,1,7,9
-	.half	.L437-.L49
-	.byte	0,1,1
-.L1656:
-	.sdecl	'.debug_ranges',debug,cluster('ips200_write_16bit_data')
-	.sect	'.debug_ranges'
-.L436:
-	.word	-1,.L276,0,.L437-.L276,0,0
-	.sdecl	'.debug_info',debug,cluster('ips200_write_16bit_data_array')
-	.sect	'.debug_info'
-.L438:
-	.word	315
-	.half	3
-	.word	.L439
-	.byte	4,1
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L441,.L440
-	.byte	2
-	.word	.L319
-	.byte	3
-	.byte	'ips200_write_16bit_data_array',0,1,166,2,13,1,1
-	.word	.L278,.L669,.L277
-	.byte	4
-	.byte	'dat',0,1,166,2,58
-	.word	.L610,.L670
-	.byte	4
-	.byte	'len',0,1,166,2,70
-	.word	.L559,.L671
-	.byte	5
-	.word	.L278,.L669
-	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('ips200_write_16bit_data_array')
-	.sect	'.debug_abbrev'
-.L439:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('ips200_write_16bit_data_array')
-	.sect	'.debug_line'
-.L440:
-	.word	.L1666-.L1665
-.L1665:
-	.half	3
-	.word	.L1668-.L1667
-.L1667:
-	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
-.L1668:
-	.byte	5,13,7,0,5,2
-	.word	.L278
-	.byte	3,165,2,1,5,27,9
-	.half	.L717-.L278
-	.byte	3,2,1,5,5,9
-	.half	.L1669-.L717
-	.byte	1,5,9,7,9
-	.half	.L1670-.L1669
-	.byte	3,2,1,5,52,9
-	.half	.L714-.L1670
-	.byte	1,5,9,9
-	.half	.L64-.L714
-	.byte	3,4,1,9
-	.half	.L67-.L64
-	.byte	3,1,1,5,21,9
-	.half	.L69-.L67
-	.byte	3,1,1,5,13,9
-	.half	.L71-.L69
-	.byte	3,2,1,5,39,9
-	.half	.L73-.L71
-	.byte	3,1,1,5,44,9
-	.half	.L1671-.L73
-	.byte	1,5,31,9
-	.half	.L1672-.L1671
-	.byte	1,5,13,9
-	.half	.L1673-.L1672
-	.byte	3,1,1,9
-	.half	.L75-.L1673
-	.byte	3,1,1,5,39,9
-	.half	.L77-.L75
-	.byte	3,1,1,5,44,9
-	.half	.L1674-.L77
-	.byte	1,5,31,9
-	.half	.L1675-.L1674
-	.byte	1,5,13,9
-	.half	.L1676-.L1675
-	.byte	3,1,1,5,17,9
-	.half	.L79-.L1676
-	.byte	3,1,1,5,19,9
-	.half	.L70-.L79
-	.byte	3,120,1,5,21,9
-	.half	.L1677-.L70
-	.byte	1,5,9,7,9
-	.half	.L1678-.L1677
-	.byte	3,10,1,5,1,9
-	.half	.L65-.L1678
-	.byte	3,2,1,7,9
-	.half	.L442-.L65
-	.byte	0,1,1
-.L1666:
-	.sdecl	'.debug_ranges',debug,cluster('ips200_write_16bit_data_array')
-	.sect	'.debug_ranges'
-.L441:
-	.word	-1,.L278,0,.L442-.L278,0,0
-	.sdecl	'.debug_info',debug,cluster('ips200_set_region')
-	.sect	'.debug_info'
-.L443:
-	.word	333
-	.half	3
-	.word	.L444
-	.byte	4,1
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L446,.L445
-	.byte	2
-	.word	.L319
-	.byte	3
-	.byte	'ips200_set_region',0,1,199,2,13,1,1
-	.word	.L280,.L672,.L279
-	.byte	4
-	.byte	'x1',0,1,199,2,39
-	.word	.L479,.L673
-	.byte	4
-	.byte	'y1',0,1,199,2,50
-	.word	.L479,.L674
-	.byte	4
-	.byte	'x2',0,1,199,2,61
-	.word	.L479,.L675
-	.byte	4
-	.byte	'y2',0,1,199,2,72
-	.word	.L479,.L676
-	.byte	5
-	.word	.L280,.L672
-	.byte	0,0
-	.sdecl	'.debug_abbrev',debug,cluster('ips200_set_region')
-	.sect	'.debug_abbrev'
-.L444:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
-	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
-	.sdecl	'.debug_line',debug,cluster('ips200_set_region')
-	.sect	'.debug_line'
-.L445:
-	.word	.L1680-.L1679
-.L1679:
-	.half	3
-	.word	.L1682-.L1681
-.L1681:
-	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
-	.byte	'../libraries/zf_device/zf_device_ips200.c',0,0,0,0,0
-.L1682:
-	.byte	5,13,7,0,5,2
-	.word	.L280
-	.byte	3,198,2,1,5,5,9
-	.half	.L727-.L280
-	.byte	3,5,1,9
-	.half	.L724-.L727
-	.byte	3,1,1,9
-	.half	.L1683-.L724
-	.byte	3,1,1,9
-	.half	.L1684-.L1683
-	.byte	3,1,1,5,26,9
-	.half	.L1685-.L1684
-	.byte	3,2,1,5,29,9
-	.half	.L1686-.L1685
-	.byte	3,1,1,9
-	.half	.L733-.L1686
-	.byte	3,1,1,5,26,9
-	.half	.L735-.L733
-	.byte	3,2,1,5,29,9
-	.half	.L736-.L735
-	.byte	3,1,1,9
-	.half	.L738-.L736
-	.byte	3,1,1,5,26,9
-	.half	.L740-.L738
-	.byte	3,2,1,5,1,9
-	.half	.L1687-.L740
-	.byte	3,1,1,7,9
-	.half	.L447-.L1687
-	.byte	0,1,1
-.L1680:
-	.sdecl	'.debug_ranges',debug,cluster('ips200_set_region')
-	.sect	'.debug_ranges'
 .L446:
-	.word	-1,.L280,0,.L447-.L280,0,0
+	.word	-1,.L270,0,.L447-.L270,0,0
 	.sdecl	'.debug_info',debug,cluster('ips200_debug_init')
 	.sect	'.debug_info'
 .L448:
@@ -29774,7 +29787,7 @@ ips_cs_pin:	.type	object
 	.sdecl	'.debug_info',debug,cluster('ips200_pencolor')
 	.sect	'.debug_info'
 .L457:
-	.word	244
+	.word	245
 	.half	3
 	.word	.L458
 	.byte	4,1
@@ -29785,17 +29798,18 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips200_pencolor',0,31,78,33
 	.word	.L479
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips200_pencolor
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips200_pencolor')
 	.sect	'.debug_abbrev'
 .L458:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('ips200_bgcolor')
 	.sect	'.debug_info'
 .L459:
-	.word	243
+	.word	244
 	.half	3
 	.word	.L460
 	.byte	4,1
@@ -29806,17 +29820,18 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips200_bgcolor',0,31,79,33
 	.word	.L479
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips200_bgcolor
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips200_bgcolor')
 	.sect	'.debug_abbrev'
 .L460:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('ips200_display_type')
 	.sect	'.debug_info'
 .L461:
-	.word	248
+	.word	249
 	.half	3
 	.word	.L462
 	.byte	4,1
@@ -29827,17 +29842,18 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips200_display_type',0,31,80,33
 	.word	.L653
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips200_display_type
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips200_display_type')
 	.sect	'.debug_abbrev'
 .L462:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('ips200_display_dir')
 	.sect	'.debug_info'
 .L463:
-	.word	247
+	.word	248
 	.half	3
 	.word	.L464
 	.byte	4,1
@@ -29848,17 +29864,18 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips200_display_dir',0,31,81,33
 	.word	.L483
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips200_display_dir
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips200_display_dir')
 	.sect	'.debug_abbrev'
 .L464:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('ips200_display_font')
 	.sect	'.debug_info'
 .L465:
-	.word	248
+	.word	249
 	.half	3
 	.word	.L466
 	.byte	4,1
@@ -29869,17 +29886,18 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips200_display_font',0,31,82,33
 	.word	.L486
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips200_display_font
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips200_display_font')
 	.sect	'.debug_abbrev'
 .L466:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('ips_rst_pin')
 	.sect	'.debug_info'
 .L467:
-	.word	240
+	.word	241
 	.half	3
 	.word	.L468
 	.byte	4,1
@@ -29890,17 +29908,18 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips_rst_pin',0,31,84,33
 	.word	.L680
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips_rst_pin
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips_rst_pin')
 	.sect	'.debug_abbrev'
 .L468:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('ips_bl_pin')
 	.sect	'.debug_info'
 .L469:
-	.word	239
+	.word	240
 	.half	3
 	.word	.L470
 	.byte	4,1
@@ -29911,17 +29930,18 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips_bl_pin',0,31,85,33
 	.word	.L680
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips_bl_pin
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips_bl_pin')
 	.sect	'.debug_abbrev'
 .L470:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_info',debug,cluster('ips_cs_pin')
 	.sect	'.debug_info'
 .L471:
-	.word	239
+	.word	240
 	.half	3
 	.word	.L472
 	.byte	4,1
@@ -29932,13 +29952,14 @@ ips_cs_pin:	.type	object
 	.byte	3
 	.byte	'ips_cs_pin',0,31,86,33
 	.word	.L680
-	.byte	5,3
+	.byte	1,5,3
 	.word	ips_cs_pin
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('ips_cs_pin')
 	.sect	'.debug_abbrev'
 .L472:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
 	.sdecl	'.debug_loc',debug,cluster('ips200_clear')
 	.sect	'.debug_loc'
 .L283:
@@ -30286,22 +30307,22 @@ ips_cs_pin:	.type	object
 	.sdecl	'.debug_loc',debug,cluster('ips200_set_region')
 	.sect	'.debug_loc'
 .L279:
-	.word	-1,.L280,0,.L672-.L280
+	.word	-1,.L280,0,.L667-.L280
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L673:
+.L668:
 	.word	-1,.L280,0,.L723-.L280
 	.half	1
 	.byte	84
-	.word	.L726-.L280,.L672-.L280
+	.word	.L726-.L280,.L667-.L280
 	.half	1
 	.byte	95
 	.word	.L732-.L280,.L733-.L280
 	.half	1
 	.byte	84
 	.word	0,0
-.L675:
+.L670:
 	.word	-1,.L280,0,.L724-.L280
 	.half	1
 	.byte	86
@@ -30315,7 +30336,7 @@ ips_cs_pin:	.type	object
 	.half	1
 	.byte	84
 	.word	0,0
-.L674:
+.L669:
 	.word	-1,.L280,0,.L725-.L280
 	.half	1
 	.byte	85
@@ -30329,11 +30350,11 @@ ips_cs_pin:	.type	object
 	.half	1
 	.byte	84
 	.word	0,0
-.L676:
+.L671:
 	.word	-1,.L280,0,.L724-.L280
 	.half	1
 	.byte	87
-	.word	.L727-.L280,.L672-.L280
+	.word	.L727-.L280,.L667-.L280
 	.half	1
 	.byte	90
 	.word	.L739-.L280,.L740-.L280
@@ -31374,11 +31395,11 @@ ips_cs_pin:	.type	object
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('ips200_write_16bit_data')
 	.sect	'.debug_loc'
-.L668:
+.L663:
 	.word	-1,.L276,0,.L708-.L276
 	.half	1
 	.byte	84
-	.word	.L709-.L276,.L666-.L276
+	.word	.L709-.L276,.L661-.L276
 	.half	1
 	.byte	88
 	.word	.L710-.L276,.L711-.L276
@@ -31392,17 +31413,17 @@ ips_cs_pin:	.type	object
 	.byte	84
 	.word	0,0
 .L275:
-	.word	-1,.L276,0,.L666-.L276
+	.word	-1,.L276,0,.L661-.L276
 	.half	2
 	.byte	138,0
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('ips200_write_16bit_data_array')
 	.sect	'.debug_loc'
-.L670:
+.L665:
 	.word	-1,.L278,0,.L714-.L278
 	.half	1
 	.byte	100
-	.word	.L716-.L278,.L669-.L278
+	.word	.L716-.L278,.L664-.L278
 	.half	1
 	.byte	111
 	.word	.L64-.L278,.L719-.L278
@@ -31413,15 +31434,15 @@ ips_cs_pin:	.type	object
 	.byte	100
 	.word	0,0
 .L277:
-	.word	-1,.L278,0,.L669-.L278
+	.word	-1,.L278,0,.L664-.L278
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L671:
+.L666:
 	.word	-1,.L278,0,.L715-.L278
 	.half	1
 	.byte	84
-	.word	.L717-.L278,.L669-.L278
+	.word	.L717-.L278,.L664-.L278
 	.half	1
 	.byte	88
 	.word	.L718-.L278,.L714-.L278
@@ -31436,11 +31457,11 @@ ips_cs_pin:	.type	object
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('ips200_write_8bit_data')
 	.sect	'.debug_loc'
-.L662:
+.L657:
 	.word	-1,.L272,0,.L691-.L272
 	.half	1
 	.byte	84
-	.word	.L692-.L272,.L660-.L272
+	.word	.L692-.L272,.L655-.L272
 	.half	1
 	.byte	88
 	.word	.L693-.L272,.L694-.L272
@@ -31457,17 +31478,17 @@ ips_cs_pin:	.type	object
 	.byte	84
 	.word	0,0
 .L271:
-	.word	-1,.L272,0,.L660-.L272
+	.word	-1,.L272,0,.L655-.L272
 	.half	2
 	.byte	138,0
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('ips200_write_8bit_data_array')
 	.sect	'.debug_loc'
-.L664:
+.L659:
 	.word	-1,.L274,0,.L699-.L274
 	.half	1
 	.byte	100
-	.word	.L701-.L274,.L663-.L274
+	.word	.L701-.L274,.L658-.L274
 	.half	1
 	.byte	111
 	.word	.L34-.L274,.L704-.L274
@@ -31478,15 +31499,15 @@ ips_cs_pin:	.type	object
 	.byte	100
 	.word	0,0
 .L273:
-	.word	-1,.L274,0,.L663-.L274
+	.word	-1,.L274,0,.L658-.L274
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L665:
+.L660:
 	.word	-1,.L274,0,.L700-.L274
 	.half	1
 	.byte	84
-	.word	.L702-.L274,.L663-.L274
+	.word	.L702-.L274,.L658-.L274
 	.half	1
 	.byte	88
 	.word	.L703-.L274,.L699-.L274
@@ -31501,11 +31522,11 @@ ips_cs_pin:	.type	object
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('ips200_write_command')
 	.sect	'.debug_loc'
-.L659:
+.L676:
 	.word	-1,.L270,0,.L682-.L270
 	.half	1
 	.byte	84
-	.word	.L683-.L270,.L657-.L270
+	.word	.L683-.L270,.L674-.L270
 	.half	1
 	.byte	88
 	.word	.L3-.L270,.L684-.L270
@@ -31525,19 +31546,19 @@ ips_cs_pin:	.type	object
 	.byte	84
 	.word	0,0
 .L269:
-	.word	-1,.L270,0,.L657-.L270
+	.word	-1,.L270,0,.L674-.L270
 	.half	2
 	.byte	138,0
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('ips200_write_data')
 	.sect	'.debug_loc'
-.L656:
+.L673:
 	.word	-1,.L268,0,.L681-.L268
 	.half	1
 	.byte	84
 	.word	0,0
 .L267:
-	.word	-1,.L268,0,.L655-.L268
+	.word	-1,.L268,0,.L672-.L268
 	.half	2
 	.byte	138,0
 	.word	0,0
@@ -31551,32 +31572,32 @@ ips_cs_pin:	.type	object
 	.sdecl	'.debug_frame',debug,cluster('ips200_write_data')
 	.sect	'.debug_frame'
 	.word	24
-	.word	.L1715,.L268,.L655-.L268
+	.word	.L1715,.L268,.L672-.L268
 	.byte	8,19,8,20,8,21,8,22,8,23,0,0
 	.sdecl	'.debug_frame',debug,cluster('ips200_write_command')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L1715,.L270,.L657-.L270
+	.word	.L1715,.L270,.L674-.L270
 	.sdecl	'.debug_frame',debug,cluster('ips200_write_8bit_data')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L1715,.L272,.L660-.L272
+	.word	.L1715,.L272,.L655-.L272
 	.sdecl	'.debug_frame',debug,cluster('ips200_write_8bit_data_array')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L1715,.L274,.L663-.L274
+	.word	.L1715,.L274,.L658-.L274
 	.sdecl	'.debug_frame',debug,cluster('ips200_write_16bit_data')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L1715,.L276,.L666-.L276
+	.word	.L1715,.L276,.L661-.L276
 	.sdecl	'.debug_frame',debug,cluster('ips200_write_16bit_data_array')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L1715,.L278,.L669-.L278
+	.word	.L1715,.L278,.L664-.L278
 	.sdecl	'.debug_frame',debug,cluster('ips200_set_region')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L1715,.L280,.L672-.L280
+	.word	.L1715,.L280,.L667-.L280
 	.sdecl	'.debug_frame',debug,cluster('ips200_debug_init')
 	.sect	'.debug_frame'
 	.word	36

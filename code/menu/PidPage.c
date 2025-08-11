@@ -14,6 +14,7 @@ void PidPage_init(PidPage *this, char name[], PID *pid){
     FloatPage_init(&this->Kd, "Kd", &pid->Kd, 0, 10000);
     FloatPage_init(&this->Max_I, "Max_I", &pid->Max_I, 0, 999999);
     FloatPage_init(&this->Max_Out, "Max_Out", &pid->Max_Out, 0, 999999);
+    this->Kp.extends.floatValue.dot = this->Ki.extends.floatValue.dot = this->Kd.extends.floatValue.dot = 4;
     this->Max_I.extends.floatValue.dot = this->Max_Out.extends.floatValue.dot = 6;
 }
 

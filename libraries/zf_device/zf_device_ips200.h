@@ -163,6 +163,11 @@ typedef enum
 }ips200_font_size_enum;
 extern  uint16  ips200_width_max;
 extern  uint16  ips200_height_max;
+extern  uint16                   ips200_pencolor;          // 画笔颜色(字体色)
+extern  uint16                   ips200_bgcolor;           // 背景颜色
+extern  ips200_type_enum         ips200_display_type;
+extern  ips200_dir_enum          ips200_display_dir;       // 显示方向
+extern  ips200_font_size_enum    ips200_display_font;      // 显示字体类型
 //==================================================定义 IPS200 参数结构体===============================================
 
 
@@ -189,6 +194,12 @@ void    ips200_show_wave                (uint16 x, uint16 y, const uint16 *wave,
 void    ips200_show_chinese             (uint16 x, uint16 y, uint8 size, const uint8 *chinese_buffer, uint8 number, const uint16 color);                                 // IPS200 汉字显示
 
 void    ips200_init                     (ips200_type_enum type_select);                                                         // 2寸 IPS液晶初始化
+
+void ips200_write_8bit_data (const uint8 dat);
+void ips200_write_8bit_data_array (const uint8 *dat, uint32 len);
+void ips200_write_16bit_data (const uint16 dat);
+void ips200_write_16bit_data_array (const uint16 *dat, uint32 len);
+void ips200_set_region (uint16 x1, uint16 y1, uint16 x2, uint16 y2);
 //==================================================声明 IPS200 基础函数================================================
 
 

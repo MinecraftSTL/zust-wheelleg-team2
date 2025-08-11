@@ -75,15 +75,15 @@
 
        uint16                   ips200_width_max    = 240;
        uint16                   ips200_height_max   = 320;
-static uint16                   ips200_pencolor     = IPS200_DEFAULT_PENCOLOR;          // 画笔颜色(字体色)
-static uint16                   ips200_bgcolor      = IPS200_DEFAULT_BGCOLOR;           // 背景颜色
-static ips200_type_enum         ips200_display_type     = IPS200_TYPE_SPI;
-static ips200_dir_enum          ips200_display_dir  = IPS200_DEFAULT_DISPLAY_DIR;       // 显示方向
-static ips200_font_size_enum    ips200_display_font = IPS200_DEFAULT_DISPLAY_FONT;      // 显示字体类型
+       uint16                   ips200_pencolor     = IPS200_DEFAULT_PENCOLOR;          // 画笔颜色(字体色)
+       uint16                   ips200_bgcolor      = IPS200_DEFAULT_BGCOLOR;           // 背景颜色
+       ips200_type_enum         ips200_display_type     = IPS200_TYPE_SPI;
+       ips200_dir_enum          ips200_display_dir  = IPS200_DEFAULT_DISPLAY_DIR;       // 显示方向
+       ips200_font_size_enum    ips200_display_font = IPS200_DEFAULT_DISPLAY_FONT;      // 显示字体类型
 
-static gpio_pin_enum            ips_rst_pin         = IPS200_RST_PIN_SPI;               // 定义复位所用引脚
-static gpio_pin_enum            ips_bl_pin          = IPS200_BLk_PIN_SPI;               // 定义背光所用引脚
-static gpio_pin_enum            ips_cs_pin          = IPS200_CS_PIN_SPI;                // 定义片选所用引脚
+       gpio_pin_enum            ips_rst_pin         = IPS200_RST_PIN_SPI;               // 定义复位所用引脚
+       gpio_pin_enum            ips_bl_pin          = IPS200_BLk_PIN_SPI;               // 定义背光所用引脚
+       gpio_pin_enum            ips_cs_pin          = IPS200_CS_PIN_SPI;                // 定义片选所用引脚
 
 #if IPS200_USE_SOFT_SPI
 static soft_spi_info_struct                 ips200_spi;
@@ -212,7 +212,7 @@ static void ips200_write_command (const uint8 command)
 // 使用示例     ips200_write_8bit_data(0x0C);
 // 备注信息     内部调用 用户无需关心
 //-------------------------------------------------------------------------------------------------------------------
-static void ips200_write_8bit_data (const uint8 dat)
+void ips200_write_8bit_data (const uint8 dat)
 {
     if(IPS200_TYPE_SPI == ips200_display_type)
     {
@@ -235,7 +235,7 @@ static void ips200_write_8bit_data (const uint8 dat)
 // 使用示例     ips200_write_8bit_data(0x0C);
 // 备注信息     内部调用 用户无需关心
 //-------------------------------------------------------------------------------------------------------------------
-static void ips200_write_8bit_data_array (const uint8 *dat, uint32 len)
+void ips200_write_8bit_data_array (const uint8 *dat, uint32 len)
 {
     if(IPS200_TYPE_SPI == ips200_display_type)
     {
@@ -291,7 +291,7 @@ void ips200_write_16bit_data (const uint16 dat)
 // 使用示例     ips200_write_16bit_data(x1);
 // 备注信息     内部调用 用户无需关心
 //-------------------------------------------------------------------------------------------------------------------
-static void ips200_write_16bit_data_array (const uint16 *dat, uint32 len)
+void ips200_write_16bit_data_array (const uint16 *dat, uint32 len)
 {
     if(IPS200_TYPE_SPI == ips200_display_type)
     {
@@ -324,7 +324,7 @@ static void ips200_write_16bit_data_array (const uint16 *dat, uint32 len)
 // 使用示例     ips200_set_region(0, 0, ips200_width_max - 1, ips200_height_max - 1);
 // 备注信息     内部调用 用户无需关心
 //-------------------------------------------------------------------------------------------------------------------
-static void ips200_set_region (uint16 x1, uint16 y1, uint16 x2, uint16 y2)
+void ips200_set_region (uint16 x1, uint16 y1, uint16 x2, uint16 y2)
 {
     // 如果程序在输出了断言信息 并且提示出错位置在这里
     // 那么一般是屏幕显示的时候超过屏幕分辨率范围了

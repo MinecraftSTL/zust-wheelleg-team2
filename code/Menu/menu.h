@@ -7,10 +7,9 @@
 
 #ifndef CODE_MENU_H_
 #define CODE_MENU_H_
-#include "Cpu/Std/Ifx_Types.h"
 
-#define IPS200_DEFAULT_SELECTCOLOR         (0x7BFF  )
-#define IPS200_DEFAULT_OPENCOLOR           (0x001F  )
+#include "zf_device_ips200.h"
+#include "MyIps200.h"
 
 #define PAGE_ELEMENT_MAX 11
 #define PAGE_NAME_MAX 20

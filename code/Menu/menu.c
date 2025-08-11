@@ -5,9 +5,7 @@
  *      Author: minec
  */
 #include "Menu.h"
-#include "Sys.h"
 
-#include "zf_device_ips200.h"
 
 void ListPage_print(Page *this, uint8 row);
 void ListPage_press(Page *this, uint8 pressed[]);
@@ -33,7 +31,18 @@ void Int_toString(int this, char *str, uint8 num);
 void Double_toString(float this, char *str, uint8 num, uint8 point);
 
 void Page_init(Page *this, char name[], enum PageExtendsType type){
-    strncpy(this->name, name, sizeof(this->name));
+//    strncpy(this->name, name, sizeof(this->name));
+    int8 i=0;
+    for(; i<PAGE_NAME_MAX; ++i){
+        if(name[i] == '\0'){
+            break;
+        }
+        this->name[i] = name[i];
+    }
+    for(; i<PAGE_NAME_MAX; ++i){
+        this->name[i] = ' ';
+    }
+    this->name[PAGE_NAME_MAX] = '\0';
     this->type = type;
     this->select = 0;
 }
@@ -301,7 +310,7 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max)
     this->extends.floatValue.value = value;
     this->extends.floatValue.min = min;
     this->extends.floatValue.max = max;;
-    this->extends.floatValue.dot = 4;
+    this->extends.floatValue.dot = 1;
     this->extends.floatValue.open = 0;
 }
 void FloatPage_print(Page *this, uint8 row){
@@ -389,7 +398,7 @@ void DoublePage_init(Page *this, char name[], float *value, float min, float max
     this->extends.doubleValue.value = value;
     this->extends.doubleValue.min = min;
     this->extends.doubleValue.max = max;;
-    this->extends.doubleValue.dot = 5;
+    this->extends.doubleValue.dot = 1;
     this->extends.doubleValue.open = 0;
 }
 void DoublePage_print(Page *this, uint8 row){
@@ -577,24 +586,6 @@ void FuncPage_press(Page *this, uint8 pressed[]){
             this->extends.funcValue.value();
         }
     }
-}
-
-void ips200_reset_color(){
-    ips200_set_pencolor(IPS200_DEFAULT_PENCOLOR);
-}
-
-void ips200_set_pencolor(const uint16 color){
-    ips200_set_color(color, IPS200_DEFAULT_BGCOLOR);
-}
-void ips200_show_char_color(uint16 x, uint16 y, const char dat, const uint16 color){
-    ips200_set_pencolor(color);
-    ips200_show_char(x,y,dat);
-    ips200_reset_color();
-}
-void ips200_show_string_color(uint16 x, uint16 y, const char dat[], const uint16 color){
-    ips200_set_pencolor(color);
-    ips200_show_string(x,y,dat);
-    ips200_reset_color();
 }
 
 int Int_pow(int this, int pow){

@@ -75,14 +75,14 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 const uint32 jumpStep[] = {
     100,//ÉìÍÈ
     100,//ÊÕÍÈ
-    75,//ÉìÍÈ
-    100,//ÂıÊÕÍÈ
+    60,//ÉìÍÈ
+    90,//ÂıÊÕÍÈ
 };
 
 uint32 jumpTime = 32767;
 
 void jumpPit(uint32 period, float *legZ){
-    Step step = getStep(jumpStep, 4, jumpTime*period);
+    Step step = getStep(jumpStep, 4, jumpTime);
     switch(step.step){
         case 0:
             *legZ = -130;
@@ -99,7 +99,7 @@ void jumpPit(uint32 period, float *legZ){
         default:
             return;
     }
-    ++jumpTime;
+    jumpTime+=period;
 }
 void jump(){
     jumpTime = 0;
