@@ -41,17 +41,16 @@ void del_PageKey(struct PageKey *pageKey){
     }
 }
 void ips200_tempClear(){
-    for(int i=0; i<16; ++i){
-        ips200_show_string(0, 20*i, "                              ");
+//    ips200_clear();
+    for(int i=0; i<20; ++i){
+        ips200_show_string(0, 16*i, "                              ");
     }
 }
 void PageKey_print(struct PageKey *this){
-    if(this->type == PAGE_TYPE){
-        ips200_tempClear();
-        ips200_show_string(0, 0, this->name);
-    }
     switch(this->type){
         case PAGE_TYPE:
+            ips200_tempClear();
+            ips200_show_string(0, 0, this->name);
             PagePageValue_print(this->value, this->opened, this->open);
             break;
         case INT_TYPE:
@@ -112,6 +111,10 @@ struct PagePageValue *new_PagePageValue(struct PageKey key[], uint8 size) {
     ret->size = size;
     return ret;
 }
+void PagePageValue_init(struct PagePageValue *this, struct PageKey key[], uint8 size){
+    memcpy(&this->value, key, sizeof(struct PageKey)*size);
+    this->size = size;
+}
 void del_PagePageValue(struct PagePageValue *this){
     for(int i=0; i<this->size; ++i){
         struct PageKey value = this->value[i];
@@ -129,7 +132,7 @@ void PagePageValue_print(struct PagePageValue *this, int opened, int open){
     }else{
         ips200_show_string(230, 20*(opened+1), open ? "<" : "-");
     }
-    for(int i; i<this->size; ++i){
+    for(int i=0; i<this->size; ++i){
         ips200_show_string(10, 20*(i+1), this->value[i].name);
         if(this->value[i].type != PAGE_TYPE){
             this->value[i].opened = i;
@@ -190,6 +193,12 @@ struct IntPageValue *new_IntPageValue(int *value, int max, int min, int step) {
     }
     return ret;
 }
+void IntPageValue_init(struct IntPageValue *this, int *value, int max, int min, int step){
+    this->value = value;
+    this->max = max;
+    this->min = min;
+    this->step = step;
+}
 void IntPageValue_print(struct IntPageValue *this, int opened, int open){
     ips200_show_int(180, 20*(opened+1), *(this->value), 5);
 }
@@ -231,8 +240,14 @@ struct FloatPageValue *new_FloatPageValue(float *value, float max, float min, fl
     }
     return ret;
 }
+void FloatPageValue_init(struct FloatPageValue *this, float *value, float max, float min, float step){
+    this->value = value;
+    this->max = max;
+    this->min = min;
+    this->step = step;
+}
 void FloatPageValue_print(struct FloatPageValue *this, int opened, int open){
-    ips200_show_float(180, 20*(opened+1), *(this->value), 2,1);
+    ips200_show_float(180, 20*(opened+1), *(this->value)+1e-6, 2,1);
 }
 struct pressReturn FloatPageValue_press(struct FloatPageValue *this, uint8 pressed, int opened, int open){
     struct pressReturn ret = {0, 0};
@@ -269,6 +284,9 @@ struct BooleanPageValue *new_BooleanPageValue(int *value) {
     }
     return ret;
 }
+void BooleanPageValue_init(struct BooleanPageValue *this, int *value){
+    this->value = value;
+}
 void BooleanPageValue_print(struct BooleanPageValue *this, int opened, int open){
     ips200_show_string(180, 20*(opened+1), *(this->value)?"true":"false");
 }
@@ -301,6 +319,10 @@ struct FunctionPageValue *new_FunctionPageValue(void (*up)(), void (*down)()) {
         ret->down = down;
     }
     return ret;
+}
+void FunctionPageValue_init(struct FunctionPageValue *this, void (*up)(), void (*down)()){
+    this->up = up;
+    this->down = down;
 }
 void FunctionPageValue_print(struct FunctionPageValue *this, int opened, int open){}
 struct pressReturn FunctionPageValue_press(struct FunctionPageValue *this, uint8 pressed, int opened, int open){

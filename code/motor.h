@@ -20,22 +20,30 @@
 //#define DIR_L               (P02_6)
 //#define PWM_L               (ATOM0_CH7_P02_7)
 
-extern float   target_speed   ;   //基础速度   205
-extern float   bend_speed     ;   //直线速度   240
-extern float   S_speed        ;  //S弯速度    200
-extern float   annulus_speed  ;   //环岛速度   170
-extern float   hill_speed     ;   //上坡速度
+extern float target_speed   ;   //基础速度   205
+extern float bend_speed     ;   //直线速度   240
+extern float S_speed        ;  //S弯速度    200
+extern float annulus_speed  ;   //环岛速度   170
+extern float hill_speed     ;   //上坡速度
+
+extern float bend_Kp;
+extern float bend_Kd;
+extern float straight_Kp;
+extern float straight_Kd;
+extern float arc_Kp;
+extern float arc_Kd;
+extern uint8 annulus_L_memory, annulus_R_memory;
 
 //PID参数
-typedef struct{
-    float pid_actual_val_;  //上次值
-    float pid_sum;          //积分缓存
-    float pid_sum_min;
-    float pid_sum_max;
-    float pid_out_min;
-    float pid_out_max;
-    float pid_Kp,pid_Ki,pid_Kd;
-}PID;
+struct PID{
+    float err;      //上次误差值
+    float sum;          //积分缓存
+    float sum_min;
+    float sum_max;
+    float out_min;
+    float out_max;
+    float Kp,Ki,Kd;
+};
 
 
 float Motor_l_PID(float actual_val, float turn);
@@ -43,11 +51,10 @@ float Motor_r_PID(float actual_val, float turn);
 void PWM_motor(float motor_1,float motor_2);
 void motor_init(void);
 float motor_speed_choose(void);
-void motor_r_speed_choose(void);
-void motor_l_speed_choose(void);
+void turn_pd_choose(struct PID *PID_turn);
 
-extern PID motor_l;
-extern PID motor_r;
-extern PID motor_turn;
+extern struct PID motor_l;
+extern struct PID motor_r;
+extern struct PID motor_turn;
 
 #endif /* CODE_MOTOR_H_ */

@@ -37,6 +37,8 @@
 #include "isr.h"
 #include "sys.h"
 
+const uint16 speed_limit = 1500;
+
 uint16 start_sum=0;
 uint16 tingche=0;
 float turn_out=0;
@@ -59,12 +61,11 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         }
        // encoder_filter();
         getspeed();
-
         PWM_motor(
-                    func_limit(-Motor_l_PID(Encoder_speed_l, turn_out),1500),
-                    func_limit(-Motor_r_PID(Encoder_speed_r, turn_out),1500)
+                    func_limit(Motor_l_PID(Encoder_speed_l, turn_out),speed_limit),
+                    func_limit(Motor_r_PID(Encoder_speed_r, turn_out),speed_limit)
                  );
-    //    PWM_motor(-1000,-1000);
+//        PWM_motor(1000,1000);//debug test
         start_sum=300;
     }
 }
@@ -74,13 +75,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, 0, CCU6_0_CH1_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU60_CH1);
-    int32 weight_sum = 0, sum = 0;
-    for(int i=0; i<120; ++i){
-        sum += middle[i]*weight[i];
-        weight_sum += weight[i];
-    }
-//    turn_out = Motor_PID(&motor_turn, 93., (float)sum/weight_sum);
-    turn_out = 93.-(float)sum/weight_sum;
+    turn_out = Motor_t_PID(0, -(float)piancha);
 }
 
 IFX_INTERRUPT(cc61_pit_ch0_isr, 0, CCU6_1_CH0_ISR_PRIORITY)

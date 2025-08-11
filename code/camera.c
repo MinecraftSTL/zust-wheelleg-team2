@@ -14,7 +14,7 @@
 
 //--------------------------
 //摄像头前瞻量，根据摄像头位置设置，数字代表权重大小，例如第1个数为1代表第0行的权重为1
-int weight[120]={
+const int weight[120]={
 0,0,0,0,0,0,0,0,0,0,//0-10
 0,0,0,0,0,0,0,0,0,0,//11-20
 0,0,0,0,0,0,0,0,0,0,//21-30
@@ -27,19 +27,11 @@ int weight[120]={
 6,6,6,6,6,4,4,4,4,4,//91-100
 2,2,2,2,2,2,2,2,2,2,//101-110
 2,2,2,2,2,2,2,2,2,2,//111-120
-};//11120
+};//1-120
 
-int piancha=0;
+int piancha = 0;
 uint8 xunxian =0;
 uint8 bend_straight_flag=0;
-
-
-
-
-
-
-
-
 
 #define White 255  //定义图像黑
 #define Black 0    //定义图像白
@@ -62,7 +54,7 @@ uint8 right_lost_num3=0;        //右边丢线数
 uint8 left_lost_num3=0;         //左边丢线数
 uint8 S_right_lost_num=0;        //S右边丢线数
 uint8 S_left_lost_num=0;         //S左边丢线数
-uint8 imag[120][188];          //二值化图像数组
+uint8 imag[MT9V03X_H][MT9V03X_W];          //二值化图像数组
 uint8 threshold_value=175;
 char threshold_value_add=0;
 char threshold_open_or_close=1;
@@ -166,7 +158,7 @@ uint8 S_road_memory=0;                  //s道状态
 //坡道判断
 char hill_flag=0;
 char podaogeshu=1;//坡道个数
-extern char paodao_time_juge;
+extern int paodao_time_juge;
 
 uint8 road_width[120]={   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  //赛道宽度
                           0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

@@ -8,6 +8,7 @@
 
 uint8 Button_Pressed(void);
 uint8 Button_Press(void);//°´¼üÉ¨Ãè
+void beep_once();
 
 extern const uint8 long_press_time;
 extern uint8 pressed_;

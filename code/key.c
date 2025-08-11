@@ -38,10 +38,13 @@ uint8 Button_Press(void)//°´¼üÉ¨Ãè
         }
     }
     if(ret){
-        beep_on();
-        system_delay (10000, 4000);
-        beep_off();
-        system_delay (10000, 1000);
+        beep_once();
     }
     return ret;
+}
+void beep_once(){
+    beep_on();
+    system_delay (10000, 4000);
+    beep_off();
+    system_delay (10000, 1000);
 }

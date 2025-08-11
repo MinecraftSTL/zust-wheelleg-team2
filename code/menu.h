@@ -55,9 +55,14 @@ void del_PageKey(struct PageKey *pageKey);
 void PageKey_print(struct PageKey *this);
 void PageKey_press(struct PageKey *this, uint8 pressed);
 struct PagePageValue *new_PagePageValue(struct PageKey key[], uint8 size);
+void PagePageValue_init(struct PagePageValue *this, struct PageKey key[], uint8 size);
 struct IntPageValue *new_IntPageValue(int *value, int max, int min, int step);
+void IntPageValue_init(struct IntPageValue *this, int *value, int max, int min, int step);
 struct FloatPageValue *new_FloatPageValue(float *value, float max, float min, float step);
+void FloatPageValue_init(struct FloatPageValue *this, float *value, float max, float min, float step);
 struct BooleanPageValue *new_BooleanPageValue(int *value);
+void BooleanPageValue_init(struct BooleanPageValue *this, int *value);
 struct FunctionPageValue *new_FunctionPageValue(void (*up)(), void (*down)());
+void FunctionPageValue_init(struct FunctionPageValue *this, void (*up)(), void (*down)());
 
 #endif /* CODE_MENU_H_ */

@@ -31,8 +31,8 @@ int16 Encoder_speed_r=0;
 //-------------------------------------------------------------------------------------------------------------------
 void ecounter_init(void){
 
-    encoder_dir_init(TIM5_ENCODER, ENCODER_R, ENCODER_DIR_R);//ÓÒÂÖ±àÂëÆ÷
-    encoder_dir_init(TIM2_ENCODER, ENCODER_L, ENCODER_DIR_L);//×óÂÖ±àÂëÆ÷
+    encoder_dir_init(TIM5_ENCODER, ENCODER_L, ENCODER_DIR_L);//×óÂÖ±àÂëÆ÷
+    encoder_dir_init(TIM2_ENCODER, ENCODER_R, ENCODER_DIR_R);//ÓÒÂÖ±àÂëÆ÷
 
 };
 //-------------------------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ int16 Encoder_MTM(encoder_index_enum gptn,int n,uint8 direct)
 void getspeed(void)
 {
  // »ñÈ¡±àÂëÆ÷µÄÖµ
-    Encoder_speed_l = -Encoder_MTM(TIM2_ENCODER,3,1);
-    Encoder_speed_r = -Encoder_MTM(TIM5_ENCODER,3,1);
+    Encoder_speed_l = Encoder_MTM(TIM5_ENCODER,3,1);
+    Encoder_speed_r = Encoder_MTM(TIM2_ENCODER,3,1);
     //JustFloat_Test();
 };

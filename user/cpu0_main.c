@@ -112,7 +112,6 @@ int core0_main(void)
     for(;;)
     {
         if(mt9v03x_init()){
-            ips200_clear();
             ips200_show_string(0, 0, "mt9v03x reinit.");
         }else{
             break;
@@ -120,15 +119,15 @@ int core0_main(void)
         system_delay_ms(500);                                                   // 短延时快速闪灯表示异常
     }
     ips200_clear();
-    ips200_show_string(0, 0, "init success.");
+    while(!mt9v03x_finish_flag);
+    ips200_displayimage03x((const uint8 *)mt9v03x_image, MT9V03X_W, MT9V03X_H);
     pit_ms_init(CCU60_CH0, 5);           //速度环中断
     pit_ms_init(CCU60_CH1, 2);           //转向环中断
     pit_ms_init(CCU61_CH0, 10);           //按钮长按计时器中断
-    ips200_clear();
+    beep_off();
+    gpio_high(P21_4);
     // 此处编写用户代码 例如外设初始化代码等
 	cpu_wait_event_ready();         // 等待所有核心初始化完毕
-	beep_off();
-	gpio_high(P21_4);
 	for(;;)
 	{
         // 此处编写需要循环执行的代码
