@@ -61,30 +61,12 @@ Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_horizon;
 Page menu_main_arg_k_camera_deltaH;
 Page menu_main_arg_PID;
-Page menu_main_arg_PID_vAy;
-Page menu_main_arg_PID_vAy_Kp;
-Page menu_main_arg_PID_vAy_Ki;
-Page menu_main_arg_PID_vAy_Kd;
-Page menu_main_arg_PID_xAy;
-Page menu_main_arg_PID_xAy_Kp;
-Page menu_main_arg_PID_xAy_Ki;
-Page menu_main_arg_PID_xAy_Kd;
-Page menu_main_arg_PID_vVx;
-Page menu_main_arg_PID_vVx_Kp;
-Page menu_main_arg_PID_vVx_Ki;
-Page menu_main_arg_PID_vVx_Kd;
-Page menu_main_arg_PID_vAz;
-Page menu_main_arg_PID_vAz_Kp;
-Page menu_main_arg_PID_vAz_Ki;
-Page menu_main_arg_PID_vAz_Kd;
-Page menu_main_arg_PID_turn;
-Page menu_main_arg_PID_turn_Kp;
-Page menu_main_arg_PID_turn_Ki;
-Page menu_main_arg_PID_turn_Kd;
-Page menu_main_arg_PID_xAx;
-Page menu_main_arg_PID_xAx_Kp;
-Page menu_main_arg_PID_xAx_Ki;
-Page menu_main_arg_PID_xAx_Kd;
+PidPage menu_main_arg_PID_vAy;
+PidPage menu_main_arg_PID_xAy;
+PidPage menu_main_arg_PID_vVx;
+PidPage menu_main_arg_PID_vAz;
+PidPage menu_main_arg_PID_turn;
+PidPage menu_main_arg_PID_xAx;
 Page menu_main_debug;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
@@ -170,54 +152,12 @@ int core0_main(void)
         &menu_main_arg_PID_turn,
         &menu_main_arg_PID_xAx,
     });
-    ListPage_init(&menu_main_arg_PID_vAy, "vAy", 3, (Page*[]){
-        &menu_main_arg_PID_vAy_Kp,
-        &menu_main_arg_PID_vAy_Ki,
-        &menu_main_arg_PID_vAy_Kd,
-    });
-    FFloatPage_init(&menu_main_arg_PID_vAy_Kp, "Kp", &PID_WvAy.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vAy_Ki, "Ki", &PID_WvAy.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vAy_Kd, "Kd", &PID_WvAy.Kd, 0, 10000);
-    ListPage_init(&menu_main_arg_PID_xAy, "xAy", 3, (Page*[]){
-        &menu_main_arg_PID_xAy_Kp,
-        &menu_main_arg_PID_xAy_Ki,
-        &menu_main_arg_PID_xAy_Kd,
-    });
-    FFloatPage_init(&menu_main_arg_PID_xAy_Kp, "Kp", &PID_WxAy.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_xAy_Ki, "Ki", &PID_WxAy.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_xAy_Kd, "Kd", &PID_WxAy.Kd, 0, 10000);
-    ListPage_init(&menu_main_arg_PID_vVx, "vVx", 3, (Page*[]){
-        &menu_main_arg_PID_vVx_Kp,
-        &menu_main_arg_PID_vVx_Ki,
-        &menu_main_arg_PID_vVx_Kd,
-    });
-    FFloatPage_init(&menu_main_arg_PID_vVx_Kp, "Kp", &PID_vVx.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vVx_Ki, "Ki", &PID_vVx.Ki, 0, 10000);
-    ListPage_init(&menu_main_arg_PID_vAz, "vAz", 3, (Page*[]){
-        &menu_main_arg_PID_vAz_Kp,
-        &menu_main_arg_PID_vAz_Ki,
-        &menu_main_arg_PID_vAz_Kd,
-    });
-    FFloatPage_init(&menu_main_arg_PID_vAz_Kp, "Kp", &PID_vAz.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vAz_Ki, "Ki", &PID_vAz.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vAz_Kd, "Kd", &PID_vAz.Kd, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_vVx_Kd, "Kd", &PID_vVx.Kd, 0, 10000);
-    ListPage_init(&menu_main_arg_PID_turn, "turn", 3, (Page*[]){
-        &menu_main_arg_PID_turn_Kp,
-        &menu_main_arg_PID_turn_Ki,
-        &menu_main_arg_PID_turn_Kd,
-    });
-    FFloatPage_init(&menu_main_arg_PID_turn_Kp, "Kp", &PID_WvAz.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_turn_Ki, "Ki", &PID_WvAz.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_turn_Kd, "Kd", &PID_WvAz.Kd, 0, 10000);
-    ListPage_init(&menu_main_arg_PID_xAx, "xAx", 3, (Page*[]){
-        &menu_main_arg_PID_xAx_Kp,
-        &menu_main_arg_PID_xAx_Ki,
-        &menu_main_arg_PID_xAx_Kd,
-    });
-    FFloatPage_init(&menu_main_arg_PID_xAx_Kp, "Kp", &PID_xAx.Kp, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_xAx_Ki, "Ki", &PID_xAx.Ki, 0, 10000);
-    FFloatPage_init(&menu_main_arg_PID_xAx_Kd, "Kd", &PID_xAx.Kd, 0, 10000);
+    PidPage_init(&menu_main_arg_PID_vAy, "vAy", &PID_WvAy);
+    PidPage_init(&menu_main_arg_PID_xAy, "xAy", &PID_WxAy);
+    PidPage_init(&menu_main_arg_PID_vVx, "vVx", &PID_vVx.Kd);
+    PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
+    PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
+    PidPage_init(&menu_main_arg_PID_xAx, "xAx", &PID_xAx);
     ListPage_init(&menu_main_debug, "debug", 6, (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,

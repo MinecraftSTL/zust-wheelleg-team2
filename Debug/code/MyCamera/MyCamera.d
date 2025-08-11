@@ -330,18 +330,22 @@ code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu0_main.h :
 code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h :
+code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/PidPage.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/PidPage.h :
+code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h :
+code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
 code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
-code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
-code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
-code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h :
 code/MyCamera/MyCamera.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h

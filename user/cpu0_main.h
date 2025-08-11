@@ -53,9 +53,10 @@
 /******************************************************************************/
 #include "Cpu/Std/Ifx_Types.h"
 
-#include "Sys.h"
+#include "Menu.h"
+#include "PidPage.h"
 
-#include "menu.h"
+#include "Sys.h"
 
 #include "PID_param.h"
 /******************************************************************************/

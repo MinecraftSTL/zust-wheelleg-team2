@@ -57,10 +57,10 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
     Servo_limit(&rf);
     Servo_limit(&lf);
     Servo_limit(&lb);
-    pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+0.6));
+    pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+0.8));
     pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf+0.5));
-    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf+0.7));
-    pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb+0.5));
+    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf+0.6));
+    pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb));
 }
 
 void Leg_set_pos(float lx, float lz, float rx, float rz){

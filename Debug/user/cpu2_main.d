@@ -290,18 +290,22 @@ user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensour
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu0_main.h :
 user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h :
+user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/PidPage.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/PidPage.h :
+user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h :
+user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
 user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
-user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
-user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
-user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h :
 user/cpu2_main.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h

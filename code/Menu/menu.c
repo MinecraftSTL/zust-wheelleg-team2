@@ -1,12 +1,11 @@
 /*
- * menu.c
+ * Menu.c
  *
  *  Created on: 2024Äê11ÔÂ14ÈÕ
  *      Author: minec
  */
-#include "sys.h"
-
-#include "menu.h"
+#include "Menu.h"
+#include "Sys.h"
 
 #include "zf_device_ips200.h"
 

@@ -292,18 +292,22 @@ code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/See
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu0_main.h :
 code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h :
+code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/PidPage.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/PidPage.h :
+code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/menu/Menu.h :
+code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
 code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadFile.h :
-code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
-code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
-code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/cpu1_main.h :
 code/foc/small_driver_uart_control.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h

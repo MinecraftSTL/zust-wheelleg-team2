@@ -1,5 +1,5 @@
 /*
- * menu.h
+ * Menu.h
  *
  *  Created on: 2024Äê11ÔÂ14ÈÕ
  *      Author: minec
@@ -10,8 +10,6 @@
 #include "Cpu/Std/Ifx_Types.h"
 
 #define IPS200_DEFAULT_HIGHLIGHTCOLOR         (0x7BFF  )
-
-extern const int Max_page_pageKey;
 
 enum KeyType{
     NULL_KEY,
@@ -83,7 +81,7 @@ uint8 PageKey_press(Page *this, uint8 pressed[]);
 Page *PageKey_getOpened(Page *this);
 uint8 PageKey_back(Page *this);
 void PageKey_home(Page *this);
-void ListPage_init(Page *this, char name[], uint8 size, struct Page *key[]);
+void ListPage_init(Page *this, char name[], uint8 size, Page *key[]);
 void ListPage_setRoot(Page *this);
 void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);
 void FloatPage_init(Page *this, char name[], float *value, float max, float min);

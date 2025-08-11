@@ -46,6 +46,7 @@ RM := rm -rf
 -include libraries/infineon_libraries/Infra/Ssw/TC37A/Tricore/subdir.mk
 -include libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/subdir.mk
 -include libraries/infineon_libraries/Configurations/subdir.mk
+-include code/menu/subdir.mk
 -include code/leg/subdir.mk
 -include code/foc/subdir.mk
 -include code/filter/subdir.mk
@@ -59,7 +60,6 @@ RM := rm -rf
 -include code/MyEncoder/subdir.mk
 -include code/MyCamera/subdir.mk
 -include code/Motor/subdir.mk
--include code/Menu/subdir.mk
 -include code/Gyro/subdir.mk
 -include code/Flash/subdir.mk
 -include code/Beep/subdir.mk

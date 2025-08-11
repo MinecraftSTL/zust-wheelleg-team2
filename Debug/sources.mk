@@ -27,7 +27,6 @@ SUBDIRS := \
 code/Beep \
 code/Flash \
 code/Gyro \
-code/Menu \
 code/Motor \
 code/MyCamera \
 code/MyEncoder \
@@ -41,6 +40,7 @@ code/debug \
 code/filter \
 code/foc \
 code/leg \
+code/menu \
 libraries/infineon_libraries/Configurations \
 libraries/infineon_libraries/Infra/Platform/Tricore/Compilers \
 libraries/infineon_libraries/Infra/Ssw/TC37A/Tricore \
