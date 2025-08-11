@@ -39,7 +39,7 @@
 #include "zf_common_headfile.h"
 
 extern char hill_flag;
-extern float serve_out_pwm;
+extern float turn_out;
 extern uint16 tingche;
 
 

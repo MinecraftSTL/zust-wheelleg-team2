@@ -63,7 +63,7 @@ extern uint8 imag[120][188];
 extern uint8 threshold_value;
 extern uint8 Effective_length;
 
-
+extern int weight[120];
 extern int piancha;
 extern uint8 xunxian;
 extern uint8 bend_straight_flag;

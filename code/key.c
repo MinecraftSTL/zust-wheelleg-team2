@@ -1,47 +1,46 @@
 #include "sys.h"
-char button_choice=0;
-int8 speed_qidong=1;//should be zero, opened by munu
-uint16 Button_Get(void)//°´¼üÉ¨Ãè
-{
-    uint16 return_flag = 0;
-    if(gpio_get_level(K1) == 0)
-    {
-        button_choice=1;
-        return_flag |= 0x01;
-        ips200_clear();
-        beep_on();
-        system_delay (1000, 1000);
-        beep_off();
-    }
-    if(gpio_get_level(K2) == 0)
-    {
 
-        button_choice=2;
-        return_flag |= 0x02;
-        ips200_clear();
-        beep_on();
-        system_delay (1000, 1000);
-        beep_off();
-    }
-    if(gpio_get_level(K3) == 0)
+const uint8 long_press_time = 50;
+
+uint8 pressed_=0;
+uint16 pressed_time[4] = {0};
+int8 speed_qidong=1;//should be zero, opened by menu
+
+uint8 Button_Pressed(void){
+    uint8 pressed = 0;
+    if(!gpio_get_level(K1))
     {
-        button_choice=4;
-        return_flag |= 0x04;
-        ips200_clear();
-        beep_on();
-        system_delay (1000, 1000);
-        beep_off();
+        pressed |= 0x01;
     }
-    if(gpio_get_level(K4) == 0)
+    if(!gpio_get_level(K2))
     {
-        button_choice=4;
-        return_flag |= 0x08;
-        ips200_clear();
-        beep_on();
-        system_delay (1000, 1000);
-        beep_off();
+        pressed |= 0x02;
     }
-    while(gpio_get_level(K1)||gpio_get_level(K2)||gpio_get_level(K3)||gpio_get_level(K4) == 0);
-   // gpio_set_level(Beep, 0);
-    return return_flag;
+    if(!gpio_get_level(K3))
+    {
+        pressed |= 0x04;
+    }
+    if(!gpio_get_level(K4))
+    {
+        pressed |= 0x08;
+    }
+    return pressed;
+}
+uint8 Button_Press(void)//°´¼üÉ¨Ãè
+{
+    uint8 pressed = Button_Pressed();
+    uint8 ret = ~pressed_ & pressed;
+    pressed_ = pressed;
+    for(int i = 0; i < 4; ++i){
+        if(pressed_time[i]>=long_press_time){
+            ret|=1<<i;
+        }
+    }
+    if(ret){
+        beep_on();
+        system_delay (10000, 4000);
+        beep_off();
+        system_delay (10000, 1000);
+    }
+    return ret;
 }

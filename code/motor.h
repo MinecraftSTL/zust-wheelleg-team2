@@ -26,9 +26,6 @@ extern float   S_speed        ;  //S弯速度    200
 extern float   annulus_speed  ;   //环岛速度   170
 extern float   hill_speed     ;   //上坡速度
 
-//extern float   S_number       ;   //S弯偏差基数   0.2
-//extern float   target_number  ;  //基础偏差基数   0.45
-
 //PID参数
 typedef struct{
     float pid_actual_val_;  //上次值
@@ -41,8 +38,8 @@ typedef struct{
 }PID;
 
 
-float Motor_l_PID(float actual_val );
-float Motor_r_PID(float actual_val );
+float Motor_l_PID(float actual_val, float turn);
+float Motor_r_PID(float actual_val, float turn);
 void PWM_motor(float motor_1,float motor_2);
 void motor_init(void);
 float motor_speed_choose(void);
@@ -51,5 +48,6 @@ void motor_l_speed_choose(void);
 
 extern PID motor_l;
 extern PID motor_r;
+extern PID motor_turn;
 
 #endif /* CODE_MOTOR_H_ */

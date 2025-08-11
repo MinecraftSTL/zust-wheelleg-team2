@@ -6,6 +6,11 @@
 #define K3    P22_2
 #define K4    P22_3
 
-extern char button_choice;
+uint8 Button_Pressed(void);
+uint8 Button_Press(void);//°´¼üÉ¨Ãè
+
+extern const uint8 long_press_time;
+extern uint8 pressed_;
+extern uint16 pressed_time[4];
 
 #endif /* CODE_KEY_H_ */

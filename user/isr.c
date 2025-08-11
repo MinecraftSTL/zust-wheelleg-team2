@@ -39,7 +39,7 @@
 
 uint16 start_sum=0;
 uint16 tingche=0;
-float serve_out_pwm=0;
+float turn_out=0;
 int paodao_time_juge=0;
 // 对于TC系列默认是不支持中断嵌套的，希望支持中断嵌套需要在中断内使用 interrupt_global_enable(0); 来开启中断嵌套
 // 简单点说实际上进入中断后TC系列的硬件自动调用了 interrupt_global_disable(); 来拒绝响应任何的中断，因此需要我们自己手动调用 interrupt_global_enable(0); 来开启中断的响应。
@@ -61,10 +61,10 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         getspeed();
 
         PWM_motor(
-                    func_limit(-Motor_l_PID(Encoder_speed_l),1500),
-                    func_limit(-Motor_r_PID(Encoder_speed_r),1500)
+                    func_limit(-Motor_l_PID(Encoder_speed_l, turn_out),1500),
+                    func_limit(-Motor_r_PID(Encoder_speed_r, turn_out),1500)
                  );
-    //    PWM_motor(-2000,-2000);
+    //    PWM_motor(-1000,-1000);
         start_sum=300;
     }
 }
@@ -73,32 +73,30 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
 IFX_INTERRUPT(cc60_pit_ch1_isr, 0, CCU6_0_CH1_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
+    pit_clear_flag(CCU60_CH1);
+    int32 weight_sum = 0, sum = 0;
+    for(int i=0; i<120; ++i){
+        sum += middle[i]*weight[i];
+        weight_sum += weight[i];
+    }
+//    turn_out = Motor_PID(&motor_turn, 93., (float)sum/weight_sum);
+    turn_out = 93.-(float)sum/weight_sum;
 }
 
 IFX_INTERRUPT(cc61_pit_ch0_isr, 0, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU61_CH0);
-    mpu6050_get_gyro();
-  if(speed_qidong)
-  {
-    jiaodu=imu660ra_gyro_transition(mpu6050_gyro_z);
-    jiaodu=jiaodu/10;
-    jd_sum+=jiaodu;
-  }
-    //坡道结束延时判断
-  if(hill_flag==2)
-  {
-   if(paodao_time_juge<12)
-      paodao_time_juge++;
-   if(paodao_time_juge==12)
-   {
-       paodao_time_juge=0;
-       hill_flag=0;
-   }
-  }
-
-
+    uint8 pressed = Button_Pressed();
+    for(int i = 0; i < 4; ++i){
+        if((pressed>>i) & 1){
+            if(pressed_time[i]<long_press_time){
+                ++pressed_time[i];
+            }
+        }else{
+            pressed_time[i] = 0;
+        }
+    }
 }
 
 IFX_INTERRUPT(cc61_pit_ch1_isr, 0, CCU6_1_CH1_ISR_PRIORITY)

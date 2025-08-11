@@ -62,7 +62,7 @@ void core1_main(void)
     for(;;)
     {
         // 此处编写需要循环执行的代码
-
+        Button_Press();
         // 此处编写需要循环执行的代码
     }
 }

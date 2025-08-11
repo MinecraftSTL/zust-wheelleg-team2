@@ -17,6 +17,10 @@
 
 float slope_calculate (uint8 begin, uint8 end,int * border);
 void caculate_distance(uint8 start,uint8 end,int *border,float *slope_new,float *distance_new);
+void beep_on(void);
+void beep_off(void);
+void beep_flip(void);
+
 #define Beep    P33_10                          //·äÃùÆ÷
 
 extern float motor_l_out,motor_r_out;
