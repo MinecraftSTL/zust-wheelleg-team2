@@ -25,7 +25,7 @@ void LPF_init(Filter* this, float cutoff_freq, float sample_freq) {
 // 更新滤波器状态并返回滤波后的值
 float lpf(Filter* this, float input) {
     // 应用一阶低通滤波公式
-    this->y = this->alpha * input + (1.0f - this->alpha) * this->y;
+    this->y = isnan(this->y) ? input : this->alpha*input+(1.0f-this->alpha)*this->y;
     this->x = input;
     return this->y;
 }

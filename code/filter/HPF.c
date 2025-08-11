@@ -7,7 +7,7 @@
 
 #include "Filter.h"
 
-void HighPassFilter_Init(Filter* this, float cutoff_freq, float sample_freq) {
+void HPF_Init(Filter* this, float cutoff_freq, float sample_freq) {
     // 计算时间常数RC
     float RC = 1.0f / (2.0f * PI * cutoff_freq);
     // 计算采样间隔
@@ -20,9 +20,9 @@ void HighPassFilter_Init(Filter* this, float cutoff_freq, float sample_freq) {
 }
 
 // 更新滤波器状态并返回滤波后的值
-float HighPassFilter_Update(Filter* this, float input) {
+float hpf(Filter* this, float input) {
     // 计算输入差值
-    float delta_x = input - this->x;
+    float delta_x = isnan(this->x) ? 0 : input-this->x;
     // 应用高通滤波公式
     this->y = this->alpha * (this->y + delta_x);
     // 更新历史数据

@@ -12,8 +12,8 @@
 typedef enum
 {
     status_car_stop,
-    status_car_start,
     status_car_gyroscope_run,
+    status_car_start,
 }Car_Status;
 
 typedef enum

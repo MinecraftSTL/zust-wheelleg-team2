@@ -41,6 +41,7 @@
 #include "PID_param.h"
 
 extern float kZero;
+extern float kLx2s;
 
 #endif
 

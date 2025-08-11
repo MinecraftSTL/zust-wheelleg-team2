@@ -77,6 +77,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
 }
 
 float kZero = 13;
+float kLx2s = 5000;
 
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
@@ -88,26 +89,29 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             Turn_speed = Encoder_speed_r-Encoder_speed_l;
     Update_GyroData();
 
-    if(car_run){
+    if(g_Car_Status){
         if(fabs(roll) > 60 || fabs(pitch) > 60){
             beepLong();
-            car_run=0;
+            g_Car_Status=status_car_stop;
         }
     }
 
     float tg_pitchV, tg_yawV = (image_w-2)/2-g_camera_mid_err, legX = 0, legZ = -45;
-    if(car_run){
+    if(g_Car_Status){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = V0;
+        if(g_Car_Status != status_car_start){
+            targetV = 0;
+        }
         if(fvEn){
             targetV = fvV;
         }
-        float VxDownAy = pid(&PID_vVx, targetV, Encoder_speed)/1000;
+        float VxKZero = pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
-    //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
+//        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
-        legX = -pid(&PID_LPitch, 0, pitch)/10;
-        tg_pitchV = pid(&PID_WxAy, kZero-VxDownAy, pitch);
+        legX = pid(&PID_LPitch, 0, VxKZero)/10;
+        tg_pitchV = pid(&PID_WxAy, kZero-VxKZero, pitch);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
         PID_clear(&PID_vVx);
@@ -115,21 +119,18 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         PID_clear(&PID_LPitch);
 //        printf("%f,%f\r\n", pitch,kZero);
     }
-    float new_gyro_y = gyro_y*180/PI;
-    if(isnan(new_gyro_y)){
-        new_gyro_y = 0;
-    }
+    float new_gyro_y = my_gyro_y-zero_my_gyro_y;
     int speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
     speed = lpf(&Filter_speed, speed);
     if(fsEn){
         speed = fsSpeed;
     }
     int turn = pid(&PID_WvAz, tg_yawV, Turn_speed);
-    if(!car_run){
+    if(g_Car_Status != status_car_start){
         turn=0;
         PID_clear(&PID_WvAz);
     }
-//    printf("%f\r\n", speed);
+//    printf("%d\r\n", speed);
     MotorSetPWM(speed-turn, speed+turn);
     if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
@@ -140,7 +141,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lx = rx = legX;
         lz = rz = legZ;
         float lza = 0;
-        if(car_run){
+        if(g_Car_Status){
             lza = Roll_toPosZ(-roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);

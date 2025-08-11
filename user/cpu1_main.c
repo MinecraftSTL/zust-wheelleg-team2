@@ -39,7 +39,6 @@
 // 将本语句与#pragma section all restore语句之间的全局变量都放在CPU1的RAM中
 
 // **************************** 代码区域 ****************************
-uint8 car_run = 0;
 
 void core1_main(void)
 {

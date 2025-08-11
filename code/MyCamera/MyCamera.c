@@ -163,7 +163,8 @@ void MyCamera_Init(void)
 }
 
 uint16_t page_cnt;
-void MyCamera_Show(uint16 y)
+uint16 inflecction_square_r = 1;
+void MyCamera_Show(uint16 start_y)
 {
 
 //    if(mt9v03x_finish_flag)
@@ -179,8 +180,8 @@ void MyCamera_Show(uint16 y)
     if(Camera_process_finish_flag == 1)
     {
         Camera_process_finish_flag = 0;
-        ips200_show_int(188, 304, threshold_value, 3);  //显示阈值
-        ips200_show_gray_image(0, y, (const uint8 *)image, MT9V03X_W, MT9V03X_H, MT9V03X_W, MT9V03X_H, 0);
+        ips200_show_int(188+inflecction_square_r, 304, threshold_value, 3);  //显示阈值
+        ips200_show_gray_image(0, start_y, (const uint8 *)image, MT9V03X_W, MT9V03X_H, image_w, image_h, 0);
         int i;
         for (i = Endline; i < image_h-1; i++)
         {
@@ -188,9 +189,21 @@ void MyCamera_Show(uint16 y)
           //求中线最好最后求，不管是补线还是做状态机，全程最好使用一组边线，中线最后求出，不能干扰最后的输出
           //当然也有多组边线的找法，但是个人感觉很繁琐，不建议
             uint8 in_camera_horizon = i>=camera_horizon&&i<camera_horizon+delta_camera_horizon;
-            ips200_draw_point((uint16)middle_copy[i], (uint16)i+y, in_camera_horizon?RGB565_RED:RGB565_GREEN);
-            ips200_draw_point((uint16)left_copy[i], (uint16)i+y, RGB565_GREEN);
-            ips200_draw_point((uint16)right_copy[i],(uint16) i+y, RGB565_GREEN);
+            ips200_draw_point((uint16)middle_copy[i], (uint16)i+start_y, in_camera_horizon?RGB565_RED:RGB565_GREEN);
+            ips200_draw_point((uint16)left_copy[i], (uint16)i+start_y, RGB565_BLUE);
+            ips200_draw_point((uint16)right_copy[i],(uint16)i+start_y, RGB565_BLUE);
+        }
+        if(lower_left_inflection_Flag){
+            ips200_draw_square((uint16)lower_left_inflection_X, (uint16)lower_left_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
+        }
+        if(lower_right_inflection_Flag){
+            ips200_draw_square((uint16)lower_right_inflection_X, (uint16)lower_right_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
+        }
+        if(upper_left_inflection_flag){
+            ips200_draw_square((uint16)upper_left_inflection_X, (uint16)upper_left_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
+        }
+        if(upper_right_inflection_flag){
+            ips200_draw_square((uint16)upper_right_inflection_X, (uint16)upper_right_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
         }
 //        seekfree_assistant_camera_send();
     }

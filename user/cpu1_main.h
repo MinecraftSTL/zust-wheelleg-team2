@@ -10,6 +10,4 @@
 
 #include "zf_common_headfile.h"
 
-extern uint8 car_run;
-
 #endif /* USER_CPU1_MAIN_H_ */

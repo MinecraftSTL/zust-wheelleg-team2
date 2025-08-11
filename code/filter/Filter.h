@@ -17,9 +17,9 @@ typedef struct {
 
 void LPF_init(Filter* this, float cutoff_freq, float sample_freq);
 float lpf(Filter* this, float input);
-void HighPassFilter_Init(Filter* this, float cutoff_freq, float sample_freq);
-float HighPassFilter_Update(Filter* this, float input);
+void HPF_Init(Filter* this, float cutoff_freq, float sample_freq);
+float hpf(Filter* this, float input);
 
-extern Filter Filter_speed;
+extern Filter Filter_speed, Filter_legX2Speed;
 
 #endif /* CODE_FILTER_FILTER_H_ */

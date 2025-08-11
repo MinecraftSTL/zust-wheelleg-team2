@@ -54,6 +54,9 @@ Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
 Page menu_main_arg_k_speedF;
+Page menu_main_arg_k_lx2s;
+Page menu_main_arg_k_lx2s_a;
+Page menu_main_arg_k_lx2s_k;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_horizon;
 Page menu_main_arg_k_camera_deltaH;
@@ -127,33 +130,42 @@ int core0_main(void)
         &menu_main_arg,
         &menu_main_debug,
     });
-    BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
+    IntPage_init(&menu_main_carRun, "run", &g_Car_Status, 0, 2);
+    menu_main_carRun.open = 9;
     ListPage_init(&menu_main_arg, "arg", 2, (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
     });
-    ListPage_init(&menu_main_arg_k, "k", 3, (Page*[]){
+    ListPage_init(&menu_main_arg_k, "k", 4, (Page*[]){
         &menu_main_arg_k_kZero,
         &menu_main_arg_k_speedF,
+        &menu_main_arg_k_lx2s,
         &menu_main_arg_k_camera,
     });
     FFloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
     menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
     FFloatPage_init(&menu_main_arg_k_speedF, "speedF", &Filter_speed.alpha, 0, 1);
     menu_main_arg_k_speedF.extends.fFloatValue.dot = 0;
+    ListPage_init(&menu_main_arg_k_lx2s, "lx2s", 2, (Page*[]){
+        &menu_main_arg_k_lx2s_a,
+        &menu_main_arg_k_lx2s_k,
+    });
+    FFloatPage_init(&menu_main_arg_k_lx2s_a, "a", &Filter_legX2Speed.alpha, 0, 1);
+    menu_main_arg_k_lx2s.extends.fFloatValue.dot = 0;
+    FFloatPage_init(&menu_main_arg_k_lx2s_k, "k", &kLx2s, 0, 100000);
+    menu_main_arg_k_lx2s.extends.fFloatValue.dot = 6;
     ListPage_init(&menu_main_arg_k_camera, "camera", 2, (Page*[]){
         &menu_main_arg_k_camera_horizon,
         &menu_main_arg_k_camera_deltaH,
     });
     IntPage_init(&menu_main_arg_k_camera_horizon, "horizon", &camera_horizon, 0, image_h-1);
     IntPage_init(&menu_main_arg_k_camera_deltaH, "deltaH", &delta_camera_horizon, 0, image_h-1);
-    ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
+    ListPage_init(&menu_main_arg_PID, "PID", 5, (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
         &menu_main_arg_PID_vAz,
         &menu_main_arg_PID_vVx,
         &menu_main_arg_PID_lPitch,
-        &menu_main_arg_PID_xAx,
     });
     ListPage_init(&menu_main_arg_PID_vAy, "aAy", 3, (Page*[]){
         &menu_main_arg_PID_vAy_Kp,
