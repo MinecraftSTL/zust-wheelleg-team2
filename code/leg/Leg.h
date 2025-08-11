@@ -38,6 +38,8 @@ extern float targetLegX, targetLegZ;
 extern uint8 rollBalance;
 extern float rollBalanceK;
 
+extern float LegDRb, LegDRf, LegDLf, LegDLb;
+
 void Leg_init();
 float Roll_toPosZ(float roll, float lza);
 void Leg_set_duty(float rb, float rf, float lf, float lb);
@@ -46,7 +48,7 @@ void Leg_set_pos(float lx, float lz, float rx, float rz);
 extern const int jumpStep[];
 extern float jumpLegZMin, jumpLegZMax;
 
-void jumpPit(uint32 period, float *legZ);
+void jumpPit(uint32 period, float *legX, float *legZ);
 void jump();
 
 #endif /* CODE_LEG_LEG_H_ */

@@ -14,6 +14,8 @@ float targetLegX, targetLegZ;
 uint8 rollBalance = 0;
 float rollBalanceK = 1;
 
+float LegDRb = 0.7, LegDRf = 0.6, LegDLf = 0.7, LegDLb = 0.8;
+
 void Leg_init(){
     pwm_init(servo_rb, freq, PWM_DUTY_MAX/2);
     pwm_init(servo_rf, freq, PWM_DUTY_MAX/2);
@@ -67,11 +69,15 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
         Servo_limit(&rf);
         Servo_limit(&lf);
         Servo_limit(&lb);
+        rb += LegDRb;
+        rf -= LegDRf;
+        lf += LegDLf;
+        lb -= LegDLb;
     }
-    pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+(fLz?0:0.7)));
-    pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf+(fLz?0:0.6)));
-    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf+(fLz?0:0.7)));
-    pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb+(fLz?0:0.8)));
+    pwm_set_duty(servo_rb, Radian_toPwmDuty(rb));
+    pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf));
+    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf));
+    pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb));
 }
 void Leg_set_pos(float lx, float lz, float rx, float rz){
     Pos_limit(&lx, &lz);
@@ -83,7 +89,7 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 
 const int jumpStep[] = {
     0,//‘§ ’Õ»
-    110,//…ÏÕ»
+    125,//…ÏÕ»
     200,// ’Õ»
     -1,
 };
@@ -91,7 +97,7 @@ float jumpLegZMin = -30, jumpLegZMax = -147;
 
 uint32 jumpTime = 32767;
 
-void jumpPit(uint32 period, float *legZ){
+void jumpPit(uint32 period, float *legX, float *legZ){
     Step step = getStep(jumpStep, jumpTime);
     switch(step.step){
         case 0:

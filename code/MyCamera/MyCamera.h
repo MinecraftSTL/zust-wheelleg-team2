@@ -97,7 +97,7 @@ extern uint8 showWait;
 
 extern float bendV;
 extern float circleV;
-extern float rampV;
+extern float rampDV;
 extern float bridgeV;
 
 extern float cameraV;

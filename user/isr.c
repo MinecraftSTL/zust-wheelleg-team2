@@ -156,7 +156,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         memset(control, 0x0, 2*sizeof(float));
     }
     MotorSetPWM(speed-turn, speed+turn);
-    jumpPit(PIT10ms, &legZ);
+    jumpPit(PIT10ms, &legX, &legZ);
     if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
     }else if(fwpEn){

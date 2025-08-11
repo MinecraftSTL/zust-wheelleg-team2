@@ -51,7 +51,7 @@ uint8 showWait = 0;
 
 float bendV = 500;
 float circleV = 550;
-float rampV = 200;
+float rampDV = 200;
 float bridgeV = 250;
 
 float cameraV = 0;
@@ -1135,7 +1135,7 @@ void Image_ramp(Image *this, float *cameraV, uint16 *errY){
             if(statusRunS >= rampS){
                 CameraStatus_set(NONE);
             }
-            *cameraV += rampV;
+            *cameraV += rampDV;
             break;
     }
 }
