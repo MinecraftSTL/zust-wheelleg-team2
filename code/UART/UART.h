@@ -19,7 +19,6 @@ extern fifo_struct uart_data_fifo;
 void UART_Init(void);
 //void MyUART_Write_Buffer(float DATA1, float DATA2, float DATA3, float DATA4 );
 void My_Vofa_CallBack(void);
-void Vofa_pageSend(Page *page);
 void Vofa_pageAllSend();
 void Vofa_pageAllReceive();
 

@@ -10,11 +10,15 @@
 
 #include "zf_device_ips200.h"
 #include "MyIps200.h"
+#include "zf_driver_flash.h"
 
 #define PAGE_ELEMENT_MAX 11
 #define PAGE_NAME_MAX 20
 #define PAGE_VALUE_MAX 10
 #define PAGE_PATH_MAX 256
+
+#define PAGE_FLASH_MOD 32768
+#define FLASH_PAGE_USE 500
 
 enum KeyType{
     NULL_KEY,
@@ -37,6 +41,7 @@ enum PageExtendsType{
     BOOL_TYPE,
     ENUM_TYPE,
     FUNC_TYPE,
+    ABOUT_TYPE,
 };
 typedef struct Page{
     char name[PAGE_NAME_MAX+1];
@@ -81,13 +86,19 @@ typedef struct Page{
         struct {
             void (*value)();
         } funcValue;
+        struct {
+            const uint8 *chinese_buffer;
+            uint8 number;
+        } aboutValue;
     } extends;
     void (*update)(struct Page*);
 } Page;
 
-void PageKey_init(Page this, char name[], enum PageExtendsType type, void *value);
+void Menu_init(char *exclude[]);
 void Page_print(Page *this, uint8 row);
 uint8 Page_press(Page *this, uint8 pressed[]);
+uint8 Page_readFlash(Page *this);
+uint8 Page_writeFlash(Page *this, uint8 check);
 Page *Page_getRoot(Page *this);
 Page *Page_getOpened(Page *this);
 void Page_getPath(Page *this, char path[PAGE_PATH_MAX+1]);
@@ -103,5 +114,15 @@ void DoublePage_init(Page *this, char name[], double *value, double max, double 
 void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir);
 void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]);
 void FuncPage_init(Page *this, char name[], void (*value)());
+void AboutPage_init(Page *this, const uint8 *chinese_buffer, uint8 number);
+void Page_send(Page *page);
+void IntPage_readFlash(Page *this, flash_data_union value);
+flash_data_union IntPage_writeFlash(Page *this);
+void FloatPage_readFlash(Page *this, flash_data_union value);
+flash_data_union FloatPage_writeFlash(Page *this);
+void BoolPage_readFlash(Page *this, flash_data_union value);
+flash_data_union BoolPage_writeFlash(Page *this);
+void EnumPage_readFlash(Page *this, flash_data_union value);
+flash_data_union EnumPage_writeFlash(Page *this);
 
 #endif /* CODE_MENU_H_ */

@@ -52,6 +52,7 @@ Page menu_main_config_volume;
 Page menu_main_config_mod;
 Page menu_main_config_mod_gyro;
 Page menu_main_config_mod_foc;
+Page menu_main_config_mod_flash;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_zero;
@@ -143,6 +144,9 @@ Page menu_main_arg_filter_xAx0;
 Page menu_main_arg_filter_xAx1;
 Page menu_main_debug;
 Page menu_main_debug_wheelClear;
+Page menu_main_debug_flash;
+Page menu_main_debug_flash_write;
+Page menu_main_debug_flash_read;
 Page menu_main_debug_vofa;
 Page menu_main_debug_vofa_send;
 Page menu_main_debug_vofa_receive;
@@ -165,6 +169,7 @@ Page menu_main_debug_fwp_rx;
 Page menu_main_debug_fwp_rz;
 Page menu_main_debug_frb;
 Page menu_main_debug_jump;
+Page menu_main_about;
 
 void core0_main(void)
 {
@@ -173,8 +178,12 @@ void core0_main(void)
     // 此处编写用户代码 例如外设初始化代码等
     beep_init();
     ips200_init(IPS200_TYPE_SPI);
-    Flash_Init();
     my_key_init(PIT00ms);
+    if(key_is_pressed()){
+        flashStatus = 0;
+    }
+    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status", "main.debug", "main.arg.k.camera.show"});
+    Flash_Init();
     gyro_init();
     MyCamera_Init();
     Fps_init(PIT00ms);
@@ -192,6 +201,7 @@ void core0_main(void)
         &menu_main_config,
         &menu_main_arg,
         &menu_main_debug,
+        &menu_main_about,
         NULL
     });
     EnumPage_init(&menu_main_carStatus, "carStatus", &carStatus, (char*[]){
@@ -211,10 +221,12 @@ void core0_main(void)
     ListPage_init(&menu_main_config_mod, "mod", (Page*[]){
         &menu_main_config_mod_gyro,
         &menu_main_config_mod_foc,
+        &menu_main_config_mod_flash,
         NULL
     });
     FuncPage_init(&menu_main_config_mod_gyro, "gyro", gyro_set);
     FuncPage_init(&menu_main_config_mod_foc, "foc", MotorZero);
+    FuncPage_init(&menu_main_config_mod_flash, "flash", Flash_clear);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
@@ -293,6 +305,7 @@ void core0_main(void)
         &menu_main_arg_k_camera_eigenvalue_straight,
         &menu_main_arg_k_camera_eigenvalue_setLineY,
         &menu_main_arg_k_camera_eigenvalue_err,
+        NULL
     });
     ListPage_init(&menu_main_arg_k_camera_eigenvalue_inf, "inf", (Page*[]){
         &menu_main_arg_k_camera_eigenvalue_inf_bly2RDL,
@@ -465,7 +478,7 @@ void core0_main(void)
     PidPage_init(&menu_main_arg_PID_vVx, "vVx", &PID_vVx);
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
     PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
-    ListPage_init(&menu_main_arg_filter, "filter", (Page*[]){
+    ListPage_init(&menu_main_arg_filter, "Filter", (Page*[]){
         &menu_main_arg_filter_turn,
         &menu_main_arg_filter_speed,
         &menu_main_arg_filter_xAx0,
@@ -478,6 +491,7 @@ void core0_main(void)
     FloatPage_init(&menu_main_arg_filter_xAx1, "xAx1", &Filter1_xAx.alpha, 0, 1);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wheelClear,
+        &menu_main_debug_flash,
         &menu_main_debug_vofa,
         &menu_main_debug_wifiIm,
         &menu_main_debug_fs,
@@ -489,6 +503,13 @@ void core0_main(void)
         NULL
     });
     BoolPage_init(&menu_main_debug_wheelClear, "wClear", &wheelClear, 0x03);
+    ListPage_init(&menu_main_debug_flash, "flash", (Page*[]){
+        &menu_main_debug_flash_write,
+        &menu_main_debug_flash_read,
+        NULL
+    });
+    FuncPage_init(&menu_main_debug_flash_write, "write", Flash_pageAllWrite);
+    FuncPage_init(&menu_main_debug_flash_read, "read", Flash_pageAllRead);
     ListPage_init(&menu_main_debug_vofa, "vofa", (Page*[]){
         &menu_main_debug_vofa_send,
         &menu_main_debug_vofa_receive,
@@ -537,6 +558,7 @@ void core0_main(void)
     =menu_main_debug_fwp_rz.extends.floatValue.dot=2;
     BoolPage_init(&menu_main_debug_frb, "frb", &fRb, 0x03);
     FuncPage_init(&menu_main_debug_jump, "jump", jump);
+    AboutPage_init(&menu_main_about, Stl, StlNumber);
 
     beepLong();
     ips200_clear();

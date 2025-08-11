@@ -9,7 +9,11 @@
 
 void Flash_Init(void);
 void Flash_WriteAllVal(void);
+void Flash_clear();
 
-extern uint8 g_flash_enable_flag;
+void Flash_pageAllRead();
+void Flash_pageAllWrite();
+
+extern uint8 flashStatus;
 
 #endif

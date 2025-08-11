@@ -5,7 +5,12 @@
  *      Author: minec
  */
 #include "Menu.h"
+#include "Stl.h"
 
+char Menu_exclude[256][PAGE_PATH_MAX];
+uint8 Menu_excludeLen;
+
+uint8 pageFlashCheck[(PAGE_FLASH_MOD-1)/(sizeof(uint8))+1] = {0};
 
 void ListPage_print(Page *this, uint8 row);
 void ListPage_press(Page *this, uint8 pressed[]);
@@ -21,6 +26,8 @@ void EnumPage_print(Page *this, uint8 row);
 void EnumPage_press(Page *this, uint8 pressed[]);
 void FuncPage_print(Page *this, uint8 row);
 void FuncPage_press(Page *this, uint8 pressed[]);
+void AboutPage_print(Page *this, uint8 row);
+void AboutPage_press(Page *this, uint8 pressed[]);
 
 void ips200_reset_color();
 void ips200_set_pencolor(const uint16 color);
@@ -29,6 +36,17 @@ void ips200_show_string_color(uint16 x, uint16 y, const char dat[], const uint16
 int Int_pow(int this, int pow);
 void Int_toString(int this, char *str, uint8 num);
 void Double_toString(float this, char *str, uint8 num, uint8 point);
+
+void Menu_init(char *exclude[]){
+    for(Menu_excludeLen=0; Menu_excludeLen<PAGE_ELEMENT_MAX; ++Menu_excludeLen){
+        if(exclude[Menu_excludeLen][0] == '\0'){
+            break;
+        }
+    }
+    for(int i=0; i<Menu_excludeLen; ++i){
+        strncpy(Menu_exclude[i], exclude[i], PAGE_VALUE_MAX);
+    }
+}
 
 void Page_init(Page *this, char name[], enum PageExtendsType type){
     zf_assert(this && name);
@@ -64,6 +82,9 @@ void Page_print(Page *this, uint8 row){
         case FUNC_TYPE:
             FuncPage_print(this, row);
             break;
+        case ABOUT_TYPE:
+            AboutPage_print(this, row);
+            break;
     }
 }
 uint8 Page_press(Page *this, uint8 pressed[]){
@@ -89,6 +110,9 @@ uint8 Page_press(Page *this, uint8 pressed[]){
         case FUNC_TYPE:
             FuncPage_press(this, pressed);
             break;
+        case ABOUT_TYPE:
+            AboutPage_press(this, pressed);
+            break;
     }
     if(pressed[HOME_KEY]){
         Page_home(this);
@@ -104,6 +128,109 @@ uint8 Page_press(Page *this, uint8 pressed[]){
         }
     }
     return ret;
+}
+uint8 Page_readFlash(Page *this){
+    char path[PAGE_PATH_MAX+1];
+    Page_getPath(this, path);
+    for(uint8 i=0; i<Menu_excludeLen; ++i){
+        if(String_startWith(path, Menu_exclude[i])){
+            return 3;
+        }
+    }
+    uint32 hash = String_hash(path, PAGE_FLASH_MOD);
+    uint32 page_num = hash/FLASH_PAGE_USE;
+    uint16 page_index = hash%FLASH_PAGE_USE;
+    if(!flash_check(0,page_num)){
+        return 2;
+    }
+    flash_data_union flash_union_buffer[EEPROM_PAGE_LENGTH];
+    flash_read_page(0, page_num, flash_union_buffer, EEPROM_PAGE_LENGTH);
+    if(flash_union_buffer[EEPROM_PAGE_LENGTH-1].uint32_type != (FLASH_KEY^page_num)){
+        return 2;
+    }
+    flash_data_union flash_union = flash_union_buffer[page_index];
+    switch(this->type){
+        case INT_TYPE:
+            IntPage_readFlash(this, flash_union);
+            break;
+        case FLOAT_TYPE:
+            FloatPage_readFlash(this, flash_union);
+            break;
+        case BOOL_TYPE:
+            BoolPage_readFlash(this, flash_union);
+            break;
+        case ENUM_TYPE:
+            EnumPage_readFlash(this, flash_union);
+            break;
+        default:
+            return 1;
+    }
+    return 0;
+}
+uint8 Page_writeFlash(Page *this, uint8 check){
+    char path[PAGE_PATH_MAX+1];
+    Page_getPath(this, path);
+    uint32 hash = String_hash(path, PAGE_FLASH_MOD);
+    uint32 page_num = hash/FLASH_PAGE_USE;
+    uint16 page_index = hash%FLASH_PAGE_USE;
+    flash_data_union flash_union_buffer[EEPROM_PAGE_LENGTH];
+    flash_read_page(0, page_num, flash_union_buffer, EEPROM_PAGE_LENGTH);
+    if(check && (pageFlashCheck[hash/sizeof(uint8)])&(0x01<<hash%sizeof(uint8))){
+        switch(this->type){
+            case INT_TYPE:
+            case FLOAT_TYPE:
+            case BOOL_TYPE:
+            case ENUM_TYPE:
+                return 2;
+        }
+    }
+    flash_data_union flash_union;
+    switch(this->type){
+        case INT_TYPE:
+            flash_union = IntPage_writeFlash(this);
+            break;
+        case FLOAT_TYPE:
+            flash_union = FloatPage_writeFlash(this);
+            break;
+        case BOOL_TYPE:
+            flash_union = BoolPage_writeFlash(this);
+            break;
+        case ENUM_TYPE:
+            flash_union = EnumPage_writeFlash(this);
+            break;
+        default:
+            return 1;
+    }
+    flash_union_buffer[page_index] = flash_union;
+    flash_write_page(0, page_num, flash_union_buffer, EEPROM_PAGE_LENGTH);
+    if(check){
+        pageFlashCheck[hash/sizeof(uint8)] |= 0x01<<hash%sizeof(uint8);
+    }
+    return 0;
+}
+void Page_send(Page *page){
+    char path[PAGE_PATH_MAX+1];
+    Page_getPath(page, path);
+    switch(page->type){
+        case INT_TYPE:
+            printf("^%s=%d$", path, *page->extends.intValue.value);
+            break;
+        case FLOAT_TYPE:
+            printf("^%s=%f$", path, *page->extends.floatValue.value);
+            break;
+        case DOUBLE_TYPE:
+            printf("^%s=%lf$", path, *page->extends.doubleValue.value);
+            break;
+        case BOOL_TYPE:
+            printf("^%s=%d$", path, *page->extends.boolValue.value);
+            break;;
+        case ENUM_TYPE:
+            printf("^%s=%d$", path, *page->extends.enumValue.value);
+            break;
+        case FUNC_TYPE:
+            printf("^%s$", path);
+            break;
+    }
 }
 Page *Page_getRoot(Page *this){
     if(this->parent != NULL){
@@ -265,6 +392,9 @@ void IntPage_init(Page *this, char name[], int32 *value, int32 min, int32 max){
     this->extends.intValue.min = min;
     this->extends.intValue.max = max;
     this->extends.intValue.open = 0;
+    if(flashStatus){
+        Page_readFlash(this);
+    }
 }
 void IntPage_print(Page *this, uint8 row){
     char str[7] = {0};
@@ -315,9 +445,11 @@ void IntPage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.intValue.value > this->extends.intValue.max){
             *this->extends.intValue.value = this->extends.intValue.max;
         }
-        char path[PAGE_PATH_MAX+1];
-        Page_getPath(this, path);
-        printf("^%s=%d$\r\n", path, *this->extends.intValue.value);
+        if(flashStatus){
+            Page_writeFlash(this, 0);
+        }
+        Page_send(this);
+        printf("\r\n");
         if(this->update){
             this->update(this);
         }
@@ -337,6 +469,13 @@ void IntPage_press(Page *this, uint8 pressed[]){
         }
     }
 }
+void IntPage_readFlash(Page *this, flash_data_union value){
+    *this->extends.intValue.value = value.int32_type;
+}
+flash_data_union IntPage_writeFlash(Page *this){
+    flash_data_union ret = {.int32_type=*this->extends.intValue.value};
+    return ret;
+}
 
 void FloatPage_init(Page *this, char name[], float *value, float min, float max){
     Page_init(this, name, FLOAT_TYPE);
@@ -345,6 +484,9 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max)
     this->extends.floatValue.max = max;
     this->extends.floatValue.dot = 1;
     this->extends.floatValue.open = 0;
+    if(flashStatus){
+        Page_readFlash(this);
+    }
 }
 void FloatPage_print(Page *this, uint8 row){
     char str[11] = {0};
@@ -415,9 +557,11 @@ void FloatPage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.floatValue.value > this->extends.floatValue.max){
             *this->extends.floatValue.value = this->extends.floatValue.max;
         }
-        char path[PAGE_PATH_MAX+1];
-        Page_getPath(this, path);
-        printf("^%s=%f$\r\n", path, *this->extends.floatValue.value);
+        if(flashStatus){
+            Page_writeFlash(this, 0);
+        }
+        Page_send(this);
+        printf("\r\n");
         if(this->update){
             this->update(this);
         }
@@ -430,6 +574,13 @@ void FloatPage_press(Page *this, uint8 pressed[]){
             this->extends.floatValue.open = !this->extends.floatValue.open;
         }
     }
+}
+void FloatPage_readFlash(Page *this, flash_data_union value){
+    *this->extends.floatValue.value = value.float_type;
+}
+flash_data_union FloatPage_writeFlash(Page *this){
+    flash_data_union ret = {.float_type=*this->extends.floatValue.value};
+    return ret;
 }
 
 void DoublePage_init(Page *this, char name[], float *value, float min, float max){
@@ -509,9 +660,8 @@ void DoublePage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.doubleValue.value > this->extends.doubleValue.max){
             *this->extends.doubleValue.value = this->extends.doubleValue.max;
         }
-        char path[PAGE_PATH_MAX+1];
-        Page_getPath(this, path);
-        printf("^%s=%lf$\r\n", path, *this->extends.doubleValue.value);
+        Page_send(this);
+        printf("\r\n");
         if(this->update){
             this->update(this);
         }
@@ -530,6 +680,9 @@ void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
     Page_init(this, name, BOOL_TYPE);
     this->extends.boolValue.value = value;
     this->extends.boolValue.dir = dir;
+    if(flashStatus){
+        Page_readFlash(this);
+    }
 }
 void BoolPage_print(Page *this, uint8 row){
     ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->select==0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
@@ -547,14 +700,23 @@ void BoolPage_press(Page *this, uint8 pressed[]){
                     this->extends.boolValue.dir&0x02&&*this->extends.boolValue.value){
                 *this->extends.boolValue.value = !*this->extends.boolValue.value;
             }
-            char path[PAGE_PATH_MAX+1];
-            Page_getPath(this, path);
-            printf("^%s=%d$\r\n", path, *this->extends.boolValue.value);
+            if(flashStatus){
+                Page_writeFlash(this, 0);
+            }
+            Page_send(this);
+            printf("\r\n");
             if(this->update){
                 this->update(this);
             }
         }
     }
+}
+void BoolPage_readFlash(Page *this, flash_data_union value){
+    *this->extends.boolValue.value = value.uint8_type;
+}
+flash_data_union BoolPage_writeFlash(Page *this){
+    flash_data_union ret = {.uint8_type=*this->extends.boolValue.value};
+    return ret;
 }
 
 void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
@@ -570,6 +732,9 @@ void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
     }
     for(int i=0; i<this->extends.enumValue.size; ++i){
         strncpy(this->extends.enumValue.names[i], names[i], PAGE_VALUE_MAX);
+    }
+    if(flashStatus){
+        Page_readFlash(this);
     }
 }
 void EnumPage_print(Page *this, uint8 row){
@@ -606,14 +771,23 @@ void EnumPage_press(Page *this, uint8 pressed[]){
             return;
         }else{
             *this->extends.enumValue.value=this->select;
-            char path[PAGE_PATH_MAX+1];
-            Page_getPath(this, path);
-            printf("^%s=%d$\r\n", path, *this->extends.enumValue.value);
+            if(flashStatus){
+                Page_writeFlash(this, 0);
+            }
+            Page_send(this);
+            printf("\r\n");
             if(this->update){
                 this->update(this);
             }
         }
     }
+}
+void EnumPage_readFlash(Page *this, flash_data_union value){
+    *this->extends.enumValue.value = value.uint8_type;
+}
+flash_data_union EnumPage_writeFlash(Page *this){
+    flash_data_union ret = {.uint8_type=*this->extends.enumValue.value};
+    return ret;
 }
 
 void FuncPage_init(Page *this, char name[], void (*value)()){
@@ -633,10 +807,36 @@ void FuncPage_press(Page *this, uint8 pressed[]){
             return;
         }else{
             this->extends.funcValue.value();
+            Page_send(this);
+            printf("\r\n");
             if(this->update){
                 this->update(this);
             }
         }
+    }
+}
+void AboutPage_init(Page *this, const uint8 *chinese_buffer, uint8 number){
+    Page_init(this, "about", ABOUT_TYPE);
+    this->extends.aboutValue.chinese_buffer = chinese_buffer;
+    this->extends.aboutValue.number = number;
+}
+void AboutPage_print(Page *this, uint8 row){
+    if(!row){
+        uint16 y = 16;
+        ips200_show_string_color(0, y, "Program by", IPS200_DEFAULT_PENCOLOR);
+        y += 16;
+        ips200_show_chinese(ips200_width_max-this->extends.aboutValue.number*16, y,
+                16, this->extends.aboutValue.chinese_buffer, this->extends.aboutValue.number, IPS200_DEFAULT_PENCOLOR);
+        y += 16;
+        ips200_show_string_color(0, y, "Menu by", IPS200_DEFAULT_PENCOLOR);
+        y += 16;
+        ips200_show_chinese(ips200_width_max-StlNumber*16, y,16, Stl, StlNumber, IPS200_DEFAULT_PENCOLOR);
+    }
+}
+void AboutPage_press(Page *this, uint8 pressed[]){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[LEFT_KEY] || pressed[RIGHT_KEY] || pressed[CENTER_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
+        Page_back(this);
+        return;
     }
 }
 

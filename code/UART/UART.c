@@ -114,32 +114,35 @@ void Vofa_Adjust(void)
                 path[equal-tempBuff-1] = '\0';
                 strncpy(value, equal+1, tempEnd-equal);
                 value[tempEnd-equal] = '\0';
-                Page *menu = Page_getByPath(&menu_main, path);
-                if(menu == NULL){
+                Page *page = Page_getByPath(&menu_main, path);
+                if(page == NULL){
                     continue;
                 }
-                switch(menu->type){
+                switch(page->type){
                     case INT_TYPE:
-                        *menu->extends.intValue.value = (int)atoi(value);
+                        *page->extends.intValue.value = (int)atoi(value);
                         break;
                     case FLOAT_TYPE:
-                        *menu->extends.floatValue.value = (float)atof(value);
+                        *page->extends.floatValue.value = (float)atof(value);
                         break;
                     case DOUBLE_TYPE:
-                        *menu->extends.doubleValue.value = (double)atof(value);
+                        *page->extends.doubleValue.value = (double)atof(value);
                         break;
                     case BOOL_TYPE:
-                        *menu->extends.boolValue.value = (uint8)atoi(value);
+                        *page->extends.boolValue.value = (uint8)atoi(value);
                         break;;
                     case ENUM_TYPE:
-                        *menu->extends.enumValue.value = (uint32)atoi(value);
+                        *page->extends.enumValue.value = (uint32)atoi(value);
                         break;
                     case FUNC_TYPE:
-                        menu->extends.funcValue.value();
+                        page->extends.funcValue.value();
                         break;
                 }
-                if(menu->update){
-                    menu->update(menu);
+                if(flashStatus){
+                    Page_writeFlash(page, 0);
+                }
+                if(page->update){
+                    page->update(page);
                 }
                 beepShort();
             }
@@ -147,30 +150,8 @@ void Vofa_Adjust(void)
     }
 }
 
-void Vofa_pageSend(Page *page){
-    char path[PAGE_PATH_MAX+1];
-    Page_getPath(page, path);
-    switch(page->type){
-        case INT_TYPE:
-            printf("^%s=%d$", path, *page->extends.intValue.value);
-            break;
-        case FLOAT_TYPE:
-            printf("^%s=%f$", path, *page->extends.floatValue.value);
-            break;
-        case DOUBLE_TYPE:
-            printf("^%s=%lf$", path, *page->extends.doubleValue.value);
-            break;
-        case BOOL_TYPE:
-            printf("^%s=%d$", path, *page->extends.boolValue.value);
-            break;;
-        case ENUM_TYPE:
-            printf("^%s=%d$", path, *page->extends.enumValue.value);
-            break;
-    }
-}
-
 void Vofa_pageAllSend(){
-    Page_allSubRun(&menu_main, Vofa_pageSend);
+    Page_allSubRun(&menu_main, Page_send);
     for(uint16 i=0; i<0x0fff; ++i){
         printf("\r\n");
     }

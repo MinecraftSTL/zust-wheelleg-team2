@@ -104,8 +104,8 @@ float Q_rsqrt( float number )
 uint16 Bits_reverse(uint16 value, int bits) {
     uint16 reversed = 0;
     for (int i = 0; i < bits; ++i) {
-        if (value & (1U << i)) {
-            reversed |= (1U << (bits - 1 - i));
+        if (value & (0x01 << i)) {
+            reversed |= (0x01 << (bits - 1 - i));
         }
     }
     return reversed;
@@ -119,4 +119,21 @@ float Angle_normalize(float theta) {
 float NormalizeAngle_toPi2(float theta) {
     theta = fabsf(theta); // 转换到 [0, π]
     return (PI - fabsf(2 * theta - PI)) / 2.f;
+}
+
+uint8 String_startWith(const char *this, const char *start){
+    for(uint32 i=0; start[i]; ++i){
+        if(this[i] != start[i]){
+            return 0;
+        }
+    }
+    return 1;
+}
+uint32 String_hash(const char *this, uint32 mod) {
+    uint64 hash = 0;
+    uint8 c;
+    while ((c = *this++)) {
+        hash = (hash * 31 + c) % mod; // 使用位掩碼限制為15位
+    }
+    return (uint32)hash;
 }

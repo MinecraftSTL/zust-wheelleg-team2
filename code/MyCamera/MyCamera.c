@@ -1097,7 +1097,8 @@ void Image_barrier(Image *this, float *cameraV, uint16 *errY){
         case NONE:
             if((straightYMin <= barrierY0 || lStraight && rStraight) &&
                     lInfN == 1 && Inflection_getFacing(lInfRad[0]) == 4 && lLine[lInfLine[0]][1] > barrierY0 &&
-                    rInfN == 1 && Inflection_getFacing(rInfRad[0]) == 3 && rLine[rInfLine[0]][1] > barrierY0){
+                    rInfN == 1 && Inflection_getFacing(rInfRad[0]) == 3 && rLine[rInfLine[0]][1] > barrierY0 &&
+                    lrMeet > barrierY0){
                 CameraStatus_addScore(I_BARRIER);
             }
             break;

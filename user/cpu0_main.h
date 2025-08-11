@@ -57,6 +57,7 @@
 #include "Cpu/Std/Ifx_Types.h"
 
 #include "Menu.h"
+#include "Stl.h"
 #include "PidPage.h"
 #include "Fps.h"
 
