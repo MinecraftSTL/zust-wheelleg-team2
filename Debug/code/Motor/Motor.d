@@ -2,10 +2,6 @@ code/Motor/Motor.o :	../code/Motor/Motor.c
 ../code/Motor/Motor.c :
 code/Motor/Motor.o :	../code/Motor/MOTOR.H
 ../code/Motor/MOTOR.H :
-code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PIN.H
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PIN.H :
-code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/MOTOR.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/MOTOR.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_driver/zf_driver_pwm.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_driver/zf_driver_pwm.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_typedef.h
@@ -332,8 +328,6 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Openso
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PIN.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PIN.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
@@ -354,6 +348,8 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Openso
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_driver/zf_driver_uart.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Flash/FLASH.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Flash/FLASH.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/MOTOR.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/MOTOR.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/SysTimer/SYSTIMER.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/SysTimer/SYSTIMER.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/UART/UART.h

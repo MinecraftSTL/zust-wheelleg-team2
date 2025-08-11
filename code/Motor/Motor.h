@@ -3,7 +3,6 @@
 
 #define MIDDLE_LINE_MODE    1   //1是不使用权重，2是使用权重
 
-#include "PIN.H"
 #include "zf_driver_pwm.h"
 #include "zf_driver_gpio.h"
 #include "PID.h"

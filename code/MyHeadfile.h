@@ -4,7 +4,6 @@
 
 
 #include "zf_common_headfile.h"
-#include "PIN.h"
 #include "Beep.h"
 #include "menu.h"
 #include "MyCamera.h"

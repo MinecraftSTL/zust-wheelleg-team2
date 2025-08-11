@@ -70,18 +70,17 @@ uint8 fsEn = 1;
 int core0_main(void)
 {
     clock_init();                   // 获取时钟频率<务必保留>
-//    debug_init();                   // 初始化默认调试串口
+    debug_init();                   // 初始化默认调试串口
     // 此处编写用户代码 例如外设初始化代码等
-    beepStart();
+    beep_init();
     ips200_init(IPS200_TYPE_SPI);
-    mpu6050_init();
+    gyro_init(PIT10ms);
     key_init(PIT00ms);
     small_driver_uart_init();
     MyEncoder_Init();
     PID_param_init();
     pit_ms_init(CCU60_CH0, PIT00ms);
     pit_ms_init(CCU61_CH0, PIT10ms);
-    beepStop();
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
     ListPage_setRoot(&menu_main);
@@ -121,11 +120,12 @@ int core0_main(void)
     IntPage_init(&menu_main_debug_fs_speed, "speed", &fsSpeed, -10000, 10000);
     BoolPage_init(&menu_main_debug_fs_en, "enable", &fsEn, 0x03);
 
-    beepShort();
+    beepLong();
     PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
         if(pressed){
+            beepShort();
             PageKey_press(&menu_main, pressed);
             PageKey_print(&menu_main, 0);
             pressed=0;

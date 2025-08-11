@@ -363,13 +363,13 @@ void FFloatPage_press(Page *this, uint8 pressed){
                 *this->extends.fFloatValue.value += powf(10, this->extends.fFloatValue.dot-this->open);
             }
         }else if(this->open == this->extends.fFloatValue.dot+1){
-            if(pressed&0x02 || this->extends.fFloatValue.opened&&pressed&0x20){
+            if(pressed&0x01 || this->extends.fFloatValue.opened&&pressed&0x20){
                 if(this->extends.fFloatValue.dot>0){
                     --this->extends.fFloatValue.dot;
                     --this->open;
                 }
             }
-            if(pressed&0x01 || this->extends.fFloatValue.opened&&pressed&0x40){
+            if(pressed&0x02 || this->extends.fFloatValue.opened&&pressed&0x40){
                 if(this->extends.fFloatValue.dot<6){
                     ++this->extends.fFloatValue.dot;
                     ++this->open;

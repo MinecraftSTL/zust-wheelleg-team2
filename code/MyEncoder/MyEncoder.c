@@ -72,9 +72,6 @@ void Get_Switch_Num(void)
 //    printf("%d, %d, %d, %d\r\n", timer_cnt, switch_encode_change_get_buff_flag,
 //            last_switch_encoder_num, switch_encoder_num);
     switch_encoder_change_num = switch_encoder_num - last_switch_encoder_num;
-    if(switch_encoder_change_num){
-        beepShort();
-    }
     last_switch_encoder_num = switch_encoder_num;
 }
 /***********************************************

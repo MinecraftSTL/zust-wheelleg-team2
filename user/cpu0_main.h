@@ -53,7 +53,7 @@
 /******************************************************************************/
 #include "Cpu/Std/Ifx_Types.h"
 
-#include "zf_common_headfile.h"
+#include "Sys.h"
 
 #include "menu.h"
 #include "cpu1_main.h"

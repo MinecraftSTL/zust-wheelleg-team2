@@ -10,10 +10,13 @@
 
 #include "zf_common_headfile.h"
 
+#define Beep P33_10
+
 extern uint32 beepTime;
 
-void beepStart();
-void beepStop();
+void beep_init();
+void beep_start();
+void beep_stop();
 
 void beep(uint32 time);
 void beepShort();

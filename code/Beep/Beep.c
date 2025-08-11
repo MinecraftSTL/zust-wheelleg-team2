@@ -11,10 +11,14 @@
 
 uint32 beepTime = 0;
 
-void beepStart(){
+void beep_init(){
+    gpio_init(Beep, GPO, 0, GPO_PUSH_PULL);
+}
+
+void beep_start(){
     gpio_high(Beep);
 }
-void beepStop(){
+void beep_stop(){
     gpio_low(Beep);
 }
 

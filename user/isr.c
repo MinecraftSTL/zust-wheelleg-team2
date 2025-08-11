@@ -36,10 +36,7 @@
 #include "isr_config.h"
 #include "isr.h"
 
-#include "zf_common_headfile.h"
-
-#include "Beep.h"
-#include "MyEncoder.h"
+#include "Sys.h"
 
 #include "PID_param.h"
 #include "Gyro.h"
@@ -55,10 +52,11 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU60_CH0);
-    if(beepTime--){
-        beepStart();
+    if(beepTime){
+        --beepTime;
+        beep_start();
     }else{
-        beepStop();
+        beep_stop();
     }
     key_scanner();
     for(int i=0; i<KEY_NUMBER; ++i){
@@ -90,26 +88,11 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
     int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-    {
-        mpu6050_get_gyro();
-        vAx = (imu660ra_gyro_transition(mpu6050_gyro_x+35)-0.023)*PIT10ms/1000;
-        vAy = (imu660ra_gyro_transition(mpu6050_gyro_y-3)-0.06)*PIT10ms/1000;
-        vAz = (imu660ra_gyro_transition(mpu6050_gyro_z+11)-0.034)*PIT10ms/1000;
-        xAx += vAx;
-        xAy += vAy;
-        xAz += vAz;
-        aAx = vAx - vAx_;
-        aAy = vAy - vAy_;
-        aAz = vAz - vAz_;
-        vAx_ = vAx;
-        vAy_ = vAy;
-        vAz_ = vAz;
-    }
-    VxDownAy += pid(&Vx, V0, Encoder_speed)/1000;
-    VxDownAy = func_limit(VxDownAy, 15);
+    get_gyro();
+    float VxDownAy = pid(&Vx, V0, Encoder_speed)/1000;
 //    printf("%d, %d, %d\r\n",mpu6050_gyro_x,mpu6050_gyro_y,mpu6050_gyro_z);
 //    printf("%f,%f,%f,%f,%f,%f\r\n", Ax,Ay,Az,imu660ra_acc_transition(mpu6050_acc_x),imu660ra_acc_transition(mpu6050_acc_y),imu660ra_acc_transition(mpu6050_acc_z));
-    printf("%f,%f,%f\r\n", -xAx,downAy,-VxDownAy);
+//    printf("%f,%f,%f\r\n", -xAx,downAy,-VxDownAy);
 
     float speed = pid(&pitch, downAy-VxDownAy, xAy);
 //    printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);

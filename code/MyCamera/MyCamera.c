@@ -1794,7 +1794,7 @@ void Cross_Road(void)
                 {
                     cross_road_flag=0;
                     cross_road_status=0;
-                    beepStop();
+                    beep_stop();
                 }
             }
 

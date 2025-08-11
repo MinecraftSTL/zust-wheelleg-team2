@@ -16,6 +16,8 @@ typedef struct
         float AVG_distance;
 }Encoder_Distance_Typedef;
 
+#define Switch_ENCODER_L         TIM3_ENCODER_CH1_P02_6        //右编码器计数引脚
+#define Switch_ENCODER_R         TIM3_ENCODER_CH2_P02_7        //右编码器方向引脚
 
 extern int16 Encoder_speed_l;
 extern int16 Encoder_speed_r;
