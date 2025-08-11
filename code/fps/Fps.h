@@ -30,10 +30,10 @@
 
 #include "Sys.h"
 
-extern uint16 fps;
+extern uint32 fps;
 
 void Fps_init(uint32 period);
 void Fps_scan();
-void Fps_add(uint8 fNum);
+void Fps_add(uint16 fNum);
 
 #endif /* CODE_FPS_FPS_H_ */

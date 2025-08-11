@@ -9,11 +9,12 @@
 
 uint16 sepNum;
 
-uint8 f[1000] = {0};
-uint16 fps = 0;
+uint16 f[1000] = {0};
+uint32 fps = 0;
 uint16 p = 0;
 
 void Fps_init(uint32 period){
+    zf_assert(0 < period && period <= 1000);
     sepNum = 1000/period;
 }
 
@@ -25,6 +26,6 @@ void Fps_scan(){
     f[p]=0;
 }
 
-void Fps_add(uint8 fNum){
+void Fps_add(uint16 fNum){
     f[p]+=fNum;
 }

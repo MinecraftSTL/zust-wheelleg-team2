@@ -19,6 +19,7 @@ void PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Ou
 
 float pid(PID *this, float TargetValue, float ActualValue)
 {
+    zf_assert(!!this);
     float ret;
     float Ek = TargetValue - ActualValue;
     this->Ek_sum += Ek;

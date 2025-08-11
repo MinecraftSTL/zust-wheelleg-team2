@@ -31,7 +31,7 @@ void Int_toString(int this, char *str, uint8 num);
 void Double_toString(float this, char *str, uint8 num, uint8 point);
 
 void Page_init(Page *this, char name[], enum PageExtendsType type){
-//    strncpy(this->name, name, sizeof(this->name));
+    zf_assert(this && name);
     int8 i=0;
     for(; i<PAGE_NAME_MAX; ++i){
         if(name[i] == '\0'){
@@ -309,7 +309,7 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max)
     Page_init(this, name, FLOAT_TYPE);
     this->extends.floatValue.value = value;
     this->extends.floatValue.min = min;
-    this->extends.floatValue.max = max;;
+    this->extends.floatValue.max = max;
     this->extends.floatValue.dot = 1;
     this->extends.floatValue.open = 0;
 }
@@ -397,7 +397,7 @@ void DoublePage_init(Page *this, char name[], float *value, float min, float max
     Page_init(this, name, DOUBLE_TYPE);
     this->extends.doubleValue.value = value;
     this->extends.doubleValue.min = min;
-    this->extends.doubleValue.max = max;;
+    this->extends.doubleValue.max = max;
     this->extends.doubleValue.dot = 1;
     this->extends.doubleValue.open = 0;
 }
@@ -537,7 +537,9 @@ void EnumPage_print(Page *this, uint8 row){
             ips200_show_string_color(0, i*16+16, this->extends.enumValue.names[i], i==*this->extends.enumValue.value?IPS200_DEFAULT_OPENCOLOR:i==this->select?IPS200_DEFAULT_SELECTCOLOR:IPS200_DEFAULT_PENCOLOR);
         }
     }else{
-        ips200_show_string_color(160, row*16, this->extends.enumValue.names[*this->extends.enumValue.value], IPS200_DEFAULT_PENCOLOR);
+        if(*this->extends.enumValue.value < this->extends.enumValue.size){
+            ips200_show_string_color(160, row*16, this->extends.enumValue.names[*this->extends.enumValue.value], IPS200_DEFAULT_PENCOLOR);
+        }
     }
 }
 void EnumPage_press(Page *this, uint8 pressed[]){

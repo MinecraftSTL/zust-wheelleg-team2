@@ -96,36 +96,3 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float
         yaw = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2 * q2 - 2 * q3 * q3 + 1) * 57.259f;
     }
 }
-
-
-
-float LPF2_T2(float xin)
-{
-   static float lpf2_yout[3] = {0};
-   static float lpf2_xin[3] = {0};
-
-   float sample_freq = 1000;
-   float cutoff_freq = 1;
-//   float fr = sample_freq / cutoff_freq;
-
-   float ohm = tan(PI * cutoff_freq /sample_freq);
-   float c = 1 + 1.414 * ohm  + ohm * ohm;
-
-   float b0 = ohm * ohm /c;
-   float b1 = 2.0f * b0;
-   float b2 = b0;
-
-   float a1 = 2.0f * (ohm * ohm - 1.0f) /c;
-   float a2 = (1.0f - 1.414 * ohm + ohm * ohm) / c;
-
-   lpf2_xin[2] = xin;
-
-   lpf2_yout[2] = b0 * lpf2_xin[2] + b1 * lpf2_xin[1] + b2 * lpf2_xin[0] - a1 * lpf2_yout[1] - a2 * lpf2_yout[0];
-
-   lpf2_xin[0] = lpf2_xin[1];
-   lpf2_xin[1] = lpf2_xin[2];
-   lpf2_yout[0] = lpf2_yout[1];
-   lpf2_yout[1] = lpf2_yout[2];
-
-   return lpf2_yout[2];
-}

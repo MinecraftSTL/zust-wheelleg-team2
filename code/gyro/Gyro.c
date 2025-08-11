@@ -43,9 +43,9 @@ void gyro_set(){
 
 void get_gyro()
 {
-	int16 new_gyro_x = 0;
-    int16 new_gyro_z = 0;
-	int16 new_gyro_y = 0;
+	int16 new_gyro_x;
+    int16 new_gyro_z;
+	int16 new_gyro_y;
     
 	new_gyro_z=my_gyro_z-zero_my_gyro_z;
 

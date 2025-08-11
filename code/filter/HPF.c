@@ -24,6 +24,7 @@ void HPF_Init(Filter* this, float cutoff_freq, float sample_freq) {
 
 // 更新滤波器状态并返回滤波后的值
 float hpf(Filter* this, float input) {
+    zf_assert(!!this);
     // 计算输入差值
     float delta_x = isnan(this->x) ? 0 : input-this->x;
     // 应用高通滤波公式

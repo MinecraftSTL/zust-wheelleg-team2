@@ -9,7 +9,7 @@
 PID PID_WvAy, PID_WxAy, PID_vVx, PID_WvAz, PID_vAz, PID_xAx;
 
 void PID_param_init(){
-    PID_init(&PID_WvAy, 8, 0, 0, 32500, 5000);
+    PID_init(&PID_WvAy, 5, 0.03, 0, 32500, 5000);
     PID_init(&PID_WxAy, 16, 0, 80, 10000, 10000);
     PID_init(&PID_vVx, 100, 0.1, 0, 0, 20000);
     if(PID_vVx.Ki != 0){

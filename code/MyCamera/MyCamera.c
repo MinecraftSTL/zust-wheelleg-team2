@@ -96,8 +96,8 @@ void inline Image_set(Image *this, uint16 x, uint16 y, uint8 value){
 }
 void Image_fromCamera(Image *this, uint8 mt9v03x_image[MT9V03X_H][MT9V03X_W])
 {
-    this->h = MT9V03X_H;
     this->w = MT9V03X_W;
+    this->h = MT9V03X_H;
     memcpy(this->image, mt9v03x_image, MT9V03X_IMAGE_SIZE);
 }
 void Image_clear(Image *this){
@@ -211,10 +211,7 @@ uint8 Fast_OTSU(Image *this)
     {
         sumOfBackPixel += grayHist[i];        // 背景总像素数
         sumOfBackGray  += i * grayHist[i];    // 背景总灰度值
-        if (isFirstBinary)               // 第一次二值化
-        {
-            goto GRAY_VARIANCE;
-        } else    // 不是第一次二值化，本次阈值在上次阈值的附近（这样能快几十us）
+        if (!isFirstBinary)  // 不是第一次二值化，本次阈值在上次阈值的附近（这样能快几十us）
         {
             if (i < threshold - 5 && maxGrayValue > threshold)    // 和上次阈值的差距 > 某个值，不计算类间方差。
             {
@@ -223,8 +220,7 @@ uint8 Fast_OTSU(Image *this)
             if (i > threshold + 5 && minGrayValue < threshold) {
                 return (uint8) threshold;    // 最大类间方差对应的灰度值，认为是最佳分割阈值
             }
-        }
-    GRAY_VARIANCE:                                                     // 计算类间方差
+        }                                          // 计算类间方差
         sumOfForcePixel = sumOfPixel - sumOfBackPixel;                 // 前景像素总数
         sumOfForceGray  = sumOfGrayValue - sumOfBackGray;              // 前景总灰度值
         w0              = (float) sumOfBackPixel / sumOfPixel;         // 背景像素比例
@@ -458,7 +454,11 @@ void Image_borderSetCLine(Image *this, uint16 border[MT9V03X_H], uint16 x0, uint
     }
     float slope = (float)(x1-x0)/(y1-y0);
     for(uint16 i = y0; i <= y1; ++i){
-        border[i] = (uint16)(slope*(i-y0)+x0);
+        uint16 x = (uint16)(slope*(i-y0)+x0);
+        if(x >= this->w || i >= this->h){
+            continue;
+        }
+        border[i] = x;
     }
 }
 
@@ -505,6 +505,9 @@ void Image_borderSetSLine(Image *this, uint16 border[MT9V03X_H], uint16 pos[MT9V
     if(!isnan(slope) && !isnan(intercept)){
         for(uint16 i = y0; i <= y1; ++i){
             float x = slope*i+intercept;
+            if(x >= this->w || i >= this->h){
+                continue;
+            }
             border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
         }
     }
@@ -614,7 +617,7 @@ float statusScore[CAMERA_STATUS_NUMBER] = {0};
 uint64 statusKeepTick = 0;
 void CameraStatus_set(CameraStatus this){
     beepMid();
-    memset(statusScore, 0, sizeof(uint8)*CAMERA_STATUS_NUMBER);
+    memset(statusScore, 0.f, sizeof(float)*CAMERA_STATUS_NUMBER);
     cameraStatus = this;
     statusKeepTick = 0;
 }

@@ -77,12 +77,13 @@ const uint32 jumpStep[] = {
     100,//ÊÕÍÈ
     60,//ÉìÍÈ
     90,//ÂıÊÕÍÈ
+    0,
 };
 
 uint32 jumpTime = 32767;
 
 void jumpPit(uint32 period, float *legZ){
-    Step step = getStep(jumpStep, 4, jumpTime);
+    Step step = getStep(jumpStep, jumpTime);
     switch(step.step){
         case 0:
             *legZ = -130;
