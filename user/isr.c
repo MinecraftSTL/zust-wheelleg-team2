@@ -76,8 +76,10 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kZero = 13;
+float kZero = -4;
 float kLx2s = 5000;
+
+uint8 menuJump = 0;
 
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
@@ -106,13 +108,12 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         if(fvEn){
             targetV = fvV;
         }
-        float VxKZero = pid(&PID_vVx, targetV, Encoder_speed)/1000;
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
 //        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
+        legX = legZ*tan(pid(&PID_vVx, targetV, Encoder_speed)/1000*PI/180);
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
-        tg_pitchV = pid(&PID_WxAy, kZero-VxKZero, pitch);
+        tg_pitchV = pid(&PID_WxAy, kZero, pitch);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
-        legX = legZ*tan(VxKZero*PI/180);
     }else{
         PID_clear(&PID_vVx);
         PID_clear(&PID_WxAy);
@@ -120,7 +121,6 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
     int speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
-    speed = lpf(&Filter_speed, speed);
     if(fsEn){
         speed = fsSpeed;
     }
@@ -131,6 +131,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
 //    printf("%d\r\n", speed);
     MotorSetPWM(speed-turn, speed+turn);
+    jumpPit(PIT10ms, &legZ);
     if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
     }else if(fwpEn){
@@ -140,18 +141,21 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lx = rx = legX;
         lz = rz = legZ;
         float lza = 0;
-        if(g_Car_Status){
+        if(g_Car_Status && !ffRow){
             lza = Roll_toPosZ(-roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
         lza_ += pid(&PID_xAx, lza, lza_)/1000;
-        lza_ = func_limit(lza_, LEG_MAX_Z-LEG_MIN_Z);
         if(lza_ > 0){
-            lz -= lza_;
+            lz += -lza_;
         }else{
-            rz += lza_;
+            rz -= -lza_;
         }
         Leg_set_pos(lx, lz, rx, rz);
+    }
+    if(menuJump){
+        menuJump = 0;
+        jump();
     }
 }
 

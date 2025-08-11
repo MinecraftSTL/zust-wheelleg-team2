@@ -20,7 +20,7 @@
 #define LFD 90
 #define LBU 60
 #define LBD 90
-#define DLR 161
+#define DLR 160
 
 #define LEG_MIN_Z 30
 #define LEG_MAX_Z 140
@@ -34,5 +34,14 @@ void Leg_init();
 int32 Roll_toPosZ(float roll, float lza);
 void Leg_set_duty(float rb, float rf, float lf, float lb);
 void Leg_set_pos(float lx, float lz, float rx, float rz);
+
+extern const uint32 preRetractLegTime;
+extern const float preRetractLegZ;
+extern const uint32 extendLegTime;
+extern const float extendLegZ;
+extern const uint32 retractLegTime;
+extern const float retractLegZ;
+
+void jumpIsr(uint32 period, float *legZ);
 
 #endif /* CODE_LEG_LEG_H_ */

@@ -100,6 +100,8 @@ Page menu_main_debug_fwp_lx;
 Page menu_main_debug_fwp_lz;
 Page menu_main_debug_fwp_rx;
 Page menu_main_debug_fwp_rz;
+Page menu_main_debug_ffRow;
+Page menu_main_debug_jump;
 
 int core0_main(void)
 {
@@ -163,7 +165,7 @@ int core0_main(void)
         &menu_main_arg_PID_vVx,
         &menu_main_arg_PID_xAx,
     });
-    ListPage_init(&menu_main_arg_PID_vAy, "aAy", 3, (Page*[]){
+    ListPage_init(&menu_main_arg_PID_vAy, "vAy", 3, (Page*[]){
         &menu_main_arg_PID_vAy_Kp,
         &menu_main_arg_PID_vAy_Ki,
         &menu_main_arg_PID_vAy_Kd,
@@ -171,7 +173,7 @@ int core0_main(void)
     FFloatPage_init(&menu_main_arg_PID_vAy_Kp, "Kp", &PID_WvAy.Kp, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_vAy_Ki, "Ki", &PID_WvAy.Ki, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_vAy_Kd, "Kd", &PID_WvAy.Kd, 0, 10000);
-    ListPage_init(&menu_main_arg_PID_xAy, "vAy", 3, (Page*[]){
+    ListPage_init(&menu_main_arg_PID_xAy, "xAy", 3, (Page*[]){
         &menu_main_arg_PID_xAy_Kp,
         &menu_main_arg_PID_xAy_Ki,
         &menu_main_arg_PID_xAy_Kd,
@@ -203,11 +205,13 @@ int core0_main(void)
     FFloatPage_init(&menu_main_arg_PID_xAx_Kp, "Kp", &PID_xAx.Kp, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAx_Ki, "Ki", &PID_xAx.Ki, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAx_Kd, "Kd", &PID_xAx.Kd, 0, 10000);
-    ListPage_init(&menu_main_debug, "debug", 4, (Page*[]){
+    ListPage_init(&menu_main_debug, "debug", 5, (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,
         &menu_main_debug_fv,
         &menu_main_debug_fwp,
+        &menu_main_debug_ffRow,
+        &menu_main_debug_jump,
     });
     ListPage_init(&menu_main_debug_fs, "forceSpeed", 2, (Page*[]){
         &menu_main_debug_fs_en,
@@ -253,6 +257,8 @@ int core0_main(void)
     =menu_main_debug_fwp_lz.extends.fFloatValue.dot
     =menu_main_debug_fwp_rx.extends.fFloatValue.dot
     =menu_main_debug_fwp_rz.extends.fFloatValue.dot=2;
+    BoolPage_init(&menu_main_debug_ffRow, "ffRow", &ffRow, 0x03);
+    BoolPage_init(&menu_main_debug_jump, "jump", &menuJump, 0x01);
 
     beepLong();
     ips200_clear();
@@ -273,7 +279,7 @@ int core0_main(void)
         }
         MyCamera_Show(200);
 //        printf("%d\n", g_camera_mid_err);
-//        printf("%f, %f, %f\r\n", pitch, roll, yaw);
+        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码
     }
 }

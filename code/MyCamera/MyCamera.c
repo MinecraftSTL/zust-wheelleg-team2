@@ -194,16 +194,16 @@ void MyCamera_Show(uint16 start_y)
             ips200_draw_point((uint16)right_copy[i],(uint16)i+start_y, RGB565_BLUE);
         }
         if(lower_left_inflection_Flag){
-            ips200_draw_square((uint16)lower_left_inflection_X, (uint16)lower_left_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
+            ips200_draw_square((uint16)lower_left_inflection_X, (uint16)lower_left_inflection_Y+start_y, inflecction_square_r, RGB565_RED);
         }
         if(lower_right_inflection_Flag){
-            ips200_draw_square((uint16)lower_right_inflection_X, (uint16)lower_right_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
+            ips200_draw_square((uint16)lower_right_inflection_X, (uint16)lower_right_inflection_Y+start_y, inflecction_square_r, RGB565_RED);
         }
         if(upper_left_inflection_flag){
-            ips200_draw_square((uint16)upper_left_inflection_X, (uint16)upper_left_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
+            ips200_draw_square((uint16)upper_left_inflection_X, (uint16)upper_left_inflection_Y+start_y, inflecction_square_r, RGB565_RED);
         }
         if(upper_right_inflection_flag){
-            ips200_draw_square((uint16)upper_right_inflection_X, (uint16)upper_right_inflection_Y+start_y, inflecction_square_r, RGB565_GREEN);
+            ips200_draw_square((uint16)upper_right_inflection_X, (uint16)upper_right_inflection_Y+start_y, inflecction_square_r, RGB565_RED);
         }
 //        seekfree_assistant_camera_send();
     }

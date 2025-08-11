@@ -35,24 +35,17 @@ struct LegServoAngle Pos_toServoAngle(float x, float z){
 }
 
 void Pos_limit(float *x, float *z){
-    if(*x < -LEG_MAX_X){
-        *x = -LEG_MAX_X;
-    }
-    if(*x > LEG_MAX_X){
-        *x = LEG_MAX_X;
-    }
-    if(-*z < LEG_MIN_Z){
-        *z = -LEG_MIN_Z;
-    }
-    if(-*z > LEG_MAX_Z){
-        *z = -LEG_MAX_Z;
-    }
+    *x = func_limit(*x, LEG_MAX_X);
+    *z = func_limit_ab(*z, -LEG_MAX_Z, -LEG_MIN_Z);
+}
+void Servo_limit(float *a){
+    *a = func_limit_ab(*a, -PI/6, PI/2);
 }
 
 int32 Roll_toPosZ(float roll, float lza){
     float AGC = PI-roll;
-    float AWG = atan2(lza, DLR)- AGC;
-    return DLR*tan(AWG);
+    float AWG = atan2f(lza, DLR)- AGC;
+    return DLR*tanf(AWG);
 }
 
 uint32 Radian_toPwmDuty(float rad){
@@ -60,7 +53,11 @@ uint32 Radian_toPwmDuty(float rad){
 }
 
 void Leg_set_duty(float rb, float rf, float lf, float lb){
-    pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+0.8));
+    Servo_limit(&rb);
+    Servo_limit(&rf);
+    Servo_limit(&lf);
+    Servo_limit(&lb);
+    pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+0.6));
     pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf+0.5));
     pwm_set_duty(servo_lf, Radian_toPwmDuty(lf+0.7));
     pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb+0.5));
@@ -73,4 +70,33 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
     struct LegServoAngle r = Pos_toServoAngle(rx, rz);
 //    printf("%lf, %lf, %lf, %lf\n",r.b, r.f, l.b, l.f);
     Leg_set_duty(r.b, r.f, l.f, l.b);
+}
+
+const uint32 preRetractLegTime = 200;
+const float preRetractLegZ = -45;
+const uint32 extendLegTime = 200;
+const float extendLegZ = -130;
+const uint32 retractLegTime = 200;
+const float retractLegZ = -45;
+
+uint32 jumpTime = 0;
+
+void jumpPit(uint32 period, float *legZ){
+    if(jumpTime){
+        ++jumpTime;
+        if(jumpTime*period <= preRetractLegTime){
+            *legZ = preRetractLegZ;
+        }else if(jumpTime*period <= preRetractLegTime+extendLegTime){
+            *legZ = extendLegZ;
+        }else if(jumpTime*period <= preRetractLegTime+extendLegTime+retractLegTime){
+            *legZ = retractLegZ;
+        }else{
+            jumpTime = 0;
+        }
+    }
+}
+void jump(){
+    if(!jumpTime){
+        jumpTime = 1;
+    }
 }
