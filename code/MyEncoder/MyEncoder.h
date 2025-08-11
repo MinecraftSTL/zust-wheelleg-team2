@@ -32,11 +32,6 @@ void MyEncoder_Init(void);
 void GetSpeed(void);
 void Get_Switch_Num(void);
 int16 My_Switch_encoder_get_count (encoder_index_enum encoder_n);
-void Get_Encoder_Distance(Encoder_Distance_Typedef *Distance_Structure);
-void Encoder_Distance_Start(Encoder_Distance_Typedef *Distance_Structure);
-void Encoder_Distance_Stop(Encoder_Distance_Typedef *Distance_Structure);
-void Distance_StartPoint_Check(Encoder_Distance_Typedef *Distance_Structure);
-uint8 Encoder_Distance_MaxLimit(Encoder_Distance_Typedef *Distance_Structure, float distance_max);
 
 
 #endif

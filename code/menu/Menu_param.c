@@ -17,6 +17,9 @@ Page menu_main_config_mod;
 Page menu_main_config_mod_gyro;
 Page menu_main_config_mod_foc;
 Page menu_main_config_mod_flash;
+Page menu_main_config_motor;
+Page menu_main_config_motor_lDir;
+Page menu_main_config_motor_rDir;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_zero;
@@ -139,7 +142,7 @@ Page menu_main_debug_jump;
 Page menu_main_about;
 
 void Menu_param_init(){
-    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.debug", "main.arg.k.camera.show"});
+    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.debug", "main.arg.k.camera.show", ""});
     Page_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", (Page*[]){
         &menu_main_carStatus,
@@ -160,6 +163,7 @@ void Menu_param_init(){
     ListPage_init(&menu_main_config, "config", (Page*[]){
         &menu_main_config_volume,
         &menu_main_config_mod,
+        &menu_main_config_motor,
         NULL
     });
     IntPage_init(&menu_main_config_volume, "volume", &volume, 0, 3);
@@ -172,6 +176,13 @@ void Menu_param_init(){
     FuncPage_init(&menu_main_config_mod_gyro, "gyro", Gyro_set);
     FuncPage_init(&menu_main_config_mod_foc, "foc", MotorZero);
     FuncPage_init(&menu_main_config_mod_flash, "flash", Flash_clear);
+    ListPage_init(&menu_main_config_motor, "motor", (Page*[]){
+        &menu_main_config_motor_lDir,
+        &menu_main_config_motor_rDir,
+        NULL
+    });
+    BoolPage_init(&menu_main_config_motor_lDir, "lDir", &Motor_dirL, 0x03);
+    BoolPage_init(&menu_main_config_motor_rDir, "rDir", &Motor_dirR, 0x03);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,

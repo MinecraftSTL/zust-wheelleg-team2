@@ -31,7 +31,7 @@ int crossY = 20;
 int circleX = 7;
 int rampS = 750000;
 int rampY = 40;
-float rampZ = -45;
+float rampZ = -60;
 float rampK = 0.1;
 int barrierY0 = 20;
 int barrierY1 = 40;
@@ -51,7 +51,7 @@ uint8 showWait = 0;
 
 float bendV = 500;
 float circleV = 550;
-float rampV = 100;
+float rampV = 200;
 float bridgeV = 250;
 
 float cameraV = 0;

@@ -27,10 +27,6 @@ void FuncPage_press(Page *this, uint8 pressed[]);
 void AboutPage_print(Page *this, uint8 row);
 void AboutPage_press(Page *this, uint8 pressed[]);
 
-void ips200_reset_color();
-void ips200_set_pencolor(const uint16 color);
-void ips200_show_char_color(uint16 x, uint16 y, const char dat, const uint16 color);
-void ips200_show_string_color(uint16 x, uint16 y, const char dat[], const uint16 color);
 int Int_pow(int this, int pow);
 void Int_toString(int this, char *str, uint8 num);
 void Double_toString(float this, char *str, uint8 num, uint8 point);
