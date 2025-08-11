@@ -3,12 +3,12 @@ space	mpe:tc1:linear	201	8
 space	mpe:tc1:abs24	202	8
 space	mpe:tc0:linear	101	8
 space	mpe:tc0:abs24	102	8
+space	mpe:tc3:csa	404	8
 space	mpe:vtc:abs18	3	8
-space	mpe:tc3:abs24	402	8
 space	mpe:vtc:linear	1	8
+space	mpe:tc3:abs24	402	8
 space	mpe:tc3:abs18	403	8
 space	mpe:vtc:abs24	2	8
-space	mpe:tc3:csa	404	8
 space	mpe:tc1:abs18	203	8
 space	mpe:tc1:csa	204	8
 space	mpe:tc2:linear	301	8
@@ -19,10 +19,10 @@ space	mpe:tc3:linear	401	8
 space	mpe:tc0:csa	104	8
 space	mpe:tc0:abs18	103	8
 # chip <name> <id> <mau size> <size> <type>
-chip	mpe:cpu3_dlmu	17	8	65536	ram
-chip	mpe:lmuram	18	8	131072	ram
 chip	mpe:cpu1_dlmu	15	8	65536	ram
+chip	mpe:lmuram	18	8	131072	ram
 chip	mpe:cpu2_dlmu	16	8	65536	ram
+chip	mpe:cpu3_dlmu	17	8	65536	ram
 chip	mpe:psram1	5	8	65536	ram
 chip	mpe:dsram0	6	8	245760	ram
 chip	mpe:psram0	7	8	65536	ram

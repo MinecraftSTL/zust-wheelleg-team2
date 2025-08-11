@@ -8,17 +8,21 @@ BinImage binImage;
 Image cutShowImage;
 Rgb565Image showImage;
 
-int16 lStartPoint[2];
-int16 rStartPoint[2];
+uint16 lStartPoint[2];
+uint16 rStartPoint[2];
 
-int16 lLine[MT9V03X_H*3][2];
+uint16 lLine[MT9V03X_W*3][2];
+uint8 lLineDir[MT9V03X_W*3];
 uint16 lLineL = 0;
-int8 lLineDir[MT9V03X_H*3];
-int16 rLine[MT9V03X_H*3][2];
+uint16 rLine[MT9V03X_W*3][2];
+uint8 rLineDir[MT9V03X_W*3];
 uint16 rLineL = 0;
-int8 rLineDir[MT9V03X_H*3];
-int16 lBorder[MT9V03X_H];
-int16 rBorder[MT9V03X_H];
+uint16 lrMeet[2];
+uint8 L_Stop_Flag = 0;
+uint8 R_Stop_Flag = 0;
+uint16 lBorder[MT9V03X_H];
+uint16 rBorder[MT9V03X_H];
+uint16 mLine[MT9V03X_H];
 
 uint8 camera_process_cnt = 0;
 
@@ -49,6 +53,21 @@ void MyCamera_Show(uint16 start_y)
         if(lStartPoint[0]&&rStartPoint[0]){
             Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
             Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
+        }
+//        for(uint16 i=0; i<lLineL; ++i){
+//            Rgb565Image_set(&showImage, lLine[i][0], lLine[i][1], RGB565_YELLOW);
+//        }
+//        for(uint16 i=0; i<rLineL; ++i){
+//            Rgb565Image_set(&showImage, rLine[i][0], rLine[i][1], RGB565_YELLOW);
+//        }
+        for(uint16 i=0; i<showImage.h; ++i){
+            Rgb565Image_set(&showImage, i, lBorder[i], RGB565_GREEN);
+        }
+        for(uint16 i=0; i<showImage.h; ++i){
+            Rgb565Image_set(&showImage, i, rBorder[i], RGB565_GREEN);
+        }
+        for(uint16 i=0; i<showImage.h; ++i){
+            Rgb565Image_set(&showImage, i, mLine[i], RGB565_BLUE);
         }
         ips200_show_rgb565_image(0, start_y, showImage.image, showImage.w, showImage.h, showImage.w, showImage.h, 0);
     }
@@ -111,7 +130,7 @@ void Image_binaryzation(Image *this, Image *target, uint16 r, int16 deltaT){
     BinImage_init(&binImage, this, r, deltaT);
     for(uint16 i = 0; i < target->h; ++i){
         for(uint16 j = 0; j < target->w; ++j){
-            Image_set(target,i,j,BinImage_get(&binImage, i, j));
+            Image_set(target,i,j,BinImage_get(&binImage, i, j)?0xFF:0);
         }
     }
 }
@@ -132,38 +151,16 @@ uint8 BinImage_get(BinImage *this, uint16 y, uint16 x){
     }
     int16 threshold = sum/((this->r*2+1)*(this->r*2+1));
     threshold+=this->deltaT;
-    uint8 color = Image_get(this->image,y+this->r,x+this->r);
-    if(color == 0 || color == 0xFF){
-        return color;
-    }else{
-        return color>threshold ? 0xFF : 0;
-    }
+    return Image_get(this->image,y+this->r,x+this->r)>threshold;
 }
-void BinImage_set(BinImage *this, uint16 y, uint16 x, uint8 value){
-    zf_assert(this && this->image && y < this->h && x < this->w);
-    Image_set(this->image, y+this->r, x+this->r, value?0xFF:0);
-}
-
-void BinImage_drawRectan(BinImage *this)
-{
-
-    uint16 i = 0;
-    for (i = 0; i < this->h; i++)     //给左边0、1列和右边186、187列画黑框
-    {
-        BinImage_set(this,i,0,0);
-        BinImage_set(this,i,1,0);
-        BinImage_set(this,i,this->w - 1,0);
-        BinImage_set(this,i,this->w - 2,0);
-
+uint8 Bly_BinImage_get(BinImage *this, uint16 y, uint16 x){
+    if(y < 2 || x < 2 || y>=this->h-2 || x >= this->w-2){
+        return 0;
     }
-    for (i = 0; i < this->w; i++)     //给上方0、1行画黑框
-    {
-        BinImage_set(this,0,i,0);
-        BinImage_set(this,1,i,0);
-    }
+    return BinImage_get(this, y, x);
 }
-void BinImage_getStartPoint(BinImage *this, int16 lStartPoint[2], int16 rStartPoint[2]){
-    uint16 y = this->h-2;
+void BinImage_getStartPoint(BinImage *this, uint16 lStartPoint[2], uint16 rStartPoint[2]){
+    uint16 y = this->h-3;
     uint16 x = this->w/2;
     for(uint16 i = x; i >= 1; --i){
         if(!BinImage_get(this, y, i) && BinImage_get(this, y, i+1) && !BinImage_get(this, y, i-1) && BinImage_get(this, y, i+2)){
@@ -180,19 +177,209 @@ void BinImage_getStartPoint(BinImage *this, int16 lStartPoint[2], int16 rStartPo
         }
     }
 }
-const int16 bly[8][2] = {{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1},};
-void Pos_clone(const int16 this[2], int16 target[2]){
-    target[0]=this[0];
-    target[1]=this[1];
-}
-void Pos_add(const int16 a[2], const int16 b[2], int16 sum[2]){
-    sum[0]=a[0]+b[0];
-    sum[1]=a[1]+b[1];
-}
-uint8 Pos_equal(const int16 a[2], const int16 b[2]){
-    return a[0]==b[0]&&a[1]==b[1];
-}
 
+void BinImage_bly(BinImage *this, uint16 maxL, uint16 lLine[MT9V03X_W*3][2], uint16 rLine[MT9V03X_W*3][2],
+        uint8 lDir[MT9V03X_W*3], uint8 rDir[MT9V03X_W*3], uint16 *lLineL, uint16 *rLineL, uint16 *meet,
+        uint16 lStart[2], uint16 rStart[2])
+{
+
+    uint8 i = 0, j = 0;
+    //左边变量
+    uint16 search_filds_l[8][2] = { { 0 } };
+    uint16 center_point_l[2] = {  0 };
+    uint16 index_l = 0;
+    uint16 temp_l[8][2] = { {  0 } };
+    uint16 l_data_statics;//统计左边
+    //定义八个邻域
+    static int8 seeds_l[8][2] = { {1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1},{0,1},{1,1} };
+    //        static int8 seeds_l[8][2] = { {-1,0}, {-1,-1}, {0,-1}, {1,-1}, {+1,0}, {1,1}, {0,1}, {-1,1} };
+    //{-1,-1},{0,-1},{+1,-1},
+    //{-1, 0},       {+1, 0},
+    //{-1,+1},{0,+1},{+1,+1},
+    //这个是顺时针
+
+    //右边变量
+    uint16 search_filds_r[8][2] = { {  0 } };
+    uint16 center_point_r[2] = { 0 };//中心坐标点
+    uint16 index_r = 0;//索引下标
+    uint16 temp_r[8][2] = { {  0 } };
+    uint16 r_data_statics;//统计右边
+    //定义八个邻域
+    static int8 seeds_r[8][2] = { {1,0},{1,1},{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1}, };
+    //        static int8 seeds_r[8][2] = { {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}, {0,1}, {1,1} };
+    //        static int8 seeds_l[8][2] = { {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}, {0,1}, {1,1} };
+    //        static int8 seeds_r[8][2] = { {-1,0}, {-1,-1}, {0,-1}, {1,-1}, {+1,0}, {1,1}, {0,1}, {-1,1} };
+    //{-1,-1},{0,-1},{+1,-1},
+    //{-1, 0},       {+1, 0},
+    //{-1,+1},{0,+1},{+1,+1},
+    //这个是逆时针
+
+    l_data_statics = 0;//统计找到了多少个点，方便后续把点全部画出来
+    r_data_statics = 0;//统计找到了多少个点，方便后续把点全部画出来
+
+    //第一次更新坐标点  将找到的起点值传进来
+    center_point_l[0] = lStart[0];//x
+    center_point_l[1] = lStart[1];//y
+    center_point_r[0] = rStart[0];//x
+    center_point_r[1] = rStart[1];//y
+
+       //开启邻域循环
+    while (maxL--)
+    {
+
+       //左边
+       for (i = 0; i < 8; i++)//传递8F坐标
+       {
+           search_filds_l[i][0] = center_point_l[0] + seeds_l[i][0];//x
+           search_filds_l[i][1] = center_point_l[1] + seeds_l[i][1];//y
+       }
+       //中心坐标点填充到已经找到的点内
+       lLine[l_data_statics][0] = center_point_l[0];//x
+       lLine[l_data_statics][1] = center_point_l[1];//y
+       l_data_statics++;//索引加一
+
+       //右边
+       for (i = 0; i < 8; i++)//传递8F坐标
+       {
+           search_filds_r[i][0] = center_point_r[0] + seeds_r[i][0];//x
+           search_filds_r[i][1] = center_point_r[1] + seeds_r[i][1];//y
+       }
+       //中心坐标点填充到已经找到的点内
+       rLine[r_data_statics][0] = center_point_r[0];//x
+       rLine[r_data_statics][1] = center_point_r[1];//y
+
+
+       index_l = 0;//先清零，后使用
+       for (i = 0; i < 8; i++)
+       {
+           temp_l[i][0] = 0;//先清零，后使用
+           temp_l[i][1] = 0;//先清零，后使用
+       }
+
+       //左边判断
+       for (i = 0; i < 8; i++)
+       {
+           if(search_filds_l[(i + 1) & 7][0] >= this->h){
+               continue;
+           }
+           if (!Bly_BinImage_get(this,search_filds_l[i][0],search_filds_l[i][1])
+               && Bly_BinImage_get(this,search_filds_l[(i + 1) & 7][0],search_filds_l[(i + 1) & 7][1]))
+           {
+               temp_l[index_l][0] = search_filds_l[(i)][0];
+               temp_l[index_l][1] = search_filds_l[(i)][1];
+               index_l++;
+               lDir[l_data_statics - 1] = (i);//记录生长方向
+           }
+
+           if (index_l)
+           {
+               //更新坐标点
+               center_point_l[0] = temp_l[0][0];//x
+               center_point_l[1] = temp_l[0][1];//y
+               for (j = 0; j < index_l; j++)
+               {
+                   if (center_point_l[1] > temp_l[j][1])
+                   {
+                       center_point_l[0] = temp_l[j][0];//x
+                       center_point_l[1] = temp_l[j][1];//y
+                   }
+               }
+           }
+
+       }
+       if ((rLine[r_data_statics][0]== rLine[r_data_statics-1][0]&& rLine[r_data_statics][0] == rLine[r_data_statics - 2][0]
+           && rLine[r_data_statics][1] == rLine[r_data_statics - 1][1] && rLine[r_data_statics][1] == rLine[r_data_statics - 2][1])
+           ||(lLine[l_data_statics-1][0] == lLine[l_data_statics - 2][0] && lLine[l_data_statics-1][0] == lLine[l_data_statics - 3][0]
+               && lLine[l_data_statics-1][1] == lLine[l_data_statics - 2][1] && lLine[l_data_statics-1][1] == lLine[l_data_statics - 3][1]))
+       {
+    //                printf("三次进入同一个点，退出\n");
+           break;
+       }
+       if (abs(rLine[r_data_statics][0] - lLine[l_data_statics - 1][0]) < 2
+           && abs(rLine[r_data_statics][1] - lLine[l_data_statics - 1][1] < 2)
+           )
+       {
+    //                printf("\n左右相遇退出\n");
+           *meet = (rLine[r_data_statics][1] + lLine[l_data_statics - 1][1]) >> 1;//取出最高点
+    //                printf("\n在y=%d处退出\n",*Endline);
+           break;
+       }
+       if ((rLine[r_data_statics][1] < lLine[l_data_statics - 1][1]))
+       {
+    //                printf("\n如果左边比右边高了，左边等待右边\n");
+           continue;//如果左边比右边高了，左边等待右边
+       }
+       if (lDir[l_data_statics - 1] == 7
+           && (rLine[r_data_statics][1] > lLine[l_data_statics - 1][1]))//左边比右边高且已经向下生长了
+       {
+    //                printf("\n左边开始向下了，等待右边，等待中... \n");
+           center_point_l[0] = (uint8)lLine[l_data_statics - 1][0];//x
+           center_point_l[1] = (uint8)lLine[l_data_statics - 1][1];//y
+           l_data_statics--;
+       }
+       r_data_statics++;//索引加一
+
+       index_r = 0;//先清零，后使用
+       for (i = 0; i < 8; i++)
+       {
+           temp_r[i][0] = 0;//先清零，后使用
+           temp_r[i][1] = 0;//先清零，后使用
+       }
+
+       //右边判断
+       for (i = 0; i < 8; i++)
+       {
+           if(search_filds_r[(i + 1) & 7][0] >= this->h){
+               continue;
+           }
+           if (!Bly_BinImage_get(this,search_filds_r[i][0],search_filds_r[i][1])
+               && Bly_BinImage_get(this,search_filds_r[(i + 1) & 7][0],search_filds_r[(i + 1) & 7][1]))
+           {
+               temp_r[index_r][0] = search_filds_r[(i)][0];
+               temp_r[index_r][1] = search_filds_r[(i)][1];
+               index_r++;//索引加一
+               rDir[r_data_statics - 1] = (i);//记录生长方向
+    //                    printf("dir[%d]:%d\n", r_data_statics - 1, dir_r[r_data_statics - 1]);
+           }
+           if (index_r)
+           {
+
+               //更新坐标点
+               center_point_r[0] = temp_r[0][0];//x
+               center_point_r[1] = temp_r[0][1];//y
+               for (j = 0; j < index_r; j++)
+               {
+                   if (center_point_r[1] > temp_r[j][1])
+                   {
+                       center_point_r[0] = temp_r[j][0];//x
+                       center_point_r[1] = temp_r[j][1];//y
+                   }
+               }
+
+           }
+       }
+    }
+
+    //取出循环次数
+    *lLineL = l_data_statics;
+    *rLineL = r_data_statics;
+}
+void BinImage_blyToBorder(BinImage *this, uint16 line[MT9V03X_W*3][2], uint16 lineL, uint8 dir, uint16 ret[MT9V03X_H]){
+    for(uint16 i=0; i<this->h; ++i){
+        ret[i] = dir?(this->w-1):0;
+    }
+    for(uint16 i=0; i<lineL; ++i){
+        uint16 y = line[i][0];
+        if(dir?(line[i][1] < ret[y]):(line[i][1] > ret[y])){
+            ret[y]=line[i][1];
+        }
+    }
+}
+void BinImage_borderToMiddle(BinImage *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H], uint16 ret[MT9V03X_H]){
+    for(uint16 i=0; i<this->h; ++i){
+        ret[i] = (lBorder[i]+rBorder[i])>>1;
+    }
+}
 
 void Image_Process(void)
 {
@@ -206,7 +393,11 @@ void Image_Process(void)
         lStartPoint[0]=rStartPoint[0]=0;
         BinImage_getStartPoint(&binImage, lStartPoint, rStartPoint);
         if(lStartPoint[0]&&rStartPoint[0]){
-            BinImage_drawRectan(&binImage);
+            BinImage_bly(&binImage, binImage.h*3, lLine, rLine, lLineDir, rLineDir,
+                    &lLineL, &rLineL, lrMeet, lStartPoint, rStartPoint);
+            BinImage_blyToBorder(&binImage, lLine, lLineL, 0, lBorder);
+            BinImage_blyToBorder(&binImage, rLine, rLineL, 1, rBorder);
+            BinImage_borderToMiddle(&binImage, lBorder, rBorder, mLine);
         }
 //            //八领域   圆环3ms一帧  直线1.8ms一帧
 //            Search_Line_BLY((uint16)USE_num, image, &data_stastics_l, &data_stastics_r, start_point_l[0], start_point_l[1], start_point_r[0], start_point_r[1], &Endline);

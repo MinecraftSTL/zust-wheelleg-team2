@@ -10,7 +10,7 @@ void SysTimer_Start(void)
 void SysTimer_Stop(void)
 {
     timer_stop_time = system_getval_us();
-    g_past_time = timer_stop_time - timer_start_time - 7;//start stop函数时间为7ns，减去
+//    g_past_time = timer_stop_time - timer_start_time;//start stop函数时间为7ns，减去
 }
 
 uint32 GetPastTime(void)
