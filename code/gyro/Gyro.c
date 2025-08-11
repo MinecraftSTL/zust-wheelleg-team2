@@ -4,7 +4,8 @@
  *  Created on: 2023Äê10ÔÂ28ÈÕ
  *      Author: Â¬¾¢º­
  */
-#include <Gyro.h>
+#include "Gyro.h"
+#include "Beep.h"
 
 float Sum_my_gyro_z = 0,Sum_my_gyro_y = 0,Sum_my_gyro_x = 0,Sum_my_acc_z = 0,Sum_my_acc_y = 0,Sum_my_acc_x = 0;
 float zero_my_gyro_z = 0,zero_my_gyro_y = 0,zero_my_gyro_x = 0,zero_my_acc_z = 0,zero_my_acc_y = 0,zero_my_acc_x = 0;
@@ -23,6 +24,7 @@ void gyro_set(){
     Sum_my_gyro_x=0;
 
     pit_all_close();
+    beep_start();
     for(i=0;i<1000;++i)
     {
         system_delay_ms(1);

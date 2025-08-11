@@ -6,3 +6,5 @@
  */
 
 #include "Filter.h"
+
+Filter Filter_turn={0.9, NAN, NAN};

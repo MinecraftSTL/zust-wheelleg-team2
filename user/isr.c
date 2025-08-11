@@ -90,8 +90,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     interrupt_global_enable(0);                     // ¿ªÆôÖÐ¶ÏÇ¶Ì×
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
-    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2,
-            Turn_speed = Encoder_speed_r-Encoder_speed_l;
+    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     Update_GyroData();
     float new_gyro_x = my_gyro_x-zero_my_gyro_x;
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
@@ -120,7 +119,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         tg_pitchV = pid(&PID_WxAy, kZero, pitch);
         if(g_Car_Status == status_car_start){
-            tg_yawV = ((image_w-2)/2-g_camera_mid_err)*10;//pid(&PID_vAz, (image_w-2)/2-g_camera_mid_err, Turn_speed);
+            tg_yawV = pid(&PID_vAz, 0, g_camera_mid_err-(image_w-2)/2);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
@@ -133,7 +132,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     if(fsEn){
         speed = fsSpeed;
     }
-    int turn = pid(&PID_WvAz, tg_yawV, new_gyro_z);
+    int turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
 //    printf("%d\r\n", speed);
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);

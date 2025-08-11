@@ -27,7 +27,7 @@ float hpf(Filter* this, float input) {
     // 计算输入差值
     float delta_x = isnan(this->x) ? 0 : input-this->x;
     // 应用高通滤波公式
-    this->y = this->alpha * (this->y + delta_x);
+    this->y = this->alpha * (isnan(this->y)?0:this->y + delta_x);
     // 更新历史数据
     this->x = input;
     return this->y;

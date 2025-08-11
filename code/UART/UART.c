@@ -112,7 +112,7 @@ void Vofa_Adjust(void)
             }
             *equal = '\0';
             // 处理指令类型（P1、I1等）
-            Page *menu = PageKey_getPath(&menu_main, tempBuff+1);
+            Page *menu = PageKey_getByPath(&menu_main, tempBuff+1);
             if(menu == NULL){
                 return;
             }

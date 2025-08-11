@@ -62,6 +62,7 @@ Page menu_main_arg_k_jump_step3;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_horizon;
 Page menu_main_arg_k_camera_deltaH;
+Page menu_main_arg_k_turnA;
 Page menu_main_arg_PID;
 PidPage menu_main_arg_PID_vAy;
 PidPage menu_main_arg_PID_xAy;
@@ -118,7 +119,7 @@ int core0_main(void)
         &menu_main_set,
         &menu_main_debug,
     });
-    IntPage_init(&menu_main_carRun, "run", &g_Car_Status, 0, 2);
+    IntPage_init(&menu_main_carRun, "car_run", &g_Car_Status, 0, 2);
     menu_main_carRun.open = 9;
     ListPage_init(&menu_main_arg, "arg", 2, (Page*[]){
         &menu_main_arg_k,
@@ -128,6 +129,7 @@ int core0_main(void)
         &menu_main_arg_k_kZero,
         &menu_main_arg_k_jump,
         &menu_main_arg_k_camera,
+        &menu_main_arg_k_turnA,
     });
     FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
     menu_main_arg_k_kZero.extends.floatValue.dot = 1;
@@ -147,6 +149,7 @@ int core0_main(void)
     });
     IntPage_init(&menu_main_arg_k_camera_horizon, "horizon", &camera_horizon, 0, image_h-1);
     IntPage_init(&menu_main_arg_k_camera_deltaH, "deltaH", &delta_camera_horizon, 0, image_h-1);
+    FloatPage_init(&menu_main_arg_k_turnA, "turn_a", &Filter_turn.alpha, 0, 1);
     ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
         PidPage_getRoot(&menu_main_arg_PID_vAy),
         PidPage_getRoot(&menu_main_arg_PID_xAy),

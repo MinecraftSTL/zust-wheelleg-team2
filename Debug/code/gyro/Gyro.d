@@ -1,7 +1,7 @@
 code/gyro/Gyro.o :	../code/gyro/Gyro.c
 ../code/gyro/Gyro.c :
-code/gyro/Gyro.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro.h :
+code/gyro/Gyro.o :	../code/gyro/Gyro.h
+../code/gyro/Gyro.h :
 code/gyro/Gyro.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro_Process.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro_Process.h :
 code/gyro/Gyro.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h
@@ -446,3 +446,5 @@ code/gyro/Gyro.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensour
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h :
 code/gyro/Gyro.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h :
+code/gyro/Gyro.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h :

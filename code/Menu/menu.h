@@ -80,7 +80,7 @@ void PageKey_print(Page *this, uint8 row);
 void PageKey_press(Page *this, uint8 pressed[]);
 Page *PageKey_getRoot(Page *this);
 Page *PageKey_getOpened(Page *this);
-Page *PageKey_getPath(Page *this, char *path);
+Page *PageKey_getByPath(Page *this, char *path);
 uint8 PageKey_back(Page *this);
 void PageKey_home(Page *this);
 void ListPage_init(Page *this, char name[], uint8 size, Page *key[]);

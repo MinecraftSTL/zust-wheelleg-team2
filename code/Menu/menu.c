@@ -108,16 +108,19 @@ Page *PageKey_getOpened(Page *this){
         return this;
     }
 }
-Page *PageKey_getPath(Page *this, char *path){
+Page *PageKey_getByPath(Page *this, char *path){
     char *dot = strchr(path, '.');
     if(dot == NULL){
         dot = path + strlen(path);
+    }
+    if(dot == path){
+        return NULL;
     }
     for(uint8 i=0; i<this->extends.listValue.size; ++i){
         Page *next = this->extends.listValue.value[i];
         if(!strncmp(path, next->name, dot-path)){
             if(*dot){
-                return PageKey_getPath(next, dot+1);
+                return PageKey_getByPath(next, dot+1);
             }else{
                 return next;
             }
@@ -483,7 +486,7 @@ void FuncPage_init(Page *this, char name[], void (*value)()){
     this->extends.funcValue.value = value;
 }
 void FuncPage_print(Page *this, uint8 row){
-    ips200_show_string_color(row?160:0, row?row*16:16, "EXE", !row&&this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+    ips200_show_string_color(row?160:0, row?row*16:16, "run", !row&&this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
 }
 void FuncPage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
