@@ -3,7 +3,7 @@
 
 #include "MyHeadfile.h"
 
-#define MAX_BLY ((MT9V03X_W)*3)
+#define MAX_BLY ((MT9V03X_W)*4)
 
 typedef enum{
     NONE,

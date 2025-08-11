@@ -112,6 +112,7 @@ Page menu_main_arg_filter_speed;
 Page menu_main_arg_filter_turn;
 Page menu_main_arg_filter_xAx;
 Page menu_main_debug;
+Page menu_main_debug_wheelClear;
 Page menu_main_debug_wifiIm;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
@@ -337,6 +338,7 @@ void core0_main(void)
     FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter_speed.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter_xAx.alpha, 0, 1);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
+        &menu_main_debug_wheelClear,
         &menu_main_debug_wifiIm,
         &menu_main_debug_fs,
         &menu_main_debug_fl,
@@ -344,6 +346,7 @@ void core0_main(void)
         &menu_main_debug_jump,
         NULL
     });
+    BoolPage_init(&menu_main_debug_wheelClear, "wClear", &wheelClear, 0x03);
     FuncPage_init(&menu_main_debug_wifiIm, "wifiIm", Wifi_Image_Init);
     ListPage_init(&menu_main_debug_fs, "forceSpeed", (Page*[]){
         &menu_main_debug_fs_en,

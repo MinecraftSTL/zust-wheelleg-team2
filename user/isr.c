@@ -91,13 +91,16 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
     float new_gyro_z = my_gyro_z-zero_my_gyro_z;
 
-    if(carStatus > CAR_STOP){
-        if(fabs(roll) > 60 || fabs(pitch) > 60){
-            CarStatus_set(CAR_STOP);
-        }
+    if(fabs(roll) > 60 || fabs(pitch) > 90){
+        CarStatus_set(CAR_STOP);
+        wheelClear = 0;
     }
 
     float tg_pitchV = 0, tg_yawV = 0, legX = targetLegX, legZ = targetLegZ;
+    if(carStatus <= CAR_START){
+        legX = defaultLegX;
+        legZ = defaultLegZ;
+    }
     if(carStatus >= CAR_BALANCE){
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = 0;
@@ -122,16 +125,20 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     int speed = 0, turn = 0;
     if(carStatus >= CAR_START){
         speed = lpf(&Filter_speed, pid(&PID_WvAy, tg_pitchV, new_gyro_y));
+        speed = lpf(&Filter_speed, speed);
         turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
     }else{
         PID_clear(&PID_WvAy);
+        LPF_clear(&Filter_speed);
         PID_clear(&PID_WvAz);
     }
     if(fsEn){
         speed = fsSpeed;
         turn = 0;
+    }else if(wheelClear){
+        speed = 1000;
+        turn = 0;
     }
-    speed = lpf(&Filter_speed, speed);
 //    printf("%d\r\n", speed);
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);
@@ -151,9 +158,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
         lza_ = lpf(&Filter_xAx, lza);
         if(lza_ > 0){
-            lz += -lza_;
-        }else{
             rz -= -lza_;
+        }else{
+            lz += -lza_;
         }
         Leg_set_pos(lx, lz, rx, rz);
     }

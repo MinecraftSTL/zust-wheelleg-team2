@@ -16,8 +16,10 @@ typedef struct {
 }Filter;
 
 void LPF_init(Filter* this, float cutoff_freq, float sample_freq);
+void LPF_clear(Filter* this);
 float lpf(Filter* this, float input);
 void HPF_Init(Filter* this, float cutoff_freq, float sample_freq);
+void HPF_clear(Filter* this);
 float hpf(Filter* this, float input);
 
 extern Filter Filter_turn, Filter_speed, Filter_xAx;

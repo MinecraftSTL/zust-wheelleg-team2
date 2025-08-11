@@ -28,4 +28,6 @@ extern float fwpLz;
 extern float fwpRx;
 extern float fwpRz;
 
+extern uint8 wheelClear;
+
 #endif /* CODE_DEBUGARG_DEBUGARG_H_ */

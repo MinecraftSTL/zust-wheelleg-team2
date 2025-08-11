@@ -18,6 +18,10 @@ void HPF_Init(Filter* this, float cutoff_freq, float sample_freq) {
     // 计算滤波系数alpha
     this->alpha = RC / (RC + dt);
     // 初始化历史数据
+    HPF_clear(this);
+}
+
+void HPF_clear(Filter* this){
     this->x = NAN;
     this->y = 0.f;
 }

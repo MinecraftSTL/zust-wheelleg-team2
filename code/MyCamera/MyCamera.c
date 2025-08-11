@@ -20,17 +20,17 @@ float statusK = 0.9;
 int crossX = 15;
 int zebraY = 70;
 int zebraStartTick = 1000;
-int zebraStopTick = 50;
+int zebraStopTick = 20;
 int circleX = 5;
 int circleY = 80;
 float circleLine = 0.4;
 int barrierY = 40;
 int barrierT = 40;
 int bridgeY = 5;
-int bridgeTI = 25;
+int bridgeTI = 30;
 int bridgeTO = 100;
-int errY = 30;
-int errDeltaY = 30;
+int errY = 40;
+int errDeltaY = 20;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
 
@@ -834,7 +834,7 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV -= 100;
             break;
         case O_LCIRCLE:
-            if(lInfN == 0 && rInfN == 0){
+            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4)){
                 CameraStatus_addScore(NONE);
             }
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
@@ -932,7 +932,7 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
             *cameraV -= 100;
             break;
         case O_RCIRCLE:
-            if(lInfN == 0 && rInfN == 0){
+            if((lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3) && (rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4)){
                 CameraStatus_addScore(NONE);
             }
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
@@ -1001,7 +1001,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             *cameraV = 0;
             break;
         case I_LBRIDGE:
-            if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+            if(lInfN == 0 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
                 CameraStatus_addScore(O_LBRIDGE);
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
@@ -1013,18 +1013,24 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                 Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
             }
             *cameraV = 40;
-            targetLegZ = -45-30;
+            targetLegZ = -100;
             rollBalance = 1;
+            if(PID_vVx.Ek_sum < 0){
+                PID_vVx.Ek_sum = 0;
+            }
             break;
         case O_LBRIDGE:
-            if(lInfN == 0 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
+            if(lInfN == 0 || Inflection_getFacing(lInfRad[0]) == 3 || lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                 if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
                     CameraStatus_addScore(I_RBRIDGE);
                 }else{
                     CameraStatus_addScore(O_BRIDGE);
                 }
             }
-            if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+            if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
+                    Inflection_getFacing(lInfRad[2]) == 3 && Inflection_getFacing(lInfRad[3]) == 1){
+                Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lLine[lInfLine[3]][0], lLine[lInfLine[3]][1]);
+            }else if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
                 Image_borderSetDLine(this, lBorder, lLine[lInfLine[1]][1]-bridgeY);
             }
             if(rInfN > 3 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1 &&
@@ -1032,9 +1038,12 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                 Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
             }
             *cameraV = 40;
+            if(PID_vVx.Ek_sum < 0){
+                PID_vVx.Ek_sum = 0;
+            }
             break;
         case I_RBRIDGE:
-            if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
+            if(rInfN == 0 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                 CameraStatus_addScore(O_RBRIDGE);
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
@@ -1046,18 +1055,24 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
                 Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
             }
             *cameraV = 40;
-            targetLegZ = -45-30;
+            targetLegZ = -100;
             rollBalance = 1;
+            if(PID_vVx.Ek_sum < 0){
+                PID_vVx.Ek_sum = 0;
+            }
             break;
         case O_RBRIDGE:
-            if(rInfN == 0 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
+            if(rInfN == 0 || Inflection_getFacing(rInfRad[0]) == 4 || rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 1){
                 if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2){
                     CameraStatus_addScore(I_LBRIDGE);
                 }else{
                     CameraStatus_addScore(O_BRIDGE);
                 }
             }
-            if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2){
+            if(rInfN > 3 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1 &&
+                    Inflection_getFacing(rInfRad[2]) == 4 && Inflection_getFacing(rInfRad[3]) == 2){
+                Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rLine[rInfLine[3]][0], rLine[rInfLine[3]][1]);
+            }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2){
                 Image_borderSetDLine(this, rBorder, rLine[rInfLine[1]][1]-bridgeY);
             }
             if(lInfN > 3 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
@@ -1102,6 +1117,9 @@ void Image_other(Image *this, float *cameraV, uint16 *errY){
                 CameraStatus_addScore(NONE);
             }
             *cameraV -= 50;
+            if(PID_vVx.Ek_sum < 0){
+                PID_vVx.Ek_sum = 0;
+            }
             break;
         case OR_CROSS_RCIRCLE:
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
@@ -1180,7 +1198,7 @@ void Image_processCamera(){
             }
         }
         Image_cut(&image, &image1, 1, 0, image.w-1, image.h);
-        Image_cut(&image1, &image, 20, 10, image1.w-20, image1.h-20);
+        Image_cut(&image1, &image, 30, 0, image1.w-30, image1.h);
         Image_binaryzation(&image, binDeltaT);
 
         Image_drawRectan(&image);

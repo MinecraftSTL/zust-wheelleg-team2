@@ -18,6 +18,10 @@ void LPF_init(Filter* this, float cutoff_freq, float sample_freq) {
     // 计算滤波系数alpha
     this->alpha = dt / (RC + dt);
     // 初始化历史数据
+    LPF_clear(this);
+}
+
+void LPF_clear(Filter* this){
     this->x = NAN;
     this->y = NAN;
 }
