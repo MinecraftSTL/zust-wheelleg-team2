@@ -18,12 +18,12 @@ const int weight[120]={
 0,0,0,0,0,0,0,0,0,0,//0-10
 0,0,0,0,0,0,0,0,0,0,//11-20
 0,0,0,0,0,0,0,0,0,0,//21-30
-2,2,2,2,2,2,2,2,2,2,//30-40
-4,4,4,4,4,4,4,4,4,4,//40-50
+14,14,14,14,14,8,8,8,8,8,//81-90
+25,25,25,25,25,25,25,25,25,25,//71-80
 6,6,6,6,6,6,6,6,6,6,//51-60
 7,7,7,7,7,7,7,7,7,7,//61-70
-25,25,25,25,25,25,25,25,25,25,//71-80
-14,14,14,14,14,8,8,8,8,8,//81-90
+2,2,2,2,2,2,2,2,2,2,//30-40
+4,4,4,4,4,4,4,4,4,4,//40-50
 6,6,6,6,6,4,4,4,4,4,//91-100
 2,2,2,2,2,2,2,2,2,2,//101-110
 2,2,2,2,2,2,2,2,2,2,//111-120
@@ -31,7 +31,7 @@ const int weight[120]={
 
 int err = 0;
 uint8 xunxian =0;
-uint8 bend_straight_flag=0;
+uint8 straight_flag=0;
 
 #define White 255  //定义图像黑
 #define Black 0    //定义图像白
@@ -1201,7 +1201,7 @@ void Upper_right(void){
         //针对圆环写的找点方式
           if(annulus_R_Flag==1)
           {
-              for(h=Lost_point_R_scan_line+5;h>(Endline+10);h--)
+              for(h=Lost_point_R_scan_line+5;h>(Endline+10);--h)
               {
                 if((right[h+8]-right[h])>3&&right[h+8]==185&&right[h]!=185&&(right[h]-right[h-4])<3&&h<60&&right[h]<177)
                 {
@@ -1240,7 +1240,7 @@ void Upper_right(void){
           }
           //常规找上拐点
           else{
-              for(h=Lost_point_R_scan_line+5;h>(Endline+10);h--){
+              for(h=Lost_point_R_scan_line+5;h>(Endline+10);--h){
 
                       if((right[h+3]-right[h])>15&&right[h+10]==185&&right[h]!=185&&(right[h]-right[h-1])<3&&h<60&&right[h]<177){
                           Upper_right_inflection_Flag=1;
@@ -1356,11 +1356,11 @@ void crossroad(void){
     int l;
     uint8 start,end;           //存放拟合直线的点个列坐标
     float slope=0,distance=0;  //存放斜率和截距
-    if(bend_straight_flag==0&&annulus_L_Flag==0&&annulus_R_Flag==0&&Lost_left_Flag==1&&Lost_right_Flag==1&&Lost_left_Flag3==1&&Lost_right_Flag3==1&&Crossroad_Flag==0&&Crossroad_memory==0&&ten_inflexion_down_l_flag==1&&ten_inflexion_down_r_flag==1)
+    if(straight_flag==0&&annulus_L_Flag==0&&annulus_R_Flag==0&&Lost_left_Flag==1&&Lost_right_Flag==1&&Lost_left_Flag3==1&&Lost_right_Flag3==1&&Crossroad_Flag==0&&Crossroad_memory==0&&ten_inflexion_down_l_flag==1&&ten_inflexion_down_r_flag==1)
     {
        Crossroad_Flag=1;
        Crossroad_memory=1;
-       beep_on();
+//       beep_on();
     }
     if(Crossroad_Flag==1)
     {
@@ -1403,7 +1403,7 @@ void crossroad(void){
             {
                 Crossroad_Flag=0;
                 Crossroad_memory=0;
-                beep_off();
+//                beep_off();
             }
         }
 
@@ -1437,11 +1437,14 @@ void crossroad(void){
                     right[l]=slope*(l)+distance;
             }
             /*====判断是否结束十字状态==*/
-            if(ten_inflexion_up_l_flag==0||ten_inflexion_up_r_flag==0||Lost_right_Flag3==0||Lost_left_Flag3==0)
+            if(!ten_inflexion_up_l_flag||
+                    !ten_inflexion_up_r_flag||
+                    !Lost_right_Flag3||
+                    !Lost_left_Flag3)
             {
                 Crossroad_Flag=0;
                 Crossroad_memory=0;
-                beep_off();
+//                beep_off();
             }
         }
 
@@ -1602,7 +1605,18 @@ void Exit_loop_R_inflection(void){
 void annulus_L(void){
 
     //识别圆环//&&Upper_left_inflection_Flag==0&&&&imag[Lower_left_inflection_Y][3]==White//&&Lost_left_Flag2==1&&Upper_left_inflection_Flag==0
-      if(l_growth_direction_flag==1&&r_growth_direction_flag6==0&&annulus_R_Flag==0&&Crossroad_Flag==0&&Lost_left_Flag==1&&Lost_right_Flag2==0&&Lost_left_Flag2==1&&Lower_left_inflection_Flag==1&&Right_straight_flag==1&&Lower_right_inflection_Flag==0&&annulus_L_memory==0&&annulus_L_Flag==0){
+      if(l_growth_direction_flag&&
+              !r_growth_direction_flag6&&
+              !annulus_R_Flag&&
+              !Crossroad_Flag&&
+              !Lost_left_Flag&&
+              !Lost_right_Flag2&&
+              Lost_left_Flag2&&
+              Lower_left_inflection_Flag&&
+              Right_straight_flag&&
+              !Lower_right_inflection_Flag&&
+              !annulus_L_memory&&
+              !annulus_L_Flag){
           annulus_L_Flag=1;
           annulus_L_memory =1;
           annulus_R_Flag=0;
@@ -2544,7 +2558,7 @@ ips200_displayimage03x(imag[0], MT9V03X_W, MT9V03X_H);
 //      ips200_draw_point(Exit_loop_X, Exit_loop_Y,  RGB565_RED);
 //  }
   //********************直线*****************************
-  if( bend_straight_flag==1){
+  if( straight_flag==1){
       ips200_show_string (0, 215, "straight 1");
    //   ips200_show_float(100, 215,straight_k_err,3,3);
     ///  ips200_show_float(170, 215,k2,3,3);
@@ -2634,27 +2648,25 @@ ips200_displayimage03x(imag[0], MT9V03X_W, MT9V03X_H);
 //  ips200_show_string (0, 200, "Endline=");
 //  ips200_show_int(80, 200, Endline,4);
 }
- float straight_k_err=0;
- float straight_k_1=0;
- float straight_k_2=0;
-    void  ben_straight(void)
-    {
-           float k1,k2;
-           float l_slope2=0,l_slope3=0,l_distance2=0,l_distance3=0;
-           bend_straight_flag=0;
-           caculate_distance(100,119,middle,&l_slope3,&l_distance3);
-           k2=l_slope3;
+float straight_k_err=0;
+float straight_k_1=0;
+float straight_k_2=0;
 
-           caculate_distance(45,60,middle,&l_slope2,&l_distance2);
-           k1=l_slope2;
+void  ben_straight(void){
+    float k1,k2;
+    float l_slope2=0,l_slope3=0,l_distance2=0,l_distance3=0;
+    straight_flag=0;
+    caculate_distance(100,119,middle,&l_slope3,&l_distance3);
+    k2=l_slope3;
 
-           if((absolute(k1-k2)<0.15))//&&(Lost_left_Flag==0)&&(Lost_right_Flag==0)
-           bend_straight_flag=1;
-           else
-          bend_straight_flag=0;
-           straight_k_err=absolute(k1-k2);
+    caculate_distance(45,60,middle,&l_slope2,&l_distance2);
+    k1=l_slope2;
 
-
+    if((absolute(k1-k2)<0.15))//&&(Lost_left_Flag==0)&&(Lost_right_Flag==0)
+        straight_flag=1;
+    else
+        straight_flag=0;
+    straight_k_err=absolute(k1-k2);
 }
 
 //===================================================s道===================================================
@@ -2704,23 +2716,10 @@ ips200_displayimage03x(imag[0], MT9V03X_W, MT9V03X_H);
 
 void hill_juge(void)
 {
-    if(hill_flag==0)//&&podaogeshu==1
+    if(hill_flag==0||hill_flag==1)
     {
-        hill_flag=1;
-//        podaogeshu--;
+        ++hill_flag;
     }
-    if(hill_flag==1)//podaogeshu根据坡道个数改
-    {
-        hill_flag=2;
-    }
-//    if(hill_flag==2||hill_flag==1)
-//    {
-//        beep_on();
-//    }
-//    else
-//    {
-//        beep_off();
-//    }
 }
 char left_annulus_out_juge,right_annulus_out_juge;//1是出现，0是消失
 char annulus_out_time=0;
@@ -3062,29 +3061,29 @@ void Element_recognition(void)
     ten_inflection();
     left_straight();
     right_straight();
-   if(tingche==150)
-   {
-       hill_juge();
-    if(hill_flag==0)
+    if(tingche==150)
     {
-     zebra_crossing();
-//    Garage();
-       crossroad();
-     if(barrier__open_or_close_flag==1)
-     {
-         roadblock_addline();
-     }
-     if(s_road_open_or_close_flag==1)
-     {
-       S_road();
-     }
-     if(annulus_open_or_close_flag==1)
-     {
-      annulus_L();
-      annulus_R();
-     }
+        hill_juge();
+        if(hill_flag==0)
+        {
+            zebra_crossing();
+            //    Garage();
+            crossroad();
+            if(barrier__open_or_close_flag==1)
+            {
+                roadblock_addline();
+            }
+            if(s_road_open_or_close_flag==1)
+            {
+                S_road();
+            }
+            if(annulus_open_or_close_flag==1)
+            {
+                annulus_L();
+                annulus_R();
+            }
+        }
     }
-   }
     middle_line();
     ben_straight();
 }

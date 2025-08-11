@@ -15,13 +15,10 @@
 #define PWM_L2            (ATOM1_CH6_P02_6)
 #define PWM_L1             (ATOM1_CH7_P02_7)
 
-//#define DIR_R               (P02_4)
-//#define PWM_R               (ATOM0_CH5_P02_5)
-//#define DIR_L               (P02_6)
-//#define PWM_L               (ATOM0_CH7_P02_7)
+extern const uint16 speed_limit;
 
 extern float target_speed   ;   //基础速度   205
-extern float bend_speed     ;   //直线速度   240
+extern float straight_speed     ;   //直线速度   240
 extern float S_speed        ;  //S弯速度    200
 extern float annulus_speed  ;   //环岛速度   170
 extern float hill_speed     ;   //上坡速度
@@ -32,6 +29,13 @@ extern float bend_Kp;
 extern float bend_Kd;
 extern float arc_Kp;
 extern float arc_Kd;
+
+extern int debug_forceSpeedEn;
+extern float debug_forceSpeed;
+extern int debug_forceTurnEn;
+extern float debug_forceTurnKp;
+extern float debug_forceTurnKd;
+
 extern uint8 annulus_L_memory, annulus_R_memory;
 
 //PID参数

@@ -38,8 +38,6 @@
 
 #include "zf_common_headfile.h"
 
-extern const uint16 speed_limit;
-
 extern char hill_flag;
 extern float turn_out;
 extern uint16 tingche;

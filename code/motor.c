@@ -5,18 +5,26 @@
 
 #include "sys.h"
 
-float   target_speed   =   240;   //基础速度   205
-float   bend_speed     =   260;   //直线速度   240
-float   S_speed        =   230;  //S弯速度    200
-float   annulus_speed  =   210;   //环岛速度   170
-float   hill_speed     =   700 ;  //上坡速度
+const uint16 speed_limit = 1500;
 
-float straight_Kp=1.8;
-float straight_Kd=2.40;
-float bend_Kp=2.30;
-float bend_Kd=2.4;
-float arc_Kp=2.56;
-float arc_Kd=1.74;
+float target_speed   = 50;//240;   //基础速度   205
+float straight_speed = 75;//260;   //直线速度   240
+float S_speed        = 50;//230;  //S弯速度    200
+float annulus_speed  = 50;//210;   //环岛速度   170
+float hill_speed     = 200;//700;  //上坡速度
+
+float straight_Kp=0.3;
+float straight_Kd=10;
+float bend_Kp=0.7;
+float bend_Kd=20;
+float arc_Kp=2.5;
+float arc_Kd=0;
+
+int debug_forceSpeedEn = 0;
+float debug_forceSpeed = 25;
+int debug_forceTurnEn = 0;
+float debug_forceTurnKp = 0.5;
+float debug_forceTurnKd = 30;
 
 float   S_number       =   0.03;   //S弯偏差基数   0.2
 float   target_number  =  0.03;  //基础偏差基数   0.45
@@ -24,19 +32,19 @@ struct PID motor_l = {
         0,0,0,
         -2000,2000,
         -2000,2000,
-        0,
         12.1,  //65    //50    //50
         0.7,  //2.2    //2     //8
         70, // 70    //80    //60
+        0,
 };
 struct PID motor_r = {
         0,0,0,
         -2000,2000,
         -2000,2000,
-        0,
         12.1,  //65    //50    //50
         0.7,  //2.2    //2     //8
         70, // 70    //80    //60
+        0,
 };
 struct PID motor_turn = {
         0,0,0,
@@ -101,7 +109,7 @@ float Motor_r_PID(float actual_val, float turn)
 {
     return Motor_PID(&motor_r, motor_speed_choose(motor_turn.err_)*(1+turn*1e-2), actual_val);
 }
-void Motor_t_PID(float actual_val, float *ret){// idk why this cant return
+void Motor_t_PID(float actual_val, float *ret){// idk why this cant use return
     turn_pd_choose(&motor_turn);
     *ret = Motor_PID(&motor_turn, 0, actual_val);
 }
@@ -120,54 +128,40 @@ void motor_init(void)
 float motor_speed_choose(float turn_err)
 {
     float pid_target_val;
-    if(xunxian==0||tingche_flag==1){
+    if(!xunxian||tingche_flag){
         pid_target_val=0;
-    }
-    else if(annulus_L_Flag==1)
-    {
+        return pid_target_val;
+    }else if(annulus_L_Flag||annulus_R_Flag){
         pid_target_val=annulus_speed-(float)turn_err*target_number;
-    }
-    else if(annulus_R_Flag==1)
-    {
-        pid_target_val=annulus_speed-(float)turn_err*target_number;
-    }
-
-    else if(bend_straight_flag==1)
-    {
-        pid_target_val=bend_speed;
-
-    }
-    else if  (S_road_Flag==1)
-    {
+    }else if(straight_flag){
+        pid_target_val=straight_speed;
+    }else if(S_road_Flag){
          pid_target_val=S_speed-(float)turn_err*S_number;
-    }
-    else if(hill_flag==1)
-    {
-        pid_target_val=hill_speed;
-    }
-    else
-    {
+//    }else if(hill_flag){
+//        pid_target_val=hill_speed;
+    }else{
         pid_target_val=target_speed-(float)turn_err*target_number;
     }
-//    pid_target_val=20;//debug test
+    if(debug_forceSpeedEn){
+        pid_target_val=debug_forceSpeed;
+    }
     return pid_target_val;
 }
 
 void turn_pd_choose(struct PID *PID_turn){
-    if((annulus_L_Flag==0||annulus_R_Flag==0)||bend_straight_flag==1){
+    if(straight_flag){
         PID_turn->Kp=straight_Kp;//1.2
         PID_turn->Kd=straight_Kd;//0.5
-    }
-    else
-    {
+    }else{
         PID_turn->Kp=bend_Kp;//1.5   //1.3
         PID_turn->Kd=bend_Kd;//0.8     //2
     }
-    if(annulus_L_memory>=1||annulus_R_memory>=1)
-    {
+    if(annulus_L_Flag||annulus_R_Flag){
         PID_turn->Kp=arc_Kp;//1.2
         PID_turn->Kd=arc_Kd;//0.5
     }
-    PID_turn->Kp=straight_Kp;//debug test
-    PID_turn->Kd=straight_Kd;//debug test
+    if(debug_forceTurnEn){
+        PID_turn->Kp=debug_forceTurnKp;
+        PID_turn->Kd=debug_forceTurnKd;
+    }
 }

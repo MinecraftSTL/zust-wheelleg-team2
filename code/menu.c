@@ -200,7 +200,7 @@ void IntPageValue_init(struct IntPageValue *this, int *value, int max, int min, 
     this->step = step;
 }
 void IntPageValue_print(struct IntPageValue *this, int opened, int open){
-    ips200_show_int(180, 20*(opened+1), *(this->value), 5);
+    ips200_show_int(160, 20*(opened+1), *(this->value), 8);
 }
 struct pressReturn IntPageValue_press(struct IntPageValue *this, uint8 pressed, int opened, int open){
     struct pressReturn ret = {0, 0};
@@ -230,24 +230,24 @@ struct pressReturn IntPageValue_press(struct IntPageValue *this, uint8 pressed, 
     return ret;
 }
 
-struct FloatPageValue *new_FloatPageValue(float *value, float max, float min, float step) {
+struct FloatPageValue *new_FloatPageValue(float *value, float min, float max, float step) {
     struct FloatPageValue *ret = (struct FloatPageValue *)malloc(sizeof(struct FloatPageValue));
     if (ret!= NULL) {
         ret->value = value;
-        ret->max = max;
         ret->min = min;
+        ret->max = max;
         ret->step = step;
     }
     return ret;
 }
-void FloatPageValue_init(struct FloatPageValue *this, float *value, float max, float min, float step){
+void FloatPageValue_init(struct FloatPageValue *this, float *value, float min, float max, float step){
     this->value = value;
-    this->max = max;
     this->min = min;
+    this->max = max;
     this->step = step;
 }
 void FloatPageValue_print(struct FloatPageValue *this, int opened, int open){
-    ips200_show_float(180, 20*(opened+1), *(this->value)+1e-6, 2,1);
+    ips200_show_float(150, 20*(opened+1), *(this->value)+1e-6, 4,2);
 }
 struct pressReturn FloatPageValue_press(struct FloatPageValue *this, uint8 pressed, int opened, int open){
     struct pressReturn ret = {0, 0};
@@ -288,7 +288,7 @@ void BooleanPageValue_init(struct BooleanPageValue *this, int *value){
     this->value = value;
 }
 void BooleanPageValue_print(struct BooleanPageValue *this, int opened, int open){
-    ips200_show_string(180, 20*(opened+1), *(this->value)?"true":"false");
+    ips200_show_string(150, 20*(opened+1), *(this->value)?"true":"false");
 }
 struct pressReturn BooleanPageValue_press(struct BooleanPageValue *this, uint8 pressed, int opened, int open){
     struct pressReturn ret = {0, 0};

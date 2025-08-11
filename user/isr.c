@@ -37,7 +37,6 @@
 #include "isr.h"
 #include "sys.h"
 
-const uint16 speed_limit = 1500;
 
 uint16 start_sum=0;
 uint16 tingche=0;

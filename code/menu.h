@@ -20,7 +20,7 @@ enum PageValueType{
 };
 
 struct PageKey{
-    char name[16];
+    char name[12];
     enum PageValueType type;
     void *value;
     int opened;
@@ -32,14 +32,14 @@ struct PagePageValue{
 };
 struct IntPageValue{
     int *value;
-    int max;
     int min;
+    int max;
     int step;
 };
 struct FloatPageValue{
     float *value;
-    float max;
     float min;
+    float max;
     float step;
 };
 struct BooleanPageValue{
