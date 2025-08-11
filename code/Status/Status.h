@@ -30,10 +30,16 @@ extern CarStatus carStatus;
 extern uint8 angleProtect;
 extern uint8 fpsProtect;
 extern uint8 timeProtect;
+extern uint8 circleProtect;
+
+extern uint8 kill;
 
 extern uint64 timeProtectT;
-extern uint8 kill;
 extern uint64 timeProtectNowT;
+
+extern int circleProtectN;
+extern uint64 circleProtectT;
+extern int circleProtectNowN;
 
 void CarStatus_set(CarStatus this);
 void CarStatus_update();
@@ -43,5 +49,6 @@ void CarStatus_sub();
 void CarStatus_stop();
 void CarStatus_pit(uint32 period);
 void CarStatus_CameraStatus_zebra();
+void CarStatus_CameraStatus_circle();
 
 #endif

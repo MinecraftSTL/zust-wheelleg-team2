@@ -75,7 +75,7 @@ extern int elementX;
 extern int zebraY;
 extern int zebraT;
 extern int zebraS;
-extern int crossX;
+extern int crossY;
 extern int blockY0;
 extern int blockY1;
 extern int circleX;

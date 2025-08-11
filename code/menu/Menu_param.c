@@ -36,8 +36,12 @@ Page menu_main_config_protect_fps;
 Page menu_main_config_protect_time;
 Page menu_main_config_protect_time_en;
 Page menu_main_config_protect_time_t;
-Page menu_main_config_protect_time_kill;
 Page menu_main_config_protect_time_nowT;
+Page menu_main_config_protect_circle;
+Page menu_main_config_protect_circle_en;
+Page menu_main_config_protect_circle_n;
+Page menu_main_config_protect_circle_t;
+Page menu_main_config_protect_circle_nowN;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_zero;
@@ -102,7 +106,7 @@ Page menu_main_arg_k_camera_e_zebra_t;
 Page menu_main_arg_k_camera_e_zebra_s;
 Page menu_main_arg_k_camera_e_cross;
 Page menu_main_arg_k_camera_e_cross_en;
-Page menu_main_arg_k_camera_e_cross_x;
+Page menu_main_arg_k_camera_e_cross_y;
 Page menu_main_arg_k_camera_e_block;
 Page menu_main_arg_k_camera_e_block_lEn;
 Page menu_main_arg_k_camera_e_block_rEn;
@@ -193,6 +197,7 @@ Page menu_main_dat_gyro_acc_z;
 Page menu_main_dat_gyro_acc_aXx;
 Page menu_main_dat_gyro_acc_aXy;
 Page menu_main_dat_gyro_acc_aXz;
+Page menu_main_dat_kill;
 Page menu_main_debug;
 Page menu_main_debug_wheelClear;
 Page menu_main_debug_flash;
@@ -225,7 +230,8 @@ Page menu_main_debug_jump;
 Page menu_main_about;
 
 void Menu_param_init(){
-    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.dat", "main.debug", "main.arg.k.camera.show", "main.config.protect.time", ""});
+    Menu_init((char*[]){"main.carStatus", "main.arg.k.camera.status.now", "main.dat", "main.debug",
+            "main.arg.k.camera.show", "main.config.protect.time", "main.config.protect.circle"});
     Page_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", (Page*[]){
         &menu_main_carStatus,
@@ -296,6 +302,7 @@ void Menu_param_init(){
         &menu_main_config_protect_angle,
         &menu_main_config_protect_fps,
         &menu_main_config_protect_time,
+        &menu_main_config_protect_circle,
         NULL
     });
     BoolPage_init(&menu_main_config_protect_angle, "angle", &angleProtect, 0x03);
@@ -303,14 +310,23 @@ void Menu_param_init(){
     ListPage_init(&menu_main_config_protect_time, "time", (Page*[]){
         &menu_main_config_protect_time_en,
         &menu_main_config_protect_time_t,
-        &menu_main_config_protect_time_kill,
         &menu_main_config_protect_time_nowT,
         NULL
     });
     BoolPage_init(&menu_main_config_protect_time_en, "en", &timeProtect, 0x03);
     IntPage_init(&menu_main_config_protect_time_t, "t", &timeProtectT, -2147483648, 2147483647);
-    BoolPage_init(&menu_main_config_protect_time_kill, "kill", &kill, 0x03);
     IntPage_init(&menu_main_config_protect_time_nowT, "nowT", &timeProtectNowT, -2147483648, 2147483647);
+    ListPage_init(&menu_main_config_protect_circle, "circle", (Page*[]){
+        &menu_main_config_protect_circle_en,
+        &menu_main_config_protect_circle_n,
+        &menu_main_config_protect_circle_t,
+        &menu_main_config_protect_circle_nowN,
+        NULL
+    });
+    BoolPage_init(&menu_main_config_protect_circle_en, "en", &circleProtect, 0x03);
+    IntPage_init(&menu_main_config_protect_circle_n, "n", &circleProtectN, -2147483648, 2147483647);
+    IntPage_init(&menu_main_config_protect_circle_t, "t", &circleProtectT, -2147483648, 2147483647);
+    IntPage_init(&menu_main_config_protect_circle_nowN, "nowN", &circleProtectNowN, -2147483648, 2147483647);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
@@ -454,11 +470,6 @@ void Menu_param_init(){
     });
     EnumPage_init(&menu_main_arg_k_camera_status_now, "now", &cameraStatus, (char*[]){
             "NONE",
-            "I_ZEBRA",
-            "O_ZEBRA",
-            "I_CROSS",
-            "R_CROSS",
-            "O_CROSS",
             ""
         });
     FloatPage_init(&menu_main_arg_k_camera_status_jump, "jump", &statusJump, 0, 0xFF);
@@ -495,11 +506,11 @@ void Menu_param_init(){
     IntPage_init(&menu_main_arg_k_camera_e_zebra_s, "s", &zebraS, 0, 10000000);
     ListPage_init(&menu_main_arg_k_camera_e_cross, "cross", (Page*[]){
         &menu_main_arg_k_camera_e_cross_en,
-        &menu_main_arg_k_camera_e_cross_x,
+        &menu_main_arg_k_camera_e_cross_y,
         NULL
     });
     BoolPage_init(&menu_main_arg_k_camera_e_cross_en, "en", &crossEn, 0x03);
-    IntPage_init(&menu_main_arg_k_camera_e_cross_x, "x", &crossX, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_cross_y, "x", &crossY, 0, MT9V03X_H);//TODO:rename to y
     ListPage_init(&menu_main_arg_k_camera_e_block, "block", (Page*[]){
         &menu_main_arg_k_camera_e_block_lEn,
         &menu_main_arg_k_camera_e_block_rEn,
@@ -653,6 +664,7 @@ void Menu_param_init(){
         &menu_main_dat_allRunMs,
         &menu_main_dat_encoder,
         &menu_main_dat_gyro,
+        &menu_main_dat_kill,
         NULL
     });
     IntPage_init(&menu_main_dat_allRunMs, "allRunMs", &allRunMs, -2147483648, 2147483647);
@@ -709,6 +721,7 @@ void Menu_param_init(){
     FloatPage_init(&menu_main_dat_gyro_acc_aXz, "aXz_mpss", &acc_z, -INFINITY, INFINITY);
     menu_main_dat_gyro_acc_x.extends.floatValue.dot = menu_main_dat_gyro_acc_y.extends.floatValue.dot = menu_main_dat_gyro_acc_z.extends.floatValue.dot =
             menu_main_dat_gyro_acc_aXx.extends.floatValue.dot = menu_main_dat_gyro_acc_aXy.extends.floatValue.dot = menu_main_dat_gyro_acc_aXz.extends.floatValue.dot = 3;
+    BoolPage_init(&menu_main_dat_kill, "kill", &kill, 0x03);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wheelClear,
         &menu_main_debug_flash,

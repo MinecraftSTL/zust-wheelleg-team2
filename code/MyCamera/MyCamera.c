@@ -32,7 +32,7 @@ int elementX = 20;
 int zebraY = 100;
 int zebraT = 5000;
 int zebraS = 100000;
-int crossX = 15;
+int crossY = 15;
 int blockY0 = 50;
 int blockY1 = 60;
 int circleX = 7;
@@ -662,6 +662,9 @@ void CameraStatus_set(CameraStatus value){
     if(cameraStatus == I_ZEBRA && value == O_ZEBRA){
         CarStatus_CameraStatus_zebra();
     }
+    if((cameraStatus == O_LCIRCLE || cameraStatus == O_RCIRCLE) && value == CAMERA_STATUS_NONE){
+        CarStatus_CameraStatus_circle();
+    }
 
     statusScore[value] = 0.f;
     statusKeepTick = 0;
@@ -757,10 +760,10 @@ void Image_cross(Image *this, float *cameraV, uint16 *cameraY){
         case OR_CROSS_LCIRCLE:
         case OR_CROSS_RCIRCLE:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 && rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 &&
-                    lLine[lInfLine[0]][1] > crossX+1 && rLine[rInfLine[0]][1] > crossX+1 &&
+                    lLine[lInfLine[0]][1] > crossY+1 && rLine[rInfLine[0]][1] > crossY+1 &&
                     abs(lLine[lInfLine[0]][1]-rLine[rInfLine[0]][1]) < elementX &&
-                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX, 0)==1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossX-1, 0)==1 &&
-                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX, 1)==1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossX-1, 1)==1
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossY, 0)==1 && Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]-crossY-1, 0)==1 &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossY, 1)==1 && Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]-crossY-1, 1)==1
                     ){
                 CameraStatus_addScore(I_CROSS);
             }
