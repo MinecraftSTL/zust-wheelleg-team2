@@ -32,13 +32,13 @@ int rampY0 = 10;
 int rampY1 = 5;
 float rampZ = -45;
 int barrierY0 = 20;
-int barrierY1 = 50;
+int barrierY1 = 40;
 int barrierT = 200;
 int bridgeY = 5;
 float bridgeKPitchX = 0.5;
 int bridgeTI = 1000;
 int bridgeTO = 10000;
-int bridgeS = 100000;
+int bridgeS = 50000;
 float bridgeZ = -100;
 uint8 bridgeDetectL = 0;
 #define cameraAngle (5)
@@ -50,7 +50,6 @@ uint8 showWait = 0;
 float bendV = 525;
 float circleV = 525;
 float rampV = -50;
-float barrierV = 550;
 float bridgeV = 110;
 
 float cameraV = 0;
@@ -736,7 +735,7 @@ void Image_zebra(Image *this, float *cameraV, uint16 *errY){
         case O_ZEBRA:
             if(statusRunS >= zebraS){
                 if(carStatus == CAR_RUN){
-                    CarStatus_set(CAR_START);
+                    CarStatus_set(CAR_BALANCE);
                 }else{
                     CameraStatus_set(NONE);
                 }
@@ -852,16 +851,17 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *errY){
                 CameraStatus_addScore(R_LCIRCLE);
             }
             int16 x, y = -1;
-            if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/2)){
+            if(lInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/2) &&
+                    Image_borderIsLose(this, lBorder, lLine[lInfLine[0]][1]+circleX, 0)){
                 if(lInfN > 1 && fabsf(Angle_normalize(PI/2 - lInfRad[1])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, rBorder, lLine[lInfLine[1]][0], lLine[lInfLine[1]][1], rStart[0], rStart[1]);
                     x = lLine[lInfLine[1]][0];
                     y = lLine[lInfLine[1]][1];
-                }else if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4){
+                }else if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, rBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], rStart[0], rStart[1]);
                     x = lLine[lInfLine[0]][0];
                     y = lLine[lInfLine[0]][1];
-                }else if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4){
+                }else if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, rBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], rStart[0], rStart[1]);
                     x = rLine[rInfLine[0]][0];
                     y = rLine[rInfLine[0]][1];
@@ -949,16 +949,17 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *errY){
                 CameraStatus_addScore(R_RCIRCLE);
             }
             int16 x, y=-1;
-            if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/2)){
+            if(rInfN <= 1 || !(fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/2) &&
+                    Image_borderIsLose(this, rBorder, rLine[rInfLine[0]][1]+circleX, 1)){
                 if(rInfN > 1 && fabsf(Angle_normalize(PI/2 - rInfRad[1])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, lBorder, rLine[rInfLine[1]][0], rLine[rInfLine[1]][1], lStart[0], lStart[1]);
                     x=rLine[rInfLine[1]][0];
                     y=rLine[rInfLine[1]][1];
-                }else if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4){
+                }else if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, lBorder, rLine[rInfLine[0]][0], rLine[rInfLine[0]][1], lStart[0], lStart[1]);
                     x=rLine[rInfLine[0]][0];
                     y=rLine[rInfLine[0]][1];
-                }else if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4){
+                }else if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= PI/4+facingErr){
                     Image_borderSetCLine(this, lBorder, lLine[lInfLine[0]][0], lLine[lInfLine[0]][1], lStart[0], lStart[1]);
                     x=lLine[lInfLine[0]][0];
                     y=lLine[lInfLine[0]][1];
@@ -1067,12 +1068,11 @@ void Image_barrier(Image *this, float *cameraV, uint16 *errY){
             if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 3){
                 Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]);
             }
-            *cameraV = barrierV;
             break;
         case R_BARRIER:
-            if(carStatus == CAR_RUN)
-            jump();
-            *cameraV = barrierV;
+            if(carStatus == CAR_RUN){
+                jump();
+            }
             CameraStatus_set(O_BARRIER);
             break;
         case O_BARRIER:
@@ -1082,7 +1082,6 @@ void Image_barrier(Image *this, float *cameraV, uint16 *errY){
             for(uint16 i=0; i<this->h; ++i){
                 lBorder[i] = rBorder[i] = this->w/2;
             }
-            *cameraV = barrierV;
             break;
     }
 }

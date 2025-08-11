@@ -62,7 +62,6 @@ Page menu_main_arg_k_v_straight;
 Page menu_main_arg_k_v_bend;
 Page menu_main_arg_k_v_circle;
 Page menu_main_arg_k_v_ramp;
-Page menu_main_arg_k_v_barrier;
 Page menu_main_arg_k_v_bridge;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_bin;
@@ -234,7 +233,6 @@ void core0_main(void)
         &menu_main_arg_k_v_bend,
         &menu_main_arg_k_v_circle,
         &menu_main_arg_k_v_ramp,
-        &menu_main_arg_k_v_barrier,
         &menu_main_arg_k_v_bridge,
         NULL
     });
@@ -242,10 +240,9 @@ void core0_main(void)
     FloatPage_init(&menu_main_arg_k_v_bend, "bend", &bendV, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_circle, "circle", &circleV, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_ramp, "ramp", &rampV, -10000, 10000);
-    FloatPage_init(&menu_main_arg_k_v_barrier, "barrier", &barrierV, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_bridge, "bridge", &bridgeV, -10000, 10000);
     menu_main_arg_k_v_straight.extends.floatValue.dot = menu_main_arg_k_v_bend.extends.floatValue.dot = menu_main_arg_k_v_circle.extends.floatValue.dot =
-            menu_main_arg_k_v_ramp.extends.floatValue.dot = menu_main_arg_k_v_barrier.extends.floatValue.dot = menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
+            menu_main_arg_k_v_ramp.extends.floatValue.dot = menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
         &menu_main_arg_k_camera_trapezoid,
@@ -490,10 +487,10 @@ void core0_main(void)
         NULL
     });
     BoolPage_init(&menu_main_debug_fl_en, "enable", &flEn, 0x03);
-    FloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -1.57, 1.57);
-    FloatPage_init(&menu_main_debug_fl_rf, "rt_fd", &flRf, -1.57, 1.57);
-    FloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -1.57, 1.57);
-    FloatPage_init(&menu_main_debug_fl_lb, "lt_bk", &flLb, -1.57, 1.57);
+    FloatPage_init(&menu_main_debug_fl_rb, "rt_bk", &flRb, -LEG_MAX_R, LEG_MAX_R);
+    FloatPage_init(&menu_main_debug_fl_rf, "rt_fd", &flRf, -LEG_MAX_R, LEG_MAX_R);
+    FloatPage_init(&menu_main_debug_fl_lf, "lt_fd", &flLf, -LEG_MAX_R, LEG_MAX_R);
+    FloatPage_init(&menu_main_debug_fl_lb, "lt_bk", &flLb, -LEG_MAX_R, LEG_MAX_R);
     ListPage_init(&menu_main_debug_fwp, "forceWPos", (Page*[]){
         &menu_main_debug_fwp_en,
         &menu_main_debug_fwp_lx,
@@ -513,7 +510,6 @@ void core0_main(void)
     =menu_main_debug_fwp_rz.extends.floatValue.dot=2;
     BoolPage_init(&menu_main_debug_frb, "frb", &fRb, 0x03);
     FuncPage_init(&menu_main_debug_jump, "jump", jump);
-    printf("^/send$");
 
     beepLong();
     ips200_clear();

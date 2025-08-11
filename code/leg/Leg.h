@@ -22,6 +22,7 @@
 #define LBD (90.f)
 #define DLR (160.f)
 
+#define LEG_MAX_R 1.57
 #define LEG_MIN_Z 0
 #define LEG_MAX_Z 140
 #define LEG_MAX_X 50

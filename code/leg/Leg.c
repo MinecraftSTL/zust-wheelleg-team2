@@ -49,7 +49,7 @@ void Pos_limit(float *x, float *z){
     *z = func_limit_ab(*z, -LEG_MAX_Z, -LEG_MIN_Z);
 }
 void Servo_limit(float *a){
-    *a = func_limit_ab(*a, -1.57, 1.57);
+    *a = func_limit(*a, LEG_MAX_R);
 }
 
 float Roll_toPosZ(float roll, float lza){
@@ -75,8 +75,8 @@ void Leg_set_duty(float rb, float rf, float lf, float lb){
     Servo_limit(&lb);
     pwm_set_duty(servo_rb, Radian_toPwmDuty(rb+0.8));
     pwm_set_duty(servo_rf, Radian_toPwmDuty(-rf+0.5));
-    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf-0.1));
-    pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb));
+    pwm_set_duty(servo_lf, Radian_toPwmDuty(lf+0.2));
+    pwm_set_duty(servo_lb, Radian_toPwmDuty(-lb+0.8));
 }
 
 void Leg_set_pos(float lx, float lz, float rx, float rz){

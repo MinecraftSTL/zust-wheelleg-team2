@@ -89,7 +89,7 @@ void Vofa_Adjust(void)
     char *start = (char *)DataBuff;
     char *end = NULL;
 
-    while ((end = strchr(start, '$')) != NULL)
+    for (;(end = strchr(start, '$')) != NULL; start = end + 1)
     {
 //        *end = '\0'; // 将 `!` 替换为字符串结束符
 
@@ -141,8 +141,6 @@ void Vofa_Adjust(void)
                 beepShort();
             }
         }
-
-        start = end + 1; // 移动到下一条指令
     }
 }
 
@@ -170,7 +168,9 @@ void Vofa_pageSend(Page *page){
 
 void Vofa_pageAllSend(){
     Page_allSubRun(&menu_main, Vofa_pageSend);
-    printf("\r\n");
+    for(uint16 i=0; i<0x0fff; ++i){
+        printf("\r\n");
+    }
 }
 
 void Vofa_pageAllReceive(){
