@@ -28,6 +28,8 @@
 #define LEG_MAX_Z 147
 #define LEG_MAX_X 50
 
+#define BRIDGE_MAX_Z 50
+
 struct LegServoAngle{
     double f, b;
 };

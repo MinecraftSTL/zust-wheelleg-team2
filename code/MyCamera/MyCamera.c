@@ -21,7 +21,7 @@ int straightYMin = 40;
 int straightStep = 10;
 float straightErr = 0.087266;
 float statusJump = 3;
-float statusK = 0.98;
+float statusK = 0.9;
 int elementYMin = 20;
 int zebraY = 100;
 int zebraT = 10000;
@@ -698,11 +698,13 @@ int16 Inflection_getFirstFacing(uint16 this[MAX_BLY], float thisRad[MAX_BLY], ui
 uint64 carRunMs = 0;
 CameraStatus cameraStatus = NONE;
 float statusScore[CAMERA_STATUS_NUMBER] = {0};
+uint64 statusKeepTick = 0;
 uint64 statusKeepMs = 0;
 int64 statusRunS = 0;
 void CameraStatus_set(CameraStatus value){
     beepMid();
     memset(statusScore, 0x0, sizeof(float)*CAMERA_STATUS_NUMBER);
+    statusKeepTick = 0;
     statusKeepMs = 0;
     statusRunS = 0;
 
@@ -719,12 +721,15 @@ void CameraStatus_addScore(CameraStatus value){
     }
 }
 
-void Camera_pit(uint32 period, int16 speed){
-    statusKeepMs += period;
-    statusRunS += speed;
+void Camera_tick(){
+    statusKeepMs += 1;
     for(uint32 i = 0; i < CAMERA_STATUS_NUMBER; ++i){
         statusScore[i] *= statusK;
     }
+}
+void Camera_pit(uint32 period, int16 speed){
+    statusKeepMs += period;
+    statusRunS += speed;
     carRunMs += period;
 }
 
@@ -1337,7 +1342,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
         case I_BRIDGE:
             rollBalance = 1;
             kPitchX = bridgeKPitchX;
-            if(statusKeepMs >= bridgeTI || PID_vVx.Ek_ + bridgeV >= 0){
+            if(statusKeepMs >= bridgeTI || statusKeepTick > 0 && PID_vVx.Ek_ >= 0){
                 uint8 oBridge = 0;
                 if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 4 && Inflection_getFacing(lInfRad[1]) == 2 &&
                         rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 3 && Inflection_getFacing(rInfRad[1]) == 1){
@@ -1379,7 +1384,7 @@ void Image_bridge(Image *this, float *cameraV, uint16 *errY){
             }else if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 2){
                 Image_borderSetDLine(this, rBorder, rLine[rInfLine[1]][1]-2*bly2RDL);
             }
-            *cameraV = 0;
+            *cameraV = bridgeV;
             if(PID_vVx.Ek_sum > 0){
                 PID_vVx.Ek_sum = 0;
             }
@@ -1686,6 +1691,8 @@ void Image_processCamera(){
 //        SysTimer_Stop();
 //        printf("%d\r\n",cameraStatus);
 //        printf("%d\r\n",GetPastTime());
+        Camera_tick();
+
         if(showPInC1){
             if(showWait){
                 while(camera_process_cnt);

@@ -41,6 +41,5 @@ void Filter_param_init();
 
 extern Filter0 Filter0_xAx;
 extern Filter1 Filter1_turn, Filter1_speed, Filter1_xAx;
-extern float Filter0_xAx_delta, Filter1_xAx_alpha, Filter0_xAxE_delta, Filter1_xAxE_alpha;
 
 #endif /* CODE_FILTER_FILTER_H_ */

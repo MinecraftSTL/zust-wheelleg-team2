@@ -171,14 +171,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         if(carStatus >= CAR_BALANCE && (rollBalance || fRb)){
             lza = Roll_toPosZ(zzz(roll, ZZZ_xAx)*PI/180, lza_);
         }
-        lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
-        if((lza_>0) ^ (lza > lza_)){
-            Filter0_xAx.delta = Filter0_xAx_delta;
-            Filter1_xAx.alpha = Filter1_xAx_alpha;
-        }else{
-            Filter0_xAx.delta = Filter0_xAxE_delta;
-            Filter1_xAx.alpha = Filter1_xAxE_alpha;
-        }
+        lza = func_limit(lza, BRIDGE_MAX_Z);
         lza_ = rollBalanceK*lpf0(&Filter0_xAx, lpf1(&Filter1_xAx, lza));
         float k = (legZ + LEG_MIN_Z) / (LEG_MIN_Z - LEG_MAX_Z);
 
