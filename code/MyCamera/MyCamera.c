@@ -34,7 +34,7 @@ int rampY = 40;
 float rampZ = -45;
 float rampK = 0.1;
 int barrierY0 = 20;
-int barrierY1 = 50;
+int barrierY1 = 40;
 int barrierT = 200;
 float bridgeKPitchX = 0.5;
 int bridgeTI = 1000;
@@ -49,7 +49,7 @@ int errDeltaY = 30;
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
 
-float bendV = 550;
+float bendV = 500;
 float circleV = 550;
 float rampV = 100;
 float bridgeV = 250;
