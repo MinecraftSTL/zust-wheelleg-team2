@@ -56,7 +56,6 @@ Page menu_main_arg_k_camera_bin;
 Page menu_main_arg_k_camera_bin_r;
 Page menu_main_arg_k_camera_bin_deltaT;
 Page menu_main_arg_k_camera_i;
-Page menu_main_arg_k_camera_i_bly2IR;
 Page menu_main_arg_k_camera_i_bly2RDR;
 Page menu_main_arg_k_camera_i_RD2IE;
 Page menu_main_arg_k_jump;
@@ -153,12 +152,10 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_bin_r, "r", &binR, 0, MT9V03X_W);
     IntPage_init(&menu_main_arg_k_camera_bin_deltaT, "deltaT", &binDeltaT, -256, 255);
     ListPage_init(&menu_main_arg_k_camera_i, "i", (Page*[]){
-//        &menu_main_arg_k_camera_i_bly2IR,
         &menu_main_arg_k_camera_i_bly2RDR,
         &menu_main_arg_k_camera_i_RD2IE,
         NULL
     });
-    IntPage_init(&menu_main_arg_k_camera_i_bly2IR, "bly2IR", &bly2IR, 0, MT9V03X_W);
     IntPage_init(&menu_main_arg_k_camera_i_bly2RDR, "bly2RDR", &bly2RDR, 0, MT9V03X_W);
     FloatPage_init(&menu_main_arg_k_camera_i_RD2IE, "RD2IE", &RD2IE, 0, 1.57);
     ListPage_init(&menu_main_arg_k_jump, "jump", (Page*[]){

@@ -25,7 +25,6 @@ extern Rgb565Image showImage;
 
 extern uint16 binR;
 extern int binDeltaT;
-extern uint16 bly2IR;
 extern uint16 bly2RDR;
 extern float RD2IE;
 

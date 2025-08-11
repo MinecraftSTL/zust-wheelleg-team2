@@ -9,8 +9,7 @@ Image cutShowImage;
 Rgb565Image showImage;
 
 uint16 binR = 4;
-int binDeltaT = -5;
-uint16 bly2IR = 2;
+int binDeltaT = -2;
 uint16 bly2RDR = 2;
 float RD2IE = 0.6;
 
@@ -28,15 +27,6 @@ int16 lrMeet;
 uint16 lBorder[MT9V03X_H];
 uint16 rBorder[MT9V03X_H];
 uint16 mLine[MT9V03X_H];
-
-//int16 luInflection[MT9V03X_W*3][2];
-//uint16 luInflectionN;
-//int16 ldInflection[MT9V03X_W*3][2];
-//uint16 ldInflectionN;
-//int16 ruInflection[MT9V03X_W*3][2];
-//uint16 ruInflectionN;
-//int16 rdInflection[MT9V03X_W*3][2];
-//uint16 rdInflectionN;
 
 float lRadDir[MT9V03X_W*3];
 int16 lRadDirPos[MT9V03X_W*3][2];
@@ -185,68 +175,21 @@ void BinImage_init(BinImage *this, Image *image, uint16 r, int16 deltaT){
     this->r = r;
     this->deltaT = deltaT;
 }
-uint8 Fast_OTSU(Image *this, int16 y0, int16 x0, int16 y1, int16 x1)
-{
-    int16 threshold;                               // 二值化阈值
-    int16        minGrayValue = 0, maxGrayValue = 255;    // 最小、最大有效灰度值（用来减少遍历）
-    // 以下变量要注意数据溢出，根据实际的分辨率修改数据类型。
-    int32 grayHist[256] = {0};    // 灰度直方图（这里至少要用int16，否则一种灰度出现的次数太多就会溢出）
-    const int32 sumOfPixel     = (y1-y0)*(x1-x0);                 // 像素总数
-    int32       sumOfGrayValue = 0;                         // 整幅图像的总灰度值
-    int32       sumOfBackPixel = 0, sumOfForcePixel = 0;    // 前后像素总数
-    int32       sumOfBackGray = 0, sumOfForceGray = 0;      // 前后总灰度值
-
-    float w0, w1, u0, u1;                   // 背景、前景像素比例
-    float maxVariance = -1, tmpVariance;    // 类间方差
-
-    for (int i = y0; i < y1; ++i)    // 用一重循环可以避免计算数组下标时带入乘法，降低了复杂度
-    {
-        for (int j = x0; j < x1; ++j)    // 用一重循环可以避免计算数组下标时带入乘法，降低了复杂度
-        ++grayHist[Image_get(this, i, j)];    // 获得灰度直方图，统计0~255每个灰度出现了几次（这个算法大概90%的时间花在这里）
-    }
-    while (minGrayValue < 256 && 0 == grayHist[minGrayValue])    // 搜索最小有效灰度值
-    {
-        ++minGrayValue;
-    }
-    while (maxGrayValue >= minGrayValue && 0 == grayHist[maxGrayValue])    // 搜索最大有效灰度值
-    {
-        --maxGrayValue;
-    }
-    if (maxGrayValue - minGrayValue <= 1)    // 如果灰度值不超过2种(当然这种情况是几乎不可能的)
-    {
-        return (uint8) minGrayValue;    // 直接算出最佳阈值
-    }
-    for (int16 i = minGrayValue; i <= maxGrayValue; ++i) {
-        sumOfGrayValue += i * grayHist[i];    // 计算总灰度值
-    }
-    for (int16 i = minGrayValue; i <= maxGrayValue; ++i)    // 求方差的过程简化为一重循环，大大降低了算法复杂度
-    {
-        sumOfBackPixel += grayHist[i];        // 背景总像素数
-        sumOfBackGray  += i * grayHist[i];    // 背景总灰度值                                                  // 计算类间方差
-        sumOfForcePixel = sumOfPixel - sumOfBackPixel;                 // 前景像素总数
-        sumOfForceGray  = sumOfGrayValue - sumOfBackGray;              // 前景总灰度值
-        w0              = (float) sumOfBackPixel / sumOfPixel;         // 背景像素比例
-        w1              = 1 - w0;                                      // 前景像素比例
-        u0              = (float) sumOfBackGray / sumOfBackPixel;      // 背景灰度均值
-        u1              = (float) sumOfForceGray / sumOfForcePixel;    // 前景灰度均值
-        // 代入u=w0*u0+w1*u1，类间方差w0*(u-u0)^2+w1*(u-u1)^2可化简为w0*w1*(u0-u1)^2
-        tmpVariance     = w0 * w1 * (u0 - u1) * (u0 - u1);    // 类间方差
-        if (tmpVariance > maxVariance) {
-            maxVariance = tmpVariance;    // 记录最大类间方差
-            threshold   = i;              // 记录最大类间方差对应的灰度值
-        }
-    }
-    return (uint8) threshold;    // 最大类间方差对应的灰度值，认为是最佳分割阈值
-}
 uint8 BinImage_get(BinImage *this, uint16 y, uint16 x){
     zf_assert(this && this->image && y < this->h && x < this->w);
     uint8 ret = Image_get(&this->cache, y, x);
     if(!ret){
-        int16 threshold = Fast_OTSU(this->image, y, x, y+2*this->r+1, x+2*this->r+1);
+        uint64 sum = 0;
+        for(uint16 i=y; i<=y+2*this->r; ++i){
+            for(uint16 j=x; j<=x+2*this->r; ++j){
+                sum += Image_get(this->image, i, j);
+            }
+        }
+        int16 threshold = sum/((2*this->r+1)*(2*this->r+1));
         threshold+=this->deltaT;
         ret = (Image_get(this->image,y+this->r,x+this->r)>threshold)+1;
         Image_set(&this->cache, y, x, ret);
-    };
+    }
     return ret-1;
 }
 void BinImage_getStartPoint(BinImage *this, uint16 lStartPoint[2], uint16 rStartPoint[2]){
@@ -293,19 +236,18 @@ void BinImage_bly(BinImage *this, uint16 maxL, int16 lLine[MT9V03X_W*3][2], int1
         if(!lStop && r_sub_l<=0){
             uint8 lStep = 0;
             for(uint8 i=0; i<8; ++i){
-                uint8 dir = (lDir[*lLineL-1]+6+i)&0x07;
-                lLine[*lLineL][0] = lLine[*lLineL-1][0] + Bly_SEED[dir][0];
-                lLine[*lLineL][1] = lLine[*lLineL-1][1] + Bly_SEED[dir][1];
-                uint8 nextDir = (dir+1)&0x07;
-                int16 lineNext[2];
-                lineNext[0] = lLine[*lLineL-1][0] + Bly_SEED[nextDir][0];
-                lineNext[1] = lLine[*lLineL-1][1] + Bly_SEED[nextDir][1];
+                lDir[*lLineL] = (lDir[*lLineL-1]+6+i)&0x07;
+                lLine[*lLineL][0] = lLine[*lLineL-1][0] + Bly_SEED[lDir[*lLineL]][0];
+                lLine[*lLineL][1] = lLine[*lLineL-1][1] + Bly_SEED[lDir[*lLineL]][1];
+                uint8 dir = (lDir[*lLineL]+1)&0x07;
+                int16 dot[2];
+                dot[0] = lLine[*lLineL-1][0] + Bly_SEED[dir][0];
+                dot[1] = lLine[*lLineL-1][1] + Bly_SEED[dir][1];
                 if(lLine[*lLineL][0] < 0 || lLine[*lLineL][1] < 0 || lLine[*lLineL][0] >= this->h || lLine[*lLineL][1] >= this->w ||
-                        lineNext[0] < 0 || lineNext[1] < 0 || lineNext[0] >= this->h || lineNext[1] >= this->w){
+                        dot[0] < 0 || dot[1] < 0 || dot[0] >= this->h || dot[1] >= this->w){
                     continue;
                 }
-                if(!BinImage_blyGet(this, lLine[*lLineL][0], lLine[*lLineL][1]) && BinImage_blyGet(this, lineNext[0], lineNext[1])){
-                    lDir[*lLineL] = dir;
+                if(!BinImage_blyGet(this, lLine[*lLineL][0], lLine[*lLineL][1]) && BinImage_blyGet(this, dot[0], dot[1])){
                     ++*lLineL;
                     lStep = 1;
                     break;
@@ -318,19 +260,18 @@ void BinImage_bly(BinImage *this, uint16 maxL, int16 lLine[MT9V03X_W*3][2], int1
         if(!rStop && r_sub_l>=0){
             uint8 rStep = 0;
             for(uint8 i=0; i<8; ++i){
-                uint8 dir = (rDir[*rLineL-1]+2+(8-i))&0x07;
-                rLine[*rLineL][0] = rLine[*rLineL-1][0] + Bly_SEED[dir][0];
-                rLine[*rLineL][1] = rLine[*rLineL-1][1] + Bly_SEED[dir][1];
-                uint8 nextDir = (dir+7)&0x07;
+                rDir[*rLineL] = (rDir[*rLineL-1]+2+(8-i))&0x07;
+                rLine[*rLineL][0] = rLine[*rLineL-1][0] + Bly_SEED[rDir[*rLineL]][0];
+                rLine[*rLineL][1] = rLine[*rLineL-1][1] + Bly_SEED[rDir[*rLineL]][1];
+                uint8 dir = (rDir[*rLineL]+7)&0x07;
                 int16 lineNext[2];
-                lineNext[0] = rLine[*rLineL-1][0] + Bly_SEED[nextDir][0];
-                lineNext[1] = rLine[*rLineL-1][1] + Bly_SEED[nextDir][1];
+                lineNext[0] = rLine[*rLineL-1][0] + Bly_SEED[dir][0];
+                lineNext[1] = rLine[*rLineL-1][1] + Bly_SEED[dir][1];
                 if(rLine[*rLineL][0] < 0 || rLine[*rLineL][1] < 0 || rLine[*rLineL][0] >= this->h || rLine[*rLineL][1] >= this->w ||
                         lineNext[0] < 0 || lineNext[1] < 0 || lineNext[0] >= this->h || lineNext[1] >= this->w){
                     continue;
                 }
                 if(!BinImage_blyGet(this, rLine[*rLineL][0], rLine[*rLineL][1]) && BinImage_blyGet(this, lineNext[0], lineNext[1])){
-                    rDir[*rLineL] = dir;
                     ++*rLineL;
                     rStep = 1;
                     break;
@@ -366,35 +307,6 @@ uint8 BinImage_borderIsLose(BinImage *this, uint16 border[MT9V03X_H], uint16 y, 
 void BinImage_borderToMiddle(BinImage *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H], uint16 ret[MT9V03X_H]){
     for(uint16 i=0; i<this->h; ++i){
         ret[i] = (lBorder[i]+rBorder[i])>>1;
-    }
-}
-
-const uint8 Inflection_LuIn[] = {0,0,0,0,0,0,1,0};
-const uint8 Inflection_LuOut[] = {0,0,0,0,1,1,0,0};
-const uint8 Inflection_LdIn[] = {0,0,0,0,1,1,0,0};
-const uint8 Inflection_LdOut[] = {0,0,1,0,0,0,0,0};
-
-const uint8 Inflection_RuIn[] = {0,0,0,0,0,0,1,0};
-const uint8 Inflection_RuOut[] = {0,0,0,0,1,1,0,0};
-const uint8 Inflection_RdIn[] = {0,0,0,0,1,1,0,0};
-const uint8 Inflection_RdOut[] = {0,0,1,0,0,0,0,0};
-void Bly_toInflection(int16 this[MT9V03X_W*3][2], uint16 thisL, uint8 thisDir[MT9V03X_W*3],
-        const uint8 inDir[8], const uint8 outDir[8], uint16 dirL, int16 ret[MT9V03X_W*3][2], uint16 *retN){
-    *retN=0;
-    for(uint16 i=2; i<thisL-2; ++i){
-        uint8 t = 1;
-        for(uint16 j = 0; j < dirL; ++j){
-            if(!inDir[thisDir[i-1-j]] || !outDir[thisDir[i+1+j]]){
-                t=0;
-                break;
-            }
-        }
-        if(!t){
-            continue;
-        }
-        ret[*retN][0]=this[i][0];
-        ret[*retN][1]=this[i][1];
-        ++*retN;
     }
 }
 
@@ -441,18 +353,6 @@ void Image_processForShow(){
         }
         Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
         Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
-//        for(uint16 i=0; i<luInflectionN; ++i){
-//            Rgb565Image_set(&showImage, luInflection[i][0], luInflection[i][1], RGB565_RED);
-//        }
-//        for(uint16 i=0; i<ldInflectionN; ++i){
-//            Rgb565Image_set(&showImage, ldInflection[i][0], ldInflection[i][1], RGB565_RED);
-//        }
-//        for(uint16 i=0; i<ruInflectionN; ++i){
-//            Rgb565Image_set(&showImage, ruInflection[i][0], ruInflection[i][1], RGB565_RED);
-//        }
-//        for(uint16 i=0; i<rdInflectionN; ++i){
-//            Rgb565Image_set(&showImage, rdInflection[i][0], rdInflection[i][1], RGB565_RED);
-//        }
         for(uint16 i=0; i<lInflectionN; ++i){
             Rgb565Image_mark(&showImage, lInflection[i][0], lInflection[i][1], RGB565_RED, 2);
         }
@@ -483,10 +383,6 @@ void Image_processCamera(){
         BinImage_blyToBorder(&binImage, 0, lLine, lLineL, lBorder);
         BinImage_blyToBorder(&binImage, 1, rLine, rLineL, rBorder);
         BinImage_borderToMiddle(&binImage, lBorder, rBorder, mLine);
-//        Bly_toInflection(lLine, lLineL, lLineDir, Inflection_LuIn, Inflection_LuOut, bly2IR, luInflection, &luInflectionN);
-//        Bly_toInflection(lLine, lLineL, lLineDir, Inflection_LdIn, Inflection_LdOut, bly2IR, ldInflection, &ldInflectionN);
-//        Bly_toInflection(rLine, rLineL, rLineDir, Inflection_RuIn, Inflection_RuOut, bly2IR, ruInflection, &ruInflectionN);
-//        Bly_toInflection(rLine, rLineL, rLineDir, Inflection_RdIn, Inflection_RdOut, bly2IR, rdInflection, &rdInflectionN);
         Bly_toRadDir(lLine, lLineL, bly2RDR, lRadDir, lRadDirPos, &lRadDirN);
         Bly_toRadDir(rLine, rLineL, bly2RDR, rRadDir, rRadDirPos, &rRadDirN);
         RadDir_toInflection(lRadDir, lRadDirPos, lRadDirN, RD2IE, lInflection, lInflectionDir, &lInflectionN);
