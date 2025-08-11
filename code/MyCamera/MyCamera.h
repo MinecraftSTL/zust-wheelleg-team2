@@ -99,6 +99,19 @@ extern int errDeltaY;
 extern uint8 showPInC1;
 extern uint8 showWait;
 
+extern uint8 zebraEn;
+extern uint8 crossEn;
+extern uint8 lBlockEn;
+extern uint8 rBlockEn;
+extern uint8 lCircleEn;
+extern uint8 rCircleEn;
+extern uint8 rampEn;
+extern uint8 barrierEn;
+extern uint8 bridgeEn;
+extern uint8 orCLcEn;
+extern uint8 orCRcEn;
+extern uint8 orRBEn;
+
 extern float bendV;
 extern float circleV;
 extern float rampDV;
