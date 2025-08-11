@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc33088a --dep-file=code/motor/Motor.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/motor/Motor.src ../code/motor/Motor.c"
+	.compiler_invocation	"ctc -f cc4456a --dep-file=code/motor/Motor.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc38x -D__CPU_TC38X__ --core=tc1.6.2 --fp-model=+float -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\Status -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\SysTimer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\UART -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\VOFA -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\beep -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\debugArg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\filter -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\foc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\fps -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\gyro -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\icm42688 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\leg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\menu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\motor -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myCamera -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\myEncoder -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pid -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\pit -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\process -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\sys -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\code\\\\wifiImage -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Configurations -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Ssw\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Asc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Asclin\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Ccu6\\\\Timer -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Irq -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Cpu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Dma -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Dma\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Adc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Evadc\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Flash\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12 -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\IncrEnc -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gpt12\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Gtm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Mtu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Pms\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\SpiMaster -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Qspi\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Scu\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Src\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Stm\\\\Std -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Impl -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_Lib\\\\DataHandling -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\_PinMap -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_common -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_components -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_device -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\zf_driver -IE:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/motor/Motor.src ../code/motor/Motor.c"
 	.compiler_name		"ctc"
 	;source	'../code/motor/Motor.c'
 
@@ -16,43 +16,96 @@ $TC162
 .L11:
 MotorSetPWM:	.type	func
 	rsub	d4,#0
-.L39:
+	extr	d15,d4,#0,#16
+.L51:
+	mov	d0,#-5000
+	jge	d15,d0,.L2
 	mov	d15,#-5000
-	jge	d4,d15,.L2
-	mov	d4,#-5000
 	j	.L3
 .L2:
+	mov	d0,#5000
+	jge	d0,d15,.L4
 	mov	d15,#5000
-	jge	d15,d4,.L4
-	mov	d4,#5000
 	j	.L5
 .L4:
 .L5:
 .L3:
-	mov	d15,#-5000
-	jge	d5,d15,.L6
+	mov	d0,#-5000
+	jge	d5,d0,.L6
 	mov	d5,#-5000
 	j	.L7
 .L6:
-	mov	d15,#5000
-	jge	d15,d5,.L8
+	mov	d0,#5000
+	jge	d0,d5,.L8
 	mov	d5,#5000
 	j	.L9
 .L8:
 .L9:
 .L7:
-	extr	d4,d4,#0,#16
-.L28:
-	extr	d5,d5,#0,#16
-.L29:
-	call	small_driver_set_duty
-.L40:
+	movh.a	a15,#@his(motorPwmLeft)
+	lea	a15,[a15]@los(motorPwmLeft)
+.L61:
+	st.h	[a15],d15
+.L62:
+	movh.a	a15,#@his(motorPwmRight)
+	lea	a15,[a15]@los(motorPwmRight)
+.L63:
+	st.h	[a15],d5
+.L64:
 	ret
-.L23:
+.L43:
 	
 __MotorSetPWM_function_end:
 	.size	MotorSetPWM,__MotorSetPWM_function_end-MotorSetPWM
-.L20:
+.L24:
+	; End of function
+	
+	.sdecl	'.text.Motor.MotorZero',code,cluster('MotorZero')
+	.sect	'.text.Motor.MotorZero'
+	.align	2
+	
+	.global	MotorZero
+; Function MotorZero
+.L13:
+MotorZero:	.type	func
+	movh.a	a15,#@his(zero)
+	lea	a15,[a15]@los(zero)
+.L69:
+	mov	d15,#1
+.L70:
+	st.b	[a15],d15
+.L71:
+	ret
+.L47:
+	
+__MotorZero_function_end:
+	.size	MotorZero,__MotorZero_function_end-MotorZero
+.L29:
+	; End of function
+	
+	.sdecl	'.text.Motor.MotorPit',code,cluster('MotorPit')
+	.sect	'.text.Motor.MotorPit'
+	.align	2
+	
+	.global	MotorPit
+; Function MotorPit
+.L15:
+MotorPit:	.type	func
+	movh.a	a15,#@his(motorPwmLeft)
+	lea	a15,[a15]@los(motorPwmLeft)
+	ld.h	d4,[a15]
+.L76:
+	movh.a	a15,#@his(motorPwmRight)
+	lea	a15,[a15]@los(motorPwmRight)
+	ld.h	d5,[a15]
+	call	small_driver_set_duty
+.L77:
+	ret
+.L48:
+	
+__MotorPit_function_end:
+	.size	MotorPit,__MotorPit_function_end-MotorPit
+.L34:
 	; End of function
 	
 	.sdecl	'.data.Motor.targetV',data,cluster('targetV')
@@ -62,22 +115,44 @@ __MotorSetPWM_function_end:
 targetV:	.type	object
 	.size	targetV,4
 	.word	1143111680
-	.calls	'MotorSetPWM','small_driver_set_duty'
-	.extern	small_driver_set_duty
+	.sdecl	'.data.Motor.motorPwmLeft',data,cluster('motorPwmLeft')
+	.sect	'.data.Motor.motorPwmLeft'
+	.global	motorPwmLeft
+	.align	2
+motorPwmLeft:	.type	object
+	.size	motorPwmLeft,2
+	.space	2
+	.sdecl	'.data.Motor.motorPwmRight',data,cluster('motorPwmRight')
+	.sect	'.data.Motor.motorPwmRight'
+	.global	motorPwmRight
+	.align	2
+motorPwmRight:	.type	object
+	.size	motorPwmRight,2
+	.space	2
+	.sdecl	'.data.Motor.zero',data,cluster('zero')
+	.sect	'.data.Motor.zero'
+	.global	zero
+zero:	.type	object
+	.size	zero,1
+	.space	1
+	.calls	'MotorPit','small_driver_set_duty'
 	.calls	'MotorSetPWM','',0
+	.calls	'MotorZero','',0
+	.extern	small_driver_set_duty
+	.calls	'MotorPit','',0
 	.sdecl	'.debug_info',debug
 	.sect	'.debug_info'
-.L13:
-	.word	165105
+.L17:
+	.word	165055
 	.half	3
-	.word	.L14
+	.word	.L18
 	.byte	4
-.L12:
+.L16:
 	.byte	1
 	.byte	'../code/motor/Motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L15
+	.word	.L19
 	.byte	2,1,1,3
 	.word	196
 	.byte	4
@@ -86,7 +161,7 @@ targetV:	.type	object
 	.word	199
 	.byte	6,0,7
 	.byte	'__fract',0,4,128,1
-.L27:
+.L49:
 	.byte	7
 	.byte	'float',0,4,4,8
 	.byte	'Ifx__float_to_fract',0,3,1,152,2,18
@@ -113,9 +188,7 @@ targetV:	.type	object
 	.byte	'value',0,2,143,1,43
 	.word	342
 	.byte	6,0,7
-	.byte	'unsigned int',0,4,7
-.L24:
-	.byte	7
+	.byte	'unsigned int',0,4,7,7
 	.byte	'int',0,4,5,7
 	.byte	'unsigned int',0,4,7,10
 	.byte	'_Ifx_SCU_WDTCPU_CON0_Bits',0,4,220,9,16,4,11
@@ -139,7 +212,9 @@ targetV:	.type	object
 	.byte	4,2,35,0,13
 	.byte	'B',0
 	.word	499
-	.byte	4,2,35,0,0,7
+	.byte	4,2,35,0,0
+.L50:
+	.byte	7
 	.byte	'unsigned char',0,1,8,7
 	.byte	'unsigned short int',0,2,7,10
 	.byte	'_Ifx_SCU_WDTCPU_CON1_Bits',0,4,229,9,16,4,11
@@ -5022,7 +5097,9 @@ targetV:	.type	object
 	.byte	5
 	.byte	'alti',0,17,218,18,82
 	.word	31631
-	.byte	6,0,7
+	.byte	6,0
+.L44:
+	.byte	7
 	.byte	'short int',0,2,5,7
 	.byte	'long int',0,4,5,20,19,60,9,12,13
 	.byte	'count',0
@@ -6385,11 +6462,11 @@ targetV:	.type	object
 	.byte	26
 	.word	38602
 	.byte	6,0,30
-	.byte	'small_driver_set_duty',0,24,37,6,1,1,1,1,5
-	.byte	'left_duty',0,24,37,34
+	.byte	'small_driver_set_duty',0,24,36,6,1,1,1,1,5
+	.byte	'left_duty',0,24,36,34
 	.word	31923
 	.byte	5
-	.byte	'right_duty',0,24,37,51
+	.byte	'right_duty',0,24,36,51
 	.word	31923
 	.byte	0,21
 	.byte	'__wchar_t',0,25,1,1
@@ -21157,7 +21234,7 @@ targetV:	.type	object
 	.byte	'char',0,1,6,15,21
 	.word	158733
 	.byte	16,20,0,3
-	.word	.L30-.L13
+	.word	.L52-.L17
 	.byte	33
 	.byte	'PageExtendsType',0,53,32,6,1,18
 	.byte	'LIST_TYPE',0,0,18
@@ -21179,7 +21256,7 @@ targetV:	.type	object
 	.word	635
 	.byte	1,2,35,45,0,3
 	.word	476
-	.byte	20,53,52,9,20,13
+	.byte	20,53,52,9,16,13
 	.byte	'value',0
 	.word	158921
 	.byte	4,2,35,0,13
@@ -21191,14 +21268,11 @@ targetV:	.type	object
 	.byte	4,2,35,8,13
 	.byte	'open',0
 	.word	635
-	.byte	1,2,35,12,13
-	.byte	'update',0
-	.word	39746
-	.byte	4,2,35,16,0,3
+	.byte	1,2,35,12,0,3
 	.word	256
-	.byte	20,53,59,9,20,13
+	.byte	20,53,58,9,16,13
 	.byte	'value',0
-	.word	159003
+	.word	158987
 	.byte	4,2,35,0,13
 	.byte	'min',0
 	.word	256
@@ -21211,12 +21285,9 @@ targetV:	.type	object
 	.byte	1,2,35,12,13
 	.byte	'open',0
 	.word	635
-	.byte	1,2,35,13,13
-	.byte	'update',0
-	.word	39746
-	.byte	4,2,35,16,0,20,53,67,9,20,13
+	.byte	1,2,35,13,0,20,53,65,9,16,13
 	.byte	'value',0
-	.word	159003
+	.word	158987
 	.byte	4,2,35,0,13
 	.byte	'min',0
 	.word	256
@@ -21229,62 +21300,56 @@ targetV:	.type	object
 	.byte	1,2,35,12,13
 	.byte	'open',0
 	.word	635
-	.byte	1,2,35,13,13
-	.byte	'update',0
-	.word	39746
-	.byte	4,2,35,16,0,3
+	.byte	1,2,35,13,0,3
 	.word	635
-	.byte	20,53,75,9,12,13
+	.byte	20,53,72,9,8,13
 	.byte	'value',0
-	.word	159188
+	.word	159140
 	.byte	4,2,35,0,13
 	.byte	'dir',0
 	.word	635
-	.byte	1,2,35,4,13
-	.byte	'update',0
-	.word	39746
-	.byte	4,2,35,8,0,15,11
+	.byte	1,2,35,4,0,15,11
 	.word	158733
 	.byte	16,10,0,15,121
-	.word	159243
-	.byte	16,10,0,20,53,80,9,132,1,13
+	.word	159179
+	.byte	16,10,0,20,53,76,9,128,1,13
 	.byte	'value',0
-	.word	159188
+	.word	159140
 	.byte	4,2,35,0,13
 	.byte	'size',0
 	.word	40302
 	.byte	1,2,35,4,13
 	.byte	'names',0
-	.word	159252
-	.byte	121,2,35,5,13
-	.byte	'update',0
-	.word	39746
-	.byte	4,3,35,128,1,0,20,53,86,9,4,13
+	.word	159188
+	.byte	121,2,35,5,0,20,53,81,9,4,13
 	.byte	'value',0
 	.word	39746
-	.byte	4,2,35,0,0,12,53,46,5,132,1,13
+	.byte	4,2,35,0,0,12,53,46,5,128,1,13
 	.byte	'listValue',0
 	.word	158872
 	.byte	48,2,35,0,13
 	.byte	'intValue',0
 	.word	158926
-	.byte	20,2,35,0,13
+	.byte	16,2,35,0,13
 	.byte	'floatValue',0
-	.word	159008
-	.byte	20,2,35,0,13
+	.word	158992
+	.byte	16,2,35,0,13
 	.byte	'doubleValue',0
-	.word	159098
-	.byte	20,2,35,0,13
+	.word	159066
+	.byte	16,2,35,0,13
 	.byte	'boolValue',0
-	.word	159193
-	.byte	12,2,35,0,13
+	.word	159145
+	.byte	8,2,35,0,13
 	.byte	'enumValue',0
-	.word	159261
-	.byte	132,1,2,35,0,13
+	.word	159197
+	.byte	128,1,2,35,0,13
 	.byte	'funcValue',0
-	.word	159329
-	.byte	4,2,35,0,0
-.L30:
+	.word	159248
+	.byte	4,2,35,0,0,22,1,1,23
+	.word	158750
+	.byte	0,3
+	.word	159412
+.L52:
 	.byte	10
 	.byte	'Page',0,53,41,16,164,1,13
 	.byte	'name',0
@@ -21300,10 +21365,13 @@ targetV:	.type	object
 	.word	158755
 	.byte	1,2,35,29,13
 	.byte	'extends',0
-	.word	159350
-	.byte	132,1,2,35,32,0,21
-	.byte	'Page',0,53,90,3
-	.word	159493
+	.word	159269
+	.byte	128,1,2,35,32,13
+	.byte	'update',0
+	.word	159421
+	.byte	4,3,35,160,1,0,21
+	.byte	'Page',0,53,86,3
+	.word	159426
 	.byte	20,54,75,9,16,13
 	.byte	'sysFreq',0
 	.word	256
@@ -21318,13 +21386,13 @@ targetV:	.type	object
 	.word	256
 	.byte	4,2,35,12,0,21
 	.byte	'AppInfo',0,54,81,3
-	.word	159596
+	.word	159546
 	.byte	17,20,76,9,1,18
 	.byte	'IfxStdIf_Pos_ResolutionFactor_oneFold',0,1,18
 	.byte	'IfxStdIf_Pos_ResolutionFactor_twoFold',0,2,18
 	.byte	'IfxStdIf_Pos_ResolutionFactor_fourFold',0,4,0,21
 	.byte	'IfxStdIf_Pos_ResolutionFactor',0,20,81,3
-	.word	159686
+	.word	159636
 	.byte	21
 	.byte	'IfxStdIf_Pos_SensorType',0,20,92,3
 	.word	32998
@@ -21351,7 +21419,7 @@ targetV:	.type	object
 	.word	652
 	.byte	2,2,35,10,13
 	.byte	'resolutionFactor',0
-	.word	159686
+	.word	159636
 	.byte	1,2,35,12,13
 	.byte	'updatePeriod',0
 	.word	256
@@ -21372,7 +21440,7 @@ targetV:	.type	object
 	.word	256
 	.byte	4,2,35,32,0,21
 	.byte	'IfxStdIf_Pos_Config',0,20,199,2,3
-	.word	159957
+	.word	159907
 	.byte	20,55,64,9,12,13
 	.byte	'a',0
 	.word	256
@@ -21384,7 +21452,7 @@ targetV:	.type	object
 	.word	256
 	.byte	4,2,35,8,0,21
 	.byte	'Ifx_LowPassPt1F32',0,55,69,3
-	.word	160249
+	.word	160199
 	.byte	21
 	.byte	'Ifx_GPT12_ACCEN0_Bits',0,23,104,3
 	.word	37487
@@ -21503,7 +21571,7 @@ targetV:	.type	object
 	.word	38058
 	.byte	21
 	.byte	'Ifx_GPT12',0,23,239,3,3
-	.word	161322
+	.word	161272
 	.byte	20,56,67,15,20,13
 	.byte	'module',0
 	.word	38439
@@ -21517,10 +21585,10 @@ targetV:	.type	object
 	.byte	'select',0
 	.word	40064
 	.byte	1,2,35,16,0,32
-	.word	161346
+	.word	161296
 	.byte	21
 	.byte	'IfxGpt12_TxEud_In',0,56,73,3
-	.word	161412
+	.word	161362
 	.byte	20,56,76,15,20,13
 	.byte	'module',0
 	.word	38439
@@ -21534,10 +21602,10 @@ targetV:	.type	object
 	.byte	'select',0
 	.word	40064
 	.byte	1,2,35,16,0,32
-	.word	161443
+	.word	161393
 	.byte	21
 	.byte	'IfxGpt12_TxIn_In',0,56,82,3
-	.word	161509
+	.word	161459
 	.byte	20,56,85,15,20,13
 	.byte	'module',0
 	.word	38439
@@ -21551,10 +21619,10 @@ targetV:	.type	object
 	.byte	'select',0
 	.word	9426
 	.byte	1,2,35,16,0,32
-	.word	161539
+	.word	161489
 	.byte	21
 	.byte	'IfxGpt12_TxOut_Out',0,56,91,3
-	.word	161605
+	.word	161555
 	.byte	21
 	.byte	'IfxGpt12_CaptureInput',0,22,85,3
 	.word	38444
@@ -21564,19 +21632,19 @@ targetV:	.type	object
 	.byte	'IfxGpt12_CaptureInputMode_fallingEdgeTxIN',0,2,18
 	.byte	'IfxGpt12_CaptureInputMode_bothEdgesTxIN',0,3,0,21
 	.byte	'IfxGpt12_CaptureInputMode',0,22,95,3
-	.word	161667
+	.word	161617
 	.byte	17,22,100,9,1,18
 	.byte	'IfxGpt12_CaptureTrigger_capin',0,0,18
 	.byte	'IfxGpt12_CaptureTrigger_t3inOrT3EUD',0,1,0,21
 	.byte	'IfxGpt12_CaptureTrigger',0,22,104,3
-	.word	161869
+	.word	161819
 	.byte	17,22,109,9,1,18
 	.byte	'IfxGpt12_CaptureTriggerMode_disabled',0,0,18
 	.byte	'IfxGpt12_CaptureTriggerMode_risingEdge',0,1,18
 	.byte	'IfxGpt12_CaptureTriggerMode_fallingEdge',0,2,18
 	.byte	'IfxGpt12_CaptureTriggerMode_randomEdge',0,3,0,21
 	.byte	'IfxGpt12_CaptureTriggerMode',0,22,115,3
-	.word	161977
+	.word	161927
 	.byte	17,22,120,9,1,18
 	.byte	'IfxGpt12_CounterInputMode_counterDisabled',0,0,18
 	.byte	'IfxGpt12_CounterInputMode_risingEdgeTxIN',0,1,18
@@ -21586,42 +21654,42 @@ targetV:	.type	object
 	.byte	'IfxGpt12_CounterInputMode_fallingEdgeTxOTL',0,6,18
 	.byte	'IfxGpt12_CounterInputMode_bothEdgesTxOTL',0,7,0,21
 	.byte	'IfxGpt12_CounterInputMode',0,22,129,1,3
-	.word	162182
+	.word	162132
 	.byte	17,22,134,1,9,1,18
 	.byte	'IfxGpt12_EudInput_A',0,0,18
 	.byte	'IfxGpt12_EudInput_B',0,1,18
 	.byte	'IfxGpt12_EudInput_C',0,2,18
 	.byte	'IfxGpt12_EudInput_D',0,3,0,21
 	.byte	'IfxGpt12_EudInput',0,22,140,1,3
-	.word	162528
+	.word	162478
 	.byte	17,22,145,1,9,1,18
 	.byte	'IfxGpt12_Gpt1BlockPrescaler_8',0,0,18
 	.byte	'IfxGpt12_Gpt1BlockPrescaler_4',0,1,18
 	.byte	'IfxGpt12_Gpt1BlockPrescaler_32',0,2,18
 	.byte	'IfxGpt12_Gpt1BlockPrescaler_16',0,3,0,21
 	.byte	'IfxGpt12_Gpt1BlockPrescaler',0,22,151,1,3
-	.word	162650
+	.word	162600
 	.byte	17,22,156,1,9,1,18
 	.byte	'IfxGpt12_Gpt2BlockPrescaler_4',0,0,18
 	.byte	'IfxGpt12_Gpt2BlockPrescaler_2',0,1,18
 	.byte	'IfxGpt12_Gpt2BlockPrescaler_16',0,2,18
 	.byte	'IfxGpt12_Gpt2BlockPrescaler_8',0,3,0,21
 	.byte	'IfxGpt12_Gpt2BlockPrescaler',0,22,162,1,3
-	.word	162824
+	.word	162774
 	.byte	17,22,167,1,9,1,18
 	.byte	'IfxGpt12_IncrementalInterfaceInputMode_stopCounterTx',0,0,18
 	.byte	'IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxIN',0,1,18
 	.byte	'IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxEUD',0,2,18
 	.byte	'IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxINOrTxEUD',0,3,0,21
 	.byte	'IfxGpt12_IncrementalInterfaceInputMode',0,22,173,1,3
-	.word	162997
+	.word	162947
 	.byte	17,22,178,1,9,1,18
 	.byte	'IfxGpt12_Input_A',0,0,18
 	.byte	'IfxGpt12_Input_B',0,1,18
 	.byte	'IfxGpt12_Input_C',0,2,18
 	.byte	'IfxGpt12_Input_D',0,3,0,21
 	.byte	'IfxGpt12_Input',0,22,184,1,3
-	.word	163280
+	.word	163230
 	.byte	17,22,189,1,9,1,18
 	.byte	'IfxGpt12_Mode_timer',0,0,18
 	.byte	'IfxGpt12_Mode_counter',0,1,18
@@ -21632,7 +21700,7 @@ targetV:	.type	object
 	.byte	'IfxGpt12_Mode_incrementalInterfaceRotationDetection',0,6,18
 	.byte	'IfxGpt12_Mode_incrementalInterfaceEdgeDetection',0,7,0,21
 	.byte	'IfxGpt12_Mode',0,22,199,1,3
-	.word	163387
+	.word	163337
 	.byte	17,22,204,1,9,1,18
 	.byte	'IfxGpt12_ReloadInputMode_counterDisabled',0,0,18
 	.byte	'IfxGpt12_ReloadInputMode_risingEdgeTxIN',0,1,18
@@ -21642,28 +21710,28 @@ targetV:	.type	object
 	.byte	'IfxGpt12_ReloadInputMode_fallingEdgeTxOTL',0,6,18
 	.byte	'IfxGpt12_ReloadInputMode_bothEdgesTxOTL',0,7,0,21
 	.byte	'IfxGpt12_ReloadInputMode',0,22,213,1,3
-	.word	163675
+	.word	163625
 	.byte	17,22,218,1,9,1,18
 	.byte	'IfxGpt12_SleepMode_enable',0,0,18
 	.byte	'IfxGpt12_SleepMode_disable',0,1,0,21
 	.byte	'IfxGpt12_SleepMode',0,22,222,1,3
-	.word	164014
+	.word	163964
 	.byte	17,22,226,1,9,1,18
 	.byte	'IfxGpt12_SuspendMode_none',0,0,18
 	.byte	'IfxGpt12_SuspendMode_hard',0,1,18
 	.byte	'IfxGpt12_SuspendMode_soft',0,2,0,21
 	.byte	'IfxGpt12_SuspendMode',0,22,231,1,3
-	.word	164106
+	.word	164056
 	.byte	17,22,236,1,9,1,18
 	.byte	'IfxGpt12_TimerDirection_up',0,0,18
 	.byte	'IfxGpt12_TimerDirection_down',0,1,0,21
 	.byte	'IfxGpt12_TimerDirection',0,22,240,1,3
-	.word	164227
+	.word	164177
 	.byte	17,22,245,1,9,1,18
 	.byte	'IfxGpt12_TimerDirectionSource_internal',0,0,18
 	.byte	'IfxGpt12_TimerDirectionSource_external',0,1,0,21
 	.byte	'IfxGpt12_TimerDirectionSource',0,22,249,1,3
-	.word	164327
+	.word	164277
 	.byte	17,22,254,1,9,1,18
 	.byte	'IfxGpt12_TimerInputPrescaler_1',0,0,18
 	.byte	'IfxGpt12_TimerInputPrescaler_2',0,1,18
@@ -21674,29 +21742,29 @@ targetV:	.type	object
 	.byte	'IfxGpt12_TimerInputPrescaler_64',0,6,18
 	.byte	'IfxGpt12_TimerInputPrescaler_128',0,7,0,21
 	.byte	'IfxGpt12_TimerInputPrescaler',0,22,136,2,3
-	.word	164455
+	.word	164405
 	.byte	17,22,141,2,9,1,18
 	.byte	'IfxGpt12_TimerReloadMode_disable',0,0,18
 	.byte	'IfxGpt12_TimerReloadMode_enable',0,1,0,21
 	.byte	'IfxGpt12_TimerReloadMode',0,22,145,2,3
-	.word	164769
+	.word	164719
 	.byte	17,22,150,2,9,1,18
 	.byte	'IfxGpt12_TimerRemoteControl_off',0,0,18
 	.byte	'IfxGpt12_TimerRemoteControl_on',0,1,0,21
 	.byte	'IfxGpt12_TimerRemoteControl',0,22,154,2,3
-	.word	164879
+	.word	164829
 	.byte	17,22,159,2,9,1,18
 	.byte	'IfxGpt12_TimerRun_stop',0,0,18
 	.byte	'IfxGpt12_TimerRun_start',0,1,0,21
 	.byte	'IfxGpt12_TimerRun',0,22,163,2,3
-	.word	164990
+	.word	164940
 	.byte	21
 	.byte	'IfxGpt12_IncrEnc_Update',0,57,203,1,29
 	.word	33412
 	.byte	0
 	.sdecl	'.debug_abbrev',debug
 	.sect	'.debug_abbrev'
-.L14:
+.L18:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,39,12,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32,13
 	.byte	58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,36,0,3,8,11,15,62
 	.byte	15,0,0,8,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,9,59,0,3,8,0,0,10,19,1,3,8,58,15,59,15
@@ -21709,12 +21777,12 @@ targetV:	.type	object
 	.byte	11,15,0,0,0
 	.sdecl	'.debug_line',debug
 	.sect	'.debug_line'
-.L15:
-	.word	.L32-.L31
-.L31:
+.L19:
+	.word	.L54-.L53
+.L53:
 	.half	3
-	.word	.L34-.L33
-.L33:
+	.word	.L56-.L55
+.L55:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'E:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC38A\\\\_Reg',0
 	.byte	'E:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\\\Port\\\\Std',0
@@ -21815,117 +21883,314 @@ targetV:	.type	object
 	.byte	'E:\\\\User\\\\S\\\\smartc\\\\TC387_Library-master\\\\Seekfree_TC387_Opensource_Library\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC38A\\\\Tricore\\_PinMap\\IfxGpt12_PinMap.h',0
 	.byte	0,0,0
 	.byte	'IfxGpt12_IncrEnc.h',0,16,0,0,0
-.L34:
-.L32:
+.L56:
+.L54:
 	.sdecl	'.debug_info',debug,cluster('MotorSetPWM')
 	.sect	'.debug_info'
-.L16:
+.L20:
 	.word	286
 	.half	3
-	.word	.L17
+	.word	.L21
 	.byte	4,1
 	.byte	'../code/motor/Motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
-	.word	.L19,.L18
+	.word	.L23,.L22
 	.byte	2
-	.word	.L12
+	.word	.L16
 	.byte	3
-	.byte	'MotorSetPWM',0,1,12,6,1,1,1
-	.word	.L11,.L23,.L10
+	.byte	'MotorSetPWM',0,1,16,6,1,1,1
+	.word	.L11,.L43,.L10
 	.byte	4
-	.byte	'pwm_left',0,1,12,22
-	.word	.L24,.L25
+	.byte	'pwm_left',0,1,16,24
+	.word	.L44,.L45
 	.byte	4
-	.byte	'pwm_right',0,1,12,35
-	.word	.L24,.L26
+	.byte	'pwm_right',0,1,16,39
+	.word	.L44,.L46
 	.byte	5
-	.word	.L11,.L23
+	.word	.L11,.L43
 	.byte	0,0
 	.sdecl	'.debug_abbrev',debug,cluster('MotorSetPWM')
 	.sect	'.debug_abbrev'
-.L17:
+.L21:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
 	.sdecl	'.debug_line',debug,cluster('MotorSetPWM')
 	.sect	'.debug_line'
-.L18:
-	.word	.L36-.L35
-.L35:
+.L22:
+	.word	.L58-.L57
+.L57:
 	.half	3
-	.word	.L38-.L37
-.L37:
+	.word	.L60-.L59
+.L59:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/motor/Motor.c',0,0,0,0,0
-.L38:
+.L60:
 	.byte	5,16,7,0,5,2
 	.word	.L11
-	.byte	3,14,1,9
-	.half	.L39-.L11
+	.byte	3,18,1,9
+	.half	.L51-.L11
 	.byte	3,1,1,5,17,9
-	.half	.L3-.L39
-	.byte	3,1,1,5,27,9
+	.half	.L3-.L51
+	.byte	3,1,1,5,5,9
 	.half	.L7-.L3
-	.byte	3,5,1,5,37,9
-	.half	.L28-.L7
+	.byte	3,5,1,5,18,9
+	.half	.L61-.L7
+	.byte	1,5,5,9
+	.half	.L62-.L61
+	.byte	3,1,1,5,19,9
+	.half	.L63-.L62
 	.byte	1,5,1,9
-	.half	.L40-.L28
+	.half	.L64-.L63
 	.byte	3,1,1,7,9
-	.half	.L20-.L40
+	.half	.L24-.L64
 	.byte	0,1,1
-.L36:
+.L58:
 	.sdecl	'.debug_ranges',debug,cluster('MotorSetPWM')
 	.sect	'.debug_ranges'
-.L19:
-	.word	-1,.L11,0,.L20-.L11,0,0
+.L23:
+	.word	-1,.L11,0,.L24-.L11,0,0
+	.sdecl	'.debug_info',debug,cluster('MotorZero')
+	.sect	'.debug_info'
+.L25:
+	.word	240
+	.half	3
+	.word	.L26
+	.byte	4,1
+	.byte	'../code/motor/Motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
+	.word	.L28,.L27
+	.byte	2
+	.word	.L16
+	.byte	3
+	.byte	'MotorZero',0,1,30,6,1,1
+	.word	.L13,.L47,.L12
+	.byte	4
+	.word	.L13,.L47
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('MotorZero')
+	.sect	'.debug_abbrev'
+.L26:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('MotorZero')
+	.sect	'.debug_line'
+.L27:
+	.word	.L66-.L65
+.L65:
+	.half	3
+	.word	.L68-.L67
+.L67:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../code/motor/Motor.c',0,0,0,0,0
+.L68:
+	.byte	5,5,7,0,5,2
+	.word	.L13
+	.byte	3,30,1,5,12,9
+	.half	.L69-.L13
+	.byte	1,5,10,9
+	.half	.L70-.L69
+	.byte	1,5,1,9
+	.half	.L71-.L70
+	.byte	3,1,1,7,9
+	.half	.L29-.L71
+	.byte	0,1,1
+.L66:
+	.sdecl	'.debug_ranges',debug,cluster('MotorZero')
+	.sect	'.debug_ranges'
+.L28:
+	.word	-1,.L13,0,.L29-.L13,0,0
+	.sdecl	'.debug_info',debug,cluster('MotorPit')
+	.sect	'.debug_info'
+.L30:
+	.word	239
+	.half	3
+	.word	.L31
+	.byte	4,1
+	.byte	'../code/motor/Motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1
+	.word	.L33,.L32
+	.byte	2
+	.word	.L16
+	.byte	3
+	.byte	'MotorPit',0,1,34,6,1,1
+	.word	.L15,.L48,.L14
+	.byte	4
+	.word	.L15,.L48
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('MotorPit')
+	.sect	'.debug_abbrev'
+.L31:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('MotorPit')
+	.sect	'.debug_line'
+.L32:
+	.word	.L73-.L72
+.L72:
+	.half	3
+	.word	.L75-.L74
+.L74:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../code/motor/Motor.c',0,0,0,0,0
+.L75:
+	.byte	5,27,7,0,5,2
+	.word	.L15
+	.byte	3,34,1,5,41,9
+	.half	.L76-.L15
+	.byte	1,5,1,9
+	.half	.L77-.L76
+	.byte	3,1,1,7,9
+	.half	.L34-.L77
+	.byte	0,1,1
+.L73:
+	.sdecl	'.debug_ranges',debug,cluster('MotorPit')
+	.sect	'.debug_ranges'
+.L33:
+	.word	-1,.L15,0,.L34-.L15,0,0
 	.sdecl	'.debug_info',debug,cluster('targetV')
 	.sect	'.debug_info'
-.L21:
+.L35:
 	.word	217
 	.half	3
-	.word	.L22
+	.word	.L36
 	.byte	4,1
 	.byte	'../code/motor/Motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
-	.word	.L12
+	.word	.L16
 	.byte	3
 	.byte	'targetV',0,25,3,7
-	.word	.L27
+	.word	.L49
 	.byte	1,5,3
 	.word	targetV
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('targetV')
 	.sect	'.debug_abbrev'
-.L22:
+.L36:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_loc',debug,cluster('MotorSetPWM')
+	.sdecl	'.debug_info',debug,cluster('zero')
+	.sect	'.debug_info'
+.L37:
+	.word	214
+	.half	3
+	.word	.L38
+	.byte	4,1
+	.byte	'../code/motor/Motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
+	.word	.L16
+	.byte	3
+	.byte	'zero',0,25,7,7
+	.word	.L50
+	.byte	1,5,3
+	.word	zero
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('zero')
+	.sect	'.debug_abbrev'
+.L38:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('motorPwmLeft')
+	.sect	'.debug_info'
+.L39:
+	.word	222
+	.half	3
+	.word	.L40
+	.byte	4,1
+	.byte	'../code/motor/Motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
+	.word	.L16
+	.byte	3
+	.byte	'motorPwmLeft',0,25,5,7
+	.word	.L44
+	.byte	1,5,3
+	.word	motorPwmLeft
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('motorPwmLeft')
+	.sect	'.debug_abbrev'
+.L40:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('motorPwmRight')
+	.sect	'.debug_info'
+.L41:
+	.word	223
+	.half	3
+	.word	.L42
+	.byte	4,1
+	.byte	'../code/motor/Motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\Debug\\',0,12,1,2
+	.word	.L16
+	.byte	3
+	.byte	'motorPwmRight',0,25,5,25
+	.word	.L44
+	.byte	1,5,3
+	.word	motorPwmRight
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('motorPwmRight')
+	.sect	'.debug_abbrev'
+.L42:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('MotorPit')
 	.sect	'.debug_loc'
-.L10:
-	.word	-1,.L11,0,.L23-.L11
+.L14:
+	.word	-1,.L15,0,.L48-.L15
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L25:
-	.word	-1,.L11,0,.L28-.L11
+	.sdecl	'.debug_loc',debug,cluster('MotorSetPWM')
+	.sect	'.debug_loc'
+.L10:
+	.word	-1,.L11,0,.L43-.L11
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L45:
+	.word	-1,.L11,0,.L51-.L11
 	.half	1
 	.byte	84
+	.word	.L51-.L11,.L43-.L11
+	.half	1
+	.byte	95
 	.word	0,0
-.L26:
-	.word	-1,.L11,0,.L29-.L11
+.L46:
+	.word	-1,.L11,0,.L43-.L11
 	.half	1
 	.byte	85
 	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('MotorZero')
+	.sect	'.debug_loc'
+.L12:
+	.word	-1,.L13,0,.L47-.L13
+	.half	2
+	.byte	138,0
+	.word	0,0
 	.sdecl	'.debug_frame',debug
 	.sect	'.debug_frame'
-.L41:
+.L78:
 	.word	48
 	.word	-1
 	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
 	.byte	8,39
 	.sdecl	'.debug_frame',debug,cluster('MotorSetPWM')
 	.sect	'.debug_frame'
+	.word	24
+	.word	.L78,.L11,.L43-.L11
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('MotorZero')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L78,.L13,.L47-.L13
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('MotorPit')
+	.sect	'.debug_frame'
 	.word	12
-	.word	.L41,.L11,.L23-.L11
+	.word	.L78,.L15,.L48-.L15
 	; Module end

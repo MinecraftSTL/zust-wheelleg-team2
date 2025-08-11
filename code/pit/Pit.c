@@ -7,7 +7,7 @@
 #include "Pit.h"
 
 const uint32 PIT00ms = 1;
-const uint32 PIT01ms = 5;
+const uint32 PIT01ms = 1;
 const uint32 PIT10ms = 1;
 
 void Pit_init(){

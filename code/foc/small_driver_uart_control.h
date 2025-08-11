@@ -3,7 +3,6 @@
 
 #include "zf_common_headfile.h"
 
-
 #define SMALL_DRIVER_UART                       (UART_3        )
 
 #define SMALL_DRIVER_BAUDRATE                   (460800        )
@@ -37,6 +36,8 @@ void uart_control_callback(void);                                   // 无刷驱动 
 void small_driver_set_duty(int16 left_duty, int16 right_duty);      // 无刷驱动 设置电机占空比
 
 void small_driver_get_speed(void);                                  // 无刷驱动 获取速度信息
+
+void small_driver_set_zero(void);                                  // 无刷驱动 设置零点
 
 void small_driver_uart_init(void);                                  // 无刷驱动 串口通讯初始化
 

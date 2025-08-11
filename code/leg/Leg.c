@@ -91,10 +91,10 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
 const int jumpStep[] = {
     0,//Ô¤ÊÕÍÈ
     147,//ÉìÍÈ
-    100,//ÊÕÍÈ
+    200,//ÊÕÍÈ
     -1,
 };
-float jumpLegZMin = -26, jumpLegZMax = -147;
+float jumpLegZMin = -30, jumpLegZMax = -147;
 
 uint32 jumpTime = 32767;
 
@@ -117,7 +117,7 @@ void jumpPit(uint32 period, float *legZ){
 }
 void jump(){
     Step step = getStep(jumpStep, jumpTime);
-    if(step.step > 0){
+    if(step.step > 2){
         jumpTime = 0;
     }
 }

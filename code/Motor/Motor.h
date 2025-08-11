@@ -16,6 +16,10 @@
 
 extern float targetV;
 
-void MotorSetPWM(int pwm_left,int pwm_right);
+extern uint8 zero;
+
+void MotorSetPWM(int16 pwm_left,int16 pwm_right);
+void MotorZero();
+void MotorPit();
 
 #endif

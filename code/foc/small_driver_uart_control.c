@@ -124,6 +124,31 @@ void small_driver_get_speed(void)
     uart_write_buffer(SMALL_DRIVER_UART, motor_value.send_data_buffer, 7);                     // 发送获取转速数据的 字节包 数据
 }
 
+//-------------------------------------------------------------------------------------------------------------------
+// 函数简介     无刷驱动 设置零点
+// 参数说明     void
+// 返回参数     void
+// 使用示例     small_driver_set_zero();
+//-------------------------------------------------------------------------------------------------------------------
+void small_driver_set_zero(void)
+{
+    motor_value.send_data_buffer[0] = 0xA5;                                         // 配置帧头
+
+    motor_value.send_data_buffer[1] = 0X03;                                         // 配置功能字
+
+    motor_value.send_data_buffer[2] = 0x00;                                         // 数据位清空
+
+    motor_value.send_data_buffer[3] = 0x00;                                         // 数据位清空
+
+    motor_value.send_data_buffer[4] = 0x00;                                         // 数据位清空
+
+    motor_value.send_data_buffer[5] = 0x00;                                         // 数据位清空
+
+    motor_value.send_data_buffer[6] = 0xA8;                                         // 配置校验位
+
+    uart_write_buffer(SMALL_DRIVER_UART, motor_value.send_data_buffer, 7);                     // 发送获取转速数据的 字节包 数据
+}
+
 
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     无刷驱动 参数初始化

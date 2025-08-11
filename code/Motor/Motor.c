@@ -1,6 +1,10 @@
-#include <Motor.h>
+#include "Motor.h"
 
 float targetV = 650;
+
+int16 motorPwmLeft = 0, motorPwmRight = 0;
+
+uint8 zero = 0;
 
 /***********************************************
 * @brief : PWM输出
@@ -9,7 +13,7 @@ float targetV = 650;
 * @date  : 2024年10月3日19:58:54
 * @author: 钱文杰
 ************************************************/
-void MotorSetPWM(int pwm_left,int pwm_right)
+void MotorSetPWM(int16 pwm_left,int16 pwm_right)
 {
     //对输入电机的pwm进行限幅
     pwm_left = -pwm_left;
@@ -19,5 +23,14 @@ void MotorSetPWM(int pwm_left,int pwm_right)
     //左电机
 
 //    printf("%d, %d\r\n", pwm_left, pwm_right);
-    small_driver_set_duty(pwm_left, pwm_right);
+    motorPwmLeft = pwm_left;
+    motorPwmRight = pwm_right;
+}
+
+void MotorZero(){
+    zero = 1;
+}
+
+void MotorPit(){
+    small_driver_set_duty(motorPwmLeft, motorPwmRight);
 }

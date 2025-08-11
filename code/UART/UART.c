@@ -138,6 +138,9 @@ void Vofa_Adjust(void)
                         menu->extends.funcValue.value();
                         break;
                 }
+                if(menu->update){
+                    menu->update(menu);
+                }
                 beepShort();
             }
         }

@@ -25,10 +25,13 @@ void CarStatus_update(){
     CameraStatus_set(NONE);
     carRunMs = 0;
     wheelClear = 0;
-    showPInC1 = !carStatus;
+    showPInC1 = carStatus != CAR_RUN;
     if(carStatus){
         binStatus = 1;
     }
+}
+void CarStatus_menu_update(Page *page){
+    CarStatus_update();
 }
 void CarStatus_add(){
     if(carStatus < CAR_RUN){

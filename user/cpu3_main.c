@@ -35,7 +35,7 @@
 
 #include "zf_common_headfile.h"
 #pragma section all "cpu3_dsram"
-// 将本语句与#pragma section all restore语句之间的全局变量都放在CPU1的RAM中
+// 将本语句与#pragma section all restore语句之间的全局变量都放在CPU3的RAM中
 
 
 // 工程导入到软件之后，应该选中工程然后点击refresh刷新一下之后再编译

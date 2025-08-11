@@ -51,6 +51,7 @@ Page menu_main_config;
 Page menu_main_config_volume;
 Page menu_main_config_mod;
 Page menu_main_config_mod_gyro;
+Page menu_main_config_mod_foc;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_zero;
@@ -200,7 +201,7 @@ void core0_main(void)
         "run",
         ""
     });
-    menu_main_carStatus.extends.enumValue.update = CarStatus_update;
+    menu_main_carStatus.update = CarStatus_menu_update;
     ListPage_init(&menu_main_config, "config", (Page*[]){
         &menu_main_config_volume,
         &menu_main_config_mod,
@@ -209,9 +210,11 @@ void core0_main(void)
     IntPage_init(&menu_main_config_volume, "volume", &volume, 0, 3);
     ListPage_init(&menu_main_config_mod, "mod", (Page*[]){
         &menu_main_config_mod_gyro,
+        &menu_main_config_mod_foc,
         NULL
     });
     FuncPage_init(&menu_main_config_mod_gyro, "gyro", gyro_set);
+    FuncPage_init(&menu_main_config_mod_foc, "foc", MotorZero);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,

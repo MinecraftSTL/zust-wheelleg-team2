@@ -35,6 +35,7 @@ void Page_init(Page *this, char name[], enum PageExtendsType type){
     strncpy(this->name, name, PAGE_NAME_MAX);
     this->type = type;
     this->select = 0;
+    this->update = NULL;
 }
 
 void Page_print(Page *this, uint8 row){
@@ -250,6 +251,9 @@ void ListPage_press(Page *this, uint8 pressed[]){
             return;
         }else{
             this->extends.listValue.open = 1;
+            if(this->update){
+                this->update(this);
+            }
             ips200_clear();
         }
     }
@@ -261,7 +265,6 @@ void IntPage_init(Page *this, char name[], int32 *value, int32 min, int32 max){
     this->extends.intValue.min = min;
     this->extends.intValue.max = max;
     this->extends.intValue.open = 0;
-    this->extends.intValue.update = NULL;
 }
 void IntPage_print(Page *this, uint8 row){
     char str[7] = {0};
@@ -315,8 +318,8 @@ void IntPage_press(Page *this, uint8 pressed[]){
         char path[PAGE_PATH_MAX+1];
         Page_getPath(this, path);
         printf("^%s=%d$\r\n", path, *this->extends.intValue.value);
-        if(this->extends.intValue.update){
-            this->extends.intValue.update();
+        if(this->update){
+            this->update(this);
         }
     }
     if(pressed[CENTER_KEY]){
@@ -342,7 +345,6 @@ void FloatPage_init(Page *this, char name[], float *value, float min, float max)
     this->extends.floatValue.max = max;
     this->extends.floatValue.dot = 1;
     this->extends.floatValue.open = 0;
-    this->extends.floatValue.update = NULL;
 }
 void FloatPage_print(Page *this, uint8 row){
     char str[11] = {0};
@@ -416,8 +418,8 @@ void FloatPage_press(Page *this, uint8 pressed[]){
         char path[PAGE_PATH_MAX+1];
         Page_getPath(this, path);
         printf("^%s=%f$\r\n", path, *this->extends.floatValue.value);
-        if(this->extends.floatValue.update){
-            this->extends.floatValue.update();
+        if(this->update){
+            this->update(this);
         }
     }
     if(pressed[CENTER_KEY]){
@@ -437,7 +439,6 @@ void DoublePage_init(Page *this, char name[], float *value, float min, float max
     this->extends.doubleValue.max = max;
     this->extends.doubleValue.dot = 1;
     this->extends.doubleValue.open = 0;
-    this->extends.doubleValue.update = NULL;
 }
 void DoublePage_print(Page *this, uint8 row){
     char str[11] = {0};
@@ -511,8 +512,8 @@ void DoublePage_press(Page *this, uint8 pressed[]){
         char path[PAGE_PATH_MAX+1];
         Page_getPath(this, path);
         printf("^%s=%lf$\r\n", path, *this->extends.doubleValue.value);
-        if(this->extends.doubleValue.update){
-            this->extends.doubleValue.update();
+        if(this->update){
+            this->update(this);
         }
     }
     if(pressed[CENTER_KEY]){
@@ -529,7 +530,6 @@ void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
     Page_init(this, name, BOOL_TYPE);
     this->extends.boolValue.value = value;
     this->extends.boolValue.dir = dir;
-    this->extends.boolValue.update = NULL;
 }
 void BoolPage_print(Page *this, uint8 row){
     ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->select==0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
@@ -550,8 +550,8 @@ void BoolPage_press(Page *this, uint8 pressed[]){
             char path[PAGE_PATH_MAX+1];
             Page_getPath(this, path);
             printf("^%s=%d$\r\n", path, *this->extends.boolValue.value);
-            if(this->extends.boolValue.update){
-                this->extends.boolValue.update();
+            if(this->update){
+                this->update(this);
             }
         }
     }
@@ -571,7 +571,6 @@ void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
     for(int i=0; i<this->extends.enumValue.size; ++i){
         strncpy(this->extends.enumValue.names[i], names[i], PAGE_VALUE_MAX);
     }
-    this->extends.enumValue.update = NULL;
 }
 void EnumPage_print(Page *this, uint8 row){
     if(!row){
@@ -610,8 +609,8 @@ void EnumPage_press(Page *this, uint8 pressed[]){
             char path[PAGE_PATH_MAX+1];
             Page_getPath(this, path);
             printf("^%s=%d$\r\n", path, *this->extends.enumValue.value);
-            if(this->extends.enumValue.update){
-                this->extends.enumValue.update();
+            if(this->update){
+                this->update(this);
             }
         }
     }
@@ -634,6 +633,9 @@ void FuncPage_press(Page *this, uint8 pressed[]){
             return;
         }else{
             this->extends.funcValue.value();
+            if(this->update){
+                this->update(this);
+            }
         }
     }
 }
