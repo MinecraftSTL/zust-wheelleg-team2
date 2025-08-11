@@ -194,8 +194,8 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         float k = (legZ + LEG_MIN_Z) / (LEG_MIN_Z - LEG_MAX_Z);
 
         if (lza_ < 0) {
-            rz += lza_ * (1 - k);
             lz -= lza_ * k;
+            rz += lza_ * (1 - k);
         } else if (lza_ > 0) {
             lz -= lza_ * (1 - k);
             rz += lza_ * k;
