@@ -19,6 +19,22 @@ void CarStatus_set(CarStatus this)
 {
     beepMid();
     carStatus = this;
+    CarStatus_update();
+}
+void CarStatus_update(){
     CameraStatus_set(NONE);
     carRunTick = 0;
+}
+void CarStatus_add(){
+    if(carStatus < CAR_RUN){
+        CarStatus_set(carStatus+1);
+    }
+}
+void CarStatus_sub(){
+    if(carStatus > CAR_STOP){
+        CarStatus_set(carStatus-1);
+    }
+}
+void CarStatus_stop(){
+    CarStatus_set(CAR_STOP);
 }

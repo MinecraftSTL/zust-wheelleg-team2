@@ -10,7 +10,8 @@
 
 #include "zf_common_headfile.h"
 
-#define Beep P33_10
+#define Beep P15_6
+#define Beep1 P15_7
 
 extern uint32 beepTime;
 

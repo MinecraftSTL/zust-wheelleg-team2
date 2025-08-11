@@ -26,6 +26,9 @@ typedef enum
 extern CarStatus carStatus;
 
 void CarStatus_set(CarStatus this);
-
+void CarStatus_update();
+void CarStatus_add();
+void CarStatus_sub();
+void CarStatus_stop();
 
 #endif

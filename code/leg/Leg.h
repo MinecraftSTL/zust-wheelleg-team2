@@ -10,10 +10,10 @@
 
 #include "Sys.h"
 
-#define servo_rb ATOM2_CH2_P33_6
-#define servo_rf ATOM2_CH3_P33_7
-#define servo_lf ATOM2_CH0_P33_4
-#define servo_lb ATOM2_CH1_P33_5
+#define servo_rb ATOM2_CH3_P11_6
+#define servo_rf ATOM2_CH4_P11_9
+#define servo_lf ATOM2_CH5_P11_10
+#define servo_lb ATOM2_CH6_P11_11
 
 #define DFB 35
 #define LFU 60

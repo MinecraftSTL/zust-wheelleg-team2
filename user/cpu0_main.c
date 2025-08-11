@@ -46,7 +46,10 @@
 uint8 pressed[KEY_NUM] = {0};
 
 Page menu_main;
-Page menu_main_carRun;
+Page menu_main_carStatus;
+Page menu_main_carStatus_add;
+Page menu_main_carStatus_sub;
+Page menu_main_carStatus_stop;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
@@ -146,19 +149,21 @@ void core0_main(void)
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
     ListPage_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", (Page*[]){
-        &menu_main_carRun,
+        &menu_main_carStatus,
         &menu_main_arg,
         &menu_main_mod,
         &menu_main_debug,
         NULL
     });
-    EnumPage_init(&menu_main_carRun, "car_run", &carStatus, (char*[]){
-            "stop",
-            "start",
-            "balance",
-            "run",
-            "",
+    ListPage_init(&menu_main_carStatus, "carStatus", (Page*[]){
+        &menu_main_carStatus_add,
+        &menu_main_carStatus_sub,
+        &menu_main_carStatus_stop,
+        NULL
     });
+    FuncPage_init(&menu_main_carStatus_add, "add", CarStatus_add);
+    FuncPage_init(&menu_main_carStatus_sub, "sub", CarStatus_sub);
+    FuncPage_init(&menu_main_carStatus_stop, "stop", CarStatus_stop);
     ListPage_init(&menu_main_arg, "arg", (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
