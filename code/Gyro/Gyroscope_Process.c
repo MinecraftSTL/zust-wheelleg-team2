@@ -18,144 +18,94 @@ float exInt = 0, eyInt = 0, ezInt = 0; // 当前加计测得的重力加速度在三轴上的分量
 
 float I_ex, I_ey, I_ez; // 误差积分
 // 与用当前姿态计算得来的重力在三轴上的分量的误差的积分
-void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float halfT) // g表陀螺仪，a表加计
+void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float halfT)
 {
-        float q0temp, q1temp, q2temp, q3temp; // 四元数暂存变量，求解微分方程时要用
+    float q0temp, q1temp, q2temp, q3temp;
+    float normr, vx, vy, vz, ex, ey, ez;
+    float q0q0 = q0 * q0;
+    float q0q1 = q0 * q1;
+    float q0q2 = q0 * q2;
+    float q1q1 = q1 * q1;
+    float q1q3 = q1 * q3;
+    float q2q2 = q2 * q2;
+    float q2q3 = q2 * q3;
+    float q3q3 = q3 * q3;
 
-        float normr; // 矢量的模或四元数的范数
+    if (ax * ay * az != 0)
+    {
+        // 计算加速度模长
+        float a_norm = sqrt(ax * ax + ay * ay + az * az);
+        float g = 9.81f;
+        float sigma = 0.05f; // 经验设定的噪声标准差
+        float chi_square = ((a_norm - g) * (a_norm - g)) / (sigma * sigma);
 
-        float vx, vy, vz; // 当前姿态计算得来的重力在三轴上的分量
+        // 动态调整权重
+        float alpha = 0.3f / (0.3f + sqrt(chi_square));
+        float dynamic_Kp = Kp * alpha;
 
-        float ex, ey, ez; // 当前加计测得的重力加速度在三轴上的分量
+        // 单位化加速度
+        normr = Q_rsqrt(ax * ax + ay * ay + az * az);
+        ax *= normr;
+        ay *= normr;
+        az *= normr;
 
-        // 与用当前姿态计算得来的重力在三轴上的分量的误差
+        // 计算重力分量
+        vx = 2.0f * (q1q3 - q0q2);
+        vy = 2.0f * (q0q1 + q2q3);
+        vz = q0q0 - q1q1 - q2q2 + q3q3;
 
-        // 先把这些用得到的值算好
+        // 计算误差
+        ex = (ay * vz - az * vy);
+        ey = (az * vx - ax * vz);
+        ez = (ax * vy - ay * vx);
 
-        float q0q0 = q0 * q0;
+        // 误差积分
+        I_ex += halfT * ex;
+        I_ey += halfT * ey;
+        I_ez += halfT * ez;
+        exInt = Ki * I_ex;
+        eyInt = Ki * I_ey;
+        ezInt = Ki * I_ez;
 
-        float q0q1 = q0 * q1;
+        // PI修正
+        gx = gx + dynamic_Kp * ex + exInt;
+        gy = gy + dynamic_Kp * ey + eyInt;
+        gz = gz + dynamic_Kp * ez + ezInt;
 
-        float q0q2 = q0 * q2;
+        // 四元数更新
+        q0temp = q0;
+        q1temp = q1;
+        q2temp = q2;
+        q3temp = q3;
 
-        float q1q1 = q1 * q1;
+        q0 = q0 + (-q1temp * gx - q2temp * gy - q3temp * gz) * halfT;
+        q1 = q1 + (q0temp * gx + q2temp * gz - q3temp * gy) * halfT;
+        q2 = q2 + (q0temp * gy - q1temp * gz + q3temp * gx) * halfT;
+        q3 = q3 + (q0temp * gz + q1temp * gy - q2temp * gx) * halfT;
 
-        float q1q3 = q1 * q3;
+        // 单位化
+        normr = Q_rsqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
+        q0 *= normr;
+        q1 *= normr;
+        q2 *= normr;
+        q3 *= normr;
 
-        float q2q2 = q2 * q2;
-
-        float q2q3 = q2 * q3;
-
-        float q3q3 = q3 * q3;
-
-        if (ax * ay * az != 0) // 加计处于自由落体状态时不进行姿态解算，因为会产生分母无穷大的情况
-        {
-
-                normr = Q_rsqrt(ax * ax + ay * ay + az * az); // 单位化加速度计，
-
-                ax = ax * normr; // 这样变更了量程也不需要修改KP参数，因为这里归一化了
-
-                ay = ay * normr;
-
-                az = az * normr;
-
-                // 用当前姿态计算出重力在三个轴上的分量，
-
-                // 参考坐标n系转化到载体坐标b系的用四元数表示的方向余弦矩阵第三列即是（博文一中有提到）
-
-                vx = 2.0f * (q1q3 - q0q2);
-
-                vy = 2.0f * (q0q1 + q2q3);
-
-                vz = q0q0 - q1q1 - q2q2 + q3q3;
-
-                // 计算测得的重力与计算得重力间的误差，向量外积可以表示这一误差
-
-                // 原因我理解是因为两个向量是单位向量且sin0等于0
-
-                // 不过要是夹角是180度呢~这个还没理解
-
-                ex = (ay * vz - az * vy);
-
-                ey = (az * vx - ax * vz);
-
-                ez = (ax * vy - ay * vx);
-
-                // 用叉乘误差来做PI修正陀螺零偏，
-                   // 通过调节 param_Kp，param_Ki 两个参数，
-                   // 可以控制加速度计修正陀螺仪积分姿态的速度。
-                I_ex += halfT * ex; // integral error scaled by Ki
-
-                I_ey += halfT * ey;
-
-                I_ez += halfT * ez;
-
-                exInt =Ki * I_ex; // 对误差进行积分
-
-                eyInt =Ki * I_ey;
-
-                ezInt =Ki * I_ez;
-
-                // adjusted gyroscope measurements
-
-                gx = gx + Kp * ex + exInt; // 将误差PI后补偿到陀螺仪，即补偿零点漂移
-
-                gy = gy + Kp * ey + eyInt;
-
-                gz = gz + Kp * ez + ezInt; // 这里的gz由于没有观测者进行矫正会产生漂移，表现出来的就是积分自增或自减
-
-                // 下面进行姿态的更新，也就是四元数微分方程的求解
-
-                q0temp = q0; // 暂存当前值用于计算
-
-                q1temp = q1; // 网上传的这份算法大多没有注意这个问题，在此更正
-
-                q2temp = q2;
-
-                q3temp = q3;
-
-                // 采用一阶毕卡解法，相关知识可参见《惯性器件与惯性导航系统》P212
-
-                q0 = q0 + (-q1temp * gx - q2temp * gy - q3temp * gz) * halfT;
-
-                q1 = q1 + (q0temp * gx + q2temp * gz - q3temp * gy) * halfT;
-
-                q2 = q2 + (q0temp * gy - q1temp * gz + q3temp * gx) * halfT;
-
-                q3 = q3 + (q0temp * gz + q1temp * gy - q2temp * gx) * halfT;
-
-                // 单位化四元数在空间旋转时不会拉伸，仅有旋转角度，这类似线性代数里的正交变换
-
-                normr = Q_rsqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
-
-                q0 = q0 * normr;
-
-                q1 = q1 * normr;
-
-                q2 = q2 * normr;
-
-                q3 = q3 * normr;
-
-                // 四元数到欧拉角的转换，公式推导见博文一
-
-                // 其中YAW航向角由于加速度计对其没有修正作用，因此此处直接用陀螺仪积分代替
-
-                pitch = asin(-2 * q1 * q3 + 2 * q0 * q2) * 57.259f; // pitch
-
-                roll = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2 * q2 + 1) * 57.259f; // roll
-
-                yaw = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2 * q2 - 2 * q3 * q3 + 1) * 57.259f;
-
-        }
+        // 欧拉角转换
+        pitch = asin(-2 * q1 * q3 + 2 * q0 * q2) * 57.259f;
+        roll = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2 * q2 + 1) * 57.259f;
+        yaw = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2 * q2 - 2 * q3 * q3 + 1) * 57.259f;
+    }
 }
+
+
 
 float LPF2_T2(float xin)
 {
    static float lpf2_yout[3] = {0};
    static float lpf2_xin[3] = {0};
 
-   float sample_freq = 500;
-   float cutoff_freq = 5;
+   float sample_freq = 1000;
+   float cutoff_freq = 1;
 //   float fr = sample_freq / cutoff_freq;
 
    float ohm = tan(PI * cutoff_freq /sample_freq);

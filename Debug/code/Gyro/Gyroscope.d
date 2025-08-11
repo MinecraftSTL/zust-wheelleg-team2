@@ -6,6 +6,8 @@ code/Gyro/Gyroscope.o :	../code/Gyro/Gyroscope_Process.h
 ../code/Gyro/Gyroscope_Process.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Gyro/Gyroscope.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/math.h
@@ -328,8 +330,18 @@ code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Ope
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid_param.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid_param.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h
@@ -338,16 +350,10 @@ code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Ope
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/PidPage.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/PidPage.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID_param.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID_param.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu1_main.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu1_main.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
@@ -356,14 +362,14 @@ code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Ope
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/isr.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Beep/Beep.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Beep/Beep.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyCamera/MyCamera.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyCamera/MyCamera.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Gyro/Gyroscope.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Gyro/Gyroscope.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h
@@ -398,18 +404,14 @@ code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Ope
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Gyro/Gyroscope.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Gyro/Gyroscope.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h :
-code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/filter/Filter.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/filter/Filter.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
@@ -428,6 +430,12 @@ code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Ope
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Status/Status.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h :
+code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h :
 code/Gyro/Gyroscope.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h

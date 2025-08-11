@@ -42,6 +42,7 @@ extern const float extendLegZ;
 extern const uint32 retractLegTime;
 extern const float retractLegZ;
 
-void jumpIsr(uint32 period, float *legZ);
+void jumpPit(uint32 period, float *legZ);
+void jump();
 
 #endif /* CODE_LEG_LEG_H_ */

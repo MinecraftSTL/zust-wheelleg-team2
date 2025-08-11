@@ -78,12 +78,14 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Openso
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h :
+code/Motor/Motor.o :	../code/pid/Pid.h
+../code/pid/Pid.h :
+code/Motor/Motor.o :	../code/myEncoder/MyEncoder.h
+../code/myEncoder/MyEncoder.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Motor/Motor.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/stdbool.h
@@ -330,8 +332,18 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Openso
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid_param.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid_param.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h
@@ -342,12 +354,6 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Openso
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/PidPage.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/menu/Menu.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID_param.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID_param.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu1_main.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu1_main.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
@@ -356,14 +362,6 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Openso
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/isr.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Beep/Beep.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Beep/Beep.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyCamera/MyCamera.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyCamera/MyCamera.h :
-code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyEncoder/MyEncoder.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Gyro/Gyroscope.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Gyro/Gyroscope.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Gyro/Gyroscope_Process.h
@@ -380,6 +378,8 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Openso
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/filter/Filter.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/filter/Filter.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
@@ -398,6 +398,12 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Openso
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Status/Status.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h :
+code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pid/Pid.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h
@@ -430,5 +436,7 @@ code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Openso
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
+code/Motor/Motor.o :	../code/myCamera/MyCamera.h
+../code/myCamera/MyCamera.h :
 code/Motor/Motor.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/foc/small_driver_uart_control.h :

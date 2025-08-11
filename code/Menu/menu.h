@@ -19,9 +19,9 @@ enum KeyType{
     RIGHT_KEY,
     CENTER_KEY,
     PERV_KEY,
+    NEXT_KEY,
     BACK_KEY,
     HOME_KEY,
-    NEXT_KEY,
     KEY_NUM,
 };
 enum PageExtendsType{
@@ -30,6 +30,7 @@ enum PageExtendsType{
     FLOAT_TYPE,
     DOUBLE_TYPE,
     BOOL_TYPE,
+    FUNC_TYPE,
 };
 typedef struct Page{
     char name[16];
@@ -66,6 +67,9 @@ typedef struct Page{
             uint8 *value;
             uint8 dir;
         } boolValue;
+        struct {
+            void (*value)();
+        } funcValue;
     } extends;
 } Page;
 
@@ -81,5 +85,6 @@ void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);
 void FloatPage_init(Page *this, char name[], float *value, float max, float min);
 void DoublePage_init(Page *this, char name[], double *value, double max, double min);
 void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir);
+void FuncPage_init(Page *this, char name[], void (*value)());
 
 #endif /* CODE_MENU_H_ */

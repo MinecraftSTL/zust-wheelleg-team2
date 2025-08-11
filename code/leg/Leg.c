@@ -72,31 +72,35 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
     Leg_set_duty(r.b, r.f, l.f, l.b);
 }
 
-const uint32 preRetractLegTime = 2000;
-const float preRetractLegZ = -30;
-const uint32 extendLegTime = 200;
-const float extendLegZ = -130;
-const uint32 retractLegTime = 200;
-const float retractLegZ = -30;
+const uint32 jumpStep[] = {
+    100,//…ÏÕ»
+    100,// ’Õ»
+    80,//…ÏÕ»
+    100,//¬˝ ’Õ»
+};
 
-uint32 jumpTime = 0;
+uint32 jumpTime = 32767;
 
 void jumpPit(uint32 period, float *legZ){
-    if(jumpTime){
-        ++jumpTime;
-        if(jumpTime*period <= preRetractLegTime){
-            *legZ = preRetractLegZ;
-        }else if(jumpTime*period <= preRetractLegTime+extendLegTime){
-            *legZ = extendLegZ;
-        }else if(jumpTime*period <= preRetractLegTime+extendLegTime+retractLegTime){
-            *legZ = retractLegZ;
-        }else{
-            jumpTime = 0;
-        }
+    Step step = getStep(jumpStep, 4, jumpTime*period);
+    switch(step.step){
+        case 0:
+            *legZ = -130;
+            break;
+        case 1:
+            *legZ = -30;
+            break;
+        case 2:
+            *legZ = -60;
+            break;
+        case 3:
+            *legZ = -60+(-45+60)*((float)step.time/jumpStep[step.step]);
+            break;
+        default:
+            return;
     }
+    ++jumpTime;
 }
 void jump(){
-    if(!jumpTime){
-        jumpTime = 1;
-    }
+    jumpTime = 0;
 }

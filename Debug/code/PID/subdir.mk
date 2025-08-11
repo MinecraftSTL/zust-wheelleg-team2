@@ -4,32 +4,32 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../code/PID/PID.c \
-../code/PID/PID_param.c 
+../code/pid/Pid.c \
+../code/pid/Pid_param.c 
 
 COMPILED_SRCS += \
-./code/PID/PID.src \
-./code/PID/PID_param.src 
+./code/pid/Pid.src \
+./code/pid/Pid_param.src 
 
 C_DEPS += \
-./code/PID/PID.d \
-./code/PID/PID_param.d 
+./code/pid/Pid.d \
+./code/pid/Pid_param.d 
 
 OBJS += \
-./code/PID/PID.o \
-./code/PID/PID_param.o 
+./code/pid/Pid.o \
+./code/pid/Pid_param.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-code/PID/%.src: ../code/PID/%.c code/PID/subdir.mk
+code/pid/%.src: ../code/pid/%.c code/pid/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING C/C++ Compiler'
 	cctc -cs --dep-file="$(basename $@).d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<" && \
-	if [ -f "$(basename $@).d" ]; then sed.exe -r  -e 's/\b(.+\.o)\b/code\/PID\/\1/g' -e 's/\\/\//g' -e 's/\/\//\//g' -e 's/"//g' -e 's/([a-zA-Z]:\/)/\L\1/g' -e 's/\d32:/@TARGET_DELIMITER@/g; s/\\\d32/@ESCAPED_SPACE@/g; s/\d32/\\\d32/g; s/@ESCAPED_SPACE@/\\\d32/g; s/@TARGET_DELIMITER@/\d32:/g' "$(basename $@).d" > "$(basename $@).d_sed" && cp "$(basename $@).d_sed" "$(basename $@).d" && rm -f "$(basename $@).d_sed" 2>/dev/null; else echo 'No dependency file to process';fi
+	if [ -f "$(basename $@).d" ]; then sed.exe -r  -e 's/\b(.+\.o)\b/code\/pid\/\1/g' -e 's/\\/\//g' -e 's/\/\//\//g' -e 's/"//g' -e 's/([a-zA-Z]:\/)/\L\1/g' -e 's/\d32:/@TARGET_DELIMITER@/g; s/\\\d32/@ESCAPED_SPACE@/g; s/\d32/\\\d32/g; s/@ESCAPED_SPACE@/\\\d32/g; s/@TARGET_DELIMITER@/\d32:/g' "$(basename $@).d" > "$(basename $@).d_sed" && cp "$(basename $@).d_sed" "$(basename $@).d" && rm -f "$(basename $@).d_sed" 2>/dev/null; else echo 'No dependency file to process';fi
 	@echo '已结束构建： $<'
 	@echo ' '
 
-code/PID/%.o: ./code/PID/%.src code/PID/subdir.mk
+code/pid/%.o: ./code/pid/%.src code/pid/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING Assembler'
 	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
@@ -37,10 +37,10 @@ code/PID/%.o: ./code/PID/%.src code/PID/subdir.mk
 	@echo ' '
 
 
-clean: clean-code-2f-PID
+clean: clean-code-2f-pid
 
-clean-code-2f-PID:
-	-$(RM) ./code/PID/PID.d ./code/PID/PID.o ./code/PID/PID.src ./code/PID/PID_param.d ./code/PID/PID_param.o ./code/PID/PID_param.src
+clean-code-2f-pid:
+	-$(RM) ./code/pid/Pid.d ./code/pid/Pid.o ./code/pid/Pid.src ./code/pid/Pid_param.d ./code/pid/Pid_param.o ./code/pid/Pid_param.src
 
-.PHONY: clean-code-2f-PID
+.PHONY: clean-code-2f-pid
 

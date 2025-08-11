@@ -8,7 +8,7 @@
 #ifndef CODE_PID_PID_PARAM_H_
 #define CODE_PID_PID_PARAM_H_
 
-#include "PID.h"
+#include "Pid.h"
 #include "Sys.h"
 
 extern PID PID_WvAy, PID_WxAy, PID_vVx, PID_WvAz, PID_vAz, PID_xAx;

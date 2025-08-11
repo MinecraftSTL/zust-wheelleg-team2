@@ -4,28 +4,28 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../code/MyCamera/MyCamera.c 
+../code/myCamera/MyCamera.c 
 
 COMPILED_SRCS += \
-./code/MyCamera/MyCamera.src 
+./code/myCamera/MyCamera.src 
 
 C_DEPS += \
-./code/MyCamera/MyCamera.d 
+./code/myCamera/MyCamera.d 
 
 OBJS += \
-./code/MyCamera/MyCamera.o 
+./code/myCamera/MyCamera.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-code/MyCamera/%.src: ../code/MyCamera/%.c code/MyCamera/subdir.mk
+code/myCamera/%.src: ../code/myCamera/%.c code/myCamera/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING C/C++ Compiler'
 	cctc -cs --dep-file="$(basename $@).d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<" && \
-	if [ -f "$(basename $@).d" ]; then sed.exe -r  -e 's/\b(.+\.o)\b/code\/MyCamera\/\1/g' -e 's/\\/\//g' -e 's/\/\//\//g' -e 's/"//g' -e 's/([a-zA-Z]:\/)/\L\1/g' -e 's/\d32:/@TARGET_DELIMITER@/g; s/\\\d32/@ESCAPED_SPACE@/g; s/\d32/\\\d32/g; s/@ESCAPED_SPACE@/\\\d32/g; s/@TARGET_DELIMITER@/\d32:/g' "$(basename $@).d" > "$(basename $@).d_sed" && cp "$(basename $@).d_sed" "$(basename $@).d" && rm -f "$(basename $@).d_sed" 2>/dev/null; else echo 'No dependency file to process';fi
+	if [ -f "$(basename $@).d" ]; then sed.exe -r  -e 's/\b(.+\.o)\b/code\/myCamera\/\1/g' -e 's/\\/\//g' -e 's/\/\//\//g' -e 's/"//g' -e 's/([a-zA-Z]:\/)/\L\1/g' -e 's/\d32:/@TARGET_DELIMITER@/g; s/\\\d32/@ESCAPED_SPACE@/g; s/\d32/\\\d32/g; s/@ESCAPED_SPACE@/\\\d32/g; s/@TARGET_DELIMITER@/\d32:/g' "$(basename $@).d" > "$(basename $@).d_sed" && cp "$(basename $@).d_sed" "$(basename $@).d" && rm -f "$(basename $@).d_sed" 2>/dev/null; else echo 'No dependency file to process';fi
 	@echo '已结束构建： $<'
 	@echo ' '
 
-code/MyCamera/%.o: ./code/MyCamera/%.src code/MyCamera/subdir.mk
+code/myCamera/%.o: ./code/myCamera/%.src code/myCamera/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING Assembler'
 	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
@@ -33,10 +33,10 @@ code/MyCamera/%.o: ./code/MyCamera/%.src code/MyCamera/subdir.mk
 	@echo ' '
 
 
-clean: clean-code-2f-MyCamera
+clean: clean-code-2f-myCamera
 
-clean-code-2f-MyCamera:
-	-$(RM) ./code/MyCamera/MyCamera.d ./code/MyCamera/MyCamera.o ./code/MyCamera/MyCamera.src
+clean-code-2f-myCamera:
+	-$(RM) ./code/myCamera/MyCamera.d ./code/myCamera/MyCamera.o ./code/myCamera/MyCamera.src
 
-.PHONY: clean-code-2f-MyCamera
+.PHONY: clean-code-2f-myCamera
 

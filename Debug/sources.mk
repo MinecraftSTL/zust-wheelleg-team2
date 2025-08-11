@@ -24,25 +24,26 @@ SECONDARY_SIZE :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-code/Beep \
 code/Flash \
 code/Gyro \
 code/Motor \
-code/MyCamera \
-code/MyEncoder \
-code/MyKey \
-code/PID \
 code/Status \
 code/Sys \
 code/SysTimer \
 code/UART \
 code/VOFA \
+code/beep \
 code/debug \
 code/filter \
 code/foc \
 code/icm42688 \
 code/leg \
 code/menu \
+code/myCamera \
+code/myEncoder \
+code/myKey \
+code/pid \
+code/process \
 libraries/infineon_libraries/Configurations \
 libraries/infineon_libraries/Infra/Platform/Tricore/Compilers \
 libraries/infineon_libraries/Infra/Ssw/TC38A/Tricore \

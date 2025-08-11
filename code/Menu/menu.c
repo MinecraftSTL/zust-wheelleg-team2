@@ -19,6 +19,8 @@ void DoublePage_print(Page *this, uint8 row);
 void DoublePage_press(Page *this, uint8 pressed[]);
 void BoolPage_print(Page *this, uint8 row);
 void BoolPage_press(Page *this, uint8 pressed[]);
+void FuncPage_print(Page *this, uint8 row);
+void FuncPage_press(Page *this, uint8 pressed[]);
 
 void ips200_reset_color();
 void ips200_set_pencolor(const uint16 color);
@@ -52,6 +54,9 @@ void PageKey_print(Page *this, uint8 row){
         case BOOL_TYPE:
             BoolPage_print(this, row);
             break;
+        case FUNC_TYPE:
+            FuncPage_print(this, row);
+            break;
     }
 }
 uint8 PageKey_press(Page *this, uint8 pressed[]){
@@ -71,6 +76,9 @@ uint8 PageKey_press(Page *this, uint8 pressed[]){
         case BOOL_TYPE:
             BoolPage_press(this, pressed);
             break;
+        case FUNC_TYPE:
+            FuncPage_press(this, pressed);
+            break;
     }
     if(pressed[HOME_KEY]){
         PageKey_home(this);
@@ -79,8 +87,16 @@ uint8 PageKey_press(Page *this, uint8 pressed[]){
     }
     for(int i=0; i<KEY_NUM; ++i){
         if(pressed[i]){
+            beepShort();
             --pressed[i];
         }
+    }
+}
+Page *PageKey_getRoot(Page *this){
+    if(this->parent != NULL){
+        return PageKey_getOpened(this->parent);
+    }else{
+        return this;
     }
 }
 Page *PageKey_getOpened(Page *this){
@@ -440,6 +456,26 @@ void BoolPage_press(Page *this, uint8 pressed[]){
                     this->extends.boolValue.dir&0x02&&*this->extends.boolValue.value){
                 *this->extends.boolValue.value = !*this->extends.boolValue.value;
             }
+        }
+    }
+}
+void FuncPage_init(Page *this, char name[], void (*value)()){
+    Page_init(this, name, FUNC_TYPE);
+    this->extends.funcValue.value = value;
+}
+void FuncPage_print(Page *this, uint8 row){
+    ips200_show_string_color(row?160:0, row?row*16:16, "EXE", !row&&this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+}
+void FuncPage_press(Page *this, uint8 pressed[]){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
+        this->open = -1-this->open;
+    }
+    if(pressed[LEFT_KEY] || pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
+        if(this->open < 0){
+            PageKey_back(this);
+            return;
+        }else{
+            this->extends.funcValue.value();
         }
     }
 }

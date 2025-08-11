@@ -42,7 +42,7 @@
 // 本例程是开源库空工程 可用作移植或者测试各类内外设
 
 // **************************** 代码区域 ****************************
-const uint16 PIT00ms = 5;
+const uint16 PIT00ms = 1;
 const uint16 PIT01ms = 5;
 const uint16 PIT10ms = 1;
 
@@ -97,7 +97,7 @@ int core0_main(void)
     beep_init();
     ips200_init(IPS200_TYPE_SPI);
     gyroscope_init();
-    key_init(PIT00ms);
+    my_key_init(PIT00ms);
     small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
@@ -199,28 +199,18 @@ int core0_main(void)
     =menu_main_debug_fwp_rx.extends.floatValue.dot
     =menu_main_debug_fwp_rz.extends.floatValue.dot=2;
     BoolPage_init(&menu_main_debug_ffRow, "ffRow", &ffRow, 0x03);
-    BoolPage_init(&menu_main_debug_jump, "jump", &menuJump, 0x01);
+    FuncPage_init(&menu_main_debug_jump, "jump", jump);
 
     beepLong();
     ips200_clear();
     PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
-        uint8 p=0;
-        for(int i=0; i<KEY_NUM; ++i){
-            if(pressed[i]){
-                p=1;
-                break;
-            }
-        }
-        if(p){
-            beepShort();
-            PageKey_press(&menu_main, pressed);
-            PageKey_print(&menu_main, 0);
-        }
+        PageKey_press(&menu_main, pressed);
+        PageKey_print(&menu_main, 0);
         MyCamera_Show(200);
 //        printf("%d\n", g_camera_mid_err);
-        printf("%f, %f, %f\r\n", pitch, roll, yaw);
+//        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码
     }
 }

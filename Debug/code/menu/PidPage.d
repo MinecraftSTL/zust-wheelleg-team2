@@ -2,6 +2,8 @@ code/menu/PidPage.o :	../code/menu/PidPage.c
 ../code/menu/PidPage.c :
 code/menu/PidPage.o :	../code/menu/PidPage.h
 ../code/menu/PidPage.h :
+code/menu/PidPage.o :	../code/pid/Pid.h
+../code/pid/Pid.h :
 code/menu/PidPage.o :	../code/menu/Menu.h
 ../code/menu/Menu.h :
 code/menu/PidPage.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_Types.h
@@ -40,5 +42,3 @@ code/menu/PidPage.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opens
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Platform_Types.h :
 code/menu/PidPage.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_TypesTasking.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/infineon_libraries/iLLD/TC38A/Tricore/Cpu/Std/Ifx_TypesTasking.h :
-code/menu/PidPage.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/PID/PID.h :

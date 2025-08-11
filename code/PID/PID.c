@@ -4,8 +4,7 @@
  * Created on: 2024Äê1ÔÂ24ÈÕ
  *     Author: ÅËÉêÆæ
  */
-#include"PID.h"
-
+#include <Pid.h>
 #include "sys.h"
 
 #define MY_ABS(num) (((num) > 0) ? (num) : -(num))

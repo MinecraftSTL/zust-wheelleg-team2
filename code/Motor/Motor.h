@@ -5,9 +5,9 @@
 
 #include "zf_driver_pwm.h"
 #include "zf_driver_gpio.h"
-#include "PID.h"
-#include "MyEncoder.h"
-#include "MyCamera.h"
+#include "../pid/Pid.h"
+#include "../myEncoder/MyEncoder.h"
+#include "../myCamera/MyCamera.h"
 
 #include "small_driver_uart_control.h"
 
