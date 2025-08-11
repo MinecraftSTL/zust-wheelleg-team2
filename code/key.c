@@ -4,7 +4,8 @@ const uint8 long_press_time = 50;
 
 uint8 pressed_=0;
 uint16 pressed_time[4] = {0};
-int8 speed_qidong=1;//should be zero, opened by menu
+
+int8 speed_qidong=0;
 
 uint8 Button_Pressed(void){
     uint8 pressed = 0;

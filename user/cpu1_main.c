@@ -34,6 +34,12 @@
 ********************************************************************************************************************/
 
 #include "zf_common_headfile.h"
+
+#include "menu.h"
+#include "key.h"
+
+#include "motor.h"
+
 #pragma section all "cpu1_dsram"
 // 将本语句与#pragma section all restore语句之间的全局变量都放在CPU1的RAM中
 
@@ -48,6 +54,13 @@
 
 
 // **************************** 代码区域 ****************************
+
+struct PageKey menu_PID_moterL;
+struct PageKey menu_PID_moterR;
+struct PageKey menu_PID_turn;
+struct PageKey menu_PID;
+struct PageKey menu_main;
+
 void core1_main(void)
 {
     gpio_init(P20_8, GPO, 0, GPO_PUSH_PULL);
@@ -59,11 +72,39 @@ void core1_main(void)
     // 此处编写用户代码 例如外设初始化代码等
 
     cpu_wait_event_ready();                 // 等待所有核心初始化完毕
+    menu_PID_moterL = new_PageKey("moterL", PAGE_TYPE, new_PagePageValue((struct PageKey[]){
+                                    new_PageKey("Kp", FLOAT_TYPE, new_FloatPageValue(&(motor_l.pid_Kp), 100., 0., 0.1)),
+                                    new_PageKey("Ki", FLOAT_TYPE, new_FloatPageValue(&(motor_l.pid_Ki), 100., 0., 0.1)),
+                                    new_PageKey("Kd", FLOAT_TYPE, new_FloatPageValue(&(motor_l.pid_Kd), 100., 0., 0.1))
+                            }, 3));
+    menu_PID_moterR = new_PageKey("moterR", PAGE_TYPE, new_PagePageValue((struct PageKey[]){
+                                    new_PageKey("Kp", FLOAT_TYPE, new_FloatPageValue(&(motor_r.pid_Kp), 100., 0., 0.1)),
+                                    new_PageKey("Ki", FLOAT_TYPE, new_FloatPageValue(&(motor_r.pid_Ki), 100., 0., 0.1)),
+                                    new_PageKey("Kd", FLOAT_TYPE, new_FloatPageValue(&(motor_r.pid_Kd), 100., 0., 0.1))
+                            }, 3));
+    menu_PID_turn = new_PageKey("turn", PAGE_TYPE, new_PagePageValue((struct PageKey[]){
+                                    new_PageKey("Kp", FLOAT_TYPE, new_FloatPageValue(&(motor_turn.pid_Kp), 100., 0., 0.1)),
+                                    new_PageKey("Ki", FLOAT_TYPE, new_FloatPageValue(&(motor_turn.pid_Ki), 100., 0., 0.1)),
+                                    new_PageKey("Kd", FLOAT_TYPE, new_FloatPageValue(&(motor_turn.pid_Kd), 100., 0., 0.1))
+                            }, 3));
+    menu_PID = new_PageKey("PID", PAGE_TYPE, new_PagePageValue((struct PageKey[]){
+        menu_PID_moterL, menu_PID_moterR, menu_PID_turn
+    }, 3));
+    menu_main = new_PageKey("main", PAGE_TYPE, new_PagePageValue((struct PageKey[]){
+            menu_PID,
+            new_PageKey("start", BOOL_TYPE, new_BooleanPageValue(&(speed_qidong)))
+    }, 2));
+    PageKey_print(&menu_main);
     for(;;)
     {
         // 此处编写需要循环执行的代码
-        Button_Press();
+        uint8 pressed = Button_Press();
+        if(pressed){
+            PageKey_press(&menu_main, pressed);
+            PageKey_print(&menu_main);
+        }
         // 此处编写需要循环执行的代码
     }
+    del_PageKey(&menu_main);
 }
 #pragma section all restore

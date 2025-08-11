@@ -7,6 +7,7 @@ C_SRCS += \
 ../code/camera.c \
 ../code/encoder.c \
 ../code/key.c \
+../code/menu.c \
 ../code/motor.c \
 ../code/sys.c 
 
@@ -14,6 +15,7 @@ COMPILED_SRCS += \
 ./code/camera.src \
 ./code/encoder.src \
 ./code/key.src \
+./code/menu.src \
 ./code/motor.src \
 ./code/sys.src 
 
@@ -21,6 +23,7 @@ C_DEPS += \
 ./code/camera.d \
 ./code/encoder.d \
 ./code/key.d \
+./code/menu.d \
 ./code/motor.d \
 ./code/sys.d 
 
@@ -28,6 +31,7 @@ OBJS += \
 ./code/camera.o \
 ./code/encoder.o \
 ./code/key.o \
+./code/menu.o \
 ./code/motor.o \
 ./code/sys.o 
 
@@ -52,7 +56,7 @@ code/%.o: ./code/%.src code/subdir.mk
 clean: clean-code
 
 clean-code:
-	-$(RM) ./code/camera.d ./code/camera.o ./code/camera.src ./code/encoder.d ./code/encoder.o ./code/encoder.src ./code/key.d ./code/key.o ./code/key.src ./code/motor.d ./code/motor.o ./code/motor.src ./code/sys.d ./code/sys.o ./code/sys.src
+	-$(RM) ./code/camera.d ./code/camera.o ./code/camera.src ./code/encoder.d ./code/encoder.o ./code/encoder.src ./code/key.d ./code/key.o ./code/key.src ./code/menu.d ./code/menu.o ./code/menu.src ./code/motor.d ./code/motor.o ./code/motor.src ./code/sys.d ./code/sys.o ./code/sys.src
 
 .PHONY: clean-code
 

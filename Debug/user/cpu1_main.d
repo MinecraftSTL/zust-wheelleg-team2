@@ -314,3 +314,11 @@ user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries
 e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/zf_components/seekfree_assistant.h :
 user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/zf_components/seekfree_assistant_interface.h :
+user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/menu.h
+e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/menu.h :
+user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/infineon_libraries/iLLD/TC26B/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/libraries/infineon_libraries/iLLD/TC26B/Tricore/Cpu/Std/Ifx_Types.h :
+user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/key.h
+e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/key.h :
+user/cpu1_main.o :	e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/motor.h
+e:/User/S/smartc/E09_14_mt9v03x_ips200_display_demo/code/motor.h :

@@ -94,64 +94,49 @@ int core0_main(void)
     gpio_init(P21_5, GPO, 1, GPO_PUSH_PULL);
 
     ips200_init(IPS200_TYPE);
+    ips200_clear();
     ips200_show_string(0, 0, "ips200 init success.");
 
+    ips200_clear();
     ips200_show_string(0, 0, "motor init.");
     motor_init();
+    ips200_clear();
     ips200_show_string(0, 0, "ecounter init.");
     ecounter_init();
+    ips200_clear();
     ips200_show_string(0, 0, "motor, servo, ecounter");
     ips200_show_string(0, 20, "init success.");
 
+    ips200_clear();
     ips200_show_string(0, 0, "mt9v03x init.");
     for(;;)
     {
-        if(mt9v03x_init())
+        if(mt9v03x_init()){
+            ips200_clear();
             ips200_show_string(0, 0, "mt9v03x reinit.");
-        else
+        }else{
             break;
+        }
         system_delay_ms(500);                                                   // 短延时快速闪灯表示异常
     }
+    ips200_clear();
     ips200_show_string(0, 0, "init success.");
     pit_ms_init(CCU60_CH0, 5);           //速度环中断
     pit_ms_init(CCU60_CH1, 2);           //转向环中断
     pit_ms_init(CCU61_CH0, 10);           //按钮长按计时器中断
+    ips200_clear();
     // 此处编写用户代码 例如外设初始化代码等
 	cpu_wait_event_ready();         // 等待所有核心初始化完毕
-	gpio_low(Beep);
+	beep_off();
 	gpio_high(P21_4);
-	ips200_clear();
 	for(;;)
 	{
         // 此处编写需要循环执行的代码
 	    if(mt9v03x_finish_flag){
             image_process();
-    //	    ips200_clear();
-    //	    ips200_displayimage03x((const uint8 *)mt9v03x_image, MT9V03X_W, MT9V03X_H);
-            ips200_show_gray_image(0, 0, imag, MT9V03X_W, MT9V03X_H, MT9V03X_W, MT9V03X_H, 0);     // 显示二值化图像
-            for(int i=0; i<120; ++i){
-                ips200_draw_point(left[i],i,RGB565_RED);
-                ips200_draw_point(right[i],i,RGB565_BLUE);
-                ips200_draw_point(middle[i],i,RGB565_GREEN);
-            }
             gpio_toggle_level(P21_5);
 	    }
         // 此处编写需要循环执行的代码
-	    //环？
-//        PWM_motor(
-//            func_limit(motor_l_out,1500),
-//            func_limit(motor_r_out,1500)
-//        );
-	    //点判断
-//	    PWM_motor(
-//	        -func_limit(1000+(middle[118]-93)*10, 1500),
-//	        -func_limit(1000-(middle[118]-93)*10, 1500)
-//	    );
-//	    getspeed();
-//        ips200_show_int(0,120,middle[118],8);
-	    ips200_show_int(0,160,Encoder_speed_l,8);
-        ips200_show_int(0,180,Encoder_speed_r,8);
-        ips200_show_int(0,200,Encoder_speed_l-Encoder_speed_r,8);
 	}
 	return 0;
 }
