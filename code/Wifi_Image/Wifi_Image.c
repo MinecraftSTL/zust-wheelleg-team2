@@ -26,7 +26,7 @@ void Wifi_Image_Init(void)
         printf("\r\n connect wifi failed. \r\n");
         ips200_show_string(150, 18*2, "failed");
         system_delay_ms(1000);                                                   // ³õÊ¼»¯Ê§°Ü µÈ´ý 100ms
-//        break;
+        break;
     }
     if(i == 0)
     {

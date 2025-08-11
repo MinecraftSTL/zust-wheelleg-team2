@@ -70,8 +70,8 @@ PidPage menu_main_arg_PID_vVx;
 PidPage menu_main_arg_PID_vAz;
 PidPage menu_main_arg_PID_turn;
 PidPage menu_main_arg_PID_xAx;
-Page menu_main_set;
-Page menu_main_set_gyro;
+Page menu_main_mod;
+Page menu_main_mod_gyro;
 Page menu_main_debug;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
@@ -117,7 +117,7 @@ int core0_main(void)
     ListPage_init(&menu_main, "main", 4, (Page*[]){
         &menu_main_carRun,
         &menu_main_arg,
-        &menu_main_set,
+        &menu_main_mod,
         &menu_main_debug,
     });
     IntPage_init(&menu_main_carRun, "car_run", &g_Car_Status, 0, 2);
@@ -165,10 +165,10 @@ int core0_main(void)
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
     PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
     PidPage_init(&menu_main_arg_PID_xAx, "xAx", &PID_xAx);
-    ListPage_init(&menu_main_set, "set", 1, (Page*[]){
-        &menu_main_set_gyro,
+    ListPage_init(&menu_main_mod, "mod", 1, (Page*[]){
+        &menu_main_mod_gyro,
     });
-    FuncPage_init(&menu_main_set_gyro, "gyro", gyro_set);
+    FuncPage_init(&menu_main_mod_gyro, "gyro", gyro_set);
     ListPage_init(&menu_main_debug, "debug", 6, (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,
