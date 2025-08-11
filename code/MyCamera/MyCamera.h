@@ -58,7 +58,7 @@ extern uint8 binStatus;
 extern int binDeltaT;
 extern float trapezoidK;
 extern int trapezoidY;
-extern int maxStartYAdd;
+extern int startMaxYAdd;
 extern int bly2RDL;
 extern float RD2IErr;
 extern float facingErr;

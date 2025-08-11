@@ -10,8 +10,6 @@
 char Menu_exclude[256][PAGE_PATH_MAX];
 uint8 Menu_excludeLen;
 
-uint8 pageFlashCheck[(PAGE_FLASH_MOD-1)/(sizeof(uint8))+1] = {0};
-
 void ListPage_print(Page *this, uint8 row);
 void ListPage_press(Page *this, uint8 pressed[]);
 void IntPage_print(Page *this, uint8 row);
@@ -167,7 +165,7 @@ uint8 Page_readFlash(Page *this){
     }
     return 0;
 }
-uint8 Page_writeFlash(Page *this, uint8 check){
+uint8 Page_writeFlash(Page *this, uint8 check[(PAGE_FLASH_MOD-1)/(sizeof(uint8))+1]){
     char path[PAGE_PATH_MAX+1];
     Page_getPath(this, path);
     uint32 hash = String_hash(path, PAGE_FLASH_MOD);
@@ -176,7 +174,7 @@ uint8 Page_writeFlash(Page *this, uint8 check){
     flash_data_union flash_union_buffer[EEPROM_PAGE_LENGTH];
     flash_read_page(0, page_num, flash_union_buffer, EEPROM_PAGE_LENGTH);
     if(check){
-        if((pageFlashCheck[hash/sizeof(uint8)])&(0x01<<hash%sizeof(uint8))){
+        if((check[hash/sizeof(uint8)])&(0x01<<hash%sizeof(uint8))){
             switch(this->type){
                 case INT_TYPE:
                 case FLOAT_TYPE:
@@ -210,7 +208,7 @@ uint8 Page_writeFlash(Page *this, uint8 check){
     flash_union_buffer[page_index] = flash_union;
     flash_write_page(0, page_num, flash_union_buffer, EEPROM_PAGE_LENGTH);
     if(check){
-        pageFlashCheck[hash/sizeof(uint8)] |= 0x01<<hash%sizeof(uint8);
+        check[hash/sizeof(uint8)] |= 0x01<<hash%sizeof(uint8);
     }
     return 0;
 }
@@ -452,7 +450,7 @@ void IntPage_press(Page *this, uint8 pressed[]){
             *this->extends.intValue.value = this->extends.intValue.max;
         }
         if(flashStatus){
-            Page_writeFlash(this, 0);
+            Page_writeFlash(this, NULL);
         }
         Page_send(this);
         printf("\r\n");
@@ -564,7 +562,7 @@ void FloatPage_press(Page *this, uint8 pressed[]){
             *this->extends.floatValue.value = this->extends.floatValue.max;
         }
         if(flashStatus){
-            Page_writeFlash(this, 0);
+            Page_writeFlash(this, NULL);
         }
         Page_send(this);
         printf("\r\n");
@@ -707,7 +705,7 @@ void BoolPage_press(Page *this, uint8 pressed[]){
                 *this->extends.boolValue.value = !*this->extends.boolValue.value;
             }
             if(flashStatus){
-                Page_writeFlash(this, 0);
+                Page_writeFlash(this, NULL);
             }
             Page_send(this);
             printf("\r\n");
@@ -778,7 +776,7 @@ void EnumPage_press(Page *this, uint8 pressed[]){
         }else{
             *this->extends.enumValue.value=this->select;
             if(flashStatus){
-                Page_writeFlash(this, 0);
+                Page_writeFlash(this, NULL);
             }
             Page_send(this);
             printf("\r\n");

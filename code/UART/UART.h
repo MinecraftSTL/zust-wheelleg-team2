@@ -22,4 +22,6 @@ void My_Vofa_CallBack(void);
 void Vofa_pageAllSend();
 void Vofa_pageAllReceive();
 
+extern float control[2];
+
 #endif

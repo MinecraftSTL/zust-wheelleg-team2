@@ -59,11 +59,9 @@ void Flash_clear(){
         flash_erase_page(0,i);
     }
 }
-void Flash_menuClear(){
-    for(uint32 i=0; i<EEPROM_PAGE_NUM-1; ++i){
-        flash_erase_page(0,i);
-    }
-}
+
+uint8 pageFlashCheck[(PAGE_FLASH_MOD-1)/(sizeof(uint8))+1];
+uint8 tempCheck;
 
 void Flash_pageRead(Page *page){
     uint8 exitCode = Page_readFlash(page);
@@ -74,22 +72,56 @@ void Flash_pageRead(Page *page){
     }
 }
 void Flash_pageWrite(Page *page){
-    uint8 exitCode = Page_writeFlash(page, 1);
+    uint8 exitCode = Page_writeFlash(page, pageFlashCheck);
     if(exitCode == 2){
         char path[PAGE_PATH_MAX+1];
         Page_getPath(page, path);
         zf_log(0, path);
     }
 }
+void Flash_pageCheck(Page *page){
+    if(tempCheck){
+        return;
+    }
+    char path[PAGE_PATH_MAX+1];
+    Page_getPath(page, path);
+    uint32 hash = String_hash(path, PAGE_FLASH_MOD);
+    if((pageFlashCheck[hash/sizeof(uint8)])&(0x01<<hash%sizeof(uint8))){
+        switch(page->type){
+            case INT_TYPE:
+            case FLOAT_TYPE:
+            case BOOL_TYPE:
+            case ENUM_TYPE:
+                tempCheck = 1;
+        }
+    }
+    pageFlashCheck[hash/sizeof(uint8)] |= 0x01<<hash%sizeof(uint8);
+}
+
+void Flash_checkClear(){
+    memset(pageFlashCheck, 0x00, ((PAGE_FLASH_MOD-1)/(sizeof(uint8))+1)*sizeof(uint8));
+}
 void Flash_pageAllRead(){
     Page_allSubRun(&menu_main, Flash_pageRead);
 }
 void Flash_pageAllWrite(){
+    Flash_checkClear();
     Page_allSubRun(&menu_main, Flash_pageWrite);
     for(uint32 i=0; i<EEPROM_PAGE_NUM-1; ++i){
         flash_data_union flash_union_buffer[EEPROM_PAGE_LENGTH];
         flash_read_page(0, i, flash_union_buffer, EEPROM_PAGE_LENGTH);
         flash_union_buffer[EEPROM_PAGE_LENGTH-1].uint32_type = FLASH_KEY^i;
         flash_write_page(0, i, flash_union_buffer, EEPROM_PAGE_LENGTH);
+    }
+}
+uint8 Flash_pageAllCheck(){
+    Flash_checkClear();
+    tempCheck = 0;
+    Page_allSubRun(&menu_main, Flash_pageWrite);
+    return tempCheck;
+}
+void Flash_menuClear(){
+    for(uint32 i=0; i<EEPROM_PAGE_NUM-1; ++i){
+        flash_erase_page(0,i);
     }
 }

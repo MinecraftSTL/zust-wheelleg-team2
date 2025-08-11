@@ -29,6 +29,8 @@ extern float fwpRz;
 
 extern uint8 fRb;
 
+extern uint8 fCd;
+
 extern uint8 wheelClear;
 
 #endif /* CODE_DEBUGARG_DEBUGARG_H_ */

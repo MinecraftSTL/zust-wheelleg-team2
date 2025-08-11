@@ -11,7 +11,7 @@ uint8 binStatus = 1;
 int binDeltaT = 0;
 float trapezoidK = 0.8;
 int trapezoidY = 20;
-int maxStartYAdd = 20;
+int startMaxYAdd = 2;
 int bly2RDL = 3;
 float RD2IErr = 0.7854;
 float facingErr = 0.5236;
@@ -330,11 +330,11 @@ void Image_getStartPoint(Image *this, uint16 maxYAdd, int16 lStart[2], int16 rSt
         uint16 whiteBorderLen = 0, maxWhiteWidth = 0;
         for(int16 i=0; i<this->w; ++i){
             if(!Image_get(this, i, y)){
-                if(Image_get(this, i+1, y) && (!Image_get(this, i-1, y) || Image_get(this, i+2, y))){
+                if(Image_get(this, i+1, y) && Image_get(this, i+2, y) && (!Image_get(this, i-1, y) || !Image_get(this, i-2, y))){
                     inWhite = 1;
                     whiteBorder[whiteBorderLen][0] = i;
                 }
-                if(Image_get(this, i-1, y) && (!Image_get(this, i+1, y) || Image_get(this, i-2, y))){
+                if(Image_get(this, i-1, y) && Image_get(this, i-2, y) && (!Image_get(this, i+1, y) || !Image_get(this, i+2, y))){
                     if(inWhite){
                         inWhite = 0;
                         whiteBorder[whiteBorderLen][1] = i;
@@ -1590,7 +1590,7 @@ void Image_processCamera(){
                 trapezoidStatus=0;
         }
         Image_drawBlackTrapezoid(&image);
-        Image_getStartPoint(&image, maxStartYAdd, lStart, rStart);
+        Image_getStartPoint(&image, startMaxYAdd, lStart, rStart);
         Image_bly(&image, image.h*4, lLine, rLine, lLineDir, rLineDir,
                 &lLineL, &rLineL, &lrMeet, lStart, rStart);
         Image_blyToBorder(&image, 0, lLine, lLineL, lBorder);

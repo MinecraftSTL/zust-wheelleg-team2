@@ -98,7 +98,7 @@ void Menu_init(char *exclude[]);
 void Page_print(Page *this, uint8 row);
 uint8 Page_press(Page *this, uint8 pressed[]);
 uint8 Page_readFlash(Page *this);
-uint8 Page_writeFlash(Page *this, uint8 check);
+uint8 Page_writeFlash(Page *this, uint8 check[(PAGE_FLASH_MOD-1)/(sizeof(uint8))+1]);
 Page *Page_getRoot(Page *this);
 Page *Page_getOpened(Page *this);
 void Page_getPath(Page *this, char path[PAGE_PATH_MAX+1]);

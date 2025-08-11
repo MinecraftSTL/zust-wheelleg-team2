@@ -113,6 +113,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         if(carStatus >= CAR_RUN){
             targetV = cameraV;
         }
+        if(!fCd){
+            targetV += control[0];
+        }
         float tg_pitchX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
         legX += tg_pitchX;
         tg_pitchV += pid(&PID_WxAy, kZero-kPitchX*tg_pitchX, pitch);
@@ -143,7 +146,13 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         speed = 2500;
         turn = 0;
     }
-//    printf("%d\r\n", speed);
+    if(carStatus >= CAR_BALANCE){
+        if(!fCd){
+            turn += control[1];
+        }
+    }else{
+        memset(control, 0.f, 2*sizeof(float));
+    }
     MotorSetPWM(speed-turn, speed+turn);
     jumpPit(PIT10ms, &legZ);
     if(fLz){

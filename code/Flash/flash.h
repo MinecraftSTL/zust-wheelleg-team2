@@ -14,6 +14,7 @@ void Flash_clear();
 void Flash_menuClear();
 void Flash_pageAllRead();
 void Flash_pageAllWrite();
+uint8 Flash_pageAllCheck();
 
 extern uint8 flashStatus;
 

@@ -170,6 +170,7 @@ Page menu_main_debug_fwp_lz;
 Page menu_main_debug_fwp_rx;
 Page menu_main_debug_fwp_rz;
 Page menu_main_debug_frb;
+Page menu_main_debug_fcd;
 Page menu_main_debug_jump;
 Page menu_main_about;
 
@@ -299,7 +300,7 @@ void core0_main(void)
         &menu_main_arg_k_camera_start_maxYAdd,
         NULL
     });
-    IntPage_init(&menu_main_arg_k_camera_start_maxYAdd, "maxYAdd", &maxStartYAdd, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_start_maxYAdd, "maxYAdd", &startMaxYAdd, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_eigenvalue, "eigenvalue", (Page*[]){
         &menu_main_arg_k_camera_eigenvalue_inf,
         &menu_main_arg_k_camera_eigenvalue_facingErr,
@@ -503,6 +504,7 @@ void core0_main(void)
         &menu_main_debug_fl,
         &menu_main_debug_fwp,
         &menu_main_debug_frb,
+        &menu_main_debug_fcd,
         &menu_main_debug_jump,
         NULL
     });
@@ -563,6 +565,7 @@ void core0_main(void)
     =menu_main_debug_fwp_rx.extends.floatValue.dot
     =menu_main_debug_fwp_rz.extends.floatValue.dot=2;
     BoolPage_init(&menu_main_debug_frb, "frb", &fRb, 0x03);
+    BoolPage_init(&menu_main_debug_fcd, "fcd", &fCd, 0x03);
     FuncPage_init(&menu_main_debug_jump, "jump", jump);
     AboutPage_init(&menu_main_about, Stl, StlNumber);
 
@@ -575,9 +578,6 @@ void core0_main(void)
         Image_showCamera(0, 200);
         ips200_show_uint(188,200,fps,4);
         ips200_show_uint(188,216,cameraStatus,3);
-//        printf("%d\n", g_camera_mid_err);
-//        printf("%f, %f, %f\r\n", pitch, roll, yaw);
-//        printf("%d\r\n", (int)(((Encoder_speed_l+Encoder_speed_r)>>1)-cameraV));
         // 此处编写需要循环执行的代码
     }
 }

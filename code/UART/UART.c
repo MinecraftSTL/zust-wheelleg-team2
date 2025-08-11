@@ -103,7 +103,24 @@ void Vofa_Adjust(void)
             *tempEnd = '\0';
             printf("^/received %s$\r\n",tempBuff+1);
             if(tempBuff[1] == '/'){
-                //TODO:其他指令，如遥控器
+                if(String_startWith(tempBuff+2, "motion")){
+                    char *space[3];
+                    space[0] = strchr(tempBuff+2, ' ');
+                    if(space[0] == NULL){
+                        continue;
+                    }
+                    space[1] = strchr(space[0]+1, ' ');
+                    if(space[1] == NULL){
+                        continue;
+                    }
+                    space[2] = strchr(space[1]+1, ' ');
+                    if(space[2] != NULL){
+                        continue;
+                    }
+                    *space[1] = '\0';
+                    control[1] = -atof(space[0]+1)*4;
+                    control[0] = atof(space[1]+1);
+                }
             }else{
                 char path[256], value[256];
                 char *equal = strchr(tempBuff, '=');
@@ -139,7 +156,7 @@ void Vofa_Adjust(void)
                         break;
                 }
                 if(flashStatus){
-                    Page_writeFlash(page, 0);
+                    Page_writeFlash(page, NULL);
                 }
                 if(page->update){
                     page->update(page);
@@ -160,3 +177,5 @@ void Vofa_pageAllSend(){
 void Vofa_pageAllReceive(){
     printf("^/send$\r\n");
 }
+
+float control[2] = {0};
