@@ -39,11 +39,13 @@ Page menu_main_arg_k_v_straight;
 Page menu_main_arg_k_v_bend;
 Page menu_main_arg_k_v_circle;
 Page menu_main_arg_k_v_rampD;
-Page menu_main_arg_k_v_barrier;
+Page menu_main_arg_k_v_barrier0;
+Page menu_main_arg_k_v_barrier1;
 Page menu_main_arg_k_v_bridge;
 Page menu_main_arg_k_errY;
 Page menu_main_arg_k_errY_straight;
 Page menu_main_arg_k_errY_bend;
+Page menu_main_arg_k_errY_block;
 Page menu_main_arg_k_errY_circle;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_compensate;
@@ -101,7 +103,8 @@ Page menu_main_arg_k_camera_e_ramp_k;
 Page menu_main_arg_k_camera_e_barrier;
 Page menu_main_arg_k_camera_e_barrier_en;
 Page menu_main_arg_k_camera_e_barrier_y0;
-Page menu_main_arg_k_camera_e_barrier_y1;
+Page menu_main_arg_k_camera_e_barrier_y10;
+Page menu_main_arg_k_camera_e_barrier_y11;
 Page menu_main_arg_k_camera_e_barrier_zMax;
 Page menu_main_arg_k_camera_e_barrier_zMin;
 Page menu_main_arg_k_camera_e_barrier_t;
@@ -285,7 +288,8 @@ void Menu_param_init(){
         &menu_main_arg_k_v_bend,
         &menu_main_arg_k_v_circle,
         &menu_main_arg_k_v_rampD,
-        &menu_main_arg_k_v_barrier,
+        &menu_main_arg_k_v_barrier0,
+        &menu_main_arg_k_v_barrier1,
         &menu_main_arg_k_v_bridge,
         NULL
     });
@@ -293,18 +297,22 @@ void Menu_param_init(){
     FloatPage_init(&menu_main_arg_k_v_bend, "bend", &bendV, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_circle, "circle", &circleV, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_rampD, "rampD", &rampDV, -10000, 10000);
-    FloatPage_init(&menu_main_arg_k_v_barrier, "barrier", &barrierV, -10000, 10000);
+    FloatPage_init(&menu_main_arg_k_v_barrier0, "barrier0", &barrierV0, -10000, 10000);
+    FloatPage_init(&menu_main_arg_k_v_barrier1, "barrier1", &barrierV1, -10000, 10000);
     FloatPage_init(&menu_main_arg_k_v_bridge, "bridge", &bridgeV, -10000, 10000);
     menu_main_arg_k_v_straight.extends.floatValue.dot = menu_main_arg_k_v_bend.extends.floatValue.dot = menu_main_arg_k_v_circle.extends.floatValue.dot =
-            menu_main_arg_k_v_rampD.extends.floatValue.dot = menu_main_arg_k_v_barrier.extends.floatValue.dot = menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
+            menu_main_arg_k_v_rampD.extends.floatValue.dot = menu_main_arg_k_v_barrier0.extends.floatValue.dot = menu_main_arg_k_v_barrier1.extends.floatValue.dot =
+                    menu_main_arg_k_v_bridge.extends.floatValue.dot = 4;
     ListPage_init(&menu_main_arg_k_errY, "errY", (Page*[]){
         &menu_main_arg_k_errY_straight,
         &menu_main_arg_k_errY_bend,
+        &menu_main_arg_k_errY_block,
         &menu_main_arg_k_errY_circle,
         NULL
     });
     IntPage_init(&menu_main_arg_k_errY_straight, "straight", &errY, 0, MT9V03X_H-1);
     IntPage_init(&menu_main_arg_k_errY_bend, "bend", &bendErrY, 0, MT9V03X_H-1);
+    IntPage_init(&menu_main_arg_k_errY_block, "block", &blockErrY, 0, MT9V03X_H-1);
     IntPage_init(&menu_main_arg_k_errY_circle, "circle", &circleErrY, 0, MT9V03X_H-1);
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_compensate,
@@ -458,7 +466,8 @@ void Menu_param_init(){
     ListPage_init(&menu_main_arg_k_camera_e_barrier, "barrier", (Page*[]){
         &menu_main_arg_k_camera_e_barrier_en,
         &menu_main_arg_k_camera_e_barrier_y0,
-        &menu_main_arg_k_camera_e_barrier_y1,
+        &menu_main_arg_k_camera_e_barrier_y10,
+        &menu_main_arg_k_camera_e_barrier_y11,
         &menu_main_arg_k_camera_e_barrier_zMax,
         &menu_main_arg_k_camera_e_barrier_zMin,
         &menu_main_arg_k_camera_e_barrier_t,
@@ -466,7 +475,8 @@ void Menu_param_init(){
     });
     BoolPage_init(&menu_main_arg_k_camera_e_barrier_en, "en", &barrierEn, 0x03);
     IntPage_init(&menu_main_arg_k_camera_e_barrier_y0, "y0", &barrierY0, 0, MT9V03X_H);
-    IntPage_init(&menu_main_arg_k_camera_e_barrier_y1, "y1", &barrierY1, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_barrier_y10, "y10", &barrierY10, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_barrier_y11, "y11", &barrierY11, 0, MT9V03X_H);
     FloatPage_init(&menu_main_arg_k_camera_e_barrier_zMax, "zMax", &jumpLegZMax, -LEG_MAX_Z, -LEG_MIN_Z);
     FloatPage_init(&menu_main_arg_k_camera_e_barrier_zMin, "zMin", &jumpLegZMin, -LEG_MAX_Z, -LEG_MIN_Z);
     IntPage_init(&menu_main_arg_k_camera_e_barrier_t, "t", &barrierT, 0, 100000);
@@ -486,7 +496,7 @@ void Menu_param_init(){
     IntPage_init(&menu_main_arg_k_camera_e_bridge_to, "to", &bridgeTO, 0, 100000);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_s, "s", &bridgeS, 0, 10000000);
     FloatPage_init(&menu_main_arg_k_camera_e_bridge_z, "z", &bridgeZ, -LEG_MAX_Z, -LEG_MIN_Z);
-    BoolPage_init(&menu_main_arg_k_camera_e_bridge_detect, "detectL", &bridgeDetectL, 0x03);
+    IntPage_init(&menu_main_arg_k_camera_e_bridge_detect, "detectL", &bridgeDetectL, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_e_other, "other", (Page*[]){
         &menu_main_arg_k_camera_e_other_orCLcEn,
         &menu_main_arg_k_camera_e_other_orCRcEn,

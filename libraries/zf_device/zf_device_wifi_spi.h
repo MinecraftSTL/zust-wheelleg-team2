@@ -24,7 +24,7 @@
 * 文件名称          zf_device_wifi_spi
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.10.2
+* 开发环境          ADS v1.9.20
 * 适用平台          TC387QP
 * 店铺链接          https://seekfree.taobao.com/
 * 
@@ -55,7 +55,7 @@
 
           
 #define WIFI_SPI_INDEX              (SPI_4             )        // 定义使用的SPI号
-#define WIFI_SPI_SPEED              (60 * 1000 * 1000  )        // 硬件 SPI 速率
+#define WIFI_SPI_SPEED              (30 * 1000 * 1000  )        // 硬件 SPI 速率
 #define WIFI_SPI_SCK_PIN            (SPI4_SCLK_P22_3   )        // 定义SPI_SCK引脚
 #define WIFI_SPI_MOSI_PIN           (SPI4_MOSI_P22_0   )        // 定义SPI_MOSI引脚
 #define WIFI_SPI_MISO_PIN           (SPI4_MISO_P22_1   )        // 定义SPI_MISO引脚  IPS没有MISO引脚，但是这里任然需要定义，在spi的初始化时需要使用
@@ -68,12 +68,12 @@
 #define WIFI_SPI_READ_TRANSFER      (1)                         // 在调用wifi_spi_read_buffer 是否尝试发起SPI通讯来检测模块内是否有数据需要读取 1：发起SPI通讯 0：不发起SPI通讯，仅读取FIFO
                                                                 // 如果应用程序中没有任何的地方调用发送函数，则WIFI_SPI_READ_TRANSFER必须设置为1
                                                                 
-#define WIFI_SPI_AUTO_CONNECT       (1)                         // 定义是否初始化时建立TCP或者UDP连接    0-不自动连接  1-自动连接TCP服务器  2-自动连接UDP
+#define WIFI_SPI_AUTO_CONNECT       (0)                         // 定义是否初始化时建立TCP或者UDP连接    0-不自动连接  1-自动连接TCP服务器  2-自动连接UDP
 
 #if     (WIFI_SPI_AUTO_CONNECT > 2)    
 #error "WIFI_SPI_AUTO_CONNECT 的值只能为 [0,1,2]"
 #else   
-#define WIFI_SPI_TARGET_IP          "192.168.0.10"              // 连接目标的 IP
+#define WIFI_SPI_TARGET_IP          "192.168.124.9"              // 连接目标的 IP
 #define WIFI_SPI_TARGET_PORT        "8086"                      // 连接目标的端口
 #define WIFI_SPI_LOCAL_PORT         "6666"                      // 本机的端口 0：随机  可设置范围2048-65535  默认 6666
 #endif
@@ -144,6 +144,7 @@ uint8  wifi_spi_socket_connect      (char *transport_type, char *ip_addr, char *
 uint8  wifi_spi_socket_disconnect   (void);
 uint8  wifi_spi_udp_send_now        (void);
 uint32 wifi_spi_send_buffer         (const uint8 *buff, uint32 length);
+void   wifi_spi_send_string     (const char *string);
 uint32 wifi_spi_read_buffer         (uint8 *buffer, uint32 length);
 
 uint8  wifi_spi_init                (char *wifi_ssid, char *pass_word);

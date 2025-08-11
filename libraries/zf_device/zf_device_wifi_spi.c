@@ -24,7 +24,7 @@
 * 文件名称          zf_device_wifi_spi
 * 公司名称          成都逐飞科技有限公司
 * 版本信息          查看 libraries/doc 文件夹内 version 文件 版本说明
-* 开发环境          ADS v1.10.2
+* 开发环境          ADS v1.9.20
 * 适用平台          TC387QP
 * 店铺链接          https://seekfree.taobao.com/
 * 
@@ -355,7 +355,7 @@ uint8 wifi_spi_wifi_connect (char *wifi_ssid, char *pass_word)
 // 参数说明     *port           目标端口号
 // 参数说明     *local_port     本机端口号
 // 返回参数     uint8           状态 0-成功 1-错误
-// 使用示例     wifi_spi_socket_connect("TCP", "192.168.2.5", "8080", "6060");
+// 使用示例     wifi_spi_socket_connect("TCP", "192.168.2.5", "8086", "6060");
 // 备注信息
 //-------------------------------------------------------------------------------------------------------------------
 uint8 wifi_spi_socket_connect (char *transport_type, char *ip_addr, char *port, char *local_port)
@@ -598,7 +598,17 @@ uint32 wifi_spi_read_buffer (uint8 *buffer, uint32 length)
     fifo_read_buffer(&wifi_spi_fifo, buffer, &data_len, FIFO_READ_AND_CLEAN);
     return data_len;
 }
-
+//-------------------------------------------------------------------------------------------------------------------
+// 函数简介     WIFI SPI 字符串发送函数并同步接收数据
+// 参数说明     *string           需要发送的字符串
+// 返回参数     void
+// 使用示例     wifi_spi_send_string("123");
+// 备注信息
+//-------------------------------------------------------------------------------------------------------------------
+void wifi_spi_send_string(const char *string)
+{
+    wifi_spi_send_buffer((uint8*)string, strlen(string));
+}
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     WiFi 模块初始化
 // 参数说明     *wifi_ssid      目标连接的 WiFi 的名称 字符串形式

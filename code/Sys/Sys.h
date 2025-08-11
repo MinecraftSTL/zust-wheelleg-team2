@@ -12,10 +12,10 @@
 #include <stdint.h>
 #include <math.h>
 
-#define max(a, b) ((a) < (b) ? (b) : (a))
 #define min(a, b) ((a) > (b) ? (b) : (a))
+#define max(a, b) ((a) < (b) ? (b) : (a))
 #define zzz(x, z) ((x) > (z) ? (x) - (z) : (x) < -(z) ? (x) + (z) : 0)
-#define lll(x, minX, maxX, minY, maxY) (((maxY) - (minY)) * func_limit_ab(((x) - (minX)) / ((maxX) - (minX)), 0, 1) + (minY))
+#define lll(x, x0, x1, y0, y1) (((x) - (x0)) * ((y1) - (y0)) / ((x1) - (x0)) + (y0))
 
 float Calculate_Curvature(int array[], int start, int size);
 double curvature(double a[2],double b[2],double c[2]);

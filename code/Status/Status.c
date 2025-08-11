@@ -25,6 +25,9 @@ void CarStatus_update(){
     CameraStatus_clear();
     carRunMs = 0;
     wheelClear = 0;
+    if(carStatus == CAR_RUN){
+        binStatus = 1;
+    }
     showPInC1 = carStatus != CAR_RUN;
     if(carStatus){
         binStatus = 1;

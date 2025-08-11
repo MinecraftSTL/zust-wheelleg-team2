@@ -14,17 +14,18 @@
 #include "zf_device_Key.h"
 #include "stdbool.h"
 #include "seekfree_assistant_interface.h"
-#include "BEEP.h"
-#include "MYCAMERA.h"
+#include "Beep.h"
+#include "MyCamera.h"
 #include "zf_device_mt9v03x.h"
 #include "zf_device_camera.h"
 #include "seekfree_assistant.h"
+#include "Image.h"
 
 extern uint8 g_wifi_image_open_flag;
 extern uint8 image_copy[MT9V03X_H][MT9V03X_W];
 
-#define WIFI_SSID_TEST              "smartc"
-#define WIFI_PASSWORD_TEST          "123456##"
+#define WIFI_SSID_TEST              "123456789"
+#define WIFI_PASSWORD_TEST          "123456789"
 
 void Wifi_Image_Init(void);
 void Wifi_Image_Send_Camera(void);

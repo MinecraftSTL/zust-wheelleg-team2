@@ -2,6 +2,7 @@
 #define MyCamera_H
 
 #include "MyHeadfile.h"
+#include "Image.h"
 
 #define MAX_BLY ((MT9V03X_W)*4)
 
@@ -42,14 +43,6 @@ typedef enum{
     CAMERA_STATUS_NUMBER,
 }CameraStatus;
 
-typedef struct{
-    uint8 image[MT9V03X_IMAGE_SIZE];
-    uint16 h, w;
-}Image;
-typedef struct{
-    uint16 image[MT9V03X_IMAGE_SIZE];
-    uint16 h, w;
-}Rgb565Image;
 extern int cameraErr;
 
 extern Rgb565Image showImage;
@@ -85,14 +78,15 @@ extern int rampY;
 extern float rampZ;
 extern float rampK;
 extern int barrierY0;
-extern int barrierY1;
+extern int barrierY10;
+extern int barrierY11;
 extern int barrierT;
 extern float bridgeKPitchX;
 extern int bridgeTI;
 extern int bridgeTO;
 extern int bridgeS;
 extern float bridgeZ;
-extern uint8 bridgeDetectL;
+extern int bridgeDetectL;
 extern float otherBPow;
 extern int errY;
 extern int errDeltaY;
@@ -115,10 +109,12 @@ extern uint8 orRBEn;
 extern float bendV;
 extern float circleV;
 extern float rampDV;
-extern float barrierV;
+extern float barrierV0;
+extern float barrierV1;
 extern float bridgeV;
 
 extern int bendErrY;
+extern int blockErrY;
 extern int circleErrY;
 
 extern float cameraV;

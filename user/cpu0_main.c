@@ -76,8 +76,12 @@ void core0_main(void)
         Page_press(&menu_main, pressed);
         Page_print(&menu_main, 0);
         Image_showCamera(0, 200);
-        ips200_show_uint(188,200,fps.fps,4);
-        ips200_show_uint(188,216,cameraStatus,3);
+        uint16 y = 0;
+        ips200_show_uint(188,200+16*y++,fps.fps,3);
+        ips200_show_uint(188,200+16*y++,cameraStatus,2);
+        ips200_show_int(188,200+16*y++,cameraErr,3);
+        ips200_show_int(188,200+16*y++,(Encoder_speed_l+Encoder_speed_r)/2,4);
+        ips200_show_int(188,200+16*y++,(int)cameraV,4);
         // 此处编写需要循环执行的代码
     }
 }

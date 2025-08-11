@@ -57,6 +57,7 @@
 #include "Stl.h"
 #include "PidPage.h"
 #include "Fps_param.h"
+#include "Image.h"
 
 
 /******************************************************************************/
