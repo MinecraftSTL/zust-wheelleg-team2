@@ -227,30 +227,30 @@ uint8 BinImage_get(BinImage *this, uint16 y, uint16 x){
     threshold+=this->deltaT;
     return Image_get(this->image,y+this->r,x+this->r)>threshold;
 }
-uint8 Bly_BinImage_get(BinImage *this, uint16 y, uint16 x){
-    if(y < 2 || x < 2 || x >= this->w-2){
-        return 0;
-    }
-    return BinImage_get(this, y, x);
-}
 void BinImage_getStartPoint(BinImage *this, uint16 lStartPoint[2], uint16 rStartPoint[2]){
     uint16 y = this->h-1;
     uint16 x = this->w/2;
 
     lStartPoint[0]=y;
-    for(uint16 i = x; i >= 1; --i){
+    for(uint16 i = x; i >= 2; --i){
         lStartPoint[1]=i;
         if(!BinImage_get(this, y, i) && BinImage_get(this, y, i+1) && !BinImage_get(this, y, i-1) && BinImage_get(this, y, i+2)){
             break;
         }
     }
     rStartPoint[0]=y;
-    for(uint16 i = x-1; i < this->w-1; ++i){
+    for(uint16 i = x-1; i < this->w-2; ++i){
         rStartPoint[1]=i;
         if(!BinImage_get(this, y, i) && BinImage_get(this, y, i-1) && !BinImage_get(this, y, i+1) && BinImage_get(this, y, i-2)){
             break;
         }
     }
+}
+uint8 BinImage_blyGet(BinImage *this, uint16 y, uint16 x){
+    if(y < 2 || x < 2 || x >= this->w-2){
+        return 0;
+    }
+    return BinImage_get(this, y, x);
 }
 const int8 Bly_SEED[8][2] = {{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1}};
 //const int8 Bly_SEED[8][2] = {{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1},{1,0},{1,1},{0,1}};
@@ -269,60 +269,63 @@ void BinImage_bly(BinImage *this, uint16 maxL, int16 lLine[MT9V03X_W*3][2], int1
     *lLineL = *rLineL = 1;
     while(maxL--){
         int16 r_sub_l = rLine[*lLineL-1][0] - lLine[*lLineL-1][0];
-        if(lStop || r_sub_l>0){
-            goto BinImage_bly_lEnd;
-        }
-        for(uint8 i=0; i<8; ++i){
-            uint8 dir = (lDir[*lLineL-1]+6+i)&0x07;
-            lLine[*lLineL][0] = lLine[*lLineL-1][0] + Bly_SEED[dir][0];
-            lLine[*lLineL][1] = lLine[*lLineL-1][1] + Bly_SEED[dir][1];
-            uint8 nextDir = (dir+1)&0x07;
-            int16 lineNext[2];
-            lineNext[0] = lLine[*lLineL-1][0] + Bly_SEED[nextDir][0];
-            lineNext[1] = lLine[*lLineL-1][1] + Bly_SEED[nextDir][1];
-            if(lLine[*lLineL][0] < 0 || lLine[*lLineL][1] < 0 || lLine[*lLineL][0] >= this->h || lLine[*lLineL][1] >= this->w ||
-                    lineNext[0] < 0 || lineNext[1] < 0 || lineNext[0] >= this->h || lineNext[1] >= this->w){
-                continue;
+        uint8 lStep = 0, rStep = 0;
+        if(!lStop && r_sub_l<=0){
+            for(uint8 i=0; i<8; ++i){
+                uint8 dir = (lDir[*lLineL-1]+6+i)&0x07;
+                lLine[*lLineL][0] = lLine[*lLineL-1][0] + Bly_SEED[dir][0];
+                lLine[*lLineL][1] = lLine[*lLineL-1][1] + Bly_SEED[dir][1];
+                uint8 nextDir = (dir+1)&0x07;
+                int16 lineNext[2];
+                lineNext[0] = lLine[*lLineL-1][0] + Bly_SEED[nextDir][0];
+                lineNext[1] = lLine[*lLineL-1][1] + Bly_SEED[nextDir][1];
+                if(lLine[*lLineL][0] < 0 || lLine[*lLineL][1] < 0 || lLine[*lLineL][0] >= this->h || lLine[*lLineL][1] >= this->w ||
+                        lineNext[0] < 0 || lineNext[1] < 0 || lineNext[0] >= this->h || lineNext[1] >= this->w){
+                    continue;
+                }
+                if(!BinImage_blyGet(this, lLine[*lLineL][0], lLine[*lLineL][1]) && BinImage_blyGet(this, lineNext[0], lineNext[1])){
+                    lDir[*lLineL] = dir;
+                    ++*lLineL;
+                    lStep = 1;
+                    break;
+                }
             }
-            if(!BinImage_get(this, lLine[*lLineL][0], lLine[*lLineL][1]) && BinImage_get(this, lineNext[0], lineNext[1])){
-                lDir[*lLineL] = dir;
-                ++*lLineL;
-                goto BinImage_bly_lEnd;
-            }
-        }
-        lStop = 1;
-        BinImage_bly_lEnd:;
-        if(rStop || r_sub_l<0){
-            goto BinImage_bly_rEnd;
-        }
-        for(uint8 i=0; i<8; ++i){
-            uint8 dir = (rDir[*rLineL-1]+2+(8-i))&0x07;
-            rLine[*rLineL][0] = rLine[*rLineL-1][0] + Bly_SEED[dir][0];
-            rLine[*rLineL][1] = rLine[*rLineL-1][1] + Bly_SEED[dir][1];
-            uint8 nextDir = (dir+7)&0x07;
-            int16 lineNext[2];
-            lineNext[0] = rLine[*rLineL-1][0] + Bly_SEED[nextDir][0];
-            lineNext[1] = rLine[*rLineL-1][1] + Bly_SEED[nextDir][1];
-            if(rLine[*rLineL][0] < 0 || rLine[*rLineL][1] < 0 || rLine[*rLineL][0] >= this->h || rLine[*rLineL][1] >= this->w ||
-                    lineNext[0] < 0 || lineNext[1] < 0 || lineNext[0] >= this->h || lineNext[1] >= this->w){
-                continue;
-            }
-            if(!BinImage_get(this, rLine[*rLineL][0], rLine[*rLineL][1]) && BinImage_get(this, lineNext[0], lineNext[1])){
-                rDir[*rLineL] = dir;
-                ++*rLineL;
-                goto BinImage_bly_lEnd;
+            if(!lStep){
+                lStop = 1;
             }
         }
-        rStop = 1;
-        BinImage_bly_rEnd:;
+        if(!rStop && r_sub_l>=0){
+            for(uint8 i=0; i<8; ++i){
+                uint8 dir = (rDir[*rLineL-1]+2+(8-i))&0x07;
+                rLine[*rLineL][0] = rLine[*rLineL-1][0] + Bly_SEED[dir][0];
+                rLine[*rLineL][1] = rLine[*rLineL-1][1] + Bly_SEED[dir][1];
+                uint8 nextDir = (dir+7)&0x07;
+                int16 lineNext[2];
+                lineNext[0] = rLine[*rLineL-1][0] + Bly_SEED[nextDir][0];
+                lineNext[1] = rLine[*rLineL-1][1] + Bly_SEED[nextDir][1];
+                if(rLine[*rLineL][0] < 0 || rLine[*rLineL][1] < 0 || rLine[*rLineL][0] >= this->h || rLine[*rLineL][1] >= this->w ||
+                        lineNext[0] < 0 || lineNext[1] < 0 || lineNext[0] >= this->h || lineNext[1] >= this->w){
+                    continue;
+                }
+                if(!BinImage_blyGet(this, rLine[*rLineL][0], rLine[*rLineL][1]) && BinImage_blyGet(this, lineNext[0], lineNext[1])){
+                    rDir[*rLineL] = dir;
+                    ++*rLineL;
+                    rStep = 1;
+                    break;
+                }
+            }
+            if(!rStep){
+                rStop = 1;
+            }
+        }
         if (abs(rLine[*rLineL-1][0] - lLine[*lLineL-1][0]) < 2
-            && abs(rLine[*rLineL-1][1] - lLine[*lLineL-1][1] < 2)){
+            && abs(rLine[*rLineL-1][1] - lLine[*lLineL-1][1]) < 2){
             *meet = (rLine[*rLineL-1][0] + lLine[*lLineL-1][0])>>1;
             break;
         }
     }
 }
-void BinImage_blyToBorder(BinImage *this, int16 line[MT9V03X_W*3][2], uint16 lineL, uint8 dir, uint16 ret[MT9V03X_H]){
+void BinImage_blyToBorder(BinImage *this, uint8 dir, int16 line[MT9V03X_W*3][2], uint16 lineL, uint16 ret[MT9V03X_H]){
     for(uint16 i=0; i<this->h; ++i){
         ret[i] = dir?(this->w-1):0;
     }
@@ -332,7 +335,10 @@ void BinImage_blyToBorder(BinImage *this, int16 line[MT9V03X_W*3][2], uint16 lin
         }
     }
 }
-void BinImage_borderToMiddle(BinImage *this, int16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H], uint16 ret[MT9V03X_H]){
+uint8 BinImage_borderIsLose(BinImage *this, uint16 border[MT9V03X_H], uint16 y, uint8 dir){
+    return border[y] == dir?this->w-1:0;
+}
+void BinImage_borderToMiddle(BinImage *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H], uint16 ret[MT9V03X_H]){
     for(uint16 i=0; i<this->h; ++i){
         ret[i] = (lBorder[i]+rBorder[i])>>1;
     }
@@ -403,8 +409,8 @@ void Image_Process(void)
         BinImage_getStartPoint(&binImage, lStartPoint, rStartPoint);
         BinImage_bly(&binImage, binImage.h*3, lLine, rLine, lLineDir, rLineDir,
                 &lLineL, &rLineL, &lrMeet, lStartPoint, rStartPoint);
-        BinImage_blyToBorder(&binImage, lLine, lLineL, 0, lBorder);
-        BinImage_blyToBorder(&binImage, rLine, rLineL, 1, rBorder);
+        BinImage_blyToBorder(&binImage, 0, lLine, lLineL, lBorder);
+        BinImage_blyToBorder(&binImage, 1, rLine, rLineL, rBorder);
         BinImage_borderToMiddle(&binImage, lBorder, rBorder, mLine);
 //        Bly_toInflection(lLine, lLineL, lLineDir, Inflection_LuIn, Inflection_LuOut, 2, luInflection, &luInflectionN);
 //        Bly_toInflection(lLine, lLineL, lLineDir, Inflection_LdIn, Inflection_LdOut, 2, ldInflection, &ldInflectionN);
