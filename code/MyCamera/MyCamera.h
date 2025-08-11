@@ -30,6 +30,7 @@ typedef enum{
     I_BARRIER,
     R_BARRIER,
     O_BARRIER,
+    OR_RAMP_BARRIER,
     I_BRIDGE,
     I_LBRIDGE,
     O_LBRIDGE,
@@ -68,22 +69,22 @@ extern int straightStep;
 extern float straightErr;
 extern float statusJump;
 extern float statusK;
+extern int elementYMin;
 extern int zebraY;
 extern int zebraT;
 extern int zebraS;
 extern int crossX;
 extern int crossY;
 extern int circleX;
-extern float circleLine;
 extern int rampS;
 extern int rampX;
 extern int rampY;
 extern int rampZ;
 extern float rampK;
-extern int barrierY0;
-extern int barrierY1;
+extern int barrierX;
+extern int barrierY;
 extern int barrierT;
-extern int bridgeY;
+extern int bridgeX;
 extern float bridgeKPitchX;
 extern int bridgeTI;
 extern int bridgeTO;
