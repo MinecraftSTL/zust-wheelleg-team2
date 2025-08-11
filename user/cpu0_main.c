@@ -42,9 +42,6 @@
 // 本例程是开源库空工程 可用作移植或者测试各类内外设
 
 // **************************** 代码区域 ****************************
-const uint16 PIT00ms = 1;
-const uint16 PIT01ms = 5;
-const uint16 PIT10ms = 1;
 
 uint8 pressed[KEY_NUM] = {0};
 
@@ -72,6 +69,8 @@ PidPage menu_main_arg_PID_vVx;
 PidPage menu_main_arg_PID_vAz;
 PidPage menu_main_arg_PID_turn;
 PidPage menu_main_arg_PID_xAx;
+Page menu_main_set;
+Page menu_main_set_gyro;
 Page menu_main_debug;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
@@ -100,23 +99,23 @@ int core0_main(void)
     debug_init();                   // 初始化默认调试串口
     // 此处编写用户代码 例如外设初始化代码等
     beep_init();
+    Flash_Init();
     ips200_init(IPS200_TYPE_SPI);
-    gyroscope_init();
+    gyro_init();
     my_key_init(PIT00ms);
     small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
     MyCamera_Init();
     PID_param_init();
-    pit_ms_init(CCU60_CH0, PIT00ms);
-//    pit_ms_init(CCU60_CH1, PIT01ms);
-    pit_ms_init(CCU61_CH0, PIT10ms);
+    Pit_init();
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
     ListPage_setRoot(&menu_main);
-    ListPage_init(&menu_main, "main", 3, (Page*[]){
+    ListPage_init(&menu_main, "main", 4, (Page*[]){
         &menu_main_carRun,
         &menu_main_arg,
+        &menu_main_set,
         &menu_main_debug,
     });
     IntPage_init(&menu_main_carRun, "run", &g_Car_Status, 0, 2);
@@ -162,6 +161,10 @@ int core0_main(void)
     PidPage_init(&menu_main_arg_PID_vAz, "vAz", &PID_vAz);
     PidPage_init(&menu_main_arg_PID_turn, "turn", &PID_WvAz);
     PidPage_init(&menu_main_arg_PID_xAx, "xAx", &PID_xAx);
+    ListPage_init(&menu_main_set, "set", 1, (Page*[]){
+        &menu_main_set_gyro,
+    });
+    FuncPage_init(&menu_main_set_gyro, "gyro", gyro_set);
     ListPage_init(&menu_main_debug, "debug", 6, (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,

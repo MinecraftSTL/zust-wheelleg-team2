@@ -35,7 +35,7 @@ code/beep \
 code/debug \
 code/filter \
 code/foc \
-code/gyroscope \
+code/gyro \
 code/icm42688 \
 code/leg \
 code/menu \
@@ -43,6 +43,7 @@ code/myCamera \
 code/myEncoder \
 code/myKey \
 code/pid \
+code/pit \
 code/process \
 libraries/infineon_libraries/Configurations \
 libraries/infineon_libraries/Infra/Platform/Tricore/Compilers \

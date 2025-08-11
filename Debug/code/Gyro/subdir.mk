@@ -4,32 +4,32 @@
 
 # 将这些工具调用的输入和输出添加到构建变量 
 C_SRCS += \
-../code/Gyro/Gyroscope.c \
-../code/Gyro/Gyroscope_Process.c 
+../code/gyro/Gyro.c \
+../code/gyro/Gyro_Process.c 
 
 COMPILED_SRCS += \
-./code/Gyro/Gyroscope.src \
-./code/Gyro/Gyroscope_Process.src 
+./code/gyro/Gyro.src \
+./code/gyro/Gyro_Process.src 
 
 C_DEPS += \
-./code/Gyro/Gyroscope.d \
-./code/Gyro/Gyroscope_Process.d 
+./code/gyro/Gyro.d \
+./code/gyro/Gyro_Process.d 
 
 OBJS += \
-./code/Gyro/Gyroscope.o \
-./code/Gyro/Gyroscope_Process.o 
+./code/gyro/Gyro.o \
+./code/gyro/Gyro_Process.o 
 
 
 # 每个子目录必须为构建它所贡献的源提供规则
-code/Gyro/%.src: ../code/Gyro/%.c code/Gyro/subdir.mk
+code/gyro/%.src: ../code/gyro/%.c code/gyro/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING C/C++ Compiler'
 	cctc -cs --dep-file="$(basename $@).d" --misrac-version=2004 "-fE:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/Debug/TASKING_C_C___Compiler-Include_paths__-I_.opt" --iso=99 --c++14 --language=+volatile --exceptions --anachronisms --fp-model=3 -O0 --tradeoff=4 --compact-max-size=200 -g -Wc-w544 -Wc-w557 -Ctc38x -Y0 -N0 -Z0 -o "$@" "$<" && \
-	if [ -f "$(basename $@).d" ]; then sed.exe -r  -e 's/\b(.+\.o)\b/code\/Gyro\/\1/g' -e 's/\\/\//g' -e 's/\/\//\//g' -e 's/"//g' -e 's/([a-zA-Z]:\/)/\L\1/g' -e 's/\d32:/@TARGET_DELIMITER@/g; s/\\\d32/@ESCAPED_SPACE@/g; s/\d32/\\\d32/g; s/@ESCAPED_SPACE@/\\\d32/g; s/@TARGET_DELIMITER@/\d32:/g' "$(basename $@).d" > "$(basename $@).d_sed" && cp "$(basename $@).d_sed" "$(basename $@).d" && rm -f "$(basename $@).d_sed" 2>/dev/null; else echo 'No dependency file to process';fi
+	if [ -f "$(basename $@).d" ]; then sed.exe -r  -e 's/\b(.+\.o)\b/code\/gyro\/\1/g' -e 's/\\/\//g' -e 's/\/\//\//g' -e 's/"//g' -e 's/([a-zA-Z]:\/)/\L\1/g' -e 's/\d32:/@TARGET_DELIMITER@/g; s/\\\d32/@ESCAPED_SPACE@/g; s/\d32/\\\d32/g; s/@ESCAPED_SPACE@/\\\d32/g; s/@TARGET_DELIMITER@/\d32:/g' "$(basename $@).d" > "$(basename $@).d_sed" && cp "$(basename $@).d_sed" "$(basename $@).d" && rm -f "$(basename $@).d_sed" 2>/dev/null; else echo 'No dependency file to process';fi
 	@echo '已结束构建： $<'
 	@echo ' '
 
-code/Gyro/%.o: ./code/Gyro/%.src code/Gyro/subdir.mk
+code/gyro/%.o: ./code/gyro/%.src code/gyro/subdir.mk
 	@echo '正在构建文件： $<'
 	@echo '正在调用： TASKING Assembler'
 	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
@@ -37,10 +37,10 @@ code/Gyro/%.o: ./code/Gyro/%.src code/Gyro/subdir.mk
 	@echo ' '
 
 
-clean: clean-code-2f-Gyro
+clean: clean-code-2f-gyro
 
-clean-code-2f-Gyro:
-	-$(RM) ./code/Gyro/Gyroscope.d ./code/Gyro/Gyroscope.o ./code/Gyro/Gyroscope.src ./code/Gyro/Gyroscope_Process.d ./code/Gyro/Gyroscope_Process.o ./code/Gyro/Gyroscope_Process.src
+clean-code-2f-gyro:
+	-$(RM) ./code/gyro/Gyro.d ./code/gyro/Gyro.o ./code/gyro/Gyro.src ./code/gyro/Gyro_Process.d ./code/gyro/Gyro_Process.o ./code/gyro/Gyro_Process.src
 
-.PHONY: clean-code-2f-Gyro
+.PHONY: clean-code-2f-gyro
 

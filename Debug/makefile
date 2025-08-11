@@ -47,6 +47,7 @@ RM := rm -rf
 -include libraries/infineon_libraries/Infra/Platform/Tricore/Compilers/subdir.mk
 -include libraries/infineon_libraries/Configurations/subdir.mk
 -include code/process/subdir.mk
+-include code/pit/subdir.mk
 -include code/pid/subdir.mk
 -include code/myKey/subdir.mk
 -include code/myEncoder/subdir.mk
@@ -54,7 +55,7 @@ RM := rm -rf
 -include code/menu/subdir.mk
 -include code/leg/subdir.mk
 -include code/icm42688/subdir.mk
--include code/gyroscope/subdir.mk
+-include code/gyro/subdir.mk
 -include code/foc/subdir.mk
 -include code/filter/subdir.mk
 -include code/debug/subdir.mk

@@ -4,42 +4,41 @@
  *  Created on: 2023Äê10ÔÂ28ÈÕ
  *      Author: Â¬¾¢º­
  */
-#include <gyroscope/Gyroscope.h>
+#include <Gyro.h>
 
 float Sum_my_gyro_z = 0,Sum_my_gyro_y = 0,Sum_my_gyro_x = 0,Sum_my_acc_z = 0,Sum_my_acc_y = 0,Sum_my_acc_x = 0;
 float zero_my_gyro_z = 0,zero_my_gyro_y = 0,zero_my_gyro_x = 0,zero_my_acc_z = 0,zero_my_acc_y = 0,zero_my_acc_x = 0;
 float gyro_z = 0,gyro_y = 0,gyro_x = 0,acc_z = 0,acc_y = 0,acc_x = 0;
 float Lowpass_Alpha = 0.3;
 
-void gyroscope_init(void)
+void gyro_init()
 {
     my_gyroscope_init();
-    system_delay_ms(100);
-	int i = 0;
-	//SCH_Close();
-	//gpio_toggle_level(Beep);
+}
+void gyro_set(){
+    system_delay_ms(1000);
+    int i = 0;
     Sum_my_gyro_z=0;
     Sum_my_gyro_y=0;
     Sum_my_gyro_x=0;
-	//P52 = 0;
 
-    for(i=0;i<1000;i++)
+    pit_all_close();
+    for(i=0;i<1000;++i)
     {
-        system_delay_ms(2);
+        system_delay_ms(1);
         my_get_gyro();
         Sum_my_gyro_z+=my_gyro_z;
         Sum_my_gyro_y+=my_gyro_y;
         Sum_my_gyro_x+=my_gyro_x;
     }
+    Pit_init();
     zero_my_gyro_z=Sum_my_gyro_z/1000;
     zero_my_gyro_y=Sum_my_gyro_y/1000;
     zero_my_gyro_x=Sum_my_gyro_x/1000;
-    //gpio_toggle_level(Beep);
-    //SCH_Start();
-	//P52 = 1;
+    Flash_WriteAllVal();
 }
 
-void get_gyro(void)
+void get_gyro()
 {
 	int16 new_gyro_x = 0;
     int16 new_gyro_z = 0;

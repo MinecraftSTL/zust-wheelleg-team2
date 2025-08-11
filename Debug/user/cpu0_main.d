@@ -10,8 +10,6 @@ user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensour
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadFile.h :
-user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 user/cpu0_main.o :	d:/Infineon/AURIX-Studio-1.9.20/tools/Compilers/Tasking_1.1r8/ctc/include/math.h
@@ -334,8 +332,6 @@ user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensour
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_components/seekfree_assistant_interface.h :
-user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu0_main.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/user/cpu1_main.h
@@ -350,6 +346,8 @@ user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensour
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Sys/Sys.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pit/Pit.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/pit/Pit.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/leg/Leg.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Motor/Motor.h
@@ -402,6 +400,20 @@ user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensour
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/filter/Filter.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/process/Process.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro_Process.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyro/Gyro_Process.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/beep/Beep.h :
+user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h
+e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/VOFA/VOFA.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
@@ -424,16 +436,6 @@ user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensour
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Status/Status.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/debug/Debug.h :
-user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyroscope/Gyroscope.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyroscope/Gyroscope.h :
-user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyroscope/Gyroscope_Process.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/gyroscope/Gyroscope_Process.h :
-user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/MyHeadfile.h :
-user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/icm42688/icm42688.h :
-user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h
-e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/Myheadfile.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h
 e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myCamera/MyCamera.h :
 user/cpu0_main.o :	e:/User/S/smartc/TC387_Library-master/Seekfree_TC387_Opensource_Library/code/myEncoder/MyEncoder.h

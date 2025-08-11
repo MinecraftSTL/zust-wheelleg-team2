@@ -104,7 +104,7 @@ void Vofa_Adjust(void)
             char tempBuff[256];
             strncpy(tempBuff, start, sizeof(tempBuff) - 1);
             tempBuff[sizeof(tempBuff) - 1] = '\0';
-            char *tempStart = &tempBuff+1, *tempEnd = tempBuff+strlen(tempBuff)-1;
+            char *tempEnd = tempBuff+strlen(tempBuff)-1;
             // 调用解析逻辑
             char *equal = strchr(tempBuff, '=');
             if(equal == NULL){
@@ -112,7 +112,7 @@ void Vofa_Adjust(void)
             }
             *equal = '\0';
             // 处理指令类型（P1、I1等）
-            Page *menu = PageKey_getPath(&menu_main, tempStart);
+            Page *menu = PageKey_getPath(&menu_main, tempBuff+1);
             if(menu == NULL){
                 return;
             }

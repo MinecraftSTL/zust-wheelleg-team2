@@ -79,7 +79,7 @@
 //===================================================串口中断参数相关定义===============================================
 #define UART0_INT_SERVICE       IfxSrc_Tos_cpu0     // 定义串口0中断服务类型，即中断是由谁响应处理 IfxSrc_Tos_cpu0 IfxSrc_Tos_cpu1 IfxSrc_Tos_dma  不可设置为其他值
 #define UART0_TX_INT_PRIO       11                  // 定义串口0发送中断优先级 优先级范围1-255 越大优先级越高 与平时使用的单片机不一样
-#define UART0_RX_INT_PRIO       10                  // 定义串口0接收中断优先级 优先级范围1-255 越大优先级越高 与平时使用的单片机不一样
+#define UART0_RX_INT_PRIO       126                  // 定义串口0接收中断优先级 优先级范围1-255 越大优先级越高 与平时使用的单片机不一样
 #define UART0_ER_INT_PRIO       12                  // 定义串口0错误中断优先级 优先级范围1-255 越大优先级越高 与平时使用的单片机不一样
 
 #define UART1_INT_SERVICE       IfxSrc_Tos_cpu0

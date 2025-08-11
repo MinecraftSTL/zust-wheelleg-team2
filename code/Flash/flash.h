@@ -5,7 +5,7 @@
 #include "zf_driver_flash.h"
 #include "MOTOR.h"
 
-#define FLASH_KEY       0x0d000721              //ºÏ≤È√‹‘ø
+#define FLASH_KEY       0x09100721              //ºÏ≤È√‹‘ø
 
 void Flash_Init(void);
 void Flash_WriteAllVal(void);

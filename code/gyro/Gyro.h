@@ -5,10 +5,11 @@
  *      Author: Â¬¾¢º­
  */
 
-#ifndef CODE_GYROSCOPE_GYROSCOPE_H_
-#define CODE_GYROSCOPE_GYROSCOPE_H_
+#ifndef CODE_GYRO_GYRO_H_
+#define CODE_GYRO_GYRO_H_
 
-#include "../gyroscope/Gyroscope_Process.h"
+#include <Gyro_Process.h>
+#include "Pit.h"
 #include "icm42688.h"
 
 #define my_gyroscope_init() Init_ICM42688()
@@ -27,8 +28,9 @@
 #define Gravity_G 9.80665f
 
 
-void gyroscope_init(void);
-void get_gyro(void);
+void gyro_init();
+void gyro_set();
+void get_gyro();
 void get_gyorscope_data(void);
 void Update_GyroData(void);
 extern float gyro_z,gyro_y,gyro_x;
@@ -39,4 +41,4 @@ extern float zero_my_gyro_z,zero_my_gyro_y ,zero_my_gyro_x,zero_my_acc_z,zero_my
 extern float Sum_my_gyro_z,Sum_my_gyro_y,Sum_my_gyro_x,Sum_my_acc_z,Sum_my_acc_y,Sum_my_acc_x;
 
 
-#endif /* CODE_GYROSCOPE_GYROSCOPE_H_ */
+#endif /* CODE_GYRO_GYRO_H_ */
