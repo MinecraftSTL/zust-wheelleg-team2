@@ -10,6 +10,9 @@ uint64 allRunMs = 0;
 
 CarStatus carStatus = CAR_STOP;
 
+uint8 angleProtect = 1;
+uint8 fpsProtect = 1;
+
 void CarStatus_set(CarStatus this)
 {
     carStatus = this;
@@ -25,12 +28,9 @@ void CarStatus_update(){
     CameraStatus_clear();
     carRunMs = 0;
     wheelClear = 0;
-    if(carStatus == CAR_RUN){
-        binStatus = 1;
-    }
     showPInC1 = carStatus != CAR_RUN;
-    if(carStatus){
-        binStatus = 1;
+    if(carStatus == CAR_RUN){
+        binEn = 1;
     }
 }
 void CarStatus_menu_update(Page *page){

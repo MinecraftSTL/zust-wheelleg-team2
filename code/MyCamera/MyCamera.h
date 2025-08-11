@@ -47,9 +47,13 @@ extern int cameraErr;
 
 extern Rgb565Image showImage;
 
+extern int cutL;
+extern int cutR;
+extern int cutT;
+extern int cutB;
 extern float shadowK;
 extern float vignetteK;
-extern uint8 binStatus;
+extern uint8 binEn;
 extern int binDeltaT;
 extern float trapezoidK;
 extern int trapezoidY;
@@ -90,8 +94,17 @@ extern int bridgeDetectL;
 extern float otherBPow;
 extern int errY;
 extern int errDeltaY;
+
 extern uint8 showPInC1;
 extern uint8 showWait;
+
+extern int showCARL_a;
+extern int showCARL_x00;
+extern int showCARL_x01;
+extern int showCARL_y0;
+extern int showCARL_x10;
+extern int showCARL_x11;
+extern int showCARL_y1;
 
 extern uint8 zebraEn;
 extern uint8 crossEn;

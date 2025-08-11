@@ -55,7 +55,7 @@ void Image_cut(Image *this, uint16 l, uint16 r, uint16 t, uint16 b){
 }
 void Image_zoom(Image *this, Image *target, float zoom){
     zf_assert(this && target && zoom > 0.0f);
-    if(zoom == 1){
+    if(zoom == 1.f){
         return;
     }
     target->w = (this->w-1)*zoom+1;
@@ -66,12 +66,32 @@ void Image_zoom(Image *this, Image *target, float zoom){
         }
     }
 }
+
+uint16 inline Rgb565Pixel_fromW8Pixel(uint8 w8){
+    return w8>>(8-5)<<(5+6)|w8>>(8-6)<<5|w8>>(8-5);
+}
+
+uint16 inline Rgb565Pixel_mix(uint16 b, uint16 t, uint8 alpha){
+    if(alpha == 255){
+        return b;
+    }else if(alpha == 0){
+        return t;
+    }
+    uint8 bR = b>>(5+6), bG = (b>>(5))&0x3f, bB = b&0x1f;
+    uint8 tR = t>>(5+6), tG = (t>>(5))&0x3f, tB = t&0x1f;
+    float transparency = (float)alpha/0xff, opacity = 1-transparency;
+    uint8 rR = (uint8)sqrtf(bR*bR*transparency+tR*tR*opacity),
+            rG = (uint8)sqrtf(bG*bG*transparency+tG*tG*opacity),
+            rB = (uint8)sqrtf(bB*bB*transparency+tB*tB*opacity);
+    return (uint16)rR<<(5+6) | (uint16)rG<<(5) | (uint16)rB;
+}
+
 void Image_toRgb565Image(Image *this, Rgb565Image *target){
     zf_assert(!!this);
     target->w = this->w;
     target->h = this->h;
     for(uint32 i = 0; i < this->h*this->w; ++i){
-        target->image[i] = this->image[i]>>(8-5)<<(5+6)|this->image[i]>>(8-6)<<5|this->image[i]>>(8-5);
+        target->image[i] = Rgb565Pixel_fromW8Pixel(this->image[i]);
     }
 }
 void Rgb565Image_clone(Rgb565Image *this, Rgb565Image *target)

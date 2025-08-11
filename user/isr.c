@@ -64,6 +64,13 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         beepMid();
         ips200_init_spi();
     }
+    if(my_key_get_state(KEY_3) == KEY_SHORT_PRESS){
+        CarStatus_add();
+    }else if(my_key_get_state(KEY_3) == KEY_LONG_PRESS){
+        CarStatus_sub();
+    }else if(my_key_get_state(KEY_3) == KEY_LONGLONG_PRESS){
+        CarStatus_stop();
+    }
     Get_Switch_Num();
     if(switch_encoder_change_num < 0){
         pressed[PERV_KEY] -= switch_encoder_change_num;
@@ -100,10 +107,10 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
     float new_gyro_z = my_gyro_z-zero_my_gyro_z;
 
-    if(fabs(roll) > 60){
+    if(angleProtect && fabs(roll) > 60){
         if(carStatus > CAR_STOP){
             beepLong();
-            CarStatus_set(CAR_STOP);
+            CarStatus_stop();
         }
         if(wheelClear){
             beepLong();
@@ -197,7 +204,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
     CarStatus_pit(PIT10ms);
     Camera_pit(PIT10ms, Encoder_speed);
-    if(carStatus > CAR_BALANCE && (fps.fps <= 0 || fps.fps >= 7000)){//摄像头排线松了
+    if(fpsProtect && carStatus > CAR_BALANCE && (fps.fps <= 0 || fps.fps >= 7000)){//摄像头排线松了
         CarStatus_set(CAR_BALANCE);
     }
 }

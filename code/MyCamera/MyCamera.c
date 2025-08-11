@@ -6,9 +6,13 @@ Image image;
 Image image1;
 Rgb565Image showImage;
 
+int cutL = 0;
+int cutR = 0;
+int cutT = 0;
+int cutB = 0;
 float shadowK = 0.1;
 float vignetteK = 0.1;
-uint8 binStatus = 1;
+uint8 binEn = 1;
 int binDeltaT = 0;
 float trapezoidK = 0.6;
 int trapezoidY = 10;
@@ -25,10 +29,10 @@ float statusK = 0.9;
 int elementYMin = 20;
 int elementX = 20;
 int zebraY = 100;
-int zebraT = 10000;
+int zebraT = 5000;
 int zebraS = 100000;
 int crossX = 15;
-int blockY = 30;
+int blockY = 50;
 int circleX = 7;
 int rampS = 500000;
 int rampY = 40;
@@ -47,8 +51,17 @@ int bridgeDetectL = 0;
 float otherBPow = 5.f;
 int errY = 50;
 int errDeltaY = 30;
+
 uint8 showPInC1 = 1;
 uint8 showWait = 0;
+
+int showCARL_a = 255;
+int showCARL_x00 = 80;
+int showCARL_x01 = 108;
+int showCARL_y0 = 30;
+int showCARL_x10 = 28;
+int showCARL_x11 = 160;
+int showCARL_y1 = 118;
 
 uint8 zebraEn = 1;
 uint8 crossEn = 1;
@@ -436,16 +449,14 @@ void Image_borderToMiddle(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder
 int Image_middleToErr(Image *this, int16 middle[MT9V03X_H], uint16 y, uint16 deltaY, uint16 startY){
     zf_assert(!!this);
     uint16 yMax = min(y+deltaY, startY);
-    uint16 h = 0;
-    int32 sum = 0;
-    for(uint16 i=y; i<yMax; ++i){
-        ++h;
-        sum += middle[i]-this->w/2;
-    }
-    if(h == 0){
+    if(y == yMax){
         return 0;
     }
-    return sum/deltaY;
+    int32 sum = 0;
+    for(uint16 i=y; i<yMax; ++i){
+        sum += middle[i]-this->w/2;
+    }
+    return sum/(yMax - y);
 }
 
 void Image_borderSetCLine(Image *this, uint16 border[MT9V03X_H], uint16 x0, uint16 y0, uint16 x1, uint16 y1){
@@ -513,14 +524,14 @@ void Image_borderSetSLine(Image *this, uint16 border[MT9V03X_H], uint16 pos[MT9V
     }
     for(uint16 i = y0; i <= y1; ++i){
         float x = slope*i+intercept;
-        if(x >= this->w || i >= this->h){
+        if(i >= this->h){
             continue;
         }
         border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
     }
 }
 void Image_borderSetULine(Image *this, uint16 border[MT9V03X_H], uint16 y){
-    if(y+setLineY >= this->h-1){
+    if(y+setLineY >= this->h){
         return;
     }
     uint16 pos[MT9V03X_H][2];
@@ -814,20 +825,23 @@ void Image_lBlock(Image *this, float *cameraV, uint16 *cameraY){
             if(lStraight != 0 || lInfN == 0){
                 CameraStatus_addScore(CAMERA_STATUS_NONE);
             }
-            int16 y = -1;
+            int16 yD = -1, yU = -1;
             if(lInfN > 1 && Inflection_getFacing(lInfRad[1]) == 2){
-                y = lLine[lInfLine[1]][1];
+                yD = lLine[lInfLine[1]][1];
                 if(lInfN > 2 && Inflection_getFacing(lInfRad[2]) == 3){
-                    Image_borderSetULine(this, lBorder, lLine[lInfLine[2]][1]+2*bly2RDL);
+                    yU = lLine[lInfLine[2]][1];
                 }
             }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
-                y = lLine[lInfLine[0]][1];
+                yD = lLine[lInfLine[0]][1];
                 if(lInfN > 1 && Inflection_getFacing(lInfRad[1]) == 3){
-                    Image_borderSetULine(this, lBorder, lLine[lInfLine[1]][1]+2*bly2RDL);
+                    yU = lLine[lInfLine[1]][1];
                 }
             }
-            if(y >= blockY){
-                Image_borderSetDLine(this, lBorder, y-2*bly2RDL);
+            if(yD >= blockY){
+                Image_borderSetDLine(this, lBorder, yD-2*bly2RDL);
+                if(yU >= blockY){
+                    Image_borderSetULine(this, lBorder, yU+2*bly2RDL);
+                }
             }
             *cameraY = blockErrY;
             break;
@@ -858,20 +872,23 @@ void Image_rBlock(Image *this, float *cameraV, uint16 *cameraY){
             if(rStraight != 0 || rInfN == 0){
                 CameraStatus_addScore(CAMERA_STATUS_NONE);
             }
-            int16 y = -1;
+            int16 yD = -1, yU = -1;
             if(rInfN > 1 && Inflection_getFacing(rInfRad[1]) == 1){
-                y = rLine[rInfLine[1]][1];
+                yD = rLine[rInfLine[1]][1];
                 if(rInfN > 2 && Inflection_getFacing(rInfRad[2]) == 4){
-                    Image_borderSetULine(this, rBorder, rLine[rInfLine[2]][1]+2*bly2RDL);
+                    yU = rLine[rInfLine[2]][1];
                 }
             }else if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
-                y = rLine[rInfLine[0]][1];
+                yD = rLine[rInfLine[0]][1];
                 if(rInfN > 1 && Inflection_getFacing(rInfRad[1]) == 4){
-                    Image_borderSetULine(this, rBorder, rLine[rInfLine[1]][1]+2*bly2RDL);
+                    yU = rLine[rInfLine[1]][1];
                 }
             }
-            if(y >= blockY){
-                Image_borderSetDLine(this, rBorder, y-2*bly2RDL);
+            if(yD >= blockY){
+                Image_borderSetDLine(this, rBorder, yD-2*bly2RDL);
+                if(yU >= blockY){
+                    Image_borderSetULine(this, rBorder, yU+2*bly2RDL);
+                }
             }
             *cameraY = blockErrY;
             break;
@@ -931,15 +948,18 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)func_limit_ab(lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY), circleErrY, bendErrY);
+            float tempY = lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
+            *cameraY = (uint16)func_limit_ab(tempY, circleErrY, bendErrY);
             break;
         case R_LCIRCLE:
             if(rInfN > 0 && fabsf(Angle_normalize(0 - rInfRad[0])) <= facingErr + PI/2){
                 CameraStatus_addScore(TO_LCIRCLE);
             }
-            *cameraV = circleV;
+//            *cameraV = circleV;、
+            Image_bendCameraV(this, cameraV);
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)func_limit_ab(lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY), circleErrY, bendErrY);
+            tempY = lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
+            *cameraY = (uint16)func_limit_ab(tempY, circleErrY, bendErrY);
             break;
         case TO_LCIRCLE:
             if(lInfN > 0 && fabsf(Angle_normalize(PI/2 - lInfRad[0])) <= facingErr + PI/4 &&
@@ -971,7 +991,8 @@ void Image_lCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)func_limit_ab(lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY), circleErrY, bendErrY);
+            tempY = lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
+            *cameraY = (uint16)func_limit_ab(tempY, circleErrY, bendErrY);
             break;
         case O_LCIRCLE:
             if(lInfN == 0 || fabsf(Angle_normalize(PI/2 - lInfRad[0])) > facingErr + PI/4 ||
@@ -1030,15 +1051,18 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)func_limit_ab(lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY), circleErrY, bendErrY);
+            float tempY = lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
+            *cameraY = (uint16)func_limit_ab(tempY, circleErrY, bendErrY);
             break;
         case R_RCIRCLE:
             if(lInfN > 0 && fabsf(Angle_normalize(PI - lInfRad[0])) <= facingErr + PI/2){
                 CameraStatus_addScore(TO_RCIRCLE);
             }
-            *cameraV = circleV;
+//            *cameraV = circleV;
+            Image_bendCameraV(this, cameraV);
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)func_limit_ab(lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY), circleErrY, bendErrY);
+            tempY = lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
+            *cameraY = (uint16)func_limit_ab(tempY, circleErrY, bendErrY);
             break;
         case TO_RCIRCLE:
             if(rInfN > 0 && fabsf(Angle_normalize(PI/2 - rInfRad[0])) <= facingErr + PI/4 &&
@@ -1070,7 +1094,8 @@ void Image_rCircle(Image *this, float *cameraV, uint16 *cameraY){
             }
             *cameraV = circleV;
             Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)func_limit_ab(lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY), circleErrY, bendErrY);
+            tempY = lll((float)Encoder_speed, circleV, bendV, circleErrY, bendErrY);
+            *cameraY = (uint16)func_limit_ab(tempY, circleErrY, bendErrY);
             break;
         case O_RCIRCLE:
             if(rInfN == 0 || fabsf(Angle_normalize(PI/2 - rInfRad[0])) > facingErr + PI/4 ||
@@ -1162,7 +1187,9 @@ void Image_ramp(Image *this, float *cameraV, uint16 *cameraY){
     }
 }
 void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
-    int v;
+    int Encoder_speed;
+    float tempY;
+    uint16 startYMin;
     static float iBarrierV;
     switch(cameraStatus){
         case CAMERA_STATUS_NONE:
@@ -1176,8 +1203,10 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
             }
             break;
         case I_BARRIER:
-            v = (Encoder_speed_l+Encoder_speed_r)/2;
-            if(lrMeet > (int16)func_limit_ab(lll((float)v,barrierV0,barrierV1,barrierY10,barrierY11), barrierY0, min(lStart[1], rStart[1]))){
+            Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
+            tempY = lll((float)Encoder_speed,barrierV0,barrierV1,barrierY10,barrierY11);
+            startYMin = min(lStart[1], rStart[1]);
+            if(lrMeet > (int16)func_limit_ab(tempY, barrierY0, startYMin)){
                 CameraStatus_addScore(R_BARRIER);
             }
             if(lInfN > 1 || lInfN == 1 && (Inflection_getFacing(lInfRad[0]) != 4 ||
@@ -1193,7 +1222,7 @@ void Image_barrier(Image *this, float *cameraV, uint16 *cameraY){
                 Image_borderSetULine(this, rBorder, rLine[rInfLine[0]][1]+2*bly2RDL);
             }
             if(statusKeepTick <= 1){
-                iBarrierV = func_limit_ab(v, barrierV0, barrierV1);
+                iBarrierV = func_limit_ab(Encoder_speed, barrierV0, barrierV1);
             }
             *cameraV = iBarrierV;
             break;
@@ -1586,7 +1615,8 @@ void Image_other(Image *this, float *cameraV, uint16 *cameraY){
             }
             Image_bendCameraV(this, cameraV);
             int Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
-            *cameraY = (uint16)func_limit_ab(lll((float)Encoder_speed, targetV, bendV, errY, bendErrY), errY, bendErrY);
+            float tempY = lll((float)Encoder_speed, targetV, bendV, errY, bendErrY);
+            *cameraY = (uint16)func_limit_ab(tempY, errY, bendErrY);
             break;
         case OR_CROSS_LCIRCLE:
             if(!(lInfN > 0 && (rStraight==1 && Inflection_getFacing(lInfRad[0]) == 3 && lLine[lInfLine[0]][1] > max(elementYMin, straightYMin) ||
@@ -1658,6 +1688,15 @@ void Image_processForShow(){
         Rgb565Image_mark(&showImage, rLine[rInfLine[i]][0], rLine[rInfLine[i]][1], RGB565_RED, 2);;
         Rgb565Image_set(&showImage, rLine[rInfLine[i]][0]+cosf(rInfRad[i])*6, rLine[rInfLine[i]][1]-sinf(rInfRad[i])*6, RGB565_RED);
     }
+    if(showCARL_a < 255){
+        float k0 = (float)(showCARL_x10-showCARL_x00)/(showCARL_y1-showCARL_y0),
+                k1 = (float)(showCARL_x11-showCARL_x01)/(showCARL_y1-showCARL_y0);
+        for(uint16 i = 0; i <= showCARL_y1 - showCARL_y0; ++i){
+            uint16 x0 = k0 * i + showCARL_x00, x1 = k1 * i + showCARL_x01;
+            Rgb565Image_set(&showImage, x0, i + showCARL_y0, Rgb565Pixel_mix(Rgb565Image_get(&showImage, x0, i + showCARL_y0), RGB565_RED, showCARL_a));
+            Rgb565Image_set(&showImage, x1, i + showCARL_y0, Rgb565Pixel_mix(Rgb565Image_get(&showImage, x1, i + showCARL_y0), RGB565_RED, showCARL_a));
+        }
+    }
 }
 void Image_showCamera(uint16 x, uint16 y)
 {
@@ -1685,8 +1724,11 @@ void Image_processCamera(){
         }
 
 //        SysTimer_Start();
+        if(showCARL_a == 255){
+            Image_cut(&image, cutL, cutR, cutT, cutB);
+        }
         Image_compensate(&image, shadowK, vignetteK);
-        if(binStatus){
+        if(binEn){
             Image_binaryzation(&image, binDeltaT);
         }
 

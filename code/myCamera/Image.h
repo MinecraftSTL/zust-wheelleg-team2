@@ -26,6 +26,8 @@ void Image_clear(Image *this);
 void Image_clone(Image *this, Image *target);
 void Image_cut(Image *this, uint16 x0, uint16 y0, uint16 x1, uint16 y1);
 void Image_zoom(Image *this, Image *target, float zoom);
+uint16 Rgb565Pixel_fromW8Pixel(uint8 w8);
+uint16 Rgb565Pixel_mix(uint16 b, uint16 t, uint8 alpha);
 void Image_toRgb565Image(Image *this, Rgb565Image *target);
 void Rgb565Image_clone(Rgb565Image *this, Rgb565Image *target);
 void Rgb565Image_clear(Rgb565Image *this);

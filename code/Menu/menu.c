@@ -741,7 +741,17 @@ Page *EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
         this->select = -1;
     }
     for(int i=0; i<this->extends.enumValue.size; ++i){
-        strncpy(this->extends.enumValue.names[i], names[i], PAGE_VALUE_MAX);
+        int8 j=0;
+        for(; j<PAGE_VALUE_MAX; ++j){
+            if(names[i][j] == '\0'){
+                break;
+            }
+            this->extends.enumValue.names[i][j] = names[i][j];
+        }
+        for(; j<PAGE_VALUE_MAX; ++j){
+            this->extends.enumValue.names[i][j] = ' ';
+        }
+        this->extends.enumValue.names[i][PAGE_VALUE_MAX] = '\0';
     }
     if(flashStatus){
         Page_readFlash(this);

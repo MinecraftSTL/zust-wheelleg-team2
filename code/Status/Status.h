@@ -27,6 +27,9 @@ extern uint64 allRunMs;
 
 extern CarStatus carStatus;
 
+extern uint8 angleProtect;
+extern uint8 fpsProtect;
+
 void CarStatus_set(CarStatus this);
 void CarStatus_update();
 void CarStatus_menu_update(Page *page);
