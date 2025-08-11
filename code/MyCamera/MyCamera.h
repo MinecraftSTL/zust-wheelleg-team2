@@ -8,7 +8,7 @@
 #define image_w 188         //图像宽度      列数
 #define zip_num     1       //图像转载参数， 1 不压缩，2 压缩一倍
 
-#define Border_Max  image_w-2
+#define Border_Max  (image_w-2)
 #define Border_Min  1
 #define Target_Column 94
 #define STRAIGHT_MAX_ERR  30              //超过指定误差就认为是弯道
@@ -22,22 +22,22 @@ extern uint16 camera_process_FPS ;
 extern uint16 camera_process_cnt_show ;
 
 extern int g_camera_mid_err;
-extern int  middle[120];
-extern int left[120];
-extern int right[120];
-extern uint8 image[120][188];
+extern int  middle[image_h];
+extern int left[image_h];
+extern int right[image_h];
+extern uint8 image[image_h][image_w];
 extern uint16 pro_time;
 extern uint8 circle_flag;
-extern uint8 left_copy[120];
-extern uint8 right_copy[120];
-extern uint8 middle_copy[120];
+extern uint8 left_copy[image_h];
+extern uint8 right_copy[image_h];
+extern uint8 middle_copy[image_h];
 extern uint8 camera_horizon;
 extern uint8 cross_road_status;
 extern uint8 Circle_Static_Flag;
 
 float absolute(float z);
 void MyCamera_Init(void);                                       //摄像头初始化
-void MyCamera_Show(void);                                       //图像显示
+void MyCamera_Show(uint16 y);                                       //图像显示
 void Image_Process(void);                                       //图像处理
 void Get_Image(uint8(*mt9v03x_image)[image_w]);                 //图像转换
 uint8 OtsuThreshold(uint8 *image, uint16 col, uint16 row);      //大津法取阈值

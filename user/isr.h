@@ -36,7 +36,9 @@
 #ifndef _isr_h
 #define _isr_h
 
-#include "zf_common_headfile.h"
+#include "Sys.h"
+
+#include "PID_param.h"
 
 extern float kZero;
 

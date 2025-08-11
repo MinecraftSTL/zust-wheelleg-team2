@@ -35,10 +35,10 @@ struct LegServoAngle Pos_toServoAngle(float x, float z){
 }
 
 uint8 Pos_isLegal(float x, float z, const struct LegServoAngle a){
-    if(a.f<-PI/6 || a.f > PI/2){
+    if(a.f<0 || a.f > PI/2){
         return 0;
     }
-    if(a.b<-PI/6 || a.b > PI/2){
+    if(a.b<0 || a.b > PI/2){
         return 0;
     }
     if(x < -LEG_MAX_X || x > LEG_MAX_X){

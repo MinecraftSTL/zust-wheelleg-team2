@@ -61,11 +61,6 @@ void PageKey_print(Page *this, uint8 row){
     }
 }
 uint8 PageKey_press(Page *this, uint8 pressed[]){
-    if(pressed[HOME_KEY]){
-        PageKey_home(this);
-    }else if(pressed[BACK_KEY]){
-        PageKey_back(this);
-    }
     switch(this->type){
         case LIST_TYPE:
             ListPage_press(this, pressed);
@@ -85,6 +80,11 @@ uint8 PageKey_press(Page *this, uint8 pressed[]){
         case BOOL_TYPE:
             BoolPage_press(this, pressed);
             break;
+    }
+    if(pressed[HOME_KEY]){
+        PageKey_home(this);
+    }else if(pressed[BACK_KEY]){
+        PageKey_back(this);
     }
     for(int i=0; i<KEY_NUM; ++i){
         if(pressed[i]){
@@ -125,7 +125,7 @@ void ListPage_init(Page *this, char name[], uint8 size, Page *key[]){
     if(size == 0){
         this->open = -1;
     }
-    memcpy(this->extends.listValue.value, key, sizeof(void*)*size);
+    memcpy(this->extends.listValue.value, key, sizeof(Page*)*size);
     this->extends.listValue.size = size;
     for(int i=0; i<size; ++i){
         key[i]->parent = this;

@@ -344,16 +344,16 @@ libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Se
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/user/isr.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Beep/Beep.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyCamera/MyCamera.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
@@ -394,18 +394,22 @@ libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Se
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/foc/small_driver_uart_control.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_common/zf_common_headfile.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadfile.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadfile.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/leg/Leg.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/leg/Leg.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Sys/Sys.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/Motor.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Motor/Motor.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/foc/small_driver_uart_control.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/foc/small_driver_uart_control.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/filter/Filter.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/filter/Filter.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/VOFA/VOFA.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/VOFA/VOFA.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/zf_driver/zf_driver_uart.h
@@ -426,15 +430,7 @@ libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Se
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/debug/Debug.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Menu/menu.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyEncoder/MyEncoder.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/Gyro/Gyroscope_Process.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadfile.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/MyHeadfile.h :
-libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h
-e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/code/PID/PID_param.h :
+libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 libraries/zf_common/zf_common_clock.o :	e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/IfxCpu.h
 e:/User/S/smartc/TC377_Library-master/Seekfree_TC377_Opensource_Library/libraries/infineon_libraries/iLLD/TC37A/Tricore/Cpu/Std/IfxCpu.h :

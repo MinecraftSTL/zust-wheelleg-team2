@@ -63,20 +63,20 @@ void get_gyro(void)
 //    {
 //        new_gyro_y = 0;
 //    }
-    gyro_y=-new_gyro_y * PI / 180.0;
+    gyro_y=new_gyro_y * PI / 180.0;
 
    // acc_y = Lowpass_Alpha * acc_y + (1 - Lowpass_Alpha) * (float)my_acc_y;
-    acc_y = -my_acc_y * Gravity_G;
+    acc_y = my_acc_y * Gravity_G;
 
     new_gyro_x=my_gyro_x-zero_my_gyro_x;
 //    if((new_gyro_x>-2)&&(new_gyro_x<2))
 //    {
 //        new_gyro_x = 0;
 //    }
-    gyro_x=-new_gyro_x * PI / 180.0;
+    gyro_x=new_gyro_x * PI / 180.0;
 
    // acc_x = Lowpass_Alpha * acc_x + (1 - Lowpass_Alpha) * (float)my_acc_x;
-    acc_x = -my_acc_x * Gravity_G;
+    acc_x = my_acc_x * Gravity_G;
 
 }
 //float gyro_z_res = 0,gyro_x_res = 0,gyro_y_res = 0;

@@ -53,6 +53,7 @@ Page menu_main_carRun;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
+Page menu_main_arg_k_speedF;
 Page menu_main_arg_PID;
 Page menu_main_arg_PID_vAy;
 Page menu_main_arg_PID_vAy_Kp;
@@ -62,6 +63,10 @@ Page menu_main_arg_PID_xAy;
 Page menu_main_arg_PID_xAy_Kp;
 Page menu_main_arg_PID_xAy_Ki;
 Page menu_main_arg_PID_xAy_Kd;
+Page menu_main_arg_PID_vAz;
+Page menu_main_arg_PID_vAz_Kp;
+Page menu_main_arg_PID_vAz_Ki;
+Page menu_main_arg_PID_vAz_Kd;
 Page menu_main_arg_PID_vVx;
 Page menu_main_arg_PID_vVx_Kp;
 Page menu_main_arg_PID_vVx_Ki;
@@ -106,6 +111,7 @@ int core0_main(void)
     small_driver_uart_init();
     Leg_init();
     MyEncoder_Init();
+    MyCamera_Init();
     PID_param_init();
     pit_ms_init(CCU60_CH0, PIT00ms);
 //    pit_ms_init(CCU60_CH1, PIT01ms);
@@ -123,14 +129,18 @@ int core0_main(void)
         &menu_main_arg_k,
         &menu_main_arg_PID,
     });
-    ListPage_init(&menu_main_arg_k, "k", 1, (Page*[]){
+    ListPage_init(&menu_main_arg_k, "k", 2, (Page*[]){
         &menu_main_arg_k_kZero,
+        &menu_main_arg_k_speedF,
     });
     FFloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -2, 2);
     menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
-    ListPage_init(&menu_main_arg_PID, "PID", 5, (Page*[]){
+    FFloatPage_init(&menu_main_arg_k_speedF, "speedF", &Filter_speed.alpha, 0, 1);
+    menu_main_arg_k_speedF.extends.fFloatValue.dot = 0;
+    ListPage_init(&menu_main_arg_PID, "PID", 6, (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
+        &menu_main_arg_PID_vAz,
         &menu_main_arg_PID_vVx,
         &menu_main_arg_PID_lPitch,
         &menu_main_arg_PID_xAx,
@@ -151,6 +161,14 @@ int core0_main(void)
     FFloatPage_init(&menu_main_arg_PID_xAy_Kp, "Kp", &PID_WxAy.Kp, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAy_Ki, "Ki", &PID_WxAy.Ki, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAy_Kd, "Kd", &PID_WxAy.Kd, 0, 10000);
+    ListPage_init(&menu_main_arg_PID_vAz, "vAz", 3, (Page*[]){
+        &menu_main_arg_PID_vAz_Kp,
+        &menu_main_arg_PID_vAz_Ki,
+        &menu_main_arg_PID_vAz_Kd,
+    });
+    FFloatPage_init(&menu_main_arg_PID_vAz_Kp, "Kp", &PID_WvAz.Kp, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vAz_Ki, "Ki", &PID_WvAz.Ki, 0, 10000);
+    FFloatPage_init(&menu_main_arg_PID_vAz_Kd, "Kd", &PID_WvAz.Kd, 0, 10000);
     ListPage_init(&menu_main_arg_PID_vVx, "vVx", 3, (Page*[]){
         &menu_main_arg_PID_vVx_Kp,
         &menu_main_arg_PID_vVx_Ki,
@@ -192,7 +210,7 @@ int core0_main(void)
         &menu_main_debug_fv_v,
     });
     BoolPage_init(&menu_main_debug_fv_en, "enable", &fvEn, 0x03);
-    IntPage_init(&menu_main_debug_fv_v, "V", &fvV, -100, 100);
+    IntPage_init(&menu_main_debug_fv_v, "V", &fvV, -1000, 1000);
     ListPage_init(&menu_main_debug_fl, "forceLeg", 5, (Page*[]){
         &menu_main_debug_fl_en,
         &menu_main_debug_fl_rb,
@@ -227,6 +245,7 @@ int core0_main(void)
     =menu_main_debug_fwp_rz.extends.fFloatValue.dot=2;
 
     beepLong();
+    ips200_clear();
     PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
@@ -242,6 +261,7 @@ int core0_main(void)
             PageKey_press(&menu_main, pressed);
             PageKey_print(&menu_main, 0);
         }
+        MyCamera_Show(200);
         // 此处编写需要循环执行的代码
     }
 }

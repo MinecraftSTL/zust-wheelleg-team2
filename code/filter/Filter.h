@@ -12,8 +12,14 @@
 
 typedef struct {
     float alpha;     // 滤波系数
-    float x;    // 上一次的输入值
-    float y;    // 上一次的输出值
-} Filter;
+    float x, y;
+}Filter;
+
+void LPF_init(Filter* this, float cutoff_freq, float sample_freq);
+float lpf(Filter* this, float input);
+void HighPassFilter_Init(Filter* this, float cutoff_freq, float sample_freq);
+float HighPassFilter_Update(Filter* this, float input);
+
+extern Filter Filter_speed;
 
 #endif /* CODE_FILTER_FILTER_H_ */

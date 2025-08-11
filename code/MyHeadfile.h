@@ -10,11 +10,12 @@
 #include "isr.h"
 
 #include "Beep.h"
-#include "menu.h"
 #include "MyCamera.h"
 #include "MyEncoder.h"
+#include "Gyroscope.h"
 #include "Leg.h"
 #include "Motor.h"
+#include "Filter.h"
 #include "PID.h"
 #include "VOFA.h"
 #include "FLASH.h"

@@ -57,11 +57,6 @@
 
 #include "menu.h"
 
-#include "PID.h"
-#include "zf_device_mpu6050.h"
-#include "MyEncoder.h"
-#include "Gyroscope.h"
-
 #include "PID_param.h"
 /******************************************************************************/
 /*-----------------------------------Macros-----------------------------------*/

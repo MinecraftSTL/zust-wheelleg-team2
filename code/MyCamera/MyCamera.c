@@ -17,18 +17,18 @@ uint8_t original_image[image_h][image_w];                //原始图像数组
 uint8_t threshold_value;                                 //动态阈值自动值
 uint8_t threshold_value_add = 0;
 uint8_t threshold_open_or_close = 0;
-uint8 image[120][188];                                   //二值化图像数组
+uint8 image[image_h][image_w];                                   //二值化图像数组
 uint8 start_point_l[2] = { 0 };                          //左边起点的x，y值
 uint8 start_point_r[2] = { 0 };                          //右边起点的x，y值
 uint8 start_point_detection_flag ;
-int left[120]={2};       //左边界数组   从118开始存  存储的顺序是第一行就存在left[1]中      //提取的线在爬出线的列数上+1
-int right[120]={185};    //右边界数组   从118开始存  存储的顺序是第一行就存在right[1]中     //提取的线在爬出线的列数上-1
-int middle[120]={93};    //中线数组
-int left_tmp[120];
+int left[image_h]={2};       //左边界数组   从118开始存  存储的顺序是第一行就存在left[1]中      //提取的线在爬出线的列数上+1
+int right[image_h]={image_w-3};    //右边界数组   从118开始存  存储的顺序是第一行就存在right[1]中     //提取的线在爬出线的列数上-1
+int middle[image_h]={(image_w-2)/2};    //中线数组
+int left_tmp[image_h];
 
-uint8 left_copy[120]={2};
-uint8 right_copy[120]={185};
-uint8 middle_copy[120]={93};
+uint8 left_copy[image_h]={2};
+uint8 right_copy[image_h]={image_w-3};
+uint8 middle_copy[image_h]={(image_w-2)/2};
 
 //存放点的x，y坐标
 uint16 points_l[(uint16)USE_num][2] = { {  0 } };//左线      points_l[num][0]是列坐标数组  points_l[num][1]是行坐标数组
@@ -122,7 +122,7 @@ int Endline = 1 ;           //截止行
 
 uint16 pro_time;            //处理时间
 
-int weight[120]=
+int weight[image_h]=
 {
 
 
@@ -163,7 +163,7 @@ void MyCamera_Init(void)
 }
 
 uint16_t page_cnt;
-void MyCamera_Show(void)
+void MyCamera_Show(uint16 y)
 {
 
 //    if(mt9v03x_finish_flag)
@@ -179,17 +179,17 @@ void MyCamera_Show(void)
     if(Camera_process_finish_flag == 1)
     {
         Camera_process_finish_flag = 0;
-        ips200_show_int(0, 300, threshold_value, 3);  //显示阈值
-        ips200_displayimage03x((const uint8 *)image, MT9V03X_W , MT9V03X_H  );
+        ips200_show_int(188, 304, threshold_value, 3);  //显示阈值
+        ips200_show_gray_image(0, y, (const uint8 *)image, MT9V03X_W, MT9V03X_H, MT9V03X_W, MT9V03X_H, 0);
         int i;
         for (i = Endline; i < image_h-1; i++)
         {
           //  middle[i] = (left[i] + right[i]) >> 1;//求中线
           //求中线最好最后求，不管是补线还是做状态机，全程最好使用一组边线，中线最后求出，不能干扰最后的输出
           //当然也有多组边线的找法，但是个人感觉很繁琐，不建议
-            ips200_draw_point((uint16)middle_copy[i], (uint16)i,  RGB565_GREEN);
-            ips200_draw_point((uint16)left_copy[i], (uint16)i, RGB565_RED);
-            ips200_draw_point((uint16)right_copy[i],(uint16) i, RGB565_BLUE);
+            ips200_draw_point((uint16)middle_copy[i], (uint16)i+y,  RGB565_GREEN);
+            ips200_draw_point((uint16)left_copy[i], (uint16)i+y, RGB565_RED);
+            ips200_draw_point((uint16)right_copy[i],(uint16) i+y, RGB565_BLUE);
         }
 //        seekfree_assistant_camera_send();
     }
@@ -992,7 +992,7 @@ void Lost_Left(void)
 
 
 /***********************************************
-* @brief : 获取摄像头中线误差,使用权重
+* @brief : 获取摄像头中线误差,使用 位置/权重
 * @param : void
 * @return: int
 * @date  : 2024年10月25日12:28:00
@@ -2068,7 +2068,7 @@ void Image_Process(void)
             middle_line();                  //提取中线
             Middle_Empty();
 //            Bend_Straight_Opinion();        //判断是否是直线
-//            g_camera_mid_err = Camera_Get_MidErr();
+            g_camera_mid_err = Camera_Get_MidErr();
 //            printf("%d\r\n",g_camera_mid_err);
 //            printf("%d ,%d ,%d\r\n ",target_left,target_right,g_camera_mid_err);
             camera_process_cnt++;

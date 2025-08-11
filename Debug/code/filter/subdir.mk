@@ -4,18 +4,22 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../code/filter/Filter.c \
 ../code/filter/HPF.c \
 ../code/filter/LPF.c 
 
 COMPILED_SRCS += \
+./code/filter/Filter.src \
 ./code/filter/HPF.src \
 ./code/filter/LPF.src 
 
 C_DEPS += \
+./code/filter/Filter.d \
 ./code/filter/HPF.d \
 ./code/filter/LPF.d 
 
 OBJS += \
+./code/filter/Filter.o \
 ./code/filter/HPF.o \
 ./code/filter/LPF.o 
 
@@ -40,7 +44,7 @@ code/filter/%.o: ./code/filter/%.src code/filter/subdir.mk
 clean: clean-code-2f-filter
 
 clean-code-2f-filter:
-	-$(RM) ./code/filter/HPF.d ./code/filter/HPF.o ./code/filter/HPF.src ./code/filter/LPF.d ./code/filter/LPF.o ./code/filter/LPF.src
+	-$(RM) ./code/filter/Filter.d ./code/filter/Filter.o ./code/filter/Filter.src ./code/filter/HPF.d ./code/filter/HPF.o ./code/filter/HPF.src ./code/filter/LPF.d ./code/filter/LPF.o ./code/filter/LPF.src
 
 .PHONY: clean-code-2f-filter
 

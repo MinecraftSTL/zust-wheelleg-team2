@@ -4,13 +4,13 @@
 #include "zf_common_headfile.h"
 
 
-#define SMALL_DRIVER_UART                       (UART_6        )
+#define SMALL_DRIVER_UART                       (UART_3        )
 
 #define SMALL_DRIVER_BAUDRATE                   (460800        )
 
-#define SMALL_DRIVER_RX                         (UART6_TX_P22_0)
+#define SMALL_DRIVER_RX                         (UART3_TX_P20_3)
 
-#define SMALL_DRIVER_TX                         (UART6_RX_P23_1)
+#define SMALL_DRIVER_TX                         (UART3_RX_P21_6)
 
 typedef struct
 {

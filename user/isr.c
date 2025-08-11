@@ -36,14 +36,6 @@
 #include "isr_config.h"
 #include "isr.h"
 
-#include "Sys.h"
-
-#include "PID_param.h"
-#include "Gyroscope.h"
-
-#include "cpu0_main.h"
-#include "cpu1_main.h"
-
 // 对于TC系列默认是不支持中断嵌套的，希望支持中断嵌套需要在中断内使用 interrupt_global_enable(0); 来开启中断嵌套
 // 简单点说实际上进入中断后TC系列的硬件自动调用了 interrupt_global_disable(); 来拒绝响应任何的中断，因此需要我们自己手动调用 interrupt_global_enable(0); 来开启中断的响应。
 
@@ -59,12 +51,14 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         beep_stop();
     }
     key_scanner();
-    for(int i=0; i<KEY_NUMBER; ++i){
-        if(key_get_state(i) == KEY_SHORT_PRESS){
-            ++pressed[UP_KEY+i];
-        }
-    }
-    if(key_get_state(CENTER_KEY-UP_KEY) == KEY_LONG_PRESS){
+//    for(int i=0; i<KEY_NUMBER; ++i){
+//        if(key_get_state(i) == KEY_SHORT_PRESS){
+//            ++pressed[UP_KEY+i];
+//        }
+//    }
+    if(key_get_state(KEY_4) == KEY_SHORT_PRESS){
+        ++pressed[CENTER_KEY];
+    }else if(key_get_state(KEY_4) == KEY_LONG_PRESS){
         ++pressed[BACK_KEY];
     }
     Get_Switch_Num();
@@ -82,25 +76,27 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kZero = 1;
+float kZero = 20;
+
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU61_CH0);
     GetSpeed();
+    int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2,
+            Turn_speed = Encoder_speed_r-Encoder_speed_l;
     Update_GyroData();
 
     if(car_run){
-        if(fabs(roll) > 45 || fabs(pitch) > 45){
+        if(fabs(roll) > 60 || fabs(pitch) > 60){
             beepLong();
             car_run=0;
         }
     }
 
-    float tg_pitchV, legX = 0, legZ = -45;
+    float tg_pitchV, tg_yawV = (image_w-2)/2-g_camera_mid_err, legX = 0, legZ = -45;
     if(car_run){
-        int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
         float targetV = V0;
         if(fvEn){
@@ -110,8 +106,8 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
     //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
-        legX = pid(&PID_LPitch, 0, pitch)/10;
-        tg_pitchV = pid(&PID_WxAy, kZero+VxDownAy, pitch);
+        legX = -pid(&PID_LPitch, 0, pitch)/10;
+        tg_pitchV = pid(&PID_WxAy, kZero-VxDownAy, pitch);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
         PID_clear(&PID_vVx);
@@ -124,11 +120,17 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         new_gyro_y = 0;
     }
     int speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
+    speed = lpf(&Filter_speed, speed);
     if(fsEn){
         speed = fsSpeed;
     }
+    int turn = pid(&PID_WvAz, tg_yawV, Turn_speed);
+    if(!car_run){
+        turn=0;
+        PID_clear(&PID_WvAz);
+    }
 //    printf("%f\r\n", speed);
-    MotorSetPWM(speed, speed);
+    MotorSetPWM(speed-turn, speed+turn);
     if(flEn){
         Leg_set_duty(flRb, flRf, flLf, flLb);
     }else if(fwpEn){
@@ -315,10 +317,9 @@ IFX_INTERRUPT(uart3_tx_isr, UART3_INT_VECTAB_NUM, UART3_TX_INT_PRIO)
 IFX_INTERRUPT(uart3_rx_isr, UART3_INT_VECTAB_NUM, UART3_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-    gnss_uart_callback();                           // GNSS串口回调函数
+//    gnss_uart_callback();                           // GNSS串口回调函数
 
-
-
+    uart_control_callback();
 }
 
 
@@ -365,8 +366,6 @@ IFX_INTERRUPT(uart6_tx_isr, UART6_INT_VECTAB_NUM, UART6_TX_INT_PRIO)
 IFX_INTERRUPT(uart6_rx_isr, UART6_INT_VECTAB_NUM, UART6_RX_INT_PRIO)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
-
-    uart_control_callback();
 }
 
 IFX_INTERRUPT(uart8_tx_isr, UART8_INT_VECTAB_NUM, UART8_TX_INT_PRIO)
