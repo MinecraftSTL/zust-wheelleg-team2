@@ -98,7 +98,6 @@ Page menu_main_arg_k_camera_e_circle_y;
 Page menu_main_arg_k_camera_e_circle_line;
 Page menu_main_arg_k_camera_e_ramp;
 Page menu_main_arg_k_camera_e_ramp_s;
-Page menu_main_arg_k_camera_e_ramp_y;
 Page menu_main_arg_k_camera_e_ramp_z;
 Page menu_main_arg_k_camera_e_barrier;
 Page menu_main_arg_k_camera_e_barrier_y0;
@@ -135,6 +134,7 @@ Page menu_main_arg_filter;
 Page menu_main_arg_filter_speed;
 Page menu_main_arg_filter_turn;
 Page menu_main_arg_filter_xAx;
+Page menu_main_arg_filter_xAx0;
 Page menu_main_debug;
 Page menu_main_debug_wheelClear;
 Page menu_main_debug_wifiIm;
@@ -370,13 +370,11 @@ void core0_main(void)
     menu_main_arg_k_camera_e_circle_line.extends.floatValue.dot = 0;
     ListPage_init(&menu_main_arg_k_camera_e_ramp, "ramp", (Page*[]){
         &menu_main_arg_k_camera_e_ramp_s,
-        &menu_main_arg_k_camera_e_ramp_y,
         &menu_main_arg_k_camera_e_ramp_z,
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_e_ramp_s, "s", &rampS, 0, 10000000);
-    IntPage_init(&menu_main_arg_k_camera_e_ramp_y, "y", &rampY, 0, MT9V03X_H);
-    IntPage_init(&menu_main_arg_k_camera_e_ramp_z, "z", &rampZ, -LEG_MIN_Z, -LEG_MAX_Z);
+    FloatPage_init(&menu_main_arg_k_camera_e_ramp_z, "z", &rampZ, -LEG_MIN_Z, -LEG_MAX_Z);
     ListPage_init(&menu_main_arg_k_camera_e_barrier, "barrier", (Page*[]){
         &menu_main_arg_k_camera_e_barrier_y0,
         &menu_main_arg_k_camera_e_barrier_y1,
@@ -448,11 +446,13 @@ void core0_main(void)
         &menu_main_arg_filter_turn,
         &menu_main_arg_filter_speed,
         &menu_main_arg_filter_xAx,
+        &menu_main_arg_filter_xAx0,
         NULL
     });
-    FloatPage_init(&menu_main_arg_filter_turn, "turn", &Filter_turn.alpha, 0, 1);
-    FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter_speed.alpha, 0, 1);
-    FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter_xAx.alpha, 0, 1);
+    FloatPage_init(&menu_main_arg_filter_turn, "turn", &Filter1_turn.alpha, 0, 1);
+    FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter1_speed.alpha, 0, 1);
+    FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter1_xAx.alpha, 0, 1);
+    FloatPage_init(&menu_main_arg_filter_xAx0, "xAx0", &Filter0_xAx.deltaMax, 0, 10000);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wheelClear,
         &menu_main_debug_wifiIm,

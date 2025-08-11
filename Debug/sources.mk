@@ -24,7 +24,6 @@ SECONDARY_SIZE :=
 
 # 此处必须描述包含源文件的每个子目录
 SUBDIRS := \
-code/Motor \
 code/Status \
 code/Sys \
 code/SysTimer \
@@ -40,6 +39,7 @@ code/gyro \
 code/icm42688 \
 code/leg \
 code/menu \
+code/motor \
 code/myCamera \
 code/myEncoder \
 code/myKey \

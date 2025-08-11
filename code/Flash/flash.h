@@ -1,9 +1,9 @@
 #ifndef __FLASH_H
 #define __FLASH_H
 
+#include <Motor.h>
 #include "../pid/Pid.h"
 #include "zf_driver_flash.h"
-#include "MOTOR.h"
 
 #define FLASH_KEY       0x09100721              //ºÏ≤È√‹‘ø
 

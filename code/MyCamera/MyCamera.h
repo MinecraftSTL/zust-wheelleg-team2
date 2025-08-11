@@ -49,7 +49,7 @@ typedef struct{
     uint16 image[MT9V03X_IMAGE_SIZE];
     uint16 h, w;
 }Rgb565Image;
-extern int camera_err;
+extern int cameraErr;
 
 extern Rgb565Image showImage;
 
@@ -77,8 +77,7 @@ extern int circleX;
 extern int circleY;
 extern float circleLine;
 extern int rampS;
-extern int rampY;
-extern int rampZ;
+extern float rampZ;
 extern int barrierY0;
 extern int barrierY1;
 extern int barrierT;

@@ -7,4 +7,8 @@
 
 #include "Filter.h"
 
-Filter Filter_turn={0.9, NAN, NAN}, Filter_speed={0.9, NAN, NAN}, Filter_xAx={0, NAN, NAN};
+Filter0 Filter0_xAx={0.2, NAN};
+Filter1 Filter1_turn={0.9, NAN, NAN}, Filter1_speed={0.9, NAN, NAN}, Filter1_xAx={0, NAN, NAN};
+
+void Filter_param_init(){
+}

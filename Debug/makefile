@@ -53,6 +53,7 @@ RM := rm -rf
 -include code/myKey/subdir.mk
 -include code/myEncoder/subdir.mk
 -include code/myCamera/subdir.mk
+-include code/motor/subdir.mk
 -include code/menu/subdir.mk
 -include code/leg/subdir.mk
 -include code/icm42688/subdir.mk
@@ -68,7 +69,6 @@ RM := rm -rf
 -include code/SysTimer/subdir.mk
 -include code/Sys/subdir.mk
 -include code/Status/subdir.mk
--include code/Motor/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C++_DEPS)),)
 -include $(C++_DEPS)

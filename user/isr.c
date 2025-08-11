@@ -118,7 +118,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         legX += tg_pitchX;
         tg_pitchV += pid(&PID_WxAy, kZero-kPitchX*tg_pitchX, pitch);
         if(carStatus >= CAR_RUN){
-            tg_yawV = pid(&PID_vAz, 0, camera_err);
+            tg_yawV = pid(&PID_vAz, 0, cameraErr);
         }
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
@@ -129,12 +129,13 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }
     int speed = 0, turn = 0;
     if(carStatus >= CAR_START){
-        speed = lpf(&Filter_speed, pid(&PID_WvAy, tg_pitchV, new_gyro_y));
-        turn = lpf(&Filter_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
+        speed = lpf1(&Filter1_speed, pid(&PID_WvAy, tg_pitchV, new_gyro_y));
+        turn = lpf1(&Filter1_turn, pid(&PID_WvAz, tg_yawV, new_gyro_z));
     }else{
         PID_clear(&PID_WvAy);
-        LPF_clear(&Filter_speed);
+        LPF1_clear(&Filter1_speed);
         PID_clear(&PID_WvAz);
+        LPF1_clear(&Filter1_turn);
     }
     if(fsEn){
         speed = fsSpeed;
@@ -160,7 +161,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             lza = Roll_toPosZ(roll*PI/180, lza_);
         }
         lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
-        lza_ = lpf(&Filter_xAx, lza);
+        lza_ = lpf1(&Filter1_xAx, lpf0(&Filter0_xAx, lza));
         float k = (legZ - bridgeZ) / (defaultLegZ - bridgeZ);
 
         if (lza_ < 0) {
