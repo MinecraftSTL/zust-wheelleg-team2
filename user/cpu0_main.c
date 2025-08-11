@@ -57,6 +57,11 @@ Page menu_main_arg_k_speedF;
 Page menu_main_arg_k_lx2s;
 Page menu_main_arg_k_lx2s_a;
 Page menu_main_arg_k_lx2s_k;
+Page menu_main_arg_k_jump;
+Page menu_main_arg_k_jump_step0;
+Page menu_main_arg_k_jump_step1;
+Page menu_main_arg_k_jump_step2;
+Page menu_main_arg_k_jump_step3;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_horizon;
 Page menu_main_arg_k_camera_deltaH;
@@ -120,12 +125,23 @@ int core0_main(void)
         &menu_main_arg_k,
         &menu_main_arg_PID,
     });
-    ListPage_init(&menu_main_arg_k, "k", 2, (Page*[]){
+    ListPage_init(&menu_main_arg_k, "k", 3, (Page*[]){
         &menu_main_arg_k_kZero,
+        &menu_main_arg_k_jump,
         &menu_main_arg_k_camera,
     });
     FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
     menu_main_arg_k_kZero.extends.floatValue.dot = 1;
+    ListPage_init(&menu_main_arg_k_jump, "jump", 4, (Page*[]){
+        &menu_main_arg_k_jump_step0,
+        &menu_main_arg_k_jump_step1,
+        &menu_main_arg_k_jump_step2,
+        &menu_main_arg_k_jump_step3,
+    });
+    IntPage_init(&menu_main_arg_k_jump_step0, "0", &(jumpStep[0]), 0, 1000);
+    IntPage_init(&menu_main_arg_k_jump_step1, "1", &(jumpStep[1]), 0, 1000);
+    IntPage_init(&menu_main_arg_k_jump_step2, "2", &(jumpStep[2]), 0, 1000);
+    IntPage_init(&menu_main_arg_k_jump_step3, "3", &(jumpStep[3]), 0, 1000);
     ListPage_init(&menu_main_arg_k_camera, "camera", 2, (Page*[]){
         &menu_main_arg_k_camera_horizon,
         &menu_main_arg_k_camera_deltaH,

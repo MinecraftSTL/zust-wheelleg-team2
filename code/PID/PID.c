@@ -7,9 +7,6 @@
 #include <Pid.h>
 #include "sys.h"
 
-#define MY_ABS(num) (((num) > 0) ? (num) : -(num))
-#define LIMIT_VAL(a,min,max) ((a)<(min)?(min):((a)>(max)?(max):(a)))
-
 void PID_init(PID *this, float kp, float ki, float kd, float max_I, float max_Out)
 {
     PID_clear(this);

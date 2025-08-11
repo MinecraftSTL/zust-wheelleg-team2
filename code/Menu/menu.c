@@ -35,7 +35,7 @@ void Page_init(Page *this, char name[], enum PageExtendsType type){
 }
 
 void PageKey_print(Page *this, uint8 row){
-    if(!row&&(this->type==LIST_TYPE)){
+    if(!row&&(this->type!=LIST_TYPE || !this->extends.listValue.opened)){
         ips200_show_string_color(8, 0, this->name, this->open<0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
     switch(this->type){
@@ -59,7 +59,7 @@ void PageKey_print(Page *this, uint8 row){
             break;
     }
 }
-uint8 PageKey_press(Page *this, uint8 pressed[]){
+void PageKey_press(Page *this, uint8 pressed[]){
     switch(this->type){
         case LIST_TYPE:
             ListPage_press(this, pressed);
@@ -144,12 +144,12 @@ void ListPage_setRoot(Page *this){
 }
 void ListPage_print(Page *this, uint8 row){
     if(!row){
-        if(this->extends.listValue.opened&&this->extends.listValue.value[this->open]->type == LIST_TYPE){
+        if(this->extends.listValue.opened){
             PageKey_print(this->extends.listValue.value[this->open], row);
             return;
         }
         for(int i=0; i<this->extends.listValue.size; ++i){
-            ips200_show_string_color(0, (i+1)*16, this->extends.listValue.value[i]->name, !this->extends.listValue.opened&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+            ips200_show_string_color(0, (i+1)*16, this->extends.listValue.value[i]->name, this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
             PageKey_print(this->extends.listValue.value[i], i+1);
         }
     }
@@ -200,7 +200,7 @@ void IntPage_print(Page *this, uint8 row){
         if(!str[i]){
             break;
         }
-        ips200_show_char_color(160+i*8, row*16, str[i], this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
 }
 void IntPage_press(Page *this, uint8 pressed[]){
@@ -274,7 +274,7 @@ void FloatPage_print(Page *this, uint8 row){
         if(!str[i]){
             break;
         }
-        ips200_show_char_color(160+i*8, row*16, str[i], this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
 }
 void FloatPage_press(Page *this, uint8 pressed[]){
@@ -362,7 +362,7 @@ void DoublePage_print(Page *this, uint8 row){
         if(!str[i]){
             break;
         }
-        ips200_show_char_color(160+i*8, row*16, str[i], this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+        ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
 }
 void DoublePage_press(Page *this, uint8 pressed[]){
@@ -441,7 +441,7 @@ void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
     this->extends.boolValue.dir = dir;
 }
 void BoolPage_print(Page *this, uint8 row){
-    ips200_show_string_color(160, row*16, *(this->extends.boolValue.value)?"true ":"false", this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+    ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
 }
 void BoolPage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
@@ -464,7 +464,7 @@ void FuncPage_init(Page *this, char name[], void (*value)()){
     this->extends.funcValue.value = value;
 }
 void FuncPage_print(Page *this, uint8 row){
-    ips200_show_string_color(160, row*16, "EXE", this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
+    ips200_show_string_color(row?160:0, row?row*16:16, "EXE", !row&&this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
 }
 void FuncPage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){

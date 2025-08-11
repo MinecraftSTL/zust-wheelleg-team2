@@ -42,6 +42,7 @@ extern const float extendLegZ;
 extern const uint32 retractLegTime;
 extern const float retractLegZ;
 
+extern const uint32 jumpStep[];
 void jumpPit(uint32 period, float *legZ);
 void jump();
 

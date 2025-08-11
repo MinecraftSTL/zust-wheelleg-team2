@@ -94,7 +94,7 @@ void jumpPit(uint32 period, float *legZ){
             *legZ = -60;
             break;
         case 3:
-            *legZ = -60+(-45+60)*((float)step.time/jumpStep[step.step]);
+            *legZ = -60+(-30+60)*((float)step.time/jumpStep[step.step]);
             break;
         default:
             return;
