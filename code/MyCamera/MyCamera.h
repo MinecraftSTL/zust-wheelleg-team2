@@ -22,9 +22,6 @@ typedef enum{
 }CameraStatus;
 
 typedef struct{
-    uint16 y, x;
-}dot;
-typedef struct{
     uint8 image[MT9V03X_IMAGE_SIZE];
     uint16 h, w;
 }Image;
@@ -37,8 +34,8 @@ extern int camera_err;
 extern Rgb565Image showImage;
 
 extern int binDeltaT;
-extern int bly2RDL;
 extern int maxStartYAdd;
+extern int bly2RDL;
 extern float RD2IErr;
 extern float facingErr;
 extern int invY;
@@ -48,10 +45,9 @@ extern int straightYMin;
 extern int straightStep;
 extern float straightErr;
 extern int zebraY;
-extern int crossY;
 extern int crossX;
-extern int circleY;
 extern int circleX;
+extern int circleY;
 extern int errY;
 extern int errDeltaY;
 extern uint8 showPInC1;

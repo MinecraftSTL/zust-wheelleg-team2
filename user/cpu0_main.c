@@ -71,8 +71,8 @@ Page menu_main_arg_k_camera_e_zebra_y;
 Page menu_main_arg_k_camera_e_cross;
 Page menu_main_arg_k_camera_e_cross_x;
 Page menu_main_arg_k_camera_e_circle;
-Page menu_main_arg_k_camera_e_circle_y;
 Page menu_main_arg_k_camera_e_circle_x;
+Page menu_main_arg_k_camera_e_circle_y;
 Page menu_main_arg_k_camera_setLineY;
 Page menu_main_arg_k_camera_err;
 Page menu_main_arg_k_camera_err_y;
@@ -208,22 +208,7 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_straight_step, "step", &straightStep, 0, MT9V03X_H);
     FloatPage_init(&menu_main_arg_k_camera_straight_err, "err", &straightErr, 0, 1.57);
     menu_main_arg_k_camera_straight_err.extends.floatValue.dot = 1;
-    EnumPage_init(&menu_main_arg_k_camera_status, "status", &cameraStatus, (char*[]){
-        "NONE",
-        "I_ZEBRA",
-        "O_ZEBRA",
-        "IN_CROSS",
-        "CROSS",
-        "O_CROSS",
-        "I_LCIRCLE",
-        "PTL_LCIRCLE",
-        "TL_LCIRCLE",
-        "LCIRCLE",
-        "TR_LCIRCLE",
-        "PO_LCIRCLE",
-        "O_LCIRCLE",
-        "",
-    });
+    IntPage_init(&menu_main_arg_k_camera_status, "status", &cameraStatus, 0,100);
     ListPage_init(&menu_main_arg_k_camera_e, "element", (Page*[]){
         &menu_main_arg_k_camera_e_zebra,
         &menu_main_arg_k_camera_e_cross,
@@ -241,12 +226,12 @@ void core0_main(void)
     });
     IntPage_init(&menu_main_arg_k_camera_e_cross_x, "x", &crossX, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_e_circle, "circle", (Page*[]){
-        &menu_main_arg_k_camera_e_circle_y,
         &menu_main_arg_k_camera_e_circle_x,
+        &menu_main_arg_k_camera_e_circle_y,
         NULL
     });
-    IntPage_init(&menu_main_arg_k_camera_e_circle_y, "y", &circleY, 0, MT9V03X_H);
     IntPage_init(&menu_main_arg_k_camera_e_circle_x, "x", &circleX, 0, MT9V03X_H);
+    IntPage_init(&menu_main_arg_k_camera_e_circle_y, "y", &circleY, 0, MT9V03X_H);
     IntPage_init(&menu_main_arg_k_camera_setLineY, "setLineY", &setLineY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_err, "err", (Page*[]){
         &menu_main_arg_k_camera_err_y,
@@ -358,7 +343,6 @@ void core0_main(void)
 
     beepLong();
     ips200_clear();
-    PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
         PageKey_press(&menu_main, pressed);

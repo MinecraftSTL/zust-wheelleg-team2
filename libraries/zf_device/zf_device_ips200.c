@@ -71,6 +71,8 @@
 #include "zf_driver_spi.h"
 #include "zf_device_ips200.h"
 
+#include "Genshin.h"
+
        uint16                   ips200_width_max    = 240;
        uint16                   ips200_height_max   = 320;
 static uint16                   ips200_pencolor     = IPS200_DEFAULT_PENCOLOR;          // 画笔颜色(字体色)
@@ -1258,6 +1260,6 @@ void ips200_init (ips200_type_enum type_select)
         IPS200_CS(1);
     }
 
-    ips200_clear();                                                             // 初始化为白屏
+    ips200_show_rgb565_image(0, 0, genshin, ips200_width_max, ips200_height_max, ips200_width_max, ips200_height_max, 0);                                                    // 初始化为白屏
     ips200_debug_init();
 }
