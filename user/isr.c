@@ -60,20 +60,20 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     }
     key_scanner();
     for(int i=0; i<KEY_NUMBER; ++i){
-        if(key_get_state(i) != KEY_RELEASE){
-            pressed |= 1<<i;
+        if(key_get_state(i) == KEY_SHORT_PRESS){
+            ++pressed[UP_KEY+i];
         }
+    }
+    if(key_get_state(CENTER_KEY-UP_KEY) == KEY_LONG_PRESS){
+        ++pressed[BACK_KEY];
     }
     Get_Switch_Num();
-    if(!(pressed&0x60)){
-        if(switch_encoder_change_num > 0){
-            --switch_encoder_change_num;
-            pressed |= 0x40;
-        }else if(switch_encoder_change_num < 0){
-            ++switch_encoder_change_num;
-            pressed |= 0x20;
-        }
+    if(switch_encoder_change_num < 0){
+        pressed[PERV_KEY] -= switch_encoder_change_num;
+    }else if(switch_encoder_change_num > 0){
+        pressed[NEXT_KEY] += switch_encoder_change_num;
     }
+    switch_encoder_change_num = 0;
 }
 
 IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORITY)
@@ -82,8 +82,7 @@ IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORI
     pit_clear_flag(CCU60_CH1);
 }
 
-float kLX2AY = 0.6;
-float kZero = -4;
+float kZero = 1;
 float lza_ = 0;
 IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORITY)
 {
@@ -99,7 +98,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         }
     }
 
-    float speed = 0, tg_pitchV, legX = 0, legY = -45;
+    float tg_pitchV, legX = 0, legZ = -45;
     if(car_run){
         int16 Encoder_speed = (Encoder_speed_l+Encoder_speed_r)/2;
     //    printf("%d,%d\n",Encoder_speed_l,Encoder_speed_r);
@@ -112,7 +111,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     //    printf("%f, %f, %f\r\n",aXx,aXy,aXz);
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
         legX = pid(&PID_LPitch, 0, pitch)/10;
-        tg_pitchV = pid(&PID_WxAy, kZero+VxDownAy, pitch+kLX2AY*legX);
+        tg_pitchV = pid(&PID_WxAy, kZero+VxDownAy, pitch);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
     }else{
         PID_clear(&PID_vVx);
@@ -124,7 +123,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     if(isnan(new_gyro_y)){
         new_gyro_y = 0;
     }
-    speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
+    int speed = pid(&PID_WvAy, tg_pitchV, new_gyro_y);
     if(fsEn){
         speed = fsSpeed;
     }
@@ -137,17 +136,14 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
     }else{
         float lx, lz, rx, rz;
         lx = rx = legX;
-        lz = rz = legY;
+        lz = rz = legZ;
         float lza = 0;
         if(car_run){
             lza = Roll_toPosZ(roll*PI/180, lza_);
         }
-        if(lza > LEG_MAX_Z-LEG_MIN_Z){
-            lza = LEG_MAX_Z-LEG_MIN_Z;
-        }else if(lza < -LEG_MAX_Z+LEG_MIN_Z){
-            lza = -LEG_MAX_Z+LEG_MIN_Z;
-        }
-        lza_ = pid(&PID_xAx, lza, lza_)/100;
+        lza = func_limit(lza, LEG_MAX_Z-LEG_MIN_Z);
+        lza_ += pid(&PID_xAx, lza, lza_)/1000;
+        lza_ = func_limit(lza_, LEG_MAX_Z-LEG_MIN_Z);
         if(lza_ > 0){
             lz -= lza_;
         }else{

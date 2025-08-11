@@ -11,17 +11,17 @@
 #include "zf_device_ips200.h"
 
 void ListPage_print(Page *this, uint8 row);
-void ListPage_press(Page *this, uint8 pressed);
+void ListPage_press(Page *this, uint8 pressed[]);
 void IntPage_print(Page *this, uint8 row);
-void IntPage_press(Page *this, uint8 pressed);
+void IntPage_press(Page *this, uint8 pressed[]);
 void FloatPage_print(Page *this, uint8 row);
-void FloatPage_press(Page *this, uint8 pressed);
+void FloatPage_press(Page *this, uint8 pressed[]);
 void FFloatPage_print(Page *this, uint8 row);
-void FFloatPage_press(Page *this, uint8 pressed);
+void FFloatPage_press(Page *this, uint8 pressed[]);
 void DoublePage_print(Page *this, uint8 row);
-void DoublePage_press(Page *this, uint8 pressed);
+void DoublePage_press(Page *this, uint8 pressed[]);
 void BoolPage_print(Page *this, uint8 row);
-void BoolPage_press(Page *this, uint8 pressed);
+void BoolPage_press(Page *this, uint8 pressed[]);
 
 void ips200_reset_color();
 void ips200_set_pencolor(const uint16 color);
@@ -60,7 +60,12 @@ void PageKey_print(Page *this, uint8 row){
             break;
     }
 }
-void PageKey_press(Page *this, uint8 pressed){
+uint8 PageKey_press(Page *this, uint8 pressed[]){
+    if(pressed[HOME_KEY]){
+        PageKey_home(this);
+    }else if(pressed[BACK_KEY]){
+        PageKey_back(this);
+    }
     switch(this->type){
         case LIST_TYPE:
             ListPage_press(this, pressed);
@@ -80,6 +85,11 @@ void PageKey_press(Page *this, uint8 pressed){
         case BOOL_TYPE:
             BoolPage_press(this, pressed);
             break;
+    }
+    for(int i=0; i<KEY_NUM; ++i){
+        if(pressed[i]){
+            --pressed[i];
+        }
     }
 }
 Page *PageKey_getOpened(Page *this){
@@ -137,28 +147,28 @@ void ListPage_print(Page *this, uint8 row){
         }
     }
 }
-void ListPage_press(Page *this, uint8 pressed){
+void ListPage_press(Page *this, uint8 pressed[]){
     if(this->extends.listValue.opened){
         PageKey_press(this->extends.listValue.value[this->open], pressed);
         return;
     }
-    if(pressed&0x21){
+    if(pressed[UP_KEY] || pressed[PERV_KEY]){
         --this->open;
         if(this->open < -1){
             this->open = this->extends.listValue.size-1;
         }
     }
-    if(pressed&0x42){
+    if(pressed[DOWN_KEY] || pressed[NEXT_KEY]){
         ++this->open;
         if(this->open > this->extends.listValue.size-1){
             this->open = -1;
         }
     }
-    if(pressed&0x04){
+    if(pressed[LEFT_KEY]){
         PageKey_back(this);
         return;
     }
-    if(pressed&0x18){
+    if(pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
         if(this->open < 0){
             PageKey_back(this);
             return;
@@ -186,37 +196,37 @@ void IntPage_print(Page *this, uint8 row){
         ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
 }
-void IntPage_press(Page *this, uint8 pressed){
-    if(pressed&0x04 || !this->extends.intValue.opened&&pressed&0x20){
+void IntPage_press(Page *this, uint8 pressed[]){
+    if(pressed[LEFT_KEY] || !this->extends.intValue.opened&&pressed[PERV_KEY]){
         --this->open;
         if(this->open < -1){
             this->open = 9;
         }
     }
-    if(pressed&0x08 || !this->extends.intValue.opened&&pressed&0x40){
+    if(pressed[RIGHT_KEY] || !this->extends.intValue.opened&&pressed[NEXT_KEY]){
         ++this->open;
         if(this->open > 9){
             this->open = -1;
         }
     }
-    if(pressed&0x0C){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[LEFT_KEY] || pressed[RIGHT_KEY]){
         this->extends.intValue.opened = 0;
     }
-    if(pressed&0x63){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->open < 0){
-            if(pressed&0x03 || this->extends.intValue.opened){
+            if(pressed[LEFT_KEY] || this->extends.intValue.opened){
                 PageKey_back(this);
                 return;
             }
         }else if(this->open == 0){
-            if(pressed&0x03 || this->extends.intValue.opened){
+            if(pressed[UP_KEY] || pressed[DOWN_KEY] || this->extends.intValue.opened&&(pressed[PERV_KEY]||pressed[NEXT_KEY])){
                 *this->extends.intValue.value = -*this->extends.intValue.value;
             }
         }else{
-            if(pressed&0x02 || this->extends.intValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.intValue.opened&&pressed[PERV_KEY]){
                 *this->extends.intValue.value -= Int_pow(10, 9-this->open);
             }
-            if(pressed&0x01 || this->extends.intValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.intValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.intValue.value += Int_pow(10, 9-this->open);
             }
         }
@@ -226,12 +236,18 @@ void IntPage_press(Page *this, uint8 pressed){
             *this->extends.intValue.value = this->extends.intValue.max;
         }
     }
-    if(pressed&0x10){
+    if(pressed[CENTER_KEY]){
         if(this->open < 0){
             PageKey_back(this);
             return;
         }else{
             this->extends.intValue.opened = !this->extends.intValue.opened;
+        }
+    }
+    if(pressed[UP_KEY]){
+        if(this->open < 0){
+            PageKey_back(this);
+            return;
         }
     }
 }
@@ -253,48 +269,51 @@ void FloatPage_print(Page *this, uint8 row){
         ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
 }
-void FloatPage_press(Page *this, uint8 pressed){
-    if(pressed&0x04 || !this->extends.floatValue.opened&&pressed&0x20){
+void FloatPage_press(Page *this, uint8 pressed[]){
+    if(pressed[LEFT_KEY] || !this->extends.floatValue.opened&&pressed[PERV_KEY]){
         --this->open;
         if(this->open < -1){
             this->open = 7;
         }
     }
-    if(pressed&0x08 || !this->extends.floatValue.opened&&pressed&0x40){
+    if(pressed[RIGHT_KEY] || !this->extends.floatValue.opened&&pressed[NEXT_KEY]){
         ++this->open;
         if(this->open > 7){
             this->open = -1;
         }
     }
-    if(pressed&0x63){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[LEFT_KEY] || pressed[RIGHT_KEY]){
+        this->extends.floatValue.opened = 0;
+    }
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->open < 0){
-            if(pressed&0x03 || this->extends.floatValue.opened){
+            if(pressed[UP_KEY]){
                 PageKey_back(this);
                 return;
             }
         }else if(this->open == 0){
-            if(pressed&0x03 || this->extends.floatValue.opened){
+            if(pressed[UP_KEY] || pressed[DOWN_KEY] || this->extends.floatValue.opened&&(pressed[PERV_KEY]||pressed[NEXT_KEY])){
                 *this->extends.floatValue.value = -*this->extends.floatValue.value;
             }
         }else if(this->open < 5){
-            if(pressed&0x02 || this->extends.floatValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.floatValue.opened&&pressed[PERV_KEY]){
                 *this->extends.floatValue.value -= powf(10, 4-this->open);
             }
-            if(pressed&0x01 || this->extends.floatValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.floatValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.floatValue.value += powf(10, 4-this->open);
             }
         }else if(this->open == 5){
-            if(pressed&0x02 || this->extends.floatValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.floatValue.opened&&pressed[PERV_KEY]){
                 *this->extends.floatValue.value/=10;
             }
-            if(pressed&0x01 || this->extends.floatValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.floatValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.floatValue.value*=10;
             }
         }else{
-            if(pressed&0x02 || this->extends.floatValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.floatValue.opened&&pressed[PERV_KEY]){
                 *this->extends.floatValue.value -= powf(10, 5-this->open);
             }
-            if(pressed&0x01 || this->extends.floatValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.floatValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.floatValue.value += powf(10, 5-this->open);
             }
         }
@@ -304,7 +323,7 @@ void FloatPage_press(Page *this, uint8 pressed){
             *this->extends.floatValue.value = this->extends.floatValue.max;
         }
     }
-    if(pressed&0x10){
+    if(pressed[CENTER_KEY]){
         if(this->open < 0){
             PageKey_back(this);
             return;
@@ -332,54 +351,57 @@ void FFloatPage_print(Page *this, uint8 row){
         ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
 }
-void FFloatPage_press(Page *this, uint8 pressed){
-    if(pressed&0x04 || !this->extends.fFloatValue.opened&&pressed&0x20){
+void FFloatPage_press(Page *this, uint8 pressed[]){
+    if(pressed[LEFT_KEY] || !this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
         --this->open;
         if(this->open < -1){
             this->open = 7;
         }
     }
-    if(pressed&0x08 || !this->extends.fFloatValue.opened&&pressed&0x40){
+    if(pressed[RIGHT_KEY] || !this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
         ++this->open;
         if(this->open > 7){
             this->open = -1;
         }
     }
-    if(pressed&0x63){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[LEFT_KEY] || pressed[RIGHT_KEY]){
+        this->extends.fFloatValue.opened = 0;
+    }
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->open < 0){
-            if(pressed&0x03 || this->extends.fFloatValue.opened){
+            if(pressed[UP_KEY]){
                 PageKey_back(this);
                 return;
             }
         }else if(this->open == 0){
-            if(pressed&0x03 || this->extends.fFloatValue.opened){
+            if(pressed[UP_KEY] || pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&(pressed[PERV_KEY]||pressed[NEXT_KEY])){
                 *this->extends.fFloatValue.value = -*this->extends.fFloatValue.value;
             }
         }else if(this->open < this->extends.fFloatValue.dot+1){
-            if(pressed&0x02 || this->extends.fFloatValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
                 *this->extends.fFloatValue.value -= powf(10, this->extends.fFloatValue.dot-this->open);
             }
-            if(pressed&0x01 || this->extends.fFloatValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.fFloatValue.value += powf(10, this->extends.fFloatValue.dot-this->open);
             }
         }else if(this->open == this->extends.fFloatValue.dot+1){
-            if(pressed&0x01 || this->extends.fFloatValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
                 if(this->extends.fFloatValue.dot>0){
                     --this->extends.fFloatValue.dot;
                     --this->open;
                 }
             }
-            if(pressed&0x02 || this->extends.fFloatValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
                 if(this->extends.fFloatValue.dot<6){
                     ++this->extends.fFloatValue.dot;
                     ++this->open;
                 }
             }
         }else{
-            if(pressed&0x02 || this->extends.fFloatValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.fFloatValue.opened&&pressed[PERV_KEY]){
                 *this->extends.fFloatValue.value -= powf(10, this->extends.fFloatValue.dot+1-this->open);
             }
-            if(pressed&0x01 || this->extends.fFloatValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.fFloatValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.fFloatValue.value += powf(10, this->extends.fFloatValue.dot+1-this->open);
             }
         }
@@ -389,7 +411,7 @@ void FFloatPage_press(Page *this, uint8 pressed){
             *this->extends.fFloatValue.value = this->extends.fFloatValue.max;
         }
     }
-    if(pressed&0x10){
+    if(pressed[CENTER_KEY]){
         if(this->open < 0){
             PageKey_back(this);
             return;
@@ -416,48 +438,51 @@ void DoublePage_print(Page *this, uint8 row){
         ips200_show_char_color((row?160:0)+i*8, row?row*16:16, str[i], !row&&this->open==i ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
 }
-void DoublePage_press(Page *this, uint8 pressed){
-    if(pressed&0x04 || !this->extends.doubleValue.opened&&pressed&0x20){
+void DoublePage_press(Page *this, uint8 pressed[]){
+    if(pressed[LEFT_KEY] || !this->extends.doubleValue.opened&&pressed[PERV_KEY]){
         --this->open;
         if(this->open < -1){
             this->open = 9;
         }
     }
-    if(pressed&0x08 || !this->extends.doubleValue.opened&&pressed&0x40){
+    if(pressed[RIGHT_KEY] || !this->extends.doubleValue.opened&&pressed[NEXT_KEY]){
         ++this->open;
         if(this->open > 9){
             this->open = -1;
         }
     }
-    if(pressed&0x63){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[LEFT_KEY] || pressed[RIGHT_KEY]){
+        this->extends.doubleValue.opened = 0;
+    }
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->open < 0){
-            if(pressed&0x03 || this->extends.doubleValue.opened){
+            if(pressed[UP_KEY]){
                 PageKey_back(this);
                 return;
             }
         }else if(this->open == 0){
-            if(pressed&0x03 || this->extends.doubleValue.opened){
+            if(pressed[UP_KEY] || pressed[DOWN_KEY] || this->extends.doubleValue.opened&&(pressed[PERV_KEY]||pressed[NEXT_KEY])){
                 *this->extends.doubleValue.value = -*this->extends.doubleValue.value;
             }
         }else if(this->open < 6){
-            if(pressed&0x02 || this->extends.doubleValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.doubleValue.opened&&pressed[PERV_KEY]){
                 *this->extends.doubleValue.value -= pow(10, 5-this->open);
             }
-            if(pressed&0x01 || this->extends.doubleValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.doubleValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.doubleValue.value += pow(10, 5-this->open);
             }
         }else if(this->open == 6){
-            if(pressed&0x02 || this->extends.doubleValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.doubleValue.opened&&pressed[PERV_KEY]){
                 *this->extends.doubleValue.value/=10;
             }
-            if(pressed&0x01 || this->extends.doubleValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.doubleValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.doubleValue.value*=10;
             }
         }else{
-            if(pressed&0x02 || this->extends.doubleValue.opened&&pressed&0x20){
+            if(pressed[DOWN_KEY] || this->extends.doubleValue.opened&&pressed[PERV_KEY]){
                 *this->extends.doubleValue.value -= powf(10, 6-this->open);
             }
-            if(pressed&0x01 || this->extends.doubleValue.opened&&pressed&0x40){
+            if(pressed[UP_KEY] || this->extends.doubleValue.opened&&pressed[NEXT_KEY]){
                 *this->extends.doubleValue.value += powf(10, 6-this->open);
             }
         }
@@ -467,7 +492,7 @@ void DoublePage_press(Page *this, uint8 pressed){
             *this->extends.doubleValue.value = this->extends.doubleValue.max;
         }
     }
-    if(pressed&0x10){
+    if(pressed[CENTER_KEY]){
         if(this->open < 0){
             PageKey_back(this);
             return;
@@ -485,11 +510,11 @@ void BoolPage_init(Page *this, char name[], uint8 *value, uint8 dir){
 void BoolPage_print(Page *this, uint8 row){
     ips200_show_string_color(row?160:0, row?row*16:16, *(this->extends.boolValue.value)?"true ":"false", !row&&this->open==0 ? IPS200_DEFAULT_HIGHLIGHTCOLOR : IPS200_DEFAULT_PENCOLOR);
 }
-void BoolPage_press(Page *this, uint8 pressed){
-    if(pressed&0x63){
+void BoolPage_press(Page *this, uint8 pressed[]){
+    if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         this->open = -1-this->open;
     }
-    if(pressed&0x1C){
+    if(pressed[LEFT_KEY] || pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
         if(this->open < 0){
             PageKey_back(this);
             return;

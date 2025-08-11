@@ -50,6 +50,7 @@ void GetSpeed(void)
     Encoder_speed_l = -motor_value.receive_left_speed_data;
     Encoder_speed_r = motor_value.receive_right_speed_data;
 //    Encoder_speed_r = -Encoder_MTM(TIM3_ENCODER,1,1);
+//    printf("%d, %d\n",Encoder_speed_l,Encoder_speed_r);
 };
 
 /***********************************************

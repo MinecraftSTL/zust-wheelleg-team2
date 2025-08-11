@@ -24,5 +24,5 @@ void PID_param_init(){
     PID_init(&PID_WxAy, 40, 0, 20, 10000, 10000);
     PID_init(&PID_vVx, 40, 0.03, 0, 1000000, 100000);
     PID_init(&PID_LPitch, 0, 0, 0, 10000, 100);
-    PID_init(&PID_xAx, 2, 0.7, 5, 10000, (LEG_MAX_Z-LEG_MIN_Z)*100);
+    PID_init(&PID_xAx, 3, 0, 0, 100000, (LEG_MAX_Z-LEG_MIN_Z)*1000);
 }

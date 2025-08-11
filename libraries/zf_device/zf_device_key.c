@@ -67,17 +67,19 @@ void key_scanner (void)
     uint8 i = 0;
     for(i = 0; KEY_NUMBER > i; i ++)
     {
+        key_state[i] = KEY_RELEASE;
         if(KEY_RELEASE_LEVEL != gpio_get_level(key_index[i])){
             key_press_time[i] ++;
+            if(key_press_time[i] == KEY_LONG_PRESS_PERIOD / scanner_period){
+                key_state[i] = KEY_LONG_PRESS;
+            }
         }else{
-            key_press_time[i] = 0;
-        }
-        if(key_press_time[i] == 1){
-            key_state[i] = KEY_SHORT_PRESS;
-        }else if(key_press_time[i] >= KEY_LONG_PRESS_PERIOD / scanner_period){
-            key_state[i] = KEY_LONG_PRESS;
-        }else{
-            key_state[i] = KEY_RELEASE;
+            if(key_press_time[i]){
+                if(key_press_time[i] < KEY_LONG_PRESS_PERIOD / scanner_period){
+                    key_state[i] = KEY_SHORT_PRESS;
+                }
+                key_press_time[i] = 0;
+            }
         }
     }
 }

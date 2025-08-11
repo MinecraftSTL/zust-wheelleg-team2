@@ -70,7 +70,7 @@ extern const uint16 PIT00ms;
 extern const uint16 PIT01ms;
 extern const uint16 PIT10ms;
 
-extern uint8 pressed;
+extern uint8 pressed[KEY_NUM];
 /******************************************************************************/
 /*------------------------------Type Definitions------------------------------*/
 /******************************************************************************/

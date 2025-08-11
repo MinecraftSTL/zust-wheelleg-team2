@@ -38,7 +38,6 @@
 
 #include "zf_common_headfile.h"
 
-extern float kLX2AY;
 extern float kZero;
 
 #endif

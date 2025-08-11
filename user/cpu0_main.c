@@ -46,13 +46,13 @@ const uint16 PIT00ms = 5;
 const uint16 PIT01ms = 5;
 const uint16 PIT10ms = 1;
 
-uint8 pressed = 0;
+uint8 pressed[KEY_NUM] = {0};
 
 Page menu_main;
+Page menu_main_carRun;
 Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
-Page menu_main_arg_k_kLX2AY;
 Page menu_main_arg_PID;
 Page menu_main_arg_PID_vAy;
 Page menu_main_arg_PID_vAy_Kp;
@@ -74,7 +74,6 @@ Page menu_main_arg_PID_xAx;
 Page menu_main_arg_PID_xAx_Kp;
 Page menu_main_arg_PID_xAx_Ki;
 Page menu_main_arg_PID_xAx_Kd;
-Page menu_main_carRun;
 Page menu_main_debug;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
@@ -115,22 +114,20 @@ int core0_main(void)
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
     ListPage_setRoot(&menu_main);
     ListPage_init(&menu_main, "main", 3, (Page*[]){
-        &menu_main_arg,
         &menu_main_carRun,
+        &menu_main_arg,
         &menu_main_debug,
     });
+    BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
     ListPage_init(&menu_main_arg, "arg", 2, (Page*[]){
         &menu_main_arg_k,
         &menu_main_arg_PID,
     });
-    ListPage_init(&menu_main_arg_k, "k", 2, (Page*[]){
+    ListPage_init(&menu_main_arg_k, "k", 1, (Page*[]){
         &menu_main_arg_k_kZero,
-        &menu_main_arg_k_kLX2AY,
     });
     FFloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -2, 2);
     menu_main_arg_k_kZero.extends.fFloatValue.dot = 1;
-    FFloatPage_init(&menu_main_arg_k_kLX2AY, "kLX2AY", &kLX2AY, -2, 2);
-    menu_main_arg_k_kLX2AY.extends.fFloatValue.dot = 1;
     ListPage_init(&menu_main_arg_PID, "PID", 5, (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
@@ -178,7 +175,6 @@ int core0_main(void)
     FFloatPage_init(&menu_main_arg_PID_xAx_Kp, "Kp", &PID_xAx.Kp, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAx_Ki, "Ki", &PID_xAx.Ki, 0, 10000);
     FFloatPage_init(&menu_main_arg_PID_xAx_Kd, "Kd", &PID_xAx.Kd, 0, 10000);
-    BoolPage_init(&menu_main_carRun, "run", &car_run, 0x03);
     ListPage_init(&menu_main_debug, "debug", 4, (Page*[]){
         &menu_main_debug_fs,
         &menu_main_debug_fl,
@@ -234,11 +230,17 @@ int core0_main(void)
     PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
-        if(pressed){
+        uint8 p=0;
+        for(int i=0; i<KEY_NUM; ++i){
+            if(pressed[i]){
+                p=1;
+                break;
+            }
+        }
+        if(p){
             beepShort();
             PageKey_press(&menu_main, pressed);
             PageKey_print(&menu_main, 0);
-            pressed=0;
         }
         // 此处编写需要循环执行的代码
     }

@@ -38,6 +38,7 @@ code/SysTimer \
 code/UART \
 code/VOFA \
 code/debug \
+code/filter \
 code/foc \
 code/leg \
 libraries/infineon_libraries/Configurations \

@@ -13,6 +13,19 @@
 
 extern const int Max_page_pageKey;
 
+enum KeyType{
+    NULL_KEY,
+    UP_KEY,
+    DOWN_KEY,
+    LEFT_KEY,
+    RIGHT_KEY,
+    CENTER_KEY,
+    PERV_KEY,
+    BACK_KEY,
+    HOME_KEY,
+    NEXT_KEY,
+    KEY_NUM,
+};
 enum PageExtendsType{
     LIST_TYPE,
     INT_TYPE,
@@ -66,7 +79,7 @@ typedef struct Page{
 
 void PageKey_init(Page this, char name[], enum PageExtendsType type, void *value);
 void PageKey_print(Page *this, uint8 row);
-void PageKey_press(Page *this, uint8 pressed);
+uint8 PageKey_press(Page *this, uint8 pressed[]);
 Page *PageKey_getOpened(Page *this);
 uint8 PageKey_back(Page *this);
 void PageKey_home(Page *this);

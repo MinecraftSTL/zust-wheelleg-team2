@@ -48,6 +48,7 @@ RM := rm -rf
 -include libraries/infineon_libraries/Configurations/subdir.mk
 -include code/leg/subdir.mk
 -include code/foc/subdir.mk
+-include code/filter/subdir.mk
 -include code/debug/subdir.mk
 -include code/VOFA/subdir.mk
 -include code/UART/subdir.mk
