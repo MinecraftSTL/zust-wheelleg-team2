@@ -350,8 +350,6 @@ Gyro_Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Open
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h" :
 Gyro_Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h" :
-Gyro_Process.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h"
-"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h" :
 Gyro_Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
 Gyro_Process.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Menu.h"

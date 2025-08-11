@@ -356,8 +356,6 @@ zf_common_clock.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_O
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h" :
 zf_common_clock.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h" :
-zf_common_clock.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h"
-"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h" :
 zf_common_clock.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h" :
 zf_common_clock.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pit\Pit.h"

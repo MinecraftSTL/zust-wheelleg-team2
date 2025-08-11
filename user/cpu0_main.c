@@ -54,9 +54,6 @@ Page menu_main_arg_k_speedF;
 Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_bin;
 Page menu_main_arg_k_camera_bin_deltaT;
-Page menu_main_arg_k_camera_inv;
-Page menu_main_arg_k_camera_inv_y;
-Page menu_main_arg_k_camera_inv_x;
 Page menu_main_arg_k_camera_inf;
 Page menu_main_arg_k_camera_inf_bly2RDL;
 Page menu_main_arg_k_camera_inf_RD2IErr;
@@ -169,7 +166,6 @@ void core0_main(void)
     menu_main_arg_k_kZero.extends.floatValue.dot = 1;
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
-        &menu_main_arg_k_camera_inv,
         &menu_main_arg_k_camera_inf,
         &menu_main_arg_k_camera_facingErr,
         &menu_main_arg_k_camera_straight,
@@ -184,14 +180,6 @@ void core0_main(void)
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_bin_deltaT, "deltaT", &binDeltaT, -256, 255);
-    ListPage_init(&menu_main_arg_k_camera_inv, "inv", (Page*[]){
-        &menu_main_arg_k_camera_inv_y,
-        &menu_main_arg_k_camera_inv_x,
-        NULL
-    });
-    IntPage_init(&menu_main_arg_k_camera_inv_y, "y", &inverseY, 0, MT9V03X_H-1);
-    FloatPage_init(&menu_main_arg_k_camera_inv_x, "x", &inverseX, 0, 1);
-    menu_main_arg_k_camera_inv_x.extends.floatValue.dot = 0;
     ListPage_init(&menu_main_arg_k_camera_inf, "inf", (Page*[]){
         &menu_main_arg_k_camera_inf_bly2RDL,
         &menu_main_arg_k_camera_inf_RD2IErr,
@@ -353,7 +341,7 @@ void core0_main(void)
         // 此处编写需要循环执行的代码
         PageKey_press(&menu_main, pressed);
         PageKey_print(&menu_main, 0);
-        MyCamera_Show(0, 200);
+        Image_showCamera(0, 200);
         ips200_show_int(188,200,fps,4);
         ips200_show_int(188,216,cameraStatus,4);
         Wifi_Image_Send_Camera();

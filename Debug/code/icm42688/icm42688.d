@@ -350,8 +350,6 @@ icm42688.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensour
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h" :
 icm42688.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h" :
-icm42688.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h"
-"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h" :
 icm42688.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\infineon_libraries\\iLLD\\TC38A\\Tricore\Cpu\Std\Ifx_Types.h" :
 icm42688.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\menu\Menu.h"

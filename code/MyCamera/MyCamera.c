@@ -7,10 +7,8 @@ Image image1;
 Rgb565Image showImage;
 
 int binDeltaT = -16;
-int inverseY = 50;
-float inverseX = 0.004;
-int bly2RDL = 3;
-float RD2IErr = 0.7854;
+int bly2RDL = 5;
+float RD2IErr = 0.5236;
 float facingErr = 0.5236;
 int setLineY = 15;
 int StraightYMin = 40;
@@ -81,14 +79,14 @@ void MyCamera_Init(void)
     ips200_show_string(0, 16, "init success.");
 }
 
-uint8 inline Image_get(Image *this, uint16 y, uint16 x){
-    if(y >= this->h || x >= this->w){
+uint8 inline Image_get(Image *this, uint16 x, uint16 y){
+    if(x >= this->w || y >= this->h){
         return 0;
     }
     return this->image[x + this->w*y];
 }
-void inline Image_set(Image *this, uint16 y, uint16 x, uint8 value){
-    if(y >= this->h || x >= this->w){
+void inline Image_set(Image *this, uint16 x, uint16 y, uint8 value){
+    if(x >= this->w || y >= this->h){
         return;
     }
     this->image[x + this->w*y] = value;
@@ -111,29 +109,29 @@ void Image_clone(Image *this, Image *target)
     target->w = this->w;
     memcpy(target->image, this->image, this->h*this->w);
 }
-void Image_cut(Image *this, Image *target, uint16 y0, uint16 x0, uint16 y1, uint16 x1){
+void Image_cut(Image *this, Image *target, uint16 x0, uint16 y0, uint16 x1, uint16 y1){
     zf_assert(this && target);
-    target->h = y1-y0;
     target->w = x1-x0;
-    for(uint16 i = 0; i < target->h; ++i){
-        for(uint16 j = 0; j < target->w; ++j){
-            Image_set(target,i,j,Image_get(this,i+y0,j+x0));
+    target->h = y1-y0;
+    for(uint16 i = 0; i < target->w; ++i){
+        for(uint16 j = 0; j < target->h; ++j){
+            Image_set(target,i,j,Image_get(this,i+x0,j+y0));
         }
     }
 }
 void Image_zoom(Image *this, Image *target, float zoom){
     zf_assert(this && target && zoom > 0.0f);
-    target->h = (this->h-1)*zoom+1;
     target->w = (this->w-1)*zoom+1;
-    for(uint16 i = 0; i < target->h; ++i){
-        for(uint16 j = 0; j < target->w; ++j){
+    target->h = (this->h-1)*zoom+1;
+    for(uint16 i = 0; i < target->w; ++i){
+        for(uint16 j = 0; j < target->h; ++j){
             Image_set(target,i,j,Image_get(this,i/zoom,j/zoom));
         }
     }
 }
 void Image_toRgb565Image(Image *this, Rgb565Image *target){
-    target->h = this->h;
     target->w = this->w;
+    target->h = this->h;
     for(uint32 i = 0; i < this->h*this->w; ++i){
         target->image[i] = this->image[i]>>(8-5)<<(5+6)|this->image[i]>>(8-6)<<5|this->image[i]>>(8-5);
     }
@@ -141,34 +139,34 @@ void Image_toRgb565Image(Image *this, Rgb565Image *target){
 void Rgb565Image_clone(Rgb565Image *this, Rgb565Image *target)
 {
     zf_assert(this && target);
-    target->h = this->h;
     target->w = this->w;
+    target->h = this->h;
     memcpy(target->image, this->image, this->h*this->w*2);
 }
 void Rgb565Image_mode(Rgb565Image *this, Rgb565Image *target){
     zf_assert(this && target);
-    target->h = this->h;
     target->w = this->w;
+    target->h = this->h;
     for(uint32 i = 0; i < this->h*this->w; ++i){
         target->image[i] = (this->image[i] << 8) | (this->image[i] >> 8);
     }
 }
-uint16 inline Rgb565Image_get(Rgb565Image *this, uint16 y, uint16 x){
-    if(y >= this->h || x >= this->w){
+uint16 inline Rgb565Image_get(Rgb565Image *this, uint16 x, uint16 y){
+    if(x >= this->w || y >= this->h){
         return 0;
     }
     return this->image[x + this->w*y];
 }
-void inline Rgb565Image_set(Rgb565Image *this, uint16 y, uint16 x, uint16 value){
-    if(y >= this->h || x >= this->w){
+void inline Rgb565Image_set(Rgb565Image *this, uint16 x, uint16 y, uint16 value){
+    if(x >= this->w || y >= this->h){
         return;
     }
     this->image[x + this->w*y] = value;
 }
-void Rgb565Image_mark(Rgb565Image *this, uint16 y, uint16 x, uint16 color, uint16 r){
+void Rgb565Image_mark(Rgb565Image *this, uint16 x, uint16 y, uint16 color, uint16 r){
     for(int i = -r; i <= r; ++i){
-        Rgb565Image_set(this, y-i, x-i, color);
-        Rgb565Image_set(this, y+i, x-i, color);
+        Rgb565Image_set(this, x-i, y-i, color);
+        Rgb565Image_set(this, x+i, y-i, color);
     }
 }
 
@@ -252,20 +250,20 @@ void Image_binaryzation(Image *this, int16 deltaT){
     }
 }
 void Image_getStartPoint(Image *this, uint16 lStartPoint[2], uint16 rStartPoint[2]){
-    uint16 y = this->h-2;
     uint16 x = this->w/2;
+    uint16 y = this->h-2;
 
-    lStartPoint[0]=y;
-    for(lStartPoint[1] = x; lStartPoint[1] >= 2; --lStartPoint[1]){
-        if(!Image_get(this, y, lStartPoint[1]) && Image_get(this, y, lStartPoint[1]+1) &&
-                !Image_get(this, y, lStartPoint[1]-1) && Image_get(this, y, lStartPoint[1]+2)){
+    lStartPoint[1]=y;
+    for(lStartPoint[0] = x; lStartPoint[0] >= 1; --lStartPoint[0]){
+        if(!Image_get(this, lStartPoint[0], y) && Image_get(this, lStartPoint[0]+1, y) &&
+                !Image_get(this, lStartPoint[0]-1, y) && Image_get(this, lStartPoint[0]+2, y)){
             break;
         }
     }
-    rStartPoint[0]=y;
-    for(rStartPoint[1] = x-1; rStartPoint[1] < this->w-2; ++rStartPoint[1]){
-        if(!Image_get(this, y, rStartPoint[1]) && Image_get(this, y, rStartPoint[1]-1) &&
-                !Image_get(this, y, rStartPoint[1]+1) && Image_get(this, y, rStartPoint[1]-2)){
+    rStartPoint[1]=y;
+    for(rStartPoint[0] = x-1; rStartPoint[0] < this->w-1; ++rStartPoint[0]){
+        if(!Image_get(this, rStartPoint[0], y) && Image_get(this, rStartPoint[0]-1, y) &&
+                !Image_get(this, rStartPoint[0]+1, y) && Image_get(this, rStartPoint[0]-2, y)){
             break;
         }
     }
@@ -274,24 +272,27 @@ void Image_drawRectan(Image *this)
 {
 
     uint16 i = 0;
-    for (i = 0; i < this->h; i++)     //给左边0、1列和右边186、187列画黑框
-    {
-        Image_set(this,i,0,0);
-        Image_set(this,i,this->w - 1,0);
-
-    }
-    for (i = 0; i < this->w; i++)     //给上方0、1行画黑框
+    for (i = 0; i < this->h; i++)
     {
         Image_set(this,0,i,0);
-        Image_set(this,this->h - 1,i,0);
+        Image_set(this,this->w - 1,i,0);
+
+    }
+    for (i = 0; i < this->w; i++)
+    {
+        Image_set(this,i,0,0);
+        Image_set(this,i,this->h - 1,0);
     }
 }
-const int8 Bly_SEED[8][2] = {{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1}};
+
+const int8 Bly_SEED[8][2] = {{1,0},{1,1},{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1}};
 void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MAX_BLY][2],
         uint8 lDir[MAX_BLY], uint8 rDir[MAX_BLY], uint16 *lLineL, uint16 *rLineL, int16 *meet,
         uint16 lStart[2], uint16 rStart[2])
 {
     uint8 lStop = 0, rStop = 0;
+
+    *meet = -1;
 
     lLine[0][0] = lStart[0];
     lLine[0][1] = lStart[1];
@@ -300,8 +301,9 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
     lDir[0] = rDir[0] = 2;
 
     *lLineL = *rLineL = 1;
+
     while(maxL--){
-        int16 r_sub_l = rLine[*rLineL-1][0] - lLine[*lLineL-1][0];
+        int16 r_sub_l = rLine[*rLineL-1][1] - lLine[*lLineL-1][1];
         if(!lStop && r_sub_l<=0){
             uint8 lStep = 0;
             for(uint8 i=0; i<8; ++i){
@@ -312,8 +314,8 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
                 int16 dot[2];
                 dot[0] = lLine[*lLineL-1][0] + Bly_SEED[dir][0];
                 dot[1] = lLine[*lLineL-1][1] + Bly_SEED[dir][1];
-                if(lLine[*lLineL][0] < 0 || lLine[*lLineL][1] < 0 || lLine[*lLineL][0] >= this->h || lLine[*lLineL][1] >= this->w ||
-                        dot[0] < 0 || dot[1] < 0 || dot[0] >= this->h || dot[1] >= this->w){
+                if(lLine[*lLineL][0] < 0 || lLine[*lLineL][1] < 0 || lLine[*lLineL][0] >= this->w || lLine[*lLineL][1] >= this->h ||
+                        dot[0] < 0 || dot[1] < 0 || dot[0] >= this->w || dot[1] >= this->h){
                     continue;
                 }
                 if(!Image_get(this, lLine[*lLineL][0], lLine[*lLineL][1]) && Image_get(this, dot[0], dot[1])){
@@ -336,8 +338,8 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
                 int16 dot[2];
                 dot[0] = rLine[*rLineL-1][0] + Bly_SEED[dir][0];
                 dot[1] = rLine[*rLineL-1][1] + Bly_SEED[dir][1];
-                if(rLine[*rLineL][0] < 0 || rLine[*rLineL][1] < 0 || rLine[*rLineL][0] >= this->h || rLine[*rLineL][1] >= this->w ||
-                        dot[0] < 0 || dot[1] < 0 || dot[0] >= this->h || dot[1] >= this->w){
+                if(rLine[*rLineL][0] < 0 || rLine[*rLineL][1] < 0 || rLine[*rLineL][0] >= this->w || rLine[*rLineL][1] >= this->h ||
+                        dot[0] < 0 || dot[1] < 0 || dot[0] >= this->w || dot[1] >= this->h){
                     continue;
                 }
                 if(!Image_get(this, rLine[*rLineL][0], rLine[*rLineL][1]) && Image_get(this, dot[0], dot[1])){
@@ -352,7 +354,7 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MA
         }
         if (abs(rLine[*rLineL-1][0] - lLine[*lLineL-1][0]) < 2
             && abs(rLine[*rLineL-1][1] - lLine[*lLineL-1][1]) < 2){
-            *meet = (rLine[*rLineL-1][0] + lLine[*lLineL-1][0])>>1;
+            *meet = (rLine[*rLineL-1][1] + lLine[*lLineL-1][1])>>1;
             break;
         }
         if (lStop && rStop){
@@ -365,17 +367,19 @@ void Image_blyToBorder(Image *this, uint8 dir, int16 line[MAX_BLY][2], uint16 li
         ret[i] = dir?(this->w-1):0;
     }
     for(uint16 i=0; i<lineL; ++i){
-        if(dir?(line[i][1] < ret[line[i][0]]):(line[i][1] > ret[line[i][0]])){
-            ret[line[i][0]]=line[i][1];
+        if(0 <= line[i][1] && line[i][1] < this->h){
+            if(dir?(line[i][0] < ret[line[i][1]]):(line[i][0] > ret[line[i][1]])){
+                ret[line[i][1]]=line[i][0];
+            }
         }
     }
 }
 
-uint8 inline Image_borderXIsLose(Image *this, uint16 y, uint16 x, uint8 dir){
+uint8 inline Image_borderXIsLose(Image *this, uint16 x, uint16 y, uint8 dir){
     return dir?x >= this->w-1:x < 1;
 }
 uint8 inline Image_borderIsLose(Image *this, uint16 border[MT9V03X_H], uint16 y, uint8 dir){
-    return Image_borderXIsLose(this, y, border[y], dir);
+    return Image_borderXIsLose(this, border[y], y, dir);
 }
 uint8 inline Image_borderIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
     for(uint16 i=y0; i<=y1; ++i){
@@ -399,7 +403,7 @@ void Image_borderToMiddle(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder
         ret[i] = (lBorder[i]+rBorder[i])>>1;
     }
 }
-void Image_borderSetCLine(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 x0, uint16 y1, uint16 x1){
+void Image_borderSetCLine(Image *this, uint16 border[MT9V03X_H], uint16 x0, uint16 y0, uint16 x1, uint16 y1){
     if(y0>y1){
         y0 ^= y1;
         y1 ^= y0;
@@ -414,26 +418,26 @@ void Image_borderSetCLine(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint
     }
 }
 
-void leastSquares(uint16 pos[MAX_BLY][2], uint16 n, float *slope, float *intercept) {
+void leastSquares(const uint16 pos[MAX_BLY][2], const uint16 n, float *slope, float *intercept) {
     // 初始化无效值
     *slope = NAN;
-    *intercept = 0;
+    *intercept = NAN;
 
     // 检查有效点数
     if (n < 2) {
         return;
     }
 
-    float sum_x = 0.f, sum_y = 0.f, sum_xy = 0.f, sum_x2 = 0.f;
+    float sum_x = 0.f, sum_y = 0.f, sum_x2 = 0.f, sum_xy = 0.f;
 
     // 累加计算
     for (uint16 i = 0; i < n; ++i) {
         float x = pos[i][0];
         float y = pos[i][1];
-        sum_y += y;
         sum_x += x;
-        sum_xy += x * y;
+        sum_y += y;
         sum_x2 += x * x;
+        sum_xy += x * y;
     }
 
     // 计算分母
@@ -455,33 +459,37 @@ void Image_borderSetULine(Image *this, uint16 border[MT9V03X_H], uint16 y){
     if(y+setLineY >= this->h-1){
         return;
     }
-    uint16 pos[MAX_BLY][2], n;
+    uint16 pos[MT9V03X_H][2], n;
     for(n = 0; n < setLineY; ++n){
         pos[n][0] = y+n;
         pos[n][1] = border[y+n];
     }
     float slope, intercept;
     leastSquares(pos, n, &slope, &intercept);
-    for(uint16 i = y; i >= 0; --i){
-        float x = slope*i+intercept;
-        border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
-        if (i == 0) break; // 防止uint16下溢
+    if(!isnan(slope) && !isnan(intercept)){
+        for(uint16 i = y; i >= 0; --i){
+            float x = slope*i+intercept;
+            border[i] = func_limit_ab((uint16)x, 0, this->w-1);
+            if (i == 0) break; // 防止uint16下溢
+        }
     }
 }
 void Image_borderSetDLine(Image *this, uint16 border[MT9V03X_H], uint16 y){
     if(y < setLineY){
         return;
     }
-    uint16 pos[MAX_BLY][2], n;
+    uint16 pos[MT9V03X_H][2], n;
     for(n = 0; n < setLineY; ++n){
         pos[n][0] = y-n;
         pos[n][1] = border[y-n];
     }
     float slope, intercept;
     leastSquares(pos, n, &slope, &intercept);
-    for(uint16 i = y; i < this->h; ++i){
-        float x = slope*i+intercept;
-        border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
+    if(!isnan(slope) && !isnan(intercept)){
+        for(uint16 i = y; i < this->h; ++i){
+            float x = slope*i+intercept;
+            border[i] = func_limit_ab((uint16)x, 0, this->w-1);
+        }
     }
 }
 uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint8 dir){
@@ -515,9 +523,9 @@ void Image_blyToRadDir(Image *this, int16 bly[MAX_BLY][2], uint16 blyL, uint16 l
         float ret[MAX_BLY], int16 retPos[MAX_BLY][2], uint16 *retN){
     *retN = (blyL-1)/l;
     for(uint16 i=0; i<*retN; ++i){
-        ret[i]=atan2f(-(bly[(i+1)*l][0]-bly[i*l][0]), bly[(i+1)*l][1]-bly[i*l][1]);
+        ret[i]=atan2f(-(bly[(i+1)*l][1]-bly[i*l][1]), bly[(i+1)*l][0]-bly[i*l][0]);
         for(uint16 j=i*l; j<=(i+1)*l; ++j){
-            if(bly[j][0] == 0 || bly[j][0] == this->h-1 || Image_borderXIsLose(this, bly[j][0], bly[j][1], 0) || Image_borderXIsLose(this, bly[j][0], bly[j][1], 1)){
+            if(bly[j][1] == 0 || bly[j][1] == this->h-1 || Image_borderXIsLose(this, bly[j][0], bly[j][1], 0) || Image_borderXIsLose(this, bly[j][0], bly[j][1], 1)){
                 ret[i] = NAN;
                 break;
             }
@@ -568,16 +576,16 @@ void Image_zebraCrossing(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[
     {
         for(uint16 i=lBorder[zebra_row];i<=this->w/2;i++)
         {
-            if(Image_get(this, zebra_row, i) && Image_get(this, zebra_row, i+1) &&
-                    !Image_get(this, zebra_row, i+2) && !Image_get(this, zebra_row,i+3))
+            if(Image_get(this, i, zebra_row) && Image_get(this, i+1, zebra_row) &&
+                    !Image_get(this, i+2, zebra_row) && !Image_get(this, i+3, zebra_row))
             {
                 edge_left_num++;
             }
         }
         for(uint16 i=rBorder[zebra_row];i>this->w/2;i--)
         {
-            if(Image_get(this, zebra_row, i) && Image_get(this, zebra_row, i-1) &&
-                    !Image_get(this, zebra_row, i-2) && !Image_get(this, zebra_row,i-3))
+            if(Image_get(this, i, zebra_row) && Image_get(this, i-1, zebra_row) &&
+                    !Image_get(this, i-2, zebra_row) && !Image_get(this,i-3, zebra_row))
             {
                 edge_right_num++;
             }
@@ -608,10 +616,10 @@ void Image_cross(Image *this, int16 lInf[MAX_BLY][2], float lInfRad[MAX_BLY], ui
         case NONE:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 &&
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4 &&
-                    Image_borderIsLose(this, lBorder, lInf[0][0]-crossX, 0) &&
-                    Image_borderIsLose(this, lBorder, lInf[0][0]-crossX-1, 0) &&
-                    Image_borderIsLose(this, rBorder, rInf[0][0]-crossX, 1) &&
-                    Image_borderIsLose(this, rBorder, rInf[0][0]-crossX-1, 1)
+                    Image_borderIsLose(this, lBorder, lInf[0][1]-crossX, 0) &&
+                    Image_borderIsLose(this, lBorder, lInf[0][1]-crossX-1, 0) &&
+                    Image_borderIsLose(this, rBorder, rInf[0][1]-crossX, 1) &&
+                    Image_borderIsLose(this, rBorder, rInf[0][1]-crossX-1, 1)
                     )
             {
                 beepMid();
@@ -621,12 +629,12 @@ void Image_cross(Image *this, int16 lInf[MAX_BLY][2], float lInfRad[MAX_BLY], ui
         case IN_CROSS:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 &&
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
-                Image_borderSetULine(this, lBorder, lInf[0][0]);
-                Image_borderSetULine(this, rBorder, rInf[0][0]);
+                Image_borderSetULine(this, lBorder, lInf[0][1]);
+                Image_borderSetULine(this, rBorder, rInf[0][1]);
             }
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
-                    lInf[1][0]+crossX+1 < this->h && rInf[1][0]+crossX+1 < this->h){
+                    lInf[1][1]+crossX+1 < this->h && rInf[1][1]+crossX+1 < this->h){
                 beepMid();
                 cameraStatus = CROSS;
             }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2 ||
@@ -652,12 +660,12 @@ void Image_cross(Image *this, int16 lInf[MAX_BLY][2], float lInfRad[MAX_BLY], ui
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2){
                 Image_borderSetCLine(this, lBorder, lInf[0][0], lInf[0][1], lInf[1][0], lInf[1][1]);
             }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
-                Image_borderSetDLine(this, lBorder, lInf[0][0]);
+                Image_borderSetDLine(this, lBorder, lInf[0][1]);
             }
             if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1){
                 Image_borderSetCLine(this, rBorder, rInf[0][0], rInf[0][1], rInf[1][0], rInf[1][1]);
             }else if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
-                Image_borderSetDLine(this, rBorder, rInf[0][0]);
+                Image_borderSetDLine(this, rBorder, rInf[0][1]);
             }
             if(!(lInfN > 0 && (Inflection_getFacing(lInfRad[0]) == 2 || Inflection_getFacing(lInfRad[0]) == 3) ||
                     rInfN > 0 && (Inflection_getFacing(rInfRad[0]) == 1 || Inflection_getFacing(rInfRad[0]) == 4))){
@@ -684,26 +692,26 @@ void Image_processForShow(){
         Rgb565Image_set(&showImage, rLine[i][0], rLine[i][1], RGB565_YELLOW);
     }
     for(uint16 i=0; i<showImage.h; ++i){
-        Rgb565Image_set(&showImage, i, lBorder[i], RGB565_GREEN);
+        Rgb565Image_set(&showImage, lBorder[i], i, RGB565_GREEN);
     }
     for(uint16 i=0; i<showImage.h; ++i){
-        Rgb565Image_set(&showImage, i, rBorder[i], RGB565_GREEN);
+        Rgb565Image_set(&showImage, rBorder[i], i, RGB565_GREEN);
     }
     for(uint16 i=0; i<showImage.h; ++i){
-        Rgb565Image_set(&showImage, i, mLine[i], i >= errY && i < errY+errDeltaY ? RGB565_RED : RGB565_BLUE);
+        Rgb565Image_set(&showImage, mLine[i], i, i >= errY && i < errY+errDeltaY ? RGB565_RED : RGB565_BLUE);
     }
     Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
     Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
     for(uint16 i=0; i<lInflectionN; ++i){
         Rgb565Image_mark(&showImage, lInflection[i][0], lInflection[i][1], RGB565_RED, 2);
-        Rgb565Image_set(&showImage, lInflection[i][0]-sinf(lInflectionDir[i])*6, lInflection[i][1]+cosf(lInflectionDir[i])*6, RGB565_RED);
+        Rgb565Image_set(&showImage, lInflection[i][0]+cosf(lInflectionDir[i])*6, lInflection[i][1]-sinf(lInflectionDir[i])*6, RGB565_RED);
     }
     for(uint16 i=0; i<rInflectionN; ++i){
         Rgb565Image_mark(&showImage, rInflection[i][0], rInflection[i][1], RGB565_RED, 2);;
-        Rgb565Image_set(&showImage, rInflection[i][0]-sinf(rInflectionDir[i])*6, rInflection[i][1]+cosf(rInflectionDir[i])*6, RGB565_RED);
+        Rgb565Image_set(&showImage, rInflection[i][0]+cosf(rInflectionDir[i])*6, rInflection[i][1]-sinf(rInflectionDir[i])*6, RGB565_RED);
     }
 }
-void MyCamera_Show(uint16 x, uint16 y)
+void Image_showCamera(uint16 x, uint16 y)
 {
     if(camera_process_cnt){
         if(!showPInC1){
@@ -727,7 +735,7 @@ void Image_processCamera(){
                 while(camera_process_cnt);
             }
         }
-        Image_cut(&image, &image1, 0, 1, image.h, image.w-1);
+        Image_cut(&image, &image1, 1, 0, image.w-1, image.h);
 //        Image_cut(&image1, &image, 10, 30, image1.h-20, image1.w-30);
         Image_binaryzation(&image, binDeltaT);
         Image_getStartPoint(&image, lStartPoint, rStartPoint);

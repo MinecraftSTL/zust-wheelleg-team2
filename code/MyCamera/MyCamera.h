@@ -59,7 +59,7 @@ extern uint8 showWait;
 extern CameraStatus cameraStatus;
 
 void MyCamera_Init(void);
-void MyCamera_Show(uint16 x, uint16 y);
+void Image_showCamera(uint16 x, uint16 y);
 uint8 Image_get(Image *this, uint16 y, uint16 x);
 void Image_set(Image *this, uint16 y, uint16 x, uint8 value);
 void Image_fromCamera(Image *this, uint8 mt9v03x_image[MT9V03X_H][MT9V03X_W]);

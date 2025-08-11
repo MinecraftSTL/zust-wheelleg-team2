@@ -9,7 +9,7 @@
 #define CODE_SYS_SYS_H_
 
 #include "MyHeadFile.h"
-#include <limits.h>
+#include <stdint.h>
 #include <math.h>
 
 float Calculate_Curvature(int array[], int start, int size) ;

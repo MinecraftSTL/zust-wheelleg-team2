@@ -350,8 +350,6 @@ cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensou
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\Sys\Sys.h" :
 cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\MyHeadFile.h" :
-cpu0_main.o :	"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h"
-"D:\Infineon\AURIX-Studio-1.10.6\tools\Compilers\Tasking_1.1r8\ctc\include\limits.h" :
 cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h"
 "E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\libraries\\zf_common\zf_common_headfile.h" :
 cpu0_main.o :	"E:\\User\\S\\smartc\\TC387_Library-master\\Seekfree_TC387_Opensource_Library\\code\\pit\Pit.h"
