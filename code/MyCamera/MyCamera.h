@@ -1,6 +1,10 @@
 #ifndef __MyCamera_H
 #define __MyCamera_H
 
+#include "MyHeadfile.h"
+
+#define MAX_BLY ((MT9V03X_W)*3)
+
 typedef enum{
     NONE,
     IN_ZEBRA,

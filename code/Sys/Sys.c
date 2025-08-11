@@ -5,76 +5,6 @@
  *      Author: sun
  */
 #include "Sys.h"
-/***********************************************
-* @brief : 最小二乘法
-* @param : void
-* @return: 返回值
-* @date  :
-* @author:
-************************************************/
-float slope_calculate (uint8 begin, uint8 end,int * border)
-{
-    float xsum = 0, ysum = 0,xysum = 0, x2sum = 0;
-    int16  i = 0;
-    float result = 0;
-    static float resultlast;
-    for (i = begin; i < end; i++)
-    {
-        xsum += i;
-        ysum += border[i];
-        xysum += i * (border[i]);
-        x2sum += i * i;
-    }
-    if ((end - begin) * x2sum - xsum * xsum) //判断除数是否为零
-    {
-    result = ((end - begin) * xysum - xsum * ysum) / ((end - begin) * x2sum - xsum * xsum);
-    resultlast = result;
-    }
-    else
-    {
-        result = resultlast;
-    }
-    return result;
-}
-/***********************************************
-* @brief : 计算斜率截距
-* @param : void
-* @return: 返回值
-* @date  : start 起始
-*          end 终止
-*          border 边界数组
-*          *slope_new 存放斜率
-*          *distance_new 存放截距
-* @author:
-************************************************/
-void caculate_distance(uint8 start,uint8 end,int *border,float *slope_new,float *distance_new)
-{
-    uint16 i, num = 0;
-    uint16 xsum = 0,ysum = 0;
-    float y_average, x_average;
-    num = 0;
-    xsum = 0;
-    ysum = 0;
-    y_average = 0;
-    x_average = 0;
-    for (i = start; i < end; i++)
-    {
-        xsum += i;
-        ysum += border[i];
-        num++;
-    }
-    // 计算各个平均数
-        if(num)
-    {
-        x_average = (float)(xsum / num);
-        y_average = (float)(ysum / num);
-        y_average = (float)(ysum / num);
-        }
-        /*计算斜率*/
-        *slope_new = slope_calculate(start,end,border);//斜率
-        *distance_new = y_average - (*slope_new)*x_average;//截距
-}
-
 
 // 曲率计算函数
 /***********************************************
@@ -115,18 +45,6 @@ float Calculate_Curvature(int array[], int start, int size)
     return total_curvature / (size);
 }
 
-
-double distance(double a[2],double b[2])//求两点间距离，数组a[2]为点a的坐标信息，a[0]为a的x坐标，a[1]为a的y坐标
-{
-     double dis;//两点间距离
-     double x,y,x2,y2;
-     x=a[0]-b[0];
-     y=a[1]-b[1];
-     x2=x*x;
-     y2=y*y;
-     dis=sqrt((x2+y2));//double sqrt(double x)为求平方根函数
-     return dis;
-}
 int collinear(double a[2],double b[2],double c[2])//判断三点是否共线，共线返回1
 {
       double k1,k2;
@@ -156,9 +74,9 @@ double curvature(double a[2],double b[2],double c[2])//double为数据类型，
        double radius;//曲率半径
        double dis,dis1,dis2,dis3;//距离
        double cosA;//ab确定的边所对应的角A的cos值
-       dis1=distance(a,b);
-       dis2=distance(a,c);
-       dis3=distance(b,c);
+       dis1=hypot(a[0]-b[0],a[1]-b[1]);
+       dis2=hypot(a[0]-c[0],a[1]-c[1]);
+       dis3=hypot(b[0]-c[0],b[1]-c[1]);
        dis=dis2*dis2+dis3*dis3-dis1*dis1;
        cosA=dis/(2*dis2*dis3);//余弦定理
        radius=0.5*dis1/cosA;

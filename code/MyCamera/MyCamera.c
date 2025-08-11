@@ -1,4 +1,4 @@
-#include "MyHeadfile.h"
+#include "MyCamera.h"
 
 #pragma section all "cpu1_dsram"
 
@@ -32,11 +32,11 @@ Inverse inverse;
 uint16 lStartPoint[2];
 uint16 rStartPoint[2];
 
-int16 lLine[MT9V03X_W*3][2];
-uint8 lLineDir[MT9V03X_W*3];
+int16 lLine[MAX_BLY][2];
+uint8 lLineDir[MAX_BLY];
 uint16 lLineL = 0;
-int16 rLine[MT9V03X_W*3][2];
-uint8 rLineDir[MT9V03X_W*3];
+int16 rLine[MAX_BLY][2];
+uint8 rLineDir[MAX_BLY];
 uint16 rLineL = 0;
 int16 lrMeet;
 
@@ -47,18 +47,18 @@ uint16 mLine[MT9V03X_H];
 uint8 lStraight;
 uint8 rStraight;
 
-float lRadDir[MT9V03X_W*3];
-int16 lRadDirPos[MT9V03X_W*3][2];
+float lRadDir[MAX_BLY];
+int16 lRadDirPos[MAX_BLY][2];
 uint16 lRadDirN;
-float rRadDir[MT9V03X_W*3];
-int16 rRadDirPos[MT9V03X_W*3][2];
+float rRadDir[MAX_BLY];
+int16 rRadDirPos[MAX_BLY][2];
 uint16 rRadDirN;
 
-int16 lInflection[MT9V03X_W*3][2];
-float lInflectionDir[MT9V03X_W*3];
+int16 lInflection[MAX_BLY][2];
+float lInflectionDir[MAX_BLY];
 uint16 lInflectionN;
-int16 rInflection[MT9V03X_W*3][2];
-float rInflectionDir[MT9V03X_W*3];
+int16 rInflection[MAX_BLY][2];
+float rInflectionDir[MAX_BLY];
 uint16 rInflectionN;
 
 CameraStatus cameraStatus = NONE;
@@ -199,7 +199,7 @@ void Inverse_image(Inverse *this, Image *image, Image *target){
         }
     }
 }
-void Inverse_bly(Inverse *this, Image *image, int16 bly[MT9V03X_W*3][2], uint16 blyL){
+void Inverse_bly(Inverse *this, Image *image, int16 bly[MAX_BLY][2], uint16 blyL){
     for(uint16 i=0; i<blyL; ++i){
         int16 y,x;
         Inverse_imagePosToPos(this, image, bly[i][0], bly[i][1], &y, &x);
@@ -323,8 +323,8 @@ void Image_drawRectan(Image *this)
     }
 }
 const int8 Bly_SEED[8][2] = {{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1}};
-void Image_bly(Image *this, uint16 maxL, int16 lLine[MT9V03X_W*3][2], int16 rLine[MT9V03X_W*3][2],
-        uint8 lDir[MT9V03X_W*3], uint8 rDir[MT9V03X_W*3], uint16 *lLineL, uint16 *rLineL, int16 *meet,
+void Image_bly(Image *this, uint16 maxL, int16 lLine[MAX_BLY][2], int16 rLine[MAX_BLY][2],
+        uint8 lDir[MAX_BLY], uint8 rDir[MAX_BLY], uint16 *lLineL, uint16 *rLineL, int16 *meet,
         uint16 lStart[2], uint16 rStart[2])
 {
     uint8 lStop = 0, rStop = 0;
@@ -396,7 +396,7 @@ void Image_bly(Image *this, uint16 maxL, int16 lLine[MT9V03X_W*3][2], int16 rLin
         }
     }
 }
-void Image_blyToBorder(Image *this, uint8 dir, int16 line[MT9V03X_W*3][2], uint16 lineL, uint16 ret[MT9V03X_H]){
+void Image_blyToBorder(Image *this, uint8 dir, int16 line[MAX_BLY][2], uint16 lineL, uint16 ret[MT9V03X_H]){
     for(uint16 i=0; i<this->h; ++i){
         ret[i] = dir?(this->w-1):0;
     }
@@ -407,11 +407,11 @@ void Image_blyToBorder(Image *this, uint8 dir, int16 line[MT9V03X_W*3][2], uint1
     }
 }
 
-uint8 inline Image_borderXIsLose(Image *this, uint16 x, uint8 dir){
+uint8 inline Image_borderXIsLose(Image *this, uint16 y, uint16 x, uint8 dir){
     return dir?x >= this->w-1:x < 1;
 }
 uint8 inline Image_borderIsLose(Image *this, uint16 border[MT9V03X_H], uint16 y, uint8 dir){
-    return Image_borderXIsLose(this, border[y], dir);
+    return Image_borderXIsLose(this, y, border[y], dir);
 }
 uint8 inline Image_borderIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
     for(uint16 i=y0; i<=y1; ++i){
@@ -424,6 +424,36 @@ uint8 inline Image_borderIsAllLose(Image *this, uint16 border[MT9V03X_H], uint16
 uint8 inline Image_borderIsNoneLose(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
     for(uint16 i=y0; i<=y1; ++i){
         if(Image_borderIsLose(this, border, i, dir)){
+            return 0;
+        }
+    }
+    return 1;
+}
+uint8 inline Image_inverseBorderXIsLose(Image *this, Inverse *inverse, uint16 y, uint16 x, uint8 dir){
+    if(Image_borderXIsLose(this, y, x, dir)){
+        return 1;
+    }
+    int16 iy, ix;
+    Inverse_imagePosFromPos(inverse, this, y, x, &iy, &ix);
+    if(Image_borderXIsLose(this, iy, ix, dir)){
+        return 1;
+    }
+    return 0;
+}
+uint8 inline Image_inverseBorderIsLose(Image *this, Inverse *inverse, uint16 border[MT9V03X_H], uint16 y, uint8 dir){
+    return Image_inverseBorderXIsLose(this, inverse, y, border[y], dir);
+}
+uint8 inline Image_inverseBorderIsAllLose(Image *this, Inverse *inverse, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
+    for(uint16 i=y0; i<=y1; ++i){
+        if(!Image_inverseBorderIsLose(this, inverse, border, i, dir)){
+            return 0;
+        }
+    }
+    return 1;
+}
+uint8 inline Image_inverseBorderIsNoneLose(Image *this, Inverse *inverse, uint16 border[MT9V03X_H], uint16 y0, uint16 y1, uint8 dir){
+    for(uint16 i=y0; i<=y1; ++i){
+        if(Image_inverseBorderIsLose(this, inverse, border, i, dir)){
             return 0;
         }
     }
@@ -449,24 +479,74 @@ void Image_borderSetCLine(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint
         border[i] = (uint16)(slope*(i-y0)+x0);
     }
 }
-void Image_borderSetULine(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1){
-    if(y0+setLineY >= this->h-1){
+
+void leastSquares(uint16 pos[MAX_BLY][2], uint16 n, float *slope, float *intercept) {
+    // 初始化无效值
+    *slope = NAN;
+    *intercept = 0;
+
+    // 检查有效点数
+    if (n < 2) {
         return;
     }
-    float slope = (float)(border[y0+setLineY]-border[y0])/(setLineY);
-    for(uint16 i = y0; i >= y1; --i){
-        float x = slope*(i-y0)+border[y0];
+
+    float sum_x = 0.f, sum_y = 0.f, sum_xy = 0.f, sum_x2 = 0.f;
+
+    // 累加计算
+    for (uint16 i = 0; i < n; ++i) {
+        float x = pos[i][0];
+        float y = pos[i][1];
+        sum_y += y;
+        sum_x += x;
+        sum_xy += x * y;
+        sum_x2 += x * x;
+    }
+
+    // 计算分母
+    const float denominator = n * sum_x2 - sum_x * sum_x;
+    if (fabsf(denominator) < 1e-10) {
+        return;
+    }
+
+    // 计算浮点结果
+    const float m = (n * sum_xy - sum_x * sum_y) / denominator;
+    const float b = (sum_y - m * sum_x) / n;
+
+    // 最终有效赋值
+    *slope = m;
+    *intercept = b;
+}
+
+void Image_borderSetULine(Image *this, uint16 border[MT9V03X_H], uint16 y){
+    if(y+setLineY >= this->h-1){
+        return;
+    }
+    uint16 pos[MAX_BLY][2], n;
+    for(n = 0; n < setLineY; ++n){
+        pos[n][0] = y+n;
+        pos[n][1] = border[y+n];
+    }
+    float slope, intercept;
+    leastSquares(pos, n, &slope, &intercept);
+    for(uint16 i = y; i >= 0; --i){
+        float x = slope*i+intercept;
         border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
         if (i == 0) break; // 防止uint16下溢
     }
 }
-void Image_borderSetDLine(Image *this, uint16 border[MT9V03X_H], uint16 y0, uint16 y1){
-    if(y0 < setLineY){
+void Image_borderSetDLine(Image *this, uint16 border[MT9V03X_H], uint16 y){
+    if(y < setLineY){
         return;
     }
-    float slope = (float)(border[y0-setLineY]-border[y0])/(-setLineY);
-    for(uint16 i = y0; i <= y1; ++i){
-        float x = slope*(i-y0)+border[y0];
+    uint16 pos[MAX_BLY][2], n;
+    for(n = 0; n < setLineY; ++n){
+        pos[n][0] = y-n;
+        pos[n][1] = border[y-n];
+    }
+    float slope, intercept;
+    leastSquares(pos, n, &slope, &intercept);
+    for(uint16 i = y; i < this->h; ++i){
+        float x = slope*i+intercept;
         border[i] = (uint16)func_limit_ab(x, 0, this->w-1);
     }
 }
@@ -482,7 +562,7 @@ uint8 Image_borderIsStraight(Image *this, uint16 border[MT9V03X_H], uint8 dir){
     }
     return 1;
 }
-void Image_blyCutByBorder(Image *this, uint16 border[MT9V03X_H], uint8 dir, int16 line[MT9V03X_W*3][2], uint16 *lineL){
+void Image_blyCutByBorder(Image *this, uint16 border[MT9V03X_H], uint8 dir, int16 line[MAX_BLY][2], uint16 *lineL){
     uint16 yMin;
     for(yMin = 0; yMin<this->h; ++yMin){
         if(!Image_borderIsLose(this, border, yMin, dir)){
@@ -497,13 +577,13 @@ void Image_blyCutByBorder(Image *this, uint16 border[MT9V03X_H], uint8 dir, int1
     }
 }
 
-void Image_blyToRadDir(Image *this, int16 bly[MT9V03X_W*3][2], uint16 blyL, uint16 l,
-        float ret[MT9V03X_W*3], int16 retPos[MT9V03X_W*3][2], uint16 *retN){
+void Image_blyToRadDir(Image *this, int16 bly[MAX_BLY][2], uint16 blyL, uint16 l,
+        float ret[MAX_BLY], int16 retPos[MAX_BLY][2], uint16 *retN){
     *retN = (blyL-1)/l;
     for(uint16 i=0; i<*retN; ++i){
         ret[i]=atan2f(-(bly[(i+1)*l][0]-bly[i*l][0]), bly[(i+1)*l][1]-bly[i*l][1]);
         for(uint16 j=i*l; j<=(i+1)*l; ++j){
-            if(bly[j][0] == 0 || bly[j][0] == this->h-1 || Image_borderXIsLose(this, bly[j][1], 0) || Image_borderXIsLose(this, bly[j][1], 1)){
+            if(bly[j][0] == 0 || bly[j][0] == this->h-1 || Image_inverseBorderXIsLose(this, &inverse, bly[j][0], bly[j][1], 0) || Image_inverseBorderXIsLose(this, &inverse, bly[j][0], bly[j][1], 1)){
                 ret[i] = NAN;
                 break;
             }
@@ -512,8 +592,8 @@ void Image_blyToRadDir(Image *this, int16 bly[MT9V03X_W*3][2], uint16 blyL, uint
         retPos[i][1] = (bly[i*l][1]+bly[(i+1)*l][1])>>1;
     }
 }
-void RadDir_toInflection(float this[MT9V03X_W*3], int16 thisPos[MT9V03X_W*3][2], uint16 thisN, float err,
-        int16 ret[MT9V03X_W*3][2], float retRad[MT9V03X_W*3], uint16 *retN){
+void RadDir_toInflection(float this[MAX_BLY], int16 thisPos[MAX_BLY][2], uint16 thisN, float err,
+        int16 ret[MAX_BLY][2], float retRad[MAX_BLY], uint16 *retN){
     *retN = 0;
     for(uint16 i = 1; i < thisN-1; ++i){
         if(isnan(this[i-1]) || isnan(this[i+1])){
@@ -538,7 +618,7 @@ uint8 Inflection_getFacing(float rad){
     }
     return 0;
 }
-int16 Inflection_getFirstFacing(int16 this[MT9V03X_W*3][2], float thisRad[MT9V03X_W*3], uint16 thisN, uint8 facing){
+int16 Inflection_getFirstFacing(int16 this[MAX_BLY][2], float thisRad[MAX_BLY], uint16 thisN, uint8 facing){
     for(uint16 i=0; i<thisN; ++i){
         if(Inflection_getFacing(thisRad[i])==facing){
             return i;
@@ -588,8 +668,8 @@ void Image_zebraCrossing(Image *this, uint16 lBorder[MT9V03X_H], uint16 rBorder[
             break;
     }
 }
-void Image_cross(Image *this, int16 lInf[MT9V03X_W*3][2], float lInfRad[MT9V03X_W*3], uint16 lInfN,
-        int16 rInf[MT9V03X_W*3][2], float rInfRad[MT9V03X_W*3], uint16 rInfN,
+void Image_cross(Image *this, int16 lInf[MAX_BLY][2], float lInfRad[MAX_BLY], uint16 lInfN,
+        int16 rInf[MAX_BLY][2], float rInfRad[MAX_BLY], uint16 rInfN,
         uint16 lBorder[MT9V03X_H], uint16 rBorder[MT9V03X_H]){
     switch(cameraStatus){
         case NONE:
@@ -608,8 +688,8 @@ void Image_cross(Image *this, int16 lInf[MT9V03X_W*3][2], float lInfRad[MT9V03X_
         case IN_CROSS:
             if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 3 &&
                     rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 4){
-                Image_borderSetULine(this, lBorder, lInf[0][0], 0);
-                Image_borderSetULine(this, rBorder, rInf[0][0], 0);
+                Image_borderSetULine(this, lBorder, lInf[0][0]);
+                Image_borderSetULine(this, rBorder, rInf[0][0]);
             }
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2 &&
                     rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1 &&
@@ -639,12 +719,12 @@ void Image_cross(Image *this, int16 lInf[MT9V03X_W*3][2], float lInfRad[MT9V03X_
             if(lInfN > 1 && Inflection_getFacing(lInfRad[0]) == 3 && Inflection_getFacing(lInfRad[1]) == 2){
                 Image_borderSetCLine(this, lBorder, lInf[0][0], lInf[0][1], lInf[1][0], lInf[1][1]);
             }else if(lInfN > 0 && Inflection_getFacing(lInfRad[0]) == 2){
-                Image_borderSetDLine(this, lBorder, lInf[0][0], this->h-1);
+                Image_borderSetDLine(this, lBorder, lInf[0][0]);
             }
             if(rInfN > 1 && Inflection_getFacing(rInfRad[0]) == 4 && Inflection_getFacing(rInfRad[1]) == 1){
                 Image_borderSetCLine(this, rBorder, rInf[0][0], rInf[0][1], rInf[1][0], rInf[1][1]);
             }else if(rInfN > 0 && Inflection_getFacing(rInfRad[0]) == 1){
-                Image_borderSetDLine(this, rBorder, rInf[0][0], this->h-1);
+                Image_borderSetDLine(this, rBorder, rInf[0][0]);
             }
             if(!(lInfN > 0 && (Inflection_getFacing(lInfRad[0]) == 2 || Inflection_getFacing(lInfRad[0]) == 3) ||
                     rInfN > 0 && (Inflection_getFacing(rInfRad[0]) == 1 || Inflection_getFacing(rInfRad[0]) == 4))){
@@ -680,8 +760,11 @@ void Image_processForShow(){
     for(uint16 i=0; i<showImage.h; ++i){
         Rgb565Image_set(&showImage, i, mLine[i], i >= errY && i < errY+errDeltaY ? RGB565_RED : RGB565_BLUE);
     }
-    Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
-    Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
+    int16 y, x;
+    Inverse_imagePosToPos(&inverse, &image, lStartPoint[0], lStartPoint[1], &y, &x);
+    Rgb565Image_set(&showImage, y, x, RGB565_RED);
+    Inverse_imagePosToPos(&inverse, &image, rStartPoint[0], rStartPoint[1], &y, &x);
+    Rgb565Image_set(&showImage, y, x, RGB565_RED);
     for(uint16 i=0; i<lInflectionN; ++i){
         Rgb565Image_mark(&showImage, lInflection[i][0], lInflection[i][1], RGB565_RED, 2);
         Rgb565Image_set(&showImage, lInflection[i][0]-sinf(lInflectionDir[i])*6, lInflection[i][1]+cosf(lInflectionDir[i])*6, RGB565_RED);

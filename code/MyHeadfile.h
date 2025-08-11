@@ -9,6 +9,8 @@
 #include "cpu1_main.h"
 #include "isr.h"
 
+#include "Sys.h"
+
 #include "Pit.h"
 #include "Leg.h"
 #include "Motor.h"
@@ -25,7 +27,6 @@
 #include "myCamera/MyCamera.h"
 #include "myEncoder/MyEncoder.h"
 #include "pid/Pid.h"
-#include "Sys.h"
 
 
 
