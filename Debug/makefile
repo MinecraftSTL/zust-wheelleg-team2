@@ -56,6 +56,7 @@ RM := rm -rf
 -include code/leg/subdir.mk
 -include code/icm42688/subdir.mk
 -include code/gyro/subdir.mk
+-include code/fps/subdir.mk
 -include code/foc/subdir.mk
 -include code/filter/subdir.mk
 -include code/debug/subdir.mk

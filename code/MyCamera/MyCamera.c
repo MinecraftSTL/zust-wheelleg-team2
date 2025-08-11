@@ -90,6 +90,11 @@ void Image_fromCamera(Image *this, uint8 mt9v03x_image[MT9V03X_H][MT9V03X_W])
     this->w = MT9V03X_W;
     memcpy(this->image, mt9v03x_image, MT9V03X_IMAGE_SIZE);
 }
+void Image_clear(Image *this){
+    for(int i=0; i<this->h*this->w; ++i){
+        this->image[i]=0x00;
+    }
+}
 void Image_clone(Image *this, Image *target)
 {
     zf_assert(this && target);
@@ -172,8 +177,11 @@ void Image_binaryzation(Image *this, Image *target, uint16 r, int16 deltaT){
 }
 void BinImage_init(BinImage *this, Image *image, uint16 r, int16 deltaT){
     this->image = image;
+    memset(&this->cache.image, 0, sizeof(this->cache.image));
     this->h = image->h - r*2;
     this->w = image->w - r*2;
+    this->cache.h = this->h;
+    this->cache.w = this->w;
     this->r = r;
     this->deltaT = deltaT;
 }
@@ -232,9 +240,14 @@ uint8 Fast_OTSU(Image *this, int16 y0, int16 x0, int16 y1, int16 x1)
 }
 uint8 BinImage_get(BinImage *this, uint16 y, uint16 x){
     zf_assert(this && this->image && y < this->h && x < this->w);
-    int16 threshold = Fast_OTSU(this->image, y, x, y+2*this->r+1, x+2*this->r+1);
-    threshold+=this->deltaT;
-    return Image_get(this->image,y+this->r,x+this->r)>threshold;
+    uint8 ret = Image_get(&this->cache, y, x);
+    if(!ret){
+        int16 threshold = Fast_OTSU(this->image, y, x, y+2*this->r+1, x+2*this->r+1);
+        threshold+=this->deltaT;
+        ret = (Image_get(this->image,y+this->r,x+this->r)>threshold)+1;
+        Image_set(&this->cache, y, x, ret);
+    };
+    return ret-1;
 }
 void BinImage_getStartPoint(BinImage *this, uint16 lStartPoint[2], uint16 rStartPoint[2]){
     uint16 y = this->h-1;
@@ -423,11 +436,11 @@ void Image_processForShow(){
         for(uint16 i=0; i<showImage.h; ++i){
             Rgb565Image_set(&showImage, i, rBorder[i], RGB565_GREEN);
         }
-        Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
-        Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
         for(uint16 i=0; i<showImage.h; ++i){
             Rgb565Image_set(&showImage, i, mLine[i], RGB565_BLUE);
         }
+        Rgb565Image_set(&showImage, lStartPoint[0], lStartPoint[1], RGB565_RED);
+        Rgb565Image_set(&showImage, rStartPoint[0], rStartPoint[1], RGB565_RED);
 //        for(uint16 i=0; i<luInflectionN; ++i){
 //            Rgb565Image_set(&showImage, luInflection[i][0], luInflection[i][1], RGB565_RED);
 //        }
@@ -503,7 +516,8 @@ void Image_processCamera(){
 //            camera_process_cnt++;
 //            camera_process_cnt_show++;
 //        }
-        Image_processForShow();
+//        Image_processForShow();
+        Fps_add(1);
         camera_process_cnt=1;
     }
 }

@@ -107,6 +107,7 @@ void core0_main(void)
     my_key_init(PIT00ms);
     gyro_init();
     MyCamera_Init();
+    Fps_init(PIT00ms);
     Wifi_Image_Init();
     small_driver_uart_init();
     Leg_init();
@@ -260,8 +261,8 @@ void core0_main(void)
         while(PageKey_press(&menu_main, pressed));
         PageKey_print(&menu_main, 0);
         MyCamera_Show(200);
+        ips200_show_int(188,200,fps,4);
         Wifi_Image_Send_Camera();
-
 //        printf("%d\n", g_camera_mid_err);
 //        printf("%f, %f, %f\r\n", pitch, roll, yaw);
         // 此处编写需要循环执行的代码

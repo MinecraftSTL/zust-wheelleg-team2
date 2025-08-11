@@ -57,6 +57,7 @@
 #include "Menu.h"
 #include "PidPage.h"
 #include "Wifi_Image.h"
+#include "Fps.h"
 
 #include "Sys.h"
 

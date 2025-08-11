@@ -36,6 +36,7 @@ code/beep \
 code/debug \
 code/filter \
 code/foc \
+code/fps \
 code/gyro \
 code/icm42688 \
 code/leg \

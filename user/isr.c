@@ -74,6 +74,7 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         pressed[NEXT_KEY] += switch_encoder_change_num;
     }
     switch_encoder_change_num = 0;
+    Fps_scan();
 }
 
 IFX_INTERRUPT(cc60_pit_ch1_isr, CCU6_0_CH1_INT_VECTAB_NUM, CCU6_0_CH1_ISR_PRIORITY)

@@ -14,6 +14,7 @@ typedef struct{
 }Rgb565Image;
 typedef struct{
     Image *image;
+    Image cache;
     uint16 h, w, r;
     int16 deltaT;
 }BinImage;
