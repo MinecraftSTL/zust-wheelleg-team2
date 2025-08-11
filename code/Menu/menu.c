@@ -32,24 +32,14 @@ void Double_toString(float this, char *str, uint8 num, uint8 point);
 
 void Page_init(Page *this, char name[], enum PageExtendsType type){
     zf_assert(this && name);
-    int8 i=0;
-    for(; i<PAGE_NAME_MAX; ++i){
-        if(name[i] == '\0'){
-            break;
-        }
-        this->name[i] = name[i];
-    }
-    for(; i<PAGE_NAME_MAX; ++i){
-        this->name[i] = ' ';
-    }
-    this->name[PAGE_NAME_MAX] = '\0';
+    strncpy(this->name, name, PAGE_NAME_MAX);
     this->type = type;
     this->select = 0;
 }
 
-void PageKey_print(Page *this, uint8 row){
+void Page_print(Page *this, uint8 row){
     if(!row&&(this->type!=LIST_TYPE || !this->extends.listValue.open)){
-        ips200_show_string_color(40, 0, this->name, this->select<0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
+        ips200_show_string_color((240-8*strlen(this->name))>>1, 0, this->name, this->select<0 ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
     }
     switch(this->type){
         case LIST_TYPE:
@@ -75,7 +65,7 @@ void PageKey_print(Page *this, uint8 row){
             break;
     }
 }
-uint8 PageKey_press(Page *this, uint8 pressed[]){
+uint8 Page_press(Page *this, uint8 pressed[]){
     switch(this->type){
         case LIST_TYPE:
             ListPage_press(this, pressed);
@@ -100,9 +90,9 @@ uint8 PageKey_press(Page *this, uint8 pressed[]){
             break;
     }
     if(pressed[HOME_KEY]){
-        PageKey_home(this);
+        Page_home(this);
     }else if(pressed[BACK_KEY]){
-        PageKey_back(this);
+        Page_back(this);
     }
     uint8 ret = 0;
     for(int i=0; i<KEY_NUM; ++i){
@@ -114,23 +104,48 @@ uint8 PageKey_press(Page *this, uint8 pressed[]){
     }
     return ret;
 }
-Page *PageKey_getRoot(Page *this){
+Page *Page_getRoot(Page *this){
     if(this->parent != NULL){
-        return PageKey_getOpened(this->parent);
+        return Page_getRoot(this->parent);
     }else{
         return this;
     }
 }
-Page *PageKey_getOpened(Page *this){
+Page *Page_getOpened(Page *this){
     if(this->type == LIST_TYPE && this->extends.listValue.open){
-        return PageKey_getOpened(this->extends.listValue.value[this->select]);
+        return Page_getOpened(this->extends.listValue.value[this->select]);
     }else if(this->parent != NULL && !this->parent->extends.listValue.open){
-        return PageKey_getOpened(this->parent);
+        return Page_getOpened(this->parent);
     }else{
         return this;
     }
 }
-Page *PageKey_getByPath(Page *this, char *path){
+void Page_getPath(Page *this, char path[PAGE_PATH_MAX+1]){
+    char *end;
+    for(end = path+PAGE_PATH_MAX;;){
+        size_t len = strlen(this->name);
+        end -= len;
+        if(end < path){
+            path[0] = '\0';
+            return;
+        }
+        strncpy(end, this->name, len);
+        if(this->parent == NULL){
+            break;
+        }
+        this = this->parent;
+        --end;
+        if(end < path){
+            path[0] = '\0';
+            return;
+        }
+        *end = '.';
+    }
+    size_t len = path + PAGE_PATH_MAX - end;
+    memmove(path, end, len);
+    path[len] = '\0';
+}
+Page *Page_getByPath(Page *this, char path[PAGE_PATH_MAX+1]){
     char *dot = strchr(path, '.');
     if(dot == NULL){
         dot = path + strlen(path);
@@ -142,7 +157,7 @@ Page *PageKey_getByPath(Page *this, char *path){
         Page *next = this->extends.listValue.value[i];
         if(!strncmp(path, next->name, dot-path)){
             if(*dot){
-                return PageKey_getByPath(next, dot+1);
+                return Page_getByPath(next, dot+1);
             }else{
                 return next;
             }
@@ -150,8 +165,16 @@ Page *PageKey_getByPath(Page *this, char *path){
     }
     return NULL;
 }
-uint8 PageKey_back(Page *this){
-    Page *open = PageKey_getOpened(this);
+void Page_allSubRun(Page *this, void (*func)(Page*)){
+    func(this);
+    if(this->type == LIST_TYPE){
+        for(uint8 i=0; i<this->extends.listValue.size; ++i){
+            Page_allSubRun(this->extends.listValue.value[i], func);
+        }
+    }
+}
+uint8 Page_back(Page *this){
+    Page *open = Page_getOpened(this);
     if(open->parent == NULL){
         return 0;
     }else{
@@ -160,8 +183,8 @@ uint8 PageKey_back(Page *this){
     ips200_clear();
     return 1;
 }
-void PageKey_home(Page *this){
-    Page *open = PageKey_getOpened(this);
+void Page_home(Page *this){
+    Page *open = Page_getOpened(this);
     while(open->parent != NULL){
         open->parent->extends.listValue.open = 0;
         open = open->parent;
@@ -191,18 +214,18 @@ void ListPage_setRoot(Page *this){
 void ListPage_print(Page *this, uint8 row){
     if(!row){
         if(this->extends.listValue.open){
-            PageKey_print(this->extends.listValue.value[this->select], row);
+            Page_print(this->extends.listValue.value[this->select], row);
             return;
         }
         for(int8 i=0; i<this->extends.listValue.size; ++i){
             ips200_show_string_color(0, (i+1)*16, this->extends.listValue.value[i]->name, this->select==i ? IPS200_DEFAULT_SELECTCOLOR : IPS200_DEFAULT_PENCOLOR);
-            PageKey_print(this->extends.listValue.value[i], i+1);
+            Page_print(this->extends.listValue.value[i], i+1);
         }
     }
 }
 void ListPage_press(Page *this, uint8 pressed[]){
     if(this->extends.listValue.open){
-        PageKey_press(this->extends.listValue.value[this->select], pressed);
+        Page_press(this->extends.listValue.value[this->select], pressed);
         return;
     }
     if(pressed[UP_KEY] || pressed[PERV_KEY]){
@@ -218,12 +241,12 @@ void ListPage_press(Page *this, uint8 pressed[]){
         }
     }
     if(pressed[LEFT_KEY]){
-        PageKey_back(this);
+        Page_back(this);
         return;
     }
     if(pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }else{
             this->extends.listValue.open = 1;
@@ -269,7 +292,7 @@ void IntPage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->select < 0){
             if(pressed[UP_KEY] || this->extends.intValue.open){
-                PageKey_back(this);
+                Page_back(this);
                 return;
             }
         }else if(this->select == 0){
@@ -289,13 +312,16 @@ void IntPage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.intValue.value > this->extends.intValue.max){
             *this->extends.intValue.value = this->extends.intValue.max;
         }
+        char path[PAGE_PATH_MAX+1];
+        Page_getPath(this, path);
+        printf("^%s=%d$\r\n", path, *this->extends.intValue.value);
         if(this->extends.intValue.update){
             this->extends.intValue.update();
         }
     }
     if(pressed[CENTER_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }else{
             this->extends.intValue.open = !this->extends.intValue.open;
@@ -303,7 +329,7 @@ void IntPage_press(Page *this, uint8 pressed[]){
     }
     if(pressed[UP_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }
     }
@@ -347,7 +373,7 @@ void FloatPage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->select < 0){
             if(pressed[UP_KEY]){
-                PageKey_back(this);
+                Page_back(this);
                 return;
             }
         }else if(this->select == 0){
@@ -387,13 +413,16 @@ void FloatPage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.floatValue.value > this->extends.floatValue.max){
             *this->extends.floatValue.value = this->extends.floatValue.max;
         }
+        char path[PAGE_PATH_MAX+1];
+        Page_getPath(this, path);
+        printf("^%s=%f$\r\n", path, *this->extends.floatValue.value);
         if(this->extends.floatValue.update){
             this->extends.floatValue.update();
         }
     }
     if(pressed[CENTER_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }else{
             this->extends.floatValue.open = !this->extends.floatValue.open;
@@ -439,7 +468,7 @@ void DoublePage_press(Page *this, uint8 pressed[]){
     if(pressed[UP_KEY] || pressed[DOWN_KEY] || pressed[PERV_KEY] || pressed[NEXT_KEY]){
         if(this->select < 0){
             if(pressed[UP_KEY]){
-                PageKey_back(this);
+                Page_back(this);
                 return;
             }
         }else if(this->select == 0){
@@ -479,13 +508,16 @@ void DoublePage_press(Page *this, uint8 pressed[]){
         }else if(*this->extends.doubleValue.value > this->extends.doubleValue.max){
             *this->extends.doubleValue.value = this->extends.doubleValue.max;
         }
+        char path[PAGE_PATH_MAX+1];
+        Page_getPath(this, path);
+        printf("^%s=%lf$\r\n", path, *this->extends.doubleValue.value);
         if(this->extends.doubleValue.update){
             this->extends.doubleValue.update();
         }
     }
     if(pressed[CENTER_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }else{
             this->extends.doubleValue.open = !this->extends.doubleValue.open;
@@ -508,13 +540,16 @@ void BoolPage_press(Page *this, uint8 pressed[]){
     }
     if(pressed[LEFT_KEY] || pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }else{
             if(this->extends.boolValue.dir&0x01&&!*this->extends.boolValue.value ||
                     this->extends.boolValue.dir&0x02&&*this->extends.boolValue.value){
                 *this->extends.boolValue.value = !*this->extends.boolValue.value;
             }
+            char path[PAGE_PATH_MAX+1];
+            Page_getPath(this, path);
+            printf("^%s=%d$\r\n", path, *this->extends.boolValue.value);
             if(this->extends.boolValue.update){
                 this->extends.boolValue.update();
             }
@@ -534,17 +569,7 @@ void EnumPage_init(Page *this, char name[], uint8 *value, char *names[]){
         this->select = -1;
     }
     for(int i=0; i<this->extends.enumValue.size; ++i){
-        int8 j=0;
-        for(; j<PAGE_VALUE_MAX; ++j){
-            if(names[i][j] == '\0'){
-                break;
-            }
-            this->extends.enumValue.names[i][j] = names[i][j];
-        }
-        for(; j<PAGE_VALUE_MAX; ++j){
-            this->extends.enumValue.names[i][j] = ' ';
-        }
-        this->extends.enumValue.names[i][PAGE_VALUE_MAX] = '\0';
+        strncpy(this->extends.enumValue.names[i], names[i], PAGE_VALUE_MAX);
     }
     this->extends.enumValue.update = NULL;
 }
@@ -573,15 +598,18 @@ void EnumPage_press(Page *this, uint8 pressed[]){
         }
     }
     if(pressed[LEFT_KEY]){
-        PageKey_back(this);
+        Page_back(this);
         return;
     }
     if(pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }else{
             *this->extends.enumValue.value=this->select;
+            char path[PAGE_PATH_MAX+1];
+            Page_getPath(this, path);
+            printf("^%s=%d$\r\n", path, *this->extends.enumValue.value);
             if(this->extends.enumValue.update){
                 this->extends.enumValue.update();
             }
@@ -602,7 +630,7 @@ void FuncPage_press(Page *this, uint8 pressed[]){
     }
     if(pressed[LEFT_KEY] || pressed[RIGHT_KEY] || pressed[CENTER_KEY]){
         if(this->select < 0){
-            PageKey_back(this);
+            Page_back(this);
             return;
         }else{
             this->extends.funcValue.value();

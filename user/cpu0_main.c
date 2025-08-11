@@ -123,8 +123,6 @@ Page menu_main_arg_k_camera_show_wait;
 Page menu_main_arg_k_jump;
 Page menu_main_arg_k_jump_step0;
 Page menu_main_arg_k_jump_step1;
-Page menu_main_arg_k_jump_step2;
-Page menu_main_arg_k_jump_step3;
 Page menu_main_arg_PID;
 PidPage menu_main_arg_PID_vAy;
 PidPage menu_main_arg_PID_xAy;
@@ -134,10 +132,13 @@ PidPage menu_main_arg_PID_turn;
 Page menu_main_arg_filter;
 Page menu_main_arg_filter_speed;
 Page menu_main_arg_filter_turn;
-Page menu_main_arg_filter_xAx;
 Page menu_main_arg_filter_xAx0;
+Page menu_main_arg_filter_xAx1;
 Page menu_main_debug;
 Page menu_main_debug_wheelClear;
+Page menu_main_debug_vofa;
+Page menu_main_debug_vofa_send;
+Page menu_main_debug_vofa_receive;
 Page menu_main_debug_wifiIm;
 Page menu_main_debug_fs;
 Page menu_main_debug_fs_en;
@@ -388,7 +389,6 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_e_barrier_t, "t", &barrierT, 0, 100000);
     ListPage_init(&menu_main_arg_k_camera_e_bridge, "bridge", (Page*[]){
         &menu_main_arg_k_camera_e_bridge_xAx,
-        &menu_main_arg_k_camera_e_bridge_x,
         &menu_main_arg_k_camera_e_bridge_y,
         &menu_main_arg_k_camera_e_bridge_kPitchX,
         &menu_main_arg_k_camera_e_bridge_ti,
@@ -399,7 +399,6 @@ void core0_main(void)
         NULL
     });
     FloatPage_init(&menu_main_arg_k_camera_e_bridge_xAx, "xAxAlpha", &defaultRollAlpha, 0, 1);
-    IntPage_init(&menu_main_arg_k_camera_e_bridge_x, "x", &bridgeX, 0, MT9V03X_W/2);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_y, "y", &bridgeY, 0, MT9V03X_H);
     FloatPage_init(&menu_main_arg_k_camera_e_bridge_kPitchX, "kPitchX", &bridgeKPitchX, -100, 100);
     IntPage_init(&menu_main_arg_k_camera_e_bridge_ti, "ti", &bridgeTI, 0, 100000);
@@ -425,14 +424,10 @@ void core0_main(void)
     ListPage_init(&menu_main_arg_k_jump, "jump", (Page*[]){
         &menu_main_arg_k_jump_step0,
         &menu_main_arg_k_jump_step1,
-        &menu_main_arg_k_jump_step2,
-        &menu_main_arg_k_jump_step3,
         NULL
     });
     IntPage_init(&menu_main_arg_k_jump_step0, "0", &(jumpStep[0]), 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step1, "1", &(jumpStep[1]), 0, 1000);
-    IntPage_init(&menu_main_arg_k_jump_step2, "2", &(jumpStep[2]), 0, 1000);
-    IntPage_init(&menu_main_arg_k_jump_step3, "3", &(jumpStep[3]), 0, 1000);
     ListPage_init(&menu_main_arg_PID, "PID", (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,
@@ -449,16 +444,17 @@ void core0_main(void)
     ListPage_init(&menu_main_arg_filter, "filter", (Page*[]){
         &menu_main_arg_filter_turn,
         &menu_main_arg_filter_speed,
-        &menu_main_arg_filter_xAx,
         &menu_main_arg_filter_xAx0,
+        &menu_main_arg_filter_xAx1,
         NULL
     });
     FloatPage_init(&menu_main_arg_filter_turn, "turn", &Filter1_turn.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_speed, "speed", &Filter1_speed.alpha, 0, 1);
-    FloatPage_init(&menu_main_arg_filter_xAx, "xAx", &Filter1_xAx.alpha, 0, 1);
     FloatPage_init(&menu_main_arg_filter_xAx0, "xAx0", &Filter0_xAx.deltaMax, 0, 10000);
+    FloatPage_init(&menu_main_arg_filter_xAx1, "xAx1", &Filter1_xAx.alpha, 0, 1);
     ListPage_init(&menu_main_debug, "debug", (Page*[]){
         &menu_main_debug_wheelClear,
+        &menu_main_debug_vofa,
         &menu_main_debug_wifiIm,
         &menu_main_debug_fs,
         &menu_main_debug_flz,
@@ -469,6 +465,13 @@ void core0_main(void)
         NULL
     });
     BoolPage_init(&menu_main_debug_wheelClear, "wClear", &wheelClear, 0x03);
+    ListPage_init(&menu_main_debug_vofa, "vofa", (Page*[]){
+        &menu_main_debug_vofa_send,
+        &menu_main_debug_vofa_receive,
+        NULL
+    });
+    FuncPage_init(&menu_main_debug_vofa_send, "send", Vofa_pageAllSend);
+    FuncPage_init(&menu_main_debug_vofa_receive, "receive", Vofa_pageAllReceive);
     FuncPage_init(&menu_main_debug_wifiIm, "wifiIm", Wifi_Image_Init);
     ListPage_init(&menu_main_debug_fs, "forceSpeed", (Page*[]){
         &menu_main_debug_fs_en,
@@ -510,13 +513,14 @@ void core0_main(void)
     =menu_main_debug_fwp_rz.extends.floatValue.dot=2;
     BoolPage_init(&menu_main_debug_frb, "frb", &fRb, 0x03);
     FuncPage_init(&menu_main_debug_jump, "jump", jump);
+    printf("^/send$");
 
     beepLong();
     ips200_clear();
     for(;;){
         // 此处编写需要循环执行的代码
-        PageKey_press(&menu_main, pressed);
-        PageKey_print(&menu_main, 0);
+        Page_press(&menu_main, pressed);
+        Page_print(&menu_main, 0);
         Image_showCamera(0, 200);
         ips200_show_uint(188,200,fps,4);
         ips200_show_uint(188,216,cameraStatus,3);

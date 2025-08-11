@@ -33,7 +33,7 @@ void Vofa_Adjust(void);
 * @author: SJX
 * @note  ：需要在串口中断中调用
 ************************************************/
-uint8 RxBuffer[1];//串口接收缓冲
+uint8 RxBuffer;//串口接收缓冲
 uint16 RxLine = 0;//指令长度
 uint8 DataBuff[256];//指令内容
 void My_Vofa_CallBack(void)
@@ -46,7 +46,7 @@ void My_Vofa_CallBack(void)
     static uint8_t isReceiving = 0; // 标志是否处于接收数据状态
     static uint16_t bufferIndex = 0; // 当前数据写入索引
     // 检测是否是数据包的起始标志
-        if (RxBuffer[0] == '^')
+        if (RxBuffer == '^')
         {
             isReceiving = 1; // 开始接收
             bufferIndex = 0; // 重置索引
@@ -54,18 +54,13 @@ void My_Vofa_CallBack(void)
 
         if (isReceiving)
         {
-            DataBuff[bufferIndex++] = RxBuffer[0]; // 保存当前字节
+            DataBuff[bufferIndex++] = RxBuffer; // 保存当前字节
 
             // 如果检测到结束标志位，停止接收并解析
-            if (RxBuffer[0] == '$')
+            if (RxBuffer == '$')
             {
                 isReceiving = 0; // 停止接收
                 DataBuff[bufferIndex] = '\0'; // 字符串结束符
-
-//                printf("RXLen=%d\r\n", bufferIndex);
-//                for (int i = 0; i < bufferIndex; i++)
-//                    printf("UART DataBuff[%d] = %c\r\n", i, DataBuff[i]);
-
                 Vofa_Adjust(); // 数据解析和参数赋值
                 memset(DataBuff, 0, sizeof(DataBuff)); // 清空缓冲区
             }
@@ -79,7 +74,7 @@ void My_Vofa_CallBack(void)
             }
         }
 
-        RxBuffer[0] = 0; // 清空接收缓冲区
+        RxBuffer = 0; // 清空接收缓冲区
 }
 
 /***********************************************
@@ -105,41 +100,79 @@ void Vofa_Adjust(void)
             strncpy(tempBuff, start, sizeof(tempBuff) - 1);
             tempBuff[sizeof(tempBuff) - 1] = '\0';
             char *tempEnd = tempBuff+strlen(tempBuff)-1;
-            // 调用解析逻辑
-            char *equal = strchr(tempBuff, '=');
-            if(equal == NULL){
-                equal = tempEnd;
+            *tempEnd = '\0';
+            printf("^/received %s$\r\n",tempBuff+1);
+            if(tempBuff[1] == '/'){
+                //TODO:其他指令，如遥控器
+            }else{
+                char path[256], value[256];
+                char *equal = strchr(tempBuff, '=');
+                if(equal == NULL){
+                    equal = tempEnd;
+                }
+                strncpy(path, tempBuff+1, equal-tempBuff-1);
+                path[equal-tempBuff-1] = '\0';
+                strncpy(value, equal+1, tempEnd-equal);
+                value[tempEnd-equal] = '\0';
+                Page *menu = Page_getByPath(&menu_main, path);
+                if(menu == NULL){
+                    continue;
+                }
+                switch(menu->type){
+                    case INT_TYPE:
+                        *menu->extends.intValue.value = (int)atoi(value);
+                        break;
+                    case FLOAT_TYPE:
+                        *menu->extends.floatValue.value = (float)atof(value);
+                        break;
+                    case DOUBLE_TYPE:
+                        *menu->extends.doubleValue.value = (double)atof(value);
+                        break;
+                    case BOOL_TYPE:
+                        *menu->extends.boolValue.value = (uint8)atoi(value);
+                        break;;
+                    case ENUM_TYPE:
+                        *menu->extends.enumValue.value = (uint32)atoi(value);
+                        break;
+                    case FUNC_TYPE:
+                        menu->extends.funcValue.value();
+                        break;
+                }
+                beepShort();
             }
-            *equal = '\0';
-            // 处理指令类型（P1、I1等）
-            Page *menu = PageKey_getByPath(&menu_main, tempBuff+1);
-            if(menu == NULL){
-                return;
-            }
-            switch(menu->type){
-                case INT_TYPE:
-                    *menu->extends.intValue.value = (int)atoi(equal+1);
-                    break;
-                case FLOAT_TYPE:
-                    *menu->extends.floatValue.value = (float)atof(equal+1);
-                    break;
-                case DOUBLE_TYPE:
-                    *menu->extends.doubleValue.value = (double)atof(equal+1);
-                    break;
-                case BOOL_TYPE:
-                    *menu->extends.boolValue.value = (uint8)atoi(equal+1);
-                    break;;
-                case ENUM_TYPE:
-                    *menu->extends.enumValue.value = (uint32)atoi(equal+1);
-                    break;
-                case FUNC_TYPE:
-                    menu->extends.funcValue.value();
-                    break;
-            }
-            beepShort();
-            // 添加其他指令的处理逻辑
         }
 
         start = end + 1; // 移动到下一条指令
     }
+}
+
+void Vofa_pageSend(Page *page){
+    char path[PAGE_PATH_MAX+1];
+    Page_getPath(page, path);
+    switch(page->type){
+        case INT_TYPE:
+            printf("^%s=%d$", path, *page->extends.intValue.value);
+            break;
+        case FLOAT_TYPE:
+            printf("^%s=%f$", path, *page->extends.floatValue.value);
+            break;
+        case DOUBLE_TYPE:
+            printf("^%s=%lf$", path, *page->extends.doubleValue.value);
+            break;
+        case BOOL_TYPE:
+            printf("^%s=%d$", path, *page->extends.boolValue.value);
+            break;;
+        case ENUM_TYPE:
+            printf("^%s=%d$", path, *page->extends.enumValue.value);
+            break;
+    }
+}
+
+void Vofa_pageAllSend(){
+    Page_allSubRun(&menu_main, Vofa_pageSend);
+    printf("\r\n");
+}
+
+void Vofa_pageAllReceive(){
+    printf("^/send$\r\n");
 }

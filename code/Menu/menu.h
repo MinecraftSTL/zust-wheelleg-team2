@@ -14,6 +14,7 @@
 #define PAGE_ELEMENT_MAX 11
 #define PAGE_NAME_MAX 20
 #define PAGE_VALUE_MAX 10
+#define PAGE_PATH_MAX 256
 
 enum KeyType{
     NULL_KEY,
@@ -89,13 +90,15 @@ typedef struct Page{
 } Page;
 
 void PageKey_init(Page this, char name[], enum PageExtendsType type, void *value);
-void PageKey_print(Page *this, uint8 row);
-uint8 PageKey_press(Page *this, uint8 pressed[]);
-Page *PageKey_getRoot(Page *this);
-Page *PageKey_getOpened(Page *this);
-Page *PageKey_getByPath(Page *this, char *path);
-uint8 PageKey_back(Page *this);
-void PageKey_home(Page *this);
+void Page_print(Page *this, uint8 row);
+uint8 Page_press(Page *this, uint8 pressed[]);
+Page *Page_getRoot(Page *this);
+Page *Page_getOpened(Page *this);
+void Page_getPath(Page *this, char path[PAGE_PATH_MAX+1]);
+Page *Page_getByPath(Page *this, char path[PAGE_PATH_MAX+1]);
+void Page_allSubRun(Page *this, void (*func)(Page*));
+uint8 Page_back(Page *this);
+void Page_home(Page *this);
 void ListPage_init(Page *this, char name[], Page *key[]);
 void ListPage_setRoot(Page *this);
 void IntPage_init(Page *this, char name[], int32 *value, int32 max, int32 min);

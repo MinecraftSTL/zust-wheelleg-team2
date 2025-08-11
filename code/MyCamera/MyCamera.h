@@ -81,7 +81,6 @@ extern float rampZ;
 extern int barrierY0;
 extern int barrierY1;
 extern int barrierT;
-extern int bridgeX;
 extern int bridgeY;
 extern float bridgeKPitchX;
 extern int bridgeTI;
@@ -108,4 +107,6 @@ extern uint64 carRunMs;
 void MyCamera_Init(void);
 void Image_showCamera(uint16 x, uint16 y);
 void CameraStatus_set(CameraStatus this);
+void Camera_pit(uint32 period, int16 speed);
+
 #endif

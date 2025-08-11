@@ -178,6 +178,9 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         Leg_set_pos(lx, lz, rx, rz);
     }
     Camera_pit(PIT10ms, Encoder_speed_l<Encoder_speed_r ? Encoder_speed_l : Encoder_speed_r);
+    if(carStatus > CAR_BALANCE && (fps == 0 || fps > 7000)){//…„œÒÕ∑≈≈œﬂÀ…¡À
+        CarStatus_set(CAR_BALANCE);
+    }
 }
 
 IFX_INTERRUPT(cc61_pit_ch1_isr, CCU6_1_CH1_INT_VECTAB_NUM, CCU6_1_CH1_ISR_PRIORITY)
