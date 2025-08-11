@@ -50,7 +50,7 @@ int bridgeTO = 10000;
 int bridgeS = 60000;
 float bridgeZ = -80;
 int bridgeDetectL = 0;
-float otherBPow = 7.5;
+float otherBPow = 15;
 int errY = 50;
 int errDeltaY = 30;
 
