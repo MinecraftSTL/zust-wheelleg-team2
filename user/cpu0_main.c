@@ -49,10 +49,10 @@ int core0_main(void)
     // 此处编写用户代码 例如外设初始化代码等
     Beep_Start();
     gpio_init(P21_4, GPO, 1, GPO_PUSH_PULL);
-    key_init(20);
+    key_init(5);
     MyEncoder_Init();
     ips200_init(IPS200_TYPE_SPI);
-    pit_ms_init(CCU60_CH0, 20);
+    pit_ms_init(CCU60_CH0, 5);
     Motor_Init();
     Beep_Stop();
     // 此处编写用户代码 例如外设初始化代码等

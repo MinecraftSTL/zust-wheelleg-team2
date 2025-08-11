@@ -62,11 +62,13 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
     }
     Get_Switch_Num();
     if(switch_encoder_change_num > 0){
-        pressed |= 0x04;
+        pressed |= 0x40;
     }
     if(switch_encoder_change_num < 0){
-        pressed |= 0x02;
+        pressed |= 0x20;
     }
+    switch_encode_change_get_buff_flag = 0;
+    GetSpeed();
 }
 
 

@@ -144,8 +144,9 @@ void Get_Switch_Num(void)
         encoder_cnt = 0;
         encoder_cnt += tmp;
     }
-//    printf("%d, %d, %d, %d\r\n", switch_encoder_change_num, switch_encode_change_get_buff_flag,
-//            last_switch_encoder_num, switch_encoder_num);
+
+    printf("%d, %d, %d, %d\r\n", timer_cnt, switch_encode_change_get_buff_flag,
+            last_switch_encoder_num, switch_encoder_num);
     if((last_switch_encoder_num != switch_encoder_num ) && switch_encode_change_get_buff_flag == 0)
     {
         switch_encode_change_get_buff_flag = 1;
@@ -164,8 +165,6 @@ void Get_Switch_Num(void)
 //        Beep_Stop();
     }
     last_switch_encoder_num = switch_encoder_num;
-
-
 }
 /***********************************************
 * @brief : 旋转编码器获取函数，仅用于旋转编码器
@@ -187,7 +186,9 @@ int16 My_Switch_encoder_get_count (encoder_index_enum encoder_n)
         default: encoder_data = 0;
     }
     return encoder_data;
+
 }
+
 /***********************************************
 * @brief : 判断旋转编码器是否出现变化
 * @param : void

@@ -210,7 +210,9 @@ void IntPage_press(Page *this, uint8 pressed){
         }
     }
     if(pressed&0x10){
-        if(this->open >= 0){
+        if(this->open < 0){
+            PageKey_back(this);
+        }else{
             this->extends.intValue.opened = !this->extends.intValue.opened;
         }
     }
@@ -299,7 +301,9 @@ void FloatPage_press(Page *this, uint8 pressed){
         }
     }
     if(pressed&0x10){
-        if(this->open >= 0){
+        if(this->open < 0){
+            PageKey_back(this);
+        }else{
             this->extends.floatValue.opened = !this->extends.floatValue.opened;
         }
     }
@@ -388,7 +392,9 @@ void DoublePage_press(Page *this, uint8 pressed){
         }
     }
     if(pressed&0x10){
-        if(this->open >= 0){
+        if(this->open < 0){
+            PageKey_back(this);
+        }else{
             this->extends.doubleValue.opened = !this->extends.doubleValue.opened;
         }
     }
