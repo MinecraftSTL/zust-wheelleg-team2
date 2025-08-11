@@ -15,6 +15,6 @@ typedef struct{
     uint32 time;
 }Step;
 
-Step getStep(const uint32 this[], uint32 time);
+Step getStep(const int32 this[], uint32 time);
 
 #endif /* CODE_PROCESS_PROCESS_H_ */

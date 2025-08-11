@@ -7,9 +7,9 @@
 
 #include "Process.h"
 
-Step getStep(const uint32 this[], uint32 time){
+Step getStep(const int32 this[], uint32 time){
     Step ret = {0, time};
-    for(; this[ret.step]; ++ret.step){
+    for(; this[ret.step]>=0; ++ret.step){
         if(ret.time < this[ret.step]){
             break;
         }else{

@@ -23,8 +23,8 @@
 #define DLR (160.f)
 
 #define LEG_MAX_R 1.57
-#define LEG_MIN_Z 0
-#define LEG_MAX_Z 140
+#define LEG_MIN_Z 26
+#define LEG_MAX_Z 147
 #define LEG_MAX_X 50
 
 struct LegServoAngle{
@@ -44,7 +44,9 @@ void Leg_set_zero();
 void Leg_set_duty(float rb, float rf, float lf, float lb);
 void Leg_set_pos(float lx, float lz, float rx, float rz);
 
-extern const uint32 jumpStep[];
+extern const int jumpStep[];
+extern float jumpLegZMin, jumpLegZMax;
+
 void jumpPit(uint32 period, float *legZ);
 void jump();
 

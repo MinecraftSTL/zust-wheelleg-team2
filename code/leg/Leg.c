@@ -88,11 +88,13 @@ void Leg_set_pos(float lx, float lz, float rx, float rz){
     Leg_set_duty(r.b, r.f, l.f, l.b);
 }
 
-const uint32 jumpStep[] = {
-    140,//ÉìÍÈ
+const int jumpStep[] = {
+    0,//Ô¤ÊÕÍÈ
+    150,//ÉìÍÈ
     100,//ÊÕÍÈ
-    0,
+    -1,
 };
+float jumpLegZMin = -26, jumpLegZMax = -147;
 
 uint32 jumpTime = 32767;
 
@@ -100,10 +102,13 @@ void jumpPit(uint32 period, float *legZ){
     Step step = getStep(jumpStep, jumpTime);
     switch(step.step){
         case 0:
-            *legZ = -140;
+            *legZ = jumpLegZMin;
             break;
         case 1:
-            *legZ = -30;
+            *legZ = jumpLegZMax;
+            break;
+        case 2:
+            *legZ = jumpLegZMin;
             break;
         default:
             return;
@@ -112,7 +117,7 @@ void jumpPit(uint32 period, float *legZ){
 }
 void jump(){
     Step step = getStep(jumpStep, jumpTime);
-    if(step.step >= 2){
+    if(step.step > 0){
         jumpTime = 0;
     }
 }

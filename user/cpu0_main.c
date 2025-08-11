@@ -101,6 +101,8 @@ Page menu_main_arg_k_camera_e_ramp_z;
 Page menu_main_arg_k_camera_e_barrier;
 Page menu_main_arg_k_camera_e_barrier_y0;
 Page menu_main_arg_k_camera_e_barrier_y1;
+Page menu_main_arg_k_camera_e_barrier_zMax;
+Page menu_main_arg_k_camera_e_barrier_zMin;
 Page menu_main_arg_k_camera_e_barrier_t;
 Page menu_main_arg_k_camera_e_bridge;
 Page menu_main_arg_k_camera_e_bridge_xAx;
@@ -122,6 +124,7 @@ Page menu_main_arg_k_camera_show_wait;
 Page menu_main_arg_k_jump;
 Page menu_main_arg_k_jump_step0;
 Page menu_main_arg_k_jump_step1;
+Page menu_main_arg_k_jump_step2;
 Page menu_main_arg_PID;
 PidPage menu_main_arg_PID_vAy;
 PidPage menu_main_arg_PID_xAy;
@@ -374,15 +377,19 @@ void core0_main(void)
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_e_ramp_s, "s", &rampS, 0, 10000000);
-    FloatPage_init(&menu_main_arg_k_camera_e_ramp_z, "z", &rampZ, -LEG_MIN_Z, -LEG_MAX_Z);
+    FloatPage_init(&menu_main_arg_k_camera_e_ramp_z, "z", &rampZ, -LEG_MAX_Z, -LEG_MIN_Z);
     ListPage_init(&menu_main_arg_k_camera_e_barrier, "barrier", (Page*[]){
         &menu_main_arg_k_camera_e_barrier_y0,
         &menu_main_arg_k_camera_e_barrier_y1,
+        &menu_main_arg_k_camera_e_barrier_zMax,
+        &menu_main_arg_k_camera_e_barrier_zMin,
         &menu_main_arg_k_camera_e_barrier_t,
         NULL
     });
     IntPage_init(&menu_main_arg_k_camera_e_barrier_y0, "y0", &barrierY0, 0, MT9V03X_H);
     IntPage_init(&menu_main_arg_k_camera_e_barrier_y1, "y1", &barrierY1, 0, MT9V03X_H);
+    FloatPage_init(&menu_main_arg_k_camera_e_barrier_zMax, "zMax", &jumpLegZMax, -LEG_MAX_Z, -LEG_MIN_Z);
+    FloatPage_init(&menu_main_arg_k_camera_e_barrier_zMin, "zMin", &jumpLegZMin, -LEG_MAX_Z, -LEG_MIN_Z);
     IntPage_init(&menu_main_arg_k_camera_e_barrier_t, "t", &barrierT, 0, 100000);
     ListPage_init(&menu_main_arg_k_camera_e_bridge, "bridge", (Page*[]){
         &menu_main_arg_k_camera_e_bridge_xAx,
@@ -421,10 +428,12 @@ void core0_main(void)
     ListPage_init(&menu_main_arg_k_jump, "jump", (Page*[]){
         &menu_main_arg_k_jump_step0,
         &menu_main_arg_k_jump_step1,
+        &menu_main_arg_k_jump_step2,
         NULL
     });
     IntPage_init(&menu_main_arg_k_jump_step0, "0", &(jumpStep[0]), 0, 1000);
     IntPage_init(&menu_main_arg_k_jump_step1, "1", &(jumpStep[1]), 0, 1000);
+    IntPage_init(&menu_main_arg_k_jump_step2, "2", &(jumpStep[2]), 0, 1000);
     ListPage_init(&menu_main_arg_PID, "PID", (Page*[]){
         &menu_main_arg_PID_vAy,
         &menu_main_arg_PID_xAy,

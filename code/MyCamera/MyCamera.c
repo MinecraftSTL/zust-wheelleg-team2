@@ -32,13 +32,13 @@ int rampY0 = 10;
 int rampY1 = 5;
 float rampZ = -45;
 int barrierY0 = 20;
-int barrierY1 = 40;
+int barrierY1 = 36;
 int barrierT = 200;
 int bridgeY = 5;
 float bridgeKPitchX = 0.5;
 int bridgeTI = 1000;
 int bridgeTO = 10000;
-int bridgeS = 52500;
+int bridgeS = 50000;
 float bridgeZ = -80;
 uint8 bridgeDetectL = 0;
 #define cameraAngle (5)
