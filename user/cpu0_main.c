@@ -55,6 +55,7 @@ Page menu_main_arg_k_camera;
 Page menu_main_arg_k_camera_bin;
 Page menu_main_arg_k_camera_bin_r;
 Page menu_main_arg_k_camera_bin_deltaT;
+Page menu_main_arg_k_camera_compErr;
 Page menu_main_arg_k_camera_i;
 Page menu_main_arg_k_camera_i_bly2RDR;
 Page menu_main_arg_k_camera_i_RD2IE;
@@ -149,6 +150,7 @@ void core0_main(void)
     menu_main_arg_k_kZero.extends.floatValue.dot = 1;
     ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
         &menu_main_arg_k_camera_bin,
+        &menu_main_arg_k_camera_compErr,
         &menu_main_arg_k_camera_i,
         &menu_main_arg_k_camera_IGFE,
         &menu_main_arg_k_camera_cross,
@@ -162,6 +164,7 @@ void core0_main(void)
     });
     IntPage_init(&menu_main_arg_k_camera_bin_r, "r", &binR, 0, MT9V03X_W);
     IntPage_init(&menu_main_arg_k_camera_bin_deltaT, "deltaT", &binDeltaT, -256, 255);
+    IntPage_init(&menu_main_arg_k_camera_compErr, "compErr", &compareErr,0,255);
     ListPage_init(&menu_main_arg_k_camera_i, "i", (Page*[]){
         &menu_main_arg_k_camera_i_bly2RDR,
         &menu_main_arg_k_camera_i_RD2IE,

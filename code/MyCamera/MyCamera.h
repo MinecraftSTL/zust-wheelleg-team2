@@ -3,6 +3,7 @@
 
 typedef enum{
     NONE,
+    IN_ZEBRA,
     IN_CROSS,
     OUT_CROSS,
 }CameraStatus;
@@ -31,6 +32,7 @@ extern Rgb565Image showImage;
 
 extern int binR;
 extern int binDeltaT;
+extern int compareErr;
 extern int bly2RDR;
 extern float RD2IE;
 extern float IGFE;
