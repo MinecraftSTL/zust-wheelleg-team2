@@ -3,7 +3,7 @@
 //Limitº¯Êý
 #define LIMIT_VAL(a,min,max) ((a)<(min)?(min):((a)>(max)?(max):(a)))
 
-float V0 = 200;
+float V0 = 300;
 /***********************************************
 * @brief : PWMÊä³ö
 * @param : void

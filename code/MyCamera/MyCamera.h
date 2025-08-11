@@ -13,12 +13,19 @@ typedef enum{
     CROSS,
     O_CROSS,
     I_LCIRCLE,
-    PTL_LCIRCLE,
-    TL_LCIRCLE,
+    PTI_LCIRCLE,
+    TI_LCIRCLE,
     LCIRCLE,
-    TR_LCIRCLE,
+    TO_LCIRCLE,
     PO_LCIRCLE,
     O_LCIRCLE,
+    I_RCIRCLE,
+    PTI_RCIRCLE,
+    TI_RCIRCLE,
+    RCIRCLE,
+    TO_RCIRCLE,
+    PO_RCIRCLE,
+    O_RCIRCLE,
 }CameraStatus;
 
 typedef struct{

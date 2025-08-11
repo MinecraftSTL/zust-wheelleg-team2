@@ -208,7 +208,7 @@ void core0_main(void)
     IntPage_init(&menu_main_arg_k_camera_straight_step, "step", &straightStep, 0, MT9V03X_H);
     FloatPage_init(&menu_main_arg_k_camera_straight_err, "err", &straightErr, 0, 1.57);
     menu_main_arg_k_camera_straight_err.extends.floatValue.dot = 1;
-    IntPage_init(&menu_main_arg_k_camera_status, "status", &cameraStatus, 0,100);
+    EnumPage_init(&menu_main_arg_k_camera_status, "status", &cameraStatus, (char*[]){"NONE",""});
     ListPage_init(&menu_main_arg_k_camera_e, "element", (Page*[]){
         &menu_main_arg_k_camera_e_zebra,
         &menu_main_arg_k_camera_e_cross,
