@@ -12,7 +12,7 @@
 #include <stdint.h>
 #include <math.h>
 
-#define zzz(x, z) ((x) > (z) ? (x) - (z) : (x) < (-z) ? (x) + (z) : 0)
+#define zzz(x, z) ((x) > (z) ? (x) - (z) : (x) < -(z) ? (x) + (z) : 0)
 
 float Calculate_Curvature(int array[], int start, int size);
 double curvature(double a[2],double b[2],double c[2]);

@@ -21,7 +21,7 @@
 #define LFD (90.f)
 #define LBU (60.f)
 #define LBD (90.f)
-#define DLR (160.f)
+#define DLR (185.f)
 
 #define LEG_MAX_R 1.48//TODO:1.57
 #define LEG_MIN_Z 26
@@ -37,6 +37,7 @@ struct LegServoAngle{
 extern const float defaultLegX, defaultLegZ;
 extern float targetLegX, targetLegZ;
 
+extern uint8 legXReset;
 extern uint8 rollBalance;
 extern float rollBalanceK;
 

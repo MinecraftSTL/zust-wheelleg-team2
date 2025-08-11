@@ -15,6 +15,8 @@
 #define IPS200_DEFAULT_SELECTCOLOR         (0x7BFF  )
 #define IPS200_DEFAULT_OPENCOLOR           (0x001F  )
 
+void ips200_init_spi();
+
 void ips200_reset_color();
 void ips200_set_pencolor(const uint16 color);
 void ips200_show_char_color(uint16 x, uint16 y, const char dat, const uint16 color);

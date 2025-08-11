@@ -6,6 +6,11 @@
  */
 #include "MyIps200.h"
 
+void ips200_init_spi(){
+    ips200_init(IPS200_TYPE_SPI);
+    ips200_clear();
+}
+
 void ips200_reset_color(){
     ips200_set_pencolor(IPS200_DEFAULT_PENCOLOR);
 }

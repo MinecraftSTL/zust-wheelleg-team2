@@ -10,7 +10,7 @@
 void Fps_init(Fps *this, uint32 period){
     zf_assert(0 < period && period <= 1000);
     this->sepNum = 1000/period;
-    memset(this->f, 0, sizeof(uint16)*1001);
+    memset(this->f, 0x0, sizeof(uint16)*1001);
     this->fps = 0;
     this->p = 0;
 }

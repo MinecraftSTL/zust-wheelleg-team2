@@ -77,6 +77,7 @@ typedef enum
     KEY_RELEASE,                                                                // 按键释放状态
     KEY_SHORT_PRESS,                                                            // 按键短按状态
     KEY_LONG_PRESS,                                                             // 按键长按状态
+    KEY_LONGLONG_PRESS,
 }key_state_enum;
 //==================================================定义 按键 参数结构体===============================================
 

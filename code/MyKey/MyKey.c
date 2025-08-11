@@ -33,6 +33,8 @@ void my_key_scanner (void)
             ++ key_press_time[i];
             if(key_press_time[i] == KEY_LONG_PRESS_PERIOD / scanner_period){
                 key_state[i] = KEY_LONG_PRESS;
+            }else if(key_press_time[i] == KEY_LONG_PRESS_PERIOD * 10 / scanner_period){
+                key_state[i] = KEY_LONGLONG_PRESS;
             }
         }else{
             if(key_press_time[i]){

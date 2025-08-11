@@ -13,14 +13,12 @@ typedef enum{
     R_CROSS,
     O_CROSS,
     I_LCIRCLE,
-    PTI_LCIRCLE,
     TI_LCIRCLE,
     R_LCIRCLE,
     TO_LCIRCLE,
     O_LCIRCLE,
     OR_CROSS_LCIRCLE,
     I_RCIRCLE,
-    PTI_RCIRCLE,
     TI_RCIRCLE,
     R_RCIRCLE,
     TO_RCIRCLE,
@@ -71,11 +69,11 @@ extern float straightErr;
 extern float statusJump;
 extern float statusK;
 extern int elementYMin;
+extern int elementY;
 extern int zebraY;
 extern int zebraT;
 extern int zebraS;
 extern int crossX;
-extern int crossY;
 extern int rampS;
 extern int rampY;
 extern float rampZ;
@@ -98,6 +96,7 @@ extern uint8 showWait;
 extern float bendV;
 extern float circleV;
 extern float rampDV;
+extern float barrierV;
 extern float bridgeV;
 
 extern float cameraV;

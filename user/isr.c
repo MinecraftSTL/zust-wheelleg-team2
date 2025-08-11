@@ -60,6 +60,9 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
         ++pressed[CENTER_KEY];
     }else if(my_key_get_state(KEY_1) == KEY_LONG_PRESS){
         ++pressed[BACK_KEY];
+    }else if(my_key_get_state(KEY_1) == KEY_LONGLONG_PRESS){
+        beepLong();
+        ips200_init_spi();
     }
     Get_Switch_Num();
     if(switch_encoder_change_num < 0){
@@ -118,7 +121,11 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
             targetV += control[0];
         }
         float tg_pitchX = pid(&PID_vVx, targetV, Encoder_speed)/1000;
-        legX += tg_pitchX;
+        if(legXReset){
+            PID_clear(&PID_vVx);
+        }else{
+            legX += tg_pitchX;
+        }
         tg_pitchV += pid(&PID_WxAy, kZero-kPitchX*tg_pitchX, pitch);
         if(carStatus >= CAR_RUN){
             tg_yawV = pid(&PID_vAz, 0, cameraErr);
@@ -185,7 +192,7 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
         Leg_set_pos(lx, lz, rx, rz);
     }
     Camera_pit(PIT10ms, Encoder_speed);
-    if(carStatus > CAR_BALANCE && (fps.fps == 0 || fps.fps > 7000)){//摄像头排线松了
+    if(carStatus > CAR_BALANCE && (fps.fps <= 0 || fps.fps >= 7000)){//摄像头排线松了
         CarStatus_set(CAR_BALANCE);
     }
 }
