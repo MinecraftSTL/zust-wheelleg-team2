@@ -51,9 +51,14 @@ Page menu_main_arg;
 Page menu_main_arg_k;
 Page menu_main_arg_k_kZero;
 Page menu_main_arg_k_speedF;
-Page menu_main_arg_k_lx2s;
-Page menu_main_arg_k_lx2s_a;
-Page menu_main_arg_k_lx2s_k;
+Page menu_main_arg_k_camera;
+Page menu_main_arg_k_camera_bin;
+Page menu_main_arg_k_camera_bin_r;
+Page menu_main_arg_k_camera_bin_deltaT;
+Page menu_main_arg_k_camera_i;
+Page menu_main_arg_k_camera_i_bly2IR;
+Page menu_main_arg_k_camera_i_bly2RDR;
+Page menu_main_arg_k_camera_i_RD2IE;
 Page menu_main_arg_k_jump;
 Page menu_main_arg_k_jump_step0;
 Page menu_main_arg_k_jump_step1;
@@ -127,12 +132,34 @@ void core0_main(void)
     });
     ListPage_init(&menu_main_arg_k, "k", (Page*[]){
         &menu_main_arg_k_kZero,
+        &menu_main_arg_k_camera,
         &menu_main_arg_k_jump,
         &menu_main_arg_k_turnA,
         NULL
     });
     FloatPage_init(&menu_main_arg_k_kZero, "kZero", &kZero, -30, 30);
     menu_main_arg_k_kZero.extends.floatValue.dot = 1;
+    ListPage_init(&menu_main_arg_k_camera, "camera", (Page*[]){
+        &menu_main_arg_k_camera_bin,
+        &menu_main_arg_k_camera_i,
+        NULL
+    });
+    ListPage_init(&menu_main_arg_k_camera_bin, "bin", (Page*[]){
+        &menu_main_arg_k_camera_bin_r,
+        &menu_main_arg_k_camera_bin_deltaT,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_bin_r, "r", &binR, 0, MT9V03X_W);
+    IntPage_init(&menu_main_arg_k_camera_bin_deltaT, "deltaT", &binDeltaT, -256, 255);
+    ListPage_init(&menu_main_arg_k_camera_i, "i", (Page*[]){
+//        &menu_main_arg_k_camera_i_bly2IR,
+        &menu_main_arg_k_camera_i_bly2RDR,
+        &menu_main_arg_k_camera_i_RD2IE,
+        NULL
+    });
+    IntPage_init(&menu_main_arg_k_camera_i_bly2IR, "bly2IR", &bly2IR, 0, MT9V03X_W);
+    IntPage_init(&menu_main_arg_k_camera_i_bly2RDR, "bly2RDR", &bly2RDR, 0, MT9V03X_W);
+    FloatPage_init(&menu_main_arg_k_camera_i_RD2IE, "RD2IE", &RD2IE, 0, 1.57);
     ListPage_init(&menu_main_arg_k_jump, "jump", (Page*[]){
         &menu_main_arg_k_jump_step0,
         &menu_main_arg_k_jump_step1,
@@ -230,7 +257,7 @@ void core0_main(void)
     PageKey_print(&menu_main, 0);
     for(;;){
         // 此处编写需要循环执行的代码
-        PageKey_press(&menu_main, pressed);
+        while(PageKey_press(&menu_main, pressed));
         PageKey_print(&menu_main, 0);
         MyCamera_Show(200);
         Wifi_Image_Send_Camera();

@@ -59,7 +59,7 @@ void PageKey_print(Page *this, uint8 row){
             break;
     }
 }
-void PageKey_press(Page *this, uint8 pressed[]){
+uint8 PageKey_press(Page *this, uint8 pressed[]){
     switch(this->type){
         case LIST_TYPE:
             ListPage_press(this, pressed);
@@ -85,12 +85,15 @@ void PageKey_press(Page *this, uint8 pressed[]){
     }else if(pressed[BACK_KEY]){
         PageKey_back(this);
     }
+    uint8 ret = 0;
     for(int i=0; i<KEY_NUM; ++i){
         if(pressed[i]){
             beepShort();
             --pressed[i];
+            ret = 1;
         }
     }
+    return ret;
 }
 Page *PageKey_getRoot(Page *this){
     if(this->parent != NULL){

@@ -49,7 +49,7 @@ void core1_main(void)
     cpu_wait_event_ready();                 // 等待所有核心初始化完毕
     for(;;){
         // 此处编写需要循环执行的代码
-        Image_Process();
+        Image_processCamera();
         // 此处编写需要循环执行的代码
     }
 }

@@ -22,6 +22,12 @@ extern int camera_err;
 
 extern Rgb565Image showImage;
 
+extern uint16 binR;
+extern int binDeltaT;
+extern uint16 bly2IR;
+extern uint16 bly2RDR;
+extern float RD2IE;
+
 void MyCamera_Init(void);
 void MyCamera_Show(uint16 start_y);
 uint8 Image_get(Image *this, uint16 y, uint16 x);

@@ -15,6 +15,7 @@ float Lowpass_Alpha = 0.3;
 void gyro_init()
 {
     my_gyroscope_init();
+    Set_LowpassFilter_Range_ICM42688(ICM42688_AFS_8G, ICM42688_AODR_1000HZ, ICM42688_GFS_1000DPS, ICM42688_GODR_1000HZ);
 }
 void gyro_set(){
     system_delay_ms(1000);

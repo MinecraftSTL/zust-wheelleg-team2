@@ -77,7 +77,7 @@ typedef struct Page{
 
 void PageKey_init(Page this, char name[], enum PageExtendsType type, void *value);
 void PageKey_print(Page *this, uint8 row);
-void PageKey_press(Page *this, uint8 pressed[]);
+uint8 PageKey_press(Page *this, uint8 pressed[]);
 Page *PageKey_getRoot(Page *this);
 Page *PageKey_getOpened(Page *this);
 Page *PageKey_getByPath(Page *this, char *path);
