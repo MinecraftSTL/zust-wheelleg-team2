@@ -110,13 +110,12 @@ IFX_INTERRUPT(cc61_pit_ch0_isr, CCU6_1_CH0_INT_VECTAB_NUM, CCU6_1_CH0_ISR_PRIORI
 //        printf("%f, %f, %f, %f, %f, %f\r\n",vAx,vAy,vAz,xAx,xAy,xAz);
 //        printf("%f, %f, %f\r\n",aXx,aXy,aXz);
 //        printf("%f,%f,%f\r\n", kZero,VxDownAy,pitch);
-        legX = pid(&PID_LPitch, 0, VxKZero)/10;
         tg_pitchV = pid(&PID_WxAy, kZero-VxKZero, pitch);
 //        printf("%d,%f,%f,%f\r\n", Encoder_speed,xAy,aAy,speed);
+        legX = legZ*tan(VxKZero*PI/180);
     }else{
         PID_clear(&PID_vVx);
         PID_clear(&PID_WxAy);
-        PID_clear(&PID_LPitch);
 //        printf("%f,%f\r\n", pitch,kZero);
     }
     float new_gyro_y = my_gyro_y-zero_my_gyro_y;
