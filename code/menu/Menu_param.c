@@ -389,6 +389,7 @@ void Menu_param_init(){
         &menu_main_arg_k_camera_compensate,
         &menu_main_arg_k_camera_bin,
         &menu_main_arg_k_camera_trapezoid,
+        &menu_main_arg_k_camera_start,
         &menu_main_arg_k_camera_eigenvalue,
         &menu_main_arg_k_camera_status,
         &menu_main_arg_k_camera_e,
@@ -510,7 +511,7 @@ void Menu_param_init(){
         NULL
     });
     BoolPage_init(&menu_main_arg_k_camera_e_cross_en, "en", &crossEn, 0x03);
-    IntPage_init(&menu_main_arg_k_camera_e_cross_y, "x", &crossY, 0, MT9V03X_H);//TODO:rename to y
+    IntPage_init(&menu_main_arg_k_camera_e_cross_y, "y", &crossY, 0, MT9V03X_H);
     ListPage_init(&menu_main_arg_k_camera_e_block, "block", (Page*[]){
         &menu_main_arg_k_camera_e_block_lEn,
         &menu_main_arg_k_camera_e_block_rEn,
