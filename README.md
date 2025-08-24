@@ -516,7 +516,7 @@
 > > 
 > > `command`, `目标前进速度`, `目标左转速度`
 
-在[NodeTuner.jar]()给出了上位机编写示例，此代码未经混淆，但不开源。
+在[NodeTuner.jar](https://github.com/MinecraftSTL/zust-wheelleg-team2/blob/main/code/menu/NodeTuner.jar)给出了上位机编写示例，此代码未经混淆，但不开源。
 
 ## 梗
 
