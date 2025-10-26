@@ -2,7 +2,7 @@
  * PidPage.h
  *
  *  Created on: 2025Äê3ÔÂ11ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #ifndef CODE_MENU_PIDPAGE_H_

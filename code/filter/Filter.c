@@ -2,7 +2,7 @@
  * Filter.c
  *
  *  Created on: 2025Äê3ÔÂ3ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #include "Filter.h"

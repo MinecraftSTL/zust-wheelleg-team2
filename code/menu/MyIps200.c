@@ -2,7 +2,7 @@
  * myIps200.c
  *
  *  Created on: 2025Äê4ÔÂ5ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 #include "MyIps200.h"
 

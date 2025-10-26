@@ -2,7 +2,7 @@
  * cpu1_main.h
  *
  *  Created on: 2024Äê12ÔÂ15ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #ifndef USER_CPU1_MAIN_H_

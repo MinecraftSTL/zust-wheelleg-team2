@@ -2,7 +2,7 @@
  * Pit.c
  *
  *  Created on: 2025Äê3ÔÂ16ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 #include "Pit.h"
 

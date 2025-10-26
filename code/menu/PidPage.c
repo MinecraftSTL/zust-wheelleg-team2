@@ -2,7 +2,7 @@
  * PidPage.c
  *
  *  Created on: 2025Äê3ÔÂ11ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #include "PidPage.h"

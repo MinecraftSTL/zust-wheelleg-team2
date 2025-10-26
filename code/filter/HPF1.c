@@ -2,7 +2,7 @@
  * LPF.c
  *
  *  Created on: 2025Äê3ÔÂ1ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #include "Filter.h"

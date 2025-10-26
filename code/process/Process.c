@@ -2,7 +2,7 @@
  * Process.c
  *
  *  Created on: 2025Äê3ÔÂ15ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #include "Process.h"

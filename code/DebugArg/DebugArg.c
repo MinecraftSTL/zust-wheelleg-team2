@@ -2,7 +2,7 @@
  * Debug.c
  *
  *  Created on: 2025Äê1ÔÂ14ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #include "DebugArg.h"

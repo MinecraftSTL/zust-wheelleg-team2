@@ -2,7 +2,7 @@
  * Menu_param.c
  *
  *  Created on: 2025Äê4ÔÂ21ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #include "Menu_param.h"

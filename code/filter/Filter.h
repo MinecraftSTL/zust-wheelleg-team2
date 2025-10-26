@@ -2,7 +2,7 @@
  * Filter.h
  *
  *  Created on: 2025Äê3ÔÂ1ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #ifndef CODE_FILTER_FILTER_H_

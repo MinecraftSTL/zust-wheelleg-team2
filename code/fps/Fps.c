@@ -2,7 +2,7 @@
  * Fps.c
  *
  *  Created on: 2025Äê3ÔÂ23ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #include "Fps.h"

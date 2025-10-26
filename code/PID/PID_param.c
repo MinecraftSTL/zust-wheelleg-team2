@@ -2,7 +2,7 @@
  * param.c
  *
  *  Created on: 2024Äê12ÔÂ23ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 #include "Pid_param.h"
 

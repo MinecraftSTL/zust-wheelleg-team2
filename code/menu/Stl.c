@@ -2,7 +2,7 @@
  * Stl.c
  *
  *  Created on: 2025Äê4ÔÂ20ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 #include "Stl.h"
 

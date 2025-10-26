@@ -2,7 +2,7 @@
  * PID_param.h
  *
  *  Created on: 2024Äê12ÔÂ23ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #ifndef CODE_PID_PID_PARAM_H_

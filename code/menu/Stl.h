@@ -2,7 +2,7 @@
  * Stl.h
  *
  *  Created on: 2025Äê4ÔÂ20ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #ifndef CODE_MENU_STL_H_

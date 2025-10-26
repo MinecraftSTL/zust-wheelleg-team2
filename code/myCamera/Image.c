@@ -2,7 +2,7 @@
  * Image.c
  *
  *  Created on: 2025Äê7ÔÂ15ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 #include "Image.h"
 

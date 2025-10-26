@@ -2,7 +2,7 @@
  * Image.h
  *
  *  Created on: 2025Äê7ÔÂ15ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 #ifndef CODE_IMAGE_IMAGE_H_

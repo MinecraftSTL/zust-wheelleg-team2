@@ -2,7 +2,7 @@
  * genshin.c
  *
  *  Created on: 2025Äê4ÔÂ4ÈÕ
- *      Author: minec
+ *      Author: MCSTL
  */
 
 
