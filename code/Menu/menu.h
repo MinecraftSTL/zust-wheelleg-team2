@@ -2,7 +2,7 @@
  * Menu.h
  *
  *  Created on: 2024Äê11ÔÂ14ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_MENU_H_

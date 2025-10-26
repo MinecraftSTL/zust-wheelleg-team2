@@ -2,7 +2,7 @@
  * Menu_param.c
  *
  *  Created on: 2025Äê4ÔÂ21ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #include "Menu_param.h"

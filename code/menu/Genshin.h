@@ -2,7 +2,7 @@
  * Genshin.h
  *
  *  Created on: 2025Äê4ÔÂ4ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_MENU_GENSHIN_H_

@@ -2,7 +2,7 @@
  * myIps200.c
  *
  *  Created on: 2025Äê4ÔÂ5ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 #include "MyIps200.h"
 

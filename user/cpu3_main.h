@@ -2,7 +2,7 @@
  * cpu3_main.h
  *
  *  Created on: 2025Äê4ÔÂ20ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef USER_CPU3_MAIN_H_

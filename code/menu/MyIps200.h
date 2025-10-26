@@ -2,7 +2,7 @@
  * myIps200.h
  *
  *  Created on: 2025Äê4ÔÂ5ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_MENU_MYIPS200_H_

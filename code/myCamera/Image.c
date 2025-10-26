@@ -2,7 +2,7 @@
  * Image.c
  *
  *  Created on: 2025Äê7ÔÂ15ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 #include "Image.h"
 

@@ -2,7 +2,7 @@
  * Debug.h
  *
  *  Created on: 2025Äê1ÔÂ14ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_DEBUGARG_DEBUGARG_H_

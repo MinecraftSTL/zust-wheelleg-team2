@@ -2,7 +2,7 @@
  * PidPage.h
  *
  *  Created on: 2025Äê3ÔÂ11ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_MENU_PIDPAGE_H_

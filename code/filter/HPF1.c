@@ -2,7 +2,7 @@
  * LPF.c
  *
  *  Created on: 2025Äê3ÔÂ1ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #include "Filter.h"

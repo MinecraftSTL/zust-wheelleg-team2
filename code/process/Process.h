@@ -2,7 +2,7 @@
  * Process.h
  *
  *  Created on: 2025Äê3ÔÂ15ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_PROCESS_PROCESS_H_

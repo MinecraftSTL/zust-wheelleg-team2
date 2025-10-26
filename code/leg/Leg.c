@@ -2,7 +2,7 @@
  * Leg.c
  *
  *  Created on: 2025Äê1ÔÂ14ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 #include "Leg.h"
 

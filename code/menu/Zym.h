@@ -2,7 +2,7 @@
  * Zym.h
  *
  *  Created on: 2025Äê7ÔÂ8ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_MENU_ZYM_H_

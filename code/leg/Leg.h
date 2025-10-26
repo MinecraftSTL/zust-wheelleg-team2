@@ -2,7 +2,7 @@
  * Leg.h
  *
  *  Created on: 2025Äê1ÔÂ14ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_LEG_LEG_H_

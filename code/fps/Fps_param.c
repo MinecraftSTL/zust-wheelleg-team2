@@ -2,7 +2,7 @@
  * Fps_param.c
  *
  *  Created on: 2025Äê7ÔÂ2ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #include "Fps.h"

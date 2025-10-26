@@ -2,7 +2,7 @@
  * cpu2_main.h
  *
  *  Created on: 2025Äê4ÔÂ18ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef USER_CPU2_MAIN_H_

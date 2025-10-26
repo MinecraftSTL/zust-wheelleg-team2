@@ -2,7 +2,7 @@
  * Pit.h
  *
  *  Created on: 2025Äê3ÔÂ16ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_PIT_PIT_H_

@@ -2,7 +2,7 @@
  * Process.c
  *
  *  Created on: 2025Äê3ÔÂ15ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #include "Process.h"

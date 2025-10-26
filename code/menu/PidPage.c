@@ -2,7 +2,7 @@
  * PidPage.c
  *
  *  Created on: 2025Äê3ÔÂ11ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #include "PidPage.h"

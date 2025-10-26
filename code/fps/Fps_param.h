@@ -2,7 +2,7 @@
  * Fps_param.h
  *
  *  Created on: 2025Äê7ÔÂ2ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_FPS_FPS_PARAM_H_

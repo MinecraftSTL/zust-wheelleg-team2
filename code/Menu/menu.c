@@ -2,7 +2,7 @@
  * Menu.c
  *
  *  Created on: 2024Äê11ÔÂ14ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 #include "Menu.h"
 #include "Stl.h"

@@ -2,7 +2,7 @@
  * Beep.c
  *
  *  Created on: 2024Äê12ÔÂ23ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 #include "Sys.h"
 #include "Beep.h"

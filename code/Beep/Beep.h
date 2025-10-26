@@ -2,7 +2,7 @@
  * Beep.h
  *
  *  Created on: 2024Äê12ÔÂ23ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #ifndef CODE_BEEP_BEEP_H_

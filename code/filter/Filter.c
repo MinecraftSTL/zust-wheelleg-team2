@@ -2,7 +2,7 @@
  * Filter.c
  *
  *  Created on: 2025Äê3ÔÂ3ÈÕ
- *      Author: MCSTL
+ *      Author: MinecraftSTL
  */
 
 #include "Filter.h"
