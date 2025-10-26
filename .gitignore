@@ -1,13 +1,13 @@
 # AURIX Development Studio 专用忽略规则
 
 # --- 编译生成的目录和文件 ---
-/Debug/         # 编译输出目录
+/Debug         # 编译输出目录
 /*.launch       # 排除所有.launch文件（通常是IDE自动生成的调试配置）
 
 # --- IDE配置和缓存文件 ---
-/.vscode/       # VSCode工作区配置
-/.settings/     # Eclipse/ADS工作区配置
-/.ads/          # AURIX项目配置目录
+/.vscode       # VSCode工作区配置
+/.settings     # Eclipse/ADS工作区配置
+/.ads          # AURIX项目配置目录
 /.project       # Eclipse项目元数据
 /.cproject      # Eclipse C/C++项目配置
 /*.epf          # Eclipse首选项文件（如t.epf）
