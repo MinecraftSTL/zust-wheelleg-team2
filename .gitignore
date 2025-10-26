@@ -1,28 +1,29 @@
 # AURIX Development Studio 专用忽略规则
 
 # --- 编译生成的目录和文件 ---
-Debug/          # 编译输出目录
-*.launch        # 排除所有.launch文件（通常是IDE自动生成的调试配置）
+/Debug/         # 编译输出目录
+/*.launch       # 排除所有.launch文件（通常是IDE自动生成的调试配置）
 
 # --- IDE配置和缓存文件 ---
-.settings/      # Eclipse/ADS工作区配置
-.ads/           # AURIX项目配置目录
-.project        # Eclipse项目元数据
-.cproject       # Eclipse C/C++项目配置
-*.epf           # Eclipse首选项文件（如t.epf）
+/.vscode/       # VSCode工作区配置
+/.settings/     # Eclipse/ADS工作区配置
+/.ads/          # AURIX项目配置目录
+/.project       # Eclipse项目元数据
+/.cproject      # Eclipse C/C++项目配置
+/*.epf          # Eclipse首选项文件（如t.epf）
 
 # --- 临时/自动生成文件 ---
-*.tmp           # 临时文件
-*.log           # 日志文件
+/*.tmp           # 临时文件
+/*.log           # 日志文件
 
 # --- 本地脚本和工程工具文件 ---
-AURIX修改工程名称.bat
-删除临时文件.bat
-AURIX修改工程名称教程.txt
+/AURIX修改工程名称.bat
+/删除临时文件.bat
+/AURIX修改工程名称教程.txt
 
 # --- 硬件相关说明文件（非代码）---
-尽量不要使用的引脚.txt
-推荐IO分配.txt
+/尽量不要使用的引脚.txt
+/推荐IO分配.txt
 
 # --- 其他可能干扰的文件 ---
 # Lcf_Tasking_Tricore_Tc.lsl 是链接脚本，属于必要文件，故不忽略
